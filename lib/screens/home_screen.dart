@@ -18,13 +18,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           body: activeTab == AppTab.todos ? FilteredTodos() : FilteredTodos(),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/addTodo');
-            },
-            child: Icon(Icons.add),
-            tooltip: 'Add Todo',
-          ),
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
             onTabSelected: (tab) =>

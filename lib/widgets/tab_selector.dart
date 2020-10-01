@@ -18,10 +18,13 @@ class TabSelector extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: AppTab.values.indexOf(activeTab),
       onTap: (index) => onTabSelected(AppTab.values[index]),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: Theme.of(context).accentColor,
       items: AppTab.values.map((tab) {
         return BottomNavigationBarItem(
           icon: Icon(
-            tab == AppTab.todos ? Icons.list : Icons.show_chart,
+            tab == AppTab.todos ? Icons.library_music : Icons.account_circle,
           ),
           title: Text(
             tab == AppTab.stats ? 'Stats' : 'Todos',
