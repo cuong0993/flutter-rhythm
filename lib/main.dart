@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/screens/home_screen.dart';
 
 import 'blocs/authentication_bloc/bloc.dart';
+import 'blocs/blocs.dart';
 import 'blocs/simple_bloc_observer.dart';
+import 'blocs/tab/tab_bloc.dart';
 import 'repositories/firebase_user_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -41,7 +43,16 @@ class App extends StatelessWidget {
               builder: (context, state) {
                 if (state is Authenticated) {
                   return MultiBlocProvider(
-                    providers: [],
+                    providers: [
+                      BlocProvider<TabBloc>(
+                        create: (context) => TabBloc(),
+                      ),
+                      BlocProvider<FilteredTodosBloc>(
+                        create: (context) => FilteredTodosBloc(
+                          todosBloc: BlocProvider.of<TodosBloc>(context),
+                        ),
+                      ),
+                    ],
                     child: HomeScreen(),
                   );
                 }
