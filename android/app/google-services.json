@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "839556303918",
+    "firebase_url": "https://hittick-dev.firebaseio.com",
+    "project_id": "hittick-dev",
+    "storage_bucket": "hittick-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839556303918:android:f9d0947ca99f2932e823bf",
+        "android_client_info": {
+          "package_name": "com.chaomao.lalaorchestra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839556303918-fsb3u8chnon7huqc4dgr0337f1hs3jm9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chaomao.lalaorchestra",
+            "certificate_hash": "84cc77aa41d0d84e52f2dbae9988bbb58e5b605c"
+          }
+        },
+        {
+          "client_id": "839556303918-nhp5kt2qirsebeiabsbb1cfrrbg4fpie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chaomao.lalaorchestra",
+            "certificate_hash": "0a3390afc5c6603cd8826934ed161f2a379a5ca6"
+          }
+        },
+        {
+          "client_id": "839556303918-emav7gmse81g73klk0d9ko9u9eoufn0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlUILdS_fBpMYhTRy6EoanYgkjIociChE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839556303918-emav7gmse81g73klk0d9ko9u9eoufn0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
