@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/blocs.dart';
 import 'package:hitnotes/models/models.dart';
+import 'package:hitnotes/widgets/filtered_songs.dart';
 import 'package:hitnotes/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,11 +14,11 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(activeTab.toString()),
             actions: [
-              //FilterButton(visible: activeTab == AppTab.todos),
+              //FilterButton(visible: activeTab == AppTab.songs),
               //ExtraActions(),
             ],
           ),
-          body: activeTab == AppTab.todos ? FilteredTodos() : FilteredTodos(),
+          body: activeTab == AppTab.songs ? FilteredSongs() : FilteredSongs(),
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
             onTabSelected: (tab) =>

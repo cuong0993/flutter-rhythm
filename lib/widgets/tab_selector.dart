@@ -26,10 +26,10 @@ class TabSelector extends StatelessWidget {
       items: AppTab.values.map((tab) {
         return BottomNavigationBarItem(
           icon: Icon(
-            tab == AppTab.todos ? Icons.library_music : MyFlutterApp.img_guitar,
+            tab == AppTab.songs ? Icons.library_music : MyFlutterApp.img_guitar,
           ),
           title: Text(
-            tab == AppTab.stats ? 'Stats' : 'Todos',
+            tab == AppTab.stats ? 'Stats' : 'Songs',
           ),
         );
       }).toList(),

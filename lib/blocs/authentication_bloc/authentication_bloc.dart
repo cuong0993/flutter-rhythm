@@ -27,9 +27,9 @@ class AuthenticationBloc
     try {
       final isSignedIn = await _userRepository.isAuthenticated();
       if (!isSignedIn) {
-        await _userRepository.authenticate();
+        await _userRepository.signInAnonymously();
       }
-      final userId = await _userRepository.getUserId();
+      final userId = _userRepository.getUserId();
       yield Authenticated(userId);
     } catch (_) {
       yield Unauthenticated();

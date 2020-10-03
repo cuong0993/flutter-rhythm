@@ -2,12 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/repositories/firebase_todos_repository.dart';
+import 'package:hitnotes/blocs/songs/songs_event.dart';
+import 'package:hitnotes/repositories/firebase_songs_repository.dart';
 import 'package:hitnotes/screens/home_screen.dart';
 
 import 'blocs/authentication_bloc/bloc.dart';
 import 'blocs/blocs.dart';
+import 'blocs/filtered_songs/filtered_songs_bloc.dart';
 import 'blocs/simple_bloc_observer.dart';
+import 'blocs/songs/songs_bloc.dart';
 import 'blocs/tab/tab_bloc.dart';
 import 'repositories/firebase_user_repository.dart';
 
@@ -34,16 +37,16 @@ class App extends StatelessWidget {
             )..add(AppStarted());
           },
         ),
-        BlocProvider<TodosBloc>(
+        BlocProvider<SongsBloc>(
           create: (context) {
-            return TodosBloc(
-              todosRepository: FirebaseTodosRepository(),
-            )..add(LoadTodos());
+            return SongsBloc(
+              songsRepository: FirebaseSongRepository(),
+            )..add(LoadSongs());
           },
         )
       ],
       child: MaterialApp(
-        title: 'Firestore Todos',
+        title: 'Firestore Songs',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -70,9 +73,9 @@ class App extends StatelessWidget {
                       BlocProvider<TabBloc>(
                         create: (context) => TabBloc(),
                       ),
-                      BlocProvider<FilteredTodosBloc>(
-                        create: (context) => FilteredTodosBloc(
-                          todosBloc: BlocProvider.of<TodosBloc>(context),
+                      BlocProvider<FilteredSongsBloc>(
+                        create: (context) => FilteredSongsBloc(
+                          songsBloc: BlocProvider.of<SongsBloc>(context),
                         ),
                       ),
                     ],
@@ -89,11 +92,11 @@ class App extends StatelessWidget {
             );
           }
 /*,
-          '/addTodo': (context) {
+          '/addSong': (context) {
             return AddEditScreen(
               onSave: (task, note) {
-                BlocProvider.of<TodosBloc>(context).add(
-                  AddTodo(Todo(task, note: note)),
+                BlocProvider.of<SongsBloc>(context).add(
+                  AddSong(Song(task, note: note)),
                 );
               },
               isEditing: false,

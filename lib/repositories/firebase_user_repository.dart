@@ -12,11 +12,11 @@ class FirebaseUserRepository implements UserRepository {
     return currentUser != null;
   }
 
-  Future<void> authenticate() {
+  Future<void> signInAnonymously() {
     return _firebaseAuth.signInAnonymously();
   }
 
-  Future<String> getUserId() async {
-    return (await _firebaseAuth.currentUser).uid;
+  String getUserId() {
+    return _firebaseAuth.currentUser.uid;
   }
 }

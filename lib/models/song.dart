@@ -1,18 +1,19 @@
+import 'package:hitnotes/models/song_entity.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class Todo {
+class Song {
   final bool complete;
   final String id;
   final String note;
   final String task;
 
-  Todo(this.task, {this.complete = false, String note = '', String id})
+  Song(this.task, {this.complete = false, String note = '', String id})
       : this.note = note ?? '',
         this.id = id;
 
-  Todo copyWith({bool complete, String id, String note, String task}) {
-    return Todo(
+  Song copyWith({bool complete, String id, String note, String task}) {
+    return Song(
       task ?? this.task,
       complete: complete ?? this.complete,
       id: id ?? this.id,
@@ -27,7 +28,7 @@ class Todo {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Todo &&
+      other is Song &&
           runtimeType == other.runtimeType &&
           complete == other.complete &&
           task == other.task &&
@@ -36,6 +37,19 @@ class Todo {
 
   @override
   String toString() {
-    return 'Todo{complete: $complete, task: $task, note: $note, id: $id}';
+    return 'Song {complete: $complete, task: $task, note: $note, id: $id}';
+  }
+
+  SongEntity toEntity() {
+    return SongEntity(task, id, note, complete);
+  }
+
+  static Song fromEntity(SongEntity entity) {
+    return Song(
+      entity.task,
+      complete: entity.complete ?? false,
+      note: entity.note,
+      id: entity.id,
+    );
   }
 }

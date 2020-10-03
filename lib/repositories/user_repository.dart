@@ -1,7 +1,7 @@
 abstract class UserRepository {
   Future<bool> isAuthenticated();
 
-  Future<void> authenticate();
+  Future<void> signInAnonymously();
 
-  Future<String> getUserId();
+  String getUserId();
 }
