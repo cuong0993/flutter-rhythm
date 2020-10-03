@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/filtered_songs/filtered_songs_bloc.dart';
 import 'package:hitnotes/blocs/filtered_songs/filtered_songs_state.dart';
+import 'package:hitnotes/blocs/songs/songs_bloc.dart';
+import 'package:hitnotes/blocs/songs/songs_state.dart';
 import 'package:hitnotes/widgets/song_item.dart';
 import 'package:hitnotes/widgets/widgets.dart';
 
@@ -12,12 +14,12 @@ class FilteredSongs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FilteredSongsBloc, FilteredSongsState>(
+    return BlocBuilder<SongsBloc, SongsState>(
       builder: (context, state) {
-        if (state is FilteredSongsLoading) {
+        if (state is SongsLoading) {
           return LoadingIndicator();
-        } else if (state is FilteredSongsLoaded) {
-          final songs = state.filteredSongs;
+        } else if (state is SongsLoaded) {
+          final songs = state.songs;
           return ListView.builder(
             itemCount: songs.length,
             itemBuilder: (context, index) {

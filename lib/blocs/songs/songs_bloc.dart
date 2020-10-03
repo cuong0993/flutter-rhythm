@@ -21,6 +21,9 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
     if (event is LoadSongs) {
       yield* _mapLoadSongsToState();
     }
+    if (event is SongsUpdated) {
+      yield SongsLoaded(event.songs);
+    }
   }
 
   Stream<SongsState> _mapLoadSongsToState() async* {

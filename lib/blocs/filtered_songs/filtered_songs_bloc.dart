@@ -73,9 +73,9 @@ class FilteredSongsBloc extends Bloc<FilteredSongsEvent, FilteredSongsState> {
       if (filter == VisibilityFilter.all) {
         return true;
       } else if (filter == VisibilityFilter.active) {
-        return !song.complete;
+        return true;
       } else {
-        return song.complete;
+        return true;
       }
     }).toList();
   }

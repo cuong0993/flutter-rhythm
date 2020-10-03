@@ -13,7 +13,7 @@ class FirebaseSongRepository implements SongRepository {
   Stream<List<Song>> songs() {
     return songCollection.snapshots().map((snapshot) {
       return snapshot.docs
-          .map((doc) => Song.fromEntity(SongEntity.fromSnapshot(doc)))
+          .map((doc) => SongEntity.fromEntity(SongEntity.fromSnapshot(doc)))
           .toList();
     });
   }

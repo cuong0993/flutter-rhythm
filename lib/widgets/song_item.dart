@@ -24,7 +24,7 @@ class SongItem extends StatelessWidget {
       child: ListTile(
         onTap: onTap,
         leading: Checkbox(
-          value: song.complete,
+          value: true,
           onChanged: onCheckboxChanged,
         ),
         title: Hero(
@@ -32,14 +32,14 @@ class SongItem extends StatelessWidget {
           child: Container(
             width: MediaQuery.of(context).size.width,
             child: Text(
-              song.task,
+              song.title,
               style: Theme.of(context).textTheme.headline6,
             ),
           ),
         ),
-        subtitle: song.note.isNotEmpty
+        subtitle: song.artist.isNotEmpty
             ? Text(
-                song.note,
+                song.artist,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.subtitle1,
