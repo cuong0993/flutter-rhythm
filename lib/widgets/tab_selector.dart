@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hitnotes/models/models.dart';
 
+import '../my_flutter_app_icons.dart';
+
 class TabSelector extends StatelessWidget {
   final AppTab activeTab;
   final Function(AppTab) onTabSelected;
@@ -24,7 +26,7 @@ class TabSelector extends StatelessWidget {
       items: AppTab.values.map((tab) {
         return BottomNavigationBarItem(
           icon: Icon(
-            tab == AppTab.todos ? Icons.library_music : Icons.account_circle,
+            tab == AppTab.todos ? Icons.library_music : MyFlutterApp.img_guitar,
           ),
           title: Text(
             tab == AppTab.stats ? 'Stats' : 'Todos',

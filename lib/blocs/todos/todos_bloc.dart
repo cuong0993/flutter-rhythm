@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:hitnotes/models/todo.dart';
 import 'package:hitnotes/repositories/todos_repository.dart';
@@ -6,7 +7,6 @@ import 'package:meta/meta.dart';
 
 import 'todos_event.dart';
 import 'todos_state.dart';
-
 
 class TodosBloc extends Bloc<TodosEvent, TodosState> {
   final TodosRepository _todosRepository;

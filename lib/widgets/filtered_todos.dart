@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/blocs.dart';
@@ -30,7 +30,8 @@ class FilteredTodos extends StatelessWidget {
                   //       BlocProvider.of<TodosBloc>(context).add(AddTodo(todo)),
                   // ));
                 },
-                onTap: () async {/*
+                onTap: () async {
+                  /*
                   final removedTodo = await Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) {
                       return DetailsScreen(id: todo.id);
@@ -45,7 +46,8 @@ class FilteredTodos extends StatelessWidget {
                       ),
                     );
                   }
-                */},
+                */
+                },
                 onCheckboxChanged: (_) {
                   BlocProvider.of<TodosBloc>(context).add(
                     UpdateTodo(todo.copyWith(complete: !todo.complete)),

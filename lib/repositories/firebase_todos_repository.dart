@@ -5,8 +5,8 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/todo.dart';
 
+import '../models/todo.dart';
 import 'todos_repository.dart';
 
 class FirebaseTodosRepository implements TodosRepository {

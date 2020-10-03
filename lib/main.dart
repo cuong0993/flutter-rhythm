@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hitnotes/repositories/firebase_todos_repository.dart';
 import 'package:hitnotes/screens/home_screen.dart';
 
 import 'blocs/authentication_bloc/bloc.dart';
@@ -8,9 +10,8 @@ import 'blocs/blocs.dart';
 import 'blocs/simple_bloc_observer.dart';
 import 'blocs/tab/tab_bloc.dart';
 import 'repositories/firebase_user_repository.dart';
-import 'package:firebase_core/firebase_core.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer = SimpleBlocObserver();
@@ -30,8 +31,14 @@ class App extends StatelessWidget {
           create: (context) {
             return AuthenticationBloc(
               userRepository: FirebaseUserRepository(),
-            )
-              ..add(AppStarted());
+            )..add(AppStarted());
+          },
+        ),
+        BlocProvider<TodosBloc>(
+          create: (context) {
+            return TodosBloc(
+              todosRepository: FirebaseTodosRepository(),
+            )..add(LoadTodos());
           },
         )
       ],
@@ -92,7 +99,6 @@ class App extends StatelessWidget {
               isEditing: false,
             );
           },*/
-
         },
       ),
     );
