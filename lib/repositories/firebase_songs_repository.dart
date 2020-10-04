@@ -11,7 +11,7 @@ class FirebaseSongRepository implements SongRepository {
 
   @override
   Stream<List<Song>> songs() {
-    return songCollection.snapshots().map((snapshot) {
+    return songCollection.limit(2).snapshots().map((snapshot) {
       return snapshot.docs
           .map((doc) => SongEntity.fromEntity(SongEntity.fromSnapshot(doc)))
           .toList();

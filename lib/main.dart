@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_event.dart';
 import 'package:hitnotes/repositories/firebase_songs_repository.dart';
+import 'package:hitnotes/screens/details_screen.dart';
 import 'package:hitnotes/screens/home_screen.dart';
 
 import 'blocs/authentication_bloc/bloc.dart';
@@ -90,18 +91,10 @@ class App extends StatelessWidget {
                 return Center(child: CircularProgressIndicator());
               },
             );
-          }
-/*,
+          },
           '/addSong': (context) {
-            return AddEditScreen(
-              onSave: (task, note) {
-                BlocProvider.of<SongsBloc>(context).add(
-                  AddSong(Song(task, note: note)),
-                );
-              },
-              isEditing: false,
-            );
-          },*/
+            return DetailsScreen();
+          },
         },
       ),
     );
