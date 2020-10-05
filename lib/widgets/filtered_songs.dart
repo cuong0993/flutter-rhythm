@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_state.dart';
+import 'package:hitnotes/game/game.dart';
 import 'package:hitnotes/screens/details_screen.dart';
 import 'package:hitnotes/widgets/song_item.dart';
 import 'package:hitnotes/widgets/widgets.dart';
@@ -28,7 +29,7 @@ class FilteredSongs extends StatelessWidget {
                 onTap: () async {
                   final removedSong = await Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) {
-                      return DetailsScreen(id: song.id);
+                      return GameScreen(id: song.id, game: MyGame());
                     }),
                   );
                 },

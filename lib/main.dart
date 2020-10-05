@@ -93,7 +93,7 @@ class App extends StatelessWidget {
             );
           },
           '/addSong': (context) {
-            return DetailsScreen();
+            return GameScreen();
           },
         },
       ),

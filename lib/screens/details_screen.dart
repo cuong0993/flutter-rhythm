@@ -4,27 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_state.dart';
+import 'package:hitnotes/game/game.dart';
 
-class DetailsScreen extends StatelessWidget {
+class GameScreen extends StatelessWidget {
   final String id;
+  final MyGame game;
 
-  DetailsScreen({Key key, @required this.id}) : super(key: key);
+  GameScreen({Key key, @required this.id, @required this.game}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SongsBloc, SongsState>(
       builder: (context, state) {
-        return RawGestureDetector(
-            gestures: <Type, GestureRecognizerFactory<GestureRecognizer>>{
-              MultiTapGestureRecognizer: GestureRecognizerFactoryWithHandlers<
-                      MultiTapGestureRecognizer>(
-                  () => MultiTapGestureRecognizer(),
-                  (MultiTapGestureRecognizer instance) {
-                instance.onTapDown = (int pointer, TapDownDetails details) =>
-                    _handleTap(context, details);
-              })
-            },
-            child: Container());
+        return game.widget;
       },
     );
   }
