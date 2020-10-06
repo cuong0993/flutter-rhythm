@@ -7,7 +7,6 @@ import 'package:hitnotes/models/models.dart';
 import 'package:hitnotes/models/song.dart';
 import 'package:meta/meta.dart';
 
-import '../blocs.dart';
 import 'filtered_songs_event.dart';
 import 'filtered_songs_state.dart';
 

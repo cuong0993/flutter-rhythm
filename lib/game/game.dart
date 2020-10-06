@@ -1,4 +1,3 @@
-import 'package:flame/components/mixins/tapable.dart';
 import 'package:flame/game/base_game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flutter/gestures.dart';

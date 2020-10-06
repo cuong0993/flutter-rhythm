@@ -10,7 +10,8 @@ class GameScreen extends StatelessWidget {
   final String id;
   final MyGame game;
 
-  GameScreen({Key key, @required this.id, @required this.game}) : super(key: key);
+  GameScreen({Key key, @required this.id, @required this.game})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
