@@ -113,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  dart_midi:
+    dependency: "direct main"
+    description:
+      name: dart_midi
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   easy_localization:
     dependency: "direct main"
     description:
