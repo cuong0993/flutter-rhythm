@@ -18,6 +18,32 @@
     <link href="manifest.json" rel="manifest">
 </head>
 <body>
+
+<!--Manual, use for development-->
+<!--<script src="https://www.gstatic.com/firebasejs/7.20.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.1/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var firebaseConfig = {
+    apiKey: "AIzaSyCsi-AIvkggR4R9VmrT6osQdRRrwUqg6zY",
+    authDomain: "hittick-dev.firebaseapp.com",
+    databaseURL: "https://hittick-dev.firebaseio.com",
+    projectId: "hittick-dev",
+    storageBucket: "hittick-dev.appspot.com",
+    messagingSenderId: "839556303918",
+    appId: "1:839556303918:web:2211470721d5fe24e823bf",
+    measurementId: "G-MNKLW212ZS"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>-->
+
+<script src="/__/firebase/7.20.1/firebase-app.js"></script>
+<script src="/__/firebase/7.20.1/firebase-analytics.js"></script>
+<script src="/__/firebase/7.20.1/firebase-firestore.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+</script>
 <!-- This script installs service_worker.js to provide PWA functionality to
      application. For more information, see:
      https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -27,6 +53,7 @@
         navigator.serviceWorker.register('flutter_service_worker.js');
       });
     }
+
 
 </script>
 <script src="main.dart.js" type="application/javascript"></script>
