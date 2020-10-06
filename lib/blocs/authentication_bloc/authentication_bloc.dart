@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:hitnotes/blocs/authentication_bloc/bloc.dart';
 import 'package:hitnotes/repositories/user_repository.dart';
 import 'package:meta/meta.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -25,6 +26,7 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapAppStartedToState() async* {
     try {
+      final directory = await getApplicationDocumentsDirectory();
       final isSignedIn = await _userRepository.isAuthenticated();
       if (!isSignedIn) {
         await _userRepository.signInAnonymously();
