@@ -26,7 +26,6 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapAppStartedToState() async* {
     try {
-      final directory = await getApplicationDocumentsDirectory();
       final isSignedIn = await _userRepository.isAuthenticated();
       if (!isSignedIn) {
         await _userRepository.signInAnonymously();
