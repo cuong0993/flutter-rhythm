@@ -29,7 +29,7 @@ class FilteredSongs extends StatelessWidget {
                 onTap: () async {
                   final removedSong = await Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) {
-                      return GameScreen(id: song.id, game: MyGame());
+                      return GameScreen(song: song, game: MyGame());
                     }),
                   );
                 },

@@ -8,7 +8,17 @@ abstract class GameEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadGame extends GameEvent {}
+class StartGame extends GameEvent {
+  final Song song;
+
+  const StartGame(this.song);
+
+  @override
+  List<Object> get props => [song];
+
+  @override
+  String toString() => 'StartGame { song: $song }';
+}
 
 class AddSong extends GameEvent {
   final Song song;

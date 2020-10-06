@@ -28,6 +28,7 @@ dependencies:
   equatable: ^1.2.5
   cloud_firestore: ^0.14.1+2
   firebase_auth: ^0.18.1+1
+  firebase_storage: ^4.0.1
   flame: 0.27.0
   dart_midi: ^1.0.1
   path_provider: ^1.6.18
