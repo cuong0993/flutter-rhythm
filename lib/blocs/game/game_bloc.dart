@@ -48,11 +48,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           .entries
           .toList()
             ..sort((e1, e2) => e1.key.compareTo(e2.key)));
-      final countDurationToPrevious = new Map.fromIterable(groupByDurationToPrevious.keys,
-          key: (k) => k, value: (v) => groupByDurationToPrevious[v].length);
+      final countDurationToPrevious = new Map.fromIterable(
+          groupByDurationToPrevious.keys,
+          key: (k) => k,
+          value: (v) => groupByDurationToPrevious[v].length);
 
-      final sortCountDurationToPrevious = Map.fromEntries(countDurationToPrevious .entries.toList()
-        ..sort((e1, e2) => e1.value.compareTo(e2.value)));
+      final sortCountDurationToPrevious = Map.fromEntries(
+          countDurationToPrevious.entries.toList()
+            ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       final unitDuration = sortCountDurationToPrevious.values.last;
       final tiles = createTiles(tileChunks, unitDuration);
       int i = 0;
@@ -83,9 +86,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         totalTicks += midiEvent.deltaTime;
         if (midiEvent is NoteOnEvent) {
           final noteValue = midiEvent.noteNumber;
-          if (midiEvent.velocity != 0 && onsets[noteValue] == -1) {
+          if (onsets[noteValue] == -1) {
             onsets[noteValue] = totalTicks;
-          } else if (onsets[noteValue] >= 0) {
+          }
+        } else if (midiEvent is NoteOffEvent) {
+          final noteValue = midiEvent.noteNumber;
+          if (onsets[noteValue] >= 0) {
             tileNotes.add(Note(note: noteValue, startTick: onsets[noteValue]));
             onsets[noteValue] = -1;
           }
