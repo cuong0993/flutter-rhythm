@@ -1,20 +1,16 @@
+import 'constants.dart';
+
 class Tile {
   final int note;
-  final int column;
   final double initialY;
   var y = double.maxFinite;
   var state = State.UNTOUCHED;
-  final double width = 64;
-  final double height = 64;
-  //var onTouched: ((tile: Tile) -> Unit)? = null;
-  //final x = X_POSITIONS[column];
-  final x = 0;
+  final double width = TILE_WIDTH;
+  final double height = TILE_HEIGHT;
+  Function(Tile tile) onTouched;
+  final double x;
 
-
-  Tile(this.note, this.column, this.initialY);
+  Tile(this.note, column, this.initialY) : x = X_POSITIONS[column];
 }
 
-enum State {
-UNTOUCHED,
-TOUCHED
-}
+enum State { UNTOUCHED, TOUCHED }
