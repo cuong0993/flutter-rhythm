@@ -4,6 +4,8 @@ import 'package:flutter/gestures.dart';
 
 class MyGame extends BaseGame with MultiTouchTapDetector {
   MyGame();
+  void pause() {}
+
 
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
