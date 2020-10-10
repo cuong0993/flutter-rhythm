@@ -18,7 +18,7 @@ import 'package:hitnotes/models/song.dart';
 import 'package:hitnotes/models/tile_chunk.dart';
 import 'package:path_provider/path_provider.dart';
 
-class MyGame extends Game with HasWidgetsOverlay, MultiTouchTapDetector {
+class MyGame extends Game with MultiTouchTapDetector {
   final Song song;
   var errorCount = 0;
 
@@ -40,20 +40,7 @@ class MyGame extends Game with HasWidgetsOverlay, MultiTouchTapDetector {
 //private val touches = Array(numberOfTouchPointers) { TouchData() }
   var initialYAllowedTouch = double.maxFinite;
 
-  MyGame({this.song}) {
-    addWidgetOverlay(
-      'PauseMenu',
-      Container(
-        width: 500,
-        height: 100,
-        child: AppBar(
-          title: Text(song.title),
-        ),
-      ),
-    );
-    name();
-    int i = 0;
-  }
+  MyGame({this.song}){}
 
   Future name() async {
     final directory = await getApplicationSupportDirectory();
@@ -197,7 +184,6 @@ class MyGame extends Game with HasWidgetsOverlay, MultiTouchTapDetector {
 
   @override
   void render(Canvas canvas) {
-    // TODO: implement render
   }
 
   @override
