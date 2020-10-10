@@ -5,7 +5,6 @@ import "package:collection/collection.dart";
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flame/game.dart';
-import 'package:flame/game/base_game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -13,13 +12,33 @@ import 'package:flutter/material.dart';
 import 'package:hitnotes/blocs/game/constants.dart';
 import 'package:hitnotes/blocs/game/midi_util.dart';
 import 'package:hitnotes/blocs/game/tile.dart';
+import 'package:hitnotes/blocs/game/tiles_controller.dart';
 import 'package:hitnotes/models/note.dart';
 import 'package:hitnotes/models/song.dart';
 import 'package:hitnotes/models/tile_chunk.dart';
 import 'package:path_provider/path_provider.dart';
 
-class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
+class MyGame extends Game with HasWidgetsOverlay, MultiTouchTapDetector {
   final Song song;
+  var errorCount = 0;
+
+  //val userRepository: UserRepository by inject()
+  //private val midiProcessor: MidiProcessor by inject()
+  //private val gameManager: GameManager by inject()
+
+  final tilesController = TilesController();
+  var state = State.PREPARE;
+
+  double time = 0;
+  double infoTime = 0;
+
+//final tileEffects = List<Effect>();
+//private val rippleEffects = hashMapOf<Int, RippleEffect>()
+  double accumulator = 0;
+  double step = 1.0 / 60.0;
+  int numberOfTouchPointers = 5; // 5 fingers
+//private val touches = Array(numberOfTouchPointers) { TouchData() }
+  var initialYAllowedTouch = double.maxFinite;
 
   MyGame({this.song}) {
     addWidgetOverlay(
@@ -133,6 +152,26 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
     return tiles;
   }
 
+  onTileTouched(Tile tile) {
+  //tileEffects.addAll(tile.getEffects())
+  }
+
+  start(
+  int bpm,
+  MidiFile midiFile
+  ) {
+  errorCount = 0;
+  time = 0;
+  tilesController.initialize(midiFile, bpm, this.onTileTouched);
+  // maxTimeEventFlow.value = tilesController.gameDuration;
+  // songNameEventFlow.value = song.title
+  // noteEventFlow.value = 0
+  state = State.PLAY;
+  // KtxAsync.launch {
+  // gameManager.register(Game(userRepository.getUserId(), song.id))
+  // }
+  }
+
   void pause() {}
 
   @override
@@ -157,11 +196,133 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
   }
 
   @override
-  void update(double t) {
-    super.update(t);
-    //print(t.toString());
+  void render(Canvas canvas) {
+    // TODO: implement render
   }
 
   @override
-  bool recordFps() => true;
+  void update(double t) {
+    // infoTime += t;
+    // if (infoTime >= 1.0) {
+    //   //infoEventFlow.value = ""
+    //   infoTime = 0;
+    // }
+    // if (state != State.STOP) {
+    //   /* Max frame time to avoid spiral of death */
+    //   val restrictedTime = if (delta > 0.25f) 0.25f else delta
+    // accumulator += restrictedTime
+    // while (accumulator >= step) {
+    // initialYAllowedTouch = Float.MAX_VALUE
+    // for (i in 0 until numberOfTouchPointers) {
+    // val touched = Gdx.input.isTouched(i)
+    // if (touches[i].touched && !touched) {
+    // touches[i] = TouchData(touched = false, handled = false, x = 0, y = 0)
+    // } else if (!touches[i].touched && touched) {
+    // touches[i] = TouchData(
+    // touched = true,
+    // handled = false,
+    // x = Gdx.input.getX(i),
+    // y = Gdx.input.getY(i)
+    // )
+    // }
+    // }
+    // /*// FIXME In automate mode, fake touches
+    //             tilesController.getNextUntouchedTile()?.let {
+    //                 if (it.y < OFFSET_PAUSE_POSITION_Y + com.chaomao.hittick.utils.SIZE_DP_8) {
+    //                     val x = com.chaomao.hittick.utils.SIZE_DP_48
+    //                     val y = SCREEN_HEIGHT.toInt() - com.chaomao.hittick.utils.SIZE_DP_48
+    //                     touches[0] = TouchData(
+    //                         touched = true,
+    //                         handled = false,
+    //                         x = x,
+    //                         y = y
+    //                     )
+    //                     touches[1] = TouchData(
+    //                         touched = true,
+    //                         handled = false,
+    //                         x = x + com.chaomao.hittick.utils.SIZE_DP_48,
+    //                         y = y
+    //                     )
+    //                     touches[2] = TouchData(
+    //                         touched = true,
+    //                         handled = false,
+    //                         x = x + 2 * com.chaomao.hittick.utils.SIZE_DP_48,
+    //                         y = y
+    //                     )
+    //                     touches[3] = TouchData(
+    //                         touched = true,
+    //                         handled = false,
+    //                         x = x + 3 * com.chaomao.hittick.utils.SIZE_DP_48,
+    //                         y = y
+    //                     )
+    //                     touches[4] = TouchData(
+    //                         touched = true,
+    //                         handled = false,
+    //                         x = x + 4 * com.chaomao.hittick.utils.SIZE_DP_48,
+    //                         y = y
+    //                     )
+    //                 }
+    //             }*/
+    // for (i in 0 until numberOfTouchPointers) {
+    // if (touches[i].touched && !touches[i].handled) {
+    // touches[i] = touches[i].copy(handled = true)
+    // if (touches[i].y > NON_TOUCH_REGION_HEIGHT) {
+    // val tile = tilesController.getNextUntouchedTile()
+    // if (tile != null) {
+    // if (tile.initialY <= initialYAllowedTouch) {
+    // tile.touchDown()
+    // if (state == State.PAUSE) {
+    // state = State.PLAY
+    // }
+    // midiProcessor.playNote(tile.note.toByte())
+    // noteEventFlow.value = noteEventFlow.value + 1
+    // initialYAllowedTouch = tile.initialY
+    // if (tile.y == OFFSET_PAUSE_POSITION_Y) {
+    // errorCount++
+    // infoTime = 0f
+    // infoEventFlow.value = "txt_too_late".get()
+    // } else if (tile.y > OFFSET_PAUSE_POSITION_Y + SIZE_DP_120) {
+    // errorCount++
+    // infoTime = 0f
+    // infoEventFlow.value = "txt_too_early".get()
+    // }
+    // } else {
+    // errorCount++
+    // infoTime = 0f
+    // infoEventFlow.value = "txt_too_many_fingers".get()
+    // /*// FIXME In automate mode, break to avoid too many fingers error
+    //                                 break*/
+    // }
+    // rippleEffects[i] =
+    // RippleEffect(
+    // touches[i].x,
+    // SCREEN_HEIGHT.toInt() - touches[i].y
+    // )
+    // }
+    // }
+    // }
+    // }
+    // accumulator -= step
+    // if (state == State.PLAY) {
+    // val actualDeltaTime = tilesController.tryUpdate(step)
+    // if (step > actualDeltaTime) {
+    // pause()
+    // }
+    // if (tilesController.tiles.isEmpty()) {
+    // state = State.COMPLETE
+    // onComplete()
+    // }
+    // time += actualDeltaTime
+    // timeEventChannel.offer(time)
+    // }
+    // }
+  }
+}
+
+enum State {
+PREPARE,
+PLAY,
+PAUSE,
+STOP,
+COMPLETE
 }
