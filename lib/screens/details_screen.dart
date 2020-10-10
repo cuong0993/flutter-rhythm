@@ -21,14 +21,7 @@ class GameScreen extends StatelessWidget {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         BlocProvider.of<GameBloc>(context).add(StartGame(song));
-        return Stack(children: <Widget>[
-          game.widget,
-          Scaffold(
-              backgroundColor: Colors.transparent,
-              appBar: AppBar(
-            title: Text("aaaaaaaaaaaaaaaaaa"),
-          ))
-        ]);
+          return game.widget;
       },
     );
   }

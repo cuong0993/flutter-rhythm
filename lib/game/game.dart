@@ -1,9 +1,23 @@
+import 'package:flame/game.dart';
 import 'package:flame/game/base_game.dart';
 import 'package:flame/gestures.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 
-class MyGame extends BaseGame with MultiTouchTapDetector {
-  MyGame();
+class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
+  MyGame() {
+    addWidgetOverlay(
+        'PauseMenu',
+        Container(
+            width: 500,
+            height: 100,
+            child:  AppBar(
+              title: Text("aaaaaaaaaaaaaaaaaa"),
+            ),
+          ),
+        );
+  }
   void pause() {}
 
 
@@ -16,6 +30,16 @@ class MyGame extends BaseGame with MultiTouchTapDetector {
   @override
   void onTapUp(int pointerId, _) {
     print("Tap up" + pointerId.toString());
+    // addWidgetOverlay(
+    //     'PauseMenu',
+    //     Center(
+    //       child: Container(
+    //         width: 100,
+    //         height: 100,
+    //         color: const Color(0xFFFF0000),
+    //         child: const Center(child: const Text('Paused')),
+    //       ),
+    //     ));
   }
 
   @override
