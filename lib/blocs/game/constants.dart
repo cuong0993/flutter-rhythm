@@ -32,3 +32,5 @@ final START_VISIBLE_POSITION_Y =
 // ignore: non_constant_identifier_names
 final OFFSET_PAUSE_POSITION_Y =
     (14 * window.devicePixelRatio).toInt().toDouble();
+// ignore: non_constant_identifier_names
+final SIZE_DP_120 = (120 * window.devicePixelRatio).toInt().toDouble();

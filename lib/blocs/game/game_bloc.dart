@@ -65,17 +65,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     }
   }
 
-  Map<Y, int> countBy<T, Y>(Iterable<T> itr, Y Function(T) fn) {
-    return Map.fromIterable(itr.map(fn).toSet(),
-        value: (i) => itr.where((v) => fn(v) == i).length);
-  }
-
-  @override
-  Future<void> close() {
-    _songsSubscription?.cancel();
-    return super.close();
-  }
-
   List<TileChunk> createTileChunks(MidiFile midiFile) {
     final tileNotes = List<Note>();
     List<int> onsets =
@@ -142,5 +131,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       });
     }
     return tiles;
+  }
+
+  Map<Y, int> countBy<T, Y>(Iterable<T> itr, Y Function(T) fn) {
+    return Map.fromIterable(itr.map(fn).toSet(),
+        value: (i) => itr.where((v) => fn(v) == i).length);
+  }
+
+  @override
+  Future<void> close() {
+    _songsSubscription?.cancel();
+    return super.close();
   }
 }

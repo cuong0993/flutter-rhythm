@@ -12,7 +12,7 @@ class GameScreen extends StatelessWidget {
   final Song song;
 
   GameScreen({Key key, this.song})
-      : game = MyGame(song: song).widget,
+      : game = MyGame().widget,
         super(key: key);
 
   @override
