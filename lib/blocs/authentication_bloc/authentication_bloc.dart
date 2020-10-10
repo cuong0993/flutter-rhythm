@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:hitnotes/blocs/authentication_bloc/bloc.dart';
 import 'package:hitnotes/repositories/user_repository.dart';
 import 'package:meta/meta.dart';
-import 'package:path_provider/path_provider.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {

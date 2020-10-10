@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_state.dart';
-import 'package:hitnotes/game/game.dart';
 import 'package:hitnotes/screens/details_screen.dart';
 import 'package:hitnotes/widgets/song_item.dart';
 import 'package:hitnotes/widgets/widgets.dart';
