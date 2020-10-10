@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/blocs/game/game_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_event.dart';
 import 'package:hitnotes/repositories/firebase_songs_repository.dart';
 import 'package:hitnotes/screens/details_screen.dart';
@@ -44,13 +43,6 @@ class App extends StatelessWidget {
             return SongsBloc(
               songsRepository: FirebaseSongRepository(),
             )..add(LoadSongs());
-          },
-        ),
-        BlocProvider<GameBloc>(
-          create: (context) {
-            return GameBloc(
-              songsRepository: FirebaseSongRepository(),
-            );
           },
         )
       ],

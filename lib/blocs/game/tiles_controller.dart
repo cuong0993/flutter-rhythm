@@ -1,55 +1,30 @@
 import 'dart:math';
 
-import 'package:flame/game.dart';
-import 'package:flame/game/base_game.dart';
-import 'package:flame/gestures.dart';
+import 'package:dart_midi/dart_midi.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:hitnotes/blocs/game/constants.dart';
 import 'package:hitnotes/blocs/game/midi_util.dart';
 import 'package:hitnotes/blocs/game/tile.dart';
+import 'package:hitnotes/blocs/game/constants.dart';
+import 'package:hitnotes/blocs/game/tile_updater.dart';
+import 'package:hitnotes/blocs/game/tile_drawer.dart';
+import 'package:hitnotes/blocs/game/midi_util.dart';
 import 'package:hitnotes/models/note.dart';
-import 'package:hitnotes/models/song.dart';
-import 'dart:io';
 
 import "package:collection/collection.dart";
-import 'package:dart_midi/dart_midi.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hitnotes/models/tile_chunk.dart';
-import 'package:path_provider/path_provider.dart';
 
-class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
-  final Song song;
-  MyGame({this.song}) {
-    addWidgetOverlay(
-        'PauseMenu',
-        Container(
-            width: 500,
-            height: 100,
-            child:  AppBar(
-              title: Text(song.title),
-            ),
-          ),
-        );
-    name();
-    int i =0;
-  }
+class TilesController {
+  var visibleTileCount = 0;
+  double deltaY = 0;
+  double gameDuration = 0;
+  double speedPixelsPerSecond = 0;
+  var tiles = List<Tile>();
+  Function(Tile tile) onTileTouched;
 
-  Future name() async {
-    final directory = await getApplicationSupportDirectory();
-    final File tempFile = File('${directory.path}/${song.url}');
-    if (tempFile.existsSync()) {
-      await tempFile.delete();
-    }
-    await tempFile.create(recursive: true);
-    final StorageFileDownloadTask task = FirebaseStorage.instance
-        .ref()
-        .child(song.url)
-        .writeToFile(tempFile);
-    await task.future;
-    MidiFile parsedMidi = MidiParser().parseMidiFromFile(tempFile);
-    final tileChunks = createTileChunks(parsedMidi);
+  initialize(MidiFile midiFile, int bpm,
+      Function(Tile tile) onTouched) {
+    final tileChunks =
+    createTileChunks(midiFile);
     final groupByDurationToPrevious = Map.fromEntries(groupBy(
         tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
         .entries
@@ -65,6 +40,70 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
           ..sort((e1, e2) => e1.value.compareTo(e2.value)));
     final unitDuration = sortCountDurationToPrevious.values.last;
     final tiles = createTiles(tileChunks, unitDuration);
+    final tickToSecond = tickToSecond1(midiFile.header.timeDivision, bpm);
+    final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+    speedPixelsPerSecond = speedPixelsPerTick / tickToSecond;
+    gameDuration = tiles.last.initialY / speedPixelsPerSecond;
+    visibleTileCount = 0;
+    deltaY = 0;
+    this.onTileTouched = onTouched;
+  }
+
+  double tryUpdate(double delta) {
+    tryToMakeTilesVisible();
+    final maxDeltaTime = getMaxDeltaY() / speedPixelsPerSecond;
+    final actualDelta = (delta >= maxDeltaTime) ? maxDeltaTime : delta;
+
+    this.deltaY += speedPixelsPerSecond * actualDelta;
+    for (int i = 0; i < visibleTileCount; i++) {
+      tiles[i].updateY(deltaY);
+    }
+    return actualDelta;
+  }
+
+  tryToMakeTilesVisible() {
+    var end = 0;
+    final iterator = tiles.iterator;
+    while (iterator.moveNext()) {
+      final tile = iterator.current;
+      if (tile.state == TileState.TOUCHED) {
+        visibleTileCount--;
+        end++;
+      } else {
+        break;
+      }
+    }
+    tiles.removeRange(0, end);
+    for (int i = 0; i < visibleTileCount && i < tiles.length; i++) {
+      final tile = tiles[i];
+      if (tile.initialY - deltaY <= START_VISIBLE_POSITION_Y) {
+        tile.y = tile.initialY - deltaY;
+        tile.onTouched = onTileTouched;
+        visibleTileCount += 1;
+      } else {
+        break;
+      }
+    }
+  }
+
+  double getMaxDeltaY() {
+    return tiles.firstWhere((element) => element.state == TileState.UNTOUCHED, orElse: () => Tile(0, 0, 0)).y - OFFSET_PAUSE_POSITION_Y;
+  }
+
+  Tile getNextUntouchedTile() {
+    for (int i =0; i < visibleTileCount;i++) {
+      final tile = tiles[i];
+      if (tile.state == TileState.UNTOUCHED) {
+        return tile;
+      }
+    }
+    return null;
+  }
+
+  draw(Canvas canvas) {
+  for (int i =0; i < visibleTileCount;i++) {
+  tiles[i].draw(canvas);
+  }
   }
 
   List<TileChunk> createTileChunks(MidiFile midiFile) {
@@ -134,37 +173,4 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
     }
     return tiles;
   }
-
-  void pause() {}
-
-
-  @override
-  void onTapDown(int pointerId, TapDownDetails details) {
-    print("Tap down" + pointerId.toString());
-    //print(details.toString());
-  }
-
-  @override
-  void onTapUp(int pointerId, _) {
-    print("Tap up" + pointerId.toString());
-    // addWidgetOverlay(
-    //     'PauseMenu',
-    //     Center(
-    //       child: Container(
-    //         width: 100,
-    //         height: 100,
-    //         color: const Color(0xFFFF0000),
-    //         child: const Center(child: const Text('Paused')),
-    //       ),
-    //     ));
-  }
-
-  @override
-  void update(double t) {
-    super.update(t);
-    //print(t.toString());
-  }
-
-  @override
-  bool recordFps() => true;
 }
