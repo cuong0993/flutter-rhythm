@@ -40,7 +40,7 @@ class MyGame extends Game with MultiTouchTapDetector {
 //private val touches = Array(numberOfTouchPointers) { TouchData() }
   var initialYAllowedTouch = double.maxFinite;
 
-  MyGame({this.song}){}
+  MyGame({this.song});
 
   Future name() async {
     final directory = await getApplicationSupportDirectory();
