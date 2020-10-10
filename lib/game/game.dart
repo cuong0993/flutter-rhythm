@@ -40,7 +40,7 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void render(Canvas canvas) {
-    tilesController.draw(canvas);
+    tilesController.render(canvas);
   }
 
   @override

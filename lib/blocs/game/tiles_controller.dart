@@ -6,58 +6,58 @@ import 'package:hitnotes/blocs/game/tile_drawer.dart';
 import 'package:hitnotes/blocs/game/tile_updater.dart';
 
 class TilesController {
-  var visibleTileCount = 0;
-  double deltaY = 0;
-  double speedPixelsPerSecond = 0;
+  var _visibleTileCount = 0;
+  double _deltaY = 0;
+  double _speedPixelsPerSecond = 0;
   var tiles = List<Tile>();
-  Function(Tile tile) onTileTouched;
+  Function(Tile tile) _onTileTouched;
 
   initialize(List<Tile> tiles, double speedPixelsPerSecond,
       Function(Tile tile) onTouched) {
-    this.speedPixelsPerSecond = speedPixelsPerSecond;
-    visibleTileCount = 0;
-    deltaY = 0;
-    this.onTileTouched = onTouched;
+    this._speedPixelsPerSecond = speedPixelsPerSecond;
+    _visibleTileCount = 0;
+    _deltaY = 0;
+    this._onTileTouched = onTouched;
   }
 
   double tryUpdate(double delta) {
-    tryToMakeTilesVisible();
-    final maxDeltaTime = getMaxDeltaY() / speedPixelsPerSecond;
+    _tryToMakeTilesVisible();
+    final maxDeltaTime = _getMaxDeltaY() / _speedPixelsPerSecond;
     final actualDelta = (delta >= maxDeltaTime) ? maxDeltaTime : delta;
 
-    this.deltaY += speedPixelsPerSecond * actualDelta;
-    for (int i = 0; i < visibleTileCount; i++) {
-      tiles[i].updateY(deltaY);
+    this._deltaY += _speedPixelsPerSecond * actualDelta;
+    for (int i = 0; i < _visibleTileCount; i++) {
+      tiles[i].updateY(_deltaY);
     }
     return actualDelta;
   }
 
-  tryToMakeTilesVisible() {
+  _tryToMakeTilesVisible() {
     var end = 0;
     final iterator = tiles.iterator;
     while (iterator.moveNext()) {
       final tile = iterator.current;
       if (tile.state == TileState.TOUCHED) {
-        visibleTileCount--;
+        _visibleTileCount--;
         end++;
       } else {
         break;
       }
     }
     tiles.removeRange(0, end);
-    for (int i = 0; i < visibleTileCount && i < tiles.length; i++) {
+    for (int i = 0; i < _visibleTileCount && i < tiles.length; i++) {
       final tile = tiles[i];
-      if (tile.initialY - deltaY <= START_VISIBLE_POSITION_Y) {
-        tile.y = tile.initialY - deltaY;
-        tile.onTouched = onTileTouched;
-        visibleTileCount += 1;
+      if (tile.initialY - _deltaY <= START_VISIBLE_POSITION_Y) {
+        tile.y = tile.initialY - _deltaY;
+        tile.onTouched = _onTileTouched;
+        _visibleTileCount += 1;
       } else {
         break;
       }
     }
   }
 
-  double getMaxDeltaY() {
+  double _getMaxDeltaY() {
     return tiles
             .firstWhere((element) => element.state == TileState.UNTOUCHED,
                 orElse: () => Tile(0, 0, 0))
@@ -66,7 +66,7 @@ class TilesController {
   }
 
   Tile getNextUntouchedTile() {
-    for (int i = 0; i < visibleTileCount; i++) {
+    for (int i = 0; i < _visibleTileCount; i++) {
       final tile = tiles[i];
       if (tile.state == TileState.UNTOUCHED) {
         return tile;
@@ -75,8 +75,8 @@ class TilesController {
     return null;
   }
 
-  draw(Canvas canvas) {
-    for (int i = 0; i < visibleTileCount; i++) {
+  render(Canvas canvas) {
+    for (int i = 0; i < _visibleTileCount; i++) {
       tiles[i].draw(canvas);
     }
   }
