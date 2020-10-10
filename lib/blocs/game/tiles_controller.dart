@@ -1,16 +1,14 @@
 import 'dart:math';
 
+import "package:collection/collection.dart";
 import 'package:dart_midi/dart_midi.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hitnotes/blocs/game/constants.dart';
 import 'package:hitnotes/blocs/game/midi_util.dart';
 import 'package:hitnotes/blocs/game/tile.dart';
-import 'package:hitnotes/blocs/game/constants.dart';
-import 'package:hitnotes/blocs/game/tile_updater.dart';
 import 'package:hitnotes/blocs/game/tile_drawer.dart';
-import 'package:hitnotes/blocs/game/midi_util.dart';
+import 'package:hitnotes/blocs/game/tile_updater.dart';
 import 'package:hitnotes/models/note.dart';
-
-import "package:collection/collection.dart";
 import 'package:hitnotes/models/tile_chunk.dart';
 
 class TilesController {
@@ -21,15 +19,13 @@ class TilesController {
   var tiles = List<Tile>();
   Function(Tile tile) onTileTouched;
 
-  initialize(MidiFile midiFile, int bpm,
-      Function(Tile tile) onTouched) {
-    final tileChunks =
-    createTileChunks(midiFile);
+  initialize(MidiFile midiFile, int bpm, Function(Tile tile) onTouched) {
+    final tileChunks = createTileChunks(midiFile);
     final groupByDurationToPrevious = Map.fromEntries(groupBy(
-        tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
+            tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
         .entries
         .toList()
-      ..sort((e1, e2) => e1.key.compareTo(e2.key)));
+          ..sort((e1, e2) => e1.key.compareTo(e2.key)));
     final countDurationToPrevious = new Map.fromIterable(
         groupByDurationToPrevious.keys,
         key: (k) => k,
@@ -87,11 +83,15 @@ class TilesController {
   }
 
   double getMaxDeltaY() {
-    return tiles.firstWhere((element) => element.state == TileState.UNTOUCHED, orElse: () => Tile(0, 0, 0)).y - OFFSET_PAUSE_POSITION_Y;
+    return tiles
+            .firstWhere((element) => element.state == TileState.UNTOUCHED,
+                orElse: () => Tile(0, 0, 0))
+            .y -
+        OFFSET_PAUSE_POSITION_Y;
   }
 
   Tile getNextUntouchedTile() {
-    for (int i =0; i < visibleTileCount;i++) {
+    for (int i = 0; i < visibleTileCount; i++) {
       final tile = tiles[i];
       if (tile.state == TileState.UNTOUCHED) {
         return tile;
@@ -101,15 +101,15 @@ class TilesController {
   }
 
   draw(Canvas canvas) {
-  for (int i =0; i < visibleTileCount;i++) {
-  tiles[i].draw(canvas);
-  }
+    for (int i = 0; i < visibleTileCount; i++) {
+      tiles[i].draw(canvas);
+    }
   }
 
   List<TileChunk> createTileChunks(MidiFile midiFile) {
     final tileNotes = List<Note>();
     List<int> onsets =
-    new List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
+        new List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
     for (List<MidiEvent> midiTrack in midiFile.tracks) {
       int totalTicks = 0;
       for (MidiEvent midiEvent in midiTrack) {
@@ -132,8 +132,8 @@ class TilesController {
 
     var previousStartTick = -10000;
     Map.fromEntries(
-        groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
-          ..sort((e1, e2) => e1.key.compareTo(e2.key)))
+            groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
+              ..sort((e1, e2) => e1.key.compareTo(e2.key)))
         .forEach((key, value) {
       tileChunks.add(TileChunk(
           notes: value,
@@ -158,7 +158,7 @@ class TilesController {
       }
       final initialPositionY =
           ((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
-              calibratedTick) +
+                  calibratedTick) +
               OFFSET_DRAW_POSITION_Y;
       chunk.notes.asMap().forEach((index, note) {
         if (index < NUMBER_TILE_COLUMN) {

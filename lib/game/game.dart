@@ -1,5 +1,9 @@
+import 'dart:io';
 import 'dart:math';
 
+import "package:collection/collection.dart";
+import 'package:dart_midi/dart_midi.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flame/game.dart';
 import 'package:flame/game/base_game.dart';
 import 'package:flame/gestures.dart';
@@ -11,29 +15,25 @@ import 'package:hitnotes/blocs/game/midi_util.dart';
 import 'package:hitnotes/blocs/game/tile.dart';
 import 'package:hitnotes/models/note.dart';
 import 'package:hitnotes/models/song.dart';
-import 'dart:io';
-
-import "package:collection/collection.dart";
-import 'package:dart_midi/dart_midi.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hitnotes/models/tile_chunk.dart';
 import 'package:path_provider/path_provider.dart';
 
 class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
   final Song song;
+
   MyGame({this.song}) {
     addWidgetOverlay(
-        'PauseMenu',
-        Container(
-            width: 500,
-            height: 100,
-            child:  AppBar(
-              title: Text(song.title),
-            ),
-          ),
-        );
+      'PauseMenu',
+      Container(
+        width: 500,
+        height: 100,
+        child: AppBar(
+          title: Text(song.title),
+        ),
+      ),
+    );
     name();
-    int i =0;
+    int i = 0;
   }
 
   Future name() async {
@@ -43,18 +43,16 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
       await tempFile.delete();
     }
     await tempFile.create(recursive: true);
-    final StorageFileDownloadTask task = FirebaseStorage.instance
-        .ref()
-        .child(song.url)
-        .writeToFile(tempFile);
+    final StorageFileDownloadTask task =
+        FirebaseStorage.instance.ref().child(song.url).writeToFile(tempFile);
     await task.future;
     MidiFile parsedMidi = MidiParser().parseMidiFromFile(tempFile);
     final tileChunks = createTileChunks(parsedMidi);
     final groupByDurationToPrevious = Map.fromEntries(groupBy(
-        tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
+            tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
         .entries
         .toList()
-      ..sort((e1, e2) => e1.key.compareTo(e2.key)));
+          ..sort((e1, e2) => e1.key.compareTo(e2.key)));
     final countDurationToPrevious = new Map.fromIterable(
         groupByDurationToPrevious.keys,
         key: (k) => k,
@@ -70,7 +68,7 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
   List<TileChunk> createTileChunks(MidiFile midiFile) {
     final tileNotes = List<Note>();
     List<int> onsets =
-    new List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
+        new List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
     for (List<MidiEvent> midiTrack in midiFile.tracks) {
       int totalTicks = 0;
       for (MidiEvent midiEvent in midiTrack) {
@@ -93,8 +91,8 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
 
     var previousStartTick = -10000;
     Map.fromEntries(
-        groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
-          ..sort((e1, e2) => e1.key.compareTo(e2.key)))
+            groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
+              ..sort((e1, e2) => e1.key.compareTo(e2.key)))
         .forEach((key, value) {
       tileChunks.add(TileChunk(
           notes: value,
@@ -119,7 +117,7 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
       }
       final initialPositionY =
           ((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
-              calibratedTick) +
+                  calibratedTick) +
               OFFSET_DRAW_POSITION_Y;
       chunk.notes.asMap().forEach((index, note) {
         if (index < NUMBER_TILE_COLUMN) {
@@ -136,7 +134,6 @@ class MyGame extends BaseGame with HasWidgetsOverlay, MultiTouchTapDetector {
   }
 
   void pause() {}
-
 
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
