@@ -8,11 +8,11 @@ import 'package:hitnotes/game/game.dart';
 import 'package:hitnotes/models/song.dart';
 
 class GameScreen extends StatelessWidget {
-  final MyGame game;
+  final Widget game;
   final Song song;
 
   GameScreen({Key key, this.song})
-      : game = MyGame(song: song),
+      : game = MyGame(song: song).widget,
         super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class GameScreen extends StatelessWidget {
       builder: (context, state) {
         BlocProvider.of<GameBloc>(context).add(StartGame(song));
         return Stack(children: [
-          game.widget,
+          game,
           Container(
             height: kToolbarHeight,
             child: AppBar(
