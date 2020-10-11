@@ -14,8 +14,14 @@ class MyGame extends Game with MultiTouchTapDetector {
   var time = 0.0;
   var accumulator = 0.0;
   var step = 1.0 / 60.0;
-  final numberOfTouchPointers = 5; // 5 fingers
-
+  static const numberOfTouchPointers = 5; // 5 fingers
+  final touches = () {
+    final touches = List<TouchData>();
+    for (int i = 0; i < numberOfTouchPointers; i++) {
+      touches.add(TouchData());
+    }
+    return touches;
+  }();
   _onTileTouched(Tile tile) {
     //tileEffects.addAll(tile.getEffects())
   }
@@ -40,18 +46,20 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void render(Canvas canvas) {
+    //print("Render");
     tilesController.render(canvas);
   }
 
   @override
   void update(double delta) {
+    //print("update");
+
     if (state != MyGameState.STOP) {
       /* Max frame time to avoid spiral of death */
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;
       accumulator += restrictedTime;
       while (accumulator >= step) {
         var initialYAllowedTouch = double.maxFinite;
-        final touches = List<TouchData>();
         for (int i = 0; i < numberOfTouchPointers; i++) {
           if (touches[i].touched && !touches[i].handled) {
             touches[i].handled = true;

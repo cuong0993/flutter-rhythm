@@ -18,6 +18,7 @@ class TilesController {
     _visibleTileCount = 0;
     _deltaY = 0;
     this._onTileTouched = onTouched;
+    this.tiles = tiles;
   }
 
   double tryUpdate(double delta) {
@@ -45,7 +46,7 @@ class TilesController {
       }
     }
     tiles.removeRange(0, end);
-    for (int i = 0; i < _visibleTileCount && i < tiles.length; i++) {
+    for (int i = _visibleTileCount; i < tiles.length; i++) {
       final tile = tiles[i];
       if (tile.initialY - _deltaY <= START_VISIBLE_POSITION_Y) {
         tile.y = tile.initialY - _deltaY;

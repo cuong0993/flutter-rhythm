@@ -9,11 +9,11 @@ import 'package:hitnotes/game/game.dart';
 import 'package:hitnotes/models/song.dart';
 
 class GameScreen extends StatefulWidget {
-  final Widget _game;
+  final MyGame _game;
   final Song song;
 
   GameScreen({Key key, this.song})
-      : _game = MyGame().widget,
+      : _game = MyGame(),
         super(key: key);
 
   @override
@@ -33,8 +33,11 @@ class _GameScreenState  extends State<GameScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
+        if (state is GameStarted) {
+          widget._game.start(state.tiles, state.speedPixelsPerSecond);
+        }
         return Stack(children: [
-          widget._game,
+          widget._game.widget,
           Container(
             height: kToolbarHeight,
             child: AppBar(
