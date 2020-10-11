@@ -15,14 +15,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   var accumulator = 0.0;
   var step = 1.0 / 60.0;
   static const numberOfTouchPointers = 5; // 5 fingers
-  final touches = () {
-    final touches = List<TouchData>();
-    for (int i = 0; i < numberOfTouchPointers; i++) {
-      touches.add(TouchData());
-    }
-    return touches;
-  }();
-
+  final Map<int, TouchData> touches = {};
   _onTileTouched(Tile tile) {
     //tileEffects.addAll(tile.getEffects())
   }
@@ -39,33 +32,32 @@ class MyGame extends Game with MultiTouchTapDetector {
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
     print("Tap down" + pointerId.toString());
+    touches[pointerId] = TouchData(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override
   void onTapUp(int pointerId, _) {
     print("Tap up" + pointerId.toString());
+    touches.remove(pointerId);
   }
 
   @override
   void render(Canvas canvas) {
-    //print("Render");
     tilesController.render(canvas);
   }
 
   @override
   void update(double delta) {
-    //print("update");
-
     if (state != MyGameState.STOP) {
       /* Max frame time to avoid spiral of death */
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;
       accumulator += restrictedTime;
       while (accumulator >= step) {
         var initialYAllowedTouch = double.maxFinite;
-        for (int i = 0; i < numberOfTouchPointers; i++) {
-          if (touches[i].touched && !touches[i].handled) {
-            touches[i].handled = true;
-            if (touches[i].y > NON_TOUCH_REGION_HEIGHT) {
+        touches.forEach((key, value) {
+          if (!value.handled) {
+            value.handled = true;
+            if (value.y > NON_TOUCH_REGION_HEIGHT) {
               final tile = tilesController.getNextUntouchedTile();
               if (tile != null) {
                 if (tile.initialY <= initialYAllowedTouch) {
@@ -92,7 +84,7 @@ class MyGame extends Game with MultiTouchTapDetector {
               }
             }
           }
-        }
+        });
         accumulator -= step;
         if (state == MyGameState.PLAY) {
           final actualDeltaTime = tilesController.tryUpdate(step);
@@ -116,8 +108,10 @@ class MyGame extends Game with MultiTouchTapDetector {
 enum MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
 
 class TouchData {
-  final touched = false;
+  final touched = true;
   var handled = false;
-  final x = 0;
-  final y = 0;
+  final double x;
+  final double y;
+
+  TouchData(this.x, this.y);
 }
