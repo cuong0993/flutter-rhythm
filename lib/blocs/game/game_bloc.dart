@@ -56,7 +56,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final sortCountDurationToPrevious = Map.fromEntries(
           countDurationToPrevious.entries.toList()
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
-      final unitDuration = sortCountDurationToPrevious.values.last;
+      final unitDuration = sortCountDurationToPrevious.keys.last;
       final tiles = createTiles(tileChunks, unitDuration);
       final tickToSecond =
           tickToSecond1(midiFile.header.ticksPerBeat, event.song.bpm);
