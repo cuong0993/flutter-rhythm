@@ -10,7 +10,7 @@ import 'package:hitnotes/blocs/game/tiles_controller.dart';
 
 class MyGame extends Game with MultiTouchTapDetector {
   final tilesController = TilesController();
-  var state = State.PREPARE;
+  var state = MyGameState.PREPARE;
   var time = 0.0;
   var accumulator = 0.0;
   var step = 1.0 / 60.0;
@@ -23,7 +23,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   start(List<Tile> tiles, double speedPixelsPerSecond) {
     time = 0;
     tilesController.initialize(tiles, speedPixelsPerSecond, this._onTileTouched);
-    state = State.PLAY;
+    state = MyGameState.PLAY;
   }
 
   void pause() {}
@@ -45,7 +45,7 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void update(double delta) {
-    if (state != State.STOP) {
+    if (state != MyGameState.STOP) {
       /* Max frame time to avoid spiral of death */
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;
       accumulator += restrictedTime;
@@ -60,8 +60,8 @@ class MyGame extends Game with MultiTouchTapDetector {
               if (tile != null) {
                 if (tile.initialY <= initialYAllowedTouch) {
                   tile.touchDown();
-                  if (state == State.PAUSE) {
-                    state = State.PLAY;
+                  if (state == MyGameState.PAUSE) {
+                    state = MyGameState.PLAY;
                   }
                   //midiProcessor.playNote(tile.note);
                   // noteEventFlow.value = noteEventFlow.value + 1;
@@ -84,13 +84,13 @@ class MyGame extends Game with MultiTouchTapDetector {
           }
         }
         accumulator -= step;
-        if (state == State.PLAY) {
+        if (state == MyGameState.PLAY) {
           final actualDeltaTime = tilesController.tryUpdate(step);
           if (step > actualDeltaTime) {
             pause();
           }
           if (tilesController.tiles.isEmpty) {
-            state = State.COMPLETE;
+            state = MyGameState.COMPLETE;
             onComplete();
           }
           time += actualDeltaTime;
@@ -103,7 +103,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   void onComplete() {}
 }
 
-enum State { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
+enum MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
 
 class TouchData {
   final touched = false;
