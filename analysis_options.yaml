@@ -32,6 +32,11 @@ analyzer:
     missing_required_param: warning
     omit_local_variable_types: ignore
     include_file_not_found: ignore
+  exclude:
+    - # excluded generated files
+    - lib/models/song.dart
+    - lib/models/tile_chunk.dart
+    - lib/models/note.dart
 
 linter:
   rules:
