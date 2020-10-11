@@ -16,14 +16,14 @@ class MyGame extends Game with MultiTouchTapDetector {
   var step = 1.0 / 60.0;
   static const numberOfTouchPointers = 5; // 5 fingers
   final Map<int, TouchData> touches = {};
-  _onTileTouched(Tile tile) {
+  void _onTileTouched(Tile tile) {
     //tileEffects.addAll(tile.getEffects())
   }
 
-  start(List<Tile> tiles, double speedPixelsPerSecond) {
+  void start(List<Tile> tiles, double speedPixelsPerSecond) {
     time = 0;
     tilesController.initialize(
-        tiles, speedPixelsPerSecond, this._onTileTouched);
+        tiles, speedPixelsPerSecond, _onTileTouched);
     state = MyGameState.PLAY;
   }
 
@@ -31,13 +31,13 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
-    print("Tap down" + pointerId.toString());
+    print('Tap down' + pointerId.toString());
     touches[pointerId] = TouchData(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override
   void onTapUp(int pointerId, _) {
-    print("Tap up" + pointerId.toString());
+    print('Tap up' + pointerId.toString());
     touches.remove(pointerId);
   }
 

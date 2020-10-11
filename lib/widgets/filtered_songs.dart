@@ -26,12 +26,12 @@ class FilteredSongs extends StatelessWidget {
               return SongItem(
                 song: song,
                 onTap: () async {
-                  final removedSong = await Navigator.of(context).push(
+                  await Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) {
                       return GameScreen(song: song);
                     }),
                   );
-                },
+                }, onDismissed: (DismissDirection direction) {  }, onCheckboxChanged: (bool value) {  },
               );
             },
           );

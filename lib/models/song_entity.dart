@@ -25,14 +25,14 @@ class SongEntity extends Equatable {
 
   Map<String, Object> toJson() {
     return {
-      "id": id,
-      "title": title,
-      "artist": artist,
-      "url": url,
-      "imageUrl": imageUrl,
-      "bpm": bpm,
-      "tilesCount": tilesCount,
-      "coins": coins,
+      'id': id,
+      'title': title,
+      'artist': artist,
+      'url': url,
+      'imageUrl': imageUrl,
+      'bpm': bpm,
+      'tilesCount': tilesCount,
+      'coins': coins,
     };
   }
 
@@ -47,38 +47,38 @@ class SongEntity extends Equatable {
 
   static SongEntity fromJson(Map<String, Object> json) {
     return SongEntity(
-        json["id"] as String,
-        json["title"] as String,
-        json["artist"] as String,
-        json["url"] as String,
-        json["imageUrl"] as String,
-        json["bpm"] as int,
-        json["tilesCount"] as int,
-        json["coins"] as int);
+        json['id'] as String,
+        json['title'] as String,
+        json['artist'] as String,
+        json['url'] as String,
+        json['imageUrl'] as String,
+        json['bpm'] as int,
+        json['tilesCount'] as int,
+        json['coins'] as int);
   }
 
   static SongEntity fromSnapshot(DocumentSnapshot snap) {
     return SongEntity(
-        snap.data()["id"],
-        snap.data()["title"],
-        snap.data()["artist"],
-        snap.data()["url"],
-        snap.data()["imageUrl"],
-        snap.data()["bpm"],
-        snap.data()["tilesCount"],
-        snap.data()["coins"]);
+        snap.data()['id'],
+        snap.data()['title'],
+        snap.data()['artist'],
+        snap.data()['url'],
+        snap.data()['imageUrl'],
+        snap.data()['bpm'],
+        snap.data()['tilesCount'],
+        snap.data()['coins']);
   }
 
   Map<String, Object> toDocument() {
     return {
-      "id": id,
-      "title": title,
-      "artist": artist,
-      "url": url,
-      "imageUrl": imageUrl,
-      "bpm": bpm,
-      "tilesCount": tilesCount,
-      "coins": coins,
+      'id': id,
+      'title': title,
+      'artist': artist,
+      'url': url,
+      'imageUrl': imageUrl,
+      'bpm': bpm,
+      'tilesCount': tilesCount,
+      'coins': coins,
     };
   }
 

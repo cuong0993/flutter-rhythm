@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import "package:collection/collection.dart";
+import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hitnotes/blocs/game/tile.dart';
@@ -19,39 +19,34 @@ import 'game_state.dart';
 import 'midi_util.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  final SongRepository _songsRepository;
   StreamSubscription _songsSubscription;
 
   GameBloc({@required SongRepository songsRepository})
       : assert(songsRepository != null),
-        _songsRepository = songsRepository,
         super(GameLoading());
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
     if (event is StartGame) {
       final directory = await getApplicationSupportDirectory();
-      final File tempFile = File('${directory.path}/${event.song.url}');
+      final tempFile = File('${directory.path}/${event.song.url}');
       if (tempFile.existsSync()) {
         await tempFile.delete();
       }
       await tempFile.create(recursive: true);
-      final StorageFileDownloadTask task = FirebaseStorage.instance
+      final task = FirebaseStorage.instance
           .ref()
           .child(event.song.url)
           .writeToFile(tempFile);
       await task.future;
-      MidiFile midiFile = MidiParser().parseMidiFromFile(tempFile);
+      final midiFile = MidiParser().parseMidiFromFile(tempFile);
       final tileChunks = createTileChunks(midiFile);
       final groupByDurationToPrevious = Map.fromEntries(groupBy(
               tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
           .entries
           .toList()
             ..sort((e1, e2) => e1.key.compareTo(e2.key)));
-      final countDurationToPrevious = new Map.fromIterable(
-          groupByDurationToPrevious.keys,
-          key: (k) => k,
-          value: (v) => groupByDurationToPrevious[v].length);
+      final countDurationToPrevious = { for (var e in groupByDurationToPrevious.keys) e : groupByDurationToPrevious[e].length };
 
       final sortCountDurationToPrevious = Map.fromEntries(
           countDurationToPrevious.entries.toList()
@@ -69,12 +64,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   List<TileChunk> createTileChunks(MidiFile midiFile) {
-    final tileNotes = List<Note>();
-    List<int> onsets =
-        new List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
-    for (List<MidiEvent> midiTrack in midiFile.tracks) {
-      int totalTicks = 0;
-      for (MidiEvent midiEvent in midiTrack) {
+    final tileNotes = <Note>[];
+    final onsets =
+        List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
+    for (final midiTrack in midiFile.tracks) {
+      var totalTicks = 0;
+      for (final midiEvent in midiTrack) {
         totalTicks += midiEvent.deltaTime;
         if (midiEvent is NoteOnEvent) {
           final noteValue = midiEvent.noteNumber;
@@ -90,7 +85,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         }
       }
     }
-    final tileChunks = List<TileChunk>();
+    final tileChunks = <TileChunk>[];
 
     var previousStartTick = -10000;
     Map.fromEntries(
@@ -107,10 +102,10 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   List<Tile> createTiles(List<TileChunk> tileChunks, int unitDuration) {
-    final tiles = List<Tile>();
+    final tiles = <Tile>[];
     final random = Random();
     var calibratedTick = 0;
-    for (TileChunk chunk in tileChunks) {
+    for (final chunk in tileChunks) {
       var tileColumn = (NUMBER_TILE_COLUMN <= chunk.notes.length)
           ? 0
           : random.nextInt(NUMBER_TILE_COLUMN - chunk.notes.length);
@@ -121,7 +116,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final initialPositionY =
           ((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
                   calibratedTick) +
-              OFFSET_DRAW_POSITION_Y;
+              offsetDrawY;
       chunk.notes.asMap().forEach((index, note) {
         if (index < NUMBER_TILE_COLUMN) {
           final tile = Tile(note.note, tileColumn, initialPositionY);

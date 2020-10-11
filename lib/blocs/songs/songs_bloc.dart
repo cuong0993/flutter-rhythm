@@ -27,7 +27,7 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
   }
 
   Stream<SongsState> _mapLoadSongsToState() async* {
-    _songsSubscription?.cancel();
+    await _songsSubscription?.cancel();
     _songsSubscription = _songsRepository.songs().listen(
           (songs) => add(SongsUpdated(songs)),
         );

@@ -28,9 +28,8 @@ class TabSelector extends StatelessWidget {
           icon: Icon(
             tab == AppTab.songs ? Icons.library_music : MyFlutterApp.img_guitar,
           ),
-          title: Text(
+          label:
             tab == AppTab.stats ? 'Stats' : 'Songs',
-          ),
         );
       }).toList(),
     );

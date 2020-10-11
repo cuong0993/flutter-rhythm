@@ -45,7 +45,7 @@ class Song {
       return this;
     }
 
-    return new Song(
+    return Song(
       id: id ?? this.id,
       title: title ?? this.title,
       artist: artist ?? this.artist,
@@ -88,7 +88,7 @@ class Song {
       coins.hashCode;
 
   factory Song.fromMap(Map<String, dynamic> map) {
-    return new Song(
+    return Song(
       id: map['id'] as String,
       title: map['title'] as String,
       artist: map['artist'] as String,
@@ -103,14 +103,14 @@ class Song {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'id': this.id,
-      'title': this.title,
-      'artist': this.artist,
-      'url': this.url,
-      'imageUrl': this.imageUrl,
-      'bpm': this.bpm,
-      'tilesCount': this.tilesCount,
-      'coins': this.coins,
+      'id': id,
+      'title': title,
+      'artist': artist,
+      'url': url,
+      'imageUrl': imageUrl,
+      'bpm': bpm,
+      'tilesCount': tilesCount,
+      'coins': coins,
     } as Map<String, dynamic>;
   }
 

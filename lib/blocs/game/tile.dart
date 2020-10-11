@@ -10,7 +10,7 @@ class Tile {
   Function(Tile tile) onTouched;
   final double x;
 
-  Tile(this.note, column, this.initialY) : x = X_POSITIONS[column];
+  Tile(this.note, column, this.initialY) : x = positionsX[column];
 }
 
 enum TileState { UNTOUCHED, TOUCHED }

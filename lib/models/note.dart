@@ -20,7 +20,7 @@ class Note {
       return this;
     }
 
-    return new Note(
+    return Note(
       note: note ?? this.note,
       startTick: startTick ?? this.startTick,
     );
@@ -43,7 +43,7 @@ class Note {
   int get hashCode => note.hashCode ^ startTick.hashCode;
 
   factory Note.fromMap(Map<String, dynamic> map) {
-    return new Note(
+    return Note(
       note: map['note'] as int,
       startTick: map['startTick'] as int,
     );
@@ -52,8 +52,8 @@ class Note {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'note': this.note,
-      'startTick': this.startTick,
+      'note': note,
+      'startTick': startTick,
     } as Map<String, dynamic>;
   }
 
