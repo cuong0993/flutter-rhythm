@@ -6,7 +6,7 @@ class TileChunk {
   final int durationToPrevious;
   final int startTick;
 
-//<editor-fold desc="Data Methods" defaultstate="collapsed">
+  //<editor-fold desc="Data Methods" defaultstate="collapsed">
 
   const TileChunk({
     @required this.notes,
@@ -26,7 +26,7 @@ class TileChunk {
       return this;
     }
 
-    return TileChunk(
+    return new TileChunk(
       notes: notes ?? this.notes,
       durationToPrevious: durationToPrevious ?? this.durationToPrevious,
       startTick: startTick ?? this.startTick,
@@ -52,7 +52,7 @@ class TileChunk {
       notes.hashCode ^ durationToPrevious.hashCode ^ startTick.hashCode;
 
   factory TileChunk.fromMap(Map<String, dynamic> map) {
-    return TileChunk(
+    return new TileChunk(
       notes: map['notes'] as List<Note>,
       durationToPrevious: map['durationToPrevious'] as int,
       startTick: map['startTick'] as int,
@@ -62,12 +62,12 @@ class TileChunk {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'notes': notes,
-      'durationToPrevious': durationToPrevious,
-      'startTick': startTick,
+      'notes': this.notes,
+      'durationToPrevious': this.durationToPrevious,
+      'startTick': this.startTick,
     } as Map<String, dynamic>;
   }
 
-//</editor-fold>
+  //</editor-fold>
 
 }

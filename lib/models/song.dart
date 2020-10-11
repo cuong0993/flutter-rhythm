@@ -11,7 +11,7 @@ class Song {
   final int tilesCount;
   final int coins;
 
-//<editor-fold desc="Data Methods" defaultstate="collapsed">
+  //<editor-fold desc="Data Methods" defaultstate="collapsed">
 
   const Song({
     @required this.id,
@@ -45,7 +45,7 @@ class Song {
       return this;
     }
 
-    return Song(
+    return new Song(
       id: id ?? this.id,
       title: title ?? this.title,
       artist: artist ?? this.artist,
@@ -88,7 +88,7 @@ class Song {
       coins.hashCode;
 
   factory Song.fromMap(Map<String, dynamic> map) {
-    return Song(
+    return new Song(
       id: map['id'] as String,
       title: map['title'] as String,
       artist: map['artist'] as String,
@@ -103,17 +103,17 @@ class Song {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'id': id,
-      'title': title,
-      'artist': artist,
-      'url': url,
-      'imageUrl': imageUrl,
-      'bpm': bpm,
-      'tilesCount': tilesCount,
-      'coins': coins,
+      'id': this.id,
+      'title': this.title,
+      'artist': this.artist,
+      'url': this.url,
+      'imageUrl': this.imageUrl,
+      'bpm': this.bpm,
+      'tilesCount': this.tilesCount,
+      'coins': this.coins,
     } as Map<String, dynamic>;
   }
 
-//</editor-fold>
+  //</editor-fold>
 
 }
