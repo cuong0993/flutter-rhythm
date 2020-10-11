@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:hitnotes/models/song.dart';
+import 'package:hitnotes/blocs/game/tile.dart';
 
 abstract class GameState extends Equatable {
   const GameState();
@@ -10,16 +10,14 @@ abstract class GameState extends Equatable {
 
 class GameLoading extends GameState {}
 
-class GameLoaded extends GameState {
-  final List<Song> songs;
+class GameStarted extends GameState {
+  final List<Tile> tiles;
+  final double speedPixelsPerSecond;
 
-  const GameLoaded([this.songs = const []]);
-
-  @override
-  List<Object> get props => [songs];
+  GameStarted(this.tiles, this.speedPixelsPerSecond);
 
   @override
-  String toString() => 'Loaded { items: $songs }';
+  List<Object> get props => [tiles, speedPixelsPerSecond];
 }
 
 class GameNotLoaded extends GameState {}

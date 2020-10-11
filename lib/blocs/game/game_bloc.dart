@@ -41,8 +41,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           .child(event.song.url)
           .writeToFile(tempFile);
       await task.future;
-      MidiFile parsedMidi = MidiParser().parseMidiFromFile(tempFile);
-      final tileChunks = createTileChunks(parsedMidi);
+      MidiFile midiFile = MidiParser().parseMidiFromFile(tempFile);
+      final tileChunks = createTileChunks(midiFile);
       final groupByDurationToPrevious = Map.fromEntries(groupBy(
               tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
           .entries
@@ -58,10 +58,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       final unitDuration = sortCountDurationToPrevious.values.last;
       final tiles = createTiles(tileChunks, unitDuration);
-      int i = 0;
-    }
-    if (event is GameUpdated) {
-      yield GameLoaded(event.songs);
+      final tickToSecond = tickToSecond1(midiFile.header.ticksPerBeat, event.song.bpm);
+      final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+      final speedPixelsPerSecond = speedPixelsPerTick / tickToSecond;
+      //gameDuration = tiles.last.initialY / speedPixelsPerSecond;
+
+      yield GameStarted(tiles, speedPixelsPerSecond);
     }
   }
 
