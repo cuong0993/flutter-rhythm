@@ -18,11 +18,9 @@ class GameScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _GameScreenState();
-
 }
 
-class _GameScreenState  extends State<GameScreen> {
-
+class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
@@ -36,9 +34,7 @@ class _GameScreenState  extends State<GameScreen> {
         if (state is GameStarted) {
           widget._game.start(state.tiles, state.speedPixelsPerSecond);
         }
-        return Stack(children: [
-          widget._game.widget
-        ]);
+        return Stack(children: [widget._game.widget]);
       },
     );
   }

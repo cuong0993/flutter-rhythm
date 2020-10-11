@@ -58,7 +58,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       final unitDuration = sortCountDurationToPrevious.values.last;
       final tiles = createTiles(tileChunks, unitDuration);
-      final tickToSecond = tickToSecond1(midiFile.header.ticksPerBeat, event.song.bpm);
+      final tickToSecond =
+          tickToSecond1(midiFile.header.ticksPerBeat, event.song.bpm);
       final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
       final speedPixelsPerSecond = speedPixelsPerTick / tickToSecond;
       //gameDuration = tiles.last.initialY / speedPixelsPerSecond;

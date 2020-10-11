@@ -22,13 +22,15 @@ class MyGame extends Game with MultiTouchTapDetector {
     }
     return touches;
   }();
+
   _onTileTouched(Tile tile) {
     //tileEffects.addAll(tile.getEffects())
   }
 
   start(List<Tile> tiles, double speedPixelsPerSecond) {
     time = 0;
-    tilesController.initialize(tiles, speedPixelsPerSecond, this._onTileTouched);
+    tilesController.initialize(
+        tiles, speedPixelsPerSecond, this._onTileTouched);
     state = MyGameState.PLAY;
   }
 
