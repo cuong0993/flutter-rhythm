@@ -37,13 +37,7 @@ class _GameScreenState  extends State<GameScreen> {
           widget._game.start(state.tiles, state.speedPixelsPerSecond);
         }
         return Stack(children: [
-          widget._game.widget,
-          Container(
-            height: kToolbarHeight,
-            child: AppBar(
-              title: Text("song.title"),
-            ),
-          )
+          widget._game.widget
         ]);
       },
     );

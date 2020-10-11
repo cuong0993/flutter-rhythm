@@ -78,7 +78,9 @@ class TilesController {
 
   render(Canvas canvas) {
     for (int i = 0; i < _visibleTileCount; i++) {
+      canvas.save();
       tiles[i].draw(canvas);
+      canvas.restore();
     }
   }
 }

@@ -13,13 +13,12 @@ final TILE_HEIGHT = TILE_WIDTH;
 final X_POSITIONS = () {
   final positionXs = List<double>();
   final paddedTileWidth =
-      TILE_WIDTH + (48 * window.devicePixelRatio).toInt().toDouble();
+      TILE_WIDTH;
   final padLeftRight =
-      (window.physicalSize.width - NUMBER_TILE_COLUMN * paddedTileWidth) / 2;
+      (window.physicalSize.width/window.devicePixelRatio - NUMBER_TILE_COLUMN * paddedTileWidth) / 2;
   for (var column = 0; column < NUMBER_TILE_COLUMN; column++) {
     positionXs.add(padLeftRight +
-        column * paddedTileWidth +
-        (24 * window.devicePixelRatio).toInt().toDouble());
+        column * paddedTileWidth);
   }
   return positionXs;
 }();

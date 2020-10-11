@@ -42,7 +42,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/images/img_single_note.png
+    - assets/images/1.5x/img_single_note.png
     - assets/images/2.0x/img_single_note.png
+    - assets/images/3.0x/img_single_note.png
+    - assets/images/4.0x/img_single_note.png
   fonts:
     # https://www.fluttericon.com/
     - family:  MyFlutterApp
