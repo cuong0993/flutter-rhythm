@@ -29,23 +29,25 @@ include: package:pedantic/analysis_options.yaml
 analyzer:
   errors:
     # treat missing required parameters as a warning (not a hint)
-    missing_required_param: warning
-    omit_local_variable_types: ignore
-    include_file_not_found: ignore
-  exclude:
-    - # excluded generated files
-    - lib/models/song.dart
-    - lib/models/tile_chunk.dart
-    - lib/models/note.dart
+    missing_required_param: error
+    omit_local_variable_types: error
+    include_file_not_found: error
+    unused_element: error
+    unused_field: error
+    unused_local_variable: error
+  exclude: # excluded generated files
+    - lib/songs/song.dart
+    - lib/game/tile/tile_chunk.dart
+    - lib/game/note/note.dart
 
 linter:
   rules:
     # these rules are documented on and in the same order as
     # the Dart Lint rules page to make maintenance easier
     # https://github.com/dart-lang/linter/blob/master/example/all.yaml
-    # - always_declare_return_types
-    # - always_specify_types
-    # - annotate_overrides
+    - always_declare_return_types
+#    - always_specify_types
+    - annotate_overrides
     # - avoid_as
     - avoid_web_libraries_in_flutter
     - await_only_futures
@@ -58,27 +60,26 @@ linter:
     - empty_statements
     - hash_and_equals
     - implementation_imports
-    # - invariant_booleans
-    # - iterable_contains_unrelated_type
-    # - library_prefixes
-    # - list_remove_unrelated_type
-    # - literal_only_boolean_expressions
+    - invariant_booleans
+    - iterable_contains_unrelated_type
+    - library_prefixes
+    - list_remove_unrelated_type
+    - literal_only_boolean_expressions
     - non_constant_identifier_names
-    # - one_member_abstracts
-    # - only_throw_errors
-    # - overridden_fields
+#    - one_member_abstracts
+    - only_throw_errors
+    - overridden_fields
     - package_api_docs
     - package_names
     - package_prefixed_library_names
-    # - prefer_mixin # https://github.com/dart-lang/language/issues/32
-    # - public_member_api_docs
-    # - sort_constructors_first
-    # - sort_unnamed_constructors_first
-    # - super_goes_last # no longer needed w/ Dart 2
+    - prefer_mixin # https://github.com/dart-lang/language/issues/32
+#    - public_member_api_docs
+#    - sort_constructors_first
+    - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
-    # - type_annotate_public_apis # subset of always_specify_types
-    # - unawaited_futures
+    - type_annotate_public_apis # subset of always_specify_types
+    - unawaited_futures
     - unnecessary_brace_in_string_interps
     - unnecessary_getters_setters
     - unnecessary_statements

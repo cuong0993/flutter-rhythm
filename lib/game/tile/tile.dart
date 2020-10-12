@@ -3,8 +3,8 @@ import '../game_util.dart';
 class Tile {
   final int note;
   final double initialY;
-  var y = double.maxFinite;
-  var state = TileState.UNTOUCHED;
+  double y = double.maxFinite;
+  TileState state = TileState.UNTOUCHED;
   final double width = TILE_WIDTH;
   final double height = TILE_HEIGHT;
   Function(Tile tile) onTouched;

@@ -9,7 +9,7 @@ class TilesController {
   var _visibleTileCount = 0;
   double _deltaY = 0;
   double _speedPixelsPerSecond = 0;
-  var tiles = <Tile>[];
+  List<Tile> tiles = <Tile>[];
   Function(Tile tile) _onTileTouched;
 
   void initialize(List<Tile> tiles, double speedPixelsPerSecond,

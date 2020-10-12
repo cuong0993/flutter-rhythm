@@ -12,7 +12,7 @@ import 'tile/tiles_controller.dart';
 class MyGame extends Game with MultiTouchTapDetector {
   final _tilesController = TilesController();
   var _state = _MyGameState.PREPARE;
-  var _time = 0.0;
+  double _time = 0.0;
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
   static const _numberOfTouchPointers = 5; // 5 fingers
@@ -111,7 +111,7 @@ enum _MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
 
 class _TouchData {
   final touched = true;
-  var handled = false;
+  bool handled = false;
   final double x;
   final double y;
 
