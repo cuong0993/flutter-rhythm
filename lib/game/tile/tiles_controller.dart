@@ -1,9 +1,9 @@
 import 'dart:ui';
 
+import '../game_util.dart';
 import 'tile.dart';
 import 'tile_drawer.dart';
 import 'tile_updater.dart';
-import 'util.dart';
 
 class TilesController {
   var _visibleTileCount = 0;

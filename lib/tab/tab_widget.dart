@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../my_flutter_app_icons.dart';
-import 'state.dart';
+import 'tab_state.dart';
 
 class TabWidget extends StatelessWidget {
   final TabState activeTab;

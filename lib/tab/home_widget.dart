@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/songs/songs_widget.dart';
 
-import 'bloc.dart';
-import 'event.dart';
-import 'state.dart';
+import '../songs/songs_widget.dart';
+import 'tab_bloc.dart';
+import 'tab_event.dart';
+import 'tab_state.dart';
 import 'tab_widget.dart';
 
 class HomeWidget extends StatelessWidget {

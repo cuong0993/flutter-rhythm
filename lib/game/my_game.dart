@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'tile.dart';
-import 'tile_input_handler.dart';
-import 'tiles_controller.dart';
-import 'util.dart';
+import 'game_util.dart';
+import 'tile/tile.dart';
+import 'tile/tile_input_handler.dart';
+import 'tile/tiles_controller.dart';
 
 class MyGame extends Game with MultiTouchTapDetector {
   final tilesController = TilesController();

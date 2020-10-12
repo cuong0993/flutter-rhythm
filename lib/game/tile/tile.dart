@@ -1,4 +1,4 @@
-import 'util.dart';
+import '../game_util.dart';
 
 class Tile {
   final int note;

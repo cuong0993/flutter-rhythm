@@ -2,6 +2,6 @@ import 'dart:async';
 
 import 'song.dart';
 
-abstract class SongRepository {
+abstract class SongsRepository {
   Stream<List<Song>> songs();
 }

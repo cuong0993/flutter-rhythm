@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'entity.dart';
-import 'repository.dart';
 import 'song.dart';
+import 'song_entity.dart';
+import 'songs_repository.dart';
 
-class FirebaseSongRepository implements SongRepository {
+class FirebaseSongsRepository implements SongsRepository {
   final songCollection = FirebaseFirestore.instance.collection('songs');
 
   @override

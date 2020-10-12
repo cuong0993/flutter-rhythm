@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:hitnotes/songs/song.dart';
+
+import '../songs/song.dart';
 
 abstract class GameEvent extends Equatable {
   const GameEvent();

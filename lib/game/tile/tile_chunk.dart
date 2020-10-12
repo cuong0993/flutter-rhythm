@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-import 'note.dart';
+import '../note/note.dart';
 
 class TileChunk {
   final List<Note> notes;

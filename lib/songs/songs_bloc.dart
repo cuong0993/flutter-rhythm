@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'event.dart';
-import 'repository.dart';
-import 'state.dart';
+import 'songs_event.dart';
+import 'songs_repository.dart';
+import 'songs_state.dart';
 
 class SongsBloc extends Bloc<SongsEvent, SongsState> {
-  final SongRepository _songsRepository;
+  final SongsRepository _songsRepository;
   StreamSubscription _songsSubscription;
 
-  SongsBloc({@required SongRepository songsRepository})
+  SongsBloc({@required SongsRepository songsRepository})
       : assert(songsRepository != null),
         _songsRepository = songsRepository,
         super(SongsLoading());

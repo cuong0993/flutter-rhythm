@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'tile.dart';
+import 'tile/tile.dart';
 
 abstract class GameState extends Equatable {
   const GameState();

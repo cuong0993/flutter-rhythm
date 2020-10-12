@@ -9,18 +9,18 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../songs/repository.dart';
-import 'event.dart';
-import 'note.dart';
-import 'state.dart';
-import 'tile.dart';
-import 'tile_chunk.dart';
-import 'util.dart';
+import '../songs/songs_repository.dart';
+import 'game_event.dart';
+import 'game_state.dart';
+import 'game_util.dart';
+import 'note/note.dart';
+import 'tile/tile.dart';
+import 'tile/tile_chunk.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   StreamSubscription _songsSubscription;
 
-  GameBloc({@required SongRepository songsRepository})
+  GameBloc({@required SongsRepository songsRepository})
       : assert(songsRepository != null),
         super(GameLoading());
 

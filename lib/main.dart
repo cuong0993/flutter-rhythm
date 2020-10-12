@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'authentication/bloc.dart';
-import 'authentication/event.dart';
-import 'authentication/state.dart';
-import 'game/bloc.dart';
+import 'authentication/authentication_bloc.dart';
+import 'authentication/authentication_event.dart';
+import 'authentication/authentication_state.dart';
+import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'simple_bloc_observer.dart';
-import 'songs/bloc.dart';
-import 'songs/event.dart';
-import 'songs/firebase_repository.dart';
-import 'tab/bloc.dart';
+import 'songs/firebase_songs_repository.dart';
+import 'songs/songs_bloc.dart';
+import 'songs/songs_event.dart';
 import 'tab/home_widget.dart';
-import 'user/firebase_repository.dart';
+import 'tab/tab_bloc.dart';
+import 'user/firebase_user_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,14 +42,14 @@ class App extends StatelessWidget {
         BlocProvider<SongsBloc>(
           create: (context) {
             return SongsBloc(
-              songsRepository: FirebaseSongRepository(),
+              songsRepository: FirebaseSongsRepository(),
             )..add(LoadSongs());
           },
         ),
         BlocProvider<GameBloc>(
           create: (context) {
             return GameBloc(
-              songsRepository: FirebaseSongRepository(),
+              songsRepository: FirebaseSongsRepository(),
             );
           },
         )
