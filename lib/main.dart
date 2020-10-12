@@ -4,15 +4,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'authentication/bloc.dart';
-import 'authentication/firebase_user_repository.dart';
-import 'game/game_bloc.dart';
-import 'game/game_screen.dart';
+import 'authentication/event.dart';
+import 'authentication/state.dart';
+import 'game/bloc.dart';
+import 'game/screen.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/firebase_songs_repository.dart';
 import 'songs/songs_bloc.dart';
 import 'songs/songs_event.dart';
 import 'tab/home_screen.dart';
 import 'tab/tab_bloc.dart';
+import 'user/firebase_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

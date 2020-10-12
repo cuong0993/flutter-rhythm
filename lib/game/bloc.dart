@@ -10,13 +10,12 @@ import 'package:meta/meta.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../songs/songs_repository.dart';
-import 'constants.dart';
-import 'game_event.dart';
-import 'game_state.dart';
-import 'midi_util.dart';
+import 'event.dart';
 import 'note.dart';
+import 'state.dart';
 import 'tile.dart';
 import 'tile_chunk.dart';
+import 'util.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   StreamSubscription _songsSubscription;
@@ -56,10 +55,10 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       final unitDuration = sortCountDurationToPrevious.keys.last;
       final tiles = createTiles(tileChunks, unitDuration);
-      final tickToSecond =
-          tickToSecond1(midiFile.header.ticksPerBeat, event.song.bpm);
+      final tick2Second =
+          tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
       final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
-      final speedPixelsPerSecond = speedPixelsPerTick / tickToSecond;
+      final speedPixelsPerSecond = speedPixelsPerTick / tick2Second;
       //gameDuration = tiles.last.initialY / speedPixelsPerSecond;
 
       yield GameStarted(tiles, speedPixelsPerSecond);

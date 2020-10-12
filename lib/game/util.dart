@@ -21,3 +21,9 @@ const NON_TOUCH_REGION_HEIGHT = 96;
 final startVisibleY = screenHeight - NON_TOUCH_REGION_HEIGHT;
 const OFFSET_PAUSE_POSITION_Y = 14;
 const SIZE_DP_120 = 120;
+const NUMBER_OF_NOTES = 128;
+const MINUTE_TO_SECOND = 60;
+
+double tickToSecond(int resolution, int bpm) {
+  return MINUTE_TO_SECOND.toDouble() / (resolution * bpm);
+}

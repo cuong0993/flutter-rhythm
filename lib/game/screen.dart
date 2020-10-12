@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/songs/song.dart';
 
-import 'game.dart';
-import 'game_bloc.dart';
-import 'game_event.dart';
-import 'game_state.dart';
+import 'bloc.dart';
+import 'event.dart';
+import 'my_game.dart';
+import 'state.dart';
 
 class GameScreen extends StatefulWidget {
   final MyGame _game;

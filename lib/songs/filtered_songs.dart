@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/game/game_screen.dart';
+import 'package:hitnotes/game/screen.dart';
 
 import '../loading_indicator.dart';
 import 'song_item.dart';
