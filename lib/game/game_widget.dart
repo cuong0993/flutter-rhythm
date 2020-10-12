@@ -39,6 +39,13 @@ class _GameWidgetState extends State<GameWidget> {
       builder: (context, state) {
         if (state is GameStarted) {
           widget._game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
+          return Stack(children: [widget._game.widget,
+            Container(
+              height: kToolbarHeight,
+              child: AppBar(
+                title: Text(widget.song.title + state.gameDuration.toString()),
+              ),
+            )]);
         }
         return Stack(children: [widget._game.widget,
           Container(
@@ -47,6 +54,7 @@ class _GameWidgetState extends State<GameWidget> {
               title: Text(widget.song.title),
             ),
           )]);
+
       },
     );
   }

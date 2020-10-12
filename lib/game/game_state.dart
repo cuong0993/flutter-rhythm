@@ -14,11 +14,12 @@ class GameLoading extends GameState {}
 class GameStarted extends GameState {
   final List<Tile> tiles;
   final double speedPixelsPerSecond;
+  final double gameDuration;
 
-  GameStarted(this.tiles, this.speedPixelsPerSecond);
+  GameStarted(this.tiles, this.speedPixelsPerSecond, this.gameDuration);
 
   @override
-  List<Object> get props => [tiles, speedPixelsPerSecond];
+  List<Object> get props => [tiles, speedPixelsPerSecond, gameDuration];
 }
 
 class GameNotLoaded extends GameState {}

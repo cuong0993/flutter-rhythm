@@ -53,9 +53,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
       final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
       final speedPixelsPerSecond = speedPixelsPerTick / tick2Second;
-      //gameDuration = tiles.last.initialY / speedPixelsPerSecond;
+      final gameDuration = tiles.last.initialY / speedPixelsPerSecond;
 
-      yield GameStarted(tiles, speedPixelsPerSecond);
+      yield GameStarted(tiles, speedPixelsPerSecond, gameDuration);
     }
   }
 
@@ -118,9 +118,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           tiles.add(tile);
           tileColumn++;
         }
-        /* else {
-          break;
-        }*/
       });
     }
     return tiles;
