@@ -11,7 +11,7 @@ import 'game_state.dart';
 import 'my_game.dart';
 import 'tile/tile.dart';
 
-class GameWidget extends StatefulWidget {
+class GameWidget extends StatelessWidget {
   final MyGame _game;
 
   GameWidget({Key key})
@@ -19,16 +19,10 @@ class GameWidget extends StatefulWidget {
         super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _GameWidgetState();
-}
-
-class _GameWidgetState extends State<GameWidget> {
-  void _onTileTouched(Tile tile) {
-    BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
-  }
-
-  @override
   Widget build(BuildContext context) {
+    void _onTileTouched(Tile tile) {
+      BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
+    }
 
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
@@ -36,10 +30,9 @@ class _GameWidgetState extends State<GameWidget> {
           final song = ModalRoute.of(context).settings.arguments as Song;
           BlocProvider.of<GameBloc>(context).add(StartGame(song));
         } else if (state is GameStarted) {
-          widget._game
-              .start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
+          _game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
           return Stack(children: [
-            widget._game.widget,
+            _game.widget,
             Container(
               height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: LinearPercentIndicator(
@@ -57,7 +50,7 @@ class _GameWidgetState extends State<GameWidget> {
         }
         if (state is GameUpdated) {
           return Stack(children: [
-            widget._game.widget,
+            _game.widget,
             Container(
               height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: AppBar(
@@ -67,7 +60,7 @@ class _GameWidgetState extends State<GameWidget> {
           ]);
         }
         return Stack(children: [
-          widget._game.widget,
+          _game.widget,
           Container(
             height: kToolbarHeight + MediaQuery.of(context).padding.top,
             child: AppBar(
