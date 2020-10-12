@@ -3,10 +3,11 @@ import 'package:flame/gestures.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hitnotes/blocs/game/constants.dart';
-import 'package:hitnotes/blocs/game/tile.dart';
-import 'package:hitnotes/blocs/game/tile_input_handler.dart';
-import 'package:hitnotes/blocs/game/tiles_controller.dart';
+
+import 'constants.dart';
+import 'tile.dart';
+import 'tile_input_handler.dart';
+import 'tiles_controller.dart';
 
 class MyGame extends Game with MultiTouchTapDetector {
   final tilesController = TilesController();
@@ -16,14 +17,14 @@ class MyGame extends Game with MultiTouchTapDetector {
   var step = 1.0 / 60.0;
   static const numberOfTouchPointers = 5; // 5 fingers
   final Map<int, TouchData> touches = {};
+
   void _onTileTouched(Tile tile) {
     //tileEffects.addAll(tile.getEffects())
   }
 
   void start(List<Tile> tiles, double speedPixelsPerSecond) {
     time = 0;
-    tilesController.initialize(
-        tiles, speedPixelsPerSecond, _onTileTouched);
+    tilesController.initialize(tiles, speedPixelsPerSecond, _onTileTouched);
     state = MyGameState.PLAY;
   }
 
@@ -32,7 +33,8 @@ class MyGame extends Game with MultiTouchTapDetector {
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
     print('Tap down' + pointerId.toString());
-    touches[pointerId] = TouchData(details.globalPosition.dx, details.globalPosition.dy);
+    touches[pointerId] =
+        TouchData(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override

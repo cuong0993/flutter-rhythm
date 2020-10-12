@@ -2,18 +2,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/blocs/game/game_bloc.dart';
-import 'package:hitnotes/blocs/songs/songs_event.dart';
-import 'package:hitnotes/repositories/firebase_songs_repository.dart';
-import 'package:hitnotes/screens/game_screen.dart';
-import 'package:hitnotes/screens/home_screen.dart';
 
-import 'blocs/authentication_bloc/bloc.dart';
-import 'blocs/blocs.dart';
-import 'blocs/simple_bloc_observer.dart';
-import 'blocs/songs/songs_bloc.dart';
-import 'blocs/tab/tab_bloc.dart';
-import 'repositories/firebase_user_repository.dart';
+import 'authentication/bloc.dart';
+import 'authentication/firebase_user_repository.dart';
+import 'game/game_bloc.dart';
+import 'game/game_screen.dart';
+import 'simple_bloc_observer.dart';
+import 'songs/firebase_songs_repository.dart';
+import 'songs/songs_bloc.dart';
+import 'songs/songs_event.dart';
+import 'tab/home_screen.dart';
+import 'tab/tab_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
