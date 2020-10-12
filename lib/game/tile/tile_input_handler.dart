@@ -1,12 +1,7 @@
 import 'tile.dart';
 
 extension TileInputHandler on Tile {
-  bool touchDown() {
-    if (state == TileState.UNTOUCHED) {
+  void touchDown() {
       state = TileState.TOUCHED;
-      onTouched(this);
-      return true;
-    }
-    return false;
   }
 }

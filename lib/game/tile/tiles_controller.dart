@@ -10,14 +10,11 @@ class TilesController {
   double _deltaY = 0;
   double _speedPixelsPerSecond = 0;
   List<Tile> tiles = <Tile>[];
-  Function(Tile tile) _onTileTouched;
 
-  void initialize(List<Tile> tiles, double speedPixelsPerSecond,
-      Function(Tile tile) onTouched) {
+  void initialize(List<Tile> tiles, double speedPixelsPerSecond) {
     _speedPixelsPerSecond = speedPixelsPerSecond;
     _visibleTileCount = 0;
     _deltaY = 0;
-    _onTileTouched = onTouched;
     this.tiles = tiles;
   }
 
@@ -50,7 +47,6 @@ class TilesController {
       final tile = tiles[i];
       if (tile.initialY - _deltaY <= startVisibleY) {
         tile.y = tile.initialY - _deltaY;
-        tile.onTouched = _onTileTouched;
         _visibleTileCount += 1;
       } else {
         break;

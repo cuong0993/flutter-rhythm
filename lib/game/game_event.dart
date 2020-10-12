@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../game/tile/tile.dart';
 import '../songs/song.dart';
 
 abstract class GameEvent extends Equatable {
@@ -19,4 +20,16 @@ class StartGame extends GameEvent {
 
   @override
   String toString() => 'StartGame { song: $song }';
+}
+
+class TileTouched extends GameEvent {
+  final Tile tile;
+
+  const TileTouched(this.tile);
+
+  @override
+  List<Object> get props => [tile];
+
+  @override
+  String toString() => 'TileTouched { tile: $tile }';
 }

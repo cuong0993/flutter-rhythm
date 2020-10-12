@@ -30,7 +30,7 @@ class _GameWidgetState extends State<GameWidget> {
   }
 
   void _onTileTouched(Tile tile) {
-    print('touchedaaaaaaaaaaaaa');
+    BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
   }
 
   @override
@@ -44,6 +44,15 @@ class _GameWidgetState extends State<GameWidget> {
               height: kToolbarHeight,
               child: AppBar(
                 title: Text(widget.song.title + state.gameDuration.toString()),
+              ),
+            )]);
+        }
+        if (state is GameUpdated) {
+          return Stack(children: [widget._game.widget,
+            Container(
+              height: kToolbarHeight,
+              child: AppBar(
+                title: Text(widget.song.title + state.aaaaaaa.toString()),
               ),
             )]);
         }

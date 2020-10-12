@@ -22,4 +22,13 @@ class GameStarted extends GameState {
   List<Object> get props => [tiles, speedPixelsPerSecond, gameDuration];
 }
 
+class GameUpdated extends GameState {
+  final int aaaaaaa;
+
+  GameUpdated(this.aaaaaaa);
+
+  @override
+  List<Object> get props => [aaaaaaa];
+}
+
 class GameNotLoaded extends GameState {}

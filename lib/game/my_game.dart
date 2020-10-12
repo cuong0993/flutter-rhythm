@@ -12,21 +12,17 @@ import 'tile/tiles_controller.dart';
 class MyGame extends Game with MultiTouchTapDetector {
   final _tilesController = TilesController();
   var _state = _MyGameState.PREPARE;
-  double _time = 0.0;
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
-  static const _numberOfTouchPointers = 5; // 5 fingers
   final Map<int, _TouchData> _touches = {};
   Function(Tile tile) onTouched;
 
   void _onTileTouched(Tile tile) {
-    //tileEffects.addAll(tile.getEffects())
     onTouched(tile);
   }
 
   void start(List<Tile> tiles, double speedPixelsPerSecond, Function(Tile tile) onTouched) {
-    _time = 0;
-    _tilesController.initialize(tiles, speedPixelsPerSecond, _onTileTouched);
+    _tilesController.initialize(tiles, speedPixelsPerSecond);
     _state = _MyGameState.PLAY;
     this.onTouched = onTouched;
   }
@@ -67,25 +63,14 @@ class MyGame extends Game with MultiTouchTapDetector {
               if (tile != null) {
                 if (tile.initialY <= initialYAllowedTouch) {
                   tile.touchDown();
+                  _onTileTouched(tile);
                   if (_state == _MyGameState.PAUSE) {
                     _state = _MyGameState.PLAY;
                   }
-                  //midiProcessor.playNote(tile.note);
-                  // noteEventFlow.value = noteEventFlow.value + 1;
                   initialYAllowedTouch = tile.initialY;
-                  if (tile.y == OFFSET_PAUSE_POSITION_Y) {
-                    //infoEventFlow.value = "txt_too_late".get();
-                  } else if (tile.y > OFFSET_PAUSE_POSITION_Y + SIZE_DP_120) {
-                    //infoEventFlow.value = "txt_too_early".get()
-                  }
                 } else {
-                  //infoEventFlow.value = "txt_too_many_fingers".get()
+                  _onTileTouched(null);
                 }
-                // rippleEffects[i] =
-                //     RippleEffect(
-                //         touches[i].x,
-                //         SCREEN_HEIGHT.toInt() - touches[i].y
-                //     )
               }
             }
           }
@@ -100,8 +85,6 @@ class MyGame extends Game with MultiTouchTapDetector {
             _state = _MyGameState.COMPLETE;
             onComplete();
           }
-          _time += actualDeltaTime;
-          //timeEventChannel.offer(time);
         }
       }
     }
