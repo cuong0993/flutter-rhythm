@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 import '../songs/song.dart';
 import 'game_bloc.dart';
@@ -42,8 +43,15 @@ class _GameWidgetState extends State<GameWidget> {
           return Stack(children: [widget._game.widget,
             Container(
               height: kToolbarHeight,
-              child: AppBar(
-                title: Text(widget.song.title + state.gameDuration.toString()),
+              child: LinearPercentIndicator(
+                width: 170.0,
+                animation: true,
+                animationDuration: 1000,
+                lineHeight: 20.0,
+                percent: 0.2,
+                center: Text('20.0%'),
+                linearStrokeCap: LinearStrokeCap.butt,
+                progressColor: Colors.red,
               ),
             )]);
         }
