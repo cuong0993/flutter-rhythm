@@ -9,19 +9,19 @@ import 'event.dart';
 import 'my_game.dart';
 import 'state.dart';
 
-class GameScreen extends StatefulWidget {
+class GameWidget extends StatefulWidget {
   final MyGame _game;
   final Song song;
 
-  GameScreen({Key key, this.song})
+  GameWidget({Key key, this.song})
       : _game = MyGame(),
         super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _GameScreenState();
+  State<StatefulWidget> createState() => _GameWidgetState();
 }
 
-class _GameScreenState extends State<GameScreen> {
+class _GameWidgetState extends State<GameWidget> {
   @override
   void initState() {
     super.initState();

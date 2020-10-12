@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import '../my_flutter_app_icons.dart';
 import 'state.dart';
 
-class TabSelector extends StatelessWidget {
+class TabWidget extends StatelessWidget {
   final TabState activeTab;
   final Function(TabState) onTabSelected;
 
-  TabSelector({
+  TabWidget({
     Key key,
     @required this.activeTab,
     @required this.onTabSelected,

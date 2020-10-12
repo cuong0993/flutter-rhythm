@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoadingIndicator extends StatelessWidget {
+class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(

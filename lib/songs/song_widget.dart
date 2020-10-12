@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'song.dart';
 
-class SongItem extends StatelessWidget {
+class SongWidget extends StatelessWidget {
   final DismissDirectionCallback onDismissed;
   final GestureTapCallback onTap;
   final ValueChanged<bool> onCheckboxChanged;
   final Song song;
 
-  SongItem({
+  SongWidget({
     Key key,
     @required this.onDismissed,
     @required this.onTap,

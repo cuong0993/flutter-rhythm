@@ -7,13 +7,13 @@ import 'authentication/bloc.dart';
 import 'authentication/event.dart';
 import 'authentication/state.dart';
 import 'game/bloc.dart';
-import 'game/screen.dart';
+import 'game/game_widget.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/bloc.dart';
 import 'songs/event.dart';
 import 'songs/firebase_repository.dart';
 import 'tab/bloc.dart';
-import 'tab/home_screen.dart';
+import 'tab/home_widget.dart';
 import 'user/firebase_repository.dart';
 
 void main() async {
@@ -83,7 +83,7 @@ class App extends StatelessWidget {
                         create: (context) => TabBloc(),
                       )
                     ],
-                    child: HomeScreen(),
+                    child: HomeWidget(),
                   );
                 }
                 if (state is Unauthenticated) {
@@ -96,7 +96,7 @@ class App extends StatelessWidget {
             );
           },
           '/addSong': (context) {
-            return GameScreen();
+            return GameWidget();
           },
         },
       ),
