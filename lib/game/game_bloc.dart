@@ -6,10 +6,8 @@ import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:meta/meta.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../songs/songs_repository.dart';
 import 'game_event.dart';
 import 'game_state.dart';
 import 'game_util.dart';
@@ -18,11 +16,7 @@ import 'tile/tile.dart';
 import 'tile/tile_chunk.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  StreamSubscription _songsSubscription;
-
-  GameBloc({@required SongsRepository songsRepository})
-      : assert(songsRepository != null),
-        super(GameLoading());
+  GameBloc() : super(GameLoading());
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -130,16 +124,5 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       });
     }
     return tiles;
-  }
-
-  Map<Y, int> countBy<T, Y>(Iterable<T> itr, Y Function(T) fn) {
-    return Map.fromIterable(itr.map(fn).toSet(),
-        value: (i) => itr.where((v) => fn(v) == i).length);
-  }
-
-  @override
-  Future<void> close() {
-    _songsSubscription?.cancel();
-    return super.close();
   }
 }

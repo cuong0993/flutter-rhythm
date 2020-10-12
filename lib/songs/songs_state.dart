@@ -22,5 +22,3 @@ class SongsLoaded extends SongsState {
   @override
   String toString() => 'Loaded { items: $songs }';
 }
-
-class SongsNotLoaded extends SongsState {}

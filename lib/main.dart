@@ -36,7 +36,7 @@ class App extends StatelessWidget {
           create: (context) {
             return AuthenticationBloc(
               userRepository: FirebaseUserRepository(),
-            )..add(AppStarted());
+            )..add(StartAuthentication());
           },
         ),
         BlocProvider<SongsBloc>(
@@ -48,9 +48,7 @@ class App extends StatelessWidget {
         ),
         BlocProvider<GameBloc>(
           create: (context) {
-            return GameBloc(
-              songsRepository: FirebaseSongsRepository(),
-            );
+            return GameBloc();
           },
         )
       ],

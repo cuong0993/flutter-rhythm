@@ -20,12 +20,12 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    if (event is AppStarted) {
-      yield* _mapAppStartedToState();
+    if (event is StartAuthentication) {
+      yield* _mapStartAuthenticationToState();
     }
   }
 
-  Stream<AuthenticationState> _mapAppStartedToState() async* {
+  Stream<AuthenticationState> _mapStartAuthenticationToState() async* {
     try {
       final isSignedIn = await _userRepository.isAuthenticated();
       if (!isSignedIn) {

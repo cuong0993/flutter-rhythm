@@ -21,7 +21,7 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
     if (event is LoadSongs) {
       yield* _mapLoadSongsToState();
     }
-    if (event is SongsUpdated) {
+    if (event is UpdateSongs) {
       yield SongsLoaded(event.songs);
     }
   }
@@ -29,7 +29,7 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
   Stream<SongsState> _mapLoadSongsToState() async* {
     await _songsSubscription?.cancel();
     _songsSubscription = _songsRepository.songs().listen(
-          (songs) => add(SongsUpdated(songs)),
+          (songs) => add(UpdateSongs(songs)),
         );
   }
 

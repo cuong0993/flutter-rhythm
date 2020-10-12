@@ -10,22 +10,22 @@ import 'tile/tile_input_handler.dart';
 import 'tile/tiles_controller.dart';
 
 class MyGame extends Game with MultiTouchTapDetector {
-  final tilesController = TilesController();
-  var state = MyGameState.PREPARE;
-  var time = 0.0;
-  var accumulator = 0.0;
-  var step = 1.0 / 60.0;
-  static const numberOfTouchPointers = 5; // 5 fingers
-  final Map<int, TouchData> touches = {};
+  final _tilesController = TilesController();
+  var _state = _MyGameState.PREPARE;
+  var _time = 0.0;
+  var _accumulator = 0.0;
+  final _step = 1.0 / 60.0;
+  static const _numberOfTouchPointers = 5; // 5 fingers
+  final Map<int, _TouchData> _touches = {};
 
   void _onTileTouched(Tile tile) {
     //tileEffects.addAll(tile.getEffects())
   }
 
   void start(List<Tile> tiles, double speedPixelsPerSecond) {
-    time = 0;
-    tilesController.initialize(tiles, speedPixelsPerSecond, _onTileTouched);
-    state = MyGameState.PLAY;
+    _time = 0;
+    _tilesController.initialize(tiles, speedPixelsPerSecond, _onTileTouched);
+    _state = _MyGameState.PLAY;
   }
 
   void pause() {}
@@ -33,39 +33,39 @@ class MyGame extends Game with MultiTouchTapDetector {
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
     print('Tap down' + pointerId.toString());
-    touches[pointerId] =
-        TouchData(details.globalPosition.dx, details.globalPosition.dy);
+    _touches[pointerId] =
+        _TouchData(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override
   void onTapUp(int pointerId, _) {
     print('Tap up' + pointerId.toString());
-    touches.remove(pointerId);
+    _touches.remove(pointerId);
   }
 
   @override
   void render(Canvas canvas) {
-    tilesController.render(canvas);
+    _tilesController.render(canvas);
   }
 
   @override
   void update(double delta) {
-    if (state != MyGameState.STOP) {
+    if (_state != _MyGameState.STOP) {
       /* Max frame time to avoid spiral of death */
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;
-      accumulator += restrictedTime;
-      while (accumulator >= step) {
+      _accumulator += restrictedTime;
+      while (_accumulator >= _step) {
         var initialYAllowedTouch = double.maxFinite;
-        touches.forEach((key, value) {
+        _touches.forEach((key, value) {
           if (!value.handled) {
             value.handled = true;
             if (value.y > NON_TOUCH_REGION_HEIGHT) {
-              final tile = tilesController.getNextUntouchedTile();
+              final tile = _tilesController.getNextUntouchedTile();
               if (tile != null) {
                 if (tile.initialY <= initialYAllowedTouch) {
                   tile.touchDown();
-                  if (state == MyGameState.PAUSE) {
-                    state = MyGameState.PLAY;
+                  if (_state == _MyGameState.PAUSE) {
+                    _state = _MyGameState.PLAY;
                   }
                   //midiProcessor.playNote(tile.note);
                   // noteEventFlow.value = noteEventFlow.value + 1;
@@ -87,17 +87,17 @@ class MyGame extends Game with MultiTouchTapDetector {
             }
           }
         });
-        accumulator -= step;
-        if (state == MyGameState.PLAY) {
-          final actualDeltaTime = tilesController.tryUpdate(step);
-          if (step > actualDeltaTime) {
+        _accumulator -= _step;
+        if (_state == _MyGameState.PLAY) {
+          final actualDeltaTime = _tilesController.tryUpdate(_step);
+          if (_step > actualDeltaTime) {
             pause();
           }
-          if (tilesController.tiles.isEmpty) {
-            state = MyGameState.COMPLETE;
+          if (_tilesController.tiles.isEmpty) {
+            _state = _MyGameState.COMPLETE;
             onComplete();
           }
-          time += actualDeltaTime;
+          _time += actualDeltaTime;
           //timeEventChannel.offer(time);
         }
       }
@@ -107,13 +107,13 @@ class MyGame extends Game with MultiTouchTapDetector {
   void onComplete() {}
 }
 
-enum MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
+enum _MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
 
-class TouchData {
+class _TouchData {
   final touched = true;
   var handled = false;
   final double x;
   final double y;
 
-  TouchData(this.x, this.y);
+  _TouchData(this.x, this.y);
 }
