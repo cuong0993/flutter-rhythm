@@ -45,11 +45,6 @@ class App extends StatelessWidget {
               songsRepository: FirebaseSongsRepository(),
             )..add(LoadSongs());
           },
-        ),
-        BlocProvider<GameBloc>(
-          create: (context) {
-            return GameBloc();
-          },
         )
       ],
       child: MaterialApp(
@@ -75,13 +70,9 @@ class App extends StatelessWidget {
             return BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (context, state) {
                 if (state is Authenticated) {
-                  return MultiBlocProvider(
-                    providers: [
-                      BlocProvider<TabBloc>(
-                        create: (context) => TabBloc(),
-                      )
-                    ],
-                    child: HomeWidget(),
+                  return BlocProvider<TabBloc>(
+                      create: (context) => TabBloc(),
+                      child: HomeWidget()
                   );
                 }
                 if (state is Unauthenticated) {
@@ -94,7 +85,10 @@ class App extends StatelessWidget {
             );
           },
           '/addSong': (context) {
-            return GameWidget();
+            return BlocProvider<GameBloc>(
+              create: (_) => GameBloc(),
+              child: GameWidget()
+            );
           },
         },
       ),

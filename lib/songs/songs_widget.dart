@@ -27,11 +27,7 @@ class SongsWidget extends StatelessWidget {
               return SongWidget(
                 song: song,
                 onTap: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) {
-                      return GameWidget(song: song);
-                    }),
-                  );
+                  await Navigator.pushNamed(context, '/addSong', arguments: song);
                 },
                 onDismissed: (DismissDirection direction) {},
                 onCheckboxChanged: (bool value) {},

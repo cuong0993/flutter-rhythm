@@ -13,9 +13,8 @@ import 'tile/tile.dart';
 
 class GameWidget extends StatefulWidget {
   final MyGame _game;
-  final Song song;
 
-  GameWidget({Key key, this.song})
+  GameWidget({Key key})
       : _game = MyGame(),
         super(key: key);
 
@@ -24,21 +23,19 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<GameBloc>(context).add(StartGame(widget.song));
-  }
-
   void _onTileTouched(Tile tile) {
     BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
   }
 
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
-        if (state is GameStarted) {
+        if (state is GameLoading) {
+          final song = ModalRoute.of(context).settings.arguments as Song;
+          BlocProvider.of<GameBloc>(context).add(StartGame(song));
+        } else if (state is GameStarted) {
           widget._game
               .start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
           return Stack(children: [
@@ -64,7 +61,7 @@ class _GameWidgetState extends State<GameWidget> {
             Container(
               height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: AppBar(
-                title: Text(widget.song.title + state.aaaaaaa.toString()),
+                title: Text(state.aaaaaaa.toString()),
               ),
             )
           ]);
@@ -74,7 +71,7 @@ class _GameWidgetState extends State<GameWidget> {
           Container(
             height: kToolbarHeight + MediaQuery.of(context).padding.top,
             child: AppBar(
-              title: Text(widget.song.title),
+              title: Text(""),
             ),
           )
         ]);
