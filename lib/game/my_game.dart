@@ -21,7 +21,8 @@ class MyGame extends Game with MultiTouchTapDetector {
     onTouched(tile);
   }
 
-  void start(List<Tile> tiles, double speedPixelsPerSecond, Function(Tile tile) onTouched) {
+  void start(List<Tile> tiles, double speedPixelsPerSecond,
+      Function(Tile tile) onTouched) {
     _tilesController.initialize(tiles, speedPixelsPerSecond);
     _state = _MyGameState.PLAY;
     this.onTouched = onTouched;

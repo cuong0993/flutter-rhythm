@@ -39,10 +39,12 @@ class _GameWidgetState extends State<GameWidget> {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameStarted) {
-          widget._game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
-          return Stack(children: [widget._game.widget,
+          widget._game
+              .start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
+          return Stack(children: [
+            widget._game.widget,
             Container(
-              height: kToolbarHeight,
+              height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: LinearPercentIndicator(
                 width: 170.0,
                 animation: true,
@@ -53,25 +55,29 @@ class _GameWidgetState extends State<GameWidget> {
                 linearStrokeCap: LinearStrokeCap.butt,
                 progressColor: Colors.red,
               ),
-            )]);
+            )
+          ]);
         }
         if (state is GameUpdated) {
-          return Stack(children: [widget._game.widget,
+          return Stack(children: [
+            widget._game.widget,
             Container(
-              height: kToolbarHeight,
+              height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: AppBar(
                 title: Text(widget.song.title + state.aaaaaaa.toString()),
               ),
-            )]);
+            )
+          ]);
         }
-        return Stack(children: [widget._game.widget,
+        return Stack(children: [
+          widget._game.widget,
           Container(
-            height: kToolbarHeight,
+            height: kToolbarHeight + MediaQuery.of(context).padding.top,
             child: AppBar(
               title: Text(widget.song.title),
             ),
-          )]);
-
+          )
+        ]);
       },
     );
   }

@@ -17,7 +17,8 @@ import 'tile/tile_chunk.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameLoading());
-int i =0;
+  int i = 0;
+
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
     if (event is StartGame) {
@@ -35,10 +36,10 @@ int i =0;
       final midiFile = MidiParser().parseMidiFromFile(tempFile);
       final tileChunks = createTileChunks(midiFile);
       final groupByDurationToPrevious = Map.fromEntries(groupBy(
-          tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
+              tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
           .entries
           .toList()
-        ..sort((e1, e2) => e1.key.compareTo(e2.key)));
+            ..sort((e1, e2) => e1.key.compareTo(e2.key)));
       final countDurationToPrevious = {
         for (var e in groupByDurationToPrevious.keys)
           e: groupByDurationToPrevious[e].length
@@ -50,7 +51,7 @@ int i =0;
       final unitDuration = sortCountDurationToPrevious.keys.last;
       final tiles = createTiles(tileChunks, unitDuration);
       final tick2Second =
-      tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
+          tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
       final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
       final speedPixelsPerSecond = speedPixelsPerTick / tick2Second;
       final gameDuration = tiles.last.initialY / speedPixelsPerSecond;
@@ -59,7 +60,6 @@ int i =0;
     } else if (event is TileTouched) {
       i++;
       yield GameUpdated(i);
-
     }
   }
 
