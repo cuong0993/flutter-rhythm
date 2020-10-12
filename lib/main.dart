@@ -5,12 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/blocs/game/game_bloc.dart';
 import 'package:hitnotes/blocs/songs/songs_event.dart';
 import 'package:hitnotes/repositories/firebase_songs_repository.dart';
-import 'package:hitnotes/screens/details_screen.dart';
+import 'package:hitnotes/screens/game_screen.dart';
 import 'package:hitnotes/screens/home_screen.dart';
 
 import 'blocs/authentication_bloc/bloc.dart';
 import 'blocs/blocs.dart';
-import 'blocs/filtered_songs/filtered_songs_bloc.dart';
 import 'blocs/simple_bloc_observer.dart';
 import 'blocs/songs/songs_bloc.dart';
 import 'blocs/tab/tab_bloc.dart';
@@ -81,12 +80,7 @@ class App extends StatelessWidget {
                     providers: [
                       BlocProvider<TabBloc>(
                         create: (context) => TabBloc(),
-                      ),
-                      BlocProvider<FilteredSongsBloc>(
-                        create: (context) => FilteredSongsBloc(
-                          songsBloc: BlocProvider.of<SongsBloc>(context),
-                        ),
-                      ),
+                      )
                     ],
                     child: HomeScreen(),
                   );
