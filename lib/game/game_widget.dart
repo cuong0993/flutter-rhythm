@@ -8,6 +8,7 @@ import 'game_bloc.dart';
 import 'game_event.dart';
 import 'game_state.dart';
 import 'my_game.dart';
+import 'tile/tile.dart';
 
 class GameWidget extends StatefulWidget {
   final MyGame _game;
@@ -28,14 +29,24 @@ class _GameWidgetState extends State<GameWidget> {
     BlocProvider.of<GameBloc>(context).add(StartGame(widget.song));
   }
 
+  void _onTileTouched(Tile tile) {
+    print('touchedaaaaaaaaaaaaa');
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameStarted) {
-          widget._game.start(state.tiles, state.speedPixelsPerSecond);
+          widget._game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
         }
-        return Stack(children: [widget._game.widget]);
+        return Stack(children: [widget._game.widget,
+          Container(
+            height: kToolbarHeight,
+            child: AppBar(
+              title: Text(widget.song.title),
+            ),
+          )]);
       },
     );
   }
