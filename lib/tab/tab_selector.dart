@@ -3,11 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../my_flutter_app_icons.dart';
-import 'app_tab.dart';
+import 'state.dart';
 
 class TabSelector extends StatelessWidget {
-  final AppTab activeTab;
-  final Function(AppTab) onTabSelected;
+  final TabState activeTab;
+  final Function(TabState) onTabSelected;
 
   TabSelector({
     Key key,
@@ -18,17 +18,19 @@ class TabSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: AppTab.values.indexOf(activeTab),
-      onTap: (index) => onTabSelected(AppTab.values[index]),
+      currentIndex: TabState.values.indexOf(activeTab),
+      onTap: (index) => onTabSelected(TabState.values[index]),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: Theme.of(context).accentColor,
-      items: AppTab.values.map((tab) {
+      items: TabState.values.map((tab) {
         return BottomNavigationBarItem(
           icon: Icon(
-            tab == AppTab.songs ? Icons.library_music : MyFlutterApp.img_guitar,
+            tab == TabState.songs
+                ? Icons.library_music
+                : MyFlutterApp.img_guitar,
           ),
-          label: tab == AppTab.stats ? 'Stats' : 'Songs',
+          label: tab == TabState.stats ? 'Stats' : 'Songs',
         );
       }).toList(),
     );

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/songs/filtered_songs.dart';
 
-import 'app_tab.dart';
-import 'tab_bloc.dart';
-import 'tab_event.dart';
+import 'bloc.dart';
+import 'event.dart';
+import 'state.dart';
 import 'tab_selector.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TabBloc, AppTab>(
+    return BlocBuilder<TabBloc, TabState>(
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
               //ExtraActions(),
             ],
           ),
-          body: activeTab == AppTab.songs ? FilteredSongs() : FilteredSongs(),
+          body: activeTab == TabState.songs ? FilteredSongs() : FilteredSongs(),
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
             onTabSelected: (tab) =>

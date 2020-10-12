@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'songs_event.dart';
-import 'songs_repository.dart';
-import 'songs_state.dart';
+import 'event.dart';
+import 'repository.dart';
+import 'state.dart';
 
 class SongsBloc extends Bloc<SongsEvent, SongsState> {
   final SongRepository _songsRepository;

@@ -9,11 +9,11 @@ import 'authentication/state.dart';
 import 'game/bloc.dart';
 import 'game/screen.dart';
 import 'simple_bloc_observer.dart';
-import 'songs/firebase_songs_repository.dart';
-import 'songs/songs_bloc.dart';
-import 'songs/songs_event.dart';
+import 'songs/bloc.dart';
+import 'songs/event.dart';
+import 'songs/firebase_repository.dart';
+import 'tab/bloc.dart';
 import 'tab/home_screen.dart';
-import 'tab/tab_bloc.dart';
 import 'user/firebase_repository.dart';
 
 void main() async {

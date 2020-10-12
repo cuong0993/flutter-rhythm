@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/game/screen.dart';
 
 import '../loading_indicator.dart';
-import 'song_item.dart';
-import 'songs_bloc.dart';
-import 'songs_state.dart';
+import 'bloc.dart';
+import 'item.dart';
+import 'state.dart';
 
 class FilteredSongs extends StatelessWidget {
   FilteredSongs({Key key}) : super(key: key);

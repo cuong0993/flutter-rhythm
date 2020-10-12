@@ -9,7 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../songs/songs_repository.dart';
+import '../songs/repository.dart';
 import 'event.dart';
 import 'note.dart';
 import 'state.dart';
