@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +22,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer = SimpleBlocObserver();
-  runApp(App());
+  runApp(EasyLocalization(
+      supportedLocales: [Locale('en', 'US'), Locale('de', 'DE')],
+      path: 'assets/translations', // <-- change patch to your
+      fallbackLocale: Locale('en', 'US'),
+      child: App()));
 }
 
 class App extends StatelessWidget {
@@ -50,6 +55,9 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Hit Notes',
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         theme: ThemeData(
           // This is the theme of your application.
           //

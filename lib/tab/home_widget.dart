@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../songs/songs_widget.dart';
 import 'tab_bloc.dart';
 import 'tab_event.dart';
 import 'tab_state.dart';
@@ -14,13 +14,13 @@ class HomeWidget extends StatelessWidget {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(activeTab.toString()),
+            title: Text(activeTab.name.tr()),
             actions: [
               //FilterButton(visible: activeTab == AppTab.songs),
               //ExtraActions(),
             ],
           ),
-          body: activeTab == TabState.songs ? SongsWidget() : SongsWidget(),
+          body: activeTab.widget,
           bottomNavigationBar: TabWidget(
             activeTab: activeTab,
             onTabSelected: (tab) =>

@@ -44,6 +44,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/translations/en-US.json
     - assets/images/img_single_note.png
     - assets/images/1.5x/img_single_note.png
     - assets/images/2.0x/img_single_note.png

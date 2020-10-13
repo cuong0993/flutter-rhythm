@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../my_flutter_app_icons.dart';
 import 'tab_state.dart';
 
 class TabWidget extends StatelessWidget {
@@ -25,12 +24,8 @@ class TabWidget extends StatelessWidget {
       backgroundColor: Theme.of(context).accentColor,
       items: TabState.values.map((tab) {
         return BottomNavigationBarItem(
-          icon: Icon(
-            tab == TabState.songs
-                ? Icons.library_music
-                : MyFlutterApp.img_guitar,
-          ),
-          label: tab == TabState.stats ? 'Stats' : 'Songs',
+          icon: tab.icon,
+          label: tab.name,
         );
       }).toList(),
     );
