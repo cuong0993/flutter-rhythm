@@ -24,6 +24,7 @@ class GameWidget extends StatelessWidget {
       BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
     }
 
+    final gameWidget = _game.widget;
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameLoading) {
@@ -32,7 +33,7 @@ class GameWidget extends StatelessWidget {
         } else if (state is GameStarted) {
           _game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
           return Stack(children: [
-            _game.widget,
+            gameWidget,
             Container(
               height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: LinearPercentIndicator(
@@ -50,7 +51,7 @@ class GameWidget extends StatelessWidget {
         }
         if (state is GameUpdated) {
           return Stack(children: [
-            _game.widget,
+            gameWidget,
             Container(
               height: kToolbarHeight + MediaQuery.of(context).padding.top,
               child: AppBar(
@@ -59,15 +60,7 @@ class GameWidget extends StatelessWidget {
             )
           ]);
         }
-        return Stack(children: [
-          _game.widget,
-          Container(
-            height: kToolbarHeight + MediaQuery.of(context).padding.top,
-            child: AppBar(
-              title: Text(""),
-            ),
-          )
-        ]);
+        return gameWidget;
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hitnotes/routes.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_event.dart';
@@ -66,29 +67,23 @@ class App extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         routes: {
-          '/': (context) {
+          Routes.home: (context) {
             return BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (context, state) {
                 if (state is Authenticated) {
                   return BlocProvider<TabBloc>(
-                      create: (context) => TabBloc(),
-                      child: HomeWidget()
-                  );
+                      create: (context) => TabBloc(), child: HomeWidget());
                 }
                 if (state is Unauthenticated) {
-                  return Center(
-                    child: Text('Could not authenticate with Firestore'),
-                  );
+                  return Scaffold(body: Center(child: Text('Error occurred')));
                 }
                 return Center(child: CircularProgressIndicator());
               },
             );
           },
-          '/addSong': (context) {
+          Routes.game: (context) {
             return BlocProvider<GameBloc>(
-              create: (_) => GameBloc(),
-              child: GameWidget()
-            );
+                create: (_) => GameBloc(), child: GameWidget());
           },
         },
       ),

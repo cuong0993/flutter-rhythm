@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hitnotes/routes.dart';
 
-import '../game/game_widget.dart';
 import '../loading_widget.dart';
 import 'song_widget.dart';
 import 'songs_bloc.dart';
@@ -27,7 +27,8 @@ class SongsWidget extends StatelessWidget {
               return SongWidget(
                 song: song,
                 onTap: () async {
-                  await Navigator.pushNamed(context, '/addSong', arguments: song);
+                  await Navigator.pushNamed(context, Routes.game,
+                      arguments: song);
                 },
                 onDismissed: (DismissDirection direction) {},
                 onCheckboxChanged: (bool value) {},
