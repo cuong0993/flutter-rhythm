@@ -8,8 +8,8 @@ class Instrument {
   final String id;
   final String title;
   final String imageUrl;
-  final HashMap<String, String> soundFiles;
-  final HashMap<String, PitchNote> soundNotes;
+  final Map<String, String> soundFiles;
+  final Map<String, PitchNote> soundNotes;
   final int minNote;
   final int maxNote;
   final double volume;
@@ -34,7 +34,7 @@ class Instrument {
         title: event.data()['title'],
         imageUrl: event.data()['imageUrl'],
         soundFiles: HashMap.from(event.data()['soundFiles']),
-        soundNotes: HashMap.from(event.data()['soundNotes']),
+        soundNotes: (event.data()['soundNotes'] as Map<String, dynamic>).map((key, value) => MapEntry(key, PitchNote.fromJson(value))),
         minNote: event.data()['minNote'],
         maxNote: event.data()['maxNote'],
         volume: event.data()['volume'],
