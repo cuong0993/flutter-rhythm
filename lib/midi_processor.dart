@@ -1,10 +1,10 @@
+import 'dart:async';
 import 'dart:collection';
 
 import 'package:soundpool/soundpool.dart';
 
 import 'firebase_storage_cacher.dart';
 import 'instrument/instrument.dart';
-
 
 class MidiProcessor {
   static MidiProcessor _instance;
@@ -16,8 +16,8 @@ class MidiProcessor {
     return _instance;
   }
 
-  final noteToSoundPathAndPitchMap = HashMap<int, Pair<String, double>>();
-  Instrument instrument;
+  final _noteToSoundPathAndPitchMap = HashMap<int, Pair<String, double>>();
+  Instrument _instrument;
 
   /*
     Limit the number of simultaneous sounds, because, SoundPool only have 1MB heap size (media/libmediaplayerservice/MediaPlayerService.cpp), if exceeded, sound cannot be played.
@@ -25,34 +25,18 @@ class MidiProcessor {
     SoundPool: Error creating AudioTrack
     (Error -12 out of memory)
     */
-  final maxStreams = 8;
+  final _maxStreams = 8;
+  final _soundPool = Soundpool(streamType: StreamType.music);
+  HashMap<String, int> _soundPathToSoundIdMap;
+  LinkedHashSet<int> _activeSounds;
+  var _numberOfLoadedSound = 0;
 
-  // private val soundPool = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-  // val audioAttributes = AudioAttributes.Builder()
-  //     .setUsage(AudioAttributes.USAGE_GAME)
-  //     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-  //     .build()
-  // SoundPool.Builder().setAudioAttributes(audioAttributes).setMaxStreams(maxStreams).build()
-  // } else {
-  // @Suppress("DEPRECATION")
-  // (SoundPool(maxStreams, AudioManager.STREAM_MUSIC, 0))
-  // }
+  final _soundLoadedController = StreamController<bool>();
 
-  final pool = Soundpool(streamType: StreamType.music);
-
-  // int soundId = await rootBundle.load("sounds/dices.m4a").then((ByteData soundData) {
-  // return pool.load(soundData);
-  // });
-  // int streamId = await pool.play(soundId);
-
-  HashMap<String, int> soundPathToSoundIdMap;
-  LinkedHashSet<int> activeSounds;
-  var numberOfLoadedSound = 0;
-
-  //private val soundLoadedFlow = MutableStateFlow(false)
+  Stream<bool> get soundLoaded => _soundLoadedController.stream;
 
   void onSelectInstrument(Instrument instrument) {
-    this.instrument = instrument;
+    _instrument = instrument;
     dispose();
     final soundFiles = instrument.soundFiles;
     final serverFilePathToCacheFilePaths = HashMap<String, String>();
@@ -61,78 +45,62 @@ class MidiProcessor {
       serverFilePathToCacheFilePaths[serverFilePath] = cacheFilePath;
     });
 
-    instrument.soundNotes.forEach((key, value) {
-      final a = serverFilePathToCacheFilePaths[soundFiles[value.note]];
-      if (serverFilePathToCacheFilePaths[soundFiles[value.note]] != null) {
-        noteToSoundPathAndPitchMap[key] = Pair(a, value.pitch);
+    instrument.soundNotes.forEach((key, pitchNote) {
+      final cacheFilePath =
+          serverFilePathToCacheFilePaths[soundFiles[pitchNote.note]];
+      if (cacheFilePath != null) {
+        _noteToSoundPathAndPitchMap[key] = Pair(cacheFilePath, pitchNote.pitch);
       }
     });
     final soundPaths = serverFilePathToCacheFilePaths.values;
-    // pool.setOnLoadCompleteListener { _, sampleId, status ->
-    // if (status != 0) {
-    // logger.e("Failed ${soundPathToSoundIdMap.filterValues { it == sampleId }.keys} $status")
-    // }
-    // numberOfLoadedSound++;
-    // if (numberOfLoadedSound == soundPaths.size) {
-    // soundLoadedFlow.value = true
-    // }
-    // }
     final soundIdFutures = <Future>[];
     soundPaths.forEach((path) {
-      soundIdFutures.add(pool.loadUri(path));
-      });
-    Future.wait(soundIdFutures).then((value) =>
-    {
-      value.asMap().forEach((key, value) {
-        soundPathToSoundIdMap[soundPaths.elementAt(key)] = value;
-        numberOfLoadedSound++;
-        if (numberOfLoadedSound == soundPaths.length) {
-          //soundLoadedFlow.value = true
-        }
-      })
+      soundIdFutures.add(_soundPool.loadUri(path));
     });
+    Future.wait(soundIdFutures).then((soundIds) => {
+          soundIds.asMap().forEach((key, soundId) {
+            _soundPathToSoundIdMap[soundPaths.elementAt(key)] = soundId;
+            _numberOfLoadedSound++;
+            if (_numberOfLoadedSound == soundPaths.length) {
+              _soundLoadedController.sink.add(true);
+            }
+          })
+        });
   }
 
-
-  //override fun getSoundLoadedFlow(): StateFlow<Boolean> = soundLoadedFlow
-
-  void playNote(int note) {
+  Future<void> playNote(int note) async {
     print(note.toString());
     var pitchNote = note.toInt();
-    while (pitchNote > instrument.maxNote) {
+    while (pitchNote > _instrument.maxNote) {
       pitchNote -= 12;
     }
-    while (pitchNote < instrument.minNote) {
+    while (pitchNote < _instrument.minNote) {
       pitchNote += 12;
     }
-    noteToSoundPathAndPitchMap[pitchNote.toByte()]?.let {
-      val soundId = soundPathToSoundIdMap[it.first]
+    final soundPathAndPitch = _noteToSoundPathAndPitchMap[pitchNote];
+    if (soundPathAndPitch != null) {
+      final soundId = _soundPathToSoundIdMap[soundPathAndPitch.first];
       if (soundId != null) {
-        activeSounds.add(soundPool.play(soundId, 1.0f, 1.0f, 0, 0, it.second))
-        if (activeSounds.size == maxStreams) {
-          soundPool.stop(dequeue(activeSounds))
+        _activeSounds.add(
+            await _soundPool.play(soundId, rate: soundPathAndPitch.second));
+        if (_activeSounds.length == _maxStreams) {
+          final firstSound = _activeSounds.first;
+          await _soundPool.stop(firstSound);
+          _activeSounds.remove(firstSound);
         }
       }
     }
   }
 
   void dispose() {
-    for (sound in soundPathToSoundIdMap) {
-      soundPool.unload(sound.value)
-    }
-    numberOfLoadedSound = 0
-    soundLoadedFlow.value = false
-    soundPathToSoundIdMap.clear()
-    activeSounds.clear()
-    noteToSoundPathAndPitchMap.clear()
+    _soundPool.release();
+    _numberOfLoadedSound = 0;
+    _soundLoadedController.sink.add(false);
+    _soundLoadedController.close();
+    _soundPathToSoundIdMap.clear();
+    _activeSounds.clear();
+    _noteToSoundPathAndPitchMap.clear();
   }
-
-// private fun <T> dequeue(iterable: MutableIterable<T>): T {
-// val it = iterable.iterator()
-// val next = it.next()
-// it.remove()
-// return next
-// }
 }
 
 class Pair<A, B> {
