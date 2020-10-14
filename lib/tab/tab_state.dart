@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hitnotes/instrument/instruments_widget.dart';
 
 import '../my_flutter_app_icons.dart';
 import '../songs/songs_widget.dart';
@@ -34,7 +35,7 @@ extension AppTabExtension on TabState {
       case TabState.songs:
         return SongsWidget();
       case TabState.stats:
-        return SongsWidget();
+        return InstrumentsWidget();
       default:
         return null;
     }

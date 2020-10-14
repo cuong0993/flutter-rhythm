@@ -6,6 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:hitnotes/midi_processor.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'game_event.dart';
@@ -17,7 +18,6 @@ import 'tile/tile_chunk.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameLoading());
-  int i = 0;
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -58,8 +58,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
       yield GameStarted(tiles, speedPixelsPerSecond, gameDuration);
     } else if (event is TileTouched) {
-      i++;
-      yield GameUpdated(i);
+      await MidiProcessor.getInstance().playNote(event.tile.note);
+      yield GameUpdated(0);
     }
   }
 

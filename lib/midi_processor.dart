@@ -49,7 +49,7 @@ class MidiProcessor {
       final cacheFilePath =
           serverFilePathToCacheFilePaths[soundFiles[pitchNote.note]];
       if (cacheFilePath != null) {
-        _noteToSoundPathAndPitchMap[key] = Pair(cacheFilePath, pitchNote.pitch);
+        //_noteToSoundPathAndPitchMap[key] = Pair(cacheFilePath, pitchNote.pitch);
       }
     });
     final soundPaths = serverFilePathToCacheFilePaths.values;

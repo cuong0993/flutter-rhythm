@@ -13,13 +13,7 @@ class HomeWidget extends StatelessWidget {
     return BlocBuilder<TabBloc, TabState>(
       builder: (context, activeTab) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(activeTab.name.tr()),
-            actions: [
-              //FilterButton(visible: activeTab == AppTab.songs),
-              //ExtraActions(),
-            ],
-          ),
+          appBar: AppBar(title: Text(activeTab.name.tr())),
           body: activeTab.widget,
           bottomNavigationBar: TabWidget(
             activeTab: activeTab,
