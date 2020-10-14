@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hitnotes/routes.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_event.dart';
@@ -18,9 +19,12 @@ import 'tab/home_widget.dart';
 import 'tab/tab_bloc.dart';
 import 'user/firebase_user_repository.dart';
 
+String applicationSupportPath;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  applicationSupportPath = (await getApplicationSupportDirectory()).path;
   Bloc.observer = SimpleBlocObserver();
   runApp(EasyLocalization(
       supportedLocales: [Locale('en', 'US'), Locale('de', 'DE')],
