@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -22,7 +21,8 @@ import 'songs/songs_event.dart';
 import 'songs/songs_repository_impl.dart';
 import 'tab/home_widget.dart';
 import 'tab/tab_bloc.dart';
-import 'user/firebase_user_repository.dart';
+import 'user/user_bloc.dart';
+import 'user/user_repository_impl.dart';
 
 String applicationSupportPath;
 
@@ -52,7 +52,7 @@ class App extends StatelessWidget {
         BlocProvider<AuthenticationBloc>(
           create: (context) {
             return AuthenticationBloc(
-              userRepository: FirebaseUserRepository(),
+              userRepository: UserRepositoryImpl(),
             )..add(StartAuthentication());
           },
         ),
@@ -69,6 +69,13 @@ class App extends StatelessWidget {
               instrumentsRepository: InstrumentsRepositoryImpl(),
             )..add(LoadInstruments());
           },
+        ),
+        BlocProvider<UserBloc>(
+          create: (context) {
+            return UserBloc(
+                authenticationBloc:
+                    BlocProvider.of<AuthenticationBloc>(context));
+          },
         )
       ],
       child: MaterialApp(
@@ -78,7 +85,6 @@ class App extends StatelessWidget {
         locale: context.locale,
         theme: ThemeData(
           primarySwatch: Colors.indigo,
-
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         routes: {

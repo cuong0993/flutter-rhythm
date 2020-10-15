@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'user_repository.dart';
 
-class FirebaseUserRepository implements UserRepository {
+class UserRepositoryImpl implements UserRepository {
   final FirebaseAuth _firebaseAuth;
 
-  FirebaseUserRepository({FirebaseAuth firebaseAuth})
+  UserRepositoryImpl({FirebaseAuth firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
   @override
