@@ -9,8 +9,8 @@ class Instrument {
   String id;
   String title;
   String imageUrl;
-  Map<String, String> soundFiles;
-  Map<String, PitchNote> soundNotes;
+  Map<int, String> soundFiles;
+  Map<int, PitchNote> soundNotes;
   int minNote;
   int maxNote;
   double volume;
