@@ -24,7 +24,7 @@ class Song {
     this.coins,
   );
 
-  factory PitchNote.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
+  factory Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
 
   Map<String, dynamic> toJson() => _$SongToJson(this);
 }

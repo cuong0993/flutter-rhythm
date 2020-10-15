@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/instrument/firebase_instruments_repository.dart';
+import 'package:hitnotes/instrument/instruments_repository_impl.dart';
 import 'package:hitnotes/instrument/instruments_bloc.dart';
 import 'package:hitnotes/instrument/instruments_event.dart';
 import 'package:path_provider/path_provider.dart';
@@ -15,7 +15,7 @@ import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'routes.dart';
 import 'simple_bloc_observer.dart';
-import 'songs/firebase_songs_repository.dart';
+import 'songs/songs_repository_impl.dart';
 import 'songs/songs_bloc.dart';
 import 'songs/songs_event.dart';
 import 'tab/home_widget.dart';
@@ -55,14 +55,14 @@ class App extends StatelessWidget {
         BlocProvider<SongsBloc>(
           create: (context) {
             return SongsBloc(
-              songsRepository: FirebaseSongsRepository(),
+              songsRepository: SongsRepositoryImpl(),
             )..add(LoadSongs());
           },
         ),
         BlocProvider<InstrumentsBloc>(
           create: (context) {
             return InstrumentsBloc(
-              instrumentsRepository: FirebaseInstrumentsRepository(),
+              instrumentsRepository: InstrumentsRepositoryImpl(),
             )..add(LoadInstruments());
           },
         )

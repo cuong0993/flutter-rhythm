@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'song.dart';
 import 'songs_repository.dart';
 
-class FirebaseSongsRepository implements SongsRepository {
+class SongsRepositoryImpl implements SongsRepository {
   final _songsCollection = FirebaseFirestore.instance.collection('songs');
 
   @override

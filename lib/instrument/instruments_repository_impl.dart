@@ -5,7 +5,7 @@ import 'package:hitnotes/instrument/instrument.dart';
 
 import 'instruments_repository.dart';
 
-class FirebaseInstrumentsRepository implements InstrumentsRepository {
+class InstrumentsRepositoryImpl implements InstrumentsRepository {
   final _instrumentsCollection =
       FirebaseFirestore.instance.collection('instruments');
 
