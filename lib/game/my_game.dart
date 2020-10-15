@@ -32,14 +32,12 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
-    //print('Tap down' + pointerId.toString());
     _touches[pointerId] =
         _TouchData(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override
   void onTapUp(int pointerId, _) {
-    //print('Tap up' + pointerId.toString());
     _touches.remove(pointerId);
   }
 

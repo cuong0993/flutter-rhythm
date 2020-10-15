@@ -6,9 +6,9 @@ import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:hitnotes/midi_processor.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../midi_processor.dart';
 import 'game_event.dart';
 import 'game_state.dart';
 import 'game_util.dart';

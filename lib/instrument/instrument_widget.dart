@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hitnotes/instrument/instrument.dart';
+
+import 'instrument.dart';
 
 class InstrumentWidget extends StatelessWidget {
   final DismissDirectionCallback onDismissed;

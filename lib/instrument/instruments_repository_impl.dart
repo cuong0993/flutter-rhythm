@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hitnotes/instrument/instrument.dart';
 
+import 'instrument.dart';
 import 'instruments_repository.dart';
 
 class InstrumentsRepositoryImpl implements InstrumentsRepository {

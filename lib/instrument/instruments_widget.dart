@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/instrument/instruments_bloc.dart';
-import 'package:hitnotes/instrument/instruments_state.dart';
 
 import '../loading_widget.dart';
 import '../routes.dart';
 import 'instrument_widget.dart';
+import 'instruments_bloc.dart';
+import 'instruments_state.dart';
 
 class InstrumentsWidget extends StatelessWidget {
   InstrumentsWidget({Key key}) : super(key: key);

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:hitnotes/instrument/instrument.dart';
+
+import 'instrument.dart';
 
 abstract class InstrumentsState extends Equatable {
   const InstrumentsState();
