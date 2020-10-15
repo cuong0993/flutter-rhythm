@@ -1,22 +1,23 @@
-import 'dart:collection';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'pitch_note.dart';
 
+part 'instrument.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Instrument {
-  final String id;
-  final String title;
-  final String imageUrl;
-  final Map<String, String> soundFiles;
-  final Map<String, PitchNote> soundNotes;
-  final int minNote;
-  final int maxNote;
-  final double volume;
-  final int requiredLevel;
+  String id;
+  String title;
+  String imageUrl;
+  Map<String, String> soundFiles;
+  Map<String, PitchNote> soundNotes;
+  int minNote;
+  int maxNote;
+  double volume;
+  int requiredLevel;
 
   Instrument(
-      {this.id,
+      this.id,
       this.title,
       this.imageUrl,
       this.soundFiles,
@@ -24,20 +25,10 @@ class Instrument {
       this.minNote,
       this.maxNote,
       this.volume,
-      this.requiredLevel});
+      this.requiredLevel);
 
-  factory Instrument.fromDocumentSnapshot(DocumentSnapshot event) {
+  factory Instrument.fromJson(Map<String, dynamic> json) =>
+      _$InstrumentFromJson(json);
 
-    final a= event.data()['soundFiles'];
-    return Instrument(
-        id: event.data()['id'],
-        title: event.data()['title'],
-        imageUrl: event.data()['imageUrl'],
-        soundFiles: HashMap.from(event.data()['soundFiles']),
-        soundNotes: (event.data()['soundNotes'] as Map<String, dynamic>).map((key, value) => MapEntry(key, PitchNote.fromJson(value))),
-        minNote: event.data()['minNote'],
-        maxNote: event.data()['maxNote'],
-        volume: event.data()['volume'],
-        requiredLevel: event.data()['requiredLevel']);
-  }
+  Map<String, dynamic> toJson() => _$InstrumentToJson(this);
 }

@@ -13,7 +13,7 @@ class FirebaseInstrumentsRepository implements InstrumentsRepository {
   Stream<List<Instrument>> instruments() {
     return _instrumentsCollection.snapshots().map((snapshot) {
       return snapshot.docs
-          .map((doc) => Instrument.fromDocumentSnapshot(doc))
+          .map((doc) => Instrument.fromJson(doc.data()))
           .toList();
     });
   }

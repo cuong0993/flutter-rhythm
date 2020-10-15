@@ -1,11 +1,16 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'pitch_note.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class PitchNote {
-  final int note;
-  final double pitch;
+  int note;
+  double pitch;
 
-  PitchNote({this.note, this.pitch});
+  PitchNote(this.note, this.pitch);
 
-  factory PitchNote.fromJson(Map<String, Object> json) {
-    final a = (json['pitch'] is int)? (json['pitch'] as int).toDouble(): json['pitch'] as double;
-    return PitchNote(note: json['note'] as int, pitch: a);
-  }
+  factory PitchNote.fromJson(Map<String, dynamic> json) =>
+      _$PitchNoteFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PitchNoteToJson(this);
 }

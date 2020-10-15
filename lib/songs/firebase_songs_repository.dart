@@ -12,9 +12,7 @@ class FirebaseSongsRepository implements SongsRepository {
   Stream<List<Song>> songs() {
     // FIXME
     return _songsCollection.limit(2).snapshots().map((snapshot) {
-      return snapshot.docs
-          .map((doc) => Song.fromDocumentSnapshot(doc))
-          .toList();
+      return snapshot.docs.map((doc) => Song.fromJson(doc.data())).toList();
     });
   }
 }
