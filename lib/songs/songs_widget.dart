@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hitnotes/songs/songs_event.dart';
 
 import '../loading_widget.dart';
 import '../routes.dart';
@@ -20,7 +21,16 @@ class SongsWidget extends StatelessWidget {
           return LoadingWidget();
         } else if (state is SongsLoaded) {
           final songs = state.songs;
+          final scrollController = ScrollController();
+          scrollController.addListener(() {
+            if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+                !scrollController.position.outOfRange) {
+              print('enddddddd');
+              BlocProvider.of<SongsBloc>(context).add(LoadMoreSongs());
+            }
+          });
           return ListView.builder(
+            controller: scrollController,
             itemCount: songs.length,
             itemBuilder: (context, index) {
               final song = songs[index];
@@ -30,8 +40,6 @@ class SongsWidget extends StatelessWidget {
                   await Navigator.pushNamed(context, Routes.game,
                       arguments: song);
                 },
-                onDismissed: (DismissDirection direction) {},
-                onCheckboxChanged: (bool value) {},
               );
             },
           );

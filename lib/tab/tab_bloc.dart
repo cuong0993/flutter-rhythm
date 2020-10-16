@@ -6,7 +6,7 @@ import 'tab_event.dart';
 import 'tab_state.dart';
 
 class TabBloc extends Bloc<TabEvent, TabState> {
-  TabBloc() : super(TabState.songs);
+  TabBloc() : super(TabState.instruments);
 
   @override
   Stream<TabState> mapEventToState(TabEvent event) async* {

@@ -9,10 +9,13 @@ class SongsRepositoryImpl implements SongsRepository {
   final _songsCollection = FirebaseFirestore.instance.collection('songs');
 
   @override
-  Stream<List<Song>> songs() {
-    // FIXME
-    return _songsCollection.limit(2).snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) => Song.fromJson(doc.data())).toList();
-    });
+  Future<List<Song>> songs(String titleStart, int limit) async {
+    return (await _songsCollection
+            .orderBy('title')
+            .startAfter([titleStart])
+            .limit(limit)
+            .get())
+        .docs
+        .map((e) => Song.fromJson(e.data())).toList();
   }
 }

@@ -3,5 +3,5 @@ import 'dart:async';
 import 'song.dart';
 
 abstract class SongsRepository {
-  Stream<List<Song>> songs();
+  Future<List<Song>> songs(String titleStart, int limit);
 }

@@ -60,7 +60,7 @@ class App extends StatelessWidget {
           create: (context) {
             return SongsBloc(
               songsRepository: SongsRepositoryImpl(),
-            )..add(LoadSongs());
+            )..add(LoadMoreSongs());
           },
         ),
         BlocProvider<InstrumentsBloc>(
