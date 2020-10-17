@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../firebase_storage_cacher.dart';
 import 'song.dart';
 
 class SongWidget extends StatelessWidget {
@@ -18,7 +21,7 @@ class SongWidget extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       leading: CircleAvatar(
-        backgroundImage: AssetImage('assets/sun.jpg'),
+        backgroundImage: FileImage(File(song.imageUrl.toLocalFilePath())),
       ),
       title: Hero(
         tag: '${song.id}__heroTag',
@@ -32,11 +35,11 @@ class SongWidget extends StatelessWidget {
       ),
       subtitle: song.artist.isNotEmpty
           ? Text(
-        song.artist,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Theme.of(context).textTheme.subtitle1,
-      )
+              song.artist,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.subtitle1,
+            )
           : null,
     );
   }

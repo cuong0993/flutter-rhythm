@@ -17,25 +17,30 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
   SongsBloc({@required SongsRepository songsRepository})
       : assert(songsRepository != null),
         _songsRepository = songsRepository,
-        super(SongsLoading());
+        super(SongsInitial());
 
   @override
   Stream<SongsState> mapEventToState(SongsEvent event) async* {
     if (event is LoadMoreSongs) {
-      yield* _mapLoadMoreSongsToState();
+      if (!_isLoadedAllSongs) {
+        if (state is SongsLoaded) {
+          yield SongsLoaded((state as SongsLoaded).songs, true);
+        }
+        yield* _mapLoadMoreSongsToState();
+      }
     }
     if (event is UpdateSongs) {
-      yield SongsLoaded(event.songs);
+      yield SongsLoaded(event.songs, false);
     }
   }
 
   Stream<SongsState> _mapLoadMoreSongsToState() async* {
     final songs = await _songsRepository.songs(_lastSongTitle, 20);
-    // final downloadFutures = <Future>[];
-    // songs.map((e) => e.imageUrl).toSet().forEach((element) {
-    //   downloadFutures.add(FirebaseStorage.instance.tryToSaveFile(element));
-    // });
-    // await Future.wait(downloadFutures);
+    final downloadFutures = <Future>[];
+    songs.map((e) => e.imageUrl).toSet().forEach((element) {
+      downloadFutures.add(FirebaseStorage.instance.tryToSaveFile(element));
+    });
+    await Future.wait(downloadFutures);
     add(UpdateSongs(
         (state is SongsLoaded) ? (state as SongsLoaded).songs + songs : songs));
     if (songs.isNotEmpty) {

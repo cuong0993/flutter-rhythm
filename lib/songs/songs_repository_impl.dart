@@ -16,6 +16,7 @@ class SongsRepositoryImpl implements SongsRepository {
             .limit(limit)
             .get())
         .docs
-        .map((e) => Song.fromJson(e.data())).toList();
+        .map((e) => Song.fromJson(e.data()))
+        .toList();
   }
 }

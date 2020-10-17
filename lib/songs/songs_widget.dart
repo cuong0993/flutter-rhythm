@@ -17,31 +17,48 @@ class SongsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SongsBloc, SongsState>(
       builder: (context, state) {
-        if (state is SongsLoading) {
+        if (state is SongsInitial) {
           return LoadingWidget();
         } else if (state is SongsLoaded) {
           final songs = state.songs;
           final scrollController = ScrollController();
           scrollController.addListener(() {
-            if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+            if (scrollController.offset >=
+                    scrollController.position.maxScrollExtent &&
                 !scrollController.position.outOfRange) {
-              print('enddddddd');
               BlocProvider.of<SongsBloc>(context).add(LoadMoreSongs());
             }
           });
-          return ListView.builder(
+          return Scrollbar(
+            isAlwaysShown: true,
             controller: scrollController,
-            itemCount: songs.length,
-            itemBuilder: (context, index) {
-              final song = songs[index];
-              return SongWidget(
-                song: song,
-                onTap: () async {
-                  await Navigator.pushNamed(context, Routes.game,
-                      arguments: song);
-                },
-              );
-            },
+            child: ListView.builder(
+              controller: scrollController,
+              itemCount:
+                  (state.isLoadingMore) ? songs.length + 1 : songs.length,
+              itemBuilder: (context, index) {
+                if (index == songs.length) {
+                  return Center(
+                    child: SizedBox(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                      height: 32,
+                      width: 32,
+                    ),
+                  );
+                }
+                final song = songs[index];
+                return SongWidget(
+                  song: song,
+                  onTap: () async {
+                    await Navigator.pushNamed(context, Routes.game,
+                        arguments: song);
+                  },
+                );
+              },
+            ),
           );
         } else {
           return Container();
