@@ -37,7 +37,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.chaomao.lalaorchestra"
+        applicationId "com.chaomao.hittick"
         minSdkVersion 16
         targetSdkVersion 30
         multiDexEnabled true
@@ -48,6 +48,17 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.debug
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            applicationId "com.chaomao.lalaorchestra"
+        }
+
+        stage {
+            applicationId "com.chaomao.lalaorchestra"
         }
     }
 }
