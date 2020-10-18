@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/songs/songs_event.dart';
 
 import '../loading_widget.dart';
 import '../routes.dart';
 import 'song_widget.dart';
 import 'songs_bloc.dart';
+import 'songs_event.dart';
 import 'songs_state.dart';
 
 class SongsWidget extends StatelessWidget {

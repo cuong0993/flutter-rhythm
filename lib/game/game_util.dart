@@ -2,6 +2,7 @@ import 'dart:ui';
 
 final screenWidth = window.physicalSize.width / window.devicePixelRatio;
 final screenHeight = window.physicalSize.height / window.devicePixelRatio;
+final size40dp = (40 * window.devicePixelRatio).toInt();
 const NUMBER_TILE_COLUMN = 4;
 final offsetDrawY = screenHeight;
 const UNIT_DURATION_HEIGHT = 72;

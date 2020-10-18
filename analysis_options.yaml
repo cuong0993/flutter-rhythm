@@ -93,3 +93,4 @@ linter:
     # - sort_constructors_first
     # - avoid_as
     - prefer_final_locals
+    - prefer_relative_imports
