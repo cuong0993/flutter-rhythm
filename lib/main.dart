@@ -52,7 +52,7 @@ class _AppState extends State<App> {
       setState(() {
         _initialized = true;
       });
-    } catch(e) {
+    } catch (e) {
       setState(() {
         _error = true;
       });
@@ -67,7 +67,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    if(_error) {
+    if (_error) {
       return Scaffold(body: Center(child: Text('Error occurred')));
     }
     if (!_initialized) {
@@ -101,7 +101,7 @@ class _AppState extends State<App> {
           create: (context) {
             return UserBloc(
                 authenticationBloc:
-                BlocProvider.of<AuthenticationBloc>(context));
+                    BlocProvider.of<AuthenticationBloc>(context));
           },
         )
       ],

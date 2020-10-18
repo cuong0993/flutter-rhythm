@@ -22,7 +22,8 @@ class SongWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      leading: Image.file(File(song.imageUrl.toLocalFilePath()), cacheWidth:size40dp,cacheHeight: size40dp),
+      leading: Image.file(File(song.imageUrl.toLocalFilePath()),
+          cacheWidth: size40dp, cacheHeight: size40dp),
       title: Hero(
         tag: '${song.id}__heroTag',
         child: Container(

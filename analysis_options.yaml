@@ -46,7 +46,7 @@ linter:
     # the Dart Lint rules page to make maintenance easier
     # https://github.com/dart-lang/linter/blob/master/example/all.yaml
     - always_declare_return_types
-#    - always_specify_types
+    #    - always_specify_types
     - annotate_overrides
     # - avoid_as
     - avoid_web_libraries_in_flutter
@@ -66,15 +66,15 @@ linter:
     - list_remove_unrelated_type
     - literal_only_boolean_expressions
     - non_constant_identifier_names
-#    - one_member_abstracts
+    #    - one_member_abstracts
     - only_throw_errors
     - overridden_fields
     - package_api_docs
     - package_names
     - package_prefixed_library_names
     - prefer_mixin # https://github.com/dart-lang/language/issues/32
-#    - public_member_api_docs
-#    - sort_constructors_first
+    #    - public_member_api_docs
+    #    - sort_constructors_first
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
