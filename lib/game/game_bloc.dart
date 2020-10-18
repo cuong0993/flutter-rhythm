@@ -9,9 +9,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../midi_processor.dart';
+import '../util.dart';
 import 'game_event.dart';
 import 'game_state.dart';
-import 'game_util.dart';
 import 'note/note.dart';
 import 'tile/tile.dart';
 import 'tile/tile_chunk.dart';

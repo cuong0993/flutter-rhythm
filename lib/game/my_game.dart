@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'game_util.dart';
+import '../util.dart';
 import 'tile/tile.dart';
 import 'tile/tile_input_handler.dart';
 import 'tile/tiles_controller.dart';

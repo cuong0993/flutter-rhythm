@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../firebase_storage_cacher.dart';
-import '../game/game_util.dart';
+import '../util.dart';
 import 'song.dart';
 
 class SongWidget extends StatelessWidget {

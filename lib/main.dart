@@ -26,11 +26,6 @@ import 'user/user_repository_impl.dart';
 String applicationSupportPath;
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  if (!kIsWeb) {
-    applicationSupportPath = (await getApplicationSupportDirectory()).path;
-  }
   Bloc.observer = SimpleBlocObserver();
   runApp(EasyLocalization(
       supportedLocales: [Locale('en', 'US'), Locale('de', 'DE')],
@@ -39,9 +34,44 @@ void main() async {
       child: App()));
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  bool _initialized = false;
+  bool _error = false;
+
+  void initializeFlutterFire() async {
+    try {
+      applicationSupportPath = (await getApplicationSupportDirectory()).path;
+      await Firebase.initializeApp();
+      setState(() {
+        _initialized = true;
+      });
+    } catch(e) {
+      setState(() {
+        _error = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    initializeFlutterFire();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    if(_error) {
+      return Scaffold(body: Center(child: Text('Error occurred')));
+    }
+    if (!_initialized) {
+      return Center(child: CircularProgressIndicator());
+    }
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
@@ -69,7 +99,7 @@ class App extends StatelessWidget {
           create: (context) {
             return UserBloc(
                 authenticationBloc:
-                    BlocProvider.of<AuthenticationBloc>(context));
+                BlocProvider.of<AuthenticationBloc>(context));
           },
         )
       ],
