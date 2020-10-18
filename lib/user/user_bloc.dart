@@ -14,7 +14,7 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final AuthenticationBloc _authenticationBloc;
-  StreamSubscription _authenticationSubscription;
+  StreamSubscription _userSubscription;
 
   UserBloc({@required AuthenticationBloc authenticationBloc})
       : assert(authenticationBloc != null),
@@ -26,8 +26,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     UserEvent event,
   ) async* {
     if (event is LoadUser) {
-      await _authenticationSubscription?.cancel();
-      _authenticationSubscription = FirebaseFirestore.instance
+      await _userSubscription?.cancel();
+      _userSubscription = FirebaseFirestore.instance
           .collection('users')
           .doc((_authenticationBloc.state as Authenticated).userId)
           .snapshots()
@@ -41,7 +41,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   @override
   Future<void> close() {
-    _authenticationSubscription?.cancel();
+    _userSubscription?.cancel();
     return super.close();
   }
 }
