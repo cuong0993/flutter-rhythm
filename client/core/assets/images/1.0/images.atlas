@@ -1,0 +1,279 @@
+
+images.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+img_account
+  rotate: false
+  xy: 938, 74
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+img_account_large
+  rotate: false
+  xy: 604, 142
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+img_app_icon
+  rotate: false
+  xy: 2, 76
+  size: 162, 162
+  orig: 162, 162
+  offset: 0, 0
+  index: -1
+img_back
+  rotate: false
+  xy: 900, 70
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+img_blank
+  rotate: false
+  xy: 958, 108
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+img_blank_photo
+  rotate: false
+  xy: 2, 2
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+img_check
+  rotate: false
+  xy: 200, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_circle_24px-9
+  rotate: false
+  xy: 958, 152
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+img_clef
+  rotate: false
+  xy: 702, 142
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+img_clock
+  rotate: false
+  xy: 226, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_contact_mail
+  rotate: false
+  xy: 252, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_crown
+  rotate: false
+  xy: 166, 94
+  size: 144, 144
+  orig: 144, 144
+  offset: 0, 0
+  index: -1
+img_email
+  rotate: false
+  xy: 278, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_en
+  rotate: false
+  xy: 898, 166
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+img_facebook
+  rotate: false
+  xy: 304, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_facebook_color
+  rotate: false
+  xy: 330, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_fire
+  rotate: false
+  xy: 356, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_firework
+  rotate: false
+  xy: 312, 94
+  size: 144, 144
+  orig: 144, 144
+  offset: 0, 0
+  index: -1
+img_gift
+  rotate: false
+  xy: 458, 94
+  size: 144, 144
+  orig: 144, 144
+  offset: 0, 0
+  index: -1
+img_google
+  rotate: false
+  xy: 382, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_guitar
+  rotate: false
+  xy: 958, 118
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+img_ko
+  rotate: false
+  xy: 76, 2
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+img_library
+  rotate: false
+  xy: 166, 60
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+img_loading
+  rotate: false
+  xy: 900, 108
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+img_lock
+  rotate: false
+  xy: 408, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_login
+  rotate: false
+  xy: 434, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_note
+  rotate: false
+  xy: 460, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_pause
+  rotate: false
+  xy: 972, 152
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+img_premium
+  rotate: false
+  xy: 486, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_premium_color
+  rotate: false
+  xy: 512, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_single_note
+  rotate: false
+  xy: 538, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_staff
+  rotate: false
+  xy: 800, 142
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+img_star
+  rotate: false
+  xy: 564, 68
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_star_rate
+  rotate: false
+  xy: 604, 68
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+img_star_rate_disable
+  rotate: false
+  xy: 678, 68
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+img_touch
+  rotate: false
+  xy: 972, 190
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+img_vi
+  rotate: false
+  xy: 752, 68
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+img_youtube
+  rotate: false
+  xy: 992, 126
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+img_zh
+  rotate: false
+  xy: 826, 68
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1

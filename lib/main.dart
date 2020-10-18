@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -23,7 +23,7 @@ import 'tab/tab_bloc.dart';
 import 'user/user_bloc.dart';
 import 'user/user_repository_impl.dart';
 
-String applicationSupportPath;
+String applicationSupportPath = '';
 
 void main() async {
   Bloc.observer = SimpleBlocObserver();
@@ -45,7 +45,9 @@ class _AppState extends State<App> {
 
   void initializeFlutterFire() async {
     try {
-      applicationSupportPath = (await getApplicationSupportDirectory()).path;
+      if (!kIsWeb) {
+        applicationSupportPath = (await getApplicationSupportDirectory()).path;
+      }
       await Firebase.initializeApp();
       setState(() {
         _initialized = true;
