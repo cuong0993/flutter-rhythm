@@ -15,24 +15,11 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   void initState() {
-    // widget.notificationStream.listen((CurrencyNotification data) {
-    //   if (data is NotificationOfIncrease) {
-    //     Scaffold.of(context).showSnackBar(
-    //       SnackBar(
-    //         duration: Duration(seconds: 1),
-    //         content: Row(
-    //           mainAxisAlignment: MainAxisAlignment.center,
-    //           children: <Widget>[
-    //             Text('Earned Currency'),
-    //           ],
-    //         ),
-    //       ),
-    //     );
-    //   }
-    // });
     BlocProvider.of<TabBloc>(context).loginRewardStream.listen((event) {
-      print('aaaaaaaaaaaaaaaaaaaa');
-      print(event.toString());
+      showDialog<void>(
+        context: context,
+        builder: (_) => SuccessDialog(),
+      );
     });
     super.initState();
   }
@@ -51,6 +38,44 @@ class _HomeWidgetState extends State<HomeWidget> {
           ),
         );
       },
+    );
+  }
+}
+
+class SuccessDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                const Icon(Icons.info),
+                const Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Form Submitted Successfully!',
+                      softWrap: true,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            RaisedButton(
+              child: const Text('OK'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
