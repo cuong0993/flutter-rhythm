@@ -7,7 +7,36 @@ import 'tab_event.dart';
 import 'tab_state.dart';
 import 'tab_widget.dart';
 
-class HomeWidget extends StatelessWidget {
+class HomeWidget extends StatefulWidget {
+  @override
+  _HomeWidgetState createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
+  @override
+  void initState() {
+    // widget.notificationStream.listen((CurrencyNotification data) {
+    //   if (data is NotificationOfIncrease) {
+    //     Scaffold.of(context).showSnackBar(
+    //       SnackBar(
+    //         duration: Duration(seconds: 1),
+    //         content: Row(
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //           children: <Widget>[
+    //             Text('Earned Currency'),
+    //           ],
+    //         ),
+    //       ),
+    //     );
+    //   }
+    // });
+    BlocProvider.of<TabBloc>(context).loginRewardStream.listen((event) {
+      print('aaaaaaaaaaaaaaaaaaaa');
+      print(event.toString());
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TabBloc, TabState>(

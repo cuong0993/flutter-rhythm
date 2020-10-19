@@ -62,7 +62,7 @@ class MidiProcessor {
             _soundPathToSoundIdMap[soundPaths.elementAt(key)] = soundId;
             _numberOfLoadedSound++;
             if (_numberOfLoadedSound == soundPaths.length) {
-              _soundLoadedController.sink.add(true);
+              _soundLoadedController.add(true);
             }
           })
         });
@@ -95,7 +95,7 @@ class MidiProcessor {
   void dispose() {
     _soundPool.release();
     _numberOfLoadedSound = 0;
-    _soundLoadedController.sink.add(false);
+    _soundLoadedController.add(false);
     _soundLoadedController.close();
     _soundPathToSoundIdMap.clear();
     _activeSounds.clear();

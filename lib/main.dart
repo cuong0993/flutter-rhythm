@@ -74,12 +74,13 @@ class _AppState extends State<App> {
       return Center(child: CircularProgressIndicator());
     }
 
+    final userRepository = UserRepositoryImpl();
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
           create: (context) {
             return AuthenticationBloc(
-              userRepository: UserRepositoryImpl(),
+              userRepository: userRepository,
             )..add(StartAuthentication());
           },
         ),
@@ -99,9 +100,7 @@ class _AppState extends State<App> {
         ),
         BlocProvider<UserBloc>(
           create: (context) {
-            return UserBloc(
-                authenticationBloc:
-                    BlocProvider.of<AuthenticationBloc>(context));
+            return UserBloc(userRepository: userRepository);
           },
         )
       ],
@@ -120,7 +119,9 @@ class _AppState extends State<App> {
               builder: (context, state) {
                 if (state is Authenticated) {
                   return BlocProvider<TabBloc>(
-                      create: (context) => TabBloc(), child: HomeWidget());
+                      create: (context) =>
+                          TabBloc(userRepository: userRepository),
+                      child: HomeWidget());
                 }
                 if (state is Unauthenticated) {
                   return Scaffold(body: Center(child: Text('Error occurred')));

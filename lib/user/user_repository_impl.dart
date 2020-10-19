@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'user.dart' as user;
 
 import 'user_repository.dart';
 
@@ -22,5 +24,10 @@ class UserRepositoryImpl implements UserRepository {
   @override
   String getUserId() {
     return _firebaseAuth.currentUser.uid;
+  }
+
+  @override
+  Stream<user.User> getUser() {
+        return FirebaseFirestore.instance.collection('users').doc(getUserId()).snapshots().map((event) => user.User.fromJson(event.data()));
   }
 }

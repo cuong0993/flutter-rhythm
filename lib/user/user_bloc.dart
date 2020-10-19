@@ -1,24 +1,22 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../authentication/authentication_bloc.dart';
-import '../authentication/authentication_state.dart';
 import 'user.dart';
+import 'user_repository.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  final AuthenticationBloc _authenticationBloc;
+  final UserRepository _userRepository;
   StreamSubscription _userSubscription;
 
-  UserBloc({@required AuthenticationBloc authenticationBloc})
-      : assert(authenticationBloc != null),
-        _authenticationBloc = authenticationBloc,
+  UserBloc({@required UserRepository userRepository})
+      : assert(userRepository != null),
+        _userRepository = userRepository,
         super(UserInitial());
 
   @override
@@ -27,13 +25,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   ) async* {
     if (event is LoadUser) {
       await _userSubscription?.cancel();
-      _userSubscription = FirebaseFirestore.instance
-          .collection('users')
-          .doc((_authenticationBloc.state as Authenticated).userId)
-          .snapshots()
-          .listen((event) {
-        add(UpdateUser(User.fromJson(event.data())));
-      });
+      _userSubscription = _userRepository.getUser().listen(
+            (user) => add(UpdateUser(user))
+      );
     } else if (event is UpdateUser) {
       yield UserUpdated(event.user);
     }
