@@ -15,7 +15,7 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   void initState() {
-    BlocProvider.of<TabBloc>(context).loginRewardStream.listen((event) {
+    BlocProvider.of<TabBloc>(context).userUpLevelStream.listen((event) {
       showDialog<void>(
         context: context,
         builder: (_) => SuccessDialog(),

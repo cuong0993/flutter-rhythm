@@ -27,8 +27,8 @@ class MidiProcessor {
     */
   final _maxStreams = 8;
   final _soundPool = Soundpool(streamType: StreamType.music);
-  HashMap<String, int> _soundPathToSoundIdMap;
-  LinkedHashSet<int> _activeSounds;
+  final _soundPathToSoundIdMap = HashMap<String, int> ();
+  final _activeSounds = LinkedHashSet<int>();
   var _numberOfLoadedSound = 0;
 
   final _soundLoadedController = StreamController<bool>();

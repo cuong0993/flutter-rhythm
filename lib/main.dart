@@ -75,6 +75,7 @@ class _AppState extends State<App> {
     }
 
     final userRepository = UserRepositoryImpl();
+    final instrumentsRepository = InstrumentsRepositoryImpl();
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
@@ -94,7 +95,7 @@ class _AppState extends State<App> {
         BlocProvider<InstrumentsBloc>(
           create: (context) {
             return InstrumentsBloc(
-              instrumentsRepository: InstrumentsRepositoryImpl(),
+              instrumentsRepository: instrumentsRepository,
             )..add(LoadInstruments());
           },
         ),
@@ -120,7 +121,7 @@ class _AppState extends State<App> {
                 if (state is Authenticated) {
                   return BlocProvider<TabBloc>(
                       create: (context) =>
-                          TabBloc(userRepository: userRepository),
+                          TabBloc(userRepository, instrumentsRepository),
                       child: HomeWidget());
                 }
                 if (state is Unauthenticated) {
