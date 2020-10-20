@@ -673,9 +673,11 @@ packages:
   soundpool:
     dependency: "direct main"
     description:
-      name: soundpool
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: soundpool
+      ref: HEAD
+      resolved-ref: d7798a0319a546e02f76820eb35beb92fee01368
+      url: "https://github.com/cuong0993/soundpool.git"
+    source: git
     version: "1.1.2"
   soundpool_macos:
     dependency: transitive

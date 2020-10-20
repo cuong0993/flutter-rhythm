@@ -17,7 +17,11 @@ dependencies:
   flame: 0.27.0
   dart_midi: ^1.0.1
   path_provider: ^1.6.21
-  soundpool: ^1.1.2
+  #soundpool: ^1.1.2
+  soundpool:
+    git:
+      url: https://github.com/cuong0993/soundpool.git
+      path: soundpool
   percent_indicator: ^2.1.7+4
   cupertino_icons: ^1.0.0
   json_annotation: ^3.1.0
