@@ -15,8 +15,9 @@ class TabBloc extends Bloc<TabEvent, TabState> {
       : assert(userRepository != null),
         _userRepository = userRepository,
         super(TabState.instruments) {
-    _userSubscription = _userRepository.getUser().listen(
-    (user) => _controller.add(true)
+    _userSubscription = _userRepository.getUser().skip(1).map((user) => user.free).distinct().listen(
+    (user) => {
+      _controller.add(true)}
     );
   }
 
