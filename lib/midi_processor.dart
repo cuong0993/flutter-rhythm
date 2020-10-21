@@ -55,7 +55,7 @@ class MidiProcessor {
     final soundPaths = serverFilePathToCacheFilePaths.values;
     final soundIdFutures = <Future>[];
     soundPaths.forEach((path) {
-      soundIdFutures.add(_soundPool.loadUri(path));
+      soundIdFutures.add(_soundPool.load(path));
     });
     Future.wait(soundIdFutures).then((soundIds) => {
           soundIds.asMap().forEach((key, soundId) {

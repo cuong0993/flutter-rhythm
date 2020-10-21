@@ -5,6 +5,7 @@ import '../instrument/instruments_widget.dart';
 import '../my_flutter_app_icons.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 enum TabState { instruments, songs, user }
 
@@ -12,11 +13,11 @@ extension AppTabExtension on TabState {
   String get name {
     switch (this) {
       case TabState.instruments:
-        return 'txt_instrument_title_instruments';
+        return 'txt_instrument_title_instruments'.tr();
       case TabState.songs:
-        return 'txt_all_songs';
+        return 'txt_all_songs'.tr();
       case TabState.user:
-        return 'txt_page_title_about';
+        return 'txt_page_title_about'.tr();
       default:
         return null;
     }
