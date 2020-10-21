@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -5,7 +6,6 @@ import '../instrument/instruments_widget.dart';
 import '../my_flutter_app_icons.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_widget.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 enum TabState { instruments, songs, user }
 

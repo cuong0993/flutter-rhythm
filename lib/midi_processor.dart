@@ -28,7 +28,7 @@ class MidiProcessor {
   final _maxStreams = 8;
   final _soundPool = Soundpool(streamType: StreamType.music);
   final _soundPathToSoundIdMap = HashMap<String, int> ();
-  final _activeSounds = LinkedHashSet<int>();
+  final _activeSounds = <int>{};
   var _numberOfLoadedSound = 0;
 
   final _soundLoadedController = StreamController<bool>();
@@ -55,7 +55,7 @@ class MidiProcessor {
     final soundPaths = serverFilePathToCacheFilePaths.values;
     final soundIdFutures = <Future>[];
     soundPaths.forEach((path) {
-      soundIdFutures.add(_soundPool.load(path));
+      soundIdFutures.add(_soundPool.loadPath(path));
     });
     Future.wait(soundIdFutures).then((soundIds) => {
           soundIds.asMap().forEach((key, soundId) {

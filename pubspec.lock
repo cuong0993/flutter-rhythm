@@ -675,7 +675,7 @@ packages:
     description:
       path: soundpool
       ref: HEAD
-      resolved-ref: be8d8ff7d7c64d9e9184dad846755e24854a93f1
+      resolved-ref: "46750cf7507a9aba1779032e49d2b761eec763ca"
       url: "https://github.com/cuong0993/soundpool.git"
     source: git
     version: "1.1.2"
@@ -684,7 +684,7 @@ packages:
     description:
       path: soundpool_platform_interface
       ref: HEAD
-      resolved-ref: be8d8ff7d7c64d9e9184dad846755e24854a93f1
+      resolved-ref: "46750cf7507a9aba1779032e49d2b761eec763ca"
       url: "https://github.com/cuong0993/soundpool.git"
     source: git
     version: "1.0.1"
