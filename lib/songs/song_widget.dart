@@ -21,21 +21,13 @@ class SongWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      leading: ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: 44,
-          minHeight: 44,
-          maxWidth: 64,
-          maxHeight: 64,
-        ),
-        child: CachedNetworkImage(
-            imageUrl: song.imageUrl,
-              width: size40dp.toDouble(),
-              height: size40dp.toDouble(),
-            memCacheWidth: size40dp,
-            memCacheHeight: size40dp,
-            cacheManager: FirebaseCacheManager()),
-      ),
+      leading: CachedNetworkImage(
+          imageUrl: song.imageUrl,
+          width: size40dp.toDouble(),
+          height: size40dp.toDouble(),
+          memCacheWidth: size40dp,
+          memCacheHeight: size40dp,
+          cacheManager: FirebaseCacheManager()),
       title: Text(
         song.title,
         style: Theme.of(context).textTheme.headline6,
