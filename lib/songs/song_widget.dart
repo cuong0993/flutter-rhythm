@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +22,7 @@ class SongWidget extends StatelessWidget {
       onTap: onTap,
       leading: CachedNetworkImage(
           imageUrl: song.imageUrl,
-          width: size40dp.toDouble(),
-          height: size40dp.toDouble(),
+          placeholder: (context, url) => CircularProgressIndicator(),
           memCacheWidth: size40dp,
           memCacheHeight: size40dp,
           cacheManager: FirebaseCacheManager()),

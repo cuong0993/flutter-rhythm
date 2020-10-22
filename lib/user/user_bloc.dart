@@ -25,9 +25,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   ) async* {
     if (event is LoadUser) {
       await _userSubscription?.cancel();
-      _userSubscription = _userRepository.getUser().listen(
-            (user) => add(UpdateUser(user))
-      );
+      _userSubscription =
+          _userRepository.getUser().listen((user) => add(UpdateUser(user)));
     } else if (event is UpdateUser) {
       yield UserUpdated(event.user);
     }

@@ -15,20 +15,26 @@ class TabBloc extends Bloc<TabEvent, TabState> {
   Stream<bool> userChangeToPremiumStream;
   Stream<User> userUpLevelStream;
 
-  TabBloc(this._userRepository, this._instrumentsRepository) :super(TabState.instruments) {
+  TabBloc(this._userRepository, this._instrumentsRepository)
+      : super(TabState.instruments) {
     userChangeToPremiumStream = _userRepository
         .getUser()
         .map((user) => user.free)
         .distinct()
         .where((free) => !free)
         .skip(1);
-    userUpLevelStream =
-        _userRepository.getUser().distinct((prev, next) => prev.level == next.level).skip(1);
-        _userRepository.getUser().map((user) => user.instrumentId).distinct()
+    userUpLevelStream = _userRepository
+        .getUser()
+        .distinct((prev, next) => prev.level == next.level)
+        .skip(1);
+    _userRepository
+        .getUser()
+        .map((user) => user.instrumentId)
+        .distinct()
         .listen((id) async {
-          final instrument = await _instrumentsRepository.getInstrument(id);
-          MidiProcessor.getInstance().onSelectInstrument(instrument);
-        });
+      final instrument = await _instrumentsRepository.getInstrument(id);
+      MidiProcessor.getInstance().onSelectInstrument(instrument);
+    });
   }
 
   @override

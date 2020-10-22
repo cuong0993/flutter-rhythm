@@ -20,6 +20,10 @@ class InstrumentsRepositoryImpl implements InstrumentsRepository {
 
   @override
   Future<Instrument> getInstrument(String id) {
-    return  FirebaseFirestore.instance.collection('instruments').doc(id).get().then((value) => Instrument.fromJson(value.data()));
+    return FirebaseFirestore.instance
+        .collection('instruments')
+        .doc(id)
+        .get()
+        .then((value) => Instrument.fromJson(value.data()));
   }
 }

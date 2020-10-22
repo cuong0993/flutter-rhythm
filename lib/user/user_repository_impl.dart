@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'user.dart' as user;
 
+import 'user.dart' as user;
 import 'user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -28,6 +28,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Stream<user.User> getUser() {
-        return FirebaseFirestore.instance.collection('users').doc(getUserId()).snapshots().map((event) => user.User.fromJson(event.data()));
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(getUserId())
+        .snapshots()
+        .map((event) => user.User.fromJson(event.data()));
   }
 }
