@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
-import '../firebase_storage_cacher.dart';
 import '../instrument/instruments_repository.dart';
 import '../midi_processor.dart';
 import '../user/user.dart';
@@ -29,8 +27,6 @@ class TabBloc extends Bloc<TabEvent, TabState> {
         _userRepository.getUser().map((user) => user.instrumentId).distinct()
         .listen((id) async {
           final instrument = await _instrumentsRepository.getInstrument(id);
-          final soundFiles = instrument.soundFiles;
-          await Future.wait(soundFiles.values.map((path) => FirebaseStorage.instance.tryToSaveFile(path)));
           MidiProcessor.getInstance().onSelectInstrument(instrument);
         });
   }

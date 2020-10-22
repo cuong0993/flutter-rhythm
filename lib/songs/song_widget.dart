@@ -1,10 +1,9 @@
-import 'dart:io';
-import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager_firebase/flutter_cache_manager_firebase.dart';
 
-import '../firebase_storage_cacher.dart';
 import '../util.dart';
 import 'song.dart';
 
@@ -22,17 +21,24 @@ class SongWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      leading: Image.file(File(song.imageUrl.toLocalFilePath()),
-          cacheWidth: size40dp, cacheHeight: size40dp),
-      title: Hero(
-        tag: '${song.id}__heroTag',
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: Text(
-            song.title,
-            style: Theme.of(context).textTheme.headline6,
-          ),
+      leading: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: 44,
+          minHeight: 44,
+          maxWidth: 64,
+          maxHeight: 64,
         ),
+        child: CachedNetworkImage(
+            imageUrl: song.imageUrl,
+              width: size40dp.toDouble(),
+              height: size40dp.toDouble(),
+            memCacheWidth: size40dp,
+            memCacheHeight: size40dp,
+            cacheManager: FirebaseCacheManager()),
+      ),
+      title: Text(
+        song.title,
+        style: Theme.of(context).textTheme.headline6,
       ),
       subtitle: song.artist.isNotEmpty
           ? Text(

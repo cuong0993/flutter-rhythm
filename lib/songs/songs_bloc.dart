@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:meta/meta.dart';
 
-import '../firebase_storage_cacher.dart';
 import 'songs_event.dart';
 import 'songs_repository.dart';
 import 'songs_state.dart';
@@ -36,11 +34,6 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
 
   Stream<SongsState> _mapLoadMoreSongsToState() async* {
     final songs = await _songsRepository.songs(_lastSongTitle, 20);
-    final downloadFutures = <Future>[];
-    songs.map((e) => e.imageUrl).toSet().forEach((element) {
-      downloadFutures.add(FirebaseStorage.instance.tryToSaveFile(element));
-    });
-    await Future.wait(downloadFutures);
     add(UpdateSongs(
         (state is SongsLoaded) ? (state as SongsLoaded).songs + songs : songs));
     if (songs.isNotEmpty) {

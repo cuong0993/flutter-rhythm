@@ -16,7 +16,6 @@ dependencies:
   firebase_storage: ^4.0.1
   flame: 0.27.0
   dart_midi: ^1.0.1
-  path_provider: ^1.6.21
   #soundpool: ^1.1.2
   soundpool:
     git:
@@ -30,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   json_annotation: ^3.1.0
   flutter_cache_manager_firebase: ^1.0.1
+  cached_network_image: ^2.3.3
   #rxdart: ^0.24.1
 
 dev_dependencies:

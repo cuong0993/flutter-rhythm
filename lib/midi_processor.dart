@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:collection';
 
+import 'package:flutter_cache_manager_firebase/flutter_cache_manager_firebase.dart';
 import 'package:soundpool/soundpool.dart';
 
-import 'firebase_storage_cacher.dart';
 import 'instrument/instrument.dart';
 
 class MidiProcessor {
@@ -16,7 +15,7 @@ class MidiProcessor {
     return _instance;
   }
 
-  final _noteToSoundPathAndPitchMap = HashMap<int, Pair<String, double>>();
+  Map<int, Pair<int, double>> _noteToSoundIdAndPitches;
   Instrument _instrument;
 
   /*
@@ -27,9 +26,8 @@ class MidiProcessor {
     */
   final _maxStreams = 8;
   final _soundPool = Soundpool(streamType: StreamType.music);
-  final _soundPathToSoundIdMap = HashMap<String, int> ();
+
   final _activeSounds = <int>{};
-  var _numberOfLoadedSound = 0;
 
   final _soundLoadedController = StreamController<bool>();
 
@@ -38,34 +36,24 @@ class MidiProcessor {
   void onSelectInstrument(Instrument instrument) {
     _instrument = instrument;
     dispose();
-    final soundFiles = instrument.soundFiles;
-    final serverFilePathToCacheFilePaths = HashMap<String, String>();
-    soundFiles.forEach((key, serverFilePath) {
-      final cacheFilePath = serverFilePath.toLocalFilePath();
-      serverFilePathToCacheFilePaths[serverFilePath] = cacheFilePath;
-    });
-
-    instrument.soundNotes.forEach((key, pitchNote) {
-      final cacheFilePath =
-          serverFilePathToCacheFilePaths[soundFiles[pitchNote.note]];
-      if (cacheFilePath != null) {
-        _noteToSoundPathAndPitchMap[key] = Pair(cacheFilePath, pitchNote.pitch);
-      }
-    });
-    final soundPaths = serverFilePathToCacheFilePaths.values;
-    final soundIdFutures = <Future>[];
-    soundPaths.forEach((path) {
-      soundIdFutures.add(_soundPool.loadPath(path));
-    });
-    Future.wait(soundIdFutures).then((soundIds) => {
-          soundIds.asMap().forEach((key, soundId) {
-            _soundPathToSoundIdMap[soundPaths.elementAt(key)] = soundId;
-            _numberOfLoadedSound++;
-            if (_numberOfLoadedSound == soundPaths.length) {
-              _soundLoadedController.add(true);
-            }
-          })
-        });
+    Future.wait(
+            instrument.soundFiles.values
+                .map((e) => FirebaseCacheManager().getSingleFile(e)))
+        .then((files) => {
+              Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
+                  .then((soundIds) => {
+                        _noteToSoundIdAndPitches = _instrument.soundNotes.map(
+                            (note, pitchNote) => MapEntry(
+                                note,
+                                Pair(
+                                    soundIds[_instrument.soundFiles.keys
+                                        .toList()
+                                        .indexOf(pitchNote.note)],
+                                    pitchNote.pitch))),
+                        if (soundIds.length == _instrument.soundFiles.length)
+                          {_soundLoadedController.add(true)}
+                      })
+            });
   }
 
   Future<void> playNote(int note) async {
@@ -77,29 +65,24 @@ class MidiProcessor {
     while (pitchNote < _instrument.minNote) {
       pitchNote += 12;
     }
-    final soundPathAndPitch = _noteToSoundPathAndPitchMap[pitchNote];
-    if (soundPathAndPitch != null) {
-      final soundId = _soundPathToSoundIdMap[soundPathAndPitch.first];
-      if (soundId != null) {
-        _activeSounds.add(
-            await _soundPool.play(soundId, rate: soundPathAndPitch.second));
-        if (_activeSounds.length == _maxStreams) {
-          final firstSound = _activeSounds.first;
-          await _soundPool.stop(firstSound);
-          _activeSounds.remove(firstSound);
-        }
+    final soundIdAndPitch = _noteToSoundIdAndPitches[pitchNote];
+    if (soundIdAndPitch != null) {
+      _activeSounds.add(await _soundPool.play(soundIdAndPitch.first,
+          rate: soundIdAndPitch.second));
+      if (_activeSounds.length == _maxStreams) {
+        final firstSound = _activeSounds.first;
+        await _soundPool.stop(firstSound);
+        _activeSounds.remove(firstSound);
       }
     }
   }
 
   void dispose() {
     _soundPool.release();
-    _numberOfLoadedSound = 0;
     _soundLoadedController.add(false);
     _soundLoadedController.close();
-    _soundPathToSoundIdMap.clear();
     _activeSounds.clear();
-    _noteToSoundPathAndPitchMap.clear();
+   // _noteToSoundIdAndPitches.clear();
   }
 }
 
