@@ -30,8 +30,6 @@ class InstrumentsWidget extends StatelessWidget {
                   await Navigator.pushNamed(context, Routes.game,
                       arguments: instrument);
                 },
-                onDismissed: (DismissDirection direction) {},
-                onCheckboxChanged: (bool value) {},
               );
             },
           );

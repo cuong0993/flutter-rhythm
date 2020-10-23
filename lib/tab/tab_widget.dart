@@ -22,6 +22,8 @@ class TabWidget extends StatelessWidget {
       showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: Theme.of(context).accentColor,
+      selectedItemColor: Theme.of(context).buttonColor,
+      unselectedItemColor: Theme.of(context).disabledColor,
       items: TabState.values.map((tab) {
         return BottomNavigationBarItem(
           icon: tab.icon,
