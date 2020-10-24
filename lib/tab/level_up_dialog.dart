@@ -1,30 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'base_dialog.dart';
+
 class LevelUpDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('AlertDialog'),
-      content: Image(image: AssetImage('images/img_firework.png')),
-      actions: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: const Color(0xFF33b17c),
-            ),
-            child: new Text(
-              'Rate product',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontFamily: 'helvetica_neue_light',
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ],
+    return BaseDialog(
+      title: '提示',
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Image(image: AssetImage('assets/images/img_firework.png')),
+      ),
+      onPressed: () {
+       /// NavigatorUtils.push(context, LoginRouter.loginPage, clearStack: true);
+      },
     );
   }
 }
