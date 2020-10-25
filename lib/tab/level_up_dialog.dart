@@ -23,19 +23,19 @@ class LevelUpDialog extends StatelessWidget {
         ),
         bottomNavigationBar: Row(
           children: [
-            SizedBox(width: 10),
+            SizedBox(width: 8),
             Expanded(
               child: FlatButton(
                 color: Colors.blue,
                 textColor: Colors.white,
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).pop(),
                 child: Text(
                   'txt_all_ok'.tr(),
                   style: TextStyle(fontSize: 20.0),
                 ),
               ),
             ),
-            SizedBox(width: 10)
+            SizedBox(width: 8)
           ],
         ));
   }
