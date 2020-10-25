@@ -41,7 +41,12 @@ class LevelUpDialog extends StatelessWidget {
         ),
         body: Align(
           alignment: Alignment.center,
-          child: Image(image: AssetImage('assets/images/img_firework.png')),
+          child: Column(
+            children: [
+              Image(image: AssetImage('assets/images/img_firework.png')),
+              Text('txt_dialog_level_up_description'.tr(args: [1.toString()]))
+            ],
+          ),
         ),
         bottomNavigationBar: Row(
           children: [
@@ -57,19 +62,7 @@ class LevelUpDialog extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 10),
-            Expanded(
-              child: FlatButton(
-                color: Colors.blue,
-                textColor: Colors.white,
-                onPressed: () {},
-                child: Text(
-                  'txt_all_ok'.tr(),
-                  style: TextStyle(fontSize: 20.0),
-                ),
-              ),
-            ),
-            SizedBox(width: 10),
+            SizedBox(width: 10)
           ],
         ));
   }
