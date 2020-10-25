@@ -60,6 +60,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    const isDark = true;
     if (_error) {
       return Scaffold(body: Center(child: Text('Error occurred')));
     }
@@ -103,10 +104,23 @@ class _AppState extends State<App> {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+        theme: ThemeData.from(
+            textTheme:
+                (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
+            colorScheme: ColorScheme(
+                brightness: isDark ? Brightness.dark : Brightness.light,
+                primary: Color(0xFF1F1929),
+                primaryVariant: Color(0xFF1F1929),
+                secondary: Color(0xFF1F1929),
+                secondaryVariant: Color(0xFF1F1929),
+                background: Color(0xFF241E30),
+                surface: Color(0xFF241E30),
+                onBackground: Color(0xFFFFFFFF),
+                onSurface: Color(0xFFFFFFFF),
+                onError: Colors.white,
+                onPrimary: Colors.white,
+                onSecondary: Colors.white,
+                error: Colors.red.shade400)),
         routes: {
           Routes.home: (context) {
             return BlocBuilder<AuthenticationBloc, AuthenticationState>(
