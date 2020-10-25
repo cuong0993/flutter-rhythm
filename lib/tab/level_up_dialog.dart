@@ -1,7 +1,5 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 // class LevelUpDialog extends StatelessWidget {
 //   @override
@@ -36,25 +34,43 @@ class LevelUpDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text('txt_dialog_level_up_name'.tr()),
-      ),
-      body: Align(
-        alignment: Alignment.center,
-        child:       Image(image: AssetImage('assets/images/img_firework.png')),
-
-      ),
-      bottomNavigationBar: FlatButton(
-          onPressed: () {
-          },
-          child: Text('txt_all_ok'.tr(),
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .subhead
-                  .copyWith(color: Colors.white))),
-    );
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          title: Text('txt_dialog_level_up_name'.tr()),
+        ),
+        body: Align(
+          alignment: Alignment.center,
+          child: Image(image: AssetImage('assets/images/img_firework.png')),
+        ),
+        bottomNavigationBar: Row(
+          children: [
+            SizedBox(width: 10),
+            Expanded(
+              child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                onPressed: () {},
+                child: Text(
+                  'txt_all_ok'.tr(),
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                onPressed: () {},
+                child: Text(
+                  'txt_all_ok'.tr(),
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+            ),
+            SizedBox(width: 10),
+          ],
+        ));
   }
 }
