@@ -17,7 +17,7 @@ jobs:
         with:
           channel: 'stable' # or: 'dev' or 'beta'
       - run: flutter pub get
-      - run: flutter build apk --debug --split-per-abi
+      - run: flutter build apk --split-per-abi
       - name: Push APK to Releases
         uses: ncipollo/release-action@v1
         with:
