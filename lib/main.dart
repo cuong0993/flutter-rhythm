@@ -1,11 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_event.dart';
-import 'authentication/authentication_state.dart';
 import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'instrument/instruments_bloc.dart';
@@ -16,6 +14,7 @@ import 'simple_bloc_observer.dart';
 import 'songs/songs_bloc.dart';
 import 'songs/songs_event.dart';
 import 'songs/songs_repository_impl.dart';
+import 'splash_widget.dart';
 import 'tab/home_widget.dart';
 import 'tab/tab_bloc.dart';
 import 'user/user_bloc.dart';
@@ -30,44 +29,10 @@ void main() async {
       child: App()));
 }
 
-class App extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  bool _initialized = false;
-  bool _error = false;
-
-  void initializeFlutterFire() async {
-    try {
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch (e) {
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    initializeFlutterFire();
-    super.initState();
-  }
-
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const isDark = true;
-    if (_error) {
-      return Scaffold(body: Center(child: Text('Error occurred')));
-    }
-    if (!_initialized) {
-      return Center(child: CircularProgressIndicator());
-    }
-
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
     return MultiBlocProvider(
@@ -122,21 +87,14 @@ class _AppState extends State<App> {
                 onSecondary: Colors.white,
                 error: Colors.red.shade400)),
         routes: {
+          Routes.splash: (context) {
+                return SplashWidget();
+          },
           Routes.home: (context) {
-            return BlocBuilder<AuthenticationBloc, AuthenticationState>(
-              builder: (context, state) {
-                if (state is Authenticated) {
-                  return BlocProvider<TabBloc>(
-                      create: (context) =>
-                          TabBloc(userRepository, instrumentsRepository),
-                      child: HomeWidget());
-                }
-                if (state is Unauthenticated) {
-                  return Scaffold(body: Center(child: Text('Error occurred')));
-                }
-                return Center(child: CircularProgressIndicator());
-              },
-            );
+            return BlocProvider<TabBloc>(
+                create: (context) =>
+                    TabBloc(userRepository, instrumentsRepository),
+                child: HomeWidget());
           },
           Routes.game: (context) {
             return BlocProvider<GameBloc>(

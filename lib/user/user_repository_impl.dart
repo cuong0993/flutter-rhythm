@@ -1,29 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'user.dart' as user;
 import 'user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  final FirebaseAuth _firebaseAuth;
-
-  UserRepositoryImpl({FirebaseAuth firebaseAuth})
-      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+  UserRepositoryImpl();
 
   @override
   Future<bool> isAuthenticated() async {
-    final currentUser = _firebaseAuth.currentUser;
+    await Firebase.initializeApp();
+    final currentUser = FirebaseAuth.instance.currentUser;
     return currentUser != null;
   }
 
   @override
   Future<void> signInAnonymously() {
-    return _firebaseAuth.signInAnonymously();
+    return FirebaseAuth.instance.signInAnonymously();
   }
 
   @override
   String getUserId() {
-    return _firebaseAuth.currentUser.uid;
+    return FirebaseAuth.instance.currentUser.uid;
   }
 
   @override

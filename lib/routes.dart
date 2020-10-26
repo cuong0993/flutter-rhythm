@@ -1,4 +1,5 @@
 class Routes {
-  static final home = '/';
+  static final splash = '/';
+  static final home = '/home';
   static final game = '/game';
 }

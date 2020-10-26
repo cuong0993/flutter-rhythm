@@ -29,7 +29,8 @@ class _HomeWidgetState extends State<HomeWidget> {
     return BlocBuilder<TabBloc, TabState>(
       builder: (context, activeTab) {
         return Scaffold(
-          appBar: AppBar(title: Text(activeTab.name)),
+          appBar: AppBar(
+              automaticallyImplyLeading: false, title: Text(activeTab.name)),
           body: activeTab.widget,
           bottomNavigationBar: TabWidget(
             activeTab: activeTab,
