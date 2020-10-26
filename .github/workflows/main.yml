@@ -17,9 +17,11 @@ jobs:
         with:
           channel: 'stable' # or: 'dev' or 'beta'
       - run: flutter pub get
+      - run: flutter format --set-exit-if-changed .
+      - run: flutter analyze .
+      - run: flutter test
       - run: flutter build apk --flavor prod
-      - name: Push APK to Releases
-        uses: ncipollo/release-action@v1
+      - uses: actions/upload-artifact@v1
         with:
-          artifacts: "build/app/outputs/flutter-apk/*.apk"
-          token: ${{ secrets.TOKEN }}
+          name: release-apk
+          path: build/app/outputs/flutter-apk/*.apk

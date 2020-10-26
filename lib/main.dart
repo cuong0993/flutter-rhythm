@@ -88,7 +88,7 @@ class App extends StatelessWidget {
                 error: Colors.red.shade400)),
         routes: {
           Routes.splash: (context) {
-                return SplashWidget();
+            return SplashWidget();
           },
           Routes.home: (context) {
             return BlocProvider<TabBloc>(

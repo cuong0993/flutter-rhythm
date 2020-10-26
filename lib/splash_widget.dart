@@ -5,7 +5,6 @@ import 'authentication/authentication_state.dart';
 
 import 'routes.dart';
 
-
 class SplashWidget extends StatefulWidget {
   @override
   _SplashWidgetState createState() => _SplashWidgetState();
@@ -25,7 +24,7 @@ class _SplashWidgetState extends State<SplashWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:Center(child: Image(image: AssetImage('assets/images/img_app_icon.png')))
-    );
+        body: Center(
+            child: Image(image: AssetImage('assets/images/img_app_icon.png'))));
   }
 }

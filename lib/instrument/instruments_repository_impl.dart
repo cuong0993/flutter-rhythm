@@ -8,7 +8,10 @@ import 'instruments_repository.dart';
 class InstrumentsRepositoryImpl implements InstrumentsRepository {
   @override
   Stream<List<Instrument>> instruments() {
-    return FirebaseFirestore.instance.collection('instruments').snapshots().map((snapshot) {
+    return FirebaseFirestore.instance
+        .collection('instruments')
+        .snapshots()
+        .map((snapshot) {
       return snapshot.docs
           .map((doc) => Instrument.fromJson(doc.data()))
           .toList();

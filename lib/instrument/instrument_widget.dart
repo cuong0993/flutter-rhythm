@@ -19,17 +19,16 @@ class InstrumentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap,
-      leading: CachedNetworkImage(
-          imageUrl: instrument.imageUrl,
-          placeholder: (context, url) => CircularProgressIndicator(),
-          memCacheWidth: size40dp,
-          memCacheHeight: size40dp,
-          cacheManager: FirebaseCacheManager()),
-      title: Text(
-        instrument.title,
-        style: Theme.of(context).textTheme.headline6,
-      )
-    );
+        onTap: onTap,
+        leading: CachedNetworkImage(
+            imageUrl: instrument.imageUrl,
+            placeholder: (context, url) => CircularProgressIndicator(),
+            memCacheWidth: size40dp,
+            memCacheHeight: size40dp,
+            cacheManager: FirebaseCacheManager()),
+        title: Text(
+          instrument.title,
+          style: Theme.of(context).textTheme.headline6,
+        ));
   }
 }
