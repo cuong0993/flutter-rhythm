@@ -39,6 +39,7 @@ analyzer:
     - lib/songs/song.dart
     - lib/game/tile/tile_chunk.dart
     - lib/game/note/note.dart
+    - lib/generated/**
 
 linter:
   rules:
