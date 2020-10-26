@@ -37,9 +37,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: ^1.9.2
-  build_runner: ^1.10.2
+  build_runner: ^1.10.3
   json_serializable: ^3.5.0
-  intl_translation: ^0.17.10+1
 
 flutter:
   uses-material-design: true
@@ -51,3 +50,5 @@ flutter:
     - family: MyFlutterApp
       fonts:
         - asset: assets/fonts/MyFlutterApp.ttf
+flutter_intl:
+  enabled: true

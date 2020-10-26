@@ -6,6 +6,7 @@ import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_event.dart';
 import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
+import 'generated/l10n.dart';
 import 'instrument/instruments_bloc.dart';
 import 'instrument/instruments_event.dart';
 import 'instrument/instruments_repository_impl.dart';
@@ -63,6 +64,7 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Hit Notes',
         localizationsDelegates: [
+          AppLocalizationDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
