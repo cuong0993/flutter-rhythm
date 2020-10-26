@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class LevelUpDialog extends StatelessWidget {
@@ -8,7 +7,7 @@ class LevelUpDialog extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: Text('txt_dialog_level_up_name'.tr()),
+          title: Text('txt_dialog_level_up_name'),
         ),
         body: Align(
           alignment: Alignment.center,
@@ -17,7 +16,7 @@ class LevelUpDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(image: AssetImage('assets/images/img_firework.png')),
-              Text('txt_dialog_level_up_description'.tr(args: [1.toString()]))
+              Text('txt_dialog_level_up_description')
             ],
           ),
         ),
@@ -30,7 +29,7 @@ class LevelUpDialog extends StatelessWidget {
                 textColor: Colors.white,
                 onPressed: () => Navigator.of(context).pop(),
                 child: Text(
-                  'txt_all_ok'.tr(),
+                  'txt_all_ok',
                   style: TextStyle(fontSize: 20.0),
                 ),
               ),

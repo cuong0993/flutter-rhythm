@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_event.dart';
@@ -22,11 +22,7 @@ import 'user/user_repository_impl.dart';
 
 void main() async {
   Bloc.observer = SimpleBlocObserver();
-  runApp(EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('de', 'DE')],
-      path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
-      child: App()));
+  runApp(App());
 }
 
 class App extends StatelessWidget {
@@ -66,9 +62,14 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Hit Notes',
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en', ''), // English
+        ],
         theme: ThemeData.from(
             textTheme:
                 (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,

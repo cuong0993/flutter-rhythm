@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,11 +12,11 @@ extension AppTabExtension on TabState {
   String get name {
     switch (this) {
       case TabState.instruments:
-        return 'txt_instrument_title_instruments'.tr();
+        return 'txt_instrument_title_instruments';
       case TabState.songs:
-        return 'txt_all_songs'.tr();
+        return 'txt_all_songs';
       case TabState.user:
-        return 'txt_page_title_about'.tr();
+        return 'txt_page_title_about';
       default:
         return null;
     }
