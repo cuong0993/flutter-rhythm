@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../generated/l10n.dart';
 
 import 'level_up_dialog.dart';
 import 'tab_bloc.dart';
@@ -31,7 +30,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
-              automaticallyImplyLeading: false, title: Text(S.of(context).appName)),
+              automaticallyImplyLeading: false, title: Text(activeTab.getName(context))),
           body: activeTab.widget,
           bottomNavigationBar: TabWidget(
             activeTab: activeTab,

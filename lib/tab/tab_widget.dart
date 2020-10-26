@@ -24,7 +24,7 @@ class TabWidget extends StatelessWidget {
       items: TabState.values.map((tab) {
         return BottomNavigationBarItem(
           icon: tab.icon,
-          label: tab.name,
+          label: tab.getName(context),
         );
       }).toList(),
     );
