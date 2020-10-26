@@ -6,61 +6,20 @@ on:
       - master
 
 jobs:
-  buildWeb:
+  buildApk:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          channel: "beta"
-      - run: flutter config --enable-web
+          channel: 'stable' # or: 'dev' or 'beta'
       - run: flutter pub get
-      - run: flutter build web --release
-      # - uses: w9jds/firebase-action@master
-      #   with:
-      #     args: deploy --only hosting
-      #   env:
-      #     FIREBASE_TOKEN: ${{ secrets.FLUTTERWEB_FIREBASE_KEY }}
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
+      - run: flutter build apk --debug --split-per-abi
+      - name: Push APK to Releases
+        uses: ncipollo/release-action@v1
         with:
-          name: web
-          path: build/web
-
-#  buildApk:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v1
-#      - uses: actions/setup-java@v1
-#        with:
-#          java-version: '12.x'
-#      - uses: subosito/flutter-action@v1
-#        with:
-#          channel: 'stable' # or: 'dev' or 'beta'
-#      - run: flutter pub get
-#      - run: flutter build apk --debug --split-per-abi
-#      - name: Push APK to Releases
-#        uses: ncipollo/release-action@v1
-#        with:
-#          artifacts: "build/app/outputs/apk/debug/*.apk"
-#          token: ${{ secrets.TOKEN }}
-
-  deployWeb:
-    needs: buildWeb
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: web
-          path: build/web
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting --token "$FIREBASE_TOKEN"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: test-274014
+          artifacts: "build/app/outputs/apk/debug/*.apk"
+          token: ${{ secrets.TOKEN }}
