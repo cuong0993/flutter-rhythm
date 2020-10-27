@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_state.dart';
-
 import 'routes.dart';
 
 class SplashWidget extends StatefulWidget {

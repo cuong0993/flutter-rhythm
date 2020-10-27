@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../generated/l10n.dart';
 
+import '../generated/l10n.dart';
 import '../instrument/instruments_widget.dart';
 import '../my_flutter_app_icons.dart';
 import '../songs/songs_widget.dart';
