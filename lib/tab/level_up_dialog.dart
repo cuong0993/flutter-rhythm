@@ -25,14 +25,9 @@ class LevelUpDialog extends StatelessWidget {
           children: [
             SizedBox(width: 8),
             Expanded(
-              child: FlatButton(
-                color: Colors.blue,
-                textColor: Colors.white,
+              child: RaisedButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: Text(
-                  S.of(context).txt_all_ok,
-                  style: TextStyle(fontSize: 20.0),
-                ),
+                child: Text(S.of(context).txt_all_ok),
               ),
             ),
             SizedBox(width: 8)
