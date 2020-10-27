@@ -31,6 +31,8 @@ dependencies:
   json_annotation: ^3.1.0
   flutter_cache_manager_firebase: ^1.0.1
   cached_network_image: ^2.3.3
+  shared_preferences: ^0.5.12+2
+  in_app_review: ^1.0.1+1
   #rxdart: ^0.24.1
 
 dev_dependencies:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'level_up_dialog.dart';
+import 'rate_dialog.dart';
 import 'tab_bloc.dart';
 import 'tab_event.dart';
 import 'tab_state.dart';
@@ -19,6 +20,12 @@ class _HomeWidgetState extends State<HomeWidget> {
       showDialog<void>(
         context: context,
         builder: (_) => LevelUpDialog(),
+      );
+    });
+    BlocProvider.of<TabBloc>(context).showRateEventStream.listen((event) {
+      showDialog<void>(
+        context: context,
+        builder: (_) => RateDialog(),
       );
     });
     super.initState();
