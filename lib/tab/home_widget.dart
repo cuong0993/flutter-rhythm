@@ -30,7 +30,8 @@ class _HomeWidgetState extends State<HomeWidget> {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
-              automaticallyImplyLeading: false, title: Text(activeTab.getName(context))),
+              automaticallyImplyLeading: false,
+              title: Text(activeTab.getName(context))),
           body: activeTab.widget,
           bottomNavigationBar: TabWidget(
             activeTab: activeTab,

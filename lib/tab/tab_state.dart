@@ -10,7 +10,7 @@ import '../user/user_widget.dart';
 enum TabState { instruments, songs, user }
 
 extension AppTabExtension on TabState {
-  String getName (BuildContext context) {
+  String getName(BuildContext context) {
     switch (this) {
       case TabState.instruments:
         return S.of(context).txt_instrument_title_instruments;
