@@ -20,7 +20,7 @@ jobs:
       - run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
       - run: flutter analyze .
 #      - run: flutter test
-      - run: flutter build apk
+      - run: flutter build apk --flavor stage
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
