@@ -61,11 +61,9 @@ android {
     flavorDimensions "default"
     productFlavors {
         dev {
-            applicationId "com.chaomao.lalaorchestra"
         }
 
         stage {
-            applicationId "com.chaomao.lalaorchestra"
         }
 
         prod {

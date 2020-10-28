@@ -16,16 +16,25 @@ class TabBloc extends Bloc<TabEvent, TabState> {
   Stream<bool> userChangeToPremiumStream;
   Stream<User> userUpLevelStream;
   final _showRateEventController = StreamController<bool>();
+
   Stream<bool> get showRateEventStream => _showRateEventController.stream;
 
   TabBloc(this._userRepository, this._instrumentsRepository)
       : super(TabState.instruments) {
-    final daysUntilPrompt = 0;
-    final launchesUntilPrompt = 3;
+    /* 3 days to ask for rate */
+    const millisecondsUntilPrompt = (0 * 24 * 60 * 60 * 1000);
+    const launchesUntilPrompt = 3;
     Preferences.getInstance().then((preferences) {
+      if (preferences.launchCount == 0) {
+        preferences.millisecondsFirstLaunch =
+            DateTime.now().millisecondsSinceEpoch;
+      }
       preferences.launchCount += 1;
-      if (preferences.isShowRateDialogAgain && preferences.launchCount >= launchesUntilPrompt) {
-        if (DateTime.now().millisecondsSinceEpoch - preferences.millisecondsFirstLaunch >= daysUntilPrompt * 24 * 60 * 60 * 1000) {
+      if (preferences.isShowRateDialogAgain &&
+          preferences.launchCount >= launchesUntilPrompt) {
+        if (DateTime.now().millisecondsSinceEpoch -
+                preferences.millisecondsFirstLaunch >=
+            millisecondsUntilPrompt) {
           _showRateEventController.add(true);
         }
       }

@@ -11,7 +11,6 @@ class LevelUpDialog extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(S.of(context).txt_dialog_level_up_name),
             Expanded(
               child: Align(
                 alignment: Alignment.center,
@@ -20,7 +19,7 @@ class LevelUpDialog extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image(image: AssetImage('assets/images/img_firework.png')),
-                    Text(S.of(context).txt_dialog_level_up_description('1'))
+                    Text(S.of(context).txt_dialog_level_up_description('1'), style: Theme.of(context).textTheme.headline6,)
                   ],
                 ),
               ),

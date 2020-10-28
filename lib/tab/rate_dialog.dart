@@ -7,60 +7,67 @@ import '../preferences.dart';
 class RateDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          title: Text(S.of(context).txt_dialog_rate_name),
-        ),
-        body: Align(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(S.of(context).txt_dialog_rate_description)],
-          ),
-        ),
-        bottomNavigationBar: Row(
+    return Material(
+      child: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: 8),
             Expanded(
-              child: RaisedButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(S.of(context).txt_all_no),
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                    padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+                    child: Text(
+                      S.of(context).txt_dialog_rate_description,
+                      style: Theme.of(context).textTheme.headline6,
+                    )),
               ),
             ),
-            SizedBox(width: 8),
-            Expanded(
-              child: RaisedButton(
-                onPressed: () {
-                  Preferences.getInstance().then((preferences) {
-                    preferences.isShowRateDialogAgain = true;
-                  });
-                  Navigator.of(context).pop();
-                },
-                child: Text(S.of(context).txt_dialog_rate_button_remind),
-              ),
-            ),
-            SizedBox(width: 8),
-            Expanded(
-              child: RaisedButton(
-                onPressed: () {
-                  Preferences.getInstance().then((preferences) {
-                    preferences.isShowRateDialogAgain = false;
-                  });
-                  Navigator.of(context).pop();
-                  final _inAppReview = InAppReview.instance;
-                  _inAppReview.openStoreListing(
-                    appStoreId: "_appStoreId",
-                    microsoftStoreId: "_microsoftStoreId",
-                  );
-                },
-                child: Text(S.of(context).txt_all_ok),
-              ),
-            ),
-            SizedBox(width: 8)
+            Row(
+              children: [
+                SizedBox(width: 8),
+                Expanded(
+                  child: RaisedButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(S.of(context).txt_all_no),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: RaisedButton(
+                    onPressed: () {
+                      Preferences.getInstance().then((preferences) {
+                        preferences.isShowRateDialogAgain = true;
+                      });
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(S.of(context).txt_dialog_rate_button_remind),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: RaisedButton(
+                    onPressed: () {
+                      Preferences.getInstance().then((preferences) {
+                        preferences.isShowRateDialogAgain = false;
+                      });
+                      Navigator.of(context).pop();
+                      final _inAppReview = InAppReview.instance;
+                      _inAppReview.openStoreListing(
+                        appStoreId: '_appStoreId',
+                        microsoftStoreId: '_microsoftStoreId',
+                      );
+                    },
+                    child: Text(S.of(context).txt_all_ok),
+                  ),
+                ),
+                SizedBox(width: 8)
+              ],
+            )
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
