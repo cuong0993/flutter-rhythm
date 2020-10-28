@@ -1,0 +1,3 @@
+export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-dev.json"; ./backup-firestore.sh
+export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-stage.json"; ./backup-firestore.sh
+export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-prod.json"; ./backup-firestore.sh

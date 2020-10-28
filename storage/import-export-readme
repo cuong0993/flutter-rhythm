@@ -1,0 +1,9 @@
+# curl https://sdk.cloud.google.com | bash
+# exec -l $SHELL
+# gcloud init
+
+# project_id must be changed in staging and production corresponding
+gsutil -m rsync -r -d ./ gs://project_id.appspot.com
+
+# use this command to change image from 8 bits to 24 bits so bitmap can be shown correctly
+for i in *.jpg; do convert "$i" -type truecolor "${i%.*}.jpg"; done 

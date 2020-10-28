@@ -1,0 +1,2548 @@
+{
+  "__collections__": {
+    "instruments": {
+      "ElectricGuitar": {
+        "__collections__": {},
+        "id": "electric-guitar",
+        "imageUrl": "instrument-images/electric-guitar.jpg",
+        "maxNote": 84,
+        "minNote": 40,
+        "requiredLevel": 5,
+        "soundFiles": {
+          "40": "sounds/electric-guitar/40.mp3",
+          "44": "sounds/electric-guitar/44.mp3",
+          "48": "sounds/electric-guitar/48.mp3",
+          "52": "sounds/electric-guitar/52.mp3",
+          "56": "sounds/electric-guitar/56.mp3",
+          "60": "sounds/electric-guitar/60.mp3",
+          "65": "sounds/electric-guitar/65.mp3",
+          "68": "sounds/electric-guitar/68.mp3",
+          "72": "sounds/electric-guitar/72.mp3",
+          "76": "sounds/electric-guitar/76.mp3",
+          "80": "sounds/electric-guitar/80.mp3",
+          "84": "sounds/electric-guitar/84.mp3"
+        },
+        "soundNotes": {
+          "40": {
+            "note": 40,
+            "pitch": 1
+          },
+          "41": {
+            "note": 40,
+            "pitch": 1.0594631
+          },
+          "42": {
+            "note": 40,
+            "pitch": 1.122462
+          },
+          "43": {
+            "note": 44,
+            "pitch": 0.9438743
+          },
+          "44": {
+            "note": 44,
+            "pitch": 1
+          },
+          "45": {
+            "note": 44,
+            "pitch": 1.0594631
+          },
+          "46": {
+            "note": 44,
+            "pitch": 1.122462
+          },
+          "47": {
+            "note": 48,
+            "pitch": 0.9438743
+          },
+          "48": {
+            "note": 48,
+            "pitch": 1
+          },
+          "49": {
+            "note": 48,
+            "pitch": 1.0594631
+          },
+          "50": {
+            "note": 48,
+            "pitch": 1.122462
+          },
+          "51": {
+            "note": 52,
+            "pitch": 0.9438743
+          },
+          "52": {
+            "note": 52,
+            "pitch": 1
+          },
+          "53": {
+            "note": 52,
+            "pitch": 1.0594631
+          },
+          "54": {
+            "note": 52,
+            "pitch": 1.122462
+          },
+          "55": {
+            "note": 56,
+            "pitch": 0.9438743
+          },
+          "56": {
+            "note": 56,
+            "pitch": 1
+          },
+          "57": {
+            "note": 56,
+            "pitch": 1.0594631
+          },
+          "58": {
+            "note": 56,
+            "pitch": 1.122462
+          },
+          "59": {
+            "note": 60,
+            "pitch": 0.9438743
+          },
+          "60": {
+            "note": 60,
+            "pitch": 1
+          },
+          "61": {
+            "note": 60,
+            "pitch": 1.0594631
+          },
+          "62": {
+            "note": 60,
+            "pitch": 1.122462
+          },
+          "63": {
+            "note": 65,
+            "pitch": 0.8908987
+          },
+          "64": {
+            "note": 65,
+            "pitch": 0.9438743
+          },
+          "65": {
+            "note": 65,
+            "pitch": 1
+          },
+          "66": {
+            "note": 65,
+            "pitch": 1.0594631
+          },
+          "67": {
+            "note": 65,
+            "pitch": 1.122462
+          },
+          "68": {
+            "note": 68,
+            "pitch": 1
+          },
+          "69": {
+            "note": 68,
+            "pitch": 1.0594631
+          },
+          "70": {
+            "note": 68,
+            "pitch": 1.122462
+          },
+          "71": {
+            "note": 72,
+            "pitch": 0.9438743
+          },
+          "72": {
+            "note": 72,
+            "pitch": 1
+          },
+          "73": {
+            "note": 72,
+            "pitch": 1.0594631
+          },
+          "74": {
+            "note": 72,
+            "pitch": 1.122462
+          },
+          "75": {
+            "note": 76,
+            "pitch": 0.9438743
+          },
+          "76": {
+            "note": 76,
+            "pitch": 1
+          },
+          "77": {
+            "note": 76,
+            "pitch": 1.0594631
+          },
+          "78": {
+            "note": 76,
+            "pitch": 1.122462
+          },
+          "79": {
+            "note": 80,
+            "pitch": 0.9438743
+          },
+          "80": {
+            "note": 80,
+            "pitch": 1
+          },
+          "81": {
+            "note": 80,
+            "pitch": 1.0594631
+          },
+          "82": {
+            "note": 80,
+            "pitch": 1.122462
+          },
+          "83": {
+            "note": 84,
+            "pitch": 0.9438743
+          },
+          "84": {
+            "note": 84,
+            "pitch": 1
+          }
+        },
+        "title": "Electric Guitar",
+        "volume": 0.3
+      },
+      "Guitar": {
+        "__collections__": {},
+        "id": "acoustic-guitar",
+        "imageUrl": "instrument-images/acoustic-guitar.jpg",
+        "maxNote": 84,
+        "minNote": 31,
+        "requiredLevel": 10,
+        "soundFiles": {
+          "31": "sounds/acoustic-guitar/31.mp3",
+          "33": "sounds/acoustic-guitar/33.mp3",
+          "36": "sounds/acoustic-guitar/36.mp3",
+          "39": "sounds/acoustic-guitar/39.mp3",
+          "43": "sounds/acoustic-guitar/43.mp3",
+          "45": "sounds/acoustic-guitar/45.mp3",
+          "48": "sounds/acoustic-guitar/48.mp3",
+          "52": "sounds/acoustic-guitar/52.mp3",
+          "54": "sounds/acoustic-guitar/54.mp3",
+          "57": "sounds/acoustic-guitar/57.mp3",
+          "60": "sounds/acoustic-guitar/60.mp3",
+          "63": "sounds/acoustic-guitar/63.mp3",
+          "66": "sounds/acoustic-guitar/66.mp3",
+          "69": "sounds/acoustic-guitar/69.mp3",
+          "72": "sounds/acoustic-guitar/72.mp3",
+          "75": "sounds/acoustic-guitar/75.mp3",
+          "78": "sounds/acoustic-guitar/78.mp3",
+          "81": "sounds/acoustic-guitar/81.mp3",
+          "84": "sounds/acoustic-guitar/84.mp3"
+        },
+        "soundNotes": {
+          "31": {
+            "note": 31,
+            "pitch": 1
+          },
+          "32": {
+            "note": 31,
+            "pitch": 1.0594631
+          },
+          "33": {
+            "note": 33,
+            "pitch": 1
+          },
+          "34": {
+            "note": 33,
+            "pitch": 1.0594631
+          },
+          "35": {
+            "note": 33,
+            "pitch": 1.122462
+          },
+          "36": {
+            "note": 36,
+            "pitch": 1
+          },
+          "37": {
+            "note": 36,
+            "pitch": 1.0594631
+          },
+          "38": {
+            "note": 36,
+            "pitch": 1.122462
+          },
+          "39": {
+            "note": 39,
+            "pitch": 1
+          },
+          "40": {
+            "note": 39,
+            "pitch": 1.0594631
+          },
+          "41": {
+            "note": 39,
+            "pitch": 1.122462
+          },
+          "42": {
+            "note": 43,
+            "pitch": 0.9438743
+          },
+          "43": {
+            "note": 43,
+            "pitch": 1
+          },
+          "44": {
+            "note": 43,
+            "pitch": 1.0594631
+          },
+          "45": {
+            "note": 45,
+            "pitch": 1
+          },
+          "46": {
+            "note": 45,
+            "pitch": 1.0594631
+          },
+          "47": {
+            "note": 45,
+            "pitch": 1.122462
+          },
+          "48": {
+            "note": 48,
+            "pitch": 1
+          },
+          "49": {
+            "note": 48,
+            "pitch": 1.0594631
+          },
+          "50": {
+            "note": 48,
+            "pitch": 1.122462
+          },
+          "51": {
+            "note": 52,
+            "pitch": 0.9438743
+          },
+          "52": {
+            "note": 52,
+            "pitch": 1
+          },
+          "53": {
+            "note": 52,
+            "pitch": 1.0594631
+          },
+          "54": {
+            "note": 54,
+            "pitch": 1
+          },
+          "55": {
+            "note": 54,
+            "pitch": 1.0594631
+          },
+          "56": {
+            "note": 54,
+            "pitch": 1.122462
+          },
+          "57": {
+            "note": 57,
+            "pitch": 1
+          },
+          "58": {
+            "note": 57,
+            "pitch": 1.0594631
+          },
+          "59": {
+            "note": 57,
+            "pitch": 1.122462
+          },
+          "60": {
+            "note": 60,
+            "pitch": 1
+          },
+          "61": {
+            "note": 60,
+            "pitch": 1.0594631
+          },
+          "62": {
+            "note": 60,
+            "pitch": 1.122462
+          },
+          "63": {
+            "note": 63,
+            "pitch": 1
+          },
+          "64": {
+            "note": 63,
+            "pitch": 1.0594631
+          },
+          "65": {
+            "note": 63,
+            "pitch": 1.122462
+          },
+          "66": {
+            "note": 66,
+            "pitch": 1
+          },
+          "67": {
+            "note": 66,
+            "pitch": 1.0594631
+          },
+          "68": {
+            "note": 66,
+            "pitch": 1.122462
+          },
+          "69": {
+            "note": 69,
+            "pitch": 1
+          },
+          "70": {
+            "note": 69,
+            "pitch": 1.0594631
+          },
+          "71": {
+            "note": 69,
+            "pitch": 1.122462
+          },
+          "72": {
+            "note": 72,
+            "pitch": 1
+          },
+          "73": {
+            "note": 72,
+            "pitch": 1.0594631
+          },
+          "74": {
+            "note": 72,
+            "pitch": 1.122462
+          },
+          "75": {
+            "note": 75,
+            "pitch": 1
+          },
+          "76": {
+            "note": 75,
+            "pitch": 1.0594631
+          },
+          "77": {
+            "note": 75,
+            "pitch": 1.122462
+          },
+          "78": {
+            "note": 78,
+            "pitch": 1
+          },
+          "79": {
+            "note": 78,
+            "pitch": 1.0594631
+          },
+          "80": {
+            "note": 78,
+            "pitch": 1.122462
+          },
+          "81": {
+            "note": 81,
+            "pitch": 1
+          },
+          "82": {
+            "note": 81,
+            "pitch": 1.0594631
+          },
+          "83": {
+            "note": 81,
+            "pitch": 1.122462
+          },
+          "84": {
+            "note": 84,
+            "pitch": 1
+          }
+        },
+        "title": "Acoustic Guitar",
+        "volume": 0.5
+      },
+      "Piano": {
+        "__collections__": {},
+        "id": "piano",
+        "imageUrl": "instrument-images/piano.jpg",
+        "maxNote": 108,
+        "minNote": 24,
+        "requiredLevel": 1,
+        "soundFiles": {
+          "102": "sounds/piano/102.mp3",
+          "105": "sounds/piano/105.mp3",
+          "107": "sounds/piano/107.mp3",
+          "24": "sounds/piano/24.mp3",
+          "30": "sounds/piano/30.mp3",
+          "35": "sounds/piano/35.mp3",
+          "39": "sounds/piano/39.mp3",
+          "42": "sounds/piano/42.mp3",
+          "47": "sounds/piano/47.mp3",
+          "51": "sounds/piano/51.mp3",
+          "54": "sounds/piano/54.mp3",
+          "57": "sounds/piano/57.mp3",
+          "60": "sounds/piano/60.mp3",
+          "63": "sounds/piano/63.mp3",
+          "66": "sounds/piano/66.mp3",
+          "69": "sounds/piano/69.mp3",
+          "72": "sounds/piano/72.mp3",
+          "75": "sounds/piano/75.mp3",
+          "78": "sounds/piano/78.mp3",
+          "81": "sounds/piano/81.mp3",
+          "84": "sounds/piano/84.mp3",
+          "87": "sounds/piano/87.mp3",
+          "90": "sounds/piano/90.mp3",
+          "93": "sounds/piano/93.mp3",
+          "96": "sounds/piano/96.mp3",
+          "99": "sounds/piano/99.mp3"
+        },
+        "soundNotes": {
+          "100": {
+            "note": 99,
+            "pitch": 1.0594631
+          },
+          "101": {
+            "note": 99,
+            "pitch": 1.122462
+          },
+          "102": {
+            "note": 102,
+            "pitch": 1
+          },
+          "103": {
+            "note": 102,
+            "pitch": 1.0594631
+          },
+          "104": {
+            "note": 102,
+            "pitch": 1.122462
+          },
+          "105": {
+            "note": 105,
+            "pitch": 1
+          },
+          "106": {
+            "note": 105,
+            "pitch": 1.0594631
+          },
+          "107": {
+            "note": 107,
+            "pitch": 1
+          },
+          "108": {
+            "note": 107,
+            "pitch": 1.0594631
+          },
+          "24": {
+            "note": 24,
+            "pitch": 1
+          },
+          "25": {
+            "note": 24,
+            "pitch": 1.0594631
+          },
+          "26": {
+            "note": 24,
+            "pitch": 1.122462
+          },
+          "27": {
+            "note": 30,
+            "pitch": 0.8408964
+          },
+          "28": {
+            "note": 30,
+            "pitch": 0.8908987
+          },
+          "29": {
+            "note": 30,
+            "pitch": 0.9438743
+          },
+          "30": {
+            "note": 30,
+            "pitch": 1
+          },
+          "31": {
+            "note": 30,
+            "pitch": 1.0594631
+          },
+          "32": {
+            "note": 30,
+            "pitch": 1.122462
+          },
+          "33": {
+            "note": 35,
+            "pitch": 0.8908987
+          },
+          "34": {
+            "note": 35,
+            "pitch": 0.9438743
+          },
+          "35": {
+            "note": 35,
+            "pitch": 1
+          },
+          "36": {
+            "note": 35,
+            "pitch": 1.0594631
+          },
+          "37": {
+            "note": 35,
+            "pitch": 1.122462
+          },
+          "38": {
+            "note": 39,
+            "pitch": 0.9438743
+          },
+          "39": {
+            "note": 39,
+            "pitch": 1
+          },
+          "40": {
+            "note": 39,
+            "pitch": 1.0594631
+          },
+          "41": {
+            "note": 39,
+            "pitch": 1.122462
+          },
+          "42": {
+            "note": 42,
+            "pitch": 1
+          },
+          "43": {
+            "note": 42,
+            "pitch": 1.0594631
+          },
+          "44": {
+            "note": 42,
+            "pitch": 1.122462
+          },
+          "45": {
+            "note": 47,
+            "pitch": 0.8908987
+          },
+          "46": {
+            "note": 47,
+            "pitch": 0.9438743
+          },
+          "47": {
+            "note": 47,
+            "pitch": 1
+          },
+          "48": {
+            "note": 47,
+            "pitch": 1.0594631
+          },
+          "49": {
+            "note": 47,
+            "pitch": 1.122462
+          },
+          "50": {
+            "note": 51,
+            "pitch": 0.9438743
+          },
+          "51": {
+            "note": 51,
+            "pitch": 1
+          },
+          "52": {
+            "note": 51,
+            "pitch": 1.0594631
+          },
+          "53": {
+            "note": 51,
+            "pitch": 1.122462
+          },
+          "54": {
+            "note": 54,
+            "pitch": 1
+          },
+          "55": {
+            "note": 54,
+            "pitch": 1.0594631
+          },
+          "56": {
+            "note": 54,
+            "pitch": 1.122462
+          },
+          "57": {
+            "note": 57,
+            "pitch": 1
+          },
+          "58": {
+            "note": 57,
+            "pitch": 1.0594631
+          },
+          "59": {
+            "note": 57,
+            "pitch": 1.122462
+          },
+          "60": {
+            "note": 60,
+            "pitch": 1
+          },
+          "61": {
+            "note": 60,
+            "pitch": 1.0594631
+          },
+          "62": {
+            "note": 60,
+            "pitch": 1.122462
+          },
+          "63": {
+            "note": 63,
+            "pitch": 1
+          },
+          "64": {
+            "note": 63,
+            "pitch": 1.0594631
+          },
+          "65": {
+            "note": 63,
+            "pitch": 1.122462
+          },
+          "66": {
+            "note": 66,
+            "pitch": 1
+          },
+          "67": {
+            "note": 66,
+            "pitch": 1.0594631
+          },
+          "68": {
+            "note": 66,
+            "pitch": 1.122462
+          },
+          "69": {
+            "note": 69,
+            "pitch": 1
+          },
+          "70": {
+            "note": 69,
+            "pitch": 1.0594631
+          },
+          "71": {
+            "note": 69,
+            "pitch": 1.122462
+          },
+          "72": {
+            "note": 72,
+            "pitch": 1
+          },
+          "73": {
+            "note": 72,
+            "pitch": 1.0594631
+          },
+          "74": {
+            "note": 72,
+            "pitch": 1.122462
+          },
+          "75": {
+            "note": 75,
+            "pitch": 1
+          },
+          "76": {
+            "note": 75,
+            "pitch": 1.0594631
+          },
+          "77": {
+            "note": 75,
+            "pitch": 1.122462
+          },
+          "78": {
+            "note": 78,
+            "pitch": 1
+          },
+          "79": {
+            "note": 78,
+            "pitch": 1.0594631
+          },
+          "80": {
+            "note": 78,
+            "pitch": 1.122462
+          },
+          "81": {
+            "note": 81,
+            "pitch": 1
+          },
+          "82": {
+            "note": 81,
+            "pitch": 1.0594631
+          },
+          "83": {
+            "note": 81,
+            "pitch": 1.122462
+          },
+          "84": {
+            "note": 84,
+            "pitch": 1
+          },
+          "85": {
+            "note": 84,
+            "pitch": 1.0594631
+          },
+          "86": {
+            "note": 84,
+            "pitch": 1.122462
+          },
+          "87": {
+            "note": 87,
+            "pitch": 1
+          },
+          "88": {
+            "note": 87,
+            "pitch": 1.0594631
+          },
+          "89": {
+            "note": 87,
+            "pitch": 1.122462
+          },
+          "90": {
+            "note": 90,
+            "pitch": 1
+          },
+          "91": {
+            "note": 90,
+            "pitch": 1.0594631
+          },
+          "92": {
+            "note": 90,
+            "pitch": 1.122462
+          },
+          "93": {
+            "note": 93,
+            "pitch": 1
+          },
+          "94": {
+            "note": 93,
+            "pitch": 1.0594631
+          },
+          "95": {
+            "note": 93,
+            "pitch": 1.122462
+          },
+          "96": {
+            "note": 96,
+            "pitch": 1
+          },
+          "97": {
+            "note": 96,
+            "pitch": 1.0594631
+          },
+          "98": {
+            "note": 96,
+            "pitch": 1.122462
+          },
+          "99": {
+            "note": 99,
+            "pitch": 1
+          }
+        },
+        "title": "Piano",
+        "volume": 0.5
+      }
+    },
+    "songs": {
+      "Alan_Walker-Alone": {
+        "__collections__": {},
+        "artist": "Alan Walker",
+        "bpm": 194,
+        "coins": 10,
+        "id": "Alan_Walker-Alone",
+        "imageUrl": "images/AlanWalker.jpg",
+        "tilesCount": 1067,
+        "title": "Alone",
+        "url": "songs/uk/Alan_Walker-Alone.mid"
+      },
+      "Alan_Walker-Faded": {
+        "__collections__": {},
+        "artist": "Alan Walker",
+        "bpm": 89,
+        "coins": 10,
+        "id": "Alan_Walker-Faded",
+        "imageUrl": "images/AlanWalker.jpg",
+        "tilesCount": 882,
+        "title": "Faded",
+        "url": "songs/uk/Alan_Walker-Faded.mid"
+      },
+      "Alan_Walker-Spectre": {
+        "__collections__": {},
+        "artist": "Alan Walker",
+        "bpm": 128,
+        "coins": 10,
+        "id": "Alan_Walker-Spectre",
+        "imageUrl": "images/AlanWalker.jpg",
+        "tilesCount": 1255,
+        "title": "Spectre",
+        "url": "songs/uk/Alan_Walker-Spectre.mid"
+      },
+      "Aram_Khachaturian-Masquerade_Waltz": {
+        "__collections__": {},
+        "artist": "Aram Khachaturian",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Aram_Khachaturian-Masquerade_Waltz",
+        "imageUrl": "images/AramKhachaturian.jpg",
+        "tilesCount": 2573,
+        "title": "Masquerade Waltz",
+        "url": "songs/classic/Aram_Khachaturian-Masquerade_Waltz.mid"
+      },
+      "Aram_Khachaturian-Sabr_Dance": {
+        "__collections__": {},
+        "artist": "Aram Khachaturian",
+        "bpm": 149,
+        "coins": 10,
+        "id": "Aram_Khachaturian-Sabr_Dance",
+        "imageUrl": "images/AramKhachaturian.jpg",
+        "tilesCount": 2347,
+        "title": "Sabr Dance",
+        "url": "songs/classic/Aram_Khachaturian-Sabr_Dance.mid"
+      },
+      "Bach-Air_On_The_G_String": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 45,
+        "coins": 10,
+        "id": "Bach-Air_On_The_G_String",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 674,
+        "title": "Air On The G String",
+        "url": "songs/classic/Bach-Air_On_The_G_String.mid"
+      },
+      "Bach-Badinerie": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Bach-Badinerie",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 1310,
+        "title": "Badinerie",
+        "url": "songs/classic/Bach-Badinerie.mid"
+      },
+      "Bach-Bourree_In_E_Minor": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 107,
+        "coins": 10,
+        "id": "Bach-Bourree_In_E_Minor",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 476,
+        "title": "Bourree In E Minor",
+        "url": "songs/classic/Bach-Bourree_In_E_Minor.mid"
+      },
+      "Bach-Cello_Suite": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 69,
+        "coins": 10,
+        "id": "Bach-Cello_Suite",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 1126,
+        "title": "Cello Suite",
+        "url": "songs/classic/Bach-Cello_Suite.mid"
+      },
+      "Bach-Jesu,_Joy_Of_Man’s_Desiring": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 64,
+        "coins": 10,
+        "id": "Bach-Jesu,_Joy_Of_Man’s_Desiring",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 1018,
+        "title": "Jesu, Joy Of Man’s Desiring",
+        "url": "songs/classic/Bach-Jesu,_Joy_Of_Man’s_Desiring.mid"
+      },
+      "Bach-Toccata_and_Fugue": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Bach-Toccata_and_Fugue",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 3942,
+        "title": "Toccata and Fugue",
+        "url": "songs/classic/Bach-Toccata_and_Fugue.mid"
+      },
+      "Bach-Well_Tempered_Clavier": {
+        "__collections__": {},
+        "artist": "Bach",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Bach-Well_Tempered_Clavier",
+        "imageUrl": "images/Bach.jpg",
+        "tilesCount": 532,
+        "title": "Well Tempered Clavier",
+        "url": "songs/classic/Bach-Well_Tempered_Clavier.mid"
+      },
+      "Beethoven-Appasionata_Sonate": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Beethoven-Appasionata_Sonate",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 989,
+        "title": "Appasionata Sonate",
+        "url": "songs/classic/Beethoven-Appasionata_Sonate.mid"
+      },
+      "Beethoven-Fur_Elise": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 53,
+        "coins": 10,
+        "id": "Beethoven-Fur_Elise",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 1035,
+        "title": "Fur Elise",
+        "url": "songs/classic/Beethoven-Fur_Elise.mid"
+      },
+      "Beethoven-Moonlight_Sonata_Mvt._1": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 48,
+        "coins": 10,
+        "id": "Beethoven-Moonlight_Sonata_Mvt._1",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 1132,
+        "title": "Moonlight Sonata Mvt. 1",
+        "url": "songs/classic/Beethoven-Moonlight_Sonata_Mvt._1.mid"
+      },
+      "Beethoven-Moonlight_Sonata_Mvt._3": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Beethoven-Moonlight_Sonata_Mvt._3",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 6346,
+        "title": "Moonlight Sonata Mvt. 3",
+        "url": "songs/classic/Beethoven-Moonlight_Sonata_Mvt._3.mid"
+      },
+      "Beethoven-String_Quartet": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Beethoven-String_Quartet",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 3803,
+        "title": "String Quartet",
+        "url": "songs/classic/Beethoven-String_Quartet.mid"
+      },
+      "Beethoven-Symphony_No._3_Mvt._1": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._3_Mvt._1",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 2264,
+        "title": "Symphony No. 3 Mvt. 1",
+        "url": "songs/classic/Beethoven-Symphony_No._3_Mvt._1.mid"
+      },
+      "Beethoven-Symphony_No._5_Mvt._1": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._5_Mvt._1",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 1001,
+        "title": "Symphony No. 5 Mvt. 1",
+        "url": "songs/classic/Beethoven-Symphony_No._5_Mvt._1.mid"
+      },
+      "Beethoven-Symphony_No._5_Mvt._3": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._5_Mvt._3",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 2932,
+        "title": "Symphony No. 5 Mvt. 3",
+        "url": "songs/classic/Beethoven-Symphony_No._5_Mvt._3.mid"
+      },
+      "Beethoven-Symphony_No._6": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._6",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 4675,
+        "title": "Symphony No. 6",
+        "url": "songs/classic/Beethoven-Symphony_No._6.mid"
+      },
+      "Beethoven-Symphony_No._7_Mvt._2": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._7_Mvt._2",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 3361,
+        "title": "Symphony No. 7 Mvt. 2",
+        "url": "songs/classic/Beethoven-Symphony_No._7_Mvt._2.mid"
+      },
+      "Beethoven-Symphony_No._9_Mvt._2": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 300,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._9_Mvt._2",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 13686,
+        "title": "Symphony No. 9 Mvt. 2",
+        "url": "songs/classic/Beethoven-Symphony_No._9_Mvt._2.mid"
+      },
+      "Beethoven-Symphony_No._9_Mvt._4": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 123,
+        "coins": 10,
+        "id": "Beethoven-Symphony_No._9_Mvt._4",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 266,
+        "title": "Symphony No. 9 Mvt. 4",
+        "url": "songs/classic/Beethoven-Symphony_No._9_Mvt._4.mid"
+      },
+      "Beethoven-Turkish_March": {
+        "__collections__": {},
+        "artist": "Beethoven",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Beethoven-Turkish_March",
+        "imageUrl": "images/Beethoven.jpg",
+        "tilesCount": 1916,
+        "title": "Turkish March",
+        "url": "songs/classic/Beethoven-Turkish_March.mid"
+      },
+      "Carl_Orff-O_Fortuna": {
+        "__collections__": {},
+        "artist": "Carl Orff",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Carl_Orff-O_Fortuna",
+        "imageUrl": "images/CarlOrff.jpg",
+        "tilesCount": 958,
+        "title": "O Fortuna",
+        "url": "songs/classic/Carl_Orff-O_Fortuna.mid"
+      },
+      "Chinese_Folk-Jasmine_Flower": {
+        "__collections__": {},
+        "artist": "Chinese Folk",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Chinese_Folk-Jasmine_Flower",
+        "imageUrl": "images/ChineseFolk.jpg",
+        "tilesCount": 284,
+        "title": "Jasmine Flower",
+        "url": "songs/asia/Chinese_Folk-Jasmine_Flower.mid"
+      },
+      "Chopin-Etude_Op._10_No._3": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 34,
+        "coins": 10,
+        "id": "Chopin-Etude_Op._10_No._3",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 1777,
+        "title": "Etude Op. 10 No. 3",
+        "url": "songs/classic/Chopin-Etude_Op._10_No._3.mid"
+      },
+      "Chopin-Fantaisie_Impromptu": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Chopin-Fantaisie_Impromptu",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 3067,
+        "title": "Fantaisie Impromptu",
+        "url": "songs/classic/Chopin-Fantaisie_Impromptu.mid"
+      },
+      "Chopin-Funeral_March": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 50,
+        "coins": 10,
+        "id": "Chopin-Funeral_March",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 591,
+        "title": "Funeral March",
+        "url": "songs/classic/Chopin-Funeral_March.mid"
+      },
+      "Chopin-Heroic_Polonaise": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Chopin-Heroic_Polonaise",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 3471,
+        "title": "Heroic Polonaise",
+        "url": "songs/classic/Chopin-Heroic_Polonaise.mid"
+      },
+      "Chopin-Minute_Waltz": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Chopin-Minute_Waltz",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 1423,
+        "title": "Minute Waltz",
+        "url": "songs/classic/Chopin-Minute_Waltz.mid"
+      },
+      "Chopin-Nocturne_Op._9_No._2": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Chopin-Nocturne_Op._9_No._2",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 1286,
+        "title": "Nocturne Op. 9 No. 2",
+        "url": "songs/classic/Chopin-Nocturne_Op._9_No._2.mid"
+      },
+      "Chopin-Revolutionary_Etude": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Chopin-Revolutionary_Etude",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 2002,
+        "title": "Revolutionary Etude",
+        "url": "songs/classic/Chopin-Revolutionary_Etude.mid"
+      },
+      "Chopin-Waltz_Op._64_No._2": {
+        "__collections__": {},
+        "artist": "Chopin",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Chopin-Waltz_Op._64_No._2",
+        "imageUrl": "images/Chopin.jpg",
+        "tilesCount": 1856,
+        "title": "Waltz Op. 64 No. 2",
+        "url": "songs/classic/Chopin-Waltz_Op._64_No._2.mid"
+      },
+      "Deaf_Kev-Invincible": {
+        "__collections__": {},
+        "artist": "Deaf Kev",
+        "bpm": 100,
+        "coins": 10,
+        "id": "Deaf_Kev-Invincible",
+        "imageUrl": "images/DeafKev.jpg",
+        "tilesCount": 2566,
+        "title": "Invincible",
+        "url": "songs/uk/Deaf_Kev-Invincible.mid"
+      },
+      "Debussy-Clair_De_Lune": {
+        "__collections__": {},
+        "artist": "Debussy",
+        "bpm": 54,
+        "coins": 10,
+        "id": "Debussy-Clair_De_Lune",
+        "imageUrl": "images/Debussy.jpg",
+        "tilesCount": 1352,
+        "title": "Clair De Lune",
+        "url": "songs/classic/Debussy-Clair_De_Lune.mid"
+      },
+      "Delibes-Flower_Duet": {
+        "__collections__": {},
+        "artist": "Delibes",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Delibes-Flower_Duet",
+        "imageUrl": "images/Delibes.jpg",
+        "tilesCount": 888,
+        "title": "Flower Duet",
+        "url": "songs/classic/Delibes-Flower_Duet.mid"
+      },
+      "Delibes-Pizzicato": {
+        "__collections__": {},
+        "artist": "Delibes",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Delibes-Pizzicato",
+        "imageUrl": "images/Delibes.jpg",
+        "tilesCount": 821,
+        "title": "Pizzicato",
+        "url": "songs/classic/Delibes-Pizzicato.mid"
+      },
+      "Different_Heaven,_EHDE-My_Heart": {
+        "__collections__": {},
+        "artist": "Different Heaven, EHDE",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Different_Heaven,_EHDE-My_Heart",
+        "imageUrl": "images/DifferentHeaven,EHDE.jpg",
+        "tilesCount": 2373,
+        "title": "My Heart",
+        "url": "songs/uk/Different_Heaven,_EHDE-My_Heart.mid"
+      },
+      "Disfigure-Blank": {
+        "__collections__": {},
+        "artist": "Disfigure",
+        "bpm": 130,
+        "coins": 10,
+        "id": "Disfigure-Blank",
+        "imageUrl": "images/Disfigure.jpg",
+        "tilesCount": 1634,
+        "title": "Blank",
+        "url": "songs/uk/Disfigure-Blank.mid"
+      },
+      "Dmitri_Shostakovich-Second_Waltz": {
+        "__collections__": {},
+        "artist": "Dmitri Shostakovich",
+        "bpm": 170,
+        "coins": 10,
+        "id": "Dmitri_Shostakovich-Second_Waltz",
+        "imageUrl": "images/DmitriShostakovich.jpg",
+        "tilesCount": 2245,
+        "title": "Second Waltz",
+        "url": "songs/classic/Dmitri_Shostakovich-Second_Waltz.mid"
+      },
+      "Dvorak-Humoresque_No._7": {
+        "__collections__": {},
+        "artist": "Dvorak",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Dvorak-Humoresque_No._7",
+        "imageUrl": "images/Dvorak.jpg",
+        "tilesCount": 998,
+        "title": "Humoresque No. 7",
+        "url": "songs/classic/Dvorak-Humoresque_No._7.mid"
+      },
+      "Dvorak-Slavonic_Dance_No._2": {
+        "__collections__": {},
+        "artist": "Dvorak",
+        "bpm": 50,
+        "coins": 10,
+        "id": "Dvorak-Slavonic_Dance_No._2",
+        "imageUrl": "images/Dvorak.jpg",
+        "tilesCount": 2521,
+        "title": "Slavonic Dance No. 2",
+        "url": "songs/classic/Dvorak-Slavonic_Dance_No._2.mid"
+      },
+      "Dvorak-Symphony_No._9_Mvt._4": {
+        "__collections__": {},
+        "artist": "Dvorak",
+        "bpm": 100,
+        "coins": 10,
+        "id": "Dvorak-Symphony_No._9_Mvt._4",
+        "imageUrl": "images/Dvorak.jpg",
+        "tilesCount": 1914,
+        "title": "Symphony No. 9 Mvt. 4",
+        "url": "songs/classic/Dvorak-Symphony_No._9_Mvt._4.mid"
+      },
+      "Edvard_Grieg-Anitras_Dance": {
+        "__collections__": {},
+        "artist": "Edvard Grieg",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Edvard_Grieg-Anitras_Dance",
+        "imageUrl": "images/EdvardGrieg.jpg",
+        "tilesCount": 1904,
+        "title": "Anitras Dance",
+        "url": "songs/classic/Edvard_Grieg-Anitras_Dance.mid"
+      },
+      "Edvard_Grieg-Morning_Mood": {
+        "__collections__": {},
+        "artist": "Edvard Grieg",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Edvard_Grieg-Morning_Mood",
+        "imageUrl": "images/EdvardGrieg.jpg",
+        "tilesCount": 571,
+        "title": "Morning Mood",
+        "url": "songs/classic/Edvard_Grieg-Morning_Mood.mid"
+      },
+      "Edvard_Grieg-Piano_Concerto": {
+        "__collections__": {},
+        "artist": "Edvard Grieg",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Edvard_Grieg-Piano_Concerto",
+        "imageUrl": "images/EdvardGrieg.jpg",
+        "tilesCount": 2411,
+        "title": "Piano Concerto",
+        "url": "songs/classic/Edvard_Grieg-Piano_Concerto.mid"
+      },
+      "Edward_Elgar-Pomp_And_Circumstance_March": {
+        "__collections__": {},
+        "artist": "Edward Elgar",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Edward_Elgar-Pomp_And_Circumstance_March",
+        "imageUrl": "images/EdwardElgar.jpg",
+        "tilesCount": 3168,
+        "title": "Pomp And Circumstance March",
+        "url": "songs/classic/Edward_Elgar-Pomp_And_Circumstance_March.mid"
+      },
+      "Elektronomia-Sky_High": {
+        "__collections__": {},
+        "artist": "Elektronomia",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Elektronomia-Sky_High",
+        "imageUrl": "images/Elektronomia.jpg",
+        "tilesCount": 1474,
+        "title": "Sky High",
+        "url": "songs/uk/Elektronomia-Sky_High.mid"
+      },
+      "English_Folk-Greensleeves": {
+        "__collections__": {},
+        "artist": "English Folk",
+        "bpm": 72,
+        "coins": 10,
+        "id": "English_Folk-Greensleeves",
+        "imageUrl": "images/EnglishFolk.jpg",
+        "tilesCount": 320,
+        "title": "Greensleeves",
+        "url": "songs/uk/English_Folk-Greensleeves.mid"
+      },
+      "English_Folk-Twinkle_Twinkle_Little_Star": {
+        "__collections__": {},
+        "artist": "English Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "English_Folk-Twinkle_Twinkle_Little_Star",
+        "imageUrl": "images/EnglishFolk.jpg",
+        "tilesCount": 458,
+        "title": "Twinkle Twinkle Little Star",
+        "url": "songs/uk/English_Folk-Twinkle_Twinkle_Little_Star.mid"
+      },
+      "English_Folk-We_Wish_You_A_Marry_Christmas": {
+        "__collections__": {},
+        "artist": "English Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "English_Folk-We_Wish_You_A_Marry_Christmas",
+        "imageUrl": "images/EnglishFolk.jpg",
+        "tilesCount": 313,
+        "title": "We Wish You A Marry Christmas",
+        "url": "songs/uk/English_Folk-We_Wish_You_A_Marry_Christmas.mid"
+      },
+      "Eugen_Doga-My_Sweet_And_Tender_Beast": {
+        "__collections__": {},
+        "artist": "Eugen Doga",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Eugen_Doga-My_Sweet_And_Tender_Beast",
+        "imageUrl": "images/EugenDoga.jpg",
+        "tilesCount": 901,
+        "title": "My Sweet And Tender Beast",
+        "url": "songs/classic/Eugen_Doga-My_Sweet_And_Tender_Beast.mid"
+      },
+      "Franz_Liszt-Hungarian_Rhapsody_No._2": {
+        "__collections__": {},
+        "artist": "Franz Liszt",
+        "bpm": 240,
+        "coins": 10,
+        "id": "Franz_Liszt-Hungarian_Rhapsody_No._2",
+        "imageUrl": "images/FranzLiszt.jpg",
+        "tilesCount": 944,
+        "title": "Hungarian Rhapsody No. 2",
+        "url": "songs/classic/Franz_Liszt-Hungarian_Rhapsody_No._2.mid"
+      },
+      "George_Gershwin-Rhapsody_In_Blue": {
+        "__collections__": {},
+        "artist": "George Gershwin",
+        "bpm": 80,
+        "coins": 10,
+        "id": "George_Gershwin-Rhapsody_In_Blue",
+        "imageUrl": "images/GeorgeGershwin.jpg",
+        "tilesCount": 2288,
+        "title": "Rhapsody In Blue",
+        "url": "songs/classic/George_Gershwin-Rhapsody_In_Blue.mid"
+      },
+      "Georges_Bizet-Habanera": {
+        "__collections__": {},
+        "artist": "Georges Bizet",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Georges_Bizet-Habanera",
+        "imageUrl": "images/GeorgesBizet.jpg",
+        "tilesCount": 526,
+        "title": "Habanera",
+        "url": "songs/classic/Georges_Bizet-Habanera.mid"
+      },
+      "Georges_Bizet-Les_Toradors": {
+        "__collections__": {},
+        "artist": "Georges Bizet",
+        "bpm": 74,
+        "coins": 10,
+        "id": "Georges_Bizet-Les_Toradors",
+        "imageUrl": "images/GeorgesBizet.jpg",
+        "tilesCount": 1676,
+        "title": "Les Toradors",
+        "url": "songs/classic/Georges_Bizet-Les_Toradors.mid"
+      },
+      "Georges_Bizet-March_Of_The_Toreadors": {
+        "__collections__": {},
+        "artist": "Georges Bizet",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Georges_Bizet-March_Of_The_Toreadors",
+        "imageUrl": "images/GeorgesBizet.jpg",
+        "tilesCount": 591,
+        "title": "March Of The Toreadors",
+        "url": "songs/classic/Georges_Bizet-March_Of_The_Toreadors.mid"
+      },
+      "Giacomo_Puccini-Madama_Butterfly": {
+        "__collections__": {},
+        "artist": "Giacomo Puccini",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Giacomo_Puccini-Madama_Butterfly",
+        "imageUrl": "images/GiacomoPuccini.jpg",
+        "tilesCount": 1249,
+        "title": "Madama Butterfly",
+        "url": "songs/classic/Giacomo_Puccini-Madama_Butterfly.mid"
+      },
+      "Giacomo_Puccini-Nessun_Dorma": {
+        "__collections__": {},
+        "artist": "Giacomo Puccini",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Giacomo_Puccini-Nessun_Dorma",
+        "imageUrl": "images/GiacomoPuccini.jpg",
+        "tilesCount": 959,
+        "title": "Nessun Dorma",
+        "url": "songs/classic/Giacomo_Puccini-Nessun_Dorma.mid"
+      },
+      "Giuseppe_Verdi-Drinking_Song": {
+        "__collections__": {},
+        "artist": "Giuseppe Verdi",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Giuseppe_Verdi-Drinking_Song",
+        "imageUrl": "images/GiuseppeVerdi.jpg",
+        "tilesCount": 365,
+        "title": "Drinking Song",
+        "url": "songs/classic/Giuseppe_Verdi-Drinking_Song.mid"
+      },
+      "Giuseppe_Verdi-La_Donna_E_Mobile": {
+        "__collections__": {},
+        "artist": "Giuseppe Verdi",
+        "bpm": 100,
+        "coins": 10,
+        "id": "Giuseppe_Verdi-La_Donna_E_Mobile",
+        "imageUrl": "images/GiuseppeVerdi.jpg",
+        "tilesCount": 385,
+        "title": "La Donna E Mobile",
+        "url": "songs/classic/Giuseppe_Verdi-La_Donna_E_Mobile.mid"
+      },
+      "Giuseppe_Verdi-Triumphal_March": {
+        "__collections__": {},
+        "artist": "Giuseppe Verdi",
+        "bpm": 109,
+        "coins": 10,
+        "id": "Giuseppe_Verdi-Triumphal_March",
+        "imageUrl": "images/GiuseppeVerdi.jpg",
+        "tilesCount": 357,
+        "title": "Triumphal March",
+        "url": "songs/classic/Giuseppe_Verdi-Triumphal_March.mid"
+      },
+      "Gounod-Funeral_March_Of_A_Marionette": {
+        "__collections__": {},
+        "artist": "Gounod",
+        "bpm": 109,
+        "coins": 10,
+        "id": "Gounod-Funeral_March_Of_A_Marionette",
+        "imageUrl": "images/Gounod.jpg",
+        "tilesCount": 547,
+        "title": "Funeral March Of A Marionette",
+        "url": "songs/classic/Gounod-Funeral_March_Of_A_Marionette.mid"
+      },
+      "Gustav_Mahler-Symphony_No._5_Mvt._4": {
+        "__collections__": {},
+        "artist": "Gustav Mahler",
+        "bpm": 48,
+        "coins": 10,
+        "id": "Gustav_Mahler-Symphony_No._5_Mvt._4",
+        "imageUrl": "images/GustavMahler.jpg",
+        "tilesCount": 796,
+        "title": "Symphony No. 5 Mvt. 4",
+        "url": "songs/classic/Gustav_Mahler-Symphony_No._5_Mvt._4.mid"
+      },
+      "Handel-Arrival_Of_The_Queen_Of_Sheba": {
+        "__collections__": {},
+        "artist": "Handel",
+        "bpm": 74,
+        "coins": 10,
+        "id": "Handel-Arrival_Of_The_Queen_Of_Sheba",
+        "imageUrl": "images/Handel.jpg",
+        "tilesCount": 1832,
+        "title": "Arrival Of The Queen Of Sheba",
+        "url": "songs/classic/Handel-Arrival_Of_The_Queen_Of_Sheba.mid"
+      },
+      "Handel-Hallelujah_Chorus": {
+        "__collections__": {},
+        "artist": "Handel",
+        "bpm": 104,
+        "coins": 10,
+        "id": "Handel-Hallelujah_Chorus",
+        "imageUrl": "images/Handel.jpg",
+        "tilesCount": 1934,
+        "title": "Hallelujah Chorus",
+        "url": "songs/classic/Handel-Hallelujah_Chorus.mid"
+      },
+      "Handel-La_Rejouissance": {
+        "__collections__": {},
+        "artist": "Handel",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Handel-La_Rejouissance",
+        "imageUrl": "images/Handel.jpg",
+        "tilesCount": 284,
+        "title": "La Rejouissance",
+        "url": "songs/classic/Handel-La_Rejouissance.mid"
+      },
+      "Handel-Ombra_Mai_Fu": {
+        "__collections__": {},
+        "artist": "Handel",
+        "bpm": 55,
+        "coins": 10,
+        "id": "Handel-Ombra_Mai_Fu",
+        "imageUrl": "images/Handel.jpg",
+        "tilesCount": 451,
+        "title": "Ombra Mai Fu",
+        "url": "songs/classic/Handel-Ombra_Mai_Fu.mid"
+      },
+      "Handel-Sarabande": {
+        "__collections__": {},
+        "artist": "Handel",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Handel-Sarabande",
+        "imageUrl": "images/Handel.jpg",
+        "tilesCount": 502,
+        "title": "Sarabande",
+        "url": "songs/classic/Handel-Sarabande.mid"
+      },
+      "Handel-Zadok_The_Priest": {
+        "__collections__": {},
+        "artist": "Handel",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Handel-Zadok_The_Priest",
+        "imageUrl": "images/Handel.jpg",
+        "tilesCount": 459,
+        "title": "Zadok The Priest",
+        "url": "songs/classic/Handel-Zadok_The_Priest.mid"
+      },
+      "Haydn-The_Nutcracker_-_Russian_Dance": {
+        "__collections__": {},
+        "artist": "Haydn",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Haydn-The_Nutcracker_-_Russian_Dance",
+        "imageUrl": "images/Haydn.jpg",
+        "tilesCount": 1212,
+        "title": "The Nutcracker - Russian Dance",
+        "url": "songs/classic/Haydn-The_Nutcracker_-_Russian_Dance.mid"
+      },
+      "Haydn-Trumpet_Concerto": {
+        "__collections__": {},
+        "artist": "Haydn",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Haydn-Trumpet_Concerto",
+        "imageUrl": "images/Haydn.jpg",
+        "tilesCount": 3328,
+        "title": "Trumpet Concerto",
+        "url": "songs/classic/Haydn-Trumpet_Concerto.mid"
+      },
+      "Jacques_Offenbach-Barcarolle": {
+        "__collections__": {},
+        "artist": "Jacques Offenbach",
+        "bpm": 80,
+        "coins": 10,
+        "id": "Jacques_Offenbach-Barcarolle",
+        "imageUrl": "images/JacquesOffenbach.jpg",
+        "tilesCount": 912,
+        "title": "Barcarolle",
+        "url": "songs/classic/Jacques_Offenbach-Barcarolle.mid"
+      },
+      "Jacques_Offenbach-Orpheus_In_The_Underworld": {
+        "__collections__": {},
+        "artist": "Jacques Offenbach",
+        "bpm": 145,
+        "coins": 10,
+        "id": "Jacques_Offenbach-Orpheus_In_The_Underworld",
+        "imageUrl": "images/JacquesOffenbach.jpg",
+        "tilesCount": 1780,
+        "title": "Orpheus In The Underworld",
+        "url": "songs/classic/Jacques_Offenbach-Orpheus_In_The_Underworld.mid"
+      },
+      "Janji-Heroes_Tonight": {
+        "__collections__": {},
+        "artist": "Janji",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Janji-Heroes_Tonight",
+        "imageUrl": "images/Janji.jpg",
+        "tilesCount": 1420,
+        "title": "Heroes Tonight",
+        "url": "songs/uk/Janji-Heroes_Tonight.mid"
+      },
+      "Japanese_Folk-Sakura_Sakura": {
+        "__collections__": {},
+        "artist": "Japanese Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Japanese_Folk-Sakura_Sakura",
+        "imageUrl": "images/JapaneseFolk.jpg",
+        "tilesCount": 240,
+        "title": "Sakura Sakura",
+        "url": "songs/asia/Japanese_Folk-Sakura_Sakura.mid"
+      },
+      "Johann_Strauss-Blue_Danube_Waltz": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 115,
+        "coins": 10,
+        "id": "Johann_Strauss-Blue_Danube_Waltz",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 4407,
+        "title": "Blue Danube Waltz",
+        "url": "songs/classic/Johann_Strauss-Blue_Danube_Waltz.mid"
+      },
+      "Johann_Strauss-Die_Fledermaus": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Johann_Strauss-Die_Fledermaus",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 4686,
+        "title": "Die Fledermaus",
+        "url": "songs/classic/Johann_Strauss-Die_Fledermaus.mid"
+      },
+      "Johann_Strauss-Emperor_Waltz": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Johann_Strauss-Emperor_Waltz",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 272,
+        "title": "Emperor Waltz",
+        "url": "songs/classic/Johann_Strauss-Emperor_Waltz.mid"
+      },
+      "Johann_Strauss-Radetzky_March": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 200,
+        "coins": 10,
+        "id": "Johann_Strauss-Radetzky_March",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 1649,
+        "title": "Radetzky March",
+        "url": "songs/classic/Johann_Strauss-Radetzky_March.mid"
+      },
+      "Johann_Strauss-Tritsch_Tratsch_Polka": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Johann_Strauss-Tritsch_Tratsch_Polka",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 1418,
+        "title": "Tritsch Tratsch Polka",
+        "url": "songs/classic/Johann_Strauss-Tritsch_Tratsch_Polka.mid"
+      },
+      "Johann_Strauss-Voices_Of_Spring": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 149,
+        "coins": 10,
+        "id": "Johann_Strauss-Voices_Of_Spring",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 4875,
+        "title": "Voices Of Spring",
+        "url": "songs/classic/Johann_Strauss-Voices_Of_Spring.mid"
+      },
+      "Johann_Strauss-Wiener_Blut": {
+        "__collections__": {},
+        "artist": "Johann Strauss",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Johann_Strauss-Wiener_Blut",
+        "imageUrl": "images/JohannStrauss.jpg",
+        "tilesCount": 370,
+        "title": "Wiener Blut",
+        "url": "songs/classic/Johann_Strauss-Wiener_Blut.mid"
+      },
+      "Johannes_Brahms-Hungarian_Dance_No_5": {
+        "__collections__": {},
+        "artist": "Johannes Brahms",
+        "bpm": 130,
+        "coins": 10,
+        "id": "Johannes_Brahms-Hungarian_Dance_No_5",
+        "imageUrl": "images/JohannesBrahms.jpg",
+        "tilesCount": 1621,
+        "title": "Hungarian Dance No 5",
+        "url": "songs/classic/Johannes_Brahms-Hungarian_Dance_No_5.mid"
+      },
+      "Johannes_Brahms-Hungarian_Dance_No_6": {
+        "__collections__": {},
+        "artist": "Johannes Brahms",
+        "bpm": 80,
+        "coins": 10,
+        "id": "Johannes_Brahms-Hungarian_Dance_No_6",
+        "imageUrl": "images/JohannesBrahms.jpg",
+        "tilesCount": 2198,
+        "title": "Hungarian Dance No 6",
+        "url": "songs/classic/Johannes_Brahms-Hungarian_Dance_No_6.mid"
+      },
+      "John_Philip_Sousa-Liberty_Bell": {
+        "__collections__": {},
+        "artist": "John Philip Sousa",
+        "bpm": 150,
+        "coins": 10,
+        "id": "John_Philip_Sousa-Liberty_Bell",
+        "imageUrl": "images/JohnPhilipSousa.jpg",
+        "tilesCount": 2740,
+        "title": "Liberty Bell",
+        "url": "songs/classic/John_Philip_Sousa-Liberty_Bell.mid"
+      },
+      "John_Philip_Sousa-Semper_Fidelis": {
+        "__collections__": {},
+        "artist": "John Philip Sousa",
+        "bpm": 149,
+        "coins": 10,
+        "id": "John_Philip_Sousa-Semper_Fidelis",
+        "imageUrl": "images/JohnPhilipSousa.jpg",
+        "tilesCount": 1672,
+        "title": "Semper Fidelis",
+        "url": "songs/classic/John_Philip_Sousa-Semper_Fidelis.mid"
+      },
+      "John_Philip_Sousa-Stars_And_Stripes_Forever": {
+        "__collections__": {},
+        "artist": "John Philip Sousa",
+        "bpm": 240,
+        "coins": 10,
+        "id": "John_Philip_Sousa-Stars_And_Stripes_Forever",
+        "imageUrl": "images/JohnPhilipSousa.jpg",
+        "tilesCount": 2402,
+        "title": "Stars And Stripes Forever",
+        "url": "songs/classic/John_Philip_Sousa-Stars_And_Stripes_Forever.mid"
+      },
+      "Julius_Fucik-Entry_Of_The_Gladiators": {
+        "__collections__": {},
+        "artist": "Julius Fucik",
+        "bpm": 200,
+        "coins": 10,
+        "id": "Julius_Fucik-Entry_Of_The_Gladiators",
+        "imageUrl": "images/JuliusFucik.jpg",
+        "tilesCount": 2788,
+        "title": "Entry Of The Gladiators",
+        "url": "songs/classic/Julius_Fucik-Entry_Of_The_Gladiators.mid"
+      },
+      "Juventino_Rosas-Over_The_Waves": {
+        "__collections__": {},
+        "artist": "Juventino Rosas",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Juventino_Rosas-Over_The_Waves",
+        "imageUrl": "images/JuventinoRosas.jpg",
+        "tilesCount": 2152,
+        "title": "Over The Waves",
+        "url": "songs/classic/Juventino_Rosas-Over_The_Waves.mid"
+      },
+      "Karl_Jenkins-Palladio": {
+        "__collections__": {},
+        "artist": "Karl Jenkins",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Karl_Jenkins-Palladio",
+        "imageUrl": "images/KarlJenkins.jpg",
+        "tilesCount": 2635,
+        "title": "Palladio",
+        "url": "songs/classic/Karl_Jenkins-Palladio.mid"
+      },
+      "Ketelbey-In_A_Persian_Market": {
+        "__collections__": {},
+        "artist": "Ketelbey",
+        "bpm": 89,
+        "coins": 10,
+        "id": "Ketelbey-In_A_Persian_Market",
+        "imageUrl": "images/Ketelbey.jpg",
+        "tilesCount": 2883,
+        "title": "In A Persian Market",
+        "url": "songs/classic/Ketelbey-In_A_Persian_Market.mid"
+      },
+      "Korean_Folk-Arirang": {
+        "__collections__": {},
+        "artist": "Korean Folk",
+        "bpm": 80,
+        "coins": 10,
+        "id": "Korean_Folk-Arirang",
+        "imageUrl": "images/KoreanFolk.jpg",
+        "tilesCount": 408,
+        "title": "Arirang",
+        "url": "songs/asia/Korean_Folk-Arirang.mid"
+      },
+      "Luigi_Denza-Funiculi_Funicula": {
+        "__collections__": {},
+        "artist": "Luigi Denza",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Luigi_Denza-Funiculi_Funicula",
+        "imageUrl": "images/LuigiDenza.jpg",
+        "tilesCount": 244,
+        "title": "Funiculi Funicula",
+        "url": "songs/classic/Luigi_Denza-Funiculi_Funicula.mid"
+      },
+      "Mendelssohn_Bartholdy-Wedding_March": {
+        "__collections__": {},
+        "artist": "Mendelssohn Bartholdy",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Mendelssohn_Bartholdy-Wedding_March",
+        "imageUrl": "images/MendelssohnBartholdy.jpg",
+        "tilesCount": 559,
+        "title": "Wedding March",
+        "url": "songs/classic/Mendelssohn_Bartholdy-Wedding_March.mid"
+      },
+      "Mozart-Aria_Queen_Of_The_Night": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 140,
+        "coins": 10,
+        "id": "Mozart-Aria_Queen_Of_The_Night",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 1311,
+        "title": "Aria Queen Of The Night",
+        "url": "songs/classic/Mozart-Aria_Queen_Of_The_Night.mid"
+      },
+      "Mozart-Eine_Kleine_Nachtmusik": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Mozart-Eine_Kleine_Nachtmusik",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 1155,
+        "title": "Eine Kleine Nachtmusik",
+        "url": "songs/classic/Mozart-Eine_Kleine_Nachtmusik.mid"
+      },
+      "Mozart-Lacrimosa": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Mozart-Lacrimosa",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 679,
+        "title": "Lacrimosa",
+        "url": "songs/classic/Mozart-Lacrimosa.mid"
+      },
+      "Mozart-Marriage_Of_Figaro": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Mozart-Marriage_Of_Figaro",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 3506,
+        "title": "Marriage Of Figaro",
+        "url": "songs/classic/Mozart-Marriage_Of_Figaro.mid"
+      },
+      "Mozart-Requiem": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 64,
+        "coins": 10,
+        "id": "Mozart-Requiem",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 679,
+        "title": "Requiem",
+        "url": "songs/classic/Mozart-Requiem.mid"
+      },
+      "Mozart-Rondo_Alla_Turca": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Mozart-Rondo_Alla_Turca",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 2823,
+        "title": "Rondo Alla Turca",
+        "url": "songs/classic/Mozart-Rondo_Alla_Turca.mid"
+      },
+      "Mozart-Symphony_No._25": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Mozart-Symphony_No._25",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 4549,
+        "title": "Symphony No. 25",
+        "url": "songs/classic/Mozart-Symphony_No._25.mid"
+      },
+      "Mozart-Symphony_No._40_in_G": {
+        "__collections__": {},
+        "artist": "Mozart",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Mozart-Symphony_No._40_in_G",
+        "imageUrl": "images/Mozart.jpg",
+        "tilesCount": 2480,
+        "title": "Symphony No. 40 in G",
+        "url": "songs/classic/Mozart-Symphony_No._40_in_G.mid"
+      },
+      "Paganini-Caprice_No._24": {
+        "__collections__": {},
+        "artist": "Paganini",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Paganini-Caprice_No._24",
+        "imageUrl": "images/Paganini.jpg",
+        "tilesCount": 1238,
+        "title": "Caprice No. 24",
+        "url": "songs/classic/Paganini-Caprice_No._24.mid"
+      },
+      "Ponchielli-Dance_Of_The_Hours": {
+        "__collections__": {},
+        "artist": "Ponchielli",
+        "bpm": 149,
+        "coins": 10,
+        "id": "Ponchielli-Dance_Of_The_Hours",
+        "imageUrl": "images/Ponchielli.jpg",
+        "tilesCount": 1770,
+        "title": "Dance Of The Hours",
+        "url": "songs/classic/Ponchielli-Dance_Of_The_Hours.mid"
+      },
+      "Purcell-Funeral_Of_Queen_Mary": {
+        "__collections__": {},
+        "artist": "Purcell",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Purcell-Funeral_Of_Queen_Mary",
+        "imageUrl": "images/Purcell.jpg",
+        "tilesCount": 207,
+        "title": "Funeral Of Queen Mary",
+        "url": "songs/classic/Purcell-Funeral_Of_Queen_Mary.mid"
+      },
+      "Rachmaninoff-Prelude_In_C_Sharp_Minor": {
+        "__collections__": {},
+        "artist": "Rachmaninoff",
+        "bpm": 40,
+        "coins": 10,
+        "id": "Rachmaninoff-Prelude_In_C_Sharp_Minor",
+        "imageUrl": "images/Rachmaninoff.jpg",
+        "tilesCount": 1346,
+        "title": "Prelude In C Sharp Minor",
+        "url": "songs/classic/Rachmaninoff-Prelude_In_C_Sharp_Minor.mid"
+      },
+      "Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini": {
+        "__collections__": {},
+        "artist": "Rachmaninoff",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini",
+        "imageUrl": "images/Rachmaninoff.jpg",
+        "tilesCount": 960,
+        "title": "Rhapsody On A Theme Of Paganini",
+        "url": "songs/classic/Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini.mid"
+      },
+      "Respighi-Pines_Of_The_Appian_Way": {
+        "__collections__": {},
+        "artist": "Respighi",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Respighi-Pines_Of_The_Appian_Way",
+        "imageUrl": "images/Respighi.jpg",
+        "tilesCount": 385,
+        "title": "Pines Of The Appian Way",
+        "url": "songs/classic/Respighi-Pines_Of_The_Appian_Way.mid"
+      },
+      "Richard_Wagner-Tristan_And_Isolde": {
+        "__collections__": {},
+        "artist": "Richard Wagner",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Richard_Wagner-Tristan_And_Isolde",
+        "imageUrl": "images/RichardWagner.jpg",
+        "tilesCount": 2943,
+        "title": "Tristan And Isolde",
+        "url": "songs/classic/Richard_Wagner-Tristan_And_Isolde.mid"
+      },
+      "Ricketts-Colonel_Bogey_March": {
+        "__collections__": {},
+        "artist": "Ricketts",
+        "bpm": 207,
+        "coins": 10,
+        "id": "Ricketts-Colonel_Bogey_March",
+        "imageUrl": "images/Ricketts.jpg",
+        "tilesCount": 3016,
+        "title": "Colonel Bogey March",
+        "url": "songs/classic/Ricketts-Colonel_Bogey_March.mid"
+      },
+      "Rimsky_Korsakov-Flight_Of_The_Bumblebee": {
+        "__collections__": {},
+        "artist": "Rimsky Korsakov",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Rimsky_Korsakov-Flight_Of_The_Bumblebee",
+        "imageUrl": "images/RimskyKorsakov.jpg",
+        "tilesCount": 1125,
+        "title": "Flight Of The Bumblebee",
+        "url": "songs/classic/Rimsky_Korsakov-Flight_Of_The_Bumblebee.mid"
+      },
+      "Rossini-Barber_Of_Seville_-_Overture": {
+        "__collections__": {},
+        "artist": "Rossini",
+        "bpm": 80,
+        "coins": 10,
+        "id": "Rossini-Barber_Of_Seville_-_Overture",
+        "imageUrl": "images/Rossini.jpg",
+        "tilesCount": 383,
+        "title": "Barber Of Seville - Overture",
+        "url": "songs/classic/Rossini-Barber_Of_Seville_-_Overture.mid"
+      },
+      "Rossini-William_Tell_Overture_Finale": {
+        "__collections__": {},
+        "artist": "Rossini",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Rossini-William_Tell_Overture_Finale",
+        "imageUrl": "images/Rossini.jpg",
+        "tilesCount": 3018,
+        "title": "William Tell Overture Finale",
+        "url": "songs/classic/Rossini-William_Tell_Overture_Finale.mid"
+      },
+      "Russian_Folk-Kalinka": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Russian_Folk-Kalinka",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 328,
+        "title": "Kalinka",
+        "url": "songs/asia/Russian_Folk-Kalinka.mid"
+      },
+      "Russian_Folk-Katyusha": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Russian_Folk-Katyusha",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 855,
+        "title": "Katyusha",
+        "url": "songs/asia/Russian_Folk-Katyusha.mid"
+      },
+      "Russian_Folk-Korobeiniki": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 125,
+        "coins": 10,
+        "id": "Russian_Folk-Korobeiniki",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 493,
+        "title": "Korobeiniki",
+        "url": "songs/asia/Russian_Folk-Korobeiniki.mid"
+      },
+      "Russian_Folk-Oy,_Da_Ne_Vecher": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Russian_Folk-Oy,_Da_Ne_Vecher",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 221,
+        "title": "Oy, Da Ne Vecher",
+        "url": "songs/asia/Russian_Folk-Oy,_Da_Ne_Vecher.mid"
+      },
+      "Russian_Folk-Polyushka_Polye": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Russian_Folk-Polyushka_Polye",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 222,
+        "title": "Polyushka Polye",
+        "url": "songs/asia/Russian_Folk-Polyushka_Polye.mid"
+      },
+      "Russian_Folk-Smuglyanka": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Russian_Folk-Smuglyanka",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 1117,
+        "title": "Smuglyanka",
+        "url": "songs/asia/Russian_Folk-Smuglyanka.mid"
+      },
+      "Russian_Folk-Troika": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 69,
+        "coins": 10,
+        "id": "Russian_Folk-Troika",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 1337,
+        "title": "Troika",
+        "url": "songs/asia/Russian_Folk-Troika.mid"
+      },
+      "Russian_Folk-Tumbalalaika": {
+        "__collections__": {},
+        "artist": "Russian Folk",
+        "bpm": 180,
+        "coins": 10,
+        "id": "Russian_Folk-Tumbalalaika",
+        "imageUrl": "images/RussianFolk.jpg",
+        "tilesCount": 543,
+        "title": "Tumbalalaika",
+        "url": "songs/asia/Russian_Folk-Tumbalalaika.mid"
+      },
+      "Saint_Saens-Carnival_Of_The_Animals_-_Aquarium": {
+        "__collections__": {},
+        "artist": "Saint Saens",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Saint_Saens-Carnival_Of_The_Animals_-_Aquarium",
+        "imageUrl": "images/SaintSaens.jpg",
+        "tilesCount": 1759,
+        "title": "Carnival Of The Animals - Aquarium",
+        "url": "songs/classic/Saint_Saens-Carnival_Of_The_Animals_-_Aquarium.mid"
+      },
+      "Saint_Saens-Carnival_Of_The_Animals_-_Finale": {
+        "__collections__": {},
+        "artist": "Saint Saens",
+        "bpm": 74,
+        "coins": 10,
+        "id": "Saint_Saens-Carnival_Of_The_Animals_-_Finale",
+        "imageUrl": "images/SaintSaens.jpg",
+        "tilesCount": 2756,
+        "title": "Carnival Of The Animals - Finale",
+        "url": "songs/classic/Saint_Saens-Carnival_Of_The_Animals_-_Finale.mid"
+      },
+      "Saint_Saens-Danse_Macabre": {
+        "__collections__": {},
+        "artist": "Saint Saens",
+        "bpm": 149,
+        "coins": 10,
+        "id": "Saint_Saens-Danse_Macabre",
+        "imageUrl": "images/SaintSaens.jpg",
+        "tilesCount": 1622,
+        "title": "Danse Macabre",
+        "url": "songs/classic/Saint_Saens-Danse_Macabre.mid"
+      },
+      "Saint_Saens-Symphony_No._3": {
+        "__collections__": {},
+        "artist": "Saint Saens",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Saint_Saens-Symphony_No._3",
+        "imageUrl": "images/SaintSaens.jpg",
+        "tilesCount": 769,
+        "title": "Symphony No. 3",
+        "url": "songs/classic/Saint_Saens-Symphony_No._3.mid"
+      },
+      "Samuel_Barber-Adagio_For_Strings": {
+        "__collections__": {},
+        "artist": "Samuel Barber",
+        "bpm": 83,
+        "coins": 10,
+        "id": "Samuel_Barber-Adagio_For_Strings",
+        "imageUrl": "images/SamuelBarber.jpg",
+        "tilesCount": 748,
+        "title": "Adagio For Strings",
+        "url": "songs/classic/Samuel_Barber-Adagio_For_Strings.mid"
+      },
+      "Schubert-Ave_Maria": {
+        "__collections__": {},
+        "artist": "Schubert",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Schubert-Ave_Maria",
+        "imageUrl": "images/Schubert.jpg",
+        "tilesCount": 1074,
+        "title": "Ave Maria",
+        "url": "songs/classic/Schubert-Ave_Maria.mid"
+      },
+      "Smetana-Moldau_River": {
+        "__collections__": {},
+        "artist": "Smetana",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Smetana-Moldau_River",
+        "imageUrl": "images/Smetana.jpg",
+        "tilesCount": 805,
+        "title": "Moldau River",
+        "url": "songs/classic/Smetana-Moldau_River.mid"
+      },
+      "Stravinsky-Firebird_Suite_-_Finale": {
+        "__collections__": {},
+        "artist": "Stravinsky",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Stravinsky-Firebird_Suite_-_Finale",
+        "imageUrl": "images/Stravinsky.jpg",
+        "tilesCount": 1794,
+        "title": "Firebird Suite - Finale",
+        "url": "songs/classic/Stravinsky-Firebird_Suite_-_Finale.mid"
+      },
+      "Tchaikovsky-Dance_Of_The_Little_Swans": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 100,
+        "coins": 10,
+        "id": "Tchaikovsky-Dance_Of_The_Little_Swans",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 810,
+        "title": "Dance Of The Little Swans",
+        "url": "songs/classic/Tchaikovsky-Dance_Of_The_Little_Swans.mid"
+      },
+      "Tchaikovsky-Dance_Of_The_Reed_Flutes": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 69,
+        "coins": 10,
+        "id": "Tchaikovsky-Dance_Of_The_Reed_Flutes",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 1416,
+        "title": "Dance Of The Reed Flutes",
+        "url": "songs/classic/Tchaikovsky-Dance_Of_The_Reed_Flutes.mid"
+      },
+      "Tchaikovsky-Dance_Of_The_Sugar_Plum_Fairy": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 18,
+        "coins": 10,
+        "id": "Tchaikovsky-Dance_Of_The_Sugar_Plum_Fairy",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 1018,
+        "title": "Dance Of The Sugar Plum Fairy",
+        "url": "songs/classic/Tchaikovsky-Dance_Of_The_Sugar_Plum_Fairy.mid"
+      },
+      "Tchaikovsky-Marche_Slave": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 72,
+        "coins": 10,
+        "id": "Tchaikovsky-Marche_Slave",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 470,
+        "title": "Marche Slave",
+        "url": "songs/classic/Tchaikovsky-Marche_Slave.mid"
+      },
+      "Tchaikovsky-Nutcracker_-_March": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Tchaikovsky-Nutcracker_-_March",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 2345,
+        "title": "Nutcracker - March",
+        "url": "songs/classic/Tchaikovsky-Nutcracker_-_March.mid"
+      },
+      "Tchaikovsky-Piano_Concerto_No._1": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Tchaikovsky-Piano_Concerto_No._1",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 1369,
+        "title": "Piano Concerto No. 1",
+        "url": "songs/classic/Tchaikovsky-Piano_Concerto_No._1.mid"
+      },
+      "Tchaikovsky-Romeo_And_Juliet_Fantasy_Overture": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Tchaikovsky-Romeo_And_Juliet_Fantasy_Overture",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 1558,
+        "title": "Romeo And Juliet Fantasy Overture",
+        "url": "songs/classic/Tchaikovsky-Romeo_And_Juliet_Fantasy_Overture.mid"
+      },
+      "Tchaikovsky-Sleeping_Beauty": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 150,
+        "coins": 10,
+        "id": "Tchaikovsky-Sleeping_Beauty",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 2918,
+        "title": "Sleeping Beauty",
+        "url": "songs/classic/Tchaikovsky-Sleeping_Beauty.mid"
+      },
+      "Tchaikovsky-Swan_Lake": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 100,
+        "coins": 10,
+        "id": "Tchaikovsky-Swan_Lake",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 326,
+        "title": "Swan Lake",
+        "url": "songs/classic/Tchaikovsky-Swan_Lake.mid"
+      },
+      "Tchaikovsky-Symphony_No._6": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 143,
+        "coins": 10,
+        "id": "Tchaikovsky-Symphony_No._6",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 683,
+        "title": "Symphony No. 6",
+        "url": "songs/classic/Tchaikovsky-Symphony_No._6.mid"
+      },
+      "Tchaikovsky-Waltz_Of_The_Flowers": {
+        "__collections__": {},
+        "artist": "Tchaikovsky",
+        "bpm": 182,
+        "coins": 10,
+        "id": "Tchaikovsky-Waltz_Of_The_Flowers",
+        "imageUrl": "images/Tchaikovsky.jpg",
+        "tilesCount": 889,
+        "title": "Waltz Of The Flowers",
+        "url": "songs/classic/Tchaikovsky-Waltz_Of_The_Flowers.mid"
+      },
+      "Vaughan_Williams-Fantasia_On_Greensleeves": {
+        "__collections__": {},
+        "artist": "Vaughan Williams",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Vaughan_Williams-Fantasia_On_Greensleeves",
+        "imageUrl": "images/VaughanWilliams.jpg",
+        "tilesCount": 948,
+        "title": "Fantasia On Greensleeves",
+        "url": "songs/classic/Vaughan_Williams-Fantasia_On_Greensleeves.mid"
+      },
+      "Vietnamese_Folk-Bac_Kim_Thang": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Bac_Kim_Thang",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 148,
+        "title": "Bac Kim Thang",
+        "url": "songs/vietnam/Vietnamese_Folk-Bac_Kim_Thang.mid"
+      },
+      "Vietnamese_Folk-Beo_Dat_May_Troi": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Beo_Dat_May_Troi",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 759,
+        "title": "Beo Dat May Troi",
+        "url": "songs/vietnam/Vietnamese_Folk-Beo_Dat_May_Troi.mid"
+      },
+      "Vietnamese_Folk-Cay_Truc_Xinh": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Cay_Truc_Xinh",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 54,
+        "title": "Cay Truc Xinh",
+        "url": "songs/vietnam/Vietnamese_Folk-Cay_Truc_Xinh.mid"
+      },
+      "Vietnamese_Folk-Co_La": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Co_La",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 59,
+        "title": "Co La",
+        "url": "songs/vietnam/Vietnamese_Folk-Co_La.mid"
+      },
+      "Vietnamese_Folk-Ly_Cay_Bong": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 120,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Ly_Cay_Bong",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 58,
+        "title": "Ly Cay Bong",
+        "url": "songs/vietnam/Vietnamese_Folk-Ly_Cay_Bong.mid"
+      },
+      "Vietnamese_Folk-Nguoi_O_Dung_Ve": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Nguoi_O_Dung_Ve",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 159,
+        "title": "Nguoi O Dung Ve",
+        "url": "songs/vietnam/Vietnamese_Folk-Nguoi_O_Dung_Ve.mid"
+      },
+      "Vietnamese_Folk-Trong_Com": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 60,
+        "coins": 10,
+        "id": "Vietnamese_Folk-Trong_Com",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": 233,
+        "title": "Trong Com",
+        "url": "songs/vietnam/Vietnamese_Folk-Trong_Com.mid"
+      },
+      "Vittorio_Monti-Czardas": {
+        "__collections__": {},
+        "artist": "Vittorio Monti",
+        "bpm": 55,
+        "coins": 10,
+        "id": "Vittorio_Monti-Czardas",
+        "imageUrl": "images/VittorioMonti.jpg",
+        "tilesCount": 2342,
+        "title": "Czardas",
+        "url": "songs/classic/Vittorio_Monti-Czardas.mid"
+      },
+      "Vivaldi-Four_Seasons_-_Spring": {
+        "__collections__": {},
+        "artist": "Vivaldi",
+        "bpm": 37,
+        "coins": 10,
+        "id": "Vivaldi-Four_Seasons_-_Spring",
+        "imageUrl": "images/Vivaldi.jpg",
+        "tilesCount": 2419,
+        "title": "Four Seasons - Spring",
+        "url": "songs/classic/Vivaldi-Four_Seasons_-_Spring.mid"
+      },
+      "Vivaldi-Four_Seasons_-_Summer": {
+        "__collections__": {},
+        "artist": "Vivaldi",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Vivaldi-Four_Seasons_-_Summer",
+        "imageUrl": "images/Vivaldi.jpg",
+        "tilesCount": 2553,
+        "title": "Four Seasons - Summer",
+        "url": "songs/classic/Vivaldi-Four_Seasons_-_Summer.mid"
+      },
+      "Vivaldi-Four_Seasons_-_Winter": {
+        "__collections__": {},
+        "artist": "Vivaldi",
+        "bpm": 75,
+        "coins": 10,
+        "id": "Vivaldi-Four_Seasons_-_Winter",
+        "imageUrl": "images/Vivaldi.jpg",
+        "tilesCount": 1204,
+        "title": "Four Seasons - Winter",
+        "url": "songs/classic/Vivaldi-Four_Seasons_-_Winter.mid"
+      }
+    }
+  }
+}
