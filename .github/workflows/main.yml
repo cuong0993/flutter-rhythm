@@ -27,7 +27,7 @@ jobs:
       #          path: build/app/outputs/flutter-apk/
       - uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: hittick-stage-5708b
+          appId: 1:979560368213:android:fb2e1a922d38086502acdc
           token: 1/LbduIpc3b8RKmy_iaXIuReAJsqhO6-pA1QUzSPF12EE
           groups: testers
           file: build/app/outputs/flutter-apk/android-stage-release.apk
