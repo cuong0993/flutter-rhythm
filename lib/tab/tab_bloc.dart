@@ -22,7 +22,7 @@ class TabBloc extends Bloc<TabEvent, TabState> {
   TabBloc(this._userRepository, this._instrumentsRepository)
       : super(TabState.instruments) {
     /* 3 days to ask for rate */
-    const millisecondsUntilPrompt = (0 * 24 * 60 * 60 * 1000);
+    const millisecondsUntilPrompt = (3 * 24 * 60 * 60 * 1000);
     const launchesUntilPrompt = 3;
     Preferences.getInstance().then((preferences) {
       if (preferences.launchCount == 0) {
