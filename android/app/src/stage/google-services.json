@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:979560368213:android:960e19c2193ab71a02acdc",
+        "android_client_info": {
+          "package_name": "com.chaomao.hittick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979560368213-rsdn4ov0tm1c236mammoco1se1ml8rmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCZwvzloTaBr7V0MTEma-2L1FQPG423vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979560368213-rsdn4ov0tm1c236mammoco1se1ml8rmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:979560368213:android:fb2e1a922d38086502acdc",
         "android_client_info": {
           "package_name": "com.chaomao.lalaorchestra"
@@ -41,7 +70,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-9927327691826032~5582650235"
     }
   ],
   "configuration_version": "1"
