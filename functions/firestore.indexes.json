@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "purchases",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "canceled",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "expiryTimeMillis",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

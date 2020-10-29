@@ -1,0 +1,32 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --fix --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "test": "npm run build && mocha -r ts-node/register test/**/*.spec.ts --timeout 5000"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.12.1",
+    "firebase-functions": "^3.7.0",
+    "googleapis": "^52.1.0"
+  },
+  "devDependencies": {
+    "@firebase/testing": "^0.20.1",
+    "@types/mocha": "^7.0.2",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.9.5"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "private": true
+}

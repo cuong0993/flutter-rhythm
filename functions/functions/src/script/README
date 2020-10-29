@@ -1,0 +1,1 @@
+$env:GCLOUD_PROJECT="project-id"; ts-node .\script-file.ts
