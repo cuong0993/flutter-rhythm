@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../extra_actions.dart';
 import 'level_up_dialog.dart';
 import 'rate_dialog.dart';
 import 'tab_bloc.dart';
@@ -37,6 +38,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
+            actions: [ExtraActions()],
               automaticallyImplyLeading: false,
               title: Text(activeTab.getName(context))),
           body: activeTab.widget,
