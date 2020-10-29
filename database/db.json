@@ -1,9 +1,9 @@
 {
   "__collections__": {
     "instruments": {
-      "ElectricGuitar": {
+      "electric_guitar": {
         "__collections__": {},
-        "id": "electric-guitar",
+        "id": "electric_guitar",
         "imageUrl": "instrument-images/electric-guitar.jpg",
         "maxNote": 84,
         "minNote": 40,
@@ -207,9 +207,9 @@
         "title": "Electric Guitar",
         "volume": 0.3
       },
-      "Guitar": {
+      "acoustic_guitar": {
         "__collections__": {},
-        "id": "acoustic-guitar",
+        "id": "acoustic_guitar",
         "imageUrl": "instrument-images/acoustic-guitar.jpg",
         "maxNote": 84,
         "minNote": 31,
@@ -456,7 +456,7 @@
         "title": "Acoustic Guitar",
         "volume": 0.5
       },
-      "Piano": {
+      "piano": {
         "__collections__": {},
         "id": "piano",
         "imageUrl": "instrument-images/piano.jpg",

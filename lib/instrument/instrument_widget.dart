@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager_firebase/flutter_cache_manager_firebase.dart';
+import 'package:intl/intl.dart';
 
 import '../util.dart';
 import 'instrument.dart';
@@ -27,7 +28,13 @@ class InstrumentWidget extends StatelessWidget {
             memCacheHeight: size40dp,
             cacheManager: FirebaseCacheManager()),
         title: Text(
-          instrument.title,
+          Intl.message(
+            '',
+            /* FIXME Localization name of instrument should be taken from server, not from local text resources */
+            name: instrument.id,
+            desc: '',
+            args: [],
+          ),
           style: Theme.of(context).textTheme.headline6,
         ));
   }
