@@ -15,19 +15,18 @@ class HomeWidget extends StatefulWidget {
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
-
 var _photoUrl = '';
 
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   void initState() {
-    BlocProvider.of<HomeBloc>(context).userUpLevelStream.listen((event) {
+    BlocProvider.of<TabBloc>(context).userUpLevelStream.listen((event) {
       showDialog<void>(
         context: context,
         builder: (_) => LevelUpDialog(),
       );
     });
-    BlocProvider.of<HomeBloc>(context).showRateEventStream.listen((event) {
+    BlocProvider.of<TabBloc>(context).showRateEventStream.listen((event) {
       showDialog<void>(
         context: context,
         builder: (_) => RateDialog(),
@@ -45,20 +44,19 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, TabState>(
+    return BlocBuilder<TabBloc, TabState>(
       builder: (context, activeTab) {
         return Scaffold(
-          appBar: AppBar(actions: [
-            ClipOval(
-              child: CachedNetworkImage(
-                  imageUrl: _photoUrl,
-                  placeholder: (context, url) =>
-                      Icon(Icons.account_circle_rounded),
-                  memCacheWidth: size24dp,
-                  memCacheHeight: size24dp),
-            ),
-            ExtraActions()
-          ], automaticallyImplyLeading: false, title: Text('Hit Notes')),
+          appBar: AppBar(
+              actions: [ClipOval(
+                child: CachedNetworkImage(
+                    imageUrl: _photoUrl,
+                    placeholder: (context, url) => Icon(Icons.account_circle_rounded),
+                    memCacheWidth: size24dp,
+                    memCacheHeight: size24dp),
+              ), ExtraActions()],
+              automaticallyImplyLeading: false,
+              title: Text('Hit Notes')),
           body: SongsWidget(),
         );
       },
