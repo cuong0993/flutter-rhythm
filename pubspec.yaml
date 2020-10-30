@@ -53,10 +53,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-  fonts:
-    # https://www.fluttericon.com/
-    - family: MyFlutterApp
-      fonts:
-        - asset: assets/fonts/MyFlutterApp.ttf
 flutter_intl:
   enabled: true

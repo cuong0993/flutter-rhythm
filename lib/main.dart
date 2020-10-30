@@ -20,6 +20,7 @@ import 'songs/songs_repository_impl.dart';
 import 'splash_widget.dart';
 import 'user/user_bloc.dart';
 import 'user/user_repository_impl.dart';
+import 'user/user_widget.dart';
 
 void main() async {
   Bloc.observer = SimpleBlocObserver();
@@ -102,6 +103,9 @@ class App extends StatelessWidget {
           Routes.game: (context) {
             return BlocProvider<GameBloc>(
                 create: (_) => GameBloc(), child: GameWidget());
+          },
+          Routes.account: (context) {
+            return UserWidget();
           },
         },
       ),
