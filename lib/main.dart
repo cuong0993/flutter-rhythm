@@ -7,6 +7,8 @@ import 'authentication/authentication_event.dart';
 import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'generated/l10n.dart';
+import 'home/home_bloc.dart';
+import 'home/home_widget.dart';
 import 'instrument/instruments_bloc.dart';
 import 'instrument/instruments_event.dart';
 import 'instrument/instruments_repository_impl.dart';
@@ -16,8 +18,6 @@ import 'songs/songs_bloc.dart';
 import 'songs/songs_event.dart';
 import 'songs/songs_repository_impl.dart';
 import 'splash_widget.dart';
-import 'tab/home_widget.dart';
-import 'tab/tab_bloc.dart';
 import 'user/user_bloc.dart';
 import 'user/user_repository_impl.dart';
 
@@ -94,9 +94,9 @@ class App extends StatelessWidget {
             return SplashWidget();
           },
           Routes.home: (context) {
-            return BlocProvider<TabBloc>(
+            return BlocProvider<HomeBloc>(
                 create: (context) =>
-                    TabBloc(userRepository, instrumentsRepository),
+                    HomeBloc(userRepository, instrumentsRepository),
                 child: HomeWidget());
           },
           Routes.game: (context) {

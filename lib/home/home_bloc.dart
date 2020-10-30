@@ -7,10 +7,10 @@ import '../midi_processor.dart';
 import '../preferences.dart';
 import '../user/user.dart';
 import '../user/user_repository.dart';
-import 'tab_event.dart';
-import 'tab_state.dart';
+import 'home_event.dart';
+import 'home_state.dart';
 
-class TabBloc extends Bloc<TabEvent, TabState> {
+class HomeBloc extends Bloc<HomeEvent, TabState> {
   final UserRepository _userRepository;
   final InstrumentsRepository _instrumentsRepository;
   Stream<bool> userChangeToPremiumStream;
@@ -19,7 +19,7 @@ class TabBloc extends Bloc<TabEvent, TabState> {
 
   Stream<bool> get showRateEventStream => _showRateEventController.stream;
 
-  TabBloc(this._userRepository, this._instrumentsRepository)
+  HomeBloc(this._userRepository, this._instrumentsRepository)
       : super(TabState.instruments) {
     /* 3 days to ask for rate */
     const millisecondsUntilPrompt = (3 * 24 * 60 * 60 * 1000);
@@ -60,10 +60,7 @@ class TabBloc extends Bloc<TabEvent, TabState> {
   }
 
   @override
-  Stream<TabState> mapEventToState(TabEvent event) async* {
-    if (event is UpdateTab) {
-      yield event.tabState;
-    }
+  Stream<TabState> mapEventToState(HomeEvent event) async* {
   }
 
   @override
