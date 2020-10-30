@@ -1,18 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../extra_actions.dart';
+import '../songs/songs_widget.dart';
+import '../util.dart';
+import 'home_bloc.dart';
+import 'home_state.dart';
 import 'level_up_dialog.dart';
 import 'rate_dialog.dart';
-import 'tab_bloc.dart';
-import 'tab_event.dart';
-import 'tab_state.dart';
-import 'tab_widget.dart';
 
 class HomeWidget extends StatefulWidget {
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
+var _photoUrl = '';
 
 class _HomeWidgetState extends State<HomeWidget> {
   @override
@@ -29,6 +32,13 @@ class _HomeWidgetState extends State<HomeWidget> {
         builder: (_) => RateDialog(),
       );
     });
+    FirebaseAuth.instance.currentUser.providerData.forEach((userInfo) {
+      if (userInfo.providerId == 'facebook.com') {
+        _photoUrl = '${userInfo.photoURL}?height=$size96dp';
+      } else if (userInfo.providerId == 'google.com') {
+        _photoUrl = userInfo.photoURL.replaceAll('s96-c', 's$size96dp-c');
+      }
+    });
     super.initState();
   }
 
@@ -38,15 +48,16 @@ class _HomeWidgetState extends State<HomeWidget> {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
-              actions: [ExtraActions()],
+              actions: [ClipOval(
+                child: CachedNetworkImage(
+                    imageUrl: _photoUrl,
+                    placeholder: (context, url) => Icon(Icons.account_circle_rounded),
+                    memCacheWidth: size24dp,
+                    memCacheHeight: size24dp),
+              ), ExtraActions()],
               automaticallyImplyLeading: false,
-              title: Text(activeTab.getName(context))),
-          body: activeTab.widget,
-          bottomNavigationBar: TabWidget(
-            activeTab: activeTab,
-            onTabSelected: (tab) =>
-                BlocProvider.of<TabBloc>(context).add(UpdateTab(tab)),
-          ),
+              title: Text('Hit Notes')),
+          body: SongsWidget(),
         );
       },
     );

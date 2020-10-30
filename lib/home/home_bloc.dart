@@ -7,8 +7,8 @@ import '../midi_processor.dart';
 import '../preferences.dart';
 import '../user/user.dart';
 import '../user/user_repository.dart';
-import 'tab_event.dart';
-import 'tab_state.dart';
+import 'home_event.dart';
+import 'home_state.dart';
 
 class TabBloc extends Bloc<TabEvent, TabState> {
   final UserRepository _userRepository;
