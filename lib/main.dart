@@ -12,6 +12,7 @@ import 'home/home_widget.dart';
 import 'instrument/instruments_bloc.dart';
 import 'instrument/instruments_event.dart';
 import 'instrument/instruments_repository_impl.dart';
+import 'instrument/instruments_widget.dart';
 import 'routes.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/songs_bloc.dart';
@@ -106,6 +107,9 @@ class App extends StatelessWidget {
           },
           Routes.account: (context) {
             return UserWidget();
+          },
+          Routes.instrument: (context) {
+            return InstrumentsWidget();
           },
         },
       ),

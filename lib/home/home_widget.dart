@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../extra_actions.dart';
+import '../generated/l10n.dart';
 import '../routes.dart';
 import '../songs/songs_widget.dart';
 import '../util.dart';
@@ -50,24 +51,28 @@ class _HomeWidgetState extends State<HomeWidget> {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(actions: [
-            IconButton(
-                icon: Image(image: AssetImage('assets/images/img_guitar.png'), width: 24, height: 24,),
-                onPressed: () async {
-                }),
-            IconButton(
-                icon: ClipOval(
-                  child: CachedNetworkImage(
-                      imageUrl: _photoUrl,
-                      placeholder: (context, url) =>
-                          Icon(Icons.account_circle_rounded),
-                      memCacheWidth: size24dp,
-                      memCacheHeight: size24dp),
-                ),
-                onPressed: () async {
-                  await Navigator.pushNamed(context, Routes.account);
-                }),
-            ExtraActions()
-          ], automaticallyImplyLeading: false, title: Text('Hit Notes')),
+                IconButton(
+                    icon: Image(
+                        image: AssetImage('assets/images/img_guitar.png')),
+                    onPressed: () async {
+                      await Navigator.pushNamed(context, Routes.instrument);
+                    }),
+                IconButton(
+                    icon: ClipOval(
+                      child: CachedNetworkImage(
+                          imageUrl: _photoUrl,
+                          placeholder: (context, url) =>
+                              Icon(Icons.account_circle_rounded),
+                          memCacheWidth: size24dp,
+                          memCacheHeight: size24dp),
+                    ),
+                    onPressed: () async {
+                      await Navigator.pushNamed(context, Routes.account);
+                    }),
+                ExtraActions()
+              ],
+              automaticallyImplyLeading: false,
+              title: Text(S.of(context).txt_all_songs)),
           body: SongsWidget(),
         );
       },

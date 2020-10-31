@@ -3,4 +3,5 @@ class Routes {
   static final home = '/home';
   static final game = '/game';
   static final account = '/account';
+  static final instrument = '/instrument';
 }

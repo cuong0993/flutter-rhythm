@@ -14,36 +14,43 @@ class UserWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
-        if (state is UserInitial) {
-          BlocProvider.of<UserBloc>(context).add(LoadUser());
-          return LoadingWidget();
-        } else if (state is UserUpdated) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                          image: AssetImage('assets/images/img_firework.png')),
-                      Text(
-                        S.of(context).txt_dialog_level_up_description('1'),
-                        style: Theme.of(context).textTheme.headline6,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          );
-        } else {
-          return Container();
-        }
+        return Scaffold(
+            appBar: AppBar(title: Text(S.of(context).txt_page_title_about)),
+            body: (() {
+              if (state is UserInitial) {
+                BlocProvider.of<UserBloc>(context).add(LoadUser());
+                return LoadingWidget();
+              } else if (state is UserUpdated) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(
+                                image: AssetImage(
+                                    'assets/images/img_firework.png')),
+                            Text(
+                              S
+                                  .of(context)
+                                  .txt_dialog_level_up_description('1'),
+                              style: Theme.of(context).textTheme.headline6,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              } else {
+                return Container();
+              }
+            }()));
       },
     );
   }
