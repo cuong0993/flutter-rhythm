@@ -13,7 +13,6 @@ import 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, TabState> {
   final UserRepository _userRepository;
   final InstrumentsRepository _instrumentsRepository;
-  Stream<bool> userChangeToPremiumStream;
   Stream<User> userUpLevelStream;
   final _showRateEventController = StreamController<bool>();
 
@@ -39,12 +38,6 @@ class HomeBloc extends Bloc<HomeEvent, TabState> {
         }
       }
     });
-    userChangeToPremiumStream = _userRepository
-        .getUser()
-        .map((user) => user.free)
-        .distinct()
-        .where((free) => !free)
-        .skip(1);
     userUpLevelStream = _userRepository
         .getUser()
         .distinct((prev, next) => prev.level == next.level)
