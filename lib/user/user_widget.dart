@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../generated/l10n.dart';
+import '../instrument/instruments_widget.dart';
 import '../loading_widget.dart';
 import 'user_bloc.dart';
 
@@ -25,6 +26,7 @@ class UserWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    InstrumentsWidget(),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,

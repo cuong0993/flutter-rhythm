@@ -49,32 +49,9 @@ class _HomeWidgetState extends State<HomeWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, TabState>(
       builder: (context, activeTab) {
-        var dropdownValue = 'One';
-
         return Scaffold(
-          appBar: AppBar(actions: [DropdownButton<String>(
-          value: dropdownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                dropdownValue = newValue;
-              });
-            },
-            items: <String>['One', 'Two', 'Free', 'Four']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
+          appBar: AppBar(
+              actions: [
                 IconButton(
                     icon: ClipOval(
                       child: CachedNetworkImage(
