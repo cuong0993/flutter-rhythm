@@ -10,36 +10,18 @@ part 'user.g.dart';
 @JsonSerializable(explicitToJson: true)
 class User {
   String id;
-  String name;
-  String photoUrl;
-  String email;
   int level;
   int experience;
   int maxLevelExperience;
   String instrumentId;
-  bool free;
-  @TimestampConverter()
-  DateTime premiumDueDate;
-  @TimestampConverter()
-  DateTime nextTimeReward;
-  int coins;
-  List<String> boughtSongs;
   List<String> notificationTokens;
 
   User(
     this.id,
-    this.name,
-    this.photoUrl,
-    this.email,
     this.level,
     this.experience,
     this.maxLevelExperience,
     this.instrumentId,
-    this.free,
-    this.premiumDueDate,
-    this.nextTimeReward,
-    this.coins,
-    this.boughtSongs,
     this.notificationTokens,
   );
 

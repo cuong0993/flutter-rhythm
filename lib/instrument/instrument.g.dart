@@ -9,8 +9,6 @@ part of 'instrument.dart';
 Instrument _$InstrumentFromJson(Map<String, dynamic> json) {
   return Instrument(
     json['id'] as String,
-    json['title'] as String,
-    json['imageUrl'] as String,
     (json['soundFiles'] as Map<String, dynamic>)?.map(
       (k, e) => MapEntry(int.parse(k), e as String),
     ),
@@ -21,15 +19,12 @@ Instrument _$InstrumentFromJson(Map<String, dynamic> json) {
     json['minNote'] as int,
     json['maxNote'] as int,
     (json['volume'] as num)?.toDouble(),
-    json['requiredLevel'] as int,
   );
 }
 
 Map<String, dynamic> _$InstrumentToJson(Instrument instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'imageUrl': instance.imageUrl,
       'soundFiles':
           instance.soundFiles?.map((k, e) => MapEntry(k.toString(), e)),
       'soundNotes': instance.soundNotes
@@ -37,5 +32,4 @@ Map<String, dynamic> _$InstrumentToJson(Instrument instance) =>
       'minNote': instance.minNote,
       'maxNote': instance.maxNote,
       'volume': instance.volume,
-      'requiredLevel': instance.requiredLevel,
     };

@@ -11,7 +11,6 @@ class Song {
   String imageUrl;
   int bpm;
   int tilesCount;
-  int coins;
 
   Song(
     this.id,
@@ -21,7 +20,6 @@ class Song {
     this.imageUrl,
     this.bpm,
     this.tilesCount,
-    this.coins,
   );
 
   factory Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
