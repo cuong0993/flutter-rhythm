@@ -75,7 +75,9 @@ class UserRepositoryImpl implements UserRepository {
     } on Exception {
       try {
         await FirebaseAuth.instance.signInWithCredential(authCredential);
-      } on Exception {}
+      } on Exception {
+        print('aaaaaaa');
+      }
     }
   }
 }
