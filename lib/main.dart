@@ -40,7 +40,7 @@ class App extends StatelessWidget {
           create: (context) {
             return AuthenticationBloc(
               userRepository: userRepository,
-            )..add(StartAuthentication());
+            )..add(SignInAnonymouslyEvent());
           },
         ),
         BlocProvider<SongsBloc>(

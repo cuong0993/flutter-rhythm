@@ -10,7 +10,6 @@ import { Song } from '../model/song';
 import { GameReward } from '../model/game-reward';
 import { User } from '../model/user';
 import { maxLevelExperiences } from '../user/user';
-import firebaseAdmin = require('firebase-admin');
 
 export async function getGameReward(
   data: any,
@@ -78,8 +77,6 @@ export async function getGameReward(
       experiences = Math.floor(0.5 * baseExperiences);
     }
 
-    const coins = stars;
-    user.coins += coins;
     const newExperience = user.experience + experiences;
     if (newExperience >= maxLevelExperiences[user.level]) {
       // Bravo, up level
@@ -93,50 +90,8 @@ export async function getGameReward(
     const reward: GameReward = {
       stars,
       experiences,
-      coins,
     };
     console.log(`Reward of the user is ${JSON.stringify(reward)}`);
     return reward;
-  });
-}
-
-export async function unlockSong(
-  data: any,
-  context: CallableContext,
-): Promise<any> {
-  const songId = <string>data.songId;
-  const userId = getUserId(context);
-  console.log(`User ${userId} is buying new song with id ${songId}`);
-  const firestore = firebase.firestore();
-  const songRef = firestore.collection(FirebasePath.FIREBASE_PATH_SONGS).doc(songId);
-  const songSnapshot = await songRef.get();
-  if (!songSnapshot.exists) {
-    console.log('Cannot retrieve new song information');
-    throw new HttpsError(
-      'unavailable',
-      'Cannot retrieve new song information',
-    );
-  }
-  const song = <Song>songSnapshot.data();
-  return firestore.runTransaction(async (transaction): Promise<any> => {
-    const userRef = firestore
-      .collection(FirebasePath.FIREBASE_PATH_USERS)
-      .doc(userId);
-    const userSnapshot = await transaction.get(userRef);
-    if (!userSnapshot.exists) {
-      console.log('Cannot retrieve user information');
-      throw new HttpsError('unavailable', 'Cannot retrieve user information');
-    }
-    const user = <User>userSnapshot.data();
-    if (user.coins < song.coins) {
-      console.log(`The player is only have ${user.coins} coins, not enough money`);
-      throw new HttpsError('resource-exhausted', 'Not enough money');
-    }
-    transaction.update(userRef, {
-      boughtSongs: firebaseAdmin.firestore.FieldValue.arrayUnion(songId),
-      coins: user.coins - song.coins,
-    });
-    console.log('Buy successfully');
-    return;
   });
 }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="dynamic_links_uri_prefix" translatable="false">https://hittick.page.link</string>
     <string name="app_name" translatable="false">Hit Notes</string>
 </resources>

@@ -21,4 +21,28 @@ class Authenticated extends AuthenticationState {
   String toString() => 'Authenticated { userId: $userId }';
 }
 
+class GoogleAuthenticated extends AuthenticationState {
+  final String userId;
+
+  const GoogleAuthenticated(this.userId);
+
+  @override
+  List<Object> get props => [userId];
+
+  @override
+  String toString() => 'GoogleAuthenticated { userId: $userId }';
+}
+
+class FacebookAuthenticated extends AuthenticationState {
+  final String userId;
+
+  const FacebookAuthenticated(this.userId);
+
+  @override
+  List<Object> get props => [userId];
+
+  @override
+  String toString() => 'GoogleAuthenticated { userId: $userId }';
+}
+
 class Unauthenticated extends AuthenticationState {}

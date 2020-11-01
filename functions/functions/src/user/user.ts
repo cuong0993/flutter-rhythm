@@ -20,11 +20,6 @@ export function onUserSignUp(user: UserRecord, _: EventContext): Promise<void> {
       experience: 0,
       maxLevelExperience: maxLevelExperiences[startLevel],
       instrumentId: 'piano',
-      free: true,
-      premiumDueDate: new Date(0),
-      nextTimeReward: new Date(),
-      coins: 50,
-      boughtSongs: [],
       notificationTokens: [],
     };
     transaction.set(userRef, newUser);

@@ -20,12 +20,18 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    if (event is StartAuthentication) {
-      yield* _mapStartAuthenticationToState();
+    if (event is SignInAnonymouslyEvent) {
+      yield* _mapSignInAnonymouslyEventToState();
+    }
+    else if (event is SignInWithGoogleEvent) {
+      yield* _mapSignInWithGoogleEventToState();
+    }
+    else if (event is SignInWithFacebookEvent) {
+      yield* _mapSignInWithFacebookEventToState();
     }
   }
 
-  Stream<AuthenticationState> _mapStartAuthenticationToState() async* {
+  Stream<AuthenticationState> _mapSignInAnonymouslyEventToState() async* {
     try {
       final isSignedIn = await _userRepository.isAuthenticated();
       if (!isSignedIn) {
@@ -33,6 +39,24 @@ class AuthenticationBloc
       }
       final userId = _userRepository.getUserId();
       yield Authenticated(userId);
+    } catch (_) {
+      yield Unauthenticated();
+    }
+  }
+
+  Stream<AuthenticationState> _mapSignInWithGoogleEventToState() async* {
+    try {
+      await _userRepository.signInWithGoogle();
+      yield GoogleAuthenticated('');
+    } catch (_) {
+      yield Unauthenticated();
+    }
+  }
+
+  Stream<AuthenticationState> _mapSignInWithFacebookEventToState() async* {
+    try {
+      await _userRepository.signInWithFacebook();
+      yield FacebookAuthenticated('');
     } catch (_) {
       yield Unauthenticated();
     }

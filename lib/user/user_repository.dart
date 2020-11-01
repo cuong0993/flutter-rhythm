@@ -5,6 +5,10 @@ abstract class UserRepository {
 
   Future<void> signInAnonymously();
 
+  Future<void> signInWithGoogle();
+
+  Future<void> signInWithFacebook();
+
   String getUserId();
 
   Stream<User> getUser();

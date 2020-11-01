@@ -19,15 +19,10 @@ class InstrumentsWidget extends StatelessWidget {
           return Container();
         } else if (state is InstrumentsLoaded) {
           final instruments = state.instruments;
+          final dropdownValue = 'piano';
           return DropdownButton<String>(
+            value: dropdownValue,
             icon: Icon(Icons.arrow_drop_down),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
             onChanged: (String newValue) {
             },
             items: instruments
