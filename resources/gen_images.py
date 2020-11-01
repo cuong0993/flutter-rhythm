@@ -1,4 +1,5 @@
 import os
+import shutil
 import subprocess
 import sys
 
@@ -30,7 +31,7 @@ if len(sys.argv) == 1:
     file_names = os.listdir(svg_default_folder)
     for svg_file_name in file_names:
         file_paths.append(os.path.join(svg_default_folder, svg_file_name))
-    os.system(root_folder)
+    shutil.rmtree(root_folder)
 else:
     file_paths = []
     for i in range(1, len(sys.argv)):
