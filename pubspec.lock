@@ -323,6 +323,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.1"
+  firebase_performance:
+    dependency: "direct main"
+    description:
+      name: firebase_performance
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1"
   firebase_storage:
     dependency: "direct main"
     description:

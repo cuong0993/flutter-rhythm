@@ -53,8 +53,7 @@ class HomeBloc extends Bloc<HomeEvent, TabState> {
   }
 
   @override
-  Stream<TabState> mapEventToState(HomeEvent event) async* {
-  }
+  Stream<TabState> mapEventToState(HomeEvent event) async* {}
 
   @override
   Future<void> close() {

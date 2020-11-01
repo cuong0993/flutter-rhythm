@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path fill="#2488ff" d="M24 11.998a12 12 0 10-13.875 11.854v-8.386H7.077v-3.468h3.048V9.353c0-3.007 1.793-4.67 4.532-4.67 1.313 0 2.688.236 2.688.236v2.952H15.83c-1.49 0-1.955.925-1.955 1.875v2.252h3.327l-.53 3.47h-2.797v8.386A12.001 12.001 0 0024 11.998z" class="fil0" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"/>
-    <path fill="#daecf7" d="M16.672 15.468l.53-3.47h-3.327V9.746c0-.947.464-1.875 1.955-1.875h1.515V4.92s-1.374-.236-2.687-.236c-2.741 0-4.533 1.662-4.533 4.67v2.645H7.077v3.47h3.048v8.386a12.048 12.048 0 003.75 0v-8.386z" class="fil1" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"/>
-</svg>

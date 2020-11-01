@@ -19,8 +19,8 @@ folders = [
 ]
 inkscape_default_dpi = 96
 
-svg_default_folder = 'android-mipmap'
-root = '../client/android/src/main/res'
+svg_default_folder = 'android-images'
+root = '../android/app/src/main/res'
 
 file_paths = []
 file_names = os.listdir(svg_default_folder)

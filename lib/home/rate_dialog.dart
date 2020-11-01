@@ -48,19 +48,18 @@ class RateDialog extends StatelessWidget {
                 SizedBox(width: 8),
                 Expanded(
                   child: RaisedButton(
-                    onPressed: () {
-                      Preferences.getInstance().then((preferences) {
-                        preferences.isShowRateDialogAgain = false;
-                      });
-                      Navigator.of(context).pop();
-                      final _inAppReview = InAppReview.instance;
-                      _inAppReview.openStoreListing(
-                        appStoreId: '_appStoreId',
-                        microsoftStoreId: '_microsoftStoreId',
-                      );
-                    },
-                    child: Text(S.of(context).txt_all_ok),
-                  ),
+                      onPressed: () {
+                        Preferences.getInstance().then((preferences) {
+                          preferences.isShowRateDialogAgain = false;
+                        });
+                        Navigator.of(context).pop();
+                        final _inAppReview = InAppReview.instance;
+                        _inAppReview.openStoreListing(
+                          appStoreId: '_appStoreId',
+                          microsoftStoreId: '_microsoftStoreId',
+                        );
+                      },
+                      child: Text(S.of(context).txt_all_ok)),
                 ),
                 SizedBox(width: 8)
               ],

@@ -6,10 +6,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'user.dart' as user;
 import 'user_repository.dart';
+
 class LogInWithGoogleFailure implements Exception {}
+
 class LogInWithFacebookFailure implements Exception {}
+
 class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl();
+
   final _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookLogin();
 
@@ -41,11 +45,11 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> signInWithFacebook() async {
-    final  result =  await _facebookLogin.logIn(['email','public_profile']);
-    switch (result.status)
-    {
+    final result = await _facebookLogin.logIn(['email', 'public_profile']);
+    switch (result.status) {
       case FacebookLoginStatus.loggedIn:
-        final credential = FacebookAuthProvider.credential(result.accessToken.token);
+        final credential =
+            FacebookAuthProvider.credential(result.accessToken.token);
         await _handleCredential(credential);
         break;
       default:
@@ -70,8 +74,8 @@ class UserRepositoryImpl implements UserRepository {
 
   Future<void> _handleCredential(OAuthCredential authCredential) async {
     try {
-      await FirebaseAuth.instance.currentUser.linkWithCredential(
-          authCredential);
+      await FirebaseAuth.instance.currentUser
+          .linkWithCredential(authCredential);
     } on Exception {
       try {
         await FirebaseAuth.instance.signInWithCredential(authCredential);

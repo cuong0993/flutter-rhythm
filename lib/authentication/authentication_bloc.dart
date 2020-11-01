@@ -22,11 +22,9 @@ class AuthenticationBloc
   ) async* {
     if (event is SignInAnonymouslyEvent) {
       yield* _mapSignInAnonymouslyEventToState();
-    }
-    else if (event is SignInWithGoogleEvent) {
+    } else if (event is SignInWithGoogleEvent) {
       yield* _mapSignInWithGoogleEventToState();
-    }
-    else if (event is SignInWithFacebookEvent) {
+    } else if (event is SignInWithFacebookEvent) {
       yield* _mapSignInWithFacebookEventToState();
     }
   }

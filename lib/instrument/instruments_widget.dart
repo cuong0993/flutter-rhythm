@@ -23,13 +23,12 @@ class InstrumentsWidget extends StatelessWidget {
           return DropdownButton<String>(
             value: dropdownValue,
             icon: Icon(Icons.arrow_drop_down),
-            onChanged: (String newValue) {
-            },
+            onChanged: (String newValue) {},
             items: instruments
                 .map<DropdownMenuItem<String>>((Instrument instrument) {
               return DropdownMenuItem<String>(
                 value: instrument.id,
-                child:  Text(Intl.message(
+                child: Text(Intl.message(
                   '',
                   /* FIXME Localization name of instrument should be taken from server, not from local text resources */
                   name: instrument.id,

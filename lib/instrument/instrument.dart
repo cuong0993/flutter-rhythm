@@ -13,13 +13,8 @@ class Instrument {
   int maxNote;
   double volume;
 
-  Instrument(
-      this.id,
-      this.soundFiles,
-      this.soundNotes,
-      this.minNote,
-      this.maxNote,
-      this.volume);
+  Instrument(this.id, this.soundFiles, this.soundNotes, this.minNote,
+      this.maxNote, this.volume);
 
   factory Instrument.fromJson(Map<String, dynamic> json) =>
       _$InstrumentFromJson(json);

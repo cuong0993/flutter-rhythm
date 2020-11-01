@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../authentication/authentication_bloc.dart';
 import '../authentication/authentication_event.dart';
-
 import '../generated/l10n.dart';
 import '../instrument/instruments_widget.dart';
 import '../loading_widget.dart';
@@ -31,13 +31,15 @@ class UserWidget extends StatelessWidget {
                     InstrumentsWidget(),
                     RaisedButton(
                       onPressed: () {
-                        BlocProvider.of<AuthenticationBloc>(context)..add(SignInWithGoogleEvent());
+                        BlocProvider.of<AuthenticationBloc>(context)
+                          ..add(SignInWithGoogleEvent());
                       },
                       child: Text('G login'),
                     ),
                     RaisedButton(
                       onPressed: () {
-                        BlocProvider.of<AuthenticationBloc>(context)..add(SignInWithFacebookEvent());
+                        BlocProvider.of<AuthenticationBloc>(context)
+                          ..add(SignInWithFacebookEvent());
                       },
                       child: Text('F login'),
                     ),
