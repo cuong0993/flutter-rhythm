@@ -19,20 +19,15 @@ jobs:
       - name: Set up flutter
         uses: subosito/flutter-action@v1
         with:
-          channel: 'stable' # or: 'dev' or 'beta'
+          channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
       - name: Format source code
         run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
       - name: Analyze source code
         run: flutter analyze .
-      #      - run: flutter test
       - name: Build application
         run: flutter build apk --flavor stage
-      #      - uses: actions/upload-artifact@v1
-      #        with:
-      #          name: release-apk
-      #          path: build/app/outputs/flutter-apk/
       - name: Distribute via Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
