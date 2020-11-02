@@ -26,11 +26,9 @@ jobs:
         run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
       - name: Analyze source code
         run: flutter analyze .
-      - run: echo "${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}" > android/app/src/stage/google-services.json
-#      - run: echo "${{ secrets.GOOGLE_SERVICES_PROD_JSON }}" > android/app/src/prod/google-services.json
-      - run: echo "${{ secrets.KEYSTORE_PROPERTIES }}" > android/keystore.properties
-#      - run: echo "${{ secrets.RELEASE_JKS }}" | base64 -d > android/release.jks
-      - run: echo "${{ secrets.DEBUG_JKS }}" | base64 -d > android/debug.jks
+      - run: echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
+      - run: echo $KEYSTORE_PROPERTIES > android/keystore.properties
+      - run: echo $DEBUG_JKS | base64 -d > android/debug.jks
       - name: Build application
         run: flutter build apk --flavor stage
       - name: Distribute via Firebase
