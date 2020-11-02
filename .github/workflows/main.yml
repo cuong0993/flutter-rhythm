@@ -1,4 +1,4 @@
-name: CI-CD
+name: Analyze, build and distribute Android application
 
 on:
   push:
@@ -7,25 +7,32 @@ on:
 
 jobs:
   buildApk:
+    name: Analyze, build and distribute Android application
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - name: Check out
+        uses: actions/checkout@v1
+      - name: Set up Java
+        uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
-      - uses: subosito/flutter-action@v1
+          java-version: 1.8
+      - name: Set up flutter
+        uses: subosito/flutter-action@v1
         with:
-          channel: 'stable' # or: 'dev' or 'beta'
-      - run: flutter pub get
-      - run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
-      - run: flutter analyze .
-      #      - run: flutter test
-      - run: flutter build apk --flavor stage
-      #      - uses: actions/upload-artifact@v1
-      #        with:
-      #          name: release-apk
-      #          path: build/app/outputs/flutter-apk/
-      - uses: wzieba/Firebase-Distribution-Github-Action@v1
+          channel: 'stable'
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Format source code
+        run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
+      - name: Analyze source code
+        run: flutter analyze .
+      - run: echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
+      - run: echo $KEYSTORE_PROPERTIES > android/keystore.properties
+      - run: echo $DEBUG_JKS | base64 -d > android/debug.jks
+      - name: Build application
+        run: flutter build apk --flavor stage
+      - name: Distribute via Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: 1:979560368213:android:960e19c2193ab71a02acdc
           token: 1/LbduIpc3b8RKmy_iaXIuReAJsqhO6-pA1QUzSPF12EE
