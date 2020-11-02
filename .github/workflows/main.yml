@@ -1,4 +1,4 @@
-name: Check, build and distribute Android application
+name: Analyze, build and distribute Android application
 
 on:
   push:
@@ -15,15 +15,18 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Check and build
+      - name: Set up flutter
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # or: 'dev' or 'beta'
-      - run: flutter pub get
-      - run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
-      - run: flutter analyze .
+        run: flutter pub get
+      - name: Format source code
+        run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
+      - name: Analyze source code
+        run: flutter analyze .
       #      - run: flutter test
-      - run: flutter build apk --flavor stage
+      - name: Build application
+        run: flutter build apk --flavor stage
       #      - uses: actions/upload-artifact@v1
       #        with:
       #          name: release-apk
