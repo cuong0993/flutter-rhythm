@@ -41,7 +41,6 @@ jobs:
           DEBUG_JKS: ${{ secrets.DEBUG_JKS }}
         run: |
           sudo echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
-#          sudo echo $KEYSTORE_PROPERTIES > android/keystore.properties
           sudo echo "$DEBUG_JKS" | base64 -d > android/debug.jks
       - name: Build application
         run: flutter build apk --flavor stage
