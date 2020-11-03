@@ -52,15 +52,6 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        debug {
-            keyAlias keystoreProperties['debugKeyAlias']
-            keyPassword keystoreProperties['debugKeyPassword']
-            storeFile keystoreProperties['debugStoreFile'] ? file(keystoreProperties['debugStoreFile']) : null
-            storePassword keystoreProperties['debugStorePassword']
-        }
-    }
-
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
