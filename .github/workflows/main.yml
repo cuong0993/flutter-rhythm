@@ -46,7 +46,7 @@ jobs:
           sudo echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
           sudo echo $GOOGLE_SERVICES_PROD_JSON > android/app/src/prod/google-services.json
           sudo echo "$DEBUG_JKS" | base64 -d > android/debug.jks
-          sudo echo "RELEASE_JKS" | base64 -d > android/debug.jks
+          sudo echo "RELEASE_JKS" | base64 -d > android/release.jks
       - name: Build stage application
         run: flutter build apk --flavor stage
       - name: Build production application
