@@ -36,15 +36,21 @@ jobs:
         run: flutter analyze .
       - name: Add config files
         env:
-          GOOGLE_SERVICES_STAGE_JSON: ${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}
           KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
+          GOOGLE_SERVICES_STAGE_JSON: ${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}
+          GOOGLE_SERVICES_PROD_JSON: ${{ secrets.GOOGLE_SERVICES_PROD_JSON }}
           DEBUG_JKS: ${{ secrets.DEBUG_JKS }}
+          RELEASE_JKS: ${{ secrets.RELEASE_JKS }}
         run: |
-          sudo echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
           sudo echo "$KEYSTORE_PROPERTIES" > android/keystore.properties
+          sudo echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
+          sudo echo $GOOGLE_SERVICES_PROD_JSON > android/app/src/prod/google-services.json
           sudo echo "$DEBUG_JKS" | base64 -d > android/debug.jks
-      - name: Build application
+          sudo echo "RELEASE_JKS" | base64 -d > android/debug.jks
+      - name: Build stage application
         run: flutter build apk --flavor stage
+      - name: Build production application
+        run: flutter build apk --flavor prod
       - name: Distribute via Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
