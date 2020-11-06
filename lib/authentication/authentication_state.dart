@@ -10,39 +10,15 @@ abstract class AuthenticationState extends Equatable {
 class Uninitialized extends AuthenticationState {}
 
 class Authenticated extends AuthenticationState {
-  final String userId;
+  final String type;
 
-  const Authenticated(this.userId);
-
-  @override
-  List<Object> get props => [userId];
+  const Authenticated(this.type);
 
   @override
-  String toString() => 'Authenticated { userId: $userId }';
-}
-
-class GoogleAuthenticated extends AuthenticationState {
-  final String userId;
-
-  const GoogleAuthenticated(this.userId);
+  List<Object> get props => [type];
 
   @override
-  List<Object> get props => [userId];
-
-  @override
-  String toString() => 'GoogleAuthenticated { userId: $userId }';
-}
-
-class FacebookAuthenticated extends AuthenticationState {
-  final String userId;
-
-  const FacebookAuthenticated(this.userId);
-
-  @override
-  List<Object> get props => [userId];
-
-  @override
-  String toString() => 'GoogleAuthenticated { userId: $userId }';
+  String toString() => 'Authenticated { type: $type }';
 }
 
 class Unauthenticated extends AuthenticationState {}

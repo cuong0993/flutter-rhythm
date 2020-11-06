@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../user/user_repository.dart';
+
 import 'authentication_event.dart';
 import 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
+  AuthenticationBloc(this._userRepository) : super(Uninitialized());
+  final _googleSignIn = GoogleSignIn();
+  final _facebookLogin = FacebookLogin();
   final UserRepository _userRepository;
-
-  AuthenticationBloc({@required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(Uninitialized());
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -31,12 +32,13 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapSignInAnonymouslyEventToState() async* {
     try {
-      final isSignedIn = await _userRepository.isAuthenticated();
-      if (!isSignedIn) {
-        await _userRepository.signInAnonymously();
+      await Firebase.initializeApp();
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) {
+        await FirebaseAuth.instance.signInAnonymously();
       }
-      final userId = _userRepository.getUserId();
-      yield Authenticated(userId);
+      _userRepository.getCurrentUser();
+      yield Authenticated('Anonymous');
     } catch (_) {
       yield Unauthenticated();
     }
@@ -44,19 +46,45 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapSignInWithGoogleEventToState() async* {
     try {
-      await _userRepository.signInWithGoogle();
-      yield GoogleAuthenticated('');
-    } catch (_) {
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      await _tryToLinkWithCurrentUser(credential);
+      _userRepository.getCurrentUser();
+      yield Authenticated('Google');
+    } on Exception {
       yield Unauthenticated();
     }
   }
 
   Stream<AuthenticationState> _mapSignInWithFacebookEventToState() async* {
     try {
-      await _userRepository.signInWithFacebook();
-      yield FacebookAuthenticated('');
-    } catch (_) {
+      final result = await _facebookLogin.logIn(['email', 'public_profile']);
+      switch (result.status) {
+        case FacebookLoginStatus.loggedIn:
+          final credential =
+          FacebookAuthProvider.credential(result.accessToken.token);
+          await _tryToLinkWithCurrentUser(credential);
+          _userRepository.getCurrentUser();
+          yield Authenticated('Facebook');
+          break;
+        default:
+          yield Unauthenticated();
+      }
+    } on Exception {
       yield Unauthenticated();
+    }
+  }
+
+  Future<void> _tryToLinkWithCurrentUser(OAuthCredential authCredential) async {
+    try {
+      await FirebaseAuth.instance.currentUser
+          .linkWithCredential(authCredential);
+    } on Exception {
+      await FirebaseAuth.instance.signInWithCredential(authCredential);
     }
   }
 }

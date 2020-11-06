@@ -1,15 +1,13 @@
 import 'user.dart';
 
 abstract class UserRepository {
-  Future<bool> isAuthenticated();
+  void changUser();
+  Stream<AppUser> getCurrentUser();
+}
 
-  Future<void> signInAnonymously();
-
-  Future<void> signInWithGoogle();
-
-  Future<void> signInWithFacebook();
-
-  String getUserId();
-
-  Stream<User> getUser();
+class AppUser {
+  final String name;
+  final String photoUrl;
+  final User user;
+  AppUser(this.name, this.photoUrl, this.user);
 }

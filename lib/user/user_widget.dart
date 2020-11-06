@@ -21,7 +21,6 @@ class UserWidget extends StatelessWidget {
             appBar: AppBar(title: Text(S.of(context).txt_page_title_about)),
             body: (() {
               if (state is UserInitial) {
-                BlocProvider.of<UserBloc>(context).add(LoadUser());
                 return LoadingWidget();
               } else if (state is UserUpdated) {
                 return Column(

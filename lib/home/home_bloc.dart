@@ -10,7 +10,7 @@ import '../user/user_repository.dart';
 import 'home_event.dart';
 import 'home_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, TabState> {
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final UserRepository _userRepository;
   final InstrumentsRepository _instrumentsRepository;
   Stream<User> userUpLevelStream;
@@ -19,7 +19,7 @@ class HomeBloc extends Bloc<HomeEvent, TabState> {
   Stream<bool> get showRateEventStream => _showRateEventController.stream;
 
   HomeBloc(this._userRepository, this._instrumentsRepository)
-      : super(TabState.instruments) {
+      : super(HomeInitial()) {
     /* 3 days to ask for rate */
     const millisecondsUntilPrompt = (3 * 24 * 60 * 60 * 1000);
     const launchesUntilPrompt = 3;
@@ -39,21 +39,28 @@ class HomeBloc extends Bloc<HomeEvent, TabState> {
       }
     });
     userUpLevelStream = _userRepository
-        .getUser()
+        .getCurrentUser().map((event) => event.user)
         .distinct((prev, next) => prev.level == next.level)
         .skip(1);
     _userRepository
-        .getUser()
+        .getCurrentUser().map((event) => event.user)
         .map((user) => user.instrumentId)
         .distinct()
         .listen((id) async {
       final instrument = await _instrumentsRepository.getInstrument(id);
       MidiProcessor.getInstance().onSelectInstrument(instrument);
     });
+    _userRepository.getCurrentUser().listen((user) {
+      add(HomeUpdate(user));
+    });
   }
 
   @override
-  Stream<TabState> mapEventToState(HomeEvent event) async* {}
+  Stream<HomeState> mapEventToState(HomeEvent event) async* {
+    if (event is HomeUpdate) {
+      yield HomeUpdated(event.user);
+    }
+  }
 
   @override
   Future<void> close() {

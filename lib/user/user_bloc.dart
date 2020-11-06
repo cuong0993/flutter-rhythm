@@ -17,17 +17,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({@required UserRepository userRepository})
       : assert(userRepository != null),
         _userRepository = userRepository,
-        super(UserInitial());
+        super(UserInitial()) {
+    _userRepository.getCurrentUser().listen((user) {
+      add(UpdateUser(user));
+    });
+  }
 
   @override
   Stream<UserState> mapEventToState(
     UserEvent event,
   ) async* {
-    if (event is LoadUser) {
-      await _userSubscription?.cancel();
-      _userSubscription =
-          _userRepository.getUser().listen((user) => add(UpdateUser(user)));
-    } else if (event is UpdateUser) {
+    if (event is UpdateUser) {
       yield UserUpdated(event.user);
     }
   }

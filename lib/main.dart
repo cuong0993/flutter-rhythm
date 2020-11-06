@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'authentication/authentication_bloc.dart';
-import 'authentication/authentication_event.dart';
 import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'generated/l10n.dart';
@@ -38,9 +37,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<AuthenticationBloc>(
           create: (context) {
-            return AuthenticationBloc(
-              userRepository: userRepository,
-            )..add(SignInAnonymouslyEvent());
+            return AuthenticationBloc(userRepository);
           },
         ),
         BlocProvider<SongsBloc>(
@@ -58,9 +55,7 @@ class App extends StatelessWidget {
           },
         ),
         BlocProvider<UserBloc>(
-          create: (context) {
-            return UserBloc(userRepository: userRepository);
-          },
+          create: (context) => UserBloc(userRepository: userRepository),
         )
       ],
       child: MaterialApp(
@@ -98,7 +93,8 @@ class App extends StatelessWidget {
           Routes.home: (context) {
             return BlocProvider<HomeBloc>(
                 create: (context) =>
-                    HomeBloc(userRepository, instrumentsRepository),
+                    HomeBloc(userRepository,
+                        instrumentsRepository),
                 child: HomeWidget());
           },
           Routes.game: (context) {

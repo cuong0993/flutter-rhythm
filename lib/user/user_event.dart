@@ -4,13 +4,8 @@ abstract class UserEvent extends Equatable {
   const UserEvent();
 }
 
-class LoadUser extends UserEvent {
-  @override
-  List<Object> get props => [];
-}
-
 class UpdateUser extends UserEvent {
-  final User user;
+  final AppUser user;
 
   UpdateUser(this.user);
 

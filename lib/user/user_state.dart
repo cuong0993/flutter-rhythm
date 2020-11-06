@@ -10,7 +10,7 @@ class UserInitial extends UserState {
 }
 
 class UserUpdated extends UserState {
-  final User user;
+  final AppUser user;
 
   UserUpdated(this.user);
 
