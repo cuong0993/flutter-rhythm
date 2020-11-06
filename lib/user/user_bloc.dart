@@ -11,7 +11,6 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository _userRepository;
-  StreamSubscription _userSubscription;
 
   UserBloc({@required UserRepository userRepository})
       : assert(userRepository != null),
@@ -29,11 +28,5 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     if (event is UpdateUser) {
       yield UserUpdated(event.user);
     }
-  }
-
-  @override
-  Future<void> close() {
-    _userSubscription?.cancel();
-    return super.close();
   }
 }

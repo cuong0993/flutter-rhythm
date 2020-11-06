@@ -5,7 +5,6 @@ import 'package:bloc/bloc.dart';
 import '../instrument/instruments_repository.dart';
 import '../midi_processor.dart';
 import '../preferences.dart';
-import '../user/user.dart';
 import '../user/user_repository.dart';
 import 'home_event.dart';
 import 'home_state.dart';
@@ -13,10 +12,12 @@ import 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final UserRepository _userRepository;
   final InstrumentsRepository _instrumentsRepository;
-  Stream<User> userUpLevelStream;
   final _showRateEventController = StreamController<bool>();
 
   Stream<bool> get showRateEventStream => _showRateEventController.stream;
+  final _userUpLevelEventController = StreamController<AppUser>();
+
+  Stream<AppUser> get userUpLevelStream => _userUpLevelEventController.stream;
 
   HomeBloc(this._userRepository, this._instrumentsRepository)
       : super(HomeInitial()) {
@@ -31,26 +32,28 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       preferences.launchCount += 1;
       if (preferences.isShowRateDialogAgain &&
           preferences.launchCount >= launchesUntilPrompt) {
-        if (DateTime.now().millisecondsSinceEpoch -
-                preferences.millisecondsFirstLaunch >=
+        if (DateTime
+            .now()
+            .millisecondsSinceEpoch -
+            preferences.millisecondsFirstLaunch >=
             millisecondsUntilPrompt) {
           _showRateEventController.add(true);
         }
       }
     });
-    userUpLevelStream = _userRepository
-        .getCurrentUser().map((event) => event.user)
-        .distinct((prev, next) => prev.level == next.level)
-        .skip(1);
-    _userRepository
-        .getCurrentUser().map((event) => event.user)
-        .map((user) => user.instrumentId)
-        .distinct()
-        .listen((id) async {
-      final instrument = await _instrumentsRepository.getInstrument(id);
-      MidiProcessor.getInstance().onSelectInstrument(instrument);
-    });
-    _userRepository.getCurrentUser().listen((user) {
+    _userRepository.getCurrentUser().listen((user) async {
+      if (state is HomeUpdated) {
+        final oldUser = (state as HomeUpdated).user;
+        if (oldUser.user.id == user.user.id &&
+            oldUser.user.level != user.user.level) {
+          _userUpLevelEventController.add(user);
+        }
+        if (oldUser.user.instrumentId != user.user.instrumentId) {
+          final instrument = await _instrumentsRepository.getInstrument(
+              user.user.instrumentId);
+          MidiProcessor.getInstance().onSelectInstrument(instrument);
+        }
+      }
       add(HomeUpdate(user));
     });
   }

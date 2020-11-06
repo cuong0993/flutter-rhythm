@@ -21,6 +21,8 @@ class SongWidget extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       leading: CachedNetworkImage(
+        width: 40,
+        height: 40,
           imageUrl: song.imageUrl,
           placeholder: (context, url) => CircularProgressIndicator(),
           memCacheWidth: size40dp,

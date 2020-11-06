@@ -44,13 +44,12 @@ class _HomeWidgetState extends State<HomeWidget> {
               actions: [
                 IconButton(
                     icon: ClipOval(
-                      child: CachedNetworkImage(
-                          imageUrl:
-                              (state is HomeUpdated) ? state.user.photoUrl : '',
+                      child: (state is HomeUpdated && state.user.photoUrl.isNotEmpty) ? CachedNetworkImage(
+                          imageUrl:state.user.photoUrl,
                           placeholder: (context, url) =>
                               Icon(Icons.account_circle_rounded),
                           memCacheWidth: size24dp,
-                          memCacheHeight: size24dp),
+                          memCacheHeight: size24dp) : Icon(Icons.account_circle_rounded),
                     ),
                     onPressed: () async {
                       await Navigator.pushNamed(context, Routes.account);

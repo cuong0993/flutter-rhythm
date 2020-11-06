@@ -5,8 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../user/user_repository.dart';
 
+import '../user/user_repository.dart';
 import 'authentication_event.dart';
 import 'authentication_state.dart';
 
@@ -37,7 +37,7 @@ class AuthenticationBloc
       if (currentUser == null) {
         await FirebaseAuth.instance.signInAnonymously();
       }
-      _userRepository.getCurrentUser();
+      _userRepository.changUser();
       yield Authenticated('Anonymous');
     } catch (_) {
       yield Unauthenticated();
@@ -53,7 +53,7 @@ class AuthenticationBloc
         idToken: googleAuth.idToken,
       );
       await _tryToLinkWithCurrentUser(credential);
-      _userRepository.getCurrentUser();
+      _userRepository.changUser();
       yield Authenticated('Google');
     } on Exception {
       yield Unauthenticated();
@@ -66,9 +66,9 @@ class AuthenticationBloc
       switch (result.status) {
         case FacebookLoginStatus.loggedIn:
           final credential =
-          FacebookAuthProvider.credential(result.accessToken.token);
+              FacebookAuthProvider.credential(result.accessToken.token);
           await _tryToLinkWithCurrentUser(credential);
-          _userRepository.getCurrentUser();
+          _userRepository.changUser();
           yield Authenticated('Facebook');
           break;
         default:

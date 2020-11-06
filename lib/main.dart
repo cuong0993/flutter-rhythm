@@ -53,9 +53,6 @@ class App extends StatelessWidget {
               instrumentsRepository: instrumentsRepository,
             )..add(LoadInstruments());
           },
-        ),
-        BlocProvider<UserBloc>(
-          create: (context) => UserBloc(userRepository: userRepository),
         )
       ],
       child: MaterialApp(
@@ -102,7 +99,9 @@ class App extends StatelessWidget {
                 create: (_) => GameBloc(), child: GameWidget());
           },
           Routes.account: (context) {
-            return UserWidget();
+            return BlocProvider<UserBloc>(
+                create: (_) => UserBloc(userRepository: userRepository),
+                child: UserWidget());
           },
           Routes.instrument: (context) {
             return InstrumentsWidget();

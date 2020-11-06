@@ -37,13 +37,13 @@ dependencies:
   intl: ^0.16.1
   flutter_email_sender: ^3.0.1
   package_info: ^0.4.3
-  device_info: ^0.4.2+9
+  device_info: ^1.0.0
   share: ^0.6.5+4
   firebase_dynamic_links: ^0.6.1
   google_sign_in: ^4.5.5
   flutter_facebook_login: ^3.0.0
   firebase_performance: ^0.4.1
-  #rxdart: ^0.24.1
+  rxdart: ^0.24.1
 
 dev_dependencies:
   pedantic: ^1.9.2

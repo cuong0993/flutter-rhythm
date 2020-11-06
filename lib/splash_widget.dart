@@ -17,7 +17,7 @@ class _SplashWidgetState extends State<SplashWidget> {
     BlocProvider.of<AuthenticationBloc>(context)..add(SignInAnonymouslyEvent());
     BlocProvider.of<AuthenticationBloc>(context).listen((state) {
       if (state is Authenticated) {
-        Navigator.pushNamed(context, Routes.home);
+        Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route)=>false);
       }
     });
     super.initState();
