@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:hitnotes/user/user_repository.dart';
+
+import '../user/user_repository.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();

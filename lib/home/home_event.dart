@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:hitnotes/user/user.dart';
-import 'package:hitnotes/user/user_repository.dart';
+
+import '../user/user_repository.dart';
 
 abstract class HomeEvent extends Equatable {
   const HomeEvent();
