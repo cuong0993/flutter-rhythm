@@ -34,26 +34,30 @@ class MidiProcessor {
   Stream<bool> get soundLoaded => _soundLoadedController.stream;
 
   void onSelectInstrument(Instrument instrument) {
-    _instrument = instrument;
-    dispose();
-    Future.wait(
-            instrument.soundFiles.values
-                .map((e) => FirebaseCacheManager().getSingleFile(e)))
-        .then((files) => {
-              Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
-                  .then((soundIds) => {
-                        _noteToSoundIdAndPitches = _instrument.soundNotes.map(
-                            (note, pitchNote) => MapEntry(
-                                note,
-                                Pair(
-                                    soundIds[_instrument.soundFiles.keys
-                                        .toList()
-                                        .indexOf(pitchNote.note)],
-                                    pitchNote.pitch))),
-                        if (soundIds.length == _instrument.soundFiles.length)
-                          {_soundLoadedController.add(true)}
-                      })
-            });
+    if (_instrument != instrument) {
+      _instrument = instrument;
+      Future.wait(
+          instrument.soundFiles.values
+              .map((e) => FirebaseCacheManager().getSingleFile(e)))
+          .then((files) =>
+      {
+        Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
+            .then((soundIds) =>
+        {
+          _noteToSoundIdAndPitches = _instrument.soundNotes.map(
+                  (note, pitchNote) =>
+                  MapEntry(
+                      note,
+                      Pair(
+                          soundIds[_instrument.soundFiles.keys
+                              .toList()
+                              .indexOf(pitchNote.note)],
+                          pitchNote.pitch))),
+          if (soundIds.length == _instrument.soundFiles.length)
+            {_soundLoadedController.add(true)}
+        })
+      });
+    }
   }
 
   Future<void> playNote(int note) async {

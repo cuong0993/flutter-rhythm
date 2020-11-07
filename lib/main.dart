@@ -8,14 +8,12 @@ import 'game/game_widget.dart';
 import 'generated/l10n.dart';
 import 'home/home_bloc.dart';
 import 'home/home_widget.dart';
-import 'instrument/instruments_bloc.dart';
-import 'instrument/instruments_event.dart';
 import 'instrument/instruments_repository_impl.dart';
-import 'instrument/instruments_widget.dart';
 import 'routes.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/songs_bloc.dart';
 import 'songs/songs_event.dart';
+import 'songs/songs_repository.dart';
 import 'songs/songs_repository_impl.dart';
 import 'splash_widget.dart';
 import 'user/user_bloc.dart';
@@ -33,36 +31,35 @@ class App extends StatelessWidget {
     const isDark = true;
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AuthenticationBloc>(
-          create: (context) {
-            return AuthenticationBloc(userRepository);
-          },
-        ),
-        BlocProvider<SongsBloc>(
-          create: (context) {
-            return SongsBloc(
-              songsRepository: SongsRepositoryImpl(),
-            )..add(LoadMoreSongs());
-          },
-        ),
-        BlocProvider<InstrumentsBloc>(
-          create: (context) {
-            return InstrumentsBloc(
-              instrumentsRepository: instrumentsRepository,
-            )..add(LoadInstruments());
-          },
-        )
-      ],
-      child: MaterialApp(
-        title: 'Hit Notes',
-        localizationsDelegates: [
-          AppLocalizationDelegate(),
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+    final songsRepository = SongsRepositoryImpl();
+    return MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider<SongsRepository>(
+              create: (context) => songsRepository),
         ],
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider<AuthenticationBloc>(
+              create: (context) {
+                return AuthenticationBloc(userRepository);
+              },
+            ),
+            BlocProvider<SongsBloc>(
+              create: (context) {
+                return SongsBloc(
+                  songsRepository: songsRepository,
+                )..add(LoadMoreSongs());
+              },
+            )
+          ],
+          child: MaterialApp(
+            title: 'Hit Notes',
+            localizationsDelegates: [
+              AppLocalizationDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
         supportedLocales: [
           const Locale('en', ''), // English
         ],
@@ -100,14 +97,13 @@ class App extends StatelessWidget {
           },
           Routes.account: (context) {
             return BlocProvider<UserBloc>(
-                create: (_) => UserBloc(userRepository: userRepository),
+                create: (_) =>
+                    UserBloc(instrumentsRepository,
+                        userRepository: userRepository),
                 child: UserWidget());
           },
-          Routes.instrument: (context) {
-            return InstrumentsWidget();
-          },
         },
-      ),
-    );
+          ),
+        ));
   }
 }

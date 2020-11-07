@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../extra_actions.dart';
 import '../generated/l10n.dart';
 import '../routes.dart';
+import '../search/search_widget.dart';
 import '../songs/songs_widget.dart';
 import '../util.dart';
 import 'home_bloc.dart';
@@ -43,13 +44,22 @@ class _HomeWidgetState extends State<HomeWidget> {
           appBar: AppBar(
               actions: [
                 IconButton(
+                  icon: Icon(Icons.search_rounded),
+                  onPressed: () {
+                    showSearch(context: context, delegate: SearchWidget());
+                  },
+                ),
+                IconButton(
                     icon: ClipOval(
-                      child: (state is HomeUpdated && state.user.photoUrl.isNotEmpty) ? CachedNetworkImage(
-                          imageUrl:state.user.photoUrl,
-                          placeholder: (context, url) =>
-                              Icon(Icons.account_circle_rounded),
-                          memCacheWidth: size24dp,
-                          memCacheHeight: size24dp) : Icon(Icons.account_circle_rounded),
+                      child: (state is HomeUpdated &&
+                              state.user.photoUrl.isNotEmpty)
+                          ? CachedNetworkImage(
+                              imageUrl: state.user.photoUrl,
+                              placeholder: (context, url) =>
+                                  Icon(Icons.account_circle_rounded),
+                              memCacheWidth: size24dp,
+                              memCacheHeight: size24dp)
+                          : Icon(Icons.account_circle_rounded),
                     ),
                     onPressed: () async {
                       await Navigator.pushNamed(context, Routes.account);

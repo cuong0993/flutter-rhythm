@@ -6,9 +6,10 @@ abstract class UserEvent extends Equatable {
 
 class UpdateUser extends UserEvent {
   final AppUser user;
+  final List<Instrument> instruments;
 
-  UpdateUser(this.user);
+  UpdateUser(this.user, this.instruments);
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [user, instruments];
 }

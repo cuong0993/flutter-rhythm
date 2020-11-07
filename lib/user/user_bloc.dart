@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
+import '../instrument/instrument.dart';
+import '../instrument/instruments_repository.dart';
 import 'user_repository.dart';
 
 part 'user_event.dart';
@@ -11,13 +13,16 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository _userRepository;
+  final InstrumentsRepository _instrumentsRepository;
 
-  UserBloc({@required UserRepository userRepository})
+  UserBloc(this._instrumentsRepository,
+      {@required UserRepository userRepository})
       : assert(userRepository != null),
         _userRepository = userRepository,
         super(UserInitial()) {
-    _userRepository.getCurrentUser().listen((user) {
-      add(UpdateUser(user));
+    _userRepository.getCurrentUser().listen((user) async {
+      final instruments = await _instrumentsRepository.instruments();
+      add(UpdateUser(user, instruments));
     });
   }
 
@@ -26,7 +31,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     UserEvent event,
   ) async* {
     if (event is UpdateUser) {
-      yield UserUpdated(event.user);
+      yield UserUpdated(event.user, event.instruments);
     }
   }
 }

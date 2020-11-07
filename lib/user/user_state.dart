@@ -11,9 +11,10 @@ class UserInitial extends UserState {
 
 class UserUpdated extends UserState {
   final AppUser user;
+  final List<Instrument> instruments;
 
-  UserUpdated(this.user);
+  UserUpdated(this.user, this.instruments);
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [user, instruments];
 }
