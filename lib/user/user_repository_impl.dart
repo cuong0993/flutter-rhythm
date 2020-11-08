@@ -47,6 +47,7 @@ class UserRepositoryImpl implements UserRepository {
   void changeInstrument(String instrumentId) {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(FirebaseAuth.instance.currentUser.uid).update({'instrumentId':instrumentId});
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .update({'instrumentId': instrumentId});
   }
 }

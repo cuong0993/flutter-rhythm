@@ -6,7 +6,6 @@ class Preferences {
 
   Preferences._internal();
 
-  static const KEY_PREFERENCES = 'Preferences';
   static const PREFERENCE_IS_SHOW_RATE_DIALOG_AGAIN = 'IsShowRateDialogAgain';
   static const PREFERENCE_LAUNCH_COUNT = 'LaunchCount';
   static const PREFERENCE_MILLISECONDS_FIRST_LAUNCH = 'MillisecondsFirstLaunch';
@@ -41,7 +40,7 @@ class Preferences {
         PREFERENCE_MILLISECONDS_FIRST_LAUNCH, millisecondsFirstLaunch);
   }
 
-  String get localeName => _instance1.getString(PREFERENCE_LOCALE_NAME) ?? 'en';
+  String get localeName => _instance1.getString(PREFERENCE_LOCALE_NAME);
 
   set localeName(String localeName) {
     _instance1.setString(PREFERENCE_LOCALE_NAME, localeName);

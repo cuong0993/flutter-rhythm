@@ -36,27 +36,23 @@ class MidiProcessor {
   void onSelectInstrument(Instrument instrument) {
     if (_instrument != instrument) {
       _instrument = instrument;
-      Future.wait(
-          instrument.soundFiles.values
+      Future.wait(instrument.soundFiles.values
               .map((e) => FirebaseCacheManager().getSingleFile(e)))
-          .then((files) =>
-      {
-        Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
-            .then((soundIds) =>
-        {
-          _noteToSoundIdAndPitches = _instrument.soundNotes.map(
-                  (note, pitchNote) =>
-                  MapEntry(
-                      note,
-                      Pair(
-                          soundIds[_instrument.soundFiles.keys
-                              .toList()
-                              .indexOf(pitchNote.note)],
-                          pitchNote.pitch))),
-          if (soundIds.length == _instrument.soundFiles.length)
-            {_soundLoadedController.add(true)}
-        })
-      });
+          .then((files) => {
+                Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
+                    .then((soundIds) => {
+                          _noteToSoundIdAndPitches = _instrument.soundNotes.map(
+                              (note, pitchNote) => MapEntry(
+                                  note,
+                                  Pair(
+                                      soundIds[_instrument.soundFiles.keys
+                                          .toList()
+                                          .indexOf(pitchNote.note)],
+                                      pitchNote.pitch))),
+                          if (soundIds.length == _instrument.soundFiles.length)
+                            {_soundLoadedController.add(true)}
+                        })
+              });
     }
   }
 

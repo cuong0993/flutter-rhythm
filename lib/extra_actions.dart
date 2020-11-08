@@ -11,6 +11,7 @@ import 'package:package_info/package_info.dart';
 import 'package:share/share.dart';
 
 import 'generated/l10n.dart';
+import 'routes.dart';
 
 class ExtraActions extends StatelessWidget {
   @override
@@ -87,6 +88,8 @@ class ExtraActions extends StatelessWidget {
             await Share.share(S.of(context).txt_invite_description(url),
                 subject: S.of(context).txt_dynamic_link_invite_subject);
             break;
+          case ExtraAction.language:
+            await Navigator.pushNamed(context, Routes.language);
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuItem<ExtraAction>>[
@@ -102,9 +105,13 @@ class ExtraActions extends StatelessWidget {
           value: ExtraAction.invite,
           child: Text(S.of(context).txt_about_invite),
         ),
+        PopupMenuItem<ExtraAction>(
+          value: ExtraAction.language,
+          child: Text(S.of(context).txt_select_language),
+        ),
       ],
     );
   }
 }
 
-enum ExtraAction { feedback, rateUs, invite }
+enum ExtraAction { feedback, rateUs, invite, language }

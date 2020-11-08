@@ -9,6 +9,8 @@ import 'generated/l10n.dart';
 import 'home/home_bloc.dart';
 import 'home/home_widget.dart';
 import 'instrument/instruments_repository_impl.dart';
+import 'locale/locale_bloc.dart';
+import 'locale/locale_widget.dart';
 import 'routes.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/songs_bloc.dart';
@@ -39,6 +41,11 @@ class App extends StatelessWidget {
         ],
         child: MultiBlocProvider(
           providers: [
+            BlocProvider<LocaleBloc>(
+              create: (context) {
+                return LocaleBloc();
+              },
+            ),
             BlocProvider<AuthenticationBloc>(
               create: (context) {
                 return AuthenticationBloc(userRepository);
@@ -52,58 +59,61 @@ class App extends StatelessWidget {
               },
             )
           ],
-          child: MaterialApp(
-            title: 'Hit Notes',
-            localizationsDelegates: [
-              AppLocalizationDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: [
-              const Locale('en', ''), // English
-            ],
-            theme: ThemeData.from(
-                textTheme:
-                    (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
-                colorScheme: ColorScheme(
-                    brightness: isDark ? Brightness.dark : Brightness.light,
-                    primary: Color(0xFF1F1929),
-                    primaryVariant: Color(0xFF1F1929),
-                    secondary: Color(0xFF1F1929),
-                secondaryVariant: Color(0xFF1F1929),
-                background: Color(0xFF241E30),
-                surface: Color(0xFF241E30),
-                onBackground: Color(0xFFFFFFFF),
-                onSurface: Color(0xFFFFFFFF),
-                onError: Colors.white,
-                onPrimary: Colors.white,
-                onSecondary: Colors.white,
-                error: Colors.red.shade400)),
-        routes: {
-          Routes.splash: (context) {
-            return SplashWidget();
-          },
-          Routes.home: (context) {
-            return BlocProvider<HomeBloc>(
-                create: (context) =>
-                    HomeBloc(userRepository,
-                        instrumentsRepository),
-                child: HomeWidget());
-          },
-          Routes.game: (context) {
-            return BlocProvider<GameBloc>(
-                create: (_) => GameBloc(), child: GameWidget());
-          },
-          Routes.account: (context) {
-            return BlocProvider<UserBloc>(
-                create: (_) =>
-                    UserBloc(instrumentsRepository,
-                        userRepository: userRepository),
-                child: UserWidget());
-          },
-        },
-          ),
+          child:
+              BlocBuilder<LocaleBloc, LocaleState>(builder: (context, state) {
+            return MaterialApp(
+              title: 'Hit Notes',
+              locale: (state is LocaleChanged) ? state.locale : null,
+              localizationsDelegates: [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              theme: ThemeData.from(
+                  textTheme:
+                      (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
+                  colorScheme: ColorScheme(
+                      brightness: isDark ? Brightness.dark : Brightness.light,
+                      primary: Color(0xFF1F1929),
+                      primaryVariant: Color(0xFF1F1929),
+                      secondary: Color(0xFF1F1929),
+                      secondaryVariant: Color(0xFF1F1929),
+                      background: Color(0xFF241E30),
+                      surface: Color(0xFF241E30),
+                      onBackground: Color(0xFFFFFFFF),
+                      onSurface: Color(0xFFFFFFFF),
+                      onError: Colors.white,
+                      onPrimary: Colors.white,
+                      onSecondary: Colors.white,
+                      error: Colors.red.shade400)),
+              routes: {
+                Routes.splash: (context) {
+                  return SplashWidget();
+                },
+                Routes.home: (context) {
+                  return BlocProvider<HomeBloc>(
+                      create: (context) =>
+                          HomeBloc(userRepository, instrumentsRepository),
+                      child: HomeWidget());
+                },
+                Routes.game: (context) {
+                  return BlocProvider<GameBloc>(
+                      create: (_) => GameBloc(), child: GameWidget());
+                },
+                Routes.account: (context) {
+                  return BlocProvider<UserBloc>(
+                      create: (_) => UserBloc(instrumentsRepository,
+                          userRepository: userRepository),
+                      child: UserWidget());
+                },
+                Routes.language: (context) {
+                  return LocaleWidget();
+                },
+              },
+            );
+          }),
         ));
   }
 }

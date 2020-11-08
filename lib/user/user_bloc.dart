@@ -32,8 +32,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   ) async* {
     if (event is UpdateUser) {
       yield UserUpdated(event.user, event.instruments);
-    }
-    else if (event is ChangeInstrument) {
+    } else if (event is ChangeInstrument) {
       _userRepository.changeInstrument(event.instrumentId);
     }
   }

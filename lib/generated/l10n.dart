@@ -35,16 +35,6 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Like us on facebook`
-  String get txt_about_like_facebook {
-    return Intl.message(
-      'Like us on facebook',
-      name: 'txt_about_like_facebook',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Rate us`
   String get txt_about_rate {
     return Intl.message(
@@ -65,16 +55,6 @@ class S {
     );
   }
 
-  /// `Subscribe us on Youtube`
-  String get txt_about_subscribe_youtube_description {
-    return Intl.message(
-      'Subscribe us on Youtube',
-      name: 'txt_about_subscribe_youtube_description',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `No`
   String get txt_all_no {
     return Intl.message(
@@ -90,16 +70,6 @@ class S {
     return Intl.message(
       'Ok',
       name: 'txt_all_ok',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Success`
-  String get txt_billing_success {
-    return Intl.message(
-      'Success',
-      name: 'txt_billing_success',
       desc: '',
       args: [],
     );
@@ -285,56 +255,6 @@ class S {
     );
   }
 
-  /// `Go premium`
-  String get txt_go_premium {
-    return Intl.message(
-      'Go premium',
-      name: 'txt_go_premium',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No ads`
-  String get txt_no_ads {
-    return Intl.message(
-      'No ads',
-      name: 'txt_no_ads',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Unlock all instruments`
-  String get txt_unlock_all_instruments {
-    return Intl.message(
-      'Unlock all instruments',
-      name: 'txt_unlock_all_instruments',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Unlock all songs`
-  String get txt_unlock_all_songs {
-    return Intl.message(
-      'Unlock all songs',
-      name: 'txt_unlock_all_songs',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Restore purchases`
-  String get txt_restore_purchases {
-    return Intl.message(
-      'Restore purchases',
-      name: 'txt_restore_purchases',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `About`
   String get txt_page_title_about {
     return Intl.message(
@@ -350,16 +270,6 @@ class S {
     return Intl.message(
       'Reward',
       name: 'txt_dialog_reward_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Notify`
-  String get txt_dialog_change_to_premium_name {
-    return Intl.message(
-      'Notify',
-      name: 'txt_dialog_change_to_premium_name',
       desc: '',
       args: [],
     );
@@ -415,96 +325,6 @@ class S {
     );
   }
 
-  /// `1 month`
-  String get one_month {
-    return Intl.message(
-      '1 month',
-      name: 'one_month',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `3 months`
-  String get three_month {
-    return Intl.message(
-      '3 months',
-      name: 'three_month',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `1 year`
-  String get one_year {
-    return Intl.message(
-      '1 year',
-      name: 'one_year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Unlock song`
-  String get txt_dialog_unlock_song {
-    return Intl.message(
-      'Unlock song',
-      name: 'txt_dialog_unlock_song',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Play to earn enough or go premium to unlock now`
-  String get txt_not_enough_coins {
-    return Intl.message(
-      'Play to earn enough or go premium to unlock now',
-      name: 'txt_not_enough_coins',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Purchases canceled`
-  String get txt_purchases_canceled {
-    return Intl.message(
-      'Purchases canceled',
-      name: 'txt_purchases_canceled',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{input} days`
-  String txt_premium_in_days(Object input) {
-    return Intl.message(
-      '$input days',
-      name: 'txt_premium_in_days',
-      desc: '',
-      args: [input],
-    );
-  }
-
-  /// `Upgrade successful`
-  String get txt_dialog_change_to_premium_description {
-    return Intl.message(
-      'Upgrade successful',
-      name: 'txt_dialog_change_to_premium_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Not found purchases`
-  String get txt_not_found_purchases {
-    return Intl.message(
-      'Not found purchases',
-      name: 'txt_not_found_purchases',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Congrats`
   String get txt_dialog_level_up_name {
     return Intl.message(
@@ -535,16 +355,6 @@ class S {
     );
   }
 
-  /// `Purchasing…`
-  String get txt_dialog_purchasing_description {
-    return Intl.message(
-      'Purchasing…',
-      name: 'txt_dialog_purchasing_description',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Reached level {input}`
   String txt_dialog_level_up_description(Object input) {
     return Intl.message(
@@ -555,61 +365,11 @@ class S {
     );
   }
 
-  /// `Unlocking song…`
-  String get txt_dialog_unlocking_song_description {
-    return Intl.message(
-      'Unlocking song…',
-      name: 'txt_dialog_unlocking_song_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `English`
-  String get txt_en {
-    return Intl.message(
-      'English',
-      name: 'txt_en',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Vietnamese`
-  String get txt_vi {
-    return Intl.message(
-      'Vietnamese',
-      name: 'txt_vi',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Chinese`
-  String get txt_zh {
-    return Intl.message(
-      'Chinese',
-      name: 'txt_zh',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Select language`
   String get txt_select_language {
     return Intl.message(
       'Select language',
       name: 'txt_select_language',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Korean`
-  String get txt_ko {
-    return Intl.message(
-      'Korean',
-      name: 'txt_ko',
       desc: '',
       args: [],
     );
@@ -662,26 +422,6 @@ class S {
       name: 'txt_too_many_fingers',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Unlock instrument`
-  String get txt_dialog_unlock_instrument {
-    return Intl.message(
-      'Unlock instrument',
-      name: 'txt_dialog_unlock_instrument',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Will be unlocked at level {input} or go premium to unlock now`
-  String txt_level_description(Object input) {
-    return Intl.message(
-      'Will be unlocked at level $input or go premium to unlock now',
-      name: 'txt_level_description',
-      desc: '',
-      args: [input],
     );
   }
 }

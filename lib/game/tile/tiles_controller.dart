@@ -56,9 +56,9 @@ class TilesController {
 
   double _getMaxDeltaY() {
     return tiles
-        .firstWhere((element) => element.state == TileState.UNTOUCHED,
-        orElse: () => Tile(0, 0, 0))
-        .y -
+            .firstWhere((element) => element.state == TileState.UNTOUCHED,
+                orElse: () => Tile(0, 0, 0))
+            .y -
         OFFSET_PAUSE_POSITION_Y;
   }
 

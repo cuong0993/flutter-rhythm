@@ -32,17 +32,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       preferences.launchCount += 1;
       if (preferences.isShowRateDialogAgain &&
           preferences.launchCount >= launchesUntilPrompt) {
-        if (DateTime
-            .now()
-            .millisecondsSinceEpoch -
-            preferences.millisecondsFirstLaunch >=
+        if (DateTime.now().millisecondsSinceEpoch -
+                preferences.millisecondsFirstLaunch >=
             millisecondsUntilPrompt) {
           _showRateEventController.add(true);
         }
       }
     });
     _userRepository.getCurrentUser().listen((user) async {
-        final instrument = (await _instrumentsRepository.instruments())
+      final instrument = (await _instrumentsRepository.instruments())
           .firstWhere((instrument) => instrument.id == user.user.instrumentId);
       MidiProcessor.getInstance().onSelectInstrument(instrument);
       if (state is HomeUpdated) {
