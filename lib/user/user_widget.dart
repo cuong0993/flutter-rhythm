@@ -32,23 +32,48 @@ class UserWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            ClipOval(
-                              child: (state is UserUpdated &&
-                                      state.user.photoUrl.isNotEmpty)
-                                  ? CachedNetworkImage(
-                                      imageUrl: state.user.photoUrl,
-                                      placeholder: (context, url) =>
-                                          Icon(Icons.account_circle_rounded),
-                                      memCacheWidth: size24dp,
-                                      memCacheHeight: size24dp)
-                                  : Icon(Icons.account_circle_rounded),
-                            ),
-                            Text(state.user.name)
-                          ],
-                        ),
+                        () {
+                          if (state.user.photoUrl.isNotEmpty) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                ClipOval(
+                                  child: (state.user.photoUrl.isNotEmpty)
+                                      ? CachedNetworkImage(
+                                          imageUrl: state.user.photoUrl,
+                                          placeholder: (context, url) => Icon(
+                                              Icons.account_circle_rounded),
+                                          memCacheWidth: size24dp,
+                                          memCacheHeight: size24dp)
+                                      : Icon(Icons.account_circle_rounded),
+                                ),
+                                Text(state.user.name,               style: Theme.of(context).textTheme.headline6,
+                                )
+                              ],
+                            );
+                          } else {
+                            return Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    onPressed: () {
+                                      BlocProvider.of<AuthenticationBloc>(
+                                          context)
+                                        ..add(SignInWithGoogleEvent());
+                                    },
+                                    child: Text('G login'),
+                                  ),
+                                  RaisedButton(
+                                    onPressed: () {
+                                      BlocProvider.of<AuthenticationBloc>(
+                                          context)
+                                        ..add(SignInWithFacebookEvent());
+                                    },
+                                    child: Text('F login'),
+                                  ),
+                                ]);
+                          }
+                        }(),
                         DropdownButton<String>(
                           value: state.user.user.instrumentId,
                           icon: Icon(Icons.arrow_drop_down),
@@ -81,24 +106,6 @@ class UserWidget extends StatelessWidget {
                           progressColor: Colors.blue,
                         ),
                         ),
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              RaisedButton(
-                                onPressed: () {
-                                  BlocProvider.of<AuthenticationBloc>(context)
-                                    ..add(SignInWithGoogleEvent());
-                                },
-                                child: Text('G login'),
-                              ),
-                              RaisedButton(
-                                onPressed: () {
-                                  BlocProvider.of<AuthenticationBloc>(context)
-                                    ..add(SignInWithFacebookEvent());
-                                },
-                                child: Text('F login'),
-                              ),
-                            ])
                       ],
                     ));
               } else {
