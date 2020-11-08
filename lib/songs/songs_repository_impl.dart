@@ -21,11 +21,10 @@ class SongsRepositoryImpl implements SongsRepository {
 
   @override
   Future<List<Song>> searchSongs(String text) async {
-    return (await FirebaseFirestore.instance
-            .collection('songs')
-            .where('title', isGreaterThanOrEqualTo: text)
-            .where('title', isLessThanOrEqualTo: text + '\uf8ff')
-            .get())
+    return (await FirebaseFirestore.instance.collection('songs')
+        .where('title', isGreaterThanOrEqualTo: text)
+        .where('title', isLessThanOrEqualTo: text + '\uf8ff')
+        .get())
         .docs
         .map((e) => Song.fromJson(e.data()))
         .toList();

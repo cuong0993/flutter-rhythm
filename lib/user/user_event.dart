@@ -13,3 +13,12 @@ class UpdateUser extends UserEvent {
   @override
   List<Object> get props => [user, instruments];
 }
+
+class ChangeInstrument extends UserEvent {
+  final String instrumentId;
+
+  ChangeInstrument(this.instrumentId);
+
+  @override
+  List<Object> get props => [instrumentId];
+}

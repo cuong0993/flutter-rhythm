@@ -42,4 +42,11 @@ class UserRepositoryImpl implements UserRepository {
       _userController.add(user);
     });
   }
+
+  @override
+  void changeInstrument(String instrumentId) {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser.uid).update({'instrumentId':instrumentId});
+  }
 }

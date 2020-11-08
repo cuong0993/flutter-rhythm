@@ -60,17 +60,17 @@ class App extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-        supportedLocales: [
-          const Locale('en', ''), // English
-        ],
-        theme: ThemeData.from(
-            textTheme:
-                (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
-            colorScheme: ColorScheme(
-                brightness: isDark ? Brightness.dark : Brightness.light,
-                primary: Color(0xFF1F1929),
-                primaryVariant: Color(0xFF1F1929),
-                secondary: Color(0xFF1F1929),
+            supportedLocales: [
+              const Locale('en', ''), // English
+            ],
+            theme: ThemeData.from(
+                textTheme:
+                    (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
+                colorScheme: ColorScheme(
+                    brightness: isDark ? Brightness.dark : Brightness.light,
+                    primary: Color(0xFF1F1929),
+                    primaryVariant: Color(0xFF1F1929),
+                    secondary: Color(0xFF1F1929),
                 secondaryVariant: Color(0xFF1F1929),
                 background: Color(0xFF241E30),
                 surface: Color(0xFF241E30),
