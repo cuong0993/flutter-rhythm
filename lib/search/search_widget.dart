@@ -36,11 +36,6 @@ class SearchWidget extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Container();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
     if (query.isEmpty) {
       return Container();
     } else {
@@ -68,5 +63,10 @@ class SearchWidget extends SearchDelegate {
             }
           });
     }
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return Container(child: LoadingWidget(),);
   }
 }
