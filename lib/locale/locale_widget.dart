@@ -20,15 +20,16 @@ class LocaleWidget extends StatelessWidget {
             itemCount: S.delegate.supportedLocales.length,
             itemBuilder: (context, index) {
               return ListTile(
-                  selected: Localizations.localeOf(context) == S.delegate.supportedLocales[index],
+                  selected: Localizations.localeOf(context) ==
+                      S.delegate.supportedLocales[index],
                   selectedTileColor: Theme.of(context).colorScheme.onError,
                   onTap: () {
                     BlocProvider.of<LocaleBloc>(context)
                       ..add(ChangeLocaleEvent(
                           S.delegate.supportedLocales[index]));
                   },
-                  title: Text(map[
-                  S.delegate.supportedLocales[index].languageCode]));
+                  title: Text(
+                      map[S.delegate.supportedLocales[index].languageCode]));
             },
           ),
         ));

@@ -67,6 +67,8 @@ class SearchWidget extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Container(child: LoadingWidget(),);
+    return Container(
+      child: LoadingWidget(),
+    );
   }
 }

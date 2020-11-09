@@ -46,9 +46,10 @@ class GameWidget extends StatelessWidget {
                     LinearPercentIndicator(
                       padding: EdgeInsets.zero,
                       animation: true,
-                      animationDuration: 1000,
+                      animationDuration: 0,
                       lineHeight: 8.0,
-                      percent: 0.2,
+                      percent: (state as GameUpdated).time /
+                          (state as GameUpdated).maxTime,
                       linearStrokeCap: LinearStrokeCap.butt,
                       progressColor: Colors.red,
                     ),
