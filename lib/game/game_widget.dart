@@ -30,37 +30,52 @@ class GameWidget extends StatelessWidget {
         if (state is GameLoading) {
           final song = ModalRoute.of(context).settings.arguments as Song;
           BlocProvider.of<GameBloc>(context).add(StartGame(song));
+          return Stack(children: [gameWidget]);
         } else if (state is GameStarted) {
           _game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
-          return Stack(children: [
-            gameWidget,
-            Container(
-              height: kToolbarHeight + MediaQuery.of(context).padding.top,
-              child: LinearPercentIndicator(
-                width: 170.0,
-                animation: true,
-                animationDuration: 1000,
-                lineHeight: 20.0,
-                percent: 0.2,
-                center: Text('20.0%'),
-                linearStrokeCap: LinearStrokeCap.butt,
-                progressColor: Colors.red,
-              ),
-            )
-          ]);
+          return Stack(children: [gameWidget]);
         }
-        if (state is GameUpdated) {
-          return Stack(children: [
-            gameWidget,
-            Container(
-              height: kToolbarHeight + MediaQuery.of(context).padding.top,
-              child: AppBar(
-                title: Text(state.aaaaaaa.toString()),
-              ),
-            )
-          ]);
-        }
-        return gameWidget;
+        return Stack(children: [
+          gameWidget,
+          Container(
+              height: 100,
+              child: Material(
+                color: Colors.transparent,
+                child: Column(
+                  children: [
+                    LinearPercentIndicator(
+                      padding: EdgeInsets.zero,
+                      animation: true,
+                      animationDuration: 1000,
+                      lineHeight: 8.0,
+                      percent: 0.2,
+                      linearStrokeCap: LinearStrokeCap.butt,
+                      progressColor: Colors.red,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text((state as GameUpdated).songName),
+                        Text(
+                            '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}')
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.pause_circle_outline_rounded),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Text((state as GameUpdated).tilesCount.toString())
+                      ],
+                    )
+                  ],
+                ),
+              ))
+        ]);
       },
     );
   }

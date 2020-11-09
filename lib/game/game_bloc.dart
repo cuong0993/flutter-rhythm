@@ -18,6 +18,12 @@ import 'tile/tile_chunk.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameLoading());
+  String _songName;
+  double _time;
+
+  double _maxTime;
+  int _tilesCount = 0;
+  double _speedPixelsPerSecond;
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -53,13 +59,17 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final tick2Second =
           tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
       final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
-      final speedPixelsPerSecond = speedPixelsPerTick / tick2Second;
-      final gameDuration = tiles.last.initialY / speedPixelsPerSecond;
+      _speedPixelsPerSecond = speedPixelsPerTick / tick2Second;
+      final gameDuration = tiles.last.initialY / _speedPixelsPerSecond;
 
-      yield GameStarted(tiles, speedPixelsPerSecond, gameDuration);
+      _songName = event.song.title;
+      _maxTime = gameDuration;
+      yield GameStarted(tiles, _speedPixelsPerSecond, gameDuration);
     } else if (event is TileTouched) {
       await MidiProcessor.getInstance().playNote(event.tile.note);
-      yield GameUpdated(0);
+      _tilesCount += 1;
+      _time = event.tile.initialY / _speedPixelsPerSecond;
+      yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
     }
   }
 

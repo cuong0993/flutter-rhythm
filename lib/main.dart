@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -99,6 +100,7 @@ class App extends StatelessWidget {
                       child: HomeWidget());
                 },
                 Routes.game: (context) {
+                  SystemChrome.setEnabledSystemUIOverlays([]);
                   return BlocProvider<GameBloc>(
                       create: (_) => GameBloc(), child: GameWidget());
                 },

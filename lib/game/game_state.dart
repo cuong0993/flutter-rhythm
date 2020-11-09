@@ -23,12 +23,15 @@ class GameStarted extends GameState {
 }
 
 class GameUpdated extends GameState {
-  final int aaaaaaa;
+  final int tilesCount;
+  final String songName;
+  final double time;
+  final double maxTime;
 
-  GameUpdated(this.aaaaaaa);
+  GameUpdated(this.tilesCount, this.songName, this.time, this.maxTime);
 
   @override
-  List<Object> get props => [aaaaaaa];
+  List<Object> get props => [tilesCount, songName, time, maxTime];
 }
 
 class GameNotLoaded extends GameState {}
