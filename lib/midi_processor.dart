@@ -80,9 +80,8 @@ class MidiProcessor {
   void dispose() {
     _soundPool.release();
     _soundLoadedController.add(false);
-    //_soundLoadedController.close();
     _activeSounds.clear();
-    // _noteToSoundIdAndPitches.clear();
+    _noteToSoundIdAndPitches.clear();
   }
 }
 

@@ -3,7 +3,7 @@ import '../../util.dart';
 class Tile {
   final int note;
   final double initialY;
-  double y = double.maxFinite;
+  double y = 0.0;
   TileState state = TileState.UNTOUCHED;
   final double width = TILE_WIDTH;
   final double height = TILE_HEIGHT;

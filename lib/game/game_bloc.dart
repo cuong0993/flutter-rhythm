@@ -123,9 +123,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         calibratedTick += unitDuration - chunk.durationToPrevious;
       }
       final initialPositionY =
-          ((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
-                  calibratedTick) +
-              offsetDrawY;
+          -((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
+              calibratedTick);
       chunk.notes.asMap().forEach((index, note) {
         if (index < NUMBER_TILE_COLUMN) {
           final tile = Tile(note.note, tileColumn, initialPositionY);

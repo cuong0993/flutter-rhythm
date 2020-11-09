@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../songs/song.dart';
+import '../util.dart';
 import 'game_bloc.dart';
 import 'game_event.dart';
 import 'game_state.dart';
@@ -38,7 +39,7 @@ class GameWidget extends StatelessWidget {
         return Stack(children: [
           gameWidget,
           Container(
-              height: 100,
+              height: NON_TOUCH_REGION_HEIGHT.toDouble(),
               child: Material(
                 color: Colors.transparent,
                 child: Column(

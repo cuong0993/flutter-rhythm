@@ -7,7 +7,7 @@ final size40dp = (40 * window.devicePixelRatio).toInt();
 final size96dp = (96 * window.devicePixelRatio).toInt();
 const NUMBER_TILE_COLUMN = 4;
 final offsetDrawY = screenHeight;
-const UNIT_DURATION_HEIGHT = 72;
+const UNIT_DURATION_HEIGHT = 48;
 const TILE_WIDTH = 24.0;
 const TILE_HEIGHT = TILE_WIDTH;
 final positionsX = () {
@@ -21,8 +21,8 @@ final positionsX = () {
   return positionXs;
 }();
 const NON_TOUCH_REGION_HEIGHT = 96;
-final startVisibleY = screenHeight - NON_TOUCH_REGION_HEIGHT;
-const OFFSET_PAUSE_POSITION_Y = 14;
+const startVisibleY = NON_TOUCH_REGION_HEIGHT;
+final pauseY = screenHeight - 48;
 const SIZE_DP_120 = 120;
 const NUMBER_OF_NOTES = 128;
 const MINUTE_TO_SECOND = 60;

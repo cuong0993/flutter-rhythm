@@ -45,8 +45,8 @@ class TilesController {
     tiles.removeRange(0, end);
     for (var i = _visibleTileCount; i < tiles.length; i++) {
       final tile = tiles[i];
-      if (tile.initialY - _deltaY <= startVisibleY) {
-        tile.y = tile.initialY - _deltaY;
+      if (tile.initialY + _deltaY >= startVisibleY) {
+        tile.y = tile.initialY + _deltaY;
         _visibleTileCount += 1;
       } else {
         break;
@@ -55,11 +55,11 @@ class TilesController {
   }
 
   double _getMaxDeltaY() {
-    return tiles
+    return pauseY -
+        tiles
             .firstWhere((element) => element.state == TileState.UNTOUCHED,
                 orElse: () => Tile(0, 0, 0))
-            .y -
-        OFFSET_PAUSE_POSITION_Y;
+            .y;
   }
 
   Tile getNextUntouchedTile() {
