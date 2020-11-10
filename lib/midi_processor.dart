@@ -24,8 +24,8 @@ class MidiProcessor {
     SoundPool: Error creating AudioTrack
     (Error -12 out of memory)
     */
-  final _maxStreams = 8;
-  final _soundPool = Soundpool(streamType: StreamType.music);
+  static const _maxStreams = 8;
+  final _soundPool = Soundpool(streamType: StreamType.music, maxStreams:_maxStreams);
 
   final _activeSounds = <int>{};
 
