@@ -31,7 +31,10 @@ class GameWidget extends StatelessWidget {
         if (state is GameLoading) {
           final song = ModalRoute.of(context).settings.arguments as Song;
           BlocProvider.of<GameBloc>(context).add(StartGame(song));
-          return Stack(children: [gameWidget]);
+          return Scaffold(
+              body: Center(
+                  child: Image(
+                      image: AssetImage('assets/images/img_app_icon.png'))));
         } else if (state is GameStarted) {
           _game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
           return Stack(children: [gameWidget]);

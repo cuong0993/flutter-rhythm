@@ -64,7 +64,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
       _songName = event.song.title;
       _maxTime = gameDuration;
-      yield GameStarted(tiles, _speedPixelsPerSecond, gameDuration);
+      final soundLoadedStream = MidiProcessor.getInstance().soundLoadedStream;
+      await for (final value in soundLoadedStream) {
+        if (value) {
+          yield GameStarted(tiles, _speedPixelsPerSecond, gameDuration);
+        }
+      }
     } else if (event is TileTouched) {
       await MidiProcessor.getInstance().playNote(event.tile.note);
       _tilesCount += 1;

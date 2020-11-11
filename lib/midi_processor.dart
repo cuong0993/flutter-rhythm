@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_cache_manager_firebase/flutter_cache_manager_firebase.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:soundpool/soundpool.dart';
 
 import 'instrument/instrument.dart';
@@ -29,9 +30,9 @@ class MidiProcessor {
 
   final _activeSounds = <int>{};
 
-  final _soundLoadedController = StreamController<bool>();
+  final StreamController<bool> _soundLoadedController = BehaviorSubject();
 
-  Stream<bool> get soundLoaded => _soundLoadedController.stream;
+  Stream<bool> get soundLoadedStream => _soundLoadedController.stream;
 
   void onSelectInstrument(Instrument instrument) {
     if (_instrument != instrument) {
