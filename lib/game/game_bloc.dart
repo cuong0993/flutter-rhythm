@@ -68,6 +68,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       await for (final value in soundLoadedStream) {
         if (value) {
           yield GameStarted(tiles, _speedPixelsPerSecond, gameDuration);
+          return;
         }
       }
     } else if (event is TileTouched) {
