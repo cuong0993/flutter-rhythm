@@ -42,13 +42,12 @@ class GameWidget extends StatelessWidget {
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
-                        child: Image(image: AssetImage(
-                            'assets/images/img_app_icon.png')),
+                        child: Image(
+                            image:
+                                AssetImage('assets/images/img_app_icon.png')),
                       ),
                     ),
-                    Text(S
-                        .of(context)
-                        .txt_dialog_loading_sound_description)
+                    Text(S.of(context).txt_dialog_loading_sound_description)
                   ],
                 )),
           );
@@ -64,13 +63,12 @@ class GameWidget extends StatelessWidget {
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
-                        child: Image(image: AssetImage(
-                            'assets/images/img_app_icon.png')),
+                        child: Image(
+                            image:
+                                AssetImage('assets/images/img_app_icon.png')),
                       ),
                     ),
-                    Text(S
-                        .of(context)
-                        .txt_dialog_loading_sound_description)
+                    Text(S.of(context).txt_dialog_loading_sound_description)
                   ],
                 )),
           );

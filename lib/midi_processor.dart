@@ -37,7 +37,8 @@ class MidiProcessor {
   void onSelectInstrument(Instrument instrument) {
     if (_instrument != instrument) {
       dispose();
-      _soundPool = Soundpool(streamType: StreamType.music, maxStreams:_maxStreams);
+      _soundPool =
+          Soundpool(streamType: StreamType.music, maxStreams: _maxStreams);
       _instrument = instrument;
       Future.wait(instrument.soundFiles.values
               .map((e) => FirebaseCacheManager().getSingleFile(e)))
