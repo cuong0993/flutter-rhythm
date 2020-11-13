@@ -16,7 +16,7 @@ class MidiProcessor {
     return _instance;
   }
 
-  Map<int, Pair<int, double>> _noteToSoundIdAndPitches;
+  Map<int, Pair<int, double>> _noteToSoundIdAndPitches = {};
   Instrument _instrument;
 
   /*
@@ -26,7 +26,7 @@ class MidiProcessor {
     (Error -12 out of memory)
     */
   static const _maxStreams = 8;
-  final _soundPool = Soundpool(streamType: StreamType.music, maxStreams:_maxStreams);
+  Soundpool _soundPool;
 
   final _activeSounds = <int>{};
 
@@ -36,6 +36,8 @@ class MidiProcessor {
 
   void onSelectInstrument(Instrument instrument) {
     if (_instrument != instrument) {
+      dispose();
+      _soundPool = Soundpool(streamType: StreamType.music, maxStreams:_maxStreams);
       _instrument = instrument;
       Future.wait(instrument.soundFiles.values
               .map((e) => FirebaseCacheManager().getSingleFile(e)))
@@ -79,7 +81,7 @@ class MidiProcessor {
   }
 
   void dispose() {
-    _soundPool.release();
+    _soundPool?.release();
     _soundLoadedController.add(false);
     _activeSounds.clear();
     _noteToSoundIdAndPitches.clear();
