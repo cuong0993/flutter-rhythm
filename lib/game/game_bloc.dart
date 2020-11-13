@@ -19,7 +19,7 @@ import 'tile/tile_chunk.dart';
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameLoading());
   String _songName;
-  double _time;
+  double _time = 0;
 
   double _maxTime;
   int _tilesCount = 0;
@@ -68,6 +68,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       await for (final value in soundLoadedStream) {
         if (value) {
           yield GameStarted(tiles, _speedPixelsPerSecond, gameDuration);
+          await Future.delayed(Duration(milliseconds: 500));
+          yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
           return;
         }
       }
