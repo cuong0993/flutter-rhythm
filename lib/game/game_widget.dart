@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hitnotes/generated/l10n.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../songs/song.dart';
@@ -31,10 +32,26 @@ class GameWidget extends StatelessWidget {
         if (state is GameLoading) {
           final song = ModalRoute.of(context).settings.arguments as Song;
           BlocProvider.of<GameBloc>(context).add(StartGame(song));
-          return Scaffold(
-              body: Center(
-                  child: Image(
-                      image: AssetImage('assets/images/img_app_icon.png'))));
+          return Material(
+            child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Image(image: AssetImage(
+                            'assets/images/img_app_icon.png')),
+                      ),
+                    ),
+                    Text(S
+                        .of(context)
+                        .txt_dialog_loading_sound_description)
+                  ],
+                )),
+          );
         } else if (state is GameStarted) {
           _game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
           return Stack(children: [gameWidget]);
