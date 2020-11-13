@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hitnotes/generated/l10n.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../generated/l10n.dart';
 import '../songs/song.dart';
 import '../util.dart';
 import 'game_bloc.dart';
