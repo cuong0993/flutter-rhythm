@@ -11,9 +11,10 @@ import 'game_bloc.dart';
 import 'game_event.dart';
 import 'game_state.dart';
 import 'my_game.dart';
+import 'pause_dialog.dart';
 import 'tile/tile.dart';
 
-class GameWidget extends StatelessWidget {
+class GameWidget extends StatefulWidget {
   final MyGame _game;
 
   GameWidget({Key key})
@@ -21,13 +22,34 @@ class GameWidget extends StatelessWidget {
         super(key: key);
 
   @override
+  _GameWidgetState createState() => _GameWidgetState();
+}
+
+class _GameWidgetState extends State<GameWidget> {
+  @override
+  void initState() {
+    BlocProvider.of<GameBloc>(context).userUpLevelStream.listen((event) {
+      showDialog<void>(
+        context: context,
+        builder: (_) => PauseDialog(),
+      );
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     void _onTileTouched(Tile tile) {
       BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
     }
 
-    final gameWidget = _game.widget;
-    return BlocBuilder<GameBloc, GameState>(
+    return WillPopScope(onWillPop: () async {
+      await showDialog<void>(
+        context: context,
+        builder: (_) => PauseDialog(),
+      );
+      return Future.value(false);
+    }, child: BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameLoading) {
           final song = ModalRoute.of(context).settings.arguments as Song;
@@ -39,83 +61,86 @@ class GameWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Image(
-                            image:
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image(
+                                image:
                                 AssetImage('assets/images/img_app_icon.png')),
-                      ),
-                    ),
-                    Text(S.of(context).txt_dialog_loading_sound_description)
-                  ],
-                )),
-          );
-        } else if (state is GameStarted) {
-          _game.start(state.tiles, state.speedPixelsPerSecond, _onTileTouched);
-          return Material(
-            child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Image(
-                            image:
-                                AssetImage('assets/images/img_app_icon.png')),
-                      ),
-                    ),
-                    Text(S.of(context).txt_dialog_loading_sound_description)
-                  ],
-                )),
-          );
-        }
-        return Stack(children: [
-          gameWidget,
-          Container(
-              height: NON_TOUCH_REGION_HEIGHT.toDouble(),
-              child: Material(
-                color: Colors.transparent,
-                child: Column(
-                  children: [
-                    LinearPercentIndicator(
-                      padding: EdgeInsets.zero,
-                      animation: true,
-                      animationDuration: 0,
-                      lineHeight: 8.0,
-                      percent: (state as GameUpdated).time /
-                          (state as GameUpdated).maxTime,
-                      linearStrokeCap: LinearStrokeCap.butt,
-                      progressColor: Colors.red,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text((state as GameUpdated).songName),
-                        Text(
-                            '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}')
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.pause_circle_outline_rounded),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                          ),
                         ),
-                        Text((state as GameUpdated).tilesCount.toString())
+                        Text(S.of(context).txt_dialog_loading_sound_description)
                       ],
-                    )
-                  ],
-                ),
-              ))
-        ]);
-      },
+                    )),
+              );
+            } else if (state is GameStarted) {
+              widget._game.start(
+                  state.tiles, state.speedPixelsPerSecond, _onTileTouched);
+              return Material(
+                child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image(
+                                image:
+                                AssetImage('assets/images/img_app_icon.png')),
+                          ),
+                        ),
+                        Text(S.of(context).txt_dialog_loading_sound_description)
+                      ],
+                    )),
+              );
+            }
+            return Stack(children: [
+              widget._game.widget,
+              Container(
+                  height: NON_TOUCH_REGION_HEIGHT.toDouble(),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Column(
+                      children: [
+                        LinearPercentIndicator(
+                          padding: EdgeInsets.zero,
+                          animation: true,
+                          animationDuration: 0,
+                          lineHeight: 8.0,
+                          percent: (state as GameUpdated).time /
+                              (state as GameUpdated).maxTime,
+                          linearStrokeCap: LinearStrokeCap.butt,
+                          progressColor: Colors.red,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text((state as GameUpdated).songName),
+                            Text(
+                                '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}')
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.pause_circle_outline_rounded),
+                              onPressed: () {
+                                BlocProvider.of<GameBloc>(context).add(
+                                    PauseGame());
+                              },
+                            ),
+                            Text((state as GameUpdated).tilesCount.toString())
+                          ],
+                        )
+                      ],
+                    ),
+                  ))
+            ]);
+          },
+        )
     );
   }
 }

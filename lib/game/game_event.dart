@@ -22,6 +22,14 @@ class StartGame extends GameEvent {
   String toString() => 'StartGame { song: $song }';
 }
 
+class PauseGame extends GameEvent {
+
+  const PauseGame();
+
+  @override
+  List<Object> get props => [];
+}
+
 class TileTouched extends GameEvent {
   final Tile tile;
 

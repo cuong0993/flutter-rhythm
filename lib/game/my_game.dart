@@ -16,13 +16,14 @@ class MyGame extends Game with MultiTouchTapDetector {
   final _step = 1.0 / 60.0;
   final Map<int, _TouchData> _touches = {};
   Function(Tile tile) onTouched;
+  final Paint _paint = Paint()..color = Color(0xFF1F1929);
 
   void _onTileTouched(Tile tile) {
     onTouched(tile);
   }
 
   void start(List<Tile> tiles, double speedPixelsPerSecond,
-      Function(Tile tile) onTouched) {
+      Function(Tile tile) onTouched) async {
     _tilesController.initialize(tiles, speedPixelsPerSecond);
     _state = _MyGameState.PLAY;
     this.onTouched = onTouched;
@@ -43,6 +44,8 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void render(Canvas canvas) {
+    final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
+    canvas.drawRect(rect, _paint);
     _tilesController.render(canvas);
   }
 

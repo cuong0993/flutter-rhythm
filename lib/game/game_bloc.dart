@@ -23,7 +23,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   double _maxTime;
   int _tilesCount = 0;
-  double _speedPixelsPerSecond;
+  double _speedDpsPerSecond;
+  final _userUpLevelEventController = StreamController<bool>();
+  Stream<bool> get userUpLevelStream => _userUpLevelEventController.stream;
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -42,10 +44,10 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final midiFile = MidiParser().parseMidiFromFile(tempFile);
       final tileChunks = createTileChunks(midiFile);
       final groupByDurationToPrevious = Map.fromEntries(groupBy(
-              tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
+          tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
           .entries
           .toList()
-            ..sort((e1, e2) => e1.key.compareTo(e2.key)));
+        ..sort((e1, e2) => e1.key.compareTo(e2.key)));
       final countDurationToPrevious = {
         for (var e in groupByDurationToPrevious.keys)
           e: groupByDurationToPrevious[e].length
@@ -57,17 +59,17 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final unitDuration = sortCountDurationToPrevious.keys.last;
       final tiles = createTiles(tileChunks, unitDuration);
       final tick2Second =
-          tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
-      final speedPixelsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
-      _speedPixelsPerSecond = speedPixelsPerTick / tick2Second;
-      final gameDuration = tiles.last.initialY / _speedPixelsPerSecond;
+      tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
+      final speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+      _speedDpsPerSecond = speedDpsPerTick / tick2Second;
+      final gameDuration = (0.0 - tiles.last.initialY) / _speedDpsPerSecond;
 
       _songName = event.song.title;
       _maxTime = gameDuration;
       final soundLoadedStream = MidiProcessor.getInstance().soundLoadedStream;
       await for (final value in soundLoadedStream) {
         if (value) {
-          yield GameStarted(tiles, _speedPixelsPerSecond, gameDuration);
+          yield GameStarted(tiles, _speedDpsPerSecond, gameDuration);
           await Future.delayed(Duration(milliseconds: 500));
           yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
           return;
@@ -76,8 +78,10 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     } else if (event is TileTouched) {
       await MidiProcessor.getInstance().playNote(event.tile.note);
       _tilesCount += 1;
-      _time = event.tile.initialY / _speedPixelsPerSecond;
+      _time = (0.0 -event.tile.initialY) / _speedDpsPerSecond;
       yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
+    } else if (event is PauseGame) {
+      _userUpLevelEventController.add(true);
     }
   }
 
@@ -106,8 +110,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
     var previousStartTick = -10000;
     Map.fromEntries(
-            groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
-              ..sort((e1, e2) => e1.key.compareTo(e2.key)))
+        groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
+          ..sort((e1, e2) => e1.key.compareTo(e2.key)))
         .forEach((key, value) {
       tileChunks.add(TileChunk(
           notes: value,
@@ -131,8 +135,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         calibratedTick += unitDuration - chunk.durationToPrevious;
       }
       final initialPositionY =
-          -((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
-              calibratedTick);
+      -((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
+          calibratedTick);
       chunk.notes.asMap().forEach((index, note) {
         if (index < NUMBER_TILE_COLUMN) {
           final tile = Tile(note.note, tileColumn, initialPositionY);
