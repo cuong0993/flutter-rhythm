@@ -64,6 +64,7 @@ class App extends StatelessWidget {
               BlocBuilder<LocaleBloc, LocaleState>(builder: (context, state) {
             return MaterialApp(
               title: 'Hit Notes',
+              debugShowCheckedModeBanner: false,
               locale: (state is LocaleChanged) ? state.locale : null,
               localizationsDelegates: [
                 S.delegate,

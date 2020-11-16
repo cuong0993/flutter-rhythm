@@ -1,7 +1,29 @@
+import 'dart:collection';
 import 'dart:ui';
 
 final screenWidth = window.physicalSize.width / window.devicePixelRatio;
 final screenHeight = window.physicalSize.height / window.devicePixelRatio;
+String nearestDevicePixelRatioFolder = () {
+  final candidates = SplayTreeMap.from(
+      {1: '', 1.5: '1.5x/', 2.0: '2.0x/', 3.0: '3.0x/', 4.0: '4.0x/'});
+  final value = window.devicePixelRatio;
+  if (candidates.containsKey(value)) {
+    return candidates[value];
+  }
+  final lower = candidates.lastKeyBefore(value);
+  final upper = candidates.firstKeyAfter(value);
+  if (lower == null) {
+    return candidates[upper];
+  }
+  if (upper == null) {
+    return candidates[lower];
+  }
+  if (value > (lower + upper) / 2) {
+    return candidates[upper];
+  } else {
+    return candidates[lower];
+  }
+}();
 final size24dp = (24 * window.devicePixelRatio).toInt();
 final size40dp = (40 * window.devicePixelRatio).toInt();
 final size96dp = (96 * window.devicePixelRatio).toInt();
