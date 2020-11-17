@@ -31,9 +31,10 @@ class UserRepositoryImpl implements UserRepository {
       var name = '';
       FirebaseAuth.instance.currentUser.providerData.forEach((userInfo) {
         if (userInfo.providerId == 'facebook.com') {
-          photoUrl = '${userInfo.photoURL}?height=$size96dp';
+          photoUrl = '${userInfo.photoURL}?height=${96.toPixel()}';
         } else if (userInfo.providerId == 'google.com') {
-          photoUrl = userInfo.photoURL.replaceAll('s96-c', 's$size96dp-c');
+          photoUrl =
+              userInfo.photoURL.replaceAll('s96-c', 's${96.toPixel()}-c');
         }
         name = userInfo.displayName;
       });

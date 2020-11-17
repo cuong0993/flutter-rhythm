@@ -57,8 +57,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                               imageUrl: state.user.photoUrl,
                               placeholder: (context, url) =>
                                   Icon(Icons.account_circle_rounded),
-                              memCacheWidth: size24dp,
-                              memCacheHeight: size24dp)
+                              memCacheWidth: 24.toPixel(),
+                              memCacheHeight: 24.toPixel())
                           : Icon(Icons.account_circle_rounded),
                     ),
                     onPressed: () async {

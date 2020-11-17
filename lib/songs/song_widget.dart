@@ -25,8 +25,8 @@ class SongWidget extends StatelessWidget {
           height: 40,
           imageUrl: song.imageUrl,
           placeholder: (context, url) => CircularProgressIndicator(),
-          memCacheWidth: size40dp,
-          memCacheHeight: size40dp,
+          memCacheWidth: 40.toPixel(),
+          memCacheHeight: 40.toPixel(),
           cacheManager: FirebaseCacheManager()),
       title: Text(
         song.title,

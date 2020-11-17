@@ -60,9 +60,10 @@ class UserWidget extends StatelessWidget {
                                                         placeholder: (context,
                                                                 url) =>
                                                             CircularProgressIndicator(),
-                                                        memCacheWidth: size96dp,
+                                                        memCacheWidth:
+                                                            96.toPixel(),
                                                         memCacheHeight:
-                                                            size96dp),
+                                                            96.toPixel()),
                                                   ),
                                                   SizedBox(height: 8),
                                                   Text(
