@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500">
     <rect width="1024" height="500" fill="#241e30" ry="2.231"/>
-    <text style="line-height:1.25;text-align:center" x="653.036" y="235.093" font-family="sans-serif" font-size="40" font-weight="400" text-anchor="middle">
-        <tspan style="-inkscape-font-specification:'Roboto Condensed, ';text-align:center" x="653.036" y="235.093" fill="#ffffff" font-family="'Roboto Condensed'">Chơi nhạc </tspan> <tspan style="-inkscape-font-specification:'Roboto Condensed, ';text-align:center" x="653.036" y="286.586" fill="#ffffff" font-family="'Roboto Condensed'">Chạm vào từng nốt </tspan>
+    <text x="653.036" y="235.093" font-family="sans-serif" font-size="40" font-weight="400" text-anchor="middle" style="line-height:1.25;text-align:center">
+        <tspan x="653.036" y="235.093" fill="#ffffff" font-family="'Roboto Condensed'" style="-inkscape-font-specification:'Roboto Condensed, ';text-align:center">Chơi nhạc </tspan> <tspan x="653.036" y="286.586" fill="#ffffff" font-family="'Roboto Condensed'" style="-inkscape-font-specification:'Roboto Condensed, ';text-align:center">Chạm vào từng nốt </tspan>
     </text>
-    <text style="line-height:1.25" x="170.868" y="343.642" font-family="sans-serif" font-size="40" font-weight="400">
-        <tspan style="-inkscape-font-specification:'Roboto Condensed, '" x="170.868" y="343.642" fill="#ffffff" font-family="'Roboto Condensed'">Hit Notes </tspan>
+    <text x="170.868" y="343.642" font-family="sans-serif" font-size="40" font-weight="400" style="line-height:1.25">
+        <tspan x="170.868" y="343.642" fill="#ffffff" font-family="'Roboto Condensed'" style="-inkscape-font-specification:'Roboto Condensed, '">Hit Notes </tspan>
     </text>
     <rect width="144" height="144" x="173.712" y="155.968" fill="#241e30" ry="33"/>
     <rect width="54" height="54" x="191.73" y="201.439" fill="#ff8383" ry="27"/>

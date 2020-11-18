@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../util.dart';
 import 'effect.dart';
+import 'ripple_effect.dart';
 import 'tile/tile.dart';
 import 'tile/tile_effect_spawner.dart';
 import 'tile/tile_input_handler.dart';
@@ -39,6 +40,8 @@ class MyGame extends Game with MultiTouchTapDetector {
   void onTapDown(int pointerId, TapDownDetails details) {
     _touches[pointerId] =
         _TouchData(details.globalPosition.dx, details.globalPosition.dy);
+    _rippleEffects[pointerId] =
+        RippleEffect(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override

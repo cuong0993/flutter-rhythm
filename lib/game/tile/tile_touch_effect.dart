@@ -99,7 +99,7 @@ const noteToName = {
 
 class TileTouchEffect extends Effect {
   final config =
-      CenterRenderTextConfig(fontSize: 48.0, fontFamily: 'Awesome Font');
+      CenterRenderTextConfig(fontSize: 24.0, color: Color(0xFF1CDEC9));
   var _time = 0.0;
   var _isDone = false;
   final _centerX;
