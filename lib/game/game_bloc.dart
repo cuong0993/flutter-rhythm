@@ -24,8 +24,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   double _maxTime;
   int _tilesCount = 0;
   double _speedDpsPerSecond;
-  final _userUpLevelEventController = StreamController<bool>();
-  Stream<bool> get userUpLevelStream => _userUpLevelEventController.stream;
+  final _pauseEventController = StreamController<bool>();
+  Stream<bool> get pauseStream => _pauseEventController.stream;
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -81,7 +81,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _time = (0.0 -event.tile.initialY) / _speedDpsPerSecond;
       yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
     } else if (event is PauseGame) {
-      _userUpLevelEventController.add(true);
+      _pauseEventController.add(true);
     }
   }
 

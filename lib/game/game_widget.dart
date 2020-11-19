@@ -28,7 +28,7 @@ class GameWidget extends StatefulWidget {
 class _GameWidgetState extends State<GameWidget> {
   @override
   void initState() {
-    BlocProvider.of<GameBloc>(context).userUpLevelStream.listen((event) {
+    BlocProvider.of<GameBloc>(context).pauseStream.listen((event) {
       showDialog<void>(
         context: context,
         builder: (_) => PauseDialog(),
@@ -134,6 +134,10 @@ class _GameWidgetState extends State<GameWidget> {
                             ),
                             Text((state as GameUpdated).tilesCount.toString())
                           ],
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [ Text("aaaaaaaaaaaaa")],
                         )
                       ],
                     ),
