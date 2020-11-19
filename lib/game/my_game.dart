@@ -1,5 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flame/gestures.dart';
+import 'package:flame/position.dart';
+import 'package:flame/sprite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,9 @@ class MyGame extends Game with MultiTouchTapDetector {
   final Map<int, _TouchData> _touches = {};
   Function(Tile tile) onTouched;
   final Paint _paint = Paint()..color = Color(0xFF1F1929);
+
+  final _staffSprite = Sprite('${nearestDevicePixelRatioFolder}img_staff.png');
+  final _clefSprite = Sprite('${nearestDevicePixelRatioFolder}img_clef.png');
 
   void _onTileTouched(Tile tile) {
     onTouched(tile);
@@ -53,6 +58,12 @@ class MyGame extends Game with MultiTouchTapDetector {
   void render(Canvas canvas) {
     final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, _paint);
+    _staffSprite.renderPosition(
+        canvas, Position(0.0, pauseY - 96 + 24),
+        size: Position(screenWidth, 96));
+    _clefSprite.renderPosition(
+        canvas, Position(0.0, pauseY - 96 + 24),
+        size: Position(96, 96));
     _tilesController.render(canvas);
     _tileEffects.forEach((effect) {
       effect.render(canvas);

@@ -6,14 +6,9 @@ import 'authentication/authentication_event.dart';
 import 'authentication/authentication_state.dart';
 import 'routes.dart';
 
-class SplashWidget extends StatefulWidget {
+class SplashWidget extends StatelessWidget {
   @override
-  _SplashWidgetState createState() => _SplashWidgetState();
-}
-
-class _SplashWidgetState extends State<SplashWidget> {
-  @override
-  void initState() {
+  Widget build(BuildContext context) {
     BlocProvider.of<AuthenticationBloc>(context)..add(SignInAnonymouslyEvent());
     BlocProvider.of<AuthenticationBloc>(context).listen((state) {
       if (state is Authenticated) {
@@ -21,11 +16,6 @@ class _SplashWidgetState extends State<SplashWidget> {
             context, Routes.home, (route) => false);
       }
     });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
             child: Image(image: AssetImage('assets/images/img_app_icon.png'))));

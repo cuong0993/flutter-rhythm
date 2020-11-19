@@ -26,6 +26,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   double _speedDpsPerSecond;
   final _pauseEventController = StreamController<bool>();
   Stream<bool> get pauseStream => _pauseEventController.stream;
+  final _guideEventController = StreamController<String>();
+  Stream<String> get guideStream => _guideEventController.stream;
 
   @override
   Stream<GameState> mapEventToState(GameEvent event) async* {
@@ -80,6 +82,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _tilesCount += 1;
       _time = (0.0 -event.tile.initialY) / _speedDpsPerSecond;
       yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
+      if (event.tile.y == pauseY) {
+        _guideEventController.add('slow');
+      } else if (event.tile.y < pauseY - 120) {
+        _guideEventController.add('fast');
+      } else {
+        _guideEventController.add('normal');
+      }
     } else if (event is PauseGame) {
       _pauseEventController.add(true);
     }

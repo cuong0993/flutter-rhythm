@@ -21,10 +21,10 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   void initState() {
-    BlocProvider.of<HomeBloc>(context).userUpLevelStream.listen((event) {
+    BlocProvider.of<HomeBloc>(context).userUpLevelStream.listen((appUser) {
       showDialog<void>(
         context: context,
-        builder: (_) => LevelUpDialog(),
+        builder: (_) => LevelUpDialog(appUser),
       );
     });
     BlocProvider.of<HomeBloc>(context).showRateEventStream.listen((event) {
@@ -52,13 +52,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                 IconButton(
                     icon: ClipOval(
                       child: (state is HomeUpdated &&
-                              state.user.photoUrl.isNotEmpty)
+                          state.user.photoUrl.isNotEmpty)
                           ? CachedNetworkImage(
-                              imageUrl: state.user.photoUrl,
-                              placeholder: (context, url) =>
-                                  Icon(Icons.account_circle_rounded),
-                              memCacheWidth: 24.toPixel(),
-                              memCacheHeight: 24.toPixel())
+                          imageUrl: state.user.photoUrl,
+                          placeholder: (context, url) =>
+                              Icon(Icons.account_circle_rounded),
+                          memCacheWidth: 24.toPixel(),
+                          memCacheHeight: 24.toPixel())
                           : Icon(Icons.account_circle_rounded),
                     ),
                     onPressed: () async {

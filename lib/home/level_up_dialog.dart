@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../generated/l10n.dart';
+import '../user/user_repository.dart';
 
 class LevelUpDialog extends StatelessWidget {
+  final AppUser _appUser;
+
+  const LevelUpDialog(this._appUser);
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,7 +24,9 @@ class LevelUpDialog extends StatelessWidget {
                 children: [
                   Image(image: AssetImage('assets/images/img_firework.png')),
                   Text(
-                    S.of(context).txt_dialog_level_up_description('1'),
+                    S
+                        .of(context)
+                        .txt_dialog_level_up_description(_appUser.user.level),
                     style: Theme.of(context).textTheme.headline6,
                   )
                 ],
