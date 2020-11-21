@@ -11,13 +11,11 @@ class PauseDialog extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          RaisedButton(
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ElevatedButton (
             onPressed: () {Navigator.of(context).pop();Navigator.of(context).pop();},
             child: Text(S.of(context).txt_button_quit),
           ),
-          RaisedButton(
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ElevatedButton (
             onPressed: () {Navigator.of(context).pop();},
             child: Text(S.of(context).txt_button_restart),
           )

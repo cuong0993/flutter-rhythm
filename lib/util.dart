@@ -45,7 +45,7 @@ final positionsX = () {
   }
   return positionXs;
 }();
-const NON_TOUCH_REGION_HEIGHT = 96;
+const NON_TOUCH_REGION_HEIGHT = 120;
 const startVisibleY = NON_TOUCH_REGION_HEIGHT;
 final pauseY = screenHeight - 48;
 const SIZE_DP_120 = 120;

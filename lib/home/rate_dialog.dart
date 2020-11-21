@@ -28,14 +28,14 @@ class RateDialog extends StatelessWidget {
               children: [
                 SizedBox(width: 8),
                 Expanded(
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: () => Navigator.of(context).pop(),
                     child: Text(S.of(context).txt_all_no),
                   ),
                 ),
                 SizedBox(width: 8),
                 Expanded(
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: () {
                       Preferences.getInstance().then((preferences) {
                         preferences.isShowRateDialogAgain = true;
@@ -47,7 +47,7 @@ class RateDialog extends StatelessWidget {
                 ),
                 SizedBox(width: 8),
                 Expanded(
-                  child: RaisedButton(
+                  child: ElevatedButton(
                       onPressed: () {
                         Preferences.getInstance().then((preferences) {
                           preferences.isShowRateDialogAgain = false;

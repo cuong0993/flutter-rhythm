@@ -12,8 +12,8 @@ class LevelUpDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Align(
@@ -33,18 +33,10 @@ class LevelUpDialog extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            children: [
-              SizedBox(width: 8),
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(S.of(context).txt_all_ok),
-                ),
-              ),
-              SizedBox(width: 8)
-            ],
-          )
+          ElevatedButton (
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(S.of(context).txt_all_ok),
+          ),
         ],
       ),
     );

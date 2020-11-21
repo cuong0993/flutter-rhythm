@@ -84,7 +84,7 @@ class UserWidget extends StatelessWidget {
                                                       CrossAxisAlignment
                                                           .stretch,
                                                   children: <Widget>[
-                                                    OutlineButton(
+                                                    OutlinedButton(
                                                       onPressed: () {
                                                         BlocProvider.of<
                                                                 AuthenticationBloc>(
@@ -115,7 +115,7 @@ class UserWidget extends StatelessWidget {
                                                       ),
                                                     ),
                                                     SizedBox(height: 8),
-                                                    OutlineButton(
+                                                    OutlinedButton(
                                                       onPressed: () {
                                                         BlocProvider.of<
                                                                 AuthenticationBloc>(

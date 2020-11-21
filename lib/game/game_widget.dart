@@ -79,40 +79,43 @@ class _GameWidgetState extends State<GameWidget> {
                       percent: (state as GameUpdated).time /
                           (state as GameUpdated).maxTime,
                       linearStrokeCap: LinearStrokeCap.butt,
-                      progressColor: Colors.red,
+                      progressColor: Color(0xFFFF8383),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text((state as GameUpdated).songName),
-                        Text(
-                            '${(state as GameUpdated).time.toInt() ~/
-                                60}:${((state as GameUpdated).time.toInt() % 60)
-                                .toString()
-                                .padLeft(2, '0')}/${(state as GameUpdated)
-                                .maxTime.toInt() ~/
-                                60}:${((state as GameUpdated)
-                                .maxTime.toInt() % 60).toString().padLeft(
-                                2, '0')}')
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.pause_circle_outline_rounded),
-                          onPressed: () {
-                            BlocProvider.of<GameBloc>(context).add(
-                                PauseGame());
-                          },
-                        ),
-                        Text((state as GameUpdated).tilesCount.toString())
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [ GuideTextWidget()],
-                    )
+                    Padding(padding: EdgeInsets.all(8), child: Column(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text((state as GameUpdated).songName, style:Theme.of(context).textTheme.subtitle1),
+                          Text(
+                              '${(state as GameUpdated).time.toInt() ~/
+                                  60}:${((state as GameUpdated).time.toInt() % 60)
+                                  .toString()
+                                  .padLeft(2, '0')}/${(state as GameUpdated)
+                                  .maxTime.toInt() ~/
+                                  60}:${((state as GameUpdated)
+                                  .maxTime.toInt() % 60).toString().padLeft(
+                                  2, '0')}', style:Theme.of(context).textTheme.subtitle1)
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            iconSize: 32,
+                            icon: Icon(Icons.pause_circle_outline_rounded),
+                            onPressed: () {
+                              BlocProvider.of<GameBloc>(context).add(
+                                  PauseGame());
+                            },
+                          ),
+                          Text((state as GameUpdated).tilesCount.toString(), style:Theme.of(context).textTheme.headline4.copyWith(color: Color(0xFFFF8383)))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [ GuideTextWidget()],
+                      )
+                    ],),)
                   ],
                 ),
               ))
@@ -149,7 +152,7 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$_text');
+    return Text('$_text', style:Theme.of(context).textTheme.headline5.copyWith(color: Color(0xFF1CDEC9)));
   }
 }
 

@@ -58,6 +58,12 @@ class App extends StatelessWidget {
                   songsRepository: songsRepository,
                 )..add(LoadMoreSongs());
               },
+            ),
+            BlocProvider<UserBloc>(
+              create: (context) {
+                return UserBloc(instrumentsRepository,
+                    userRepository: userRepository);
+              },
             )
           ],
           child:
@@ -106,10 +112,7 @@ class App extends StatelessWidget {
                       create: (_) => GameBloc(), child: GameWidget());
                 },
                 Routes.account: (context) {
-                  return BlocProvider<UserBloc>(
-                      create: (_) => UserBloc(instrumentsRepository,
-                          userRepository: userRepository),
-                      child: UserWidget());
+                  return UserWidget();
                 },
                 Routes.language: (context) {
                   return LocaleWidget();
