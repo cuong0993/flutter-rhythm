@@ -6,10 +6,10 @@ import 'package:flame/sprite.dart';
 import '../util.dart';
 import 'effect.dart';
 
+Sprite touchSprite = Sprite('${nearestDevicePixelRatioFolder}img_touch.png');
+Paint grayPaint = Paint()..colorFilter = ColorFilter.mode(Color(0xFFFFFFFF).withOpacity(0.1), BlendMode.srcIn);
 
 class RippleEffect extends Effect {
-  static Sprite touchSprite = Sprite('${nearestDevicePixelRatioFolder}img_touch.png');
-  Paint grayPaint = Paint()..colorFilter = ColorFilter.mode(Color(0xFFFFFFFF), BlendMode.srcATop);
   static const LIVE_TIME = 0.5;
   static const SIZE = 48;
   final initialWidth = 0.5 * SIZE;

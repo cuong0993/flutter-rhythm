@@ -5,7 +5,6 @@ import {
 import { FirebasePath } from '../firebase-path';
 import * as firebase from 'firebase-admin';
 import { getUserId } from '../shared';
-import { Game } from '../model/game';
 import { Song } from '../model/song';
 import { GameReward } from '../model/game-reward';
 import { User } from '../model/user';
@@ -16,21 +15,11 @@ export async function getGameReward(
   context: CallableContext,
 ): Promise<GameReward> {
   const errorCount = <number>data.errorCount;
+  const songId = <string>data.songId;
+
   const userId = getUserId(context);
-  console.log(`User ${userId} is getting game reward with errorCount ${errorCount}`);
+  console.log(`User ${userId} is getting game reward with songId ${songId}, errorCount ${errorCount}`);
   const firestore = firebase.firestore();
-  const gameRef = firestore.collection(FirebasePath.FIREBASE_PATH_GAMES).doc(userId);
-  const gameSnapshot = await gameRef.get();
-  await gameRef.delete();
-  if (!gameSnapshot.exists) {
-    console.log('Cannot retrieve game information');
-    throw new HttpsError(
-      'unavailable',
-      'Cannot retrieve game information',
-    );
-  }
-  const game = gameSnapshot.data() as Game;
-  console.log(`Found the game  ${JSON.stringify(game)}`);
   if (
     !(
       Number.isSafeInteger(errorCount) &&
@@ -50,7 +39,7 @@ export async function getGameReward(
       throw new HttpsError('unavailable', 'Cannot retrieve user information');
     }
     const user = userSnapshot.data() as User;
-    const songRef = firestore.collection(FirebasePath.FIREBASE_PATH_SONGS).doc(game.songId);
+    const songRef = firestore.collection(FirebasePath.FIREBASE_PATH_SONGS).doc(songId);
     const songSnapshot = await transaction.get(songRef);
     if (!songSnapshot.exists) {
       console.log('Cannot retrieve played song information');

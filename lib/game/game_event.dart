@@ -23,8 +23,14 @@ class StartGame extends GameEvent {
 }
 
 class PauseGame extends GameEvent {
-
   const PauseGame();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CompleteGame extends GameEvent {
+  const CompleteGame();
 
   @override
   List<Object> get props => [];

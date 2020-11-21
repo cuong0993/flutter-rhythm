@@ -829,6 +829,16 @@
       }
     },
     "songs": {
+      "Short": {
+        "__collections__": {},
+        "artist": "Cương",
+        "bpm": 51,
+        "id": "Short",
+        "imageUrl": "images/AlanWalker.jpg",
+        "tilesCount": 2,
+        "title": "AShort",
+        "url": "songs/Short.mid"
+      },
       "Alan_Walker-Alone": {
         "__collections__": {},
         "artist": "Alan Walker",

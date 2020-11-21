@@ -43,6 +43,10 @@ class _GameWidgetState extends State<GameWidget> {
       BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
     }
 
+    void _onCompleted() {
+      BlocProvider.of<GameBloc>(context).add(CompleteGame());
+    }
+
     return WillPopScope(onWillPop: () async {
       await showDialog<void>(
         context: context,
@@ -59,8 +63,8 @@ class _GameWidgetState extends State<GameWidget> {
           BlocProvider.of<GameBloc>(context).add(StartGame(song));
           return LoadingSoundWidget();
         } else if (state is GameStarted) {
-          widget._game.start(
-              state.tiles, state.speedPixelsPerSecond, _onTileTouched);
+          widget._game.start(state.tiles, state.speedPixelsPerSecond,
+              _onTileTouched, _onCompleted);
           return LoadingSoundWidget();
         }
         return Stack(children: [

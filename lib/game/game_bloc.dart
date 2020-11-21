@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -19,6 +20,7 @@ import 'tile/tile_chunk.dart';
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameLoading());
   String _songName;
+  String _songId;
   double _time = 0;
 
   double _maxTime;
@@ -67,6 +69,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final gameDuration = (0.0 - tiles.last.initialY) / _speedDpsPerSecond;
 
       _songName = event.song.title;
+      _songId = event.song.id;
       _maxTime = gameDuration;
       final soundLoadedStream = MidiProcessor.getInstance().soundLoadedStream;
       await for (final value in soundLoadedStream) {
@@ -91,6 +94,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       }
     } else if (event is PauseGame) {
       _pauseEventController.add(true);
+    } else if (event is CompleteGame) {
+      await Future.delayed(Duration(milliseconds: 1000));
+      await FirebaseFunctions.instance
+          .httpsCallable('getGameReward')
+          .call({'songId': _songId, 'errorCount': 1});
     }
   }
 
@@ -117,7 +125,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     }
     final tileChunks = <TileChunk>[];
 
-    var previousStartTick = -10000;
+    var previousStartTick = 0;
     Map.fromEntries(
         groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
           ..sort((e1, e2) => e1.key.compareTo(e2.key)))

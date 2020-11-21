@@ -22,21 +22,19 @@ class MyGame extends Game with MultiTouchTapDetector {
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
   final Map<int, _TouchData> _touches = {};
-  Function(Tile tile) onTouched;
+  Function(Tile tile) _onTouched;
+  Function() _onCompleted;
   final Paint _paint = Paint()..color = Color(0xFF1F1929);
 
   final _staffSprite = Sprite('${nearestDevicePixelRatioFolder}img_staff.png');
   final _clefSprite = Sprite('${nearestDevicePixelRatioFolder}img_clef.png');
 
-  void _onTileTouched(Tile tile) {
-    onTouched(tile);
-  }
-
   void start(List<Tile> tiles, double speedPixelsPerSecond,
-      Function(Tile tile) onTouched) async {
+      Function(Tile tile) onTouched, Function() onCompleted) async {
     _tilesController.initialize(tiles, speedPixelsPerSecond);
     _state = _MyGameState.PLAY;
-    this.onTouched = onTouched;
+    _onTouched = onTouched;
+    _onCompleted = onCompleted;
   }
 
   void pause() {}
@@ -98,13 +96,13 @@ class MyGame extends Game with MultiTouchTapDetector {
                 if (tile.initialY <= initialYAllowedTouch) {
                   tile.touchDown();
                   _tileEffects.addAll(tile.getEffects());
-                  _onTileTouched(tile);
+                  _onTouched(tile);
                   if (_state == _MyGameState.PAUSE) {
                     _state = _MyGameState.PLAY;
                   }
                   initialYAllowedTouch = tile.initialY;
                 } else {
-                  _onTileTouched(null);
+                  _onTouched(null);
                 }
               }
             }
@@ -118,14 +116,12 @@ class MyGame extends Game with MultiTouchTapDetector {
           }
           if (_tilesController.tiles.isEmpty) {
             _state = _MyGameState.COMPLETE;
-            onComplete();
+            _onCompleted();
           }
         }
       }
     }
   }
-
-  void onComplete() {}
 }
 
 enum _MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
