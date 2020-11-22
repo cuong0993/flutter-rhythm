@@ -19,18 +19,40 @@ class CompleteDialog extends StatelessWidget {
           Expanded(
             child: Align(
               alignment: Alignment.center,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(image: AssetImage('assets/images/img_firework.png')),
-                  Text(
-                    S.of(context).txt_game_complete_gift,
-                    style: Theme.of(context).textTheme.headline6,
-                  )
-                ],
-              ),
-            ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                            image: AssetImage((_gameReward.stars >= 1)
+                                ? 'assets/images/img_star_rate.png'
+                                : 'assets/images/img_star_rate_disable.png')),
+                        SizedBox(width: 8),
+                        Image(
+                            image: AssetImage((_gameReward.stars >= 2)
+                                ? 'assets/images/img_star_rate.png'
+                                : 'assets/images/img_star_rate_disable.png')),
+                        SizedBox(width: 8),
+                        Image(
+                            image: AssetImage((_gameReward.stars >= 3)
+                                ? 'assets/images/img_star_rate.png'
+                                : 'assets/images/img_star_rate_disable.png')),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(image: AssetImage('assets/images/img_note.png')),
+                        SizedBox(width: 8),
+                        Text(_gameReward.experiences.toString())
+                      ],
+                    ),
+                  ],
+                )),
           ),
           Row(
             children: [

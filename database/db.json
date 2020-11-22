@@ -1,209 +1,6 @@
 {
   "__collections__": {
     "instruments": {
-      "electric_guitar": {
-        "__collections__": {},
-        "id": "electric_guitar",
-        "maxNote": 84,
-        "minNote": 40,
-        "soundFiles": {
-          "40": "sounds/electric-guitar/40.mp3",
-          "44": "sounds/electric-guitar/44.mp3",
-          "48": "sounds/electric-guitar/48.mp3",
-          "52": "sounds/electric-guitar/52.mp3",
-          "56": "sounds/electric-guitar/56.mp3",
-          "60": "sounds/electric-guitar/60.mp3",
-          "65": "sounds/electric-guitar/65.mp3",
-          "68": "sounds/electric-guitar/68.mp3",
-          "72": "sounds/electric-guitar/72.mp3",
-          "76": "sounds/electric-guitar/76.mp3",
-          "80": "sounds/electric-guitar/80.mp3",
-          "84": "sounds/electric-guitar/84.mp3"
-        },
-        "soundNotes": {
-          "40": {
-            "note": 40,
-            "pitch": 1
-          },
-          "41": {
-            "note": 40,
-            "pitch": 1.0594631
-          },
-          "42": {
-            "note": 40,
-            "pitch": 1.122462
-          },
-          "43": {
-            "note": 44,
-            "pitch": 0.9438743
-          },
-          "44": {
-            "note": 44,
-            "pitch": 1
-          },
-          "45": {
-            "note": 44,
-            "pitch": 1.0594631
-          },
-          "46": {
-            "note": 44,
-            "pitch": 1.122462
-          },
-          "47": {
-            "note": 48,
-            "pitch": 0.9438743
-          },
-          "48": {
-            "note": 48,
-            "pitch": 1
-          },
-          "49": {
-            "note": 48,
-            "pitch": 1.0594631
-          },
-          "50": {
-            "note": 48,
-            "pitch": 1.122462
-          },
-          "51": {
-            "note": 52,
-            "pitch": 0.9438743
-          },
-          "52": {
-            "note": 52,
-            "pitch": 1
-          },
-          "53": {
-            "note": 52,
-            "pitch": 1.0594631
-          },
-          "54": {
-            "note": 52,
-            "pitch": 1.122462
-          },
-          "55": {
-            "note": 56,
-            "pitch": 0.9438743
-          },
-          "56": {
-            "note": 56,
-            "pitch": 1
-          },
-          "57": {
-            "note": 56,
-            "pitch": 1.0594631
-          },
-          "58": {
-            "note": 56,
-            "pitch": 1.122462
-          },
-          "59": {
-            "note": 60,
-            "pitch": 0.9438743
-          },
-          "60": {
-            "note": 60,
-            "pitch": 1
-          },
-          "61": {
-            "note": 60,
-            "pitch": 1.0594631
-          },
-          "62": {
-            "note": 60,
-            "pitch": 1.122462
-          },
-          "63": {
-            "note": 65,
-            "pitch": 0.8908987
-          },
-          "64": {
-            "note": 65,
-            "pitch": 0.9438743
-          },
-          "65": {
-            "note": 65,
-            "pitch": 1
-          },
-          "66": {
-            "note": 65,
-            "pitch": 1.0594631
-          },
-          "67": {
-            "note": 65,
-            "pitch": 1.122462
-          },
-          "68": {
-            "note": 68,
-            "pitch": 1
-          },
-          "69": {
-            "note": 68,
-            "pitch": 1.0594631
-          },
-          "70": {
-            "note": 68,
-            "pitch": 1.122462
-          },
-          "71": {
-            "note": 72,
-            "pitch": 0.9438743
-          },
-          "72": {
-            "note": 72,
-            "pitch": 1
-          },
-          "73": {
-            "note": 72,
-            "pitch": 1.0594631
-          },
-          "74": {
-            "note": 72,
-            "pitch": 1.122462
-          },
-          "75": {
-            "note": 76,
-            "pitch": 0.9438743
-          },
-          "76": {
-            "note": 76,
-            "pitch": 1
-          },
-          "77": {
-            "note": 76,
-            "pitch": 1.0594631
-          },
-          "78": {
-            "note": 76,
-            "pitch": 1.122462
-          },
-          "79": {
-            "note": 80,
-            "pitch": 0.9438743
-          },
-          "80": {
-            "note": 80,
-            "pitch": 1
-          },
-          "81": {
-            "note": 80,
-            "pitch": 1.0594631
-          },
-          "82": {
-            "note": 80,
-            "pitch": 1.122462
-          },
-          "83": {
-            "note": 84,
-            "pitch": 0.9438743
-          },
-          "84": {
-            "note": 84,
-            "pitch": 1
-          }
-        },
-        "volume": 0.3
-      },
       "acoustic_guitar": {
         "__collections__": {},
         "id": "acoustic_guitar",
@@ -449,6 +246,209 @@
           }
         },
         "volume": 0.5
+      },
+      "electric_guitar": {
+        "__collections__": {},
+        "id": "electric_guitar",
+        "maxNote": 84,
+        "minNote": 40,
+        "soundFiles": {
+          "40": "sounds/electric-guitar/40.mp3",
+          "44": "sounds/electric-guitar/44.mp3",
+          "48": "sounds/electric-guitar/48.mp3",
+          "52": "sounds/electric-guitar/52.mp3",
+          "56": "sounds/electric-guitar/56.mp3",
+          "60": "sounds/electric-guitar/60.mp3",
+          "65": "sounds/electric-guitar/65.mp3",
+          "68": "sounds/electric-guitar/68.mp3",
+          "72": "sounds/electric-guitar/72.mp3",
+          "76": "sounds/electric-guitar/76.mp3",
+          "80": "sounds/electric-guitar/80.mp3",
+          "84": "sounds/electric-guitar/84.mp3"
+        },
+        "soundNotes": {
+          "40": {
+            "note": 40,
+            "pitch": 1
+          },
+          "41": {
+            "note": 40,
+            "pitch": 1.0594631
+          },
+          "42": {
+            "note": 40,
+            "pitch": 1.122462
+          },
+          "43": {
+            "note": 44,
+            "pitch": 0.9438743
+          },
+          "44": {
+            "note": 44,
+            "pitch": 1
+          },
+          "45": {
+            "note": 44,
+            "pitch": 1.0594631
+          },
+          "46": {
+            "note": 44,
+            "pitch": 1.122462
+          },
+          "47": {
+            "note": 48,
+            "pitch": 0.9438743
+          },
+          "48": {
+            "note": 48,
+            "pitch": 1
+          },
+          "49": {
+            "note": 48,
+            "pitch": 1.0594631
+          },
+          "50": {
+            "note": 48,
+            "pitch": 1.122462
+          },
+          "51": {
+            "note": 52,
+            "pitch": 0.9438743
+          },
+          "52": {
+            "note": 52,
+            "pitch": 1
+          },
+          "53": {
+            "note": 52,
+            "pitch": 1.0594631
+          },
+          "54": {
+            "note": 52,
+            "pitch": 1.122462
+          },
+          "55": {
+            "note": 56,
+            "pitch": 0.9438743
+          },
+          "56": {
+            "note": 56,
+            "pitch": 1
+          },
+          "57": {
+            "note": 56,
+            "pitch": 1.0594631
+          },
+          "58": {
+            "note": 56,
+            "pitch": 1.122462
+          },
+          "59": {
+            "note": 60,
+            "pitch": 0.9438743
+          },
+          "60": {
+            "note": 60,
+            "pitch": 1
+          },
+          "61": {
+            "note": 60,
+            "pitch": 1.0594631
+          },
+          "62": {
+            "note": 60,
+            "pitch": 1.122462
+          },
+          "63": {
+            "note": 65,
+            "pitch": 0.8908987
+          },
+          "64": {
+            "note": 65,
+            "pitch": 0.9438743
+          },
+          "65": {
+            "note": 65,
+            "pitch": 1
+          },
+          "66": {
+            "note": 65,
+            "pitch": 1.0594631
+          },
+          "67": {
+            "note": 65,
+            "pitch": 1.122462
+          },
+          "68": {
+            "note": 68,
+            "pitch": 1
+          },
+          "69": {
+            "note": 68,
+            "pitch": 1.0594631
+          },
+          "70": {
+            "note": 68,
+            "pitch": 1.122462
+          },
+          "71": {
+            "note": 72,
+            "pitch": 0.9438743
+          },
+          "72": {
+            "note": 72,
+            "pitch": 1
+          },
+          "73": {
+            "note": 72,
+            "pitch": 1.0594631
+          },
+          "74": {
+            "note": 72,
+            "pitch": 1.122462
+          },
+          "75": {
+            "note": 76,
+            "pitch": 0.9438743
+          },
+          "76": {
+            "note": 76,
+            "pitch": 1
+          },
+          "77": {
+            "note": 76,
+            "pitch": 1.0594631
+          },
+          "78": {
+            "note": 76,
+            "pitch": 1.122462
+          },
+          "79": {
+            "note": 80,
+            "pitch": 0.9438743
+          },
+          "80": {
+            "note": 80,
+            "pitch": 1
+          },
+          "81": {
+            "note": 80,
+            "pitch": 1.0594631
+          },
+          "82": {
+            "note": 80,
+            "pitch": 1.122462
+          },
+          "83": {
+            "note": 84,
+            "pitch": 0.9438743
+          },
+          "84": {
+            "note": 84,
+            "pitch": 1
+          }
+        },
+        "volume": 0.3
       },
       "piano": {
         "__collections__": {},
@@ -829,16 +829,6 @@
       }
     },
     "songs": {
-      "Short": {
-        "__collections__": {},
-        "artist": "Cương",
-        "bpm": 51,
-        "id": "Short",
-        "imageUrl": "images/AlanWalker.jpg",
-        "tilesCount": 2,
-        "title": "AShort",
-        "url": "songs/Short.mid"
-      },
       "Alan_Walker-Alone": {
         "__collections__": {},
         "artist": "Alan Walker",
@@ -2138,6 +2128,16 @@
         "tilesCount": 1074,
         "title": "Ave Maria",
         "url": "songs/classic/Schubert-Ave_Maria.mid"
+      },
+      "Short": {
+        "__collections__": {},
+        "artist": "Cương",
+        "bpm": 51,
+        "id": "Short",
+        "imageUrl": "images/AlanWalker.jpg",
+        "tilesCount": 2,
+        "title": "AShort",
+        "url": "songs/Short.mid"
       },
       "Smetana-Moldau_River": {
         "__collections__": {},

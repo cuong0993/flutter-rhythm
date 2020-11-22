@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -29,15 +31,16 @@ class GameWidget extends StatefulWidget {
 class _GameWidgetState extends State<GameWidget> {
   @override
   void initState() {
-    BlocProvider.of<GameBloc>(context).pauseStream.listen((event) {
-      showDialog<void>(
-        context: context,
-        builder: (_) => PauseDialog(),
-      );
-    });
     void _onRestart() {
       BlocProvider.of<GameBloc>(context).add(RestartGame());
     }
+
+    BlocProvider.of<GameBloc>(context).pauseStream.listen((event) {
+      showDialog<void>(
+        context: context,
+        builder: (_) => PauseDialog(_onRestart),
+      );
+    });
     BlocProvider.of<GameBloc>(context).completeStream.listen((event) {
       showDialog<void>(
         context: context,
@@ -49,6 +52,9 @@ class _GameWidgetState extends State<GameWidget> {
 
   @override
   Widget build(BuildContext context) {
+    void _onRestart() {
+      BlocProvider.of<GameBloc>(context).add(RestartGame());
+    }
     void _onTileTouched(Tile tile) {
       BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
     }
@@ -60,7 +66,7 @@ class _GameWidgetState extends State<GameWidget> {
     return WillPopScope(onWillPop: () async {
       await showDialog<void>(
         context: context,
-        builder: (_) => PauseDialog(),
+        builder: (_) => PauseDialog(_onRestart),
       );
       return Future.value(false);
     }, child: BlocBuilder<GameBloc, GameState>(
@@ -76,6 +82,8 @@ class _GameWidgetState extends State<GameWidget> {
           widget._game.start(state.tiles, state.speedPixelsPerSecond,
               _onTileTouched, _onCompleted);
           return LoadingSoundWidget();
+        } else if (state is LoadingGift) {
+          return LoadingGiftWidget();
         }
         return Stack(children: [
           widget._game.widget,
@@ -147,16 +155,20 @@ class GuideTextWidget extends StatefulWidget {
 
 class _GuideTextWidgetState extends State<GuideTextWidget> {
   String _text = '';
+  StreamSubscription _userSubscription;
 
   @override
   void initState() {
-    BlocProvider.of<GameBloc>(context).guideStream.listen((event) {
+    _userSubscription =
+        BlocProvider.of<GameBloc>(context).guideStream.listen((event) {
       setState(() {
-        if (event == 'slow') {
+        if (event == 'txt_too_late') {
           _text = S.of(context).txt_too_late;
-        } else if (event == 'fast') {
+        } else if (event == 'txt_too_early') {
           _text = S.of(context).txt_too_early;
-        } else if (event == 'normal') {
+        } else if (event == 'txt_too_many_fingers') {
+          _text = S.of(context).txt_too_many_fingers;
+        } else if (event == '') {
           _text = '';
         }
       });
@@ -165,8 +177,18 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
   }
 
   @override
+  void dispose() {
+    _userSubscription?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Text('$_text', style:Theme.of(context).textTheme.headline5.copyWith(color: Color(0xFF1CDEC9)));
+    return Text('$_text',
+        style: Theme.of(context)
+            .textTheme
+            .headline5
+            .copyWith(color: Color(0xFF1CDEC9)));
   }
 }
 
@@ -192,9 +214,35 @@ class LoadingSoundWidget extends StatelessWidget {
                       AssetImage('assets/images/img_app_icon.png')),
                 ),
               ),
-              Text(S
-                  .of(context)
-                  .txt_dialog_loading_sound_description)
+              Text(S.of(context).txt_dialog_loading_sound_description)
+            ],
+          )),
+    );
+  }
+}
+
+class LoadingGiftWidget extends StatelessWidget {
+  const LoadingGiftWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Image(
+                      image: AssetImage('assets/images/img_app_icon.png')),
+                ),
+              ),
+              Text(S.of(context).txt_game_complete_loading_gift)
             ],
           )),
     );

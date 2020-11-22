@@ -40,9 +40,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
     });
     _userRepository.getCurrentUser().listen((user) async {
-      final instrument = (await _instrumentsRepository.instruments())
-          .firstWhere((instrument) => instrument.id == user.user.instrumentId);
-      MidiProcessor.getInstance().onSelectInstrument(instrument);
+      if (state is HomeInitial) {
+        final instrument = (await _instrumentsRepository.instruments())
+            .firstWhere(
+                (instrument) => instrument.id == user.user.instrumentId);
+        MidiProcessor.getInstance().onSelectInstrument(instrument);
+      } else if (state is HomeUpdated) {
+        final oldUser = (state as HomeUpdated).user;
+        if (oldUser.user.instrumentId != user.user.instrumentId) {
+          final instrument = (await _instrumentsRepository.instruments())
+              .firstWhere(
+                  (instrument) => instrument.id == user.user.instrumentId);
+          MidiProcessor.getInstance().onSelectInstrument(instrument);
+        }
+      }
       if (state is HomeUpdated) {
         final oldUser = (state as HomeUpdated).user;
         if (oldUser.user.id == user.user.id &&

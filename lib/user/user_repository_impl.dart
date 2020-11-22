@@ -12,7 +12,7 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl();
 
   StreamSubscription _userSubscription;
-  final StreamController<AppUser> _userController = BehaviorSubject();
+  final _userController = BehaviorSubject<AppUser>();
 
   @override
   Stream<AppUser> getCurrentUser() {

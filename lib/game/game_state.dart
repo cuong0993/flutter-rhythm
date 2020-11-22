@@ -34,4 +34,6 @@ class GameUpdated extends GameState {
   List<Object> get props => [tilesCount, songName, time, maxTime];
 }
 
+class LoadingGift extends GameState {}
+
 class GameNotLoaded extends GameState {}
