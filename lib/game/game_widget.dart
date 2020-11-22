@@ -7,6 +7,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import '../generated/l10n.dart';
 import '../songs/song.dart';
 import '../util.dart';
+import 'complete_dialog.dart';
 import 'game_bloc.dart';
 import 'game_event.dart';
 import 'game_state.dart';
@@ -32,6 +33,15 @@ class _GameWidgetState extends State<GameWidget> {
       showDialog<void>(
         context: context,
         builder: (_) => PauseDialog(),
+      );
+    });
+    void _onRestart() {
+      BlocProvider.of<GameBloc>(context).add(RestartGame());
+    }
+    BlocProvider.of<GameBloc>(context).completeStream.listen((event) {
+      showDialog<void>(
+        context: context,
+        builder: (_) => CompleteDialog(event, _onRestart),
       );
     });
     super.initState();

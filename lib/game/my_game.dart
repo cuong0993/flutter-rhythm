@@ -35,6 +35,7 @@ class MyGame extends Game with MultiTouchTapDetector {
     _state = _MyGameState.PLAY;
     _onTouched = onTouched;
     _onCompleted = onCompleted;
+    _accumulator = 0.0;
   }
 
   void pause() {}

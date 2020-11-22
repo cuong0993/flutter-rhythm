@@ -12,6 +12,7 @@ import 'package:path_provider/path_provider.dart';
 import '../midi_processor.dart';
 import '../util.dart';
 import 'game_event.dart';
+import 'game_reward.dart';
 import 'game_state.dart';
 import 'note/note.dart';
 import 'tile/tile.dart';
@@ -27,8 +28,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   int _tilesCount = 0;
   double _speedDpsPerSecond;
   final _pauseEventController = StreamController<bool>();
+
   Stream<bool> get pauseStream => _pauseEventController.stream;
+  final _completeEventController = StreamController<GameReward>();
+
+  Stream<GameReward> get completeStream => _completeEventController.stream;
   final _guideEventController = StreamController<String>();
+
   Stream<String> get guideStream => _guideEventController.stream;
 
   @override
@@ -96,9 +102,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _pauseEventController.add(true);
     } else if (event is CompleteGame) {
       await Future.delayed(Duration(milliseconds: 1000));
-      await FirebaseFunctions.instance
+      final response = await FirebaseFunctions.instance
           .httpsCallable('getGameReward')
           .call({'songId': _songId, 'errorCount': 1});
+      final gameReward =
+          GameReward.fromJson(Map<String, dynamic>.from(response.data));
+      _completeEventController.add(gameReward);
+    } else if (event is RestartGame) {
+      await Future.delayed(Duration(milliseconds: 1000));
     }
   }
 
