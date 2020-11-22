@@ -51,10 +51,17 @@ jobs:
         run: flutter build apk --flavor stage
       - name: Build production application
         run: flutter build apk --flavor prod
-      - name: Distribute via Firebase
+      - name: Distribute stage via Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: 1:979560368213:android:960e19c2193ab71a02acdc
           token: 1/LbduIpc3b8RKmy_iaXIuReAJsqhO6-pA1QUzSPF12EE
           groups: testers
           file: build/app/outputs/flutter-apk/app-stage-release.apk
+      - name: Distribute production via Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: 1:858223808011:android:432233e3ad8b7abf22010e
+          token: 1/LbduIpc3b8RKmy_iaXIuReAJsqhO6-pA1QUzSPF12EE
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-prod-release.apk
