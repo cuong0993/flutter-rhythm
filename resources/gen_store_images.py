@@ -5,7 +5,7 @@ from shutil import copyfile
 inkscape_default_dpi = 96
 
 svg_default_folder = 'metadata'
-root1 = '../client/fastlane'
+root1 = '../fastlane'
 
 file_paths = []
 file_paths1 = []
