@@ -8,11 +8,12 @@ class GameReward {
   int experiences;
 
   GameReward(
-      this.stars,
-      this.experiences,
-      );
+    this.stars,
+    this.experiences,
+  );
 
-  factory GameReward.fromJson(Map<String, dynamic> json) => _$GameRewardFromJson(json);
+  factory GameReward.fromJson(Map<String, dynamic> json) =>
+      _$GameRewardFromJson(json);
 
   Map<String, dynamic> toJson() => _$GameRewardToJson(this);
 }

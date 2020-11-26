@@ -872,7 +872,7 @@
       "Aram_Khachaturian-Sabr_Dance": {
         "__collections__": {},
         "artist": "Aram Khachaturian",
-        "bpm": 149,
+        "bpm": 150,
         "id": "Aram_Khachaturian-Sabr_Dance",
         "imageUrl": "images/AramKhachaturian.jpg",
         "tilesCount": 2347,
@@ -919,15 +919,15 @@
         "title": "Cello Suite",
         "url": "songs/classic/Bach-Cello_Suite.mid"
       },
-      "Bach-Jesu,_Joy_Of_Man’s_Desiring": {
+      "Bach-Joy": {
         "__collections__": {},
         "artist": "Bach",
         "bpm": 64,
-        "id": "Bach-Jesu,_Joy_Of_Man’s_Desiring",
+        "id": "Bach-Joy",
         "imageUrl": "images/Bach.jpg",
         "tilesCount": 1018,
-        "title": "Jesu, Joy Of Man’s Desiring",
-        "url": "songs/classic/Bach-Jesu,_Joy_Of_Man’s_Desiring.mid"
+        "title": "Joy",
+        "url": "songs/classic/Bach-Joy.mid"
       },
       "Bach-Toccata_and_Fugue": {
         "__collections__": {},
@@ -1012,7 +1012,7 @@
       "Beethoven-Symphony_No._5_Mvt._1": {
         "__collections__": {},
         "artist": "Beethoven",
-        "bpm": 150,
+        "bpm": 149,
         "id": "Beethoven-Symphony_No._5_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
         "tilesCount": 1001,
@@ -1022,7 +1022,7 @@
       "Beethoven-Symphony_No._5_Mvt._3": {
         "__collections__": {},
         "artist": "Beethoven",
-        "bpm": 150,
+        "bpm": 149,
         "id": "Beethoven-Symphony_No._5_Mvt._3",
         "imageUrl": "images/Beethoven.jpg",
         "tilesCount": 2932,
@@ -1052,7 +1052,7 @@
       "Beethoven-Symphony_No._9_Mvt._2": {
         "__collections__": {},
         "artist": "Beethoven",
-        "bpm": 300,
+        "bpm": 299,
         "id": "Beethoven-Symphony_No._9_Mvt._2",
         "imageUrl": "images/Beethoven.jpg",
         "tilesCount": 13686,
@@ -1185,7 +1185,7 @@
         "bpm": 100,
         "id": "Deaf_Kev-Invincible",
         "imageUrl": "images/DeafKev.jpg",
-        "tilesCount": 2566,
+        "tilesCount": 2579,
         "title": "Invincible",
         "url": "songs/uk/Deaf_Kev-Invincible.mid"
       },
@@ -1402,7 +1402,7 @@
       "Georges_Bizet-Les_Toradors": {
         "__collections__": {},
         "artist": "Georges Bizet",
-        "bpm": 74,
+        "bpm": 75,
         "id": "Georges_Bizet-Les_Toradors",
         "imageUrl": "images/GeorgesBizet.jpg",
         "tilesCount": 1676,
@@ -1512,7 +1512,7 @@
       "Handel-La_Rejouissance": {
         "__collections__": {},
         "artist": "Handel",
-        "bpm": 120,
+        "bpm": 75,
         "id": "Handel-La_Rejouissance",
         "imageUrl": "images/Handel.jpg",
         "tilesCount": 284,
@@ -1615,7 +1615,7 @@
         "bpm": 115,
         "id": "Johann_Strauss-Blue_Danube_Waltz",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 4407,
+        "tilesCount": 4413,
         "title": "Blue Danube Waltz",
         "url": "songs/classic/Johann_Strauss-Blue_Danube_Waltz.mid"
       },
@@ -1865,14 +1865,14 @@
         "bpm": 150,
         "id": "Mozart-Symphony_No._25",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 4549,
+        "tilesCount": 4551,
         "title": "Symphony No. 25",
         "url": "songs/classic/Mozart-Symphony_No._25.mid"
       },
       "Mozart-Symphony_No._40_in_G": {
         "__collections__": {},
         "artist": "Mozart",
-        "bpm": 150,
+        "bpm": 149,
         "id": "Mozart-Symphony_No._40_in_G",
         "imageUrl": "images/Mozart.jpg",
         "tilesCount": 2480,
@@ -1925,7 +1925,7 @@
         "bpm": 60,
         "id": "Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini",
         "imageUrl": "images/Rachmaninoff.jpg",
-        "tilesCount": 960,
+        "tilesCount": 961,
         "title": "Rhapsody On A Theme Of Paganini",
         "url": "songs/classic/Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini.mid"
       },
@@ -2115,7 +2115,7 @@
         "bpm": 83,
         "id": "Samuel_Barber-Adagio_For_Strings",
         "imageUrl": "images/SamuelBarber.jpg",
-        "tilesCount": 748,
+        "tilesCount": 750,
         "title": "Adagio For Strings",
         "url": "songs/classic/Samuel_Barber-Adagio_For_Strings.mid"
       },
@@ -2131,12 +2131,12 @@
       },
       "Short": {
         "__collections__": {},
-        "artist": "Cương",
-        "bpm": 51,
+        "artist": "Short",
+        "bpm": 80,
         "id": "Short",
-        "imageUrl": "images/AlanWalker.jpg",
+        "imageUrl": "images/Short.jpg",
         "tilesCount": 2,
-        "title": "AShort",
+        "title": "Short",
         "url": "songs/Short.mid"
       },
       "Smetana-Moldau_River": {

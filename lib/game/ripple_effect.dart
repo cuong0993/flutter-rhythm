@@ -7,11 +7,13 @@ import '../util.dart';
 import 'effect.dart';
 
 Sprite touchSprite = Sprite('${nearestDevicePixelRatioFolder}img_touch.png');
-Paint grayPaint = Paint()..colorFilter = ColorFilter.mode(Color(0xFFFFFFFF).withOpacity(0.1), BlendMode.srcIn);
+Paint grayPaint = Paint()
+  ..colorFilter =
+      ColorFilter.mode(Color(0xFFFFFFFF).withOpacity(0.1), BlendMode.srcIn);
 
 class RippleEffect extends Effect {
   static const LIVE_TIME = 0.5;
-  static const SIZE = 48;
+  static const SIZE = 96;
   final initialWidth = 0.5 * SIZE;
   var _width;
   var _rate;
@@ -43,7 +45,10 @@ class RippleEffect extends Effect {
   @override
   void render(Canvas canvas) {
     touchSprite.renderPosition(
-        canvas, Position((_x - _width /2).toInt().toDouble(), (_y - _width/2).toInt().toDouble()),
-        size: Position(_width.toInt().toDouble(), _width.toInt().toDouble()), overridePaint: grayPaint);
+        canvas,
+        Position((_x - _width / 2).toInt().toDouble(),
+            (_y - _width / 2).toInt().toDouble()),
+        size: Position(_width.toInt().toDouble(), _width.toInt().toDouble()),
+        overridePaint: grayPaint);
   }
 }

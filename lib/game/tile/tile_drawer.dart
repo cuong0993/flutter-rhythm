@@ -10,8 +10,8 @@ Sprite noteSprite =
 
 extension TileDrawer on Tile {
   void render(Canvas canvas) {
-    noteSprite.renderPosition(
-        canvas, Position(x.toInt().toDouble(), y.toInt().toDouble()),
+    noteSprite.renderPosition(canvas,
+        Position(positionsX[column].toInt().toDouble(), y.toInt().toDouble()),
         size: Position(width.toInt().toDouble(), height.toInt().toDouble()));
   }
 }

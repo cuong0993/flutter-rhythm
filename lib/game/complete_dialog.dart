@@ -18,7 +18,7 @@ class CompleteDialog extends StatelessWidget {
         children: [
           Expanded(
             child: Align(
-              alignment: Alignment.center,
+                alignment: Alignment.center,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'dart:ui';
 
+import 'game/tile/tile_converter.dart';
+
 final screenWidth = window.physicalSize.width / window.devicePixelRatio;
 final screenHeight = window.physicalSize.height / window.devicePixelRatio;
 String nearestDevicePixelRatioFolder = () {
@@ -24,17 +26,13 @@ String nearestDevicePixelRatioFolder = () {
     return candidates[lower];
   }
 }();
+
 extension DpToPixelConverter on int {
   int toPixel() {
     return (this * window.devicePixelRatio).toInt();
   }
 }
 
-const NUMBER_TILE_COLUMN = 4;
-final offsetDrawY = screenHeight;
-const UNIT_DURATION_HEIGHT = 72;
-const TILE_WIDTH = 24.0;
-const TILE_HEIGHT = TILE_WIDTH;
 final positionsX = () {
   final positionXs = <double>[];
   const TILE_PAD = 24;
@@ -45,13 +43,4 @@ final positionsX = () {
   }
   return positionXs;
 }();
-const NON_TOUCH_REGION_HEIGHT = 120;
-const startVisibleY = NON_TOUCH_REGION_HEIGHT;
 final pauseY = screenHeight - 48;
-const SIZE_DP_120 = 120;
-const NUMBER_OF_NOTES = 128;
-const MINUTE_TO_SECOND = 60;
-
-double tickToSecond(int resolution, int bpm) {
-  return MINUTE_TO_SECOND.toDouble() / (resolution * bpm);
-}

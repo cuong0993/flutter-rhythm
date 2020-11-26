@@ -1,6 +1,7 @@
 import 'package:flame/position.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../util.dart';
 import '../center_render_text_config.dart';
 import '../effect.dart';
 
@@ -107,7 +108,7 @@ class TileTouchEffect extends Effect {
   final _text;
 
   TileTouchEffect(_tile)
-      : _centerX = _tile.x + _tile.width / 2.0,
+      : _centerX = positionsX[_tile.column] + _tile.width / 2.0,
         _centerY = _tile.y + _tile.height / 2.0,
         _text = noteToName[_tile.note];
 

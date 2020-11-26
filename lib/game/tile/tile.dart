@@ -1,4 +1,4 @@
-import '../../util.dart';
+import 'tile_converter.dart';
 
 class Tile {
   final int note;
@@ -8,9 +8,9 @@ class Tile {
   final double width = TILE_WIDTH;
   final double height = TILE_HEIGHT;
   Function(Tile tile) onTouched;
-  final double x;
+  final int column;
 
-  Tile(this.note, column, this.initialY) : x = positionsX[column];
+  Tile(this.note, this.column, this.initialY);
 }
 
 enum TileState { UNTOUCHED, TOUCHED }

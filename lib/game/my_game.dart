@@ -10,6 +10,7 @@ import '../util.dart';
 import 'effect.dart';
 import 'ripple_effect.dart';
 import 'tile/tile.dart';
+import 'tile/tile_converter.dart';
 import 'tile/tile_effect_spawner.dart';
 import 'tile/tile_input_handler.dart';
 import 'tile/tiles_controller.dart';
@@ -24,7 +25,10 @@ class MyGame extends Game with MultiTouchTapDetector {
   final Map<int, _TouchData> _touches = {};
   Function(Tile tile) _onTouched;
   Function() _onCompleted;
-  final Paint _paint = Paint()..color = Color(0xFF1F1929);
+  final _paint = Paint()..color = Color(0xFF1F1929);
+  final _grayPaint = Paint()
+    ..colorFilter =
+        ColorFilter.mode(Color(0xFFFFFFFF).withOpacity(0.2), BlendMode.srcIn);
 
   final _staffSprite = Sprite('${nearestDevicePixelRatioFolder}img_staff.png');
   final _clefSprite = Sprite('${nearestDevicePixelRatioFolder}img_clef.png');
@@ -57,12 +61,10 @@ class MyGame extends Game with MultiTouchTapDetector {
   void render(Canvas canvas) {
     final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, _paint);
-    _staffSprite.renderPosition(
-        canvas, Position(0.0, pauseY - 96 + 24),
-        size: Position(screenWidth, 96));
-    _clefSprite.renderPosition(
-        canvas, Position(0.0, pauseY - 96 + 24),
-        size: Position(96, 96));
+    _staffSprite.renderPosition(canvas, Position(0.0, pauseY - 96 + 24),
+        size: Position(screenWidth, 96), overridePaint: _grayPaint);
+    _clefSprite.renderPosition(canvas, Position(0.0, pauseY - 96 + 24),
+        size: Position(96, 96), overridePaint: _grayPaint);
     _tilesController.render(canvas);
     _tileEffects.forEach((effect) {
       effect.render(canvas);

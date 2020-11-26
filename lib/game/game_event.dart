@@ -22,8 +22,7 @@ class StartGame extends GameEvent {
   String toString() => 'StartGame { song: $song }';
 }
 
-class RestartGame extends GameEvent {
-}
+class RestartGame extends GameEvent {}
 
 class PauseGame extends GameEvent {
   const PauseGame();

@@ -52,7 +52,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                 IconButton(
                     icon: ClipOval(
                       child: (state is HomeUpdated &&
-                          state.user.photoUrl.isNotEmpty)
+                              state.user.photoUrl.isNotEmpty)
                           ? CachedNetworkImage(
                           imageUrl: state.user.photoUrl,
                           placeholder: (context, url) =>

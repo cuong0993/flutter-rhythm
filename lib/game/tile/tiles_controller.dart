@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import '../../util.dart';
 import 'tile.dart';
+import 'tile_converter.dart';
 import 'tile_drawer.dart';
 import 'tile_updater.dart';
 

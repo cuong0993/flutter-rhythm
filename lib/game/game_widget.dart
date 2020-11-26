@@ -8,7 +8,6 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 import '../generated/l10n.dart';
 import '../songs/song.dart';
-import '../util.dart';
 import 'complete_dialog.dart';
 import 'game_bloc.dart';
 import 'game_event.dart';
@@ -16,6 +15,7 @@ import 'game_state.dart';
 import 'my_game.dart';
 import 'pause_dialog.dart';
 import 'tile/tile.dart';
+import 'tile/tile_converter.dart';
 
 class GameWidget extends StatefulWidget {
   final MyGame _game;
@@ -55,6 +55,7 @@ class _GameWidgetState extends State<GameWidget> {
     void _onRestart() {
       BlocProvider.of<GameBloc>(context).add(RestartGame());
     }
+
     void _onTileTouched(Tile tile) {
       BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
     }
@@ -72,10 +73,7 @@ class _GameWidgetState extends State<GameWidget> {
     }, child: BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameLoading) {
-          final song = ModalRoute
-              .of(context)
-              .settings
-              .arguments as Song;
+          final song = ModalRoute.of(context).settings.arguments as Song;
           BlocProvider.of<GameBloc>(context).add(StartGame(song));
           return LoadingSoundWidget();
         } else if (state is GameStarted) {
@@ -102,49 +100,55 @@ class _GameWidgetState extends State<GameWidget> {
                           (state as GameUpdated).maxTime,
                       linearStrokeCap: LinearStrokeCap.butt,
                       progressColor: Color(0xFFFF8383),
+                      backgroundColor: Color(0xFFFFFFFF).withOpacity(0.1),
                     ),
-                    Padding(padding: EdgeInsets.all(8), child: Column(children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Column(
                         children: [
-                          Text((state as GameUpdated).songName, style:Theme.of(context).textTheme.subtitle1),
-                          Text(
-                              '${(state as GameUpdated).time.toInt() ~/
-                                  60}:${((state as GameUpdated).time.toInt() % 60)
-                                  .toString()
-                                  .padLeft(2, '0')}/${(state as GameUpdated)
-                                  .maxTime.toInt() ~/
-                                  60}:${((state as GameUpdated)
-                                  .maxTime.toInt() % 60).toString().padLeft(
-                                  2, '0')}', style:Theme.of(context).textTheme.subtitle1)
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            iconSize: 32,
-                            icon: Icon(Icons.pause_circle_outline_rounded),
-                            onPressed: () {
-                              BlocProvider.of<GameBloc>(context).add(
-                                  PauseGame());
-                            },
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text((state as GameUpdated).songName,
+                                  style: Theme.of(context).textTheme.headline6),
+                              Text(
+                                  '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
+                                  style: Theme.of(context).textTheme
+                                      .subtitle1)
+                            ],
                           ),
-                          Text((state as GameUpdated).tilesCount.toString(), style:Theme.of(context).textTheme.headline4.copyWith(color: Color(0xFFFF8383)))
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                iconSize: 38,
+                                icon: Icon(Icons.pause_circle_outline_rounded),
+                                onPressed: () {
+                                  BlocProvider.of<GameBloc>(context)
+                                      .add(PauseGame());
+                                },
+                              ),
+                              Text((state as GameUpdated).tilesCount.toString(),
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .headline4
+                                      .copyWith(color: Color(0xFFFF8383)))
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [GuideTextWidget()],
+                          )
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [ GuideTextWidget()],
-                      )
-                    ],),)
+                    )
                   ],
                 ),
               ))
         ]);
       },
-    )
-    );
+    ));
   }
 }
 
@@ -210,8 +214,7 @@ class LoadingSoundWidget extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.center,
                   child: Image(
-                      image:
-                      AssetImage('assets/images/img_app_icon.png')),
+                      image: AssetImage('assets/images/img_app_icon.png')),
                 ),
               ),
               Text(S.of(context).txt_dialog_loading_sound_description)

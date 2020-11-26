@@ -33,7 +33,7 @@ class LevelUpDialog extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton (
+          ElevatedButton(
             onPressed: () => Navigator.of(context).pop(),
             child: Text(S.of(context).txt_all_ok),
           ),
