@@ -138,9 +138,10 @@ class UserWidget extends StatelessWidget {
                                                                 image: AssetImage(
                                                                     'assets/images/img_facebook.png')),
                                                             SizedBox(width: 8),
-                                                            Text(S
-                                                                .of(context)
-                                                                .txt_button_sign_in_facebook,
+                                                            Text(
+                                                              S
+                                                                  .of(context)
+                                                                  .txt_button_sign_in_facebook,
                                                             )
                                                           ],
                                                         ),

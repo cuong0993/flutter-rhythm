@@ -78,14 +78,14 @@ class MyGame extends Game with MultiTouchTapDetector {
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;
       _accumulator += restrictedTime;
       while (_accumulator >= _step) {
-        var initialYAllowedTouch = double.maxFinite;
+        var initialYAllowedTouch = double.negativeInfinity;
         _touches.forEach((key, value) {
           if (!value.handled) {
             value.handled = true;
             if (value.y > NON_TOUCH_REGION_HEIGHT) {
               final tile = _tilesController.getNextUntouchedTile();
               if (tile != null) {
-                if (tile.initialY <= initialYAllowedTouch) {
+                if (tile.initialY >= initialYAllowedTouch) {
                   tile.touchDown();
                   _tileEffects.addAll(tile.getEffects());
                   _onTouched(tile);
@@ -100,6 +100,7 @@ class MyGame extends Game with MultiTouchTapDetector {
             }
           }
         });
+        _touches.clear();
         _accumulator -= _step;
         if (_state == _MyGameState.PLAY) {
           final actualDeltaTime = _tilesController.tryUpdate(_step);

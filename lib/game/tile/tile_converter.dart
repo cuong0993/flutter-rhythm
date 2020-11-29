@@ -14,7 +14,7 @@ const UNIT_DURATION_HEIGHT = 72;
 const TILE_WIDTH = 24.0;
 const TILE_HEIGHT = TILE_WIDTH;
 const NON_TOUCH_REGION_HEIGHT = 150;
-const startVisibleY = NON_TOUCH_REGION_HEIGHT;
+const startVisibleY = 0;
 
 double tickToSecond(int resolution, int bpm) {
   return MINUTE_TO_SECOND.toDouble() / (resolution * bpm);
