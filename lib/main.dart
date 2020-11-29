@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'game/game_bloc.dart';
+import 'game/game_config_widget.dart';
 import 'game/game_widget.dart';
 import 'generated/l10n.dart';
 import 'home/home_bloc.dart';
@@ -105,6 +106,9 @@ class App extends StatelessWidget {
                       create: (context) =>
                           HomeBloc(userRepository, instrumentsRepository),
                       child: HomeWidget());
+                },
+                Routes.gameConfig: (context) {
+                  return GameConfigWidget();
                 },
                 Routes.game: (context) {
                   SystemChrome.setEnabledSystemUIOverlays([]);

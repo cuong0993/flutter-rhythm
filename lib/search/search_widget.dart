@@ -52,7 +52,7 @@ class SearchWidget extends SearchDelegate {
                   return SongWidget(
                     song: song,
                     onTap: () async {
-                      await Navigator.pushNamed(context, Routes.game,
+                      await Navigator.pushNamed(context, Routes.gameConfig,
                           arguments: song);
                     },
                   );

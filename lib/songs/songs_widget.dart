@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../loading_widget.dart';
@@ -53,7 +51,7 @@ class SongsWidget extends StatelessWidget {
                 return SongWidget(
                   song: song,
                   onTap: () async {
-                    await Navigator.pushNamed(context, Routes.game,
+                    await Navigator.pushNamed(context, Routes.gameConfig,
                         arguments: song);
                   },
                 );
