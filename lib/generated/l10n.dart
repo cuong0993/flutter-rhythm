@@ -26,10 +26,10 @@ class S {
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-
+      
       return S.current;
     });
-  }
+  } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -165,6 +165,16 @@ class S {
     );
   }
 
+  /// `Configure`
+  String get txt_configure {
+    return Intl.message(
+      'Configure',
+      name: 'txt_configure',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Do you want to close?`
   String get txt_dialog_exit_description {
     return Intl.message(
@@ -265,11 +275,31 @@ class S {
     );
   }
 
+  /// `Difficult`
+  String get txt_difficult {
+    return Intl.message(
+      'Difficult',
+      name: 'txt_difficult',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hit Notes invite`
   String get txt_dynamic_link_invite_subject {
     return Intl.message(
       'Hit Notes invite',
       name: 'txt_dynamic_link_invite_subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Easy`
+  String get txt_easy {
+    return Intl.message(
+      'Easy',
+      name: 'txt_easy',
       desc: '',
       args: [],
     );
@@ -365,6 +395,16 @@ class S {
     );
   }
 
+  /// `Medium`
+  String get txt_medium {
+    return Intl.message(
+      'Medium',
+      name: 'txt_medium',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Account`
   String get txt_page_title_account {
     return Intl.message(
@@ -390,6 +430,16 @@ class S {
     return Intl.message(
       'Sign in',
       name: 'txt_sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get txt_start {
+    return Intl.message(
+      'Start',
+      name: 'txt_start',
       desc: '',
       args: [],
     );

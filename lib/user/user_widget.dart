@@ -21,7 +21,7 @@ class UserWidget extends StatelessWidget {
       builder: (context, state) {
         final numberFormat = NumberFormat('#0.0#', 'en_US');
         return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).txt_page_title_about)),
+            appBar: AppBar(title: Text(S.of(context).txt_page_title_account)),
             body: (() {
               if (state is UserInitial) {
                 return LoadingWidget();

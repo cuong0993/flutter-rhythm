@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_button_restart" : MessageLookupByLibrary.simpleMessage("Chơi lại"),
     "txt_button_sign_in_facebook" : MessageLookupByLibrary.simpleMessage("Đăng nhập với Facebook"),
     "txt_button_sign_in_google" : MessageLookupByLibrary.simpleMessage("Đăng nhập với Google"),
+    "txt_configure" : MessageLookupByLibrary.simpleMessage("Cấu hình"),
     "txt_dialog_exit_description" : MessageLookupByLibrary.simpleMessage("Bạn có muốn đóng ứng dụng?"),
     "txt_dialog_exit_name" : MessageLookupByLibrary.simpleMessage("Xác nhận đóng"),
     "txt_dialog_level_up_description" : m0,
@@ -48,32 +49,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_rate_description" : MessageLookupByLibrary.simpleMessage("Nếu bạn thích sử dụng ứng dụng này, bạn có muốn đánh giá nó không? Cảm ơn sự hỗ trợ của bạn!"),
     "txt_dialog_rate_name" : MessageLookupByLibrary.simpleMessage("Đánh giá chúng tôi"),
     "txt_dialog_reward_name" : MessageLookupByLibrary.simpleMessage("Quà đăng nhập"),
-        "txt_dynamic_link_invite_subject":
-            MessageLookupByLibrary.simpleMessage("Lời mời chơi Hit Notes"),
-        "txt_error_occur":
-            MessageLookupByLibrary.simpleMessage("Có lỗi xảy ra"),
-        "txt_game_button_continue":
-            MessageLookupByLibrary.simpleMessage("Tiếp tục"),
-        "txt_game_complete_gift":
-            MessageLookupByLibrary.simpleMessage("Phần thưởng"),
-        "txt_game_complete_loading_gift":
-            MessageLookupByLibrary.simpleMessage("Đang lấy phần thưởng…"),
-        "txt_game_complete_name":
-            MessageLookupByLibrary.simpleMessage("Hoàn thành"),
-        "txt_game_dialog_pause_name":
-            MessageLookupByLibrary.simpleMessage("Đã dừng"),
-        "txt_instrument_title_instruments":
-            MessageLookupByLibrary.simpleMessage("Nhạc cụ"),
-        "txt_invite_description": m1,
-        "txt_level": MessageLookupByLibrary.simpleMessage("Cấp"),
-        "txt_page_title_account":
-            MessageLookupByLibrary.simpleMessage("Tài khoản"),
-        "txt_select_language":
-            MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
-        "txt_sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
-        "txt_too_early": MessageLookupByLibrary.simpleMessage("Hơi sớm"),
-        "txt_too_late": MessageLookupByLibrary.simpleMessage("Hơi muộn"),
-        "txt_too_many_fingers":
-            MessageLookupByLibrary.simpleMessage("Quá nhiều ngón tay")
-      };
+    "txt_difficult" : MessageLookupByLibrary.simpleMessage("Khó"),
+    "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("Lời mời chơi Hit Notes"),
+    "txt_easy" : MessageLookupByLibrary.simpleMessage("Dễ"),
+    "txt_error_occur" : MessageLookupByLibrary.simpleMessage("Có lỗi xảy ra"),
+    "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("Tiếp tục"),
+    "txt_game_complete_gift" : MessageLookupByLibrary.simpleMessage("Phần thưởng"),
+    "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("Đang lấy phần thưởng…"),
+    "txt_game_complete_name" : MessageLookupByLibrary.simpleMessage("Hoàn thành"),
+    "txt_game_dialog_pause_name" : MessageLookupByLibrary.simpleMessage("Đã dừng"),
+    "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("Nhạc cụ"),
+    "txt_invite_description" : m1,
+    "txt_level" : MessageLookupByLibrary.simpleMessage("Cấp"),
+    "txt_medium" : MessageLookupByLibrary.simpleMessage("Trung bình"),
+    "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("Tài khoản"),
+    "txt_select_language" : MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
+    "txt_sign_in" : MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+    "txt_start" : MessageLookupByLibrary.simpleMessage("Bắt đầu"),
+    "txt_too_early" : MessageLookupByLibrary.simpleMessage("Hơi sớm"),
+    "txt_too_late" : MessageLookupByLibrary.simpleMessage("Hơi muộn"),
+    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("Quá nhiều ngón tay")
+  };
 }

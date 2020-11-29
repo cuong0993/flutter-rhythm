@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 import '../util.dart';
 import 'effect.dart';
-import 'ripple_effect.dart';
 import 'tile/tile.dart';
 import 'tile/tile_converter.dart';
 import 'tile/tile_effect_spawner.dart';
@@ -18,7 +17,6 @@ import 'tile/tiles_controller.dart';
 class MyGame extends Game with MultiTouchTapDetector {
   final _tilesController = TilesController();
   final _tileEffects = <Effect>[];
-  final _rippleEffects = <int, Effect>{};
   var _state = _MyGameState.PREPARE;
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
@@ -48,8 +46,6 @@ class MyGame extends Game with MultiTouchTapDetector {
   void onTapDown(int pointerId, TapDownDetails details) {
     _touches[pointerId] =
         _TouchData(details.globalPosition.dx, details.globalPosition.dy);
-    _rippleEffects[pointerId] =
-        RippleEffect(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override
@@ -69,9 +65,6 @@ class MyGame extends Game with MultiTouchTapDetector {
     _tileEffects.forEach((effect) {
       effect.render(canvas);
     });
-    _rippleEffects.forEach((key, effect) {
-      effect.render(canvas);
-    });
   }
 
   @override
@@ -80,10 +73,6 @@ class MyGame extends Game with MultiTouchTapDetector {
       effect.update(delta);
     });
     _tileEffects.removeWhere((effect) => effect.isDone());
-    _rippleEffects.forEach((key, effect) {
-      effect.update(delta);
-    });
-    _rippleEffects.removeWhere((key, effect) => effect.isDone());
     if (_state != _MyGameState.STOP) {
       /* Max frame time to avoid spiral of death */
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;

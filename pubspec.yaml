@@ -57,3 +57,5 @@ flutter:
     - assets/images/
 flutter_intl:
   enabled: true
+  localizely:
+    project_id: 12c28e7e-0600-442d-8f23-3ee5a71d49f4
