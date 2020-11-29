@@ -26,20 +26,40 @@ class S {
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-      
+
       return S.current;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Rate us`
-  String get txt_about_rate {
+  /// `Acoustic Guitar`
+  String get acoustic_guitar {
     return Intl.message(
-      'Rate us',
-      name: 'txt_about_rate',
+      'Acoustic Guitar',
+      name: 'acoustic_guitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Electric Guitar`
+  String get electric_guitar {
+    return Intl.message(
+      'Electric Guitar',
+      name: 'electric_guitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Piano`
+  String get piano {
+    return Intl.message(
+      'Piano',
+      name: 'piano',
       desc: '',
       args: [],
     );
@@ -50,6 +70,16 @@ class S {
     return Intl.message(
       'Invite',
       name: 'txt_about_invite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate us`
+  String get txt_about_rate {
+    return Intl.message(
+      'Rate us',
+      name: 'txt_about_rate',
       desc: '',
       args: [],
     );
@@ -75,6 +105,16 @@ class S {
     );
   }
 
+  /// `All songs`
+  String get txt_all_songs {
+    return Intl.message(
+      'All songs',
+      name: 'txt_all_songs',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Feedback us`
   String get txt_button_feedback {
     return Intl.message(
@@ -90,6 +130,16 @@ class S {
     return Intl.message(
       'Quit',
       name: 'txt_button_quit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play again`
+  String get txt_button_restart {
+    return Intl.message(
+      'Play again',
+      name: 'txt_button_restart',
       desc: '',
       args: [],
     );
@@ -135,6 +185,46 @@ class S {
     );
   }
 
+  /// `Reached level {input}`
+  String txt_dialog_level_up_description(Object input) {
+    return Intl.message(
+      'Reached level $input',
+      name: 'txt_dialog_level_up_description',
+      desc: '',
+      args: [input],
+    );
+  }
+
+  /// `Congrats`
+  String get txt_dialog_level_up_name {
+    return Intl.message(
+      'Congrats',
+      name: 'txt_dialog_level_up_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading sound…`
+  String get txt_dialog_loading_sound_description {
+    return Intl.message(
+      'Loading sound…',
+      name: 'txt_dialog_loading_sound_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logging in…`
+  String get txt_dialog_logging_in_description {
+    return Intl.message(
+      'Logging in…',
+      name: 'txt_dialog_logging_in_description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Remind me later`
   String get txt_dialog_rate_button_remind {
     return Intl.message(
@@ -165,13 +255,13 @@ class S {
     );
   }
 
-  /// `Hey, let play Hit Notes {input}`
-  String txt_invite_description(Object input) {
+  /// `Reward`
+  String get txt_dialog_reward_name {
     return Intl.message(
-      'Hey, let play Hit Notes $input',
-      name: 'txt_invite_description',
+      'Reward',
+      name: 'txt_dialog_reward_name',
       desc: '',
-      args: [input],
+      args: [],
     );
   }
 
@@ -205,16 +295,6 @@ class S {
     );
   }
 
-  /// `Finished`
-  String get txt_game_complete_name {
-    return Intl.message(
-      'Finished',
-      name: 'txt_game_complete_name',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Reward`
   String get txt_game_complete_gift {
     return Intl.message(
@@ -230,6 +310,16 @@ class S {
     return Intl.message(
       'Getting reward…',
       name: 'txt_game_complete_loading_gift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished`
+  String get txt_game_complete_name {
+    return Intl.message(
+      'Finished',
+      name: 'txt_game_complete_name',
       desc: '',
       args: [],
     );
@@ -255,33 +345,13 @@ class S {
     );
   }
 
-  /// `About`
-  String get txt_page_title_about {
+  /// `Hey, let play Hit Notes {input}`
+  String txt_invite_description(Object input) {
     return Intl.message(
-      'About',
-      name: 'txt_page_title_about',
+      'Hey, let play Hit Notes $input',
+      name: 'txt_invite_description',
       desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reward`
-  String get txt_dialog_reward_name {
-    return Intl.message(
-      'Reward',
-      name: 'txt_dialog_reward_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All songs`
-  String get txt_all_songs {
-    return Intl.message(
-      'All songs',
-      name: 'txt_all_songs',
-      desc: '',
-      args: [],
+      args: [input],
     );
   }
 
@@ -295,73 +365,13 @@ class S {
     );
   }
 
-  /// `Electric Guitar`
-  String get electric_guitar {
+  /// `Account`
+  String get txt_page_title_account {
     return Intl.message(
-      'Electric Guitar',
-      name: 'electric_guitar',
+      'Account',
+      name: 'txt_page_title_account',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Acoustic Guitar`
-  String get acoustic_guitar {
-    return Intl.message(
-      'Acoustic Guitar',
-      name: 'acoustic_guitar',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Piano`
-  String get piano {
-    return Intl.message(
-      'Piano',
-      name: 'piano',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Congrats`
-  String get txt_dialog_level_up_name {
-    return Intl.message(
-      'Congrats',
-      name: 'txt_dialog_level_up_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logging in…`
-  String get txt_dialog_logging_in_description {
-    return Intl.message(
-      'Logging in…',
-      name: 'txt_dialog_logging_in_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Loading sound…`
-  String get txt_dialog_loading_sound_description {
-    return Intl.message(
-      'Loading sound…',
-      name: 'txt_dialog_loading_sound_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reached level {input}`
-  String txt_dialog_level_up_description(Object input) {
-    return Intl.message(
-      'Reached level $input',
-      name: 'txt_dialog_level_up_description',
-      desc: '',
-      args: [input],
     );
   }
 
@@ -370,16 +380,6 @@ class S {
     return Intl.message(
       'Select language',
       name: 'txt_select_language',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Play again`
-  String get txt_button_restart {
-    return Intl.message(
-      'Play again',
-      name: 'txt_button_restart',
       desc: '',
       args: [],
     );

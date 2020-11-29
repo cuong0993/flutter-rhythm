@@ -48,21 +48,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_rate_description" : MessageLookupByLibrary.simpleMessage("이 앱을 쓰고 있으면 평가해주실수 있나요? 1분도 걸리지 않아요. 해주셔서 감사합니다."),
     "txt_dialog_rate_name" : MessageLookupByLibrary.simpleMessage("평가해주세요"),
     "txt_dialog_reward_name" : MessageLookupByLibrary.simpleMessage("보상"),
-    "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("히트틱이 초대했어요"),
-    "txt_error_occur" : MessageLookupByLibrary.simpleMessage("에러"),
-    "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("계속하기"),
-    "txt_game_complete_gift" : MessageLookupByLibrary.simpleMessage("보상"),
-    "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("보상받기…"),
-    "txt_game_complete_name" : MessageLookupByLibrary.simpleMessage("끝"),
-    "txt_game_dialog_pause_name" : MessageLookupByLibrary.simpleMessage("멈추기"),
-    "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("악기"),
-    "txt_invite_description" : m1,
-    "txt_level" : MessageLookupByLibrary.simpleMessage("레벨"),
-    "txt_page_title_about" : MessageLookupByLibrary.simpleMessage("대해"),
-    "txt_select_language" : MessageLookupByLibrary.simpleMessage("언어 선택"),
-    "txt_sign_in" : MessageLookupByLibrary.simpleMessage("로그인"),
-    "txt_too_early" : MessageLookupByLibrary.simpleMessage("너무 일찍"),
-    "txt_too_late" : MessageLookupByLibrary.simpleMessage("너무 늦음"),
-    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("손가락이 너무 많음")
-  };
+        "txt_dynamic_link_invite_subject":
+            MessageLookupByLibrary.simpleMessage("히트틱이 초대했어요"),
+        "txt_error_occur": MessageLookupByLibrary.simpleMessage("에러"),
+        "txt_game_button_continue":
+            MessageLookupByLibrary.simpleMessage("계속하기"),
+        "txt_game_complete_gift": MessageLookupByLibrary.simpleMessage("보상"),
+        "txt_game_complete_loading_gift":
+            MessageLookupByLibrary.simpleMessage("보상받기…"),
+        "txt_game_complete_name": MessageLookupByLibrary.simpleMessage("끝"),
+        "txt_game_dialog_pause_name":
+            MessageLookupByLibrary.simpleMessage("멈추기"),
+        "txt_instrument_title_instruments":
+            MessageLookupByLibrary.simpleMessage("악기"),
+        "txt_invite_description": m1,
+        "txt_level": MessageLookupByLibrary.simpleMessage("레벨"),
+        "txt_page_title_account": MessageLookupByLibrary.simpleMessage("계정"),
+        "txt_select_language": MessageLookupByLibrary.simpleMessage("언어 선택"),
+        "txt_sign_in": MessageLookupByLibrary.simpleMessage("로그인"),
+        "txt_too_early": MessageLookupByLibrary.simpleMessage("너무 일찍"),
+        "txt_too_late": MessageLookupByLibrary.simpleMessage("너무 늦음"),
+        "txt_too_many_fingers":
+            MessageLookupByLibrary.simpleMessage("손가락이 너무 많음")
+      };
 }

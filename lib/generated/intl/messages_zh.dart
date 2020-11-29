@@ -48,21 +48,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_rate_description" : MessageLookupByLibrary.simpleMessage("如果你喜欢这个软件，你要不要评估它吗？感谢你的帮助！"),
     "txt_dialog_rate_name" : MessageLookupByLibrary.simpleMessage("评估我们"),
     "txt_dialog_reward_name" : MessageLookupByLibrary.simpleMessage("登录礼物"),
-    "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("邀请玩hittick"),
-    "txt_error_occur" : MessageLookupByLibrary.simpleMessage("在有错误"),
-    "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("继续"),
-    "txt_game_complete_gift" : MessageLookupByLibrary.simpleMessage("礼物"),
-    "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("在拿礼物…"),
-    "txt_game_complete_name" : MessageLookupByLibrary.simpleMessage("完成"),
-    "txt_game_dialog_pause_name" : MessageLookupByLibrary.simpleMessage("已经停下来了"),
-    "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("乐器"),
-    "txt_invite_description" : m1,
-    "txt_level" : MessageLookupByLibrary.simpleMessage("级"),
-    "txt_page_title_about" : MessageLookupByLibrary.simpleMessage("通信"),
-    "txt_select_language" : MessageLookupByLibrary.simpleMessage("选语言"),
-    "txt_sign_in" : MessageLookupByLibrary.simpleMessage("登入"),
-    "txt_too_early" : MessageLookupByLibrary.simpleMessage("太早了"),
-    "txt_too_late" : MessageLookupByLibrary.simpleMessage("太晚了"),
-    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("手指太多")
-  };
+        "txt_dynamic_link_invite_subject":
+            MessageLookupByLibrary.simpleMessage("邀请玩hittick"),
+        "txt_error_occur": MessageLookupByLibrary.simpleMessage("在有错误"),
+        "txt_game_button_continue": MessageLookupByLibrary.simpleMessage("继续"),
+        "txt_game_complete_gift": MessageLookupByLibrary.simpleMessage("礼物"),
+        "txt_game_complete_loading_gift":
+            MessageLookupByLibrary.simpleMessage("在拿礼物…"),
+        "txt_game_complete_name": MessageLookupByLibrary.simpleMessage("完成"),
+        "txt_game_dialog_pause_name":
+            MessageLookupByLibrary.simpleMessage("已经停下来了"),
+        "txt_instrument_title_instruments":
+            MessageLookupByLibrary.simpleMessage("乐器"),
+        "txt_invite_description": m1,
+        "txt_level": MessageLookupByLibrary.simpleMessage("级"),
+        "txt_page_title_account": MessageLookupByLibrary.simpleMessage("账户"),
+        "txt_select_language": MessageLookupByLibrary.simpleMessage("选语言"),
+        "txt_sign_in": MessageLookupByLibrary.simpleMessage("登入"),
+        "txt_too_early": MessageLookupByLibrary.simpleMessage("太早了"),
+        "txt_too_late": MessageLookupByLibrary.simpleMessage("太晚了"),
+        "txt_too_many_fingers": MessageLookupByLibrary.simpleMessage("手指太多")
+      };
 }
