@@ -85,16 +85,6 @@ class S {
     );
   }
 
-  /// `No`
-  String get txt_all_no {
-    return Intl.message(
-      'No',
-      name: 'txt_all_no',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Ok`
   String get txt_all_ok {
     return Intl.message(
@@ -175,26 +165,6 @@ class S {
     );
   }
 
-  /// `Do you want to close?`
-  String get txt_dialog_exit_description {
-    return Intl.message(
-      'Do you want to close?',
-      name: 'txt_dialog_exit_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Exit Confirmation`
-  String get txt_dialog_exit_name {
-    return Intl.message(
-      'Exit Confirmation',
-      name: 'txt_dialog_exit_name',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Reached level {input}`
   String txt_dialog_level_up_description(Object input) {
     return Intl.message(
@@ -205,71 +175,11 @@ class S {
     );
   }
 
-  /// `Congrats`
-  String get txt_dialog_level_up_name {
-    return Intl.message(
-      'Congrats',
-      name: 'txt_dialog_level_up_name',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Loading sound…`
   String get txt_dialog_loading_sound_description {
     return Intl.message(
       'Loading sound…',
       name: 'txt_dialog_loading_sound_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logging in…`
-  String get txt_dialog_logging_in_description {
-    return Intl.message(
-      'Logging in…',
-      name: 'txt_dialog_logging_in_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Remind me later`
-  String get txt_dialog_rate_button_remind {
-    return Intl.message(
-      'Remind me later',
-      name: 'txt_dialog_rate_button_remind',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `If you enjoy using this app, would you mind taking a moment to rate it? It won't take more than a minute. Thank you for your support!`
-  String get txt_dialog_rate_description {
-    return Intl.message(
-      'If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thank you for your support!',
-      name: 'txt_dialog_rate_description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Rate us`
-  String get txt_dialog_rate_name {
-    return Intl.message(
-      'Rate us',
-      name: 'txt_dialog_rate_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reward`
-  String get txt_dialog_reward_name {
-    return Intl.message(
-      'Reward',
-      name: 'txt_dialog_reward_name',
       desc: '',
       args: [],
     );
@@ -305,16 +215,6 @@ class S {
     );
   }
 
-  /// `Error occurs`
-  String get txt_error_occur {
-    return Intl.message(
-      'Error occurs',
-      name: 'txt_error_occur',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Continue`
   String get txt_game_button_continue {
     return Intl.message(
@@ -325,41 +225,11 @@ class S {
     );
   }
 
-  /// `Reward`
-  String get txt_game_complete_gift {
-    return Intl.message(
-      'Reward',
-      name: 'txt_game_complete_gift',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Getting reward…`
   String get txt_game_complete_loading_gift {
     return Intl.message(
       'Getting reward…',
       name: 'txt_game_complete_loading_gift',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Finished`
-  String get txt_game_complete_name {
-    return Intl.message(
-      'Finished',
-      name: 'txt_game_complete_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Paused`
-  String get txt_game_dialog_pause_name {
-    return Intl.message(
-      'Paused',
-      name: 'txt_game_dialog_pause_name',
       desc: '',
       args: [],
     );
@@ -385,13 +255,13 @@ class S {
     );
   }
 
-  /// `Level`
-  String get txt_level {
+  /// `Level {input}`
+  String txt_level(Object input) {
     return Intl.message(
-      'Level',
+      'Level $input',
       name: 'txt_level',
       desc: '',
-      args: [],
+      args: [input],
     );
   }
 
@@ -420,16 +290,6 @@ class S {
     return Intl.message(
       'Select language',
       name: 'txt_select_language',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sign in`
-  String get txt_sign_in {
-    return Intl.message(
-      'Sign in',
-      name: 'txt_sign_in',
       desc: '',
       args: [],
     );

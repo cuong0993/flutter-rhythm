@@ -20,26 +20,7 @@ class GameConfigWidget extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image(
-                              image: AssetImage(
-                                  'assets/images/img_star_rate.png')),
-                          SizedBox(width: 8),
-                        ],
-                      ),
-                      SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image(
-                              image: AssetImage('assets/images/img_note.png')),
-                          SizedBox(width: 8),
-                        ],
-                      ),
-                    ],
+                    children: [],
                   )),
             ),
             Row(

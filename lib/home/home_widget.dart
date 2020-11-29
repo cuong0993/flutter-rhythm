@@ -11,7 +11,6 @@ import '../util.dart';
 import 'home_bloc.dart';
 import 'home_state.dart';
 import 'level_up_dialog.dart';
-import 'rate_dialog.dart';
 
 class HomeWidget extends StatefulWidget {
   @override
@@ -25,12 +24,6 @@ class _HomeWidgetState extends State<HomeWidget> {
       showDialog<void>(
         context: context,
         builder: (_) => LevelUpDialog(appUser),
-      );
-    });
-    BlocProvider.of<HomeBloc>(context).showRateEventStream.listen((event) {
-      showDialog<void>(
-        context: context,
-        builder: (_) => RateDialog(),
       );
     });
     super.initState();
@@ -54,11 +47,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                       child: (state is HomeUpdated &&
                               state.user.photoUrl.isNotEmpty)
                           ? CachedNetworkImage(
-                          imageUrl: state.user.photoUrl,
-                          placeholder: (context, url) =>
-                              Icon(Icons.account_circle_rounded),
-                          memCacheWidth: 24.toPixel(),
-                          memCacheHeight: 24.toPixel())
+                              imageUrl: state.user.photoUrl,
+                              placeholder: (context, url) =>
+                                  Icon(Icons.account_circle_rounded),
+                              memCacheWidth: 24.toPixel(),
+                              memCacheHeight: 24.toPixel())
                           : Icon(Icons.account_circle_rounded),
                     ),
                     onPressed: () async {

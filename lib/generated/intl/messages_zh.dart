@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(input) => "你好，来玩hittick ${input}";
 
+  static m2(input) => "级 ${input}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "acoustic_guitar" : MessageLookupByLibrary.simpleMessage("Acoustic 吉他琴"),
@@ -30,7 +32,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "piano" : MessageLookupByLibrary.simpleMessage("钢琴"),
     "txt_about_invite" : MessageLookupByLibrary.simpleMessage("邀请朋友"),
     "txt_about_rate" : MessageLookupByLibrary.simpleMessage("评估"),
-    "txt_all_no" : MessageLookupByLibrary.simpleMessage("没有"),
     "txt_all_ok" : MessageLookupByLibrary.simpleMessage("同意"),
     "txt_all_songs" : MessageLookupByLibrary.simpleMessage("图书馆"),
     "txt_button_feedback" : MessageLookupByLibrary.simpleMessage("给我们意见"),
@@ -39,32 +40,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_button_sign_in_facebook" : MessageLookupByLibrary.simpleMessage("在facebook 登录"),
     "txt_button_sign_in_google" : MessageLookupByLibrary.simpleMessage("在google登录"),
     "txt_configure" : MessageLookupByLibrary.simpleMessage("配置"),
-    "txt_dialog_exit_description" : MessageLookupByLibrary.simpleMessage("你要关机"),
-    "txt_dialog_exit_name" : MessageLookupByLibrary.simpleMessage("决定关机"),
     "txt_dialog_level_up_description" : m0,
-    "txt_dialog_level_up_name" : MessageLookupByLibrary.simpleMessage("恭喜"),
     "txt_dialog_loading_sound_description" : MessageLookupByLibrary.simpleMessage("在下载声音…"),
-    "txt_dialog_logging_in_description" : MessageLookupByLibrary.simpleMessage("在登录…"),
-    "txt_dialog_rate_button_remind" : MessageLookupByLibrary.simpleMessage("在说一遍"),
-    "txt_dialog_rate_description" : MessageLookupByLibrary.simpleMessage("如果你喜欢这个软件，你要不要评估它吗？感谢你的帮助！"),
-    "txt_dialog_rate_name" : MessageLookupByLibrary.simpleMessage("评估我们"),
-    "txt_dialog_reward_name" : MessageLookupByLibrary.simpleMessage("登录礼物"),
     "txt_difficult" : MessageLookupByLibrary.simpleMessage("困难"),
     "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("邀请玩hittick"),
     "txt_easy" : MessageLookupByLibrary.simpleMessage("简单"),
-    "txt_error_occur" : MessageLookupByLibrary.simpleMessage("在有错误"),
     "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("继续"),
-    "txt_game_complete_gift" : MessageLookupByLibrary.simpleMessage("礼物"),
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("在拿礼物…"),
-    "txt_game_complete_name" : MessageLookupByLibrary.simpleMessage("完成"),
-    "txt_game_dialog_pause_name" : MessageLookupByLibrary.simpleMessage("已经停下来了"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("乐器"),
     "txt_invite_description" : m1,
-    "txt_level" : MessageLookupByLibrary.simpleMessage("级"),
+    "txt_level" : m2,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("中"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("账户"),
     "txt_select_language" : MessageLookupByLibrary.simpleMessage("选语言"),
-    "txt_sign_in" : MessageLookupByLibrary.simpleMessage("登入"),
     "txt_start" : MessageLookupByLibrary.simpleMessage("开始"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("太早了"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("太晚了"),

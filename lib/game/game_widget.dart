@@ -111,8 +111,7 @@ class _GameWidgetState extends State<GameWidget> {
                                   style: Theme.of(context).textTheme.headline6),
                               Text(
                                   '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
-                                  style: Theme.of(context).textTheme
-                                      .subtitle1)
+                                  style: Theme.of(context).textTheme.subtitle1)
                             ],
                           ),
                           Row(
@@ -127,8 +126,7 @@ class _GameWidgetState extends State<GameWidget> {
                                 },
                               ),
                               Text((state as GameUpdated).tilesCount.toString(),
-                                  style: Theme
-                                      .of(context)
+                                  style: Theme.of(context)
                                       .textTheme
                                       .headline4
                                       .copyWith(color: Color(0xFFFF8383)))

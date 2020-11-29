@@ -106,7 +106,9 @@ class UserWidget extends StatelessWidget {
                                                                     'assets/images/img_google.png')),
                                                             SizedBox(width: 8),
                                                             Text(
-                                                              'Sign in with Google',
+                                                              S
+                                                                  .of(context)
+                                                                  .txt_button_sign_in_google,
                                                             )
                                                           ],
                                                         ),
@@ -136,8 +138,9 @@ class UserWidget extends StatelessWidget {
                                                                 image: AssetImage(
                                                                     'assets/images/img_facebook.png')),
                                                             SizedBox(width: 8),
-                                                            Text(
-                                                              'Sign in with Facebook',
+                                                            Text(S
+                                                                .of(context)
+                                                                .txt_button_sign_in_facebook,
                                                             )
                                                           ],
                                                         ),
@@ -218,7 +221,8 @@ class UserWidget extends StatelessWidget {
                                               ),
                                               SizedBox(height: 8),
                                               Text(
-                                                  '${S.of(context).txt_level} ${state.user.user.level}',
+                                                  S.of(context).txt_level(
+                                                      state.user.user.level),
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .headline6)

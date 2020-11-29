@@ -62,6 +62,7 @@ class CompleteDialog extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
+                    Navigator.of(context).pop();
                   },
                   child: Text(S.of(context).txt_button_quit),
                 ),
