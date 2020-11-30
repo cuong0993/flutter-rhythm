@@ -107,9 +107,12 @@ class UserWidget extends StatelessWidget {
                                                             SizedBox(width: 8),
                                                             Text(
                                                               S
-                                                                  .of(context)
-                                                                  .txt_button_sign_in_google,
-                                                            )
+                                                                    .of(context)
+                                                                    .txt_button_sign_in_google,
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .subtitle1)
                                                           ],
                                                         ),
                                                       ),
@@ -139,9 +142,13 @@ class UserWidget extends StatelessWidget {
                                                                     'assets/images/img_facebook.png')),
                                                             SizedBox(width: 8),
                                                             Text(
-                                                              S
-                                                                  .of(context)
-                                                                  .txt_button_sign_in_facebook,
+                                                                S
+                                                                    .of(context)
+                                                                    .txt_button_sign_in_facebook,
+                                                                style: Theme
+                                                                    .of(context)
+                                                                    .textTheme
+                                                                    .subtitle1
                                                             )
                                                           ],
                                                         ),

@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(input) => "Reached level ${input}";
 
-  static m1(input) => "Hey, let play Hit Notes ${input}";
+  static m1(input) => "${input} fingers";
 
-  static m2(input) => "Level ${input}";
+  static m2(input) => "Hey, let play Hit Notes ${input}";
+
+  static m3(input) => "Level ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -43,16 +45,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_level_up_description" : m0,
     "txt_dialog_loading_sound_description" : MessageLookupByLibrary.simpleMessage("Loading sound…"),
     "txt_difficult" : MessageLookupByLibrary.simpleMessage("Difficult"),
+    "txt_difficulty" : MessageLookupByLibrary.simpleMessage("Difficulty"),
     "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("Hit Notes invite"),
     "txt_easy" : MessageLookupByLibrary.simpleMessage("Easy"),
+    "txt_fast" : MessageLookupByLibrary.simpleMessage("Fast"),
+    "txt_fingers" : m1,
     "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("Continue"),
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("Getting reward…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("Instruments"),
-    "txt_invite_description" : m1,
-    "txt_level" : m2,
+    "txt_invite_description" : m2,
+    "txt_level" : m3,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("Medium"),
+    "txt_normal" : MessageLookupByLibrary.simpleMessage("Normal"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("Account"),
     "txt_select_language" : MessageLookupByLibrary.simpleMessage("Select language"),
+    "txt_slow" : MessageLookupByLibrary.simpleMessage("Slow"),
+    "txt_speed" : MessageLookupByLibrary.simpleMessage("Speed"),
     "txt_start" : MessageLookupByLibrary.simpleMessage("Start"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("Too early"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("Too late"),

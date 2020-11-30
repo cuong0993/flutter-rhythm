@@ -96,6 +96,8 @@ class MyGame extends Game with MultiTouchTapDetector {
                 } else {
                   _onTouched(null);
                 }
+              } else {
+                _onTouched(null);
               }
             }
           }

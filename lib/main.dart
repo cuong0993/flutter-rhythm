@@ -5,8 +5,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'game/game_bloc.dart';
-import 'game/game_config_widget.dart';
 import 'game/game_widget.dart';
+import 'game_config/game_config_bloc.dart';
+import 'game_config/game_config_widget.dart';
 import 'generated/l10n.dart';
 import 'home/home_bloc.dart';
 import 'home/home_widget.dart';
@@ -32,7 +33,6 @@ void main() async {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    const isDark = true;
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
     final songsRepository = SongsRepositoryImpl();
@@ -81,22 +81,7 @@ class App extends StatelessWidget {
               ],
               supportedLocales: S.delegate.supportedLocales,
               theme: ThemeData.from(
-                  textTheme:
-                      (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
-                  colorScheme: ColorScheme(
-                      brightness: isDark ? Brightness.dark : Brightness.light,
-                      primary: Color(0xFF1F1929),
-                      primaryVariant: Color(0xFF1F1929),
-                      secondary: Color(0xFF1F1929),
-                      secondaryVariant: Color(0xFF1F1929),
-                      background: Color(0xFF241E30),
-                      surface: Color(0xFF241E30),
-                      onBackground: Color(0xFFFFFFFF),
-                      onSurface: Color(0xFFFFFFFF),
-                      onError: Colors.white,
-                      onPrimary: Colors.white,
-                      onSecondary: Colors.white,
-                      error: Colors.red.shade400)),
+                  colorScheme: ColorScheme.light()),
               routes: {
                 Routes.splash: (context) {
                   return SplashWidget();
@@ -108,7 +93,10 @@ class App extends StatelessWidget {
                       child: HomeWidget());
                 },
                 Routes.gameConfig: (context) {
-                  return GameConfigWidget();
+                  return BlocProvider<GameConfigBloc>(
+                      create: (context) =>
+                          GameConfigBloc(),
+                      child: GameConfigWidget());
                 },
                 Routes.game: (context) {
                   SystemChrome.setEnabledSystemUIOverlays([]);

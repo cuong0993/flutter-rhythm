@@ -195,6 +195,16 @@ class S {
     );
   }
 
+  /// `Difficulty`
+  String get txt_difficulty {
+    return Intl.message(
+      'Difficulty',
+      name: 'txt_difficulty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hit Notes invite`
   String get txt_dynamic_link_invite_subject {
     return Intl.message(
@@ -212,6 +222,26 @@ class S {
       name: 'txt_easy',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Fast`
+  String get txt_fast {
+    return Intl.message(
+      'Fast',
+      name: 'txt_fast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{input} fingers`
+  String txt_fingers(Object input) {
+    return Intl.message(
+      '$input fingers',
+      name: 'txt_fingers',
+      desc: '',
+      args: [input],
     );
   }
 
@@ -275,6 +305,16 @@ class S {
     );
   }
 
+  /// `Normal`
+  String get txt_normal {
+    return Intl.message(
+      'Normal',
+      name: 'txt_normal',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Account`
   String get txt_page_title_account {
     return Intl.message(
@@ -290,6 +330,26 @@ class S {
     return Intl.message(
       'Select language',
       name: 'txt_select_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Slow`
+  String get txt_slow {
+    return Intl.message(
+      'Slow',
+      name: 'txt_slow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speed`
+  String get txt_speed {
+    return Intl.message(
+      'Speed',
+      name: 'txt_speed',
       desc: '',
       args: [],
     );

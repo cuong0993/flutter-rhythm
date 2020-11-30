@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(input) => "Bạn đã đạt cấp ${input}";
 
-  static m1(input) => "Xin chào, hãy chơi Hit Notes ${input}";
+  static m1(input) => "${input} ngón tay";
 
-  static m2(input) => "Cấp ${input}";
+  static m2(input) => "Xin chào, hãy chơi Hit Notes ${input}";
+
+  static m3(input) => "Cấp ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -43,16 +45,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_level_up_description" : m0,
     "txt_dialog_loading_sound_description" : MessageLookupByLibrary.simpleMessage("Đang tải âm thanh…"),
     "txt_difficult" : MessageLookupByLibrary.simpleMessage("Khó"),
+    "txt_difficulty" : MessageLookupByLibrary.simpleMessage("Độ khó"),
     "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("Lời mời chơi Hit Notes"),
     "txt_easy" : MessageLookupByLibrary.simpleMessage("Dễ"),
+    "txt_fast" : MessageLookupByLibrary.simpleMessage("Nhanh"),
+    "txt_fingers" : m1,
     "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("Tiếp tục"),
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("Đang lấy phần thưởng…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("Nhạc cụ"),
-    "txt_invite_description" : m1,
-    "txt_level" : m2,
+    "txt_invite_description" : m2,
+    "txt_level" : m3,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("Trung bình"),
+    "txt_normal" : MessageLookupByLibrary.simpleMessage("Bình thường"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("Tài khoản"),
     "txt_select_language" : MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
+    "txt_slow" : MessageLookupByLibrary.simpleMessage("Chậm"),
+    "txt_speed" : MessageLookupByLibrary.simpleMessage("Tốc độ"),
     "txt_start" : MessageLookupByLibrary.simpleMessage("Bắt đầu"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("Hơi sớm"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("Hơi muộn"),

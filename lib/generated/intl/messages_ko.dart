@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(input) => "도달한 레벨 %";
 
-  static m1(input) => "Hit Notes 을 ${input} 해봐요!";
+  static m1(input) => "${input} 손가락";
 
-  static m2(input) => "레벨 ${input}";
+  static m2(input) => "Hit Notes 을 ${input} 해봐요!";
+
+  static m3(input) => "레벨 ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -43,16 +45,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_level_up_description" : m0,
     "txt_dialog_loading_sound_description" : MessageLookupByLibrary.simpleMessage("사운드 로딩중…"),
     "txt_difficult" : MessageLookupByLibrary.simpleMessage("어려움"),
+    "txt_difficulty" : MessageLookupByLibrary.simpleMessage("난이도"),
     "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("히트틱이 초대했어요"),
     "txt_easy" : MessageLookupByLibrary.simpleMessage("쉬운"),
+    "txt_fast" : MessageLookupByLibrary.simpleMessage("빠른"),
+    "txt_fingers" : m1,
     "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("계속하기"),
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("보상받기…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("악기"),
-    "txt_invite_description" : m1,
-    "txt_level" : m2,
+    "txt_invite_description" : m2,
+    "txt_level" : m3,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("미디엄"),
+    "txt_normal" : MessageLookupByLibrary.simpleMessage("일반"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("계정"),
     "txt_select_language" : MessageLookupByLibrary.simpleMessage("언어 선택"),
+    "txt_slow" : MessageLookupByLibrary.simpleMessage("느리게"),
+    "txt_speed" : MessageLookupByLibrary.simpleMessage("속도"),
     "txt_start" : MessageLookupByLibrary.simpleMessage("시작"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("너무 일찍"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("너무 늦음"),

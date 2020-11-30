@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(input) => "你已经得到几级了";
 
-  static m1(input) => "你好，来玩hittick ${input}";
+  static m1(input) => "${input} 手指";
 
-  static m2(input) => "级 ${input}";
+  static m2(input) => "你好，来玩hittick ${input}";
+
+  static m3(input) => "级 ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -43,16 +45,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_dialog_level_up_description" : m0,
     "txt_dialog_loading_sound_description" : MessageLookupByLibrary.simpleMessage("在下载声音…"),
     "txt_difficult" : MessageLookupByLibrary.simpleMessage("困难"),
+    "txt_difficulty" : MessageLookupByLibrary.simpleMessage("困难"),
     "txt_dynamic_link_invite_subject" : MessageLookupByLibrary.simpleMessage("邀请玩hittick"),
     "txt_easy" : MessageLookupByLibrary.simpleMessage("简单"),
+    "txt_fast" : MessageLookupByLibrary.simpleMessage("快"),
+    "txt_fingers" : m1,
     "txt_game_button_continue" : MessageLookupByLibrary.simpleMessage("继续"),
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("在拿礼物…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("乐器"),
-    "txt_invite_description" : m1,
-    "txt_level" : m2,
+    "txt_invite_description" : m2,
+    "txt_level" : m3,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("中"),
+    "txt_normal" : MessageLookupByLibrary.simpleMessage("普通"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("账户"),
     "txt_select_language" : MessageLookupByLibrary.simpleMessage("选语言"),
+    "txt_slow" : MessageLookupByLibrary.simpleMessage("慢"),
+    "txt_speed" : MessageLookupByLibrary.simpleMessage("速度"),
     "txt_start" : MessageLookupByLibrary.simpleMessage("开始"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("太早了"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("太晚了"),
