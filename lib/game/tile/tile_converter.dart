@@ -57,14 +57,14 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
   return tileChunks;
 }
 
-List<Tile> createTiles(List<TileChunk> tileChunks, int unitDuration) {
+List<Tile> createTiles(List<TileChunk> tileChunks, int unitDuration, int numberTileColumn,) {
   final tiles = <Tile>[];
   final random = Random();
   var calibratedTick = 0;
   for (final chunk in tileChunks) {
-    var tileColumn = (NUMBER_TILE_COLUMN <= chunk.notes.length)
+    var tileColumn = (numberTileColumn <= chunk.notes.length)
         ? 0
-        : random.nextInt(NUMBER_TILE_COLUMN - chunk.notes.length);
+        : random.nextInt(numberTileColumn - chunk.notes.length);
     if (chunk.durationToPrevious < unitDuration) {
       /* Calibrate to make sure a note will away from previous note at least unitTileDuration */
       calibratedTick += unitDuration - chunk.durationToPrevious;
@@ -73,7 +73,7 @@ List<Tile> createTiles(List<TileChunk> tileChunks, int unitDuration) {
         -((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
             calibratedTick);
     chunk.notes.asMap().forEach((index, note) {
-      if (index < NUMBER_TILE_COLUMN) {
+      if (index < numberTileColumn) {
         final tile = Tile(note.note, tileColumn, initialPositionY);
         tiles.add(tile);
         tileColumn++;

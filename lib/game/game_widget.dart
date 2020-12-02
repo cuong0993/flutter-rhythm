@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../generated/l10n.dart';
-import '../songs/song.dart';
 import 'complete_dialog.dart';
 import 'game_bloc.dart';
 import 'game_event.dart';
@@ -71,8 +70,11 @@ class _GameWidgetState extends State<GameWidget> {
     }, child: BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameLoading) {
-          final song = ModalRoute.of(context).settings.arguments as Song;
-          BlocProvider.of<GameBloc>(context).add(StartGame(song));
+          final arguments = (ModalRoute.of(context).settings.arguments as Map);
+          final song = arguments['song'];
+          final difficulty = arguments['difficulty'];
+          final speed = arguments['speed'];
+          BlocProvider.of<GameBloc>(context).add(StartGame(song, difficulty, speed));
           return LoadingSoundWidget();
         } else if (state is GameStarted) {
           widget._game.start(state.tiles, state.speedPixelsPerSecond,

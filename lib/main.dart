@@ -80,8 +80,24 @@ class App extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: S.delegate.supportedLocales,
+              /* Peaceful color scheme #5FAAE3 #BAEBFA #FEF3D8 #F2B5AF #939BCB #13436B */
               theme: ThemeData.from(
-                  colorScheme: ColorScheme.light()),
+                colorScheme: ColorScheme(
+                  primary: Color(0xff1cdec9),
+                  primaryVariant: Color(0xff00ab98),
+                  secondary: Color(0xffff8383),
+                  secondaryVariant: Color(0xffc85356),
+                  surface: Color(0xff1f1929),
+                  background: Color(0xff1f1929),
+                  error: Color(0xffc85356),
+                  onPrimary: Colors.black,
+                  onSecondary: Colors.black,
+                  onSurface: Colors.white,
+                  onBackground: Colors.white,
+                  onError: Colors.black,
+                  brightness: Brightness.dark,
+                ),
+              ),
               routes: {
                 Routes.splash: (context) {
                   return SplashWidget();

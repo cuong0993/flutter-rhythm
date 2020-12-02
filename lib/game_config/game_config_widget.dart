@@ -35,7 +35,7 @@ class GameConfigWidget extends StatelessWidget {
                           caption: S.of(context).txt_fingers(2),
                           onTap: () {
                             BlocProvider.of<GameConfigBloc>(context)
-                              ..add(GameConfigEvent(0));
+                              ..add(GameConfigChangeDifficultyEvent(0));
                           },
                         ),
                         SizedBox(width: 8),
@@ -45,7 +45,7 @@ class GameConfigWidget extends StatelessWidget {
                           caption: S.of(context).txt_fingers(3),
                           onTap: () {
                             BlocProvider.of<GameConfigBloc>(context)
-                              ..add(GameConfigEvent(1));
+                              ..add(GameConfigChangeDifficultyEvent(1));
                           },
                         ),
                         SizedBox(width: 8),
@@ -55,7 +55,53 @@ class GameConfigWidget extends StatelessWidget {
                           caption: S.of(context).txt_fingers(4),
                           onTap: () {
                             BlocProvider.of<GameConfigBloc>(context)
-                              ..add(GameConfigEvent(2));
+                              ..add(GameConfigChangeDifficultyEvent(2));
+                          },
+                        ),
+                        SizedBox(width: 8)
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(S.of(context).txt_speed,
+                        style: Theme.of(context).textTheme.headline5),
+                    SizedBox(height: 8),
+                    Row(
+                      children: [
+                        SizedBox(width: 8),
+                        CardWidget(
+                          selected: state.speed == 0,
+                          text: S.of(context).txt_slow,
+                          caption: 'x0.75',
+                          onTap: () {
+                            BlocProvider.of<GameConfigBloc>(context)
+                              ..add(GameConfigChangeSpeedEvent(0));
+                          },
+                        ),
+                        SizedBox(width: 8),
+                        CardWidget(
+                          selected: state.speed == 1,
+                          text: S.of(context).txt_normal,
+                          caption: 'x1.0',
+                          onTap: () {
+                            BlocProvider.of<GameConfigBloc>(context)
+                              ..add(GameConfigChangeSpeedEvent(1));
+                          },
+                        ),
+                        SizedBox(width: 8),
+                        CardWidget(
+                          selected: state.speed == 2,
+                          text: S.of(context).txt_fast,
+                          caption: 'x1.25',
+                          onTap: () {
+                            BlocProvider.of<GameConfigBloc>(context)
+                              ..add(GameConfigChangeSpeedEvent(2));
                           },
                         ),
                         SizedBox(width: 8)
@@ -71,10 +117,9 @@ class GameConfigWidget extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, Routes.game,
-                              arguments: song);
+                              arguments: {'song':song, 'difficulty':state.difficulty, 'speed':state.speed});
                         },
-                        child: Text(S
-                            .of(context)
+                        child: Text(S.of(context)
                             .txt_start)),
                   ),
                   SizedBox(width: 8)

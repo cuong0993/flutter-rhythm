@@ -63,7 +63,7 @@ void main() {
       /* Single tile will have duration is most popular of midi chunks */
       final unitDuration = sortCountDurationToPrevious.keys.last;
 
-      final tiles = createTiles(tileChunks, unitDuration);
+      final tiles = createTiles(tileChunks, unitDuration, NUMBER_TILE_COLUMN);
       print('There are ${tiles.length} tiles');
       final tick2Second =
           tickToSecond(midiFile.header.ticksPerBeat, value['bpm'] as int);

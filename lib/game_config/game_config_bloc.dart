@@ -7,12 +7,16 @@ part 'game_config_event.dart';
 part 'game_config_state.dart';
 
 class GameConfigBloc extends Bloc<GameConfigEvent, GameConfigState> {
-  GameConfigBloc() : super(GameConfigState(2));
+  GameConfigBloc() : super(GameConfigState(1, 1));
 
   @override
   Stream<GameConfigState> mapEventToState(
     GameConfigEvent event,
   ) async* {
-    yield GameConfigState(event.difficulty);
+    if (event is GameConfigChangeDifficultyEvent) {
+      yield GameConfigState(event.difficulty, state.speed);
+    } else if (event is GameConfigChangeSpeedEvent) {
+      yield GameConfigState(state.difficulty, event.speed);
+    }
   }
 }

@@ -12,11 +12,13 @@ abstract class GameEvent extends Equatable {
 
 class StartGame extends GameEvent {
   final Song song;
+  final int difficulty;
+  final int speed;
 
-  const StartGame(this.song);
+  const StartGame(this.song, this.difficulty, this.speed);
 
   @override
-  List<Object> get props => [song];
+  List<Object> get props => [song, difficulty, speed];
 
   @override
   String toString() => 'StartGame { song: $song }';

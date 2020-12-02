@@ -46,12 +46,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   Stream<GameState> mapEventToState(GameEvent event) async* {
     if (event is StartGame) {
       final directory = await getApplicationSupportDirectory();
-      final tempFile = File('${directory.path}/${event.song.url}');
+      final song = event.song;
+      final tempFile = File('${directory.path}/${song.url}');
       if (!tempFile.existsSync()) {
         await tempFile.create(recursive: true);
         final task = FirebaseStorage.instance
             .ref()
-            .child(event.song.url)
+            .child(song.url)
             .writeToFile(tempFile);
         await task.future;
       }
@@ -71,15 +72,30 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           countDurationToPrevious.entries.toList()
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       _unitDuration = sortCountDurationToPrevious.keys.last;
-      final tiles = createTiles(_tileChunks, _unitDuration);
-      final tick2Second =
-          tickToSecond(midiFile.header.ticksPerBeat, event.song.bpm);
+      var numberTileColumn =0;
+      if (event.speed == 0) {
+        numberTileColumn = 2;
+      } else if (event.speed == 1) {
+        numberTileColumn = 3;
+      } else {
+        numberTileColumn = 4;
+      }
+      var bpm = 0;
+      if (event.speed == 0) {
+        bpm = (song.bpm * 0.75).toInt();
+      } else if (event.speed == 2) {
+        bpm = (song.bpm * 1.25).toInt();
+      } else {
+        bpm = song.bpm;
+      }
+      final tiles = createTiles(_tileChunks, _unitDuration, numberTileColumn);
+      final tick2Second = tickToSecond(midiFile.header.ticksPerBeat, bpm);
       final speedDpsPerTick = UNIT_DURATION_HEIGHT / _unitDuration;
       _speedDpsPerSecond = speedDpsPerTick / tick2Second;
       final gameDuration = (0.0 - tiles.last.initialY) / _speedDpsPerSecond;
 
-      _songName = event.song.title;
-      _songId = event.song.id;
+      _songName = song.title;
+      _songId = song.id;
       _maxTime = gameDuration;
       final soundLoadedStream = MidiProcessor.getInstance().soundLoadedStream;
       await for (final value in soundLoadedStream) {
@@ -124,7 +140,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _time = 0.0;
       _tilesCount = 0;
       _errorCount = 0;
-      final tiles = createTiles(_tileChunks, _unitDuration);
+      final tiles = createTiles(_tileChunks, _unitDuration, 4);
       yield GameStarted(tiles, _speedDpsPerSecond, _maxTime);
       await Future.delayed(Duration(milliseconds: 100));
       yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
