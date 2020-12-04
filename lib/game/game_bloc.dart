@@ -29,6 +29,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   List<TileChunk> _tileChunks;
   int _unitDuration;
   var _errorCount = 0;
+  var _numberTileColumn = 0;
 
   final _pauseEventController = StreamController<bool>();
 
@@ -72,13 +73,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           countDurationToPrevious.entries.toList()
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       _unitDuration = sortCountDurationToPrevious.keys.last;
-      var numberTileColumn =0;
-      if (event.speed == 0) {
-        numberTileColumn = 2;
-      } else if (event.speed == 1) {
-        numberTileColumn = 3;
+      if (event.difficulty == 0) {
+        _numberTileColumn = 2;
+      } else if (event.difficulty == 1) {
+        _numberTileColumn = 3;
       } else {
-        numberTileColumn = 4;
+        _numberTileColumn = 4;
       }
       var bpm = 0;
       if (event.speed == 0) {
@@ -88,7 +88,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       } else {
         bpm = song.bpm;
       }
-      final tiles = createTiles(_tileChunks, _unitDuration, numberTileColumn);
+      final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
       final tick2Second = tickToSecond(midiFile.header.ticksPerBeat, bpm);
       final speedDpsPerTick = UNIT_DURATION_HEIGHT / _unitDuration;
       _speedDpsPerSecond = speedDpsPerTick / tick2Second;
@@ -140,7 +140,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _time = 0.0;
       _tilesCount = 0;
       _errorCount = 0;
-      final tiles = createTiles(_tileChunks, _unitDuration, 4);
+      final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
       yield GameStarted(tiles, _speedDpsPerSecond, _maxTime);
       await Future.delayed(Duration(milliseconds: 100));
       yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
