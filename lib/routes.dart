@@ -5,4 +5,5 @@ class Routes {
   static final game = '/game';
   static final account = '/account';
   static final language = '/language';
+  static final instrument = '/instrument';
 }

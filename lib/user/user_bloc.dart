@@ -19,7 +19,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       {@required UserRepository userRepository})
       : assert(userRepository != null),
         _userRepository = userRepository,
-        super(UserInitial()) {
+        super(UserLoading()) {
     _userRepository.getCurrentUser().listen((user) async {
       final instruments = await _instrumentsRepository.instruments();
       add(UpdateUser(user, instruments));

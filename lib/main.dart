@@ -12,6 +12,7 @@ import 'generated/l10n.dart';
 import 'home/home_bloc.dart';
 import 'home/home_widget.dart';
 import 'instrument/instruments_repository_impl.dart';
+import 'instrument/instruments_widget.dart';
 import 'locale/locale_bloc.dart';
 import 'locale/locale_widget.dart';
 import 'routes.dart';
@@ -89,12 +90,12 @@ class App extends StatelessWidget {
                   secondaryVariant: Color(0xffc85356),
                   surface: Color(0xff1f1929),
                   background: Color(0xff1f1929),
-                  error: Color(0xffc85356),
+                  error: Color(0xff92222d),
                   onPrimary: Colors.black,
                   onSecondary: Colors.black,
                   onSurface: Colors.white,
                   onBackground: Colors.white,
-                  onError: Colors.black,
+                  onError: Colors.white,
                   brightness: Brightness.dark,
                 ),
               ),
@@ -124,6 +125,9 @@ class App extends StatelessWidget {
                 },
                 Routes.language: (context) {
                   return LocaleWidget();
+                },
+                Routes.instrument: (context) {
+                  return InstrumentsWidget();
                 },
               },
             );

@@ -43,6 +43,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                   },
                 ),
                 IconButton(
+                    icon: Image(
+                        image: AssetImage('assets/images/img_guitar.png')),
+                    onPressed: () async {
+                      await Navigator.pushNamed(context, Routes.instrument);
+                    }),
+                IconButton(
                     icon: ClipOval(
                       child: (state is HomeUpdated &&
                               state.user.photoUrl.isNotEmpty)
