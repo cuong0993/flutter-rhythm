@@ -7,17 +7,17 @@ part 'user.g.dart';
 @JsonSerializable(explicitToJson: true)
 class User {
   String id;
-  int level;
-  int experience;
-  int maxLevelExperience;
+  int playedNotes;
+  int errors;
+  Duration playedTime;
   String instrumentId;
   List<String> notificationTokens;
 
   User(
     this.id,
-    this.level,
-    this.experience,
-    this.maxLevelExperience,
+    this.playedNotes,
+    this.playedTime,
+    this.errors,
     this.instrumentId,
     this.notificationTokens,
   );

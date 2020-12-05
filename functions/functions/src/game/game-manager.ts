@@ -8,7 +8,6 @@ import { getUserId } from '../shared';
 import { Song } from '../model/song';
 import { GameReward } from '../model/game-reward';
 import { User } from '../model/user';
-import { maxLevelExperiences } from '../user/user';
 
 export async function getGameReward(
   data: any,
@@ -53,28 +52,19 @@ export async function getGameReward(
     let stars = 0;
     const tilesCount = song.tilesCount;
     const errorPercent = errorCount / tilesCount;
-    const baseExperiences = tilesCount;
-    let experiences = 0;
+    const experiences = 0;
     if (errorPercent <= 0.05) {
       stars = 3;
-      experiences = baseExperiences;
     } else if (errorPercent <= 0.2) {
       stars = 2;
-      experiences = Math.floor(0.7 * baseExperiences);
     } else {
       stars = 1;
-      experiences = Math.floor(0.5 * baseExperiences);
     }
 
-    const newExperience = user.experience + experiences;
-    if (newExperience >= maxLevelExperiences[user.level]) {
-      // Bravo, up level
-      user.experience = newExperience - maxLevelExperiences[user.level];
-      user.level += 1;
-      user.maxLevelExperience = maxLevelExperiences[user.level];
-    } else {
-      user.experience = newExperience;
-    }
+    user.playedNotes += tilesCount;
+    user.errors += errorCount;
+    user.playedTime += tilesCount;
+
     transaction.set(userRef, user);
     const reward: GameReward = {
       stars,

@@ -5,20 +5,17 @@ import { EventContext } from 'firebase-functions';
 import UserRecord = firebase.auth.UserRecord;
 import { HttpsError } from 'firebase-functions/lib/providers/https';
 
-export const maxLevelExperiences = [0, 2000, 4000, 10000, 20000, 40000, 100000, 200000, 500000, 1000000, 3000000, 4000000, 8000000];
-
 export function onUserSignUp(user: UserRecord, _: EventContext): Promise<void> {
   return firebase.firestore().runTransaction(async (transaction): Promise<void> => {
     const userRef = firebase
       .firestore()
       .collection(FirebasePath.FIREBASE_PATH_USERS)
       .doc(user.uid);
-    const startLevel = 1;
     const newUser: User = {
       id: user.uid,
-      level: startLevel,
-      experience: 0,
-      maxLevelExperience: maxLevelExperiences[startLevel],
+      playedNotes: 0,
+      errors: 0,
+      playedTime: 0,
       instrumentId: 'piano',
       notificationTokens: [],
     };

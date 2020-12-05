@@ -36,37 +36,33 @@ class UserWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   () {
-                                    if (state.user.photoUrl.isNotEmpty) {
+                                    if (!state.user.isAnonymous) {
                                       return Card(
                                           child: Container(
                                               padding: EdgeInsets.all(8.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                              child: Row(
                                                 children: <Widget>[
-                                                  SizedBox(height: 8),
                                                   ClipOval(
                                                     child: CachedNetworkImage(
-                                                        width: 96,
-                                                        height: 96,
+                                                        width: 72,
+                                                        height: 72,
                                                         imageUrl:
                                                             state.user.photoUrl,
                                                         placeholder: (context,
                                                                 url) =>
                                                             CircularProgressIndicator(),
                                                         memCacheWidth:
-                                                            96.toPixel(),
+                                                            72.toPixel(),
                                                         memCacheHeight:
-                                                            96.toPixel()),
+                                                            72.toPixel()),
                                                   ),
-                                                  SizedBox(height: 8),
+                                                  SizedBox(width: 8),
                                                   Text(
                                                     state.user.name,
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .headline5,
+                                                        .headline6,
                                                   ),
-                                                  SizedBox(height: 8),
                                                 ],
                                               )));
                                     } else {
@@ -153,6 +149,21 @@ class UserWidget extends StatelessWidget {
                                                   ])));
                                     }
                                   }(),
+                     Card(
+                child:Table(
+                                    defaultColumnWidth: FixedColumnWidth(120.0),
+                                    // border: TableBorder.all(
+                                    //     color: Colors.black,
+                                    //     style: BorderStyle.solid,
+                                    //     width: 2),
+                                    children: [
+                                      TableRow(children: [Text('Website'),
+                                        Text('Website'),
+                                      ]),
+                                      TableRow(children: [Text('Website'),
+                                        Text('Website'),
+                                      ]),
+                                    ],)),
                                 ],
                               )
                             ])));

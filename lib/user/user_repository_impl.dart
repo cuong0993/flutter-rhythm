@@ -38,7 +38,12 @@ class UserRepositoryImpl implements UserRepository {
         }
         name = userInfo.displayName;
       });
-      return AppUser(name, photoUrl, user.User.fromJson(event.data()));
+      return AppUser(
+          name,
+          photoUrl,
+          user.User.fromJson(event.data()),
+          FirebaseAuth.instance.currentUser.isAnonymous,
+          FirebaseAuth.instance.currentUser.metadata.creationTime);
     }).listen((user) {
       _userController.add(user);
     });

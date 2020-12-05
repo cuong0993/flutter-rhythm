@@ -12,10 +12,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final UserRepository _userRepository;
   final InstrumentsRepository _instrumentsRepository;
 
-  final _userUpLevelEventController = StreamController<AppUser>();
-
-  Stream<AppUser> get userUpLevelStream => _userUpLevelEventController.stream;
-
   HomeBloc(this._userRepository, this._instrumentsRepository)
       : super(HomeInitial()) {
     _userRepository.getCurrentUser().listen((user) async {
@@ -33,13 +29,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           MidiProcessor.getInstance().onSelectInstrument(instrument);
         }
       }
-      if (state is HomeUpdated) {
-        final oldUser = (state as HomeUpdated).user;
-        if (oldUser.user.id == user.user.id &&
-            oldUser.user.level != user.user.level) {
-          _userUpLevelEventController.add(user);
-        }
-      }
       add(HomeUpdate(user));
     });
   }
@@ -49,11 +38,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (event is HomeUpdate) {
       yield HomeUpdated(event.user);
     }
-  }
-
-  @override
-  Future<void> close() {
-    _userUpLevelEventController.close();
-    return super.close();
   }
 }

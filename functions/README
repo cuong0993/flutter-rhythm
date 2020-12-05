@@ -1,0 +1,5 @@
+cd functions
+npm install -g npm-check-updates; ncu -u
+npm install
+cd ..
+firebase deploy --project=projectId

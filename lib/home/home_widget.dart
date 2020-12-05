@@ -10,25 +10,8 @@ import '../songs/songs_widget.dart';
 import '../util.dart';
 import 'home_bloc.dart';
 import 'home_state.dart';
-import 'level_up_dialog.dart';
 
-class HomeWidget extends StatefulWidget {
-  @override
-  _HomeWidgetState createState() => _HomeWidgetState();
-}
-
-class _HomeWidgetState extends State<HomeWidget> {
-  @override
-  void initState() {
-    BlocProvider.of<HomeBloc>(context).userUpLevelStream.listen((appUser) {
-      showDialog<void>(
-        context: context,
-        builder: (_) => LevelUpDialog(appUser),
-      );
-    });
-    super.initState();
-  }
-
+class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
@@ -50,8 +33,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     }),
                 IconButton(
                     icon: ClipOval(
-                      child: (state is HomeUpdated &&
-                              state.user.photoUrl.isNotEmpty)
+                      child: (state is HomeUpdated && !state.user.isAnonymous)
                           ? CachedNetworkImage(
                               imageUrl: state.user.photoUrl,
                               placeholder: (context, url) =>
