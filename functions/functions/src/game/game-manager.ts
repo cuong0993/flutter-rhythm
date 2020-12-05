@@ -13,11 +13,13 @@ export async function getGameReward(
   data: any,
   context: CallableContext,
 ): Promise<GameReward> {
-  const errorCount = <number>data.errorCount;
   const songId = <string>data.songId;
+  const difficulty = <number>data.difficulty;
+  const speed = <number>data.speed;
+  const errorCount = <number>data.errorCount;
 
   const userId = getUserId(context);
-  console.log(`User ${userId} is getting game reward with songId ${songId}, errorCount ${errorCount}`);
+  console.log(`User ${userId} is getting game reward with songId ${songId}, difficulty ${difficulty}, speed ${speed}, errorCount ${errorCount}`);
   const firestore = firebase.firestore();
   if (
     !(
@@ -50,9 +52,8 @@ export async function getGameReward(
     const song: Song = songSnapshot.data() as Song;
 
     let stars = 0;
-    const tilesCount = song.tilesCount;
+    const tilesCount = song.tilesCount[difficulty];
     const errorPercent = errorCount / tilesCount;
-    const experiences = 0;
     if (errorPercent <= 0.05) {
       stars = 3;
     } else if (errorPercent <= 0.2) {
@@ -62,13 +63,13 @@ export async function getGameReward(
     }
 
     user.playedNotes += tilesCount;
-    user.errors += errorCount;
-    user.playedTime += tilesCount;
+    user.stars += tilesCount - errorCount;
+    user.playedTime += song.duration[speed];
 
     transaction.set(userRef, user);
     const reward: GameReward = {
       stars,
-      experiences,
+      playedNotes: tilesCount,
     };
     console.log(`Reward of the user is ${JSON.stringify(reward)}`);
     return reward;

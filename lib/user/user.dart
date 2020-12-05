@@ -8,7 +8,7 @@ part 'user.g.dart';
 class User {
   String id;
   int playedNotes;
-  int errors;
+  int stars;
   Duration playedTime;
   String instrumentId;
   List<String> notificationTokens;
@@ -17,7 +17,7 @@ class User {
     this.id,
     this.playedNotes,
     this.playedTime,
-    this.errors,
+    this.stars,
     this.instrumentId,
     this.notificationTokens,
   );

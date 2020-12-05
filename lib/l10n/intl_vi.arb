@@ -50,6 +50,8 @@
   "@txt_instrument_title_instruments": {},
   "txt_invite_description": "Xin chào, hãy chơi Hit Notes {input}",
   "@txt_invite_description": {},
+  "txt_joined": "Đã tham gia {input}",
+  "@txt_joined": {},
   "txt_level": "Cấp {input}",
   "@txt_level": {},
   "txt_medium": "Trung bình",
@@ -71,5 +73,7 @@
   "txt_too_late": "Hơi muộn",
   "@txt_too_late": {},
   "txt_too_many_fingers": "Quá nhiều ngón tay",
-  "@txt_too_many_fingers": {}
+  "@txt_too_many_fingers": {},
+  "txt_using": "Sử dụng {input}",
+  "@txt_using": {}
 }

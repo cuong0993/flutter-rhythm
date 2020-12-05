@@ -9,4 +9,3 @@ class GameConfigState extends Equatable {
   @override
   List<Object> get props => [difficulty, speed];
 }
-

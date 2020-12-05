@@ -25,7 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(input) => "Xin chào, hãy chơi Hit Notes ${input}";
 
-  static m3(input) => "Cấp ${input}";
+  static m3(input) => "Đã tham gia ${input}";
+
+  static m4(input) => "Cấp ${input}";
+
+  static m5(input) => "Sử dụng ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -54,7 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("Đang lấy phần thưởng…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("Nhạc cụ"),
     "txt_invite_description" : m2,
-    "txt_level" : m3,
+    "txt_joined" : m3,
+    "txt_level" : m4,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("Trung bình"),
     "txt_normal" : MessageLookupByLibrary.simpleMessage("Bình thường"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("Tài khoản"),
@@ -64,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_start" : MessageLookupByLibrary.simpleMessage("Bắt đầu"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("Hơi sớm"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("Hơi muộn"),
-    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("Quá nhiều ngón tay")
+    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("Quá nhiều ngón tay"),
+    "txt_using" : m5
   };
 }

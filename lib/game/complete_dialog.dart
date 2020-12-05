@@ -48,7 +48,7 @@ class CompleteDialog extends StatelessWidget {
                       children: [
                         Image(image: AssetImage('assets/images/img_note.png')),
                         SizedBox(width: 8),
-                        Text(_gameReward.experiences.toString())
+                        Text(_gameReward.playedNotes.toString())
                       ],
                     ),
                   ],

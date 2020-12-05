@@ -25,7 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(input) => "Hit Notes 을 ${input} 해봐요!";
 
-  static m3(input) => "레벨 ${input}";
+  static m3(input) => "가입한 ${input}";
+
+  static m4(input) => "레벨 ${input}";
+
+  static m5(input) => "사용 ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -54,7 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("보상받기…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("악기"),
     "txt_invite_description" : m2,
-    "txt_level" : m3,
+    "txt_joined" : m3,
+    "txt_level" : m4,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("미디엄"),
     "txt_normal" : MessageLookupByLibrary.simpleMessage("일반"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("계정"),
@@ -64,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_start" : MessageLookupByLibrary.simpleMessage("시작"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("너무 일찍"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("너무 늦음"),
-    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("손가락이 너무 많음")
+    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("손가락이 너무 많음"),
+    "txt_using" : m5
   };
 }

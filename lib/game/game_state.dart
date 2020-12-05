@@ -14,7 +14,7 @@ class GameLoading extends GameState {}
 class GameStarted extends GameState {
   final List<Tile> tiles;
   final double speedPixelsPerSecond;
-  final double gameDuration;
+  final int gameDuration;
 
   GameStarted(this.tiles, this.speedPixelsPerSecond, this.gameDuration);
 
@@ -26,7 +26,7 @@ class GameUpdated extends GameState {
   final int tilesCount;
   final String songName;
   final double time;
-  final double maxTime;
+  final int maxTime;
 
   GameUpdated(this.tilesCount, this.songName, this.time, this.maxTime);
 

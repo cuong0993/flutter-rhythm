@@ -23,13 +23,15 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   String _songId;
   double _time = 0;
 
-  double _maxTime;
+  int _maxTime;
   int _tilesCount = 0;
   double _speedDpsPerSecond;
   List<TileChunk> _tileChunks;
   int _unitDuration;
   var _errorCount = 0;
   var _numberTileColumn = 0;
+  var _difficulty = 0;
+  var _speed = 0;
 
   final _pauseEventController = StreamController<bool>();
 
@@ -73,6 +75,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
           countDurationToPrevious.entries.toList()
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
       _unitDuration = sortCountDurationToPrevious.keys.last;
+      _difficulty = event.difficulty;
       if (event.difficulty == 0) {
         _numberTileColumn = 2;
       } else if (event.difficulty == 1) {
@@ -80,6 +83,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       } else {
         _numberTileColumn = 4;
       }
+      _speed = event.speed;
       var bpm = 0;
       if (event.speed == 0) {
         bpm = (song.bpm * 0.75).toInt();
@@ -92,8 +96,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final tick2Second = tickToSecond(midiFile.header.ticksPerBeat, bpm);
       final speedDpsPerTick = UNIT_DURATION_HEIGHT / _unitDuration;
       _speedDpsPerSecond = speedDpsPerTick / tick2Second;
-      final gameDuration = (0.0 - tiles.last.initialY) / _speedDpsPerSecond;
-
+      final gameDuration = (0.5 + (0.0 - tiles.last.initialY) / _speedDpsPerSecond).toInt();
       _songName = song.title;
       _songId = song.id;
       _maxTime = gameDuration;
@@ -130,9 +133,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     } else if (event is CompleteGame) {
       await Future.delayed(Duration(milliseconds: 500));
       yield LoadingGift();
-      final response = await FirebaseFunctions.instance
-          .httpsCallable('getGameReward')
-          .call({'songId': _songId, 'errorCount': _errorCount});
+      final response =
+          await FirebaseFunctions.instance.httpsCallable('getGameReward').call({
+        'songId': _songId,
+        'difficulty': _difficulty,
+        'speed': _speed,
+        'errorCount': _errorCount,
+      });
       final gameReward =
           GameReward.fromJson(Map<String, dynamic>.from(response.data));
       _completeEventController.add(gameReward);

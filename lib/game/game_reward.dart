@@ -5,11 +5,11 @@ part 'game_reward.g.dart';
 @JsonSerializable(explicitToJson: true)
 class GameReward {
   int stars;
-  int experiences;
+  int playedNotes;
 
   GameReward(
     this.stars,
-    this.experiences,
+    this.playedNotes,
   );
 
   factory GameReward.fromJson(Map<String, dynamic> json) =>

@@ -25,7 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(input) => "你好，来玩hittick ${input}";
 
-  static m3(input) => "级 ${input}";
+  static m3(input) => "已加入 ${input}";
+
+  static m4(input) => "级 ${input}";
+
+  static m5(input) => "使用 ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -54,7 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("在拿礼物…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("乐器"),
     "txt_invite_description" : m2,
-    "txt_level" : m3,
+    "txt_joined" : m3,
+    "txt_level" : m4,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("中"),
     "txt_normal" : MessageLookupByLibrary.simpleMessage("普通"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("账户"),
@@ -64,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_start" : MessageLookupByLibrary.simpleMessage("开始"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("太早了"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("太晚了"),
-    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("手指太多")
+    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("手指太多"),
+    "txt_using" : m5
   };
 }

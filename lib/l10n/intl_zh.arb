@@ -50,6 +50,8 @@
   "@txt_instrument_title_instruments": {},
   "txt_invite_description": "你好，来玩hittick {input}",
   "@txt_invite_description": {},
+  "txt_joined": "已加入 {input}",
+  "@txt_joined": {},
   "txt_level": "级 {input}",
   "@txt_level": {},
   "txt_medium": "中",
@@ -71,5 +73,7 @@
   "txt_too_late": "太晚了",
   "@txt_too_late": {},
   "txt_too_many_fingers": "手指太多",
-  "@txt_too_many_fingers": {}
+  "@txt_too_many_fingers": {},
+  "txt_using": "使用 {input}",
+  "@txt_using": {}
 }

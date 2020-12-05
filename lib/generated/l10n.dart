@@ -285,6 +285,16 @@ class S {
     );
   }
 
+  /// `Joined {input}`
+  String txt_joined(Object input) {
+    return Intl.message(
+      'Joined $input',
+      name: 'txt_joined',
+      desc: '',
+      args: [input],
+    );
+  }
+
   /// `Level {input}`
   String txt_level(Object input) {
     return Intl.message(
@@ -392,6 +402,16 @@ class S {
       name: 'txt_too_many_fingers',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Using {input}`
+  String txt_using(Object input) {
+    return Intl.message(
+      'Using $input',
+      name: 'txt_using',
+      desc: '',
+      args: [input],
     );
   }
 }

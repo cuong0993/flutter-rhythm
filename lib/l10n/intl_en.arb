@@ -50,6 +50,8 @@
   "@txt_instrument_title_instruments": {},
   "txt_invite_description": "Hey, let play Hit Notes {input}",
   "@txt_invite_description": {},
+  "txt_joined": "Joined {input}",
+  "@txt_joined": {},
   "txt_level": "Level {input}",
   "@txt_level": {},
   "txt_medium": "Medium",
@@ -71,5 +73,7 @@
   "txt_too_late": "Too late",
   "@txt_too_late": {},
   "txt_too_many_fingers": "Too many fingers",
-  "@txt_too_many_fingers": {}
+  "@txt_too_many_fingers": {},
+  "txt_using": "Using {input}",
+  "@txt_using": {}
 }

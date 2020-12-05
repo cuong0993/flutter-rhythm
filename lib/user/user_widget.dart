@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../authentication/authentication_bloc.dart';
 import '../authentication/authentication_event.dart';
@@ -57,12 +58,65 @@ class UserWidget extends StatelessWidget {
                                                             72.toPixel()),
                                                   ),
                                                   SizedBox(width: 8),
-                                                  Text(
-                                                    state.user.name,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headline6,
-                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        state.user.name,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .headline5,
+                                                      ),
+                                                      SizedBox(height: 8),
+                                                      Row(
+                                                        children: [
+                                                          Icon(
+                                                            Icons.today,
+                                                            size: 16,
+                                                          ),
+                                                          SizedBox(width: 8),
+                                                          Text(
+                                                            S.of(context).txt_joined(
+                                                                DateFormat
+                                                                        .yMMMd()
+                                                                    .format(state
+                                                                        .user
+                                                                        .creationTime)),
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .subtitle1,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Image(
+                                                            image: AssetImage(
+                                                                'assets/images/img_guitar.png'),
+                                                            width: 16,
+                                                            height: 16,
+                                                          ),
+                                                          SizedBox(width: 8),
+                                                          Text(S
+                                                              .of(context)
+                                                              .txt_using(
+                                                                  Intl.message(
+                                                                '',
+                                                                /* FIXME Localization name of instrument should be taken from server, not from local text resources */
+                                                                name: state
+                                                                    .user
+                                                                    .user
+                                                                    .instrumentId,
+                                                                desc: '',
+                                                                args: [],
+                                                              ))),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  )
                                                 ],
                                               )));
                                     } else {
@@ -98,7 +152,7 @@ class UserWidget extends StatelessWidget {
                                                                     'assets/images/img_google.png')),
                                                             SizedBox(width: 8),
                                                             Text(
-                                                              S
+                                                                S
                                                                     .of(context)
                                                                     .txt_button_sign_in_google,
                                                                 style: Theme.of(
@@ -137,11 +191,10 @@ class UserWidget extends StatelessWidget {
                                                                 S
                                                                     .of(context)
                                                                     .txt_button_sign_in_facebook,
-                                                                style: Theme
-                                                                    .of(context)
+                                                                style: Theme.of(
+                                                                        context)
                                                                     .textTheme
-                                                                    .subtitle1
-                                                            )
+                                                                    .subtitle1)
                                                           ],
                                                         ),
                                                       ),
@@ -149,21 +202,115 @@ class UserWidget extends StatelessWidget {
                                                   ])));
                                     }
                                   }(),
-                     Card(
-                child:Table(
-                                    defaultColumnWidth: FixedColumnWidth(120.0),
-                                    // border: TableBorder.all(
-                                    //     color: Colors.black,
-                                    //     style: BorderStyle.solid,
-                                    //     width: 2),
+                                  Card(
+                                      child: Table(
                                     children: [
-                                      TableRow(children: [Text('Website'),
-                                        Text('Website'),
+                                      TableRow(children: [
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            // if you need this
+                                            side: BorderSide(
+                                              color:
+                                                  Colors.grey.withOpacity(0.2),
+                                              width: 2,
+                                            ),
+                                          ),
+                                          child: Container(
+                                            //color: Colors.white,
+                                            //width: 200,
+                                            //height: 200,
+                                            child: Column(
+                                              children: [
+                                                SizedBox(height: 8),
+                                                Image(
+                                                  image: AssetImage(
+                                                      'assets/images/img_star.png'),
+                                                ),
+                                                SizedBox(height: 8),
+                                                Text(
+                                                    state.user.user.stars
+                                                        .toString(),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .subtitle1),
+                                                SizedBox(height: 8),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            // if you need this
+                                            side: BorderSide(
+                                              color:
+                                                  Colors.grey.withOpacity(0.2),
+                                              width: 2,
+                                            ),
+                                          ),
+                                          child: Container(
+                                            //color: Colors.white,
+                                            // width: 200,
+                                            //height: 200,
+                                            child: Column(
+                                              children: [
+                                                SizedBox(height: 8),
+                                                Image(
+                                                  image: AssetImage(
+                                                      'assets/images/img_note.png'),
+                                                ),
+                                                SizedBox(height: 8),
+                                                Text(
+                                                    state.user.user.playedNotes
+                                                        .toString(),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .subtitle1),
+                                                SizedBox(height: 8),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            // if you need this
+                                            side: BorderSide(
+                                              color:
+                                                  Colors.grey.withOpacity(0.2),
+                                              width: 2,
+                                            ),
+                                          ),
+                                          child: Container(
+                                              //color: Colors.white,
+                                              //width: 200,
+                                              //height: 200,
+                                            child: Column(
+                                              children: [
+                                                SizedBox(height: 8),
+                                                Image(
+                                                  image: AssetImage(
+                                                      'assets/images/img_clock.png'),
+                                                ),
+                                                SizedBox(height: 8),
+                                                Text(
+                                                    state.user.user.playedTime.toString().substring(0, 4)
+                                                        .toString(),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .subtitle1),
+                                                SizedBox(height: 8),
+                                              ],
+                                            ),
+                                              ),
+                                        ),
                                       ]),
-                                      TableRow(children: [Text('Website'),
-                                        Text('Website'),
-                                      ]),
-                                    ],)),
+                                    ],
+                                  )),
                                 ],
                               )
                             ])));

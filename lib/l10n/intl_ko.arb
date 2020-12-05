@@ -50,6 +50,8 @@
   "@txt_instrument_title_instruments": {},
   "txt_invite_description": "Hit Notes 을 {input} 해봐요!",
   "@txt_invite_description": {},
+  "txt_joined": "가입한 {input}",
+  "@txt_joined": {},
   "txt_level": "레벨 {input}",
   "@txt_level": {},
   "txt_medium": "미디엄",
@@ -71,5 +73,7 @@
   "txt_too_late": "너무 늦음",
   "@txt_too_late": {},
   "txt_too_many_fingers": "손가락이 너무 많음",
-  "@txt_too_many_fingers": {}
+  "@txt_too_many_fingers": {},
+  "txt_using": "사용 {input}",
+  "@txt_using": {}
 }

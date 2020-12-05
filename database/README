@@ -1,3 +1,6 @@
 export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-dev.json"; ./backup-firestore.sh
 export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-stage.json"; ./backup-firestore.sh
 export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-prod.json"; ./backup-firestore.sh
+
+# Clear test song for prod
+export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-prod.json"; firestore-clear -n 'songs/Vietnamese_Folk-A_Test_Song' --yes

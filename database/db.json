@@ -833,9 +833,18 @@
         "__collections__": {},
         "artist": "Alan Walker",
         "bpm": 194,
+        "duration": [
+          363436426,
+          272577320,
+          218061856
+        ],
         "id": "Alan_Walker-Alone",
         "imageUrl": "images/AlanWalker.jpg",
-        "tilesCount": 1067,
+        "tilesCount": [
+          740,
+          951,
+          1067
+        ],
         "title": "Alone",
         "url": "songs/uk/Alan_Walker-Alone.mid"
       },
@@ -843,9 +852,18 @@
         "__collections__": {},
         "artist": "Alan Walker",
         "bpm": 89,
+        "duration": [
+          318202247,
+          238651685,
+          190921348
+        ],
         "id": "Alan_Walker-Faded",
         "imageUrl": "images/AlanWalker.jpg",
-        "tilesCount": 882,
+        "tilesCount": [
+          829,
+          865,
+          882
+        ],
         "title": "Faded",
         "url": "songs/uk/Alan_Walker-Faded.mid"
       },
@@ -853,9 +871,18 @@
         "__collections__": {},
         "artist": "Alan Walker",
         "bpm": 128,
+        "duration": [
+          299895833,
+          224921875,
+          179937500
+        ],
         "id": "Alan_Walker-Spectre",
         "imageUrl": "images/AlanWalker.jpg",
-        "tilesCount": 1255,
+        "tilesCount": [
+          1226,
+          1255,
+          1255
+        ],
         "title": "Spectre",
         "url": "songs/uk/Alan_Walker-Spectre.mid"
       },
@@ -863,9 +890,18 @@
         "__collections__": {},
         "artist": "Aram Khachaturian",
         "bpm": 150,
+        "duration": [
+          419466667,
+          314600000,
+          251680000
+        ],
         "id": "Aram_Khachaturian-Masquerade_Waltz",
         "imageUrl": "images/AramKhachaturian.jpg",
-        "tilesCount": 2573,
+        "tilesCount": [
+          1787,
+          2310,
+          2573
+        ],
         "title": "Masquerade Waltz",
         "url": "songs/classic/Aram_Khachaturian-Masquerade_Waltz.mid"
       },
@@ -873,9 +909,18 @@
         "__collections__": {},
         "artist": "Aram Khachaturian",
         "bpm": 150,
+        "duration": [
+          305392593,
+          229044444,
+          183235556
+        ],
         "id": "Aram_Khachaturian-Sabr_Dance",
         "imageUrl": "images/AramKhachaturian.jpg",
-        "tilesCount": 2347,
+        "tilesCount": [
+          1642,
+          2110,
+          2347
+        ],
         "title": "Sabr Dance",
         "url": "songs/classic/Aram_Khachaturian-Sabr_Dance.mid"
       },
@@ -883,9 +928,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 45,
+        "duration": [
+          276691358,
+          207518519,
+          166014815
+        ],
         "id": "Bach-Air_On_The_G_String",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 674,
+        "tilesCount": [
+          650,
+          669,
+          674
+        ],
         "title": "Air On The G String",
         "url": "songs/classic/Bach-Air_On_The_G_String.mid"
       },
@@ -893,9 +947,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 75,
+        "duration": [
+          184355556,
+          138266667,
+          110613333
+        ],
         "id": "Bach-Badinerie",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 1310,
+        "tilesCount": [
+          914,
+          1160,
+          1310
+        ],
         "title": "Badinerie",
         "url": "songs/classic/Bach-Badinerie.mid"
       },
@@ -903,9 +966,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 107,
+        "duration": [
+          150031153,
+          112523364,
+          90018692
+        ],
         "id": "Bach-Bourree_In_E_Minor",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 476,
+        "tilesCount": [
+          472,
+          474,
+          476
+        ],
         "title": "Bourree In E Minor",
         "url": "songs/classic/Bach-Bourree_In_E_Minor.mid"
       },
@@ -913,9 +985,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 69,
+        "duration": [
+          190628019,
+          142971014,
+          114376812
+        ],
         "id": "Bach-Cello_Suite",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 1126,
+        "tilesCount": [
+          1096,
+          1111,
+          1126
+        ],
         "title": "Cello Suite",
         "url": "songs/classic/Bach-Cello_Suite.mid"
       },
@@ -923,9 +1004,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 64,
+        "duration": [
+          276157407,
+          207118056,
+          165694444
+        ],
         "id": "Bach-Joy",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 1018,
+        "tilesCount": [
+          866,
+          993,
+          1018
+        ],
         "title": "Joy",
         "url": "songs/classic/Bach-Joy.mid"
       },
@@ -933,9 +1023,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 60,
+        "duration": [
+          953722222,
+          715291667,
+          572233333
+        ],
         "id": "Bach-Toccata_and_Fugue",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 3942,
+        "tilesCount": [
+          3500,
+          3794,
+          3942
+        ],
         "title": "Toccata and Fugue",
         "url": "songs/classic/Bach-Toccata_and_Fugue.mid"
       },
@@ -943,9 +1042,18 @@
         "__collections__": {},
         "artist": "Bach",
         "bpm": 72,
+        "duration": [
+          147129630,
+          110347222,
+          88277778
+        ],
         "id": "Bach-Well_Tempered_Clavier",
         "imageUrl": "images/Bach.jpg",
-        "tilesCount": 532,
+        "tilesCount": [
+          530,
+          531,
+          532
+        ],
         "title": "Well Tempered Clavier",
         "url": "songs/classic/Bach-Well_Tempered_Clavier.mid"
       },
@@ -953,9 +1061,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 72,
+        "duration": [
+          423148148,
+          317361111,
+          253888889
+        ],
         "id": "Beethoven-Appasionata_Sonate",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 989,
+        "tilesCount": [
+          774,
+          929,
+          989
+        ],
         "title": "Appasionata Sonate",
         "url": "songs/classic/Beethoven-Appasionata_Sonate.mid"
       },
@@ -963,9 +1080,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 53,
+        "duration": [
+          315471698,
+          236603774,
+          189283019
+        ],
         "id": "Beethoven-Fur_Elise",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 1035,
+        "tilesCount": [
+          940,
+          999,
+          1035
+        ],
         "title": "Fur Elise",
         "url": "songs/classic/Beethoven-Fur_Elise.mid"
       },
@@ -973,9 +1099,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 48,
+        "duration": [
+          474320988,
+          355740741,
+          284592593
+        ],
         "id": "Beethoven-Moonlight_Sonata_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 1132,
+        "tilesCount": [
+          959,
+          1065,
+          1132
+        ],
         "title": "Moonlight Sonata Mvt. 1",
         "url": "songs/classic/Beethoven-Moonlight_Sonata_Mvt._1.mid"
       },
@@ -983,9 +1118,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 75,
+        "duration": [
+          1189562963,
+          892172222,
+          713737778
+        ],
         "id": "Beethoven-Moonlight_Sonata_Mvt._3",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 6346,
+        "tilesCount": [
+          5245,
+          5912,
+          6346
+        ],
         "title": "Moonlight Sonata Mvt. 3",
         "url": "songs/classic/Beethoven-Moonlight_Sonata_Mvt._3.mid"
       },
@@ -993,9 +1137,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 75,
+        "duration": [
+          969037037,
+          726777778,
+          581422222
+        ],
         "id": "Beethoven-String_Quartet",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 3803,
+        "tilesCount": [
+          3011,
+          3466,
+          3803
+        ],
         "title": "String Quartet",
         "url": "songs/classic/Beethoven-String_Quartet.mid"
       },
@@ -1003,9 +1156,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 150,
+        "duration": [
+          397037037,
+          297777778,
+          238222222
+        ],
         "id": "Beethoven-Symphony_No._3_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 2264,
+        "tilesCount": [
+          1542,
+          1992,
+          2264
+        ],
         "title": "Symphony No. 3 Mvt. 1",
         "url": "songs/classic/Beethoven-Symphony_No._3_Mvt._1.mid"
       },
@@ -1013,9 +1175,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 149,
+        "duration": [
+          159731544,
+          119798658,
+          95838926
+        ],
         "id": "Beethoven-Symphony_No._5_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 1001,
+        "tilesCount": [
+          695,
+          889,
+          1001
+        ],
         "title": "Symphony No. 5 Mvt. 1",
         "url": "songs/classic/Beethoven-Symphony_No._5_Mvt._1.mid"
       },
@@ -1023,9 +1194,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 149,
+        "duration": [
+          633944817,
+          475458613,
+          380366890
+        ],
         "id": "Beethoven-Symphony_No._5_Mvt._3",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 2932,
+        "tilesCount": [
+          2059,
+          2559,
+          2932
+        ],
         "title": "Symphony No. 5 Mvt. 3",
         "url": "songs/classic/Beethoven-Symphony_No._5_Mvt._3.mid"
       },
@@ -1033,9 +1213,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 75,
+        "duration": [
+          772051852,
+          579038889,
+          463231111
+        ],
         "id": "Beethoven-Symphony_No._6",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 4675,
+        "tilesCount": [
+          3426,
+          4215,
+          4675
+        ],
         "title": "Symphony No. 6",
         "url": "songs/classic/Beethoven-Symphony_No._6.mid"
       },
@@ -1043,9 +1232,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 72,
+        "duration": [
+          668888889,
+          501666667,
+          401333333
+        ],
         "id": "Beethoven-Symphony_No._7_Mvt._2",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 3361,
+        "tilesCount": [
+          2468,
+          3019,
+          3361
+        ],
         "title": "Symphony No. 7 Mvt. 2",
         "url": "songs/classic/Beethoven-Symphony_No._7_Mvt._2.mid"
       },
@@ -1053,9 +1251,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 299,
+        "duration": [
+          2230635452,
+          1672976589,
+          1338381271
+        ],
         "id": "Beethoven-Symphony_No._9_Mvt._2",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 13686,
+        "tilesCount": [
+          8557,
+          11600,
+          13686
+        ],
         "title": "Symphony No. 9 Mvt. 2",
         "url": "songs/classic/Beethoven-Symphony_No._9_Mvt._2.mid"
       },
@@ -1063,9 +1270,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 123,
+        "duration": [
+          169539295,
+          127154472,
+          101723577
+        ],
         "id": "Beethoven-Symphony_No._9_Mvt._4",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 266,
+        "tilesCount": [
+          208,
+          266,
+          266
+        ],
         "title": "Symphony No. 9 Mvt. 4",
         "url": "songs/classic/Beethoven-Symphony_No._9_Mvt._4.mid"
       },
@@ -1073,9 +1289,18 @@
         "__collections__": {},
         "artist": "Beethoven",
         "bpm": 120,
+        "duration": [
+          375166667,
+          281375000,
+          225100000
+        ],
         "id": "Beethoven-Turkish_March",
         "imageUrl": "images/Beethoven.jpg",
-        "tilesCount": 1916,
+        "tilesCount": [
+          1178,
+          1613,
+          1916
+        ],
         "title": "Turkish March",
         "url": "songs/classic/Beethoven-Turkish_March.mid"
       },
@@ -1083,9 +1308,18 @@
         "__collections__": {},
         "artist": "Carl Orff",
         "bpm": 120,
+        "duration": [
+          209111111,
+          156833333,
+          125466667
+        ],
         "id": "Carl_Orff-O_Fortuna",
         "imageUrl": "images/CarlOrff.jpg",
-        "tilesCount": 958,
+        "tilesCount": [
+          835,
+          939,
+          958
+        ],
         "title": "O Fortuna",
         "url": "songs/classic/Carl_Orff-O_Fortuna.mid"
       },
@@ -1093,9 +1327,18 @@
         "__collections__": {},
         "artist": "Chinese Folk",
         "bpm": 75,
+        "duration": [
+          58044444,
+          43533333,
+          34826667
+        ],
         "id": "Chinese_Folk-Jasmine_Flower",
         "imageUrl": "images/ChineseFolk.jpg",
-        "tilesCount": 284,
+        "tilesCount": [
+          284,
+          284,
+          284
+        ],
         "title": "Jasmine Flower",
         "url": "songs/asia/Chinese_Folk-Jasmine_Flower.mid"
       },
@@ -1103,9 +1346,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 34,
+        "duration": [
+          380392157,
+          285294118,
+          228235294
+        ],
         "id": "Chopin-Etude_Op._10_No._3",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 1777,
+        "tilesCount": [
+          1212,
+          1586,
+          1777
+        ],
         "title": "Etude Op. 10 No. 3",
         "url": "songs/classic/Chopin-Etude_Op._10_No._3.mid"
       },
@@ -1113,9 +1365,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 75,
+        "duration": [
+          840700000,
+          630525000,
+          504420000
+        ],
         "id": "Chopin-Fantaisie_Impromptu",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 3067,
+        "tilesCount": [
+          3027,
+          3063,
+          3067
+        ],
         "title": "Fantaisie Impromptu",
         "url": "songs/classic/Chopin-Fantaisie_Impromptu.mid"
       },
@@ -1123,9 +1384,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 50,
+        "duration": [
+          440000000,
+          330000000,
+          264000000
+        ],
         "id": "Chopin-Funeral_March",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 591,
+        "tilesCount": [
+          504,
+          576,
+          591
+        ],
         "title": "Funeral March",
         "url": "songs/classic/Chopin-Funeral_March.mid"
       },
@@ -1133,9 +1403,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 75,
+        "duration": [
+          596414815,
+          447311111,
+          357848889
+        ],
         "id": "Chopin-Heroic_Polonaise",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 3471,
+        "tilesCount": [
+          2723,
+          3265,
+          3471
+        ],
         "title": "Heroic Polonaise",
         "url": "songs/classic/Chopin-Heroic_Polonaise.mid"
       },
@@ -1143,9 +1422,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 150,
+        "duration": [
+          269155556,
+          201866667,
+          161493333
+        ],
         "id": "Chopin-Minute_Waltz",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 1423,
+        "tilesCount": [
+          1121,
+          1323,
+          1423
+        ],
         "title": "Minute Waltz",
         "url": "songs/classic/Chopin-Minute_Waltz.mid"
       },
@@ -1153,9 +1441,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 60,
+        "duration": [
+          734888889,
+          551166667,
+          440933333
+        ],
         "id": "Chopin-Nocturne_Op._9_No._2",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 1286,
+        "tilesCount": [
+          991,
+          1199,
+          1286
+        ],
         "title": "Nocturne Op. 9 No. 2",
         "url": "songs/classic/Chopin-Nocturne_Op._9_No._2.mid"
       },
@@ -1163,9 +1460,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 75,
+        "duration": [
+          365644444,
+          274233333,
+          219386667
+        ],
         "id": "Chopin-Revolutionary_Etude",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 2002,
+        "tilesCount": [
+          1696,
+          1881,
+          2002
+        ],
         "title": "Revolutionary Etude",
         "url": "songs/classic/Chopin-Revolutionary_Etude.mid"
       },
@@ -1173,9 +1479,18 @@
         "__collections__": {},
         "artist": "Chopin",
         "bpm": 120,
+        "duration": [
+          429444444,
+          322083333,
+          257666667
+        ],
         "id": "Chopin-Waltz_Op._64_No._2",
         "imageUrl": "images/Chopin.jpg",
-        "tilesCount": 1856,
+        "tilesCount": [
+          1488,
+          1769,
+          1856
+        ],
         "title": "Waltz Op. 64 No. 2",
         "url": "songs/classic/Chopin-Waltz_Op._64_No._2.mid"
       },
@@ -1183,9 +1498,18 @@
         "__collections__": {},
         "artist": "Deaf Kev",
         "bpm": 100,
+        "duration": [
+          862711111,
+          647033333,
+          517626667
+        ],
         "id": "Deaf_Kev-Invincible",
         "imageUrl": "images/DeafKev.jpg",
-        "tilesCount": 2579,
+        "tilesCount": [
+          1766,
+          2217,
+          2579
+        ],
         "title": "Invincible",
         "url": "songs/uk/Deaf_Kev-Invincible.mid"
       },
@@ -1193,9 +1517,18 @@
         "__collections__": {},
         "artist": "Debussy",
         "bpm": 54,
+        "duration": [
+          486181070,
+          364635802,
+          291708642
+        ],
         "id": "Debussy-Clair_De_Lune",
         "imageUrl": "images/Debussy.jpg",
-        "tilesCount": 1352,
+        "tilesCount": [
+          1092,
+          1263,
+          1352
+        ],
         "title": "Clair De Lune",
         "url": "songs/classic/Debussy-Clair_De_Lune.mid"
       },
@@ -1203,9 +1536,18 @@
         "__collections__": {},
         "artist": "Delibes",
         "bpm": 75,
+        "duration": [
+          163748148,
+          122811111,
+          98248889
+        ],
         "id": "Delibes-Flower_Duet",
         "imageUrl": "images/Delibes.jpg",
-        "tilesCount": 888,
+        "tilesCount": [
+          756,
+          888,
+          888
+        ],
         "title": "Flower Duet",
         "url": "songs/classic/Delibes-Flower_Duet.mid"
       },
@@ -1213,9 +1555,18 @@
         "__collections__": {},
         "artist": "Delibes",
         "bpm": 75,
+        "duration": [
+          170437037,
+          127827778,
+          102262222
+        ],
         "id": "Delibes-Pizzicato",
         "imageUrl": "images/Delibes.jpg",
-        "tilesCount": 821,
+        "tilesCount": [
+          708,
+          774,
+          821
+        ],
         "title": "Pizzicato",
         "url": "songs/classic/Delibes-Pizzicato.mid"
       },
@@ -1223,9 +1574,18 @@
         "__collections__": {},
         "artist": "Different Heaven, EHDE",
         "bpm": 150,
+        "duration": [
+          431111111,
+          323333333,
+          258666667
+        ],
         "id": "Different_Heaven,_EHDE-My_Heart",
         "imageUrl": "images/DifferentHeaven,EHDE.jpg",
-        "tilesCount": 2373,
+        "tilesCount": [
+          1943,
+          2223,
+          2373
+        ],
         "title": "My Heart",
         "url": "songs/uk/Different_Heaven,_EHDE-My_Heart.mid"
       },
@@ -1233,9 +1593,18 @@
         "__collections__": {},
         "artist": "Disfigure",
         "bpm": 130,
+        "duration": [
+          237333333,
+          178000000,
+          142400000
+        ],
         "id": "Disfigure-Blank",
         "imageUrl": "images/Disfigure.jpg",
-        "tilesCount": 1634,
+        "tilesCount": [
+          1228,
+          1476,
+          1634
+        ],
         "title": "Blank",
         "url": "songs/uk/Disfigure-Blank.mid"
       },
@@ -1243,9 +1612,18 @@
         "__collections__": {},
         "artist": "Dmitri Shostakovich",
         "bpm": 170,
+        "duration": [
+          530509804,
+          397882353,
+          318305882
+        ],
         "id": "Dmitri_Shostakovich-Second_Waltz",
         "imageUrl": "images/DmitriShostakovich.jpg",
-        "tilesCount": 2245,
+        "tilesCount": [
+          1415,
+          1936,
+          2245
+        ],
         "title": "Second Waltz",
         "url": "songs/classic/Dmitri_Shostakovich-Second_Waltz.mid"
       },
@@ -1253,9 +1631,18 @@
         "__collections__": {},
         "artist": "Dvorak",
         "bpm": 72,
+        "duration": [
+          181450617,
+          136087963,
+          108870370
+        ],
         "id": "Dvorak-Humoresque_No._7",
         "imageUrl": "images/Dvorak.jpg",
-        "tilesCount": 998,
+        "tilesCount": [
+          751,
+          930,
+          998
+        ],
         "title": "Humoresque No. 7",
         "url": "songs/classic/Dvorak-Humoresque_No._7.mid"
       },
@@ -1263,9 +1650,18 @@
         "__collections__": {},
         "artist": "Dvorak",
         "bpm": 50,
+        "duration": [
+          480044444,
+          360033333,
+          288026667
+        ],
         "id": "Dvorak-Slavonic_Dance_No._2",
         "imageUrl": "images/Dvorak.jpg",
-        "tilesCount": 2521,
+        "tilesCount": [
+          1646,
+          2164,
+          2521
+        ],
         "title": "Slavonic Dance No. 2",
         "url": "songs/classic/Dvorak-Slavonic_Dance_No._2.mid"
       },
@@ -1273,9 +1669,18 @@
         "__collections__": {},
         "artist": "Dvorak",
         "bpm": 100,
+        "duration": [
+          456177778,
+          342133333,
+          273706667
+        ],
         "id": "Dvorak-Symphony_No._9_Mvt._4",
         "imageUrl": "images/Dvorak.jpg",
-        "tilesCount": 1914,
+        "tilesCount": [
+          1389,
+          1726,
+          1914
+        ],
         "title": "Symphony No. 9 Mvt. 4",
         "url": "songs/classic/Dvorak-Symphony_No._9_Mvt._4.mid"
       },
@@ -1283,9 +1688,18 @@
         "__collections__": {},
         "artist": "Edvard Grieg",
         "bpm": 72,
+        "duration": [
+          724938272,
+          543703704,
+          434962963
+        ],
         "id": "Edvard_Grieg-Anitras_Dance",
         "imageUrl": "images/EdvardGrieg.jpg",
-        "tilesCount": 1904,
+        "tilesCount": [
+          1455,
+          1741,
+          1904
+        ],
         "title": "Anitras Dance",
         "url": "songs/classic/Edvard_Grieg-Anitras_Dance.mid"
       },
@@ -1293,9 +1707,18 @@
         "__collections__": {},
         "artist": "Edvard Grieg",
         "bpm": 75,
+        "duration": [
+          114874074,
+          86155556,
+          68924444
+        ],
         "id": "Edvard_Grieg-Morning_Mood",
         "imageUrl": "images/EdvardGrieg.jpg",
-        "tilesCount": 571,
+        "tilesCount": [
+          440,
+          536,
+          571
+        ],
         "title": "Morning Mood",
         "url": "songs/classic/Edvard_Grieg-Morning_Mood.mid"
       },
@@ -1303,9 +1726,18 @@
         "__collections__": {},
         "artist": "Edvard Grieg",
         "bpm": 37,
+        "duration": [
+          637717718,
+          478288288,
+          382630631
+        ],
         "id": "Edvard_Grieg-Piano_Concerto",
         "imageUrl": "images/EdvardGrieg.jpg",
-        "tilesCount": 2411,
+        "tilesCount": [
+          1818,
+          2170,
+          2411
+        ],
         "title": "Piano Concerto",
         "url": "songs/classic/Edvard_Grieg-Piano_Concerto.mid"
       },
@@ -1313,9 +1745,18 @@
         "__collections__": {},
         "artist": "Edward Elgar",
         "bpm": 75,
+        "duration": [
+          686281481,
+          514711111,
+          411768889
+        ],
         "id": "Edward_Elgar-Pomp_And_Circumstance_March",
         "imageUrl": "images/EdwardElgar.jpg",
-        "tilesCount": 3168,
+        "tilesCount": [
+          2299,
+          2845,
+          3168
+        ],
         "title": "Pomp And Circumstance March",
         "url": "songs/classic/Edward_Elgar-Pomp_And_Circumstance_March.mid"
       },
@@ -1323,9 +1764,18 @@
         "__collections__": {},
         "artist": "Elektronomia",
         "bpm": 75,
+        "duration": [
+          332711111,
+          249533333,
+          199626667
+        ],
         "id": "Elektronomia-Sky_High",
         "imageUrl": "images/Elektronomia.jpg",
-        "tilesCount": 1474,
+        "tilesCount": [
+          1183,
+          1362,
+          1474
+        ],
         "title": "Sky High",
         "url": "songs/uk/Elektronomia-Sky_High.mid"
       },
@@ -1333,9 +1783,18 @@
         "__collections__": {},
         "artist": "English Folk",
         "bpm": 72,
+        "duration": [
+          146296296,
+          109722222,
+          87777778
+        ],
         "id": "English_Folk-Greensleeves",
         "imageUrl": "images/EnglishFolk.jpg",
-        "tilesCount": 320,
+        "tilesCount": [
+          304,
+          320,
+          320
+        ],
         "title": "Greensleeves",
         "url": "songs/uk/English_Folk-Greensleeves.mid"
       },
@@ -1343,9 +1802,18 @@
         "__collections__": {},
         "artist": "English Folk",
         "bpm": 120,
+        "duration": [
+          134666667,
+          101000000,
+          80800000
+        ],
         "id": "English_Folk-Twinkle_Twinkle_Little_Star",
         "imageUrl": "images/EnglishFolk.jpg",
-        "tilesCount": 458,
+        "tilesCount": [
+          423,
+          441,
+          458
+        ],
         "title": "Twinkle Twinkle Little Star",
         "url": "songs/uk/English_Folk-Twinkle_Twinkle_Little_Star.mid"
       },
@@ -1353,9 +1821,18 @@
         "__collections__": {},
         "artist": "English Folk",
         "bpm": 120,
+        "duration": [
+          118444444,
+          88833333,
+          71066667
+        ],
         "id": "English_Folk-We_Wish_You_A_Marry_Christmas",
         "imageUrl": "images/EnglishFolk.jpg",
-        "tilesCount": 313,
+        "tilesCount": [
+          166,
+          246,
+          313
+        ],
         "title": "We Wish You A Marry Christmas",
         "url": "songs/uk/English_Folk-We_Wish_You_A_Marry_Christmas.mid"
       },
@@ -1363,9 +1840,18 @@
         "__collections__": {},
         "artist": "Eugen Doga",
         "bpm": 120,
+        "duration": [
+          171555556,
+          128666667,
+          102933333
+        ],
         "id": "Eugen_Doga-My_Sweet_And_Tender_Beast",
         "imageUrl": "images/EugenDoga.jpg",
-        "tilesCount": 901,
+        "tilesCount": [
+          728,
+          831,
+          901
+        ],
         "title": "My Sweet And Tender Beast",
         "url": "songs/classic/Eugen_Doga-My_Sweet_And_Tender_Beast.mid"
       },
@@ -1373,9 +1859,18 @@
         "__collections__": {},
         "artist": "Franz Liszt",
         "bpm": 240,
+        "duration": [
+          313333333,
+          235000000,
+          188000000
+        ],
         "id": "Franz_Liszt-Hungarian_Rhapsody_No._2",
         "imageUrl": "images/FranzLiszt.jpg",
-        "tilesCount": 944,
+        "tilesCount": [
+          786,
+          938,
+          944
+        ],
         "title": "Hungarian Rhapsody No. 2",
         "url": "songs/classic/Franz_Liszt-Hungarian_Rhapsody_No._2.mid"
       },
@@ -1383,9 +1878,18 @@
         "__collections__": {},
         "artist": "George Gershwin",
         "bpm": 80,
+        "duration": [
+          964888889,
+          723666667,
+          578933333
+        ],
         "id": "George_Gershwin-Rhapsody_In_Blue",
         "imageUrl": "images/GeorgeGershwin.jpg",
-        "tilesCount": 2288,
+        "tilesCount": [
+          1637,
+          2015,
+          2288
+        ],
         "title": "Rhapsody In Blue",
         "url": "songs/classic/George_Gershwin-Rhapsody_In_Blue.mid"
       },
@@ -1393,9 +1897,18 @@
         "__collections__": {},
         "artist": "Georges Bizet",
         "bpm": 120,
+        "duration": [
+          114666667,
+          86000000,
+          68800000
+        ],
         "id": "Georges_Bizet-Habanera",
         "imageUrl": "images/GeorgesBizet.jpg",
-        "tilesCount": 526,
+        "tilesCount": [
+          374,
+          477,
+          526
+        ],
         "title": "Habanera",
         "url": "songs/classic/Georges_Bizet-Habanera.mid"
       },
@@ -1403,9 +1916,18 @@
         "__collections__": {},
         "artist": "Georges Bizet",
         "bpm": 75,
+        "duration": [
+          366118519,
+          274588889,
+          219671111
+        ],
         "id": "Georges_Bizet-Les_Toradors",
         "imageUrl": "images/GeorgesBizet.jpg",
-        "tilesCount": 1676,
+        "tilesCount": [
+          1278,
+          1568,
+          1676
+        ],
         "title": "Les Toradors",
         "url": "songs/classic/Georges_Bizet-Les_Toradors.mid"
       },
@@ -1413,9 +1935,18 @@
         "__collections__": {},
         "artist": "Georges Bizet",
         "bpm": 120,
+        "duration": [
+          146537037,
+          109902778,
+          87922222
+        ],
         "id": "Georges_Bizet-March_Of_The_Toreadors",
         "imageUrl": "images/GeorgesBizet.jpg",
-        "tilesCount": 591,
+        "tilesCount": [
+          375,
+          504,
+          591
+        ],
         "title": "March Of The Toreadors",
         "url": "songs/classic/Georges_Bizet-March_Of_The_Toreadors.mid"
       },
@@ -1423,9 +1954,18 @@
         "__collections__": {},
         "artist": "Giacomo Puccini",
         "bpm": 75,
+        "duration": [
+          259992593,
+          194994444,
+          155995556
+        ],
         "id": "Giacomo_Puccini-Madama_Butterfly",
         "imageUrl": "images/GiacomoPuccini.jpg",
-        "tilesCount": 1249,
+        "tilesCount": [
+          979,
+          1147,
+          1249
+        ],
         "title": "Madama Butterfly",
         "url": "songs/classic/Giacomo_Puccini-Madama_Butterfly.mid"
       },
@@ -1433,9 +1973,18 @@
         "__collections__": {},
         "artist": "Giacomo Puccini",
         "bpm": 60,
+        "duration": [
+          703555556,
+          527666667,
+          422133333
+        ],
         "id": "Giacomo_Puccini-Nessun_Dorma",
         "imageUrl": "images/GiacomoPuccini.jpg",
-        "tilesCount": 959,
+        "tilesCount": [
+          702,
+          842,
+          959
+        ],
         "title": "Nessun Dorma",
         "url": "songs/classic/Giacomo_Puccini-Nessun_Dorma.mid"
       },
@@ -1443,9 +1992,18 @@
         "__collections__": {},
         "artist": "Giuseppe Verdi",
         "bpm": 75,
+        "duration": [
+          226844444,
+          170133333,
+          136106667
+        ],
         "id": "Giuseppe_Verdi-Drinking_Song",
         "imageUrl": "images/GiuseppeVerdi.jpg",
-        "tilesCount": 365,
+        "tilesCount": [
+          365,
+          365,
+          365
+        ],
         "title": "Drinking Song",
         "url": "songs/classic/Giuseppe_Verdi-Drinking_Song.mid"
       },
@@ -1453,9 +2011,18 @@
         "__collections__": {},
         "artist": "Giuseppe Verdi",
         "bpm": 100,
+        "duration": [
+          360533333,
+          270400000,
+          216320000
+        ],
         "id": "Giuseppe_Verdi-La_Donna_E_Mobile",
         "imageUrl": "images/GiuseppeVerdi.jpg",
-        "tilesCount": 385,
+        "tilesCount": [
+          343,
+          384,
+          385
+        ],
         "title": "La Donna E Mobile",
         "url": "songs/classic/Giuseppe_Verdi-La_Donna_E_Mobile.mid"
       },
@@ -1463,9 +2030,18 @@
         "__collections__": {},
         "artist": "Giuseppe Verdi",
         "bpm": 109,
+        "duration": [
+          286238532,
+          214678899,
+          171743119
+        ],
         "id": "Giuseppe_Verdi-Triumphal_March",
         "imageUrl": "images/GiuseppeVerdi.jpg",
-        "tilesCount": 357,
+        "tilesCount": [
+          218,
+          301,
+          357
+        ],
         "title": "Triumphal March",
         "url": "songs/classic/Giuseppe_Verdi-Triumphal_March.mid"
       },
@@ -1473,9 +2049,18 @@
         "__collections__": {},
         "artist": "Gounod",
         "bpm": 109,
+        "duration": [
+          167584098,
+          125688073,
+          100550459
+        ],
         "id": "Gounod-Funeral_March_Of_A_Marionette",
         "imageUrl": "images/Gounod.jpg",
-        "tilesCount": 547,
+        "tilesCount": [
+          441,
+          513,
+          547
+        ],
         "title": "Funeral March Of A Marionette",
         "url": "songs/classic/Gounod-Funeral_March_Of_A_Marionette.mid"
       },
@@ -1483,9 +2068,18 @@
         "__collections__": {},
         "artist": "Gustav Mahler",
         "bpm": 48,
+        "duration": [
+          666203704,
+          499652778,
+          399722222
+        ],
         "id": "Gustav_Mahler-Symphony_No._5_Mvt._4",
         "imageUrl": "images/GustavMahler.jpg",
-        "tilesCount": 796,
+        "tilesCount": [
+          648,
+          750,
+          796
+        ],
         "title": "Symphony No. 5 Mvt. 4",
         "url": "songs/classic/Gustav_Mahler-Symphony_No._5_Mvt._4.mid"
       },
@@ -1493,9 +2087,18 @@
         "__collections__": {},
         "artist": "Handel",
         "bpm": 74,
+        "duration": [
+          384234234,
+          288175676,
+          230540541
+        ],
         "id": "Handel-Arrival_Of_The_Queen_Of_Sheba",
         "imageUrl": "images/Handel.jpg",
-        "tilesCount": 1832,
+        "tilesCount": [
+          1671,
+          1831,
+          1832
+        ],
         "title": "Arrival Of The Queen Of Sheba",
         "url": "songs/classic/Handel-Arrival_Of_The_Queen_Of_Sheba.mid"
       },
@@ -1503,19 +2106,37 @@
         "__collections__": {},
         "artist": "Handel",
         "bpm": 104,
+        "duration": [
+          422820513,
+          317115385,
+          253692308
+        ],
         "id": "Handel-Hallelujah_Chorus",
         "imageUrl": "images/Handel.jpg",
-        "tilesCount": 1934,
+        "tilesCount": [
+          1184,
+          1603,
+          1934
+        ],
         "title": "Hallelujah Chorus",
         "url": "songs/classic/Handel-Hallelujah_Chorus.mid"
       },
       "Handel-La_Rejouissance": {
         "__collections__": {},
         "artist": "Handel",
-        "bpm": 75,
+        "bpm": 120,
+        "duration": [
+          169555556,
+          127166667,
+          101733333
+        ],
         "id": "Handel-La_Rejouissance",
         "imageUrl": "images/Handel.jpg",
-        "tilesCount": 284,
+        "tilesCount": [
+          284,
+          284,
+          284
+        ],
         "title": "La Rejouissance",
         "url": "songs/classic/Handel-La_Rejouissance.mid"
       },
@@ -1523,9 +2144,18 @@
         "__collections__": {},
         "artist": "Handel",
         "bpm": 55,
+        "duration": [
+          552727273,
+          414545455,
+          331636364
+        ],
         "id": "Handel-Ombra_Mai_Fu",
         "imageUrl": "images/Handel.jpg",
-        "tilesCount": 451,
+        "tilesCount": [
+          274,
+          383,
+          451
+        ],
         "title": "Ombra Mai Fu",
         "url": "songs/classic/Handel-Ombra_Mai_Fu.mid"
       },
@@ -1533,9 +2163,18 @@
         "__collections__": {},
         "artist": "Handel",
         "bpm": 120,
+        "duration": [
+          195111111,
+          146333333,
+          117066667
+        ],
         "id": "Handel-Sarabande",
         "imageUrl": "images/Handel.jpg",
-        "tilesCount": 502,
+        "tilesCount": [
+          384,
+          461,
+          502
+        ],
         "title": "Sarabande",
         "url": "songs/classic/Handel-Sarabande.mid"
       },
@@ -1543,9 +2182,18 @@
         "__collections__": {},
         "artist": "Handel",
         "bpm": 72,
+        "duration": [
+          53518519,
+          40138889,
+          32111111
+        ],
         "id": "Handel-Zadok_The_Priest",
         "imageUrl": "images/Handel.jpg",
-        "tilesCount": 459,
+        "tilesCount": [
+          281,
+          370,
+          459
+        ],
         "title": "Zadok The Priest",
         "url": "songs/classic/Handel-Zadok_The_Priest.mid"
       },
@@ -1553,9 +2201,18 @@
         "__collections__": {},
         "artist": "Haydn",
         "bpm": 150,
+        "duration": [
+          197422222,
+          148066667,
+          118453333
+        ],
         "id": "Haydn-The_Nutcracker_-_Russian_Dance",
         "imageUrl": "images/Haydn.jpg",
-        "tilesCount": 1212,
+        "tilesCount": [
+          738,
+          1017,
+          1212
+        ],
         "title": "The Nutcracker - Russian Dance",
         "url": "songs/classic/Haydn-The_Nutcracker_-_Russian_Dance.mid"
       },
@@ -1563,9 +2220,18 @@
         "__collections__": {},
         "artist": "Haydn",
         "bpm": 120,
+        "duration": [
+          771444444,
+          578583333,
+          462866667
+        ],
         "id": "Haydn-Trumpet_Concerto",
         "imageUrl": "images/Haydn.jpg",
-        "tilesCount": 3328,
+        "tilesCount": [
+          2375,
+          2973,
+          3328
+        ],
         "title": "Trumpet Concerto",
         "url": "songs/classic/Haydn-Trumpet_Concerto.mid"
       },
@@ -1573,9 +2239,18 @@
         "__collections__": {},
         "artist": "Jacques Offenbach",
         "bpm": 80,
+        "duration": [
+          565333333,
+          424000000,
+          339200000
+        ],
         "id": "Jacques_Offenbach-Barcarolle",
         "imageUrl": "images/JacquesOffenbach.jpg",
-        "tilesCount": 912,
+        "tilesCount": [
+          823,
+          896,
+          912
+        ],
         "title": "Barcarolle",
         "url": "songs/classic/Jacques_Offenbach-Barcarolle.mid"
       },
@@ -1583,9 +2258,18 @@
         "__collections__": {},
         "artist": "Jacques Offenbach",
         "bpm": 145,
+        "duration": [
+          173977011,
+          130482759,
+          104386207
+        ],
         "id": "Jacques_Offenbach-Orpheus_In_The_Underworld",
         "imageUrl": "images/JacquesOffenbach.jpg",
-        "tilesCount": 1780,
+        "tilesCount": [
+          996,
+          1454,
+          1780
+        ],
         "title": "Orpheus In The Underworld",
         "url": "songs/classic/Jacques_Offenbach-Orpheus_In_The_Underworld.mid"
       },
@@ -1593,9 +2277,18 @@
         "__collections__": {},
         "artist": "Janji",
         "bpm": 120,
+        "duration": [
+          291222222,
+          218416667,
+          174733333
+        ],
         "id": "Janji-Heroes_Tonight",
         "imageUrl": "images/Janji.jpg",
-        "tilesCount": 1420,
+        "tilesCount": [
+          1064,
+          1311,
+          1420
+        ],
         "title": "Heroes Tonight",
         "url": "songs/uk/Janji-Heroes_Tonight.mid"
       },
@@ -1603,9 +2296,18 @@
         "__collections__": {},
         "artist": "Japanese Folk",
         "bpm": 120,
+        "duration": [
+          73111111,
+          54833333,
+          43866667
+        ],
         "id": "Japanese_Folk-Sakura_Sakura",
         "imageUrl": "images/JapaneseFolk.jpg",
-        "tilesCount": 240,
+        "tilesCount": [
+          222,
+          240,
+          240
+        ],
         "title": "Sakura Sakura",
         "url": "songs/asia/Japanese_Folk-Sakura_Sakura.mid"
       },
@@ -1613,9 +2315,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 115,
+        "duration": [
+          1082579710,
+          811934783,
+          649547826
+        ],
         "id": "Johann_Strauss-Blue_Danube_Waltz",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 4413,
+        "tilesCount": [
+          3035,
+          3934,
+          4413
+        ],
         "title": "Blue Danube Waltz",
         "url": "songs/classic/Johann_Strauss-Blue_Danube_Waltz.mid"
       },
@@ -1623,9 +2334,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 150,
+        "duration": [
+          981155556,
+          735866667,
+          588693333
+        ],
         "id": "Johann_Strauss-Die_Fledermaus",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 4686,
+        "tilesCount": [
+          3633,
+          4355,
+          4686
+        ],
         "title": "Die Fledermaus",
         "url": "songs/classic/Johann_Strauss-Die_Fledermaus.mid"
       },
@@ -1633,9 +2353,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 120,
+        "duration": [
+          178444444,
+          133833333,
+          107066667
+        ],
         "id": "Johann_Strauss-Emperor_Waltz",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 272,
+        "tilesCount": [
+          257,
+          270,
+          272
+        ],
         "title": "Emperor Waltz",
         "url": "songs/classic/Johann_Strauss-Emperor_Waltz.mid"
       },
@@ -1643,9 +2372,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 200,
+        "duration": [
+          850933333,
+          638200000,
+          510560000
+        ],
         "id": "Johann_Strauss-Radetzky_March",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 1649,
+        "tilesCount": [
+          1201,
+          1457,
+          1649
+        ],
         "title": "Radetzky March",
         "url": "songs/classic/Johann_Strauss-Radetzky_March.mid"
       },
@@ -1653,9 +2391,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 150,
+        "duration": [
+          268503704,
+          201377778,
+          161102222
+        ],
         "id": "Johann_Strauss-Tritsch_Tratsch_Polka",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 1418,
+        "tilesCount": [
+          1128,
+          1343,
+          1418
+        ],
         "title": "Tritsch Tratsch Polka",
         "url": "songs/classic/Johann_Strauss-Tritsch_Tratsch_Polka.mid"
       },
@@ -1663,9 +2410,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 149,
+        "duration": [
+          1196420582,
+          897315436,
+          717852349
+        ],
         "id": "Johann_Strauss-Voices_Of_Spring",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 4875,
+        "tilesCount": [
+          3661,
+          4507,
+          4875
+        ],
         "title": "Voices Of Spring",
         "url": "songs/classic/Johann_Strauss-Voices_Of_Spring.mid"
       },
@@ -1673,9 +2429,18 @@
         "__collections__": {},
         "artist": "Johann Strauss",
         "bpm": 120,
+        "duration": [
+          180444444,
+          135333333,
+          108266667
+        ],
         "id": "Johann_Strauss-Wiener_Blut",
         "imageUrl": "images/JohannStrauss.jpg",
-        "tilesCount": 370,
+        "tilesCount": [
+          370,
+          370,
+          370
+        ],
         "title": "Wiener Blut",
         "url": "songs/classic/Johann_Strauss-Wiener_Blut.mid"
       },
@@ -1683,9 +2448,18 @@
         "__collections__": {},
         "artist": "Johannes Brahms",
         "bpm": 130,
+        "duration": [
+          296102564,
+          222076923,
+          177661538
+        ],
         "id": "Johannes_Brahms-Hungarian_Dance_No_5",
         "imageUrl": "images/JohannesBrahms.jpg",
-        "tilesCount": 1621,
+        "tilesCount": [
+          1118,
+          1450,
+          1621
+        ],
         "title": "Hungarian Dance No 5",
         "url": "songs/classic/Johannes_Brahms-Hungarian_Dance_No_5.mid"
       },
@@ -1693,9 +2467,18 @@
         "__collections__": {},
         "artist": "Johannes Brahms",
         "bpm": 80,
+        "duration": [
+          563000000,
+          422250000,
+          337800000
+        ],
         "id": "Johannes_Brahms-Hungarian_Dance_No_6",
         "imageUrl": "images/JohannesBrahms.jpg",
-        "tilesCount": 2198,
+        "tilesCount": [
+          1362,
+          1846,
+          2198
+        ],
         "title": "Hungarian Dance No 6",
         "url": "songs/classic/Johannes_Brahms-Hungarian_Dance_No_6.mid"
       },
@@ -1703,9 +2486,18 @@
         "__collections__": {},
         "artist": "John Philip Sousa",
         "bpm": 150,
+        "duration": [
+          348918519,
+          261688889,
+          209351111
+        ],
         "id": "John_Philip_Sousa-Liberty_Bell",
         "imageUrl": "images/JohnPhilipSousa.jpg",
-        "tilesCount": 2740,
+        "tilesCount": [
+          1724,
+          2347,
+          2740
+        ],
         "title": "Liberty Bell",
         "url": "songs/classic/John_Philip_Sousa-Liberty_Bell.mid"
       },
@@ -1713,9 +2505,18 @@
         "__collections__": {},
         "artist": "John Philip Sousa",
         "bpm": 149,
+        "duration": [
+          216435496,
+          162326622,
+          129861298
+        ],
         "id": "John_Philip_Sousa-Semper_Fidelis",
         "imageUrl": "images/JohnPhilipSousa.jpg",
-        "tilesCount": 1672,
+        "tilesCount": [
+          1065,
+          1418,
+          1672
+        ],
         "title": "Semper Fidelis",
         "url": "songs/classic/John_Philip_Sousa-Semper_Fidelis.mid"
       },
@@ -1723,9 +2524,18 @@
         "__collections__": {},
         "artist": "John Philip Sousa",
         "bpm": 240,
+        "duration": [
+          480888889,
+          360666667,
+          288533333
+        ],
         "id": "John_Philip_Sousa-Stars_And_Stripes_Forever",
         "imageUrl": "images/JohnPhilipSousa.jpg",
-        "tilesCount": 2402,
+        "tilesCount": [
+          1687,
+          2205,
+          2402
+        ],
         "title": "Stars And Stripes Forever",
         "url": "songs/classic/John_Philip_Sousa-Stars_And_Stripes_Forever.mid"
       },
@@ -1733,9 +2543,18 @@
         "__collections__": {},
         "artist": "Julius Fucik",
         "bpm": 200,
+        "duration": [
+          1730933333,
+          1298200000,
+          1038560000
+        ],
         "id": "Julius_Fucik-Entry_Of_The_Gladiators",
         "imageUrl": "images/JuliusFucik.jpg",
-        "tilesCount": 2788,
+        "tilesCount": [
+          1933,
+          2507,
+          2788
+        ],
         "title": "Entry Of The Gladiators",
         "url": "songs/classic/Julius_Fucik-Entry_Of_The_Gladiators.mid"
       },
@@ -1743,9 +2562,18 @@
         "__collections__": {},
         "artist": "Juventino Rosas",
         "bpm": 120,
+        "duration": [
+          765777778,
+          574333333,
+          459466667
+        ],
         "id": "Juventino_Rosas-Over_The_Waves",
         "imageUrl": "images/JuventinoRosas.jpg",
-        "tilesCount": 2152,
+        "tilesCount": [
+          1750,
+          2124,
+          2152
+        ],
         "title": "Over The Waves",
         "url": "songs/classic/Juventino_Rosas-Over_The_Waves.mid"
       },
@@ -1753,9 +2581,18 @@
         "__collections__": {},
         "artist": "Karl Jenkins",
         "bpm": 75,
+        "duration": [
+          323644444,
+          242733333,
+          194186667
+        ],
         "id": "Karl_Jenkins-Palladio",
         "imageUrl": "images/KarlJenkins.jpg",
-        "tilesCount": 2635,
+        "tilesCount": [
+          1778,
+          2264,
+          2635
+        ],
         "title": "Palladio",
         "url": "songs/classic/Karl_Jenkins-Palladio.mid"
       },
@@ -1763,9 +2600,18 @@
         "__collections__": {},
         "artist": "Ketelbey",
         "bpm": 89,
+        "duration": [
+          1234019975,
+          925514981,
+          740411985
+        ],
         "id": "Ketelbey-In_A_Persian_Market",
         "imageUrl": "images/Ketelbey.jpg",
-        "tilesCount": 2883,
+        "tilesCount": [
+          2175,
+          2611,
+          2883
+        ],
         "title": "In A Persian Market",
         "url": "songs/classic/Ketelbey-In_A_Persian_Market.mid"
       },
@@ -1773,9 +2619,18 @@
         "__collections__": {},
         "artist": "Korean Folk",
         "bpm": 80,
+        "duration": [
+          142666667,
+          107000000,
+          85600000
+        ],
         "id": "Korean_Folk-Arirang",
         "imageUrl": "images/KoreanFolk.jpg",
-        "tilesCount": 408,
+        "tilesCount": [
+          408,
+          408,
+          408
+        ],
         "title": "Arirang",
         "url": "songs/asia/Korean_Folk-Arirang.mid"
       },
@@ -1783,9 +2638,18 @@
         "__collections__": {},
         "artist": "Luigi Denza",
         "bpm": 150,
+        "duration": [
+          119911111,
+          89933333,
+          71946667
+        ],
         "id": "Luigi_Denza-Funiculi_Funicula",
         "imageUrl": "images/LuigiDenza.jpg",
-        "tilesCount": 244,
+        "tilesCount": [
+          164,
+          216,
+          244
+        ],
         "title": "Funiculi Funicula",
         "url": "songs/classic/Luigi_Denza-Funiculi_Funicula.mid"
       },
@@ -1793,9 +2657,18 @@
         "__collections__": {},
         "artist": "Mendelssohn Bartholdy",
         "bpm": 37,
+        "duration": [
+          344009009,
+          258006757,
+          206405405
+        ],
         "id": "Mendelssohn_Bartholdy-Wedding_March",
         "imageUrl": "images/MendelssohnBartholdy.jpg",
-        "tilesCount": 559,
+        "tilesCount": [
+          414,
+          515,
+          559
+        ],
         "title": "Wedding March",
         "url": "songs/classic/Mendelssohn_Bartholdy-Wedding_March.mid"
       },
@@ -1803,9 +2676,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 140,
+        "duration": [
+          326619048,
+          244964286,
+          195971429
+        ],
         "id": "Mozart-Aria_Queen_Of_The_Night",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 1311,
+        "tilesCount": [
+          1166,
+          1296,
+          1311
+        ],
         "title": "Aria Queen Of The Night",
         "url": "songs/classic/Mozart-Aria_Queen_Of_The_Night.mid"
       },
@@ -1813,9 +2695,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 150,
+        "duration": [
+          211822222,
+          158866667,
+          127093333
+        ],
         "id": "Mozart-Eine_Kleine_Nachtmusik",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 1155,
+        "tilesCount": [
+          840,
+          1074,
+          1155
+        ],
         "title": "Eine Kleine Nachtmusik",
         "url": "songs/classic/Mozart-Eine_Kleine_Nachtmusik.mid"
       },
@@ -1823,9 +2714,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 120,
+        "duration": [
+          117111111,
+          87833333,
+          70266667
+        ],
         "id": "Mozart-Lacrimosa",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 679,
+        "tilesCount": [
+          491,
+          603,
+          679
+        ],
         "title": "Lacrimosa",
         "url": "songs/classic/Mozart-Lacrimosa.mid"
       },
@@ -1833,9 +2733,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 150,
+        "duration": [
+          661511111,
+          496133333,
+          396906667
+        ],
         "id": "Mozart-Marriage_Of_Figaro",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 3506,
+        "tilesCount": [
+          2473,
+          3107,
+          3506
+        ],
         "title": "Marriage Of Figaro",
         "url": "songs/classic/Mozart-Marriage_Of_Figaro.mid"
       },
@@ -1843,9 +2752,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 64,
+        "duration": [
+          219583333,
+          164687500,
+          131750000
+        ],
         "id": "Mozart-Requiem",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 679,
+        "tilesCount": [
+          491,
+          603,
+          679
+        ],
         "title": "Requiem",
         "url": "songs/classic/Mozart-Requiem.mid"
       },
@@ -1853,9 +2771,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 75,
+        "duration": [
+          571333333,
+          428500000,
+          342800000
+        ],
         "id": "Mozart-Rondo_Alla_Turca",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 2823,
+        "tilesCount": [
+          2344,
+          2785,
+          2823
+        ],
         "title": "Rondo Alla Turca",
         "url": "songs/classic/Mozart-Rondo_Alla_Turca.mid"
       },
@@ -1863,9 +2790,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 150,
+        "duration": [
+          854844444,
+          641133333,
+          512906667
+        ],
         "id": "Mozart-Symphony_No._25",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 4551,
+        "tilesCount": [
+          3537,
+          4311,
+          4551
+        ],
         "title": "Symphony No. 25",
         "url": "songs/classic/Mozart-Symphony_No._25.mid"
       },
@@ -1873,9 +2809,18 @@
         "__collections__": {},
         "artist": "Mozart",
         "bpm": 149,
+        "duration": [
+          442953020,
+          332214765,
+          265771812
+        ],
         "id": "Mozart-Symphony_No._40_in_G",
         "imageUrl": "images/Mozart.jpg",
-        "tilesCount": 2480,
+        "tilesCount": [
+          2074,
+          2394,
+          2480
+        ],
         "title": "Symphony No. 40 in G",
         "url": "songs/classic/Mozart-Symphony_No._40_in_G.mid"
       },
@@ -1883,9 +2828,18 @@
         "__collections__": {},
         "artist": "Paganini",
         "bpm": 75,
+        "duration": [
+          237474074,
+          178105556,
+          142484444
+        ],
         "id": "Paganini-Caprice_No._24",
         "imageUrl": "images/Paganini.jpg",
-        "tilesCount": 1238,
+        "tilesCount": [
+          961,
+          1168,
+          1238
+        ],
         "title": "Caprice No. 24",
         "url": "songs/classic/Paganini-Caprice_No._24.mid"
       },
@@ -1893,9 +2847,18 @@
         "__collections__": {},
         "artist": "Ponchielli",
         "bpm": 149,
+        "duration": [
+          300134228,
+          225100671,
+          180080537
+        ],
         "id": "Ponchielli-Dance_Of_The_Hours",
         "imageUrl": "images/Ponchielli.jpg",
-        "tilesCount": 1770,
+        "tilesCount": [
+          1251,
+          1605,
+          1770
+        ],
         "title": "Dance Of The Hours",
         "url": "songs/classic/Ponchielli-Dance_Of_The_Hours.mid"
       },
@@ -1903,9 +2866,18 @@
         "__collections__": {},
         "artist": "Purcell",
         "bpm": 75,
+        "duration": [
+          136977778,
+          102733333,
+          82186667
+        ],
         "id": "Purcell-Funeral_Of_Queen_Mary",
         "imageUrl": "images/Purcell.jpg",
-        "tilesCount": 207,
+        "tilesCount": [
+          150,
+          179,
+          207
+        ],
         "title": "Funeral Of Queen Mary",
         "url": "songs/classic/Purcell-Funeral_Of_Queen_Mary.mid"
       },
@@ -1913,9 +2885,18 @@
         "__collections__": {},
         "artist": "Rachmaninoff",
         "bpm": 40,
+        "duration": [
+          495851852,
+          371888889,
+          297511111
+        ],
         "id": "Rachmaninoff-Prelude_In_C_Sharp_Minor",
         "imageUrl": "images/Rachmaninoff.jpg",
-        "tilesCount": 1346,
+        "tilesCount": [
+          932,
+          1197,
+          1346
+        ],
         "title": "Prelude In C Sharp Minor",
         "url": "songs/classic/Rachmaninoff-Prelude_In_C_Sharp_Minor.mid"
       },
@@ -1923,9 +2904,18 @@
         "__collections__": {},
         "artist": "Rachmaninoff",
         "bpm": 60,
+        "duration": [
+          218641975,
+          163981481,
+          131185185
+        ],
         "id": "Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini",
         "imageUrl": "images/Rachmaninoff.jpg",
-        "tilesCount": 961,
+        "tilesCount": [
+          652,
+          831,
+          961
+        ],
         "title": "Rhapsody On A Theme Of Paganini",
         "url": "songs/classic/Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini.mid"
       },
@@ -1933,9 +2923,18 @@
         "__collections__": {},
         "artist": "Respighi",
         "bpm": 120,
+        "duration": [
+          105888889,
+          79416667,
+          63533333
+        ],
         "id": "Respighi-Pines_Of_The_Appian_Way",
         "imageUrl": "images/Respighi.jpg",
-        "tilesCount": 385,
+        "tilesCount": [
+          317,
+          366,
+          385
+        ],
         "title": "Pines Of The Appian Way",
         "url": "songs/classic/Respighi-Pines_Of_The_Appian_Way.mid"
       },
@@ -1943,9 +2942,18 @@
         "__collections__": {},
         "artist": "Richard Wagner",
         "bpm": 37,
+        "duration": [
+          707042042,
+          530281532,
+          424225225
+        ],
         "id": "Richard_Wagner-Tristan_And_Isolde",
         "imageUrl": "images/RichardWagner.jpg",
-        "tilesCount": 2943,
+        "tilesCount": [
+          2480,
+          2814,
+          2943
+        ],
         "title": "Tristan And Isolde",
         "url": "songs/classic/Richard_Wagner-Tristan_And_Isolde.mid"
       },
@@ -1953,9 +2961,18 @@
         "__collections__": {},
         "artist": "Ricketts",
         "bpm": 207,
+        "duration": [
+          819838969,
+          614879227,
+          491903382
+        ],
         "id": "Ricketts-Colonel_Bogey_March",
         "imageUrl": "images/Ricketts.jpg",
-        "tilesCount": 3016,
+        "tilesCount": [
+          2081,
+          2675,
+          3016
+        ],
         "title": "Colonel Bogey March",
         "url": "songs/classic/Ricketts-Colonel_Bogey_March.mid"
       },
@@ -1963,9 +2980,18 @@
         "__collections__": {},
         "artist": "Rimsky Korsakov",
         "bpm": 75,
+        "duration": [
+          220888889,
+          165666667,
+          132533333
+        ],
         "id": "Rimsky_Korsakov-Flight_Of_The_Bumblebee",
         "imageUrl": "images/RimskyKorsakov.jpg",
-        "tilesCount": 1125,
+        "tilesCount": [
+          981,
+          1069,
+          1125
+        ],
         "title": "Flight Of The Bumblebee",
         "url": "songs/classic/Rimsky_Korsakov-Flight_Of_The_Bumblebee.mid"
       },
@@ -1973,9 +2999,18 @@
         "__collections__": {},
         "artist": "Rossini",
         "bpm": 80,
+        "duration": [
+          136000000,
+          102000000,
+          81600000
+        ],
         "id": "Rossini-Barber_Of_Seville_-_Overture",
         "imageUrl": "images/Rossini.jpg",
-        "tilesCount": 383,
+        "tilesCount": [
+          281,
+          353,
+          383
+        ],
         "title": "Barber Of Seville - Overture",
         "url": "songs/classic/Rossini-Barber_Of_Seville_-_Overture.mid"
       },
@@ -1983,9 +3018,18 @@
         "__collections__": {},
         "artist": "Rossini",
         "bpm": 75,
+        "duration": [
+          477511111,
+          358133333,
+          286506667
+        ],
         "id": "Rossini-William_Tell_Overture_Finale",
         "imageUrl": "images/Rossini.jpg",
-        "tilesCount": 3018,
+        "tilesCount": [
+          2153,
+          2748,
+          3018
+        ],
         "title": "William Tell Overture Finale",
         "url": "songs/classic/Rossini-William_Tell_Overture_Finale.mid"
       },
@@ -1993,9 +3037,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 120,
+        "duration": [
+          75111111,
+          56333333,
+          45066667
+        ],
         "id": "Russian_Folk-Kalinka",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 328,
+        "tilesCount": [
+          210,
+          269,
+          328
+        ],
         "title": "Kalinka",
         "url": "songs/asia/Russian_Folk-Kalinka.mid"
       },
@@ -2003,9 +3056,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 120,
+        "duration": [
+          151555556,
+          113666667,
+          90933333
+        ],
         "id": "Russian_Folk-Katyusha",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 855,
+        "tilesCount": [
+          653,
+          794,
+          855
+        ],
         "title": "Katyusha",
         "url": "songs/asia/Russian_Folk-Katyusha.mid"
       },
@@ -2013,9 +3075,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 125,
+        "duration": [
+          104320000,
+          78240000,
+          62592000
+        ],
         "id": "Russian_Folk-Korobeiniki",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 493,
+        "tilesCount": [
+          473,
+          483,
+          493
+        ],
         "title": "Korobeiniki",
         "url": "songs/asia/Russian_Folk-Korobeiniki.mid"
       },
@@ -2023,9 +3094,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 60,
+        "duration": [
+          105851852,
+          79388889,
+          63511111
+        ],
         "id": "Russian_Folk-Oy,_Da_Ne_Vecher",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 221,
+        "tilesCount": [
+          213,
+          220,
+          221
+        ],
         "title": "Oy, Da Ne Vecher",
         "url": "songs/asia/Russian_Folk-Oy,_Da_Ne_Vecher.mid"
       },
@@ -2033,9 +3113,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 120,
+        "duration": [
+          101777778,
+          76333333,
+          61066667
+        ],
         "id": "Russian_Folk-Polyushka_Polye",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 222,
+        "tilesCount": [
+          221,
+          222,
+          222
+        ],
         "title": "Polyushka Polye",
         "url": "songs/asia/Russian_Folk-Polyushka_Polye.mid"
       },
@@ -2043,9 +3132,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 120,
+        "duration": [
+          258666667,
+          194000000,
+          155200000
+        ],
         "id": "Russian_Folk-Smuglyanka",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 1117,
+        "tilesCount": [
+          799,
+          1012,
+          1117
+        ],
         "title": "Smuglyanka",
         "url": "songs/asia/Russian_Folk-Smuglyanka.mid"
       },
@@ -2053,9 +3151,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 69,
+        "duration": [
+          855966184,
+          641974638,
+          513579710
+        ],
         "id": "Russian_Folk-Troika",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 1337,
+        "tilesCount": [
+          1174,
+          1318,
+          1337
+        ],
         "title": "Troika",
         "url": "songs/asia/Russian_Folk-Troika.mid"
       },
@@ -2063,9 +3170,18 @@
         "__collections__": {},
         "artist": "Russian Folk",
         "bpm": 180,
+        "duration": [
+          188148148,
+          141111111,
+          112888889
+        ],
         "id": "Russian_Folk-Tumbalalaika",
         "imageUrl": "images/RussianFolk.jpg",
-        "tilesCount": 543,
+        "tilesCount": [
+          396,
+          523,
+          543
+        ],
         "title": "Tumbalalaika",
         "url": "songs/asia/Russian_Folk-Tumbalalaika.mid"
       },
@@ -2073,9 +3189,18 @@
         "__collections__": {},
         "artist": "Saint Saens",
         "bpm": 37,
+        "duration": [
+          359729730,
+          269797297,
+          215837838
+        ],
         "id": "Saint_Saens-Carnival_Of_The_Animals_-_Aquarium",
         "imageUrl": "images/SaintSaens.jpg",
-        "tilesCount": 1759,
+        "tilesCount": [
+          1698,
+          1744,
+          1759
+        ],
         "title": "Carnival Of The Animals - Aquarium",
         "url": "songs/classic/Saint_Saens-Carnival_Of_The_Animals_-_Aquarium.mid"
       },
@@ -2083,9 +3208,18 @@
         "__collections__": {},
         "artist": "Saint Saens",
         "bpm": 74,
+        "duration": [
+          440090090,
+          330067568,
+          264054054
+        ],
         "id": "Saint_Saens-Carnival_Of_The_Animals_-_Finale",
         "imageUrl": "images/SaintSaens.jpg",
-        "tilesCount": 2756,
+        "tilesCount": [
+          1902,
+          2395,
+          2756
+        ],
         "title": "Carnival Of The Animals - Finale",
         "url": "songs/classic/Saint_Saens-Carnival_Of_The_Animals_-_Finale.mid"
       },
@@ -2093,9 +3227,18 @@
         "__collections__": {},
         "artist": "Saint Saens",
         "bpm": 149,
+        "duration": [
+          216733781,
+          162550336,
+          130040268
+        ],
         "id": "Saint_Saens-Danse_Macabre",
         "imageUrl": "images/SaintSaens.jpg",
-        "tilesCount": 1622,
+        "tilesCount": [
+          1020,
+          1360,
+          1622
+        ],
         "title": "Danse Macabre",
         "url": "songs/classic/Saint_Saens-Danse_Macabre.mid"
       },
@@ -2103,9 +3246,18 @@
         "__collections__": {},
         "artist": "Saint Saens",
         "bpm": 75,
+        "duration": [
+          204800000,
+          153600000,
+          122880000
+        ],
         "id": "Saint_Saens-Symphony_No._3",
         "imageUrl": "images/SaintSaens.jpg",
-        "tilesCount": 769,
+        "tilesCount": [
+          482,
+          632,
+          769
+        ],
         "title": "Symphony No. 3",
         "url": "songs/classic/Saint_Saens-Symphony_No._3.mid"
       },
@@ -2113,9 +3265,18 @@
         "__collections__": {},
         "artist": "Samuel Barber",
         "bpm": 83,
+        "duration": [
+          542329317,
+          406746988,
+          325397590
+        ],
         "id": "Samuel_Barber-Adagio_For_Strings",
         "imageUrl": "images/SamuelBarber.jpg",
-        "tilesCount": 750,
+        "tilesCount": [
+          597,
+          693,
+          750
+        ],
         "title": "Adagio For Strings",
         "url": "songs/classic/Samuel_Barber-Adagio_For_Strings.mid"
       },
@@ -2123,29 +3284,37 @@
         "__collections__": {},
         "artist": "Schubert",
         "bpm": 37,
+        "duration": [
+          258903904,
+          194177928,
+          155342342
+        ],
         "id": "Schubert-Ave_Maria",
         "imageUrl": "images/Schubert.jpg",
-        "tilesCount": 1074,
+        "tilesCount": [
+          1070,
+          1073,
+          1074
+        ],
         "title": "Ave Maria",
         "url": "songs/classic/Schubert-Ave_Maria.mid"
-      },
-      "Short": {
-        "__collections__": {},
-        "artist": "Short",
-        "bpm": 80,
-        "id": "Short",
-        "imageUrl": "images/Short.jpg",
-        "tilesCount": 2,
-        "title": "Short",
-        "url": "songs/Short.mid"
       },
       "Smetana-Moldau_River": {
         "__collections__": {},
         "artist": "Smetana",
         "bpm": 120,
+        "duration": [
+          151111111,
+          113333333,
+          90666667
+        ],
         "id": "Smetana-Moldau_River",
         "imageUrl": "images/Smetana.jpg",
-        "tilesCount": 805,
+        "tilesCount": [
+          559,
+          711,
+          805
+        ],
         "title": "Moldau River",
         "url": "songs/classic/Smetana-Moldau_River.mid"
       },
@@ -2153,9 +3322,18 @@
         "__collections__": {},
         "artist": "Stravinsky",
         "bpm": 75,
+        "duration": [
+          486844444,
+          365133333,
+          292106667
+        ],
         "id": "Stravinsky-Firebird_Suite_-_Finale",
         "imageUrl": "images/Stravinsky.jpg",
-        "tilesCount": 1794,
+        "tilesCount": [
+          1520,
+          1708,
+          1794
+        ],
         "title": "Firebird Suite - Finale",
         "url": "songs/classic/Stravinsky-Firebird_Suite_-_Finale.mid"
       },
@@ -2163,9 +3341,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 100,
+        "duration": [
+          203200000,
+          152400000,
+          121920000
+        ],
         "id": "Tchaikovsky-Dance_Of_The_Little_Swans",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 810,
+        "tilesCount": [
+          598,
+          763,
+          810
+        ],
         "title": "Dance Of The Little Swans",
         "url": "songs/classic/Tchaikovsky-Dance_Of_The_Little_Swans.mid"
       },
@@ -2173,9 +3360,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 69,
+        "duration": [
+          206932367,
+          155199275,
+          124159420
+        ],
         "id": "Tchaikovsky-Dance_Of_The_Reed_Flutes",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 1416,
+        "tilesCount": [
+          993,
+          1288,
+          1416
+        ],
         "title": "Dance Of The Reed Flutes",
         "url": "songs/classic/Tchaikovsky-Dance_Of_The_Reed_Flutes.mid"
       },
@@ -2183,9 +3379,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 18,
+        "duration": [
+          469004630,
+          351753472,
+          281402778
+        ],
         "id": "Tchaikovsky-Dance_Of_The_Sugar_Plum_Fairy",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 1018,
+        "tilesCount": [
+          727,
+          914,
+          1018
+        ],
         "title": "Dance Of The Sugar Plum Fairy",
         "url": "songs/classic/Tchaikovsky-Dance_Of_The_Sugar_Plum_Fairy.mid"
       },
@@ -2193,9 +3398,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 72,
+        "duration": [
+          220000000,
+          165000000,
+          132000000
+        ],
         "id": "Tchaikovsky-Marche_Slave",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 470,
+        "tilesCount": [
+          383,
+          464,
+          470
+        ],
         "title": "Marche Slave",
         "url": "songs/classic/Tchaikovsky-Marche_Slave.mid"
       },
@@ -2203,9 +3417,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 75,
+        "duration": [
+          435881481,
+          326911111,
+          261528889
+        ],
         "id": "Tchaikovsky-Nutcracker_-_March",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 2345,
+        "tilesCount": [
+          1675,
+          2061,
+          2345
+        ],
         "title": "Nutcracker - March",
         "url": "songs/classic/Tchaikovsky-Nutcracker_-_March.mid"
       },
@@ -2213,9 +3436,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 120,
+        "duration": [
+          419648148,
+          314736111,
+          251788889
+        ],
         "id": "Tchaikovsky-Piano_Concerto_No._1",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 1369,
+        "tilesCount": [
+          1007,
+          1258,
+          1369
+        ],
         "title": "Piano Concerto No. 1",
         "url": "songs/classic/Tchaikovsky-Piano_Concerto_No._1.mid"
       },
@@ -2223,9 +3455,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 37,
+        "duration": [
+          956929429,
+          717697072,
+          574157658
+        ],
         "id": "Tchaikovsky-Romeo_And_Juliet_Fantasy_Overture",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 1558,
+        "tilesCount": [
+          1227,
+          1411,
+          1558
+        ],
         "title": "Romeo And Juliet Fantasy Overture",
         "url": "songs/classic/Tchaikovsky-Romeo_And_Juliet_Fantasy_Overture.mid"
       },
@@ -2233,9 +3474,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 150,
+        "duration": [
+          477688889,
+          358266667,
+          286613333
+        ],
         "id": "Tchaikovsky-Sleeping_Beauty",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 2918,
+        "tilesCount": [
+          2110,
+          2670,
+          2918
+        ],
         "title": "Sleeping Beauty",
         "url": "songs/classic/Tchaikovsky-Sleeping_Beauty.mid"
       },
@@ -2243,9 +3493,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 100,
+        "duration": [
+          86133333,
+          64600000,
+          51680000
+        ],
         "id": "Tchaikovsky-Swan_Lake",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 326,
+        "tilesCount": [
+          326,
+          326,
+          326
+        ],
         "title": "Swan Lake",
         "url": "songs/classic/Tchaikovsky-Swan_Lake.mid"
       },
@@ -2253,9 +3512,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 143,
+        "duration": [
+          617435897,
+          463076923,
+          370461538
+        ],
         "id": "Tchaikovsky-Symphony_No._6",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 683,
+        "tilesCount": [
+          512,
+          620,
+          683
+        ],
         "title": "Symphony No. 6",
         "url": "songs/classic/Tchaikovsky-Symphony_No._6.mid"
       },
@@ -2263,9 +3531,18 @@
         "__collections__": {},
         "artist": "Tchaikovsky",
         "bpm": 182,
+        "duration": [
+          389597070,
+          292197802,
+          233758242
+        ],
         "id": "Tchaikovsky-Waltz_Of_The_Flowers",
         "imageUrl": "images/Tchaikovsky.jpg",
-        "tilesCount": 889,
+        "tilesCount": [
+          602,
+          784,
+          889
+        ],
         "title": "Waltz Of The Flowers",
         "url": "songs/classic/Tchaikovsky-Waltz_Of_The_Flowers.mid"
       },
@@ -2273,19 +3550,56 @@
         "__collections__": {},
         "artist": "Vaughan Williams",
         "bpm": 120,
+        "duration": [
+          341555556,
+          256166667,
+          204933333
+        ],
         "id": "Vaughan_Williams-Fantasia_On_Greensleeves",
         "imageUrl": "images/VaughanWilliams.jpg",
-        "tilesCount": 948,
+        "tilesCount": [
+          791,
+          911,
+          948
+        ],
         "title": "Fantasia On Greensleeves",
         "url": "songs/classic/Vaughan_Williams-Fantasia_On_Greensleeves.mid"
+      },
+      "Vietnamese_Folk-A_Test_Song": {
+        "__collections__": {},
+        "artist": "Vietnamese Folk",
+        "bpm": 80,
+        "duration": [
+          1074074,
+          805556,
+          644444
+        ],
+        "id": "Vietnamese_Folk-A_Test_Song",
+        "imageUrl": "images/VietnameseFolk.jpg",
+        "tilesCount": [
+          2,
+          2,
+          2
+        ],
+        "title": "A Test Song",
+        "url": "songs/Vietnamese_Folk-A_Test_Song.mid"
       },
       "Vietnamese_Folk-Bac_Kim_Thang": {
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 120,
+        "duration": [
+          127555556,
+          95666667,
+          76533333
+        ],
         "id": "Vietnamese_Folk-Bac_Kim_Thang",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 148,
+        "tilesCount": [
+          148,
+          148,
+          148
+        ],
         "title": "Bac Kim Thang",
         "url": "songs/vietnam/Vietnamese_Folk-Bac_Kim_Thang.mid"
       },
@@ -2293,9 +3607,18 @@
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 120,
+        "duration": [
+          265666667,
+          199250000,
+          159400000
+        ],
         "id": "Vietnamese_Folk-Beo_Dat_May_Troi",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 759,
+        "tilesCount": [
+          741,
+          751,
+          759
+        ],
         "title": "Beo Dat May Troi",
         "url": "songs/vietnam/Vietnamese_Folk-Beo_Dat_May_Troi.mid"
       },
@@ -2303,9 +3626,18 @@
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 60,
+        "duration": [
+          65333333,
+          49000000,
+          39200000
+        ],
         "id": "Vietnamese_Folk-Cay_Truc_Xinh",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 54,
+        "tilesCount": [
+          54,
+          54,
+          54
+        ],
         "title": "Cay Truc Xinh",
         "url": "songs/vietnam/Vietnamese_Folk-Cay_Truc_Xinh.mid"
       },
@@ -2313,9 +3645,18 @@
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 60,
+        "duration": [
+          80000000,
+          60000000,
+          48000000
+        ],
         "id": "Vietnamese_Folk-Co_La",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 59,
+        "tilesCount": [
+          59,
+          59,
+          59
+        ],
         "title": "Co La",
         "url": "songs/vietnam/Vietnamese_Folk-Co_La.mid"
       },
@@ -2323,9 +3664,18 @@
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 120,
+        "duration": [
+          88888889,
+          66666667,
+          53333333
+        ],
         "id": "Vietnamese_Folk-Ly_Cay_Bong",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 58,
+        "tilesCount": [
+          58,
+          58,
+          58
+        ],
         "title": "Ly Cay Bong",
         "url": "songs/vietnam/Vietnamese_Folk-Ly_Cay_Bong.mid"
       },
@@ -2333,9 +3683,18 @@
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 60,
+        "duration": [
+          117796296,
+          88347222,
+          70677778
+        ],
         "id": "Vietnamese_Folk-Nguoi_O_Dung_Ve",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 159,
+        "tilesCount": [
+          159,
+          159,
+          159
+        ],
         "title": "Nguoi O Dung Ve",
         "url": "songs/vietnam/Vietnamese_Folk-Nguoi_O_Dung_Ve.mid"
       },
@@ -2343,9 +3702,18 @@
         "__collections__": {},
         "artist": "Vietnamese Folk",
         "bpm": 60,
+        "duration": [
+          154666667,
+          116000000,
+          92800000
+        ],
         "id": "Vietnamese_Folk-Trong_Com",
         "imageUrl": "images/VietnameseFolk.jpg",
-        "tilesCount": 233,
+        "tilesCount": [
+          233,
+          233,
+          233
+        ],
         "title": "Trong Com",
         "url": "songs/vietnam/Vietnamese_Folk-Trong_Com.mid"
       },
@@ -2353,9 +3721,18 @@
         "__collections__": {},
         "artist": "Vittorio Monti",
         "bpm": 55,
+        "duration": [
+          685010101,
+          513757576,
+          411006061
+        ],
         "id": "Vittorio_Monti-Czardas",
         "imageUrl": "images/VittorioMonti.jpg",
-        "tilesCount": 2342,
+        "tilesCount": [
+          1849,
+          2152,
+          2342
+        ],
         "title": "Czardas",
         "url": "songs/classic/Vittorio_Monti-Czardas.mid"
       },
@@ -2363,9 +3740,18 @@
         "__collections__": {},
         "artist": "Vivaldi",
         "bpm": 37,
+        "duration": [
+          682072072,
+          511554054,
+          409243243
+        ],
         "id": "Vivaldi-Four_Seasons_-_Spring",
         "imageUrl": "images/Vivaldi.jpg",
-        "tilesCount": 2419,
+        "tilesCount": [
+          2023,
+          2249,
+          2419
+        ],
         "title": "Four Seasons - Spring",
         "url": "songs/classic/Vivaldi-Four_Seasons_-_Spring.mid"
       },
@@ -2373,9 +3759,18 @@
         "__collections__": {},
         "artist": "Vivaldi",
         "bpm": 75,
+        "duration": [
+          406844444,
+          305133333,
+          244106667
+        ],
         "id": "Vivaldi-Four_Seasons_-_Summer",
         "imageUrl": "images/Vivaldi.jpg",
-        "tilesCount": 2553,
+        "tilesCount": [
+          2362,
+          2548,
+          2553
+        ],
         "title": "Four Seasons - Summer",
         "url": "songs/classic/Vivaldi-Four_Seasons_-_Summer.mid"
       },
@@ -2383,9 +3778,18 @@
         "__collections__": {},
         "artist": "Vivaldi",
         "bpm": 75,
+        "duration": [
+          305822222,
+          229366667,
+          183493333
+        ],
         "id": "Vivaldi-Four_Seasons_-_Winter",
         "imageUrl": "images/Vivaldi.jpg",
-        "tilesCount": 1204,
+        "tilesCount": [
+          1064,
+          1187,
+          1204
+        ],
         "title": "Four Seasons - Winter",
         "url": "songs/classic/Vivaldi-Four_Seasons_-_Winter.mid"
       }

@@ -111,8 +111,7 @@ class App extends StatelessWidget {
                 },
                 Routes.gameConfig: (context) {
                   return BlocProvider<GameConfigBloc>(
-                      create: (context) =>
-                          GameConfigBloc(),
+                      create: (context) => GameConfigBloc(),
                       child: GameConfigWidget());
                 },
                 Routes.game: (context) {

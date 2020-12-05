@@ -14,7 +14,7 @@ export function onUserSignUp(user: UserRecord, _: EventContext): Promise<void> {
     const newUser: User = {
       id: user.uid,
       playedNotes: 0,
-      errors: 0,
+      stars: 0,
       playedTime: 0,
       instrumentId: 'piano',
       notificationTokens: [],

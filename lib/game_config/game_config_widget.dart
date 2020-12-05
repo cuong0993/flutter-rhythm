@@ -116,18 +116,20 @@ class GameConfigWidget extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.game,
-                              arguments: {'song':song, 'difficulty':state.difficulty, 'speed':state.speed});
+                          Navigator.pushNamed(context, Routes.game, arguments: {
+                            'song': song,
+                            'difficulty': state.difficulty,
+                            'speed': state.speed
+                          });
                         },
-                        child: Text(S.of(context)
-                            .txt_start)),
+                        child: Text(S.of(context).txt_start)),
                   ),
                   SizedBox(width: 8)
                 ],
               )
             ],
           ));
-        });
+    });
   }
 }
 
@@ -141,7 +143,8 @@ class CardWidget extends StatelessWidget {
     Key key,
     @required this.selected,
     @required this.text,
-    @required this.caption, @required this.onTap,
+    @required this.caption,
+    @required this.onTap,
   }) : super(key: key);
 
   @override
@@ -149,34 +152,34 @@ class CardWidget extends StatelessWidget {
     return Expanded(
         child: selected
             ? ElevatedButton(
-            onPressed: () {
-              onTap();
-            },
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 8),
-                Text(text),
-                SizedBox(height: 8),
-                Text(caption),
-                SizedBox(height: 8),
-              ],
-            ))
+                onPressed: () {
+                  onTap();
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 8),
+                    Text(text),
+                    SizedBox(height: 8),
+                    Text(caption),
+                    SizedBox(height: 8),
+                  ],
+                ))
             : OutlinedButton(
-            onPressed: () {
-              onTap();
-            },
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 8),
-                Text(text),
-                SizedBox(height: 8),
-                Text(caption),
-                SizedBox(height: 8),
-              ],
-            )));
+                onPressed: () {
+                  onTap();
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 8),
+                    Text(text),
+                    SizedBox(height: 8),
+                    Text(caption),
+                    SizedBox(height: 8),
+                  ],
+                )));
   }
 }

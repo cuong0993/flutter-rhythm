@@ -38,54 +38,61 @@ void main() {
         }
       }
       final tileChunks = createTileChunks(midiFile);
-
-      final groupedMidiChunks = groupBy(
-          tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious);
-      final sortedMidiChunks = tileChunks
-        ..sort(
-            (e1, e2) => e1.durationToPrevious.compareTo(e2.durationToPrevious));
-      groupedMidiChunks.entries.forEach((it) {
-        print('There are ${it.value.length} tile with duration ${it.key}');
-      });
+      final groupByDurationToPrevious = Map.fromEntries(groupBy(
+              tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
+          .entries
+          .toList()
+            ..sort((e1, e2) => e1.key.compareTo(e2.key)));
       final countDurationToPrevious = {
-        for (var e in groupedMidiChunks.keys) e: groupedMidiChunks[e].length
+        for (var e in groupByDurationToPrevious.keys)
+          e: groupByDurationToPrevious[e].length
       };
 
       final sortCountDurationToPrevious = Map.fromEntries(
           countDurationToPrevious.entries.toList()
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
-      print(
-          'Most of track have duration ${sortCountDurationToPrevious.keys.last}');
-      print(
-          'Minimum duration as tick ${sortedMidiChunks[1].durationToPrevious}');
-      print(
-          'Maximum duration as tick ${sortedMidiChunks[sortedMidiChunks.length - 1].durationToPrevious}');
-      /* Single tile will have duration is most popular of midi chunks */
       final unitDuration = sortCountDurationToPrevious.keys.last;
+
+      groupByDurationToPrevious.entries.forEach((it) {
+        print('There are ${it.value.length} tile with duration ${it.key}');
+      });
 
       final tiles = createTiles(tileChunks, unitDuration, NUMBER_TILE_COLUMN);
       print('There are ${tiles.length} tiles');
-      final tick2Second =
+      var tick2Second =
           tickToSecond(midiFile.header.ticksPerBeat, value['bpm'] as int);
-      final speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
-      final speedDpsPerSecond = speedDpsPerTick / tick2Second;
+      var speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+      var speedDpsPerSecond = speedDpsPerTick / tick2Second;
       final singleTileSeconds = unitDuration * tick2Second;
       if (singleTileSeconds < 0.2) {
         final newBpm =
             ((value['bpm'] as int) * (singleTileSeconds / 0.2)).toInt();
         print('WARNING Too fast $singleTileSeconds $key, set bpm to $newBpm');
         value['bpm'] = newBpm;
+        tick2Second =
+            tickToSecond(midiFile.header.ticksPerBeat, value['bpm'] as int);
+        speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+        speedDpsPerSecond = speedDpsPerTick / tick2Second;
       }
-      final pointCount = tiles.length;
-      if (pointCount < 50) {
-        print('WARNING Number tile to small $key, number tiles $pointCount');
+      final tileCount = tiles.length;
+      if (tileCount < 50) {
+        print('WARNING Number tile to small $key, number tiles $tileCount');
       }
-      final duration = (0.0 - tiles.last.initialY) / speedDpsPerSecond;
-      print('Duration is $duration seconds');
-      if (duration > 400) {
-        print('WARNING  Too long ${duration / 60} minutes');
+      final duration = (0.5 + ((0.0 - tiles.last.initialY) * 1000000)/ speedDpsPerSecond).toInt();
+      print('Duration is $duration microseconds');
+      if (duration > 400000000) {
+        print('WARNING  Too long ${duration / 60000000} minutes');
       }
-      value['tilesCount'] = pointCount;
+      value['tilesCount'] = [
+        createTiles(tileChunks, unitDuration, 2).length,
+        createTiles(tileChunks, unitDuration, 3).length,
+        createTiles(tileChunks, unitDuration, 4).length
+      ];
+      value['duration'] = [
+        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / (speedDpsPerSecond * 0.75)).toInt(),
+        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / speedDpsPerSecond).toInt(),
+        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / (speedDpsPerSecond *1.25)).toInt()
+      ];
       value['artist'] = artist1;
       value['id'] = key;
       value['imageUrl'] = "images/${artist.replaceAll("_", "")}.jpg";

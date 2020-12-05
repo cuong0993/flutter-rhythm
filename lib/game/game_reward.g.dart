@@ -9,12 +9,12 @@ part of 'game_reward.dart';
 GameReward _$GameRewardFromJson(Map<String, dynamic> json) {
   return GameReward(
     json['stars'] as int,
-    json['experiences'] as int,
+    json['playedNotes'] as int,
   );
 }
 
 Map<String, dynamic> _$GameRewardToJson(GameReward instance) =>
     <String, dynamic>{
       'stars': instance.stars,
-      'experiences': instance.experiences,
+      'playedNotes': instance.playedNotes,
     };

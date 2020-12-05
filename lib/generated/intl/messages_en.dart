@@ -25,7 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(input) => "Hey, let play Hit Notes ${input}";
 
-  static m3(input) => "Level ${input}";
+  static m3(input) => "Joined ${input}";
+
+  static m4(input) => "Level ${input}";
+
+  static m5(input) => "Using ${input}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -54,7 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_game_complete_loading_gift" : MessageLookupByLibrary.simpleMessage("Getting reward…"),
     "txt_instrument_title_instruments" : MessageLookupByLibrary.simpleMessage("Instruments"),
     "txt_invite_description" : m2,
-    "txt_level" : m3,
+    "txt_joined" : m3,
+    "txt_level" : m4,
     "txt_medium" : MessageLookupByLibrary.simpleMessage("Medium"),
     "txt_normal" : MessageLookupByLibrary.simpleMessage("Normal"),
     "txt_page_title_account" : MessageLookupByLibrary.simpleMessage("Account"),
@@ -64,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_start" : MessageLookupByLibrary.simpleMessage("Start"),
     "txt_too_early" : MessageLookupByLibrary.simpleMessage("Too early"),
     "txt_too_late" : MessageLookupByLibrary.simpleMessage("Too late"),
-    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("Too many fingers")
+    "txt_too_many_fingers" : MessageLookupByLibrary.simpleMessage("Too many fingers"),
+    "txt_using" : m5
   };
 }

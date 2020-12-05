@@ -74,7 +74,8 @@ class _GameWidgetState extends State<GameWidget> {
           final song = arguments['song'];
           final difficulty = arguments['difficulty'];
           final speed = arguments['speed'];
-          BlocProvider.of<GameBloc>(context).add(StartGame(song, difficulty, speed));
+          BlocProvider.of<GameBloc>(context)
+              .add(StartGame(song, difficulty, speed));
           return LoadingSoundWidget();
         } else if (state is GameStarted) {
           widget._game.start(state.tiles, state.speedPixelsPerSecond,

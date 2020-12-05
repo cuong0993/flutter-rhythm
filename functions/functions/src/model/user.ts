@@ -2,7 +2,7 @@
 export interface User {
   id: string;
   playedNotes: number;
-  errors: number;
+  stars: number;
   playedTime: number;
   instrumentId: string;
   notificationTokens: string[];

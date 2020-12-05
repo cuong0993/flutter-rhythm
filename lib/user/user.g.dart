@@ -13,7 +13,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
     json['playedTime'] == null
         ? null
         : Duration(microseconds: json['playedTime'] as int),
-    json['errors'] as int,
+    json['stars'] as int,
     json['instrumentId'] as String,
     (json['notificationTokens'] as List)?.map((e) => e as String)?.toList(),
   );
@@ -22,7 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'playedNotes': instance.playedNotes,
-      'errors': instance.errors,
+      'stars': instance.stars,
       'playedTime': instance.playedTime?.inMicroseconds,
       'instrumentId': instance.instrumentId,
       'notificationTokens': instance.notificationTokens,

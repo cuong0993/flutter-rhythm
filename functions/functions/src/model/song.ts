@@ -5,5 +5,6 @@ export interface Song {
   url: string;
   imageUrl: string;
   bpm: number;
-  tilesCount: number;
+  tilesCount: number[];
+  duration: number[];
 }

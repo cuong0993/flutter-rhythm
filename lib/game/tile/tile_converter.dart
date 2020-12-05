@@ -57,7 +57,11 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
   return tileChunks;
 }
 
-List<Tile> createTiles(List<TileChunk> tileChunks, int unitDuration, int numberTileColumn,) {
+List<Tile> createTiles(
+  List<TileChunk> tileChunks,
+  int unitDuration,
+  int numberTileColumn,
+) {
   final tiles = <Tile>[];
   final random = Random();
   var calibratedTick = 0;
