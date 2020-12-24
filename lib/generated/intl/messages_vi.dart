@@ -34,8 +34,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "acoustic_guitar" : MessageLookupByLibrary.simpleMessage("Guitar acoustic"),
+    "classic" : MessageLookupByLibrary.simpleMessage("Nhạc cổ điển"),
     "electric_guitar" : MessageLookupByLibrary.simpleMessage("Guitar điện"),
+    "folk" : MessageLookupByLibrary.simpleMessage("Nhạc dân gian"),
+    "kpop" : MessageLookupByLibrary.simpleMessage("Kpop"),
     "piano" : MessageLookupByLibrary.simpleMessage("Piano"),
+    "pop" : MessageLookupByLibrary.simpleMessage("Nhạc pop"),
     "txt_about_invite" : MessageLookupByLibrary.simpleMessage("Mời bạn bè"),
     "txt_about_rate" : MessageLookupByLibrary.simpleMessage("Đánh giá"),
     "txt_all_ok" : MessageLookupByLibrary.simpleMessage("Đồng ý"),

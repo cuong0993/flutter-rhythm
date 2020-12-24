@@ -16,6 +16,7 @@ Song _$SongFromJson(Map<String, dynamic> json) {
     json['bpm'] as int,
     (json['tilesCount'] as List)?.map((e) => e as int)?.toList(),
     (json['duration'] as List)?.map((e) => e as int)?.toList(),
+    (json['tags'] as List)?.map((e) => e as String)?.toList(),
   );
 }
 
@@ -28,4 +29,5 @@ Map<String, dynamic> _$SongToJson(Song instance) => <String, dynamic>{
       'bpm': instance.bpm,
       'tilesCount': instance.tilesCount,
       'duration': instance.duration,
+      'tags': instance.tags,
     };

@@ -96,7 +96,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final tick2Second = tickToSecond(midiFile.header.ticksPerBeat, bpm);
       final speedDpsPerTick = UNIT_DURATION_HEIGHT / _unitDuration;
       _speedDpsPerSecond = speedDpsPerTick / tick2Second;
-      final gameDuration = (0.5 + (0.0 - tiles.last.initialY) / _speedDpsPerSecond).toInt();
+      final gameDuration =
+          (0.5 + (0.0 - tiles.last.initialY) / _speedDpsPerSecond).toInt();
       _songName = song.title;
       _songId = song.id;
       _maxTime = gameDuration;

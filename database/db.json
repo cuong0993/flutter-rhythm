@@ -840,13 +840,16 @@
         ],
         "id": "Alan_Walker-Alone",
         "imageUrl": "images/AlanWalker.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           740,
           951,
           1067
         ],
         "title": "Alone",
-        "url": "songs/uk/Alan_Walker-Alone.mid"
+        "url": "songs/pop/Alan_Walker-Alone.mid"
       },
       "Alan_Walker-Faded": {
         "__collections__": {},
@@ -859,13 +862,16 @@
         ],
         "id": "Alan_Walker-Faded",
         "imageUrl": "images/AlanWalker.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           829,
           865,
           882
         ],
         "title": "Faded",
-        "url": "songs/uk/Alan_Walker-Faded.mid"
+        "url": "songs/pop/Alan_Walker-Faded.mid"
       },
       "Alan_Walker-Spectre": {
         "__collections__": {},
@@ -878,13 +884,16 @@
         ],
         "id": "Alan_Walker-Spectre",
         "imageUrl": "images/AlanWalker.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           1226,
           1255,
           1255
         ],
         "title": "Spectre",
-        "url": "songs/uk/Alan_Walker-Spectre.mid"
+        "url": "songs/pop/Alan_Walker-Spectre.mid"
       },
       "Aram_Khachaturian-Masquerade_Waltz": {
         "__collections__": {},
@@ -897,6 +906,9 @@
         ],
         "id": "Aram_Khachaturian-Masquerade_Waltz",
         "imageUrl": "images/AramKhachaturian.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1787,
           2310,
@@ -916,6 +928,9 @@
         ],
         "id": "Aram_Khachaturian-Sabr_Dance",
         "imageUrl": "images/AramKhachaturian.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1642,
           2110,
@@ -935,6 +950,9 @@
         ],
         "id": "Bach-Air_On_The_G_String",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           650,
           669,
@@ -954,6 +972,9 @@
         ],
         "id": "Bach-Badinerie",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           914,
           1160,
@@ -973,6 +994,9 @@
         ],
         "id": "Bach-Bourree_In_E_Minor",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           472,
           474,
@@ -992,6 +1016,9 @@
         ],
         "id": "Bach-Cello_Suite",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1096,
           1111,
@@ -1011,6 +1038,9 @@
         ],
         "id": "Bach-Joy",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           866,
           993,
@@ -1030,6 +1060,9 @@
         ],
         "id": "Bach-Toccata_and_Fugue",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3500,
           3794,
@@ -1049,6 +1082,9 @@
         ],
         "id": "Bach-Well_Tempered_Clavier",
         "imageUrl": "images/Bach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           530,
           531,
@@ -1068,6 +1104,9 @@
         ],
         "id": "Beethoven-Appasionata_Sonate",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           774,
           929,
@@ -1087,6 +1126,9 @@
         ],
         "id": "Beethoven-Fur_Elise",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           940,
           999,
@@ -1106,6 +1148,9 @@
         ],
         "id": "Beethoven-Moonlight_Sonata_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           959,
           1065,
@@ -1125,6 +1170,9 @@
         ],
         "id": "Beethoven-Moonlight_Sonata_Mvt._3",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           5245,
           5912,
@@ -1144,6 +1192,9 @@
         ],
         "id": "Beethoven-String_Quartet",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3011,
           3466,
@@ -1163,6 +1214,9 @@
         ],
         "id": "Beethoven-Symphony_No._3_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1542,
           1992,
@@ -1182,6 +1236,9 @@
         ],
         "id": "Beethoven-Symphony_No._5_Mvt._1",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           695,
           889,
@@ -1201,6 +1258,9 @@
         ],
         "id": "Beethoven-Symphony_No._5_Mvt._3",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2059,
           2559,
@@ -1220,6 +1280,9 @@
         ],
         "id": "Beethoven-Symphony_No._6",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3426,
           4215,
@@ -1239,6 +1302,9 @@
         ],
         "id": "Beethoven-Symphony_No._7_Mvt._2",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2468,
           3019,
@@ -1258,6 +1324,9 @@
         ],
         "id": "Beethoven-Symphony_No._9_Mvt._2",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           8557,
           11600,
@@ -1277,6 +1346,9 @@
         ],
         "id": "Beethoven-Symphony_No._9_Mvt._4",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           208,
           266,
@@ -1296,6 +1368,9 @@
         ],
         "id": "Beethoven-Turkish_March",
         "imageUrl": "images/Beethoven.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1178,
           1613,
@@ -1315,6 +1390,9 @@
         ],
         "id": "Carl_Orff-O_Fortuna",
         "imageUrl": "images/CarlOrff.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           835,
           939,
@@ -1334,13 +1412,16 @@
         ],
         "id": "Chinese_Folk-Jasmine_Flower",
         "imageUrl": "images/ChineseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           284,
           284,
           284
         ],
         "title": "Jasmine Flower",
-        "url": "songs/asia/Chinese_Folk-Jasmine_Flower.mid"
+        "url": "songs/folk/Chinese_Folk-Jasmine_Flower.mid"
       },
       "Chopin-Etude_Op._10_No._3": {
         "__collections__": {},
@@ -1353,6 +1434,9 @@
         ],
         "id": "Chopin-Etude_Op._10_No._3",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1212,
           1586,
@@ -1372,6 +1456,9 @@
         ],
         "id": "Chopin-Fantaisie_Impromptu",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3027,
           3063,
@@ -1391,6 +1478,9 @@
         ],
         "id": "Chopin-Funeral_March",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           504,
           576,
@@ -1410,6 +1500,9 @@
         ],
         "id": "Chopin-Heroic_Polonaise",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2723,
           3265,
@@ -1429,6 +1522,9 @@
         ],
         "id": "Chopin-Minute_Waltz",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1121,
           1323,
@@ -1448,6 +1544,9 @@
         ],
         "id": "Chopin-Nocturne_Op._9_No._2",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           991,
           1199,
@@ -1467,6 +1566,9 @@
         ],
         "id": "Chopin-Revolutionary_Etude",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1696,
           1881,
@@ -1486,6 +1588,9 @@
         ],
         "id": "Chopin-Waltz_Op._64_No._2",
         "imageUrl": "images/Chopin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1488,
           1769,
@@ -1505,13 +1610,16 @@
         ],
         "id": "Deaf_Kev-Invincible",
         "imageUrl": "images/DeafKev.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           1766,
           2217,
           2579
         ],
         "title": "Invincible",
-        "url": "songs/uk/Deaf_Kev-Invincible.mid"
+        "url": "songs/pop/Deaf_Kev-Invincible.mid"
       },
       "Debussy-Clair_De_Lune": {
         "__collections__": {},
@@ -1524,6 +1632,9 @@
         ],
         "id": "Debussy-Clair_De_Lune",
         "imageUrl": "images/Debussy.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1092,
           1263,
@@ -1543,6 +1654,9 @@
         ],
         "id": "Delibes-Flower_Duet",
         "imageUrl": "images/Delibes.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           756,
           888,
@@ -1562,6 +1676,9 @@
         ],
         "id": "Delibes-Pizzicato",
         "imageUrl": "images/Delibes.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           708,
           774,
@@ -1581,13 +1698,16 @@
         ],
         "id": "Different_Heaven,_EHDE-My_Heart",
         "imageUrl": "images/DifferentHeaven,EHDE.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           1943,
           2223,
           2373
         ],
         "title": "My Heart",
-        "url": "songs/uk/Different_Heaven,_EHDE-My_Heart.mid"
+        "url": "songs/pop/Different_Heaven,_EHDE-My_Heart.mid"
       },
       "Disfigure-Blank": {
         "__collections__": {},
@@ -1600,13 +1720,16 @@
         ],
         "id": "Disfigure-Blank",
         "imageUrl": "images/Disfigure.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           1228,
           1476,
           1634
         ],
         "title": "Blank",
-        "url": "songs/uk/Disfigure-Blank.mid"
+        "url": "songs/pop/Disfigure-Blank.mid"
       },
       "Dmitri_Shostakovich-Second_Waltz": {
         "__collections__": {},
@@ -1619,6 +1742,9 @@
         ],
         "id": "Dmitri_Shostakovich-Second_Waltz",
         "imageUrl": "images/DmitriShostakovich.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1415,
           1936,
@@ -1638,6 +1764,9 @@
         ],
         "id": "Dvorak-Humoresque_No._7",
         "imageUrl": "images/Dvorak.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           751,
           930,
@@ -1657,6 +1786,9 @@
         ],
         "id": "Dvorak-Slavonic_Dance_No._2",
         "imageUrl": "images/Dvorak.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1646,
           2164,
@@ -1676,6 +1808,9 @@
         ],
         "id": "Dvorak-Symphony_No._9_Mvt._4",
         "imageUrl": "images/Dvorak.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1389,
           1726,
@@ -1695,6 +1830,9 @@
         ],
         "id": "Edvard_Grieg-Anitras_Dance",
         "imageUrl": "images/EdvardGrieg.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1455,
           1741,
@@ -1714,6 +1852,9 @@
         ],
         "id": "Edvard_Grieg-Morning_Mood",
         "imageUrl": "images/EdvardGrieg.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           440,
           536,
@@ -1733,6 +1874,9 @@
         ],
         "id": "Edvard_Grieg-Piano_Concerto",
         "imageUrl": "images/EdvardGrieg.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1818,
           2170,
@@ -1752,6 +1896,9 @@
         ],
         "id": "Edward_Elgar-Pomp_And_Circumstance_March",
         "imageUrl": "images/EdwardElgar.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2299,
           2845,
@@ -1771,13 +1918,16 @@
         ],
         "id": "Elektronomia-Sky_High",
         "imageUrl": "images/Elektronomia.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           1183,
           1362,
           1474
         ],
         "title": "Sky High",
-        "url": "songs/uk/Elektronomia-Sky_High.mid"
+        "url": "songs/pop/Elektronomia-Sky_High.mid"
       },
       "English_Folk-Greensleeves": {
         "__collections__": {},
@@ -1790,13 +1940,16 @@
         ],
         "id": "English_Folk-Greensleeves",
         "imageUrl": "images/EnglishFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           304,
           320,
           320
         ],
         "title": "Greensleeves",
-        "url": "songs/uk/English_Folk-Greensleeves.mid"
+        "url": "songs/folk/English_Folk-Greensleeves.mid"
       },
       "English_Folk-Twinkle_Twinkle_Little_Star": {
         "__collections__": {},
@@ -1809,13 +1962,16 @@
         ],
         "id": "English_Folk-Twinkle_Twinkle_Little_Star",
         "imageUrl": "images/EnglishFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           423,
           441,
           458
         ],
         "title": "Twinkle Twinkle Little Star",
-        "url": "songs/uk/English_Folk-Twinkle_Twinkle_Little_Star.mid"
+        "url": "songs/folk/English_Folk-Twinkle_Twinkle_Little_Star.mid"
       },
       "English_Folk-We_Wish_You_A_Marry_Christmas": {
         "__collections__": {},
@@ -1828,13 +1984,16 @@
         ],
         "id": "English_Folk-We_Wish_You_A_Marry_Christmas",
         "imageUrl": "images/EnglishFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           166,
           246,
           313
         ],
         "title": "We Wish You A Marry Christmas",
-        "url": "songs/uk/English_Folk-We_Wish_You_A_Marry_Christmas.mid"
+        "url": "songs/folk/English_Folk-We_Wish_You_A_Marry_Christmas.mid"
       },
       "Eugen_Doga-My_Sweet_And_Tender_Beast": {
         "__collections__": {},
@@ -1847,6 +2006,9 @@
         ],
         "id": "Eugen_Doga-My_Sweet_And_Tender_Beast",
         "imageUrl": "images/EugenDoga.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           728,
           831,
@@ -1866,6 +2028,9 @@
         ],
         "id": "Franz_Liszt-Hungarian_Rhapsody_No._2",
         "imageUrl": "images/FranzLiszt.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           786,
           938,
@@ -1885,6 +2050,9 @@
         ],
         "id": "George_Gershwin-Rhapsody_In_Blue",
         "imageUrl": "images/GeorgeGershwin.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1637,
           2015,
@@ -1904,6 +2072,9 @@
         ],
         "id": "Georges_Bizet-Habanera",
         "imageUrl": "images/GeorgesBizet.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           374,
           477,
@@ -1923,6 +2094,9 @@
         ],
         "id": "Georges_Bizet-Les_Toradors",
         "imageUrl": "images/GeorgesBizet.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1278,
           1568,
@@ -1942,6 +2116,9 @@
         ],
         "id": "Georges_Bizet-March_Of_The_Toreadors",
         "imageUrl": "images/GeorgesBizet.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           375,
           504,
@@ -1961,6 +2138,9 @@
         ],
         "id": "Giacomo_Puccini-Madama_Butterfly",
         "imageUrl": "images/GiacomoPuccini.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           979,
           1147,
@@ -1980,6 +2160,9 @@
         ],
         "id": "Giacomo_Puccini-Nessun_Dorma",
         "imageUrl": "images/GiacomoPuccini.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           702,
           842,
@@ -1999,6 +2182,9 @@
         ],
         "id": "Giuseppe_Verdi-Drinking_Song",
         "imageUrl": "images/GiuseppeVerdi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           365,
           365,
@@ -2018,6 +2204,9 @@
         ],
         "id": "Giuseppe_Verdi-La_Donna_E_Mobile",
         "imageUrl": "images/GiuseppeVerdi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           343,
           384,
@@ -2037,6 +2226,9 @@
         ],
         "id": "Giuseppe_Verdi-Triumphal_March",
         "imageUrl": "images/GiuseppeVerdi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           218,
           301,
@@ -2056,6 +2248,9 @@
         ],
         "id": "Gounod-Funeral_March_Of_A_Marionette",
         "imageUrl": "images/Gounod.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           441,
           513,
@@ -2075,6 +2270,9 @@
         ],
         "id": "Gustav_Mahler-Symphony_No._5_Mvt._4",
         "imageUrl": "images/GustavMahler.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           648,
           750,
@@ -2094,6 +2292,9 @@
         ],
         "id": "Handel-Arrival_Of_The_Queen_Of_Sheba",
         "imageUrl": "images/Handel.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1671,
           1831,
@@ -2113,6 +2314,9 @@
         ],
         "id": "Handel-Hallelujah_Chorus",
         "imageUrl": "images/Handel.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1184,
           1603,
@@ -2132,6 +2336,9 @@
         ],
         "id": "Handel-La_Rejouissance",
         "imageUrl": "images/Handel.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           284,
           284,
@@ -2151,6 +2358,9 @@
         ],
         "id": "Handel-Ombra_Mai_Fu",
         "imageUrl": "images/Handel.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           274,
           383,
@@ -2170,6 +2380,9 @@
         ],
         "id": "Handel-Sarabande",
         "imageUrl": "images/Handel.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           384,
           461,
@@ -2189,6 +2402,9 @@
         ],
         "id": "Handel-Zadok_The_Priest",
         "imageUrl": "images/Handel.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           281,
           370,
@@ -2208,6 +2424,9 @@
         ],
         "id": "Haydn-The_Nutcracker_-_Russian_Dance",
         "imageUrl": "images/Haydn.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           738,
           1017,
@@ -2227,6 +2446,9 @@
         ],
         "id": "Haydn-Trumpet_Concerto",
         "imageUrl": "images/Haydn.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2375,
           2973,
@@ -2246,6 +2468,9 @@
         ],
         "id": "Jacques_Offenbach-Barcarolle",
         "imageUrl": "images/JacquesOffenbach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           823,
           896,
@@ -2265,6 +2490,9 @@
         ],
         "id": "Jacques_Offenbach-Orpheus_In_The_Underworld",
         "imageUrl": "images/JacquesOffenbach.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           996,
           1454,
@@ -2284,13 +2512,16 @@
         ],
         "id": "Janji-Heroes_Tonight",
         "imageUrl": "images/Janji.jpg",
+        "tags": [
+          "pop"
+        ],
         "tilesCount": [
           1064,
           1311,
           1420
         ],
         "title": "Heroes Tonight",
-        "url": "songs/uk/Janji-Heroes_Tonight.mid"
+        "url": "songs/pop/Janji-Heroes_Tonight.mid"
       },
       "Japanese_Folk-Sakura_Sakura": {
         "__collections__": {},
@@ -2303,13 +2534,16 @@
         ],
         "id": "Japanese_Folk-Sakura_Sakura",
         "imageUrl": "images/JapaneseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           222,
           240,
           240
         ],
         "title": "Sakura Sakura",
-        "url": "songs/asia/Japanese_Folk-Sakura_Sakura.mid"
+        "url": "songs/folk/Japanese_Folk-Sakura_Sakura.mid"
       },
       "Johann_Strauss-Blue_Danube_Waltz": {
         "__collections__": {},
@@ -2322,6 +2556,9 @@
         ],
         "id": "Johann_Strauss-Blue_Danube_Waltz",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3035,
           3934,
@@ -2341,6 +2578,9 @@
         ],
         "id": "Johann_Strauss-Die_Fledermaus",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3633,
           4355,
@@ -2360,6 +2600,9 @@
         ],
         "id": "Johann_Strauss-Emperor_Waltz",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           257,
           270,
@@ -2379,6 +2622,9 @@
         ],
         "id": "Johann_Strauss-Radetzky_March",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1201,
           1457,
@@ -2398,6 +2644,9 @@
         ],
         "id": "Johann_Strauss-Tritsch_Tratsch_Polka",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1128,
           1343,
@@ -2417,6 +2666,9 @@
         ],
         "id": "Johann_Strauss-Voices_Of_Spring",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3661,
           4507,
@@ -2436,6 +2688,9 @@
         ],
         "id": "Johann_Strauss-Wiener_Blut",
         "imageUrl": "images/JohannStrauss.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           370,
           370,
@@ -2455,6 +2710,9 @@
         ],
         "id": "Johannes_Brahms-Hungarian_Dance_No_5",
         "imageUrl": "images/JohannesBrahms.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1118,
           1450,
@@ -2474,6 +2732,9 @@
         ],
         "id": "Johannes_Brahms-Hungarian_Dance_No_6",
         "imageUrl": "images/JohannesBrahms.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1362,
           1846,
@@ -2493,6 +2754,9 @@
         ],
         "id": "John_Philip_Sousa-Liberty_Bell",
         "imageUrl": "images/JohnPhilipSousa.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1724,
           2347,
@@ -2512,6 +2776,9 @@
         ],
         "id": "John_Philip_Sousa-Semper_Fidelis",
         "imageUrl": "images/JohnPhilipSousa.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1065,
           1418,
@@ -2531,6 +2798,9 @@
         ],
         "id": "John_Philip_Sousa-Stars_And_Stripes_Forever",
         "imageUrl": "images/JohnPhilipSousa.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1687,
           2205,
@@ -2550,6 +2820,9 @@
         ],
         "id": "Julius_Fucik-Entry_Of_The_Gladiators",
         "imageUrl": "images/JuliusFucik.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1933,
           2507,
@@ -2569,6 +2842,9 @@
         ],
         "id": "Juventino_Rosas-Over_The_Waves",
         "imageUrl": "images/JuventinoRosas.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1750,
           2124,
@@ -2588,6 +2864,9 @@
         ],
         "id": "Karl_Jenkins-Palladio",
         "imageUrl": "images/KarlJenkins.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1778,
           2264,
@@ -2607,6 +2886,9 @@
         ],
         "id": "Ketelbey-In_A_Persian_Market",
         "imageUrl": "images/Ketelbey.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2175,
           2611,
@@ -2626,13 +2908,16 @@
         ],
         "id": "Korean_Folk-Arirang",
         "imageUrl": "images/KoreanFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           408,
           408,
           408
         ],
         "title": "Arirang",
-        "url": "songs/asia/Korean_Folk-Arirang.mid"
+        "url": "songs/folk/Korean_Folk-Arirang.mid"
       },
       "Luigi_Denza-Funiculi_Funicula": {
         "__collections__": {},
@@ -2645,6 +2930,9 @@
         ],
         "id": "Luigi_Denza-Funiculi_Funicula",
         "imageUrl": "images/LuigiDenza.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           164,
           216,
@@ -2664,6 +2952,9 @@
         ],
         "id": "Mendelssohn_Bartholdy-Wedding_March",
         "imageUrl": "images/MendelssohnBartholdy.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           414,
           515,
@@ -2683,6 +2974,9 @@
         ],
         "id": "Mozart-Aria_Queen_Of_The_Night",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1166,
           1296,
@@ -2702,6 +2996,9 @@
         ],
         "id": "Mozart-Eine_Kleine_Nachtmusik",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           840,
           1074,
@@ -2721,6 +3018,9 @@
         ],
         "id": "Mozart-Lacrimosa",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           491,
           603,
@@ -2740,6 +3040,9 @@
         ],
         "id": "Mozart-Marriage_Of_Figaro",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2473,
           3107,
@@ -2759,6 +3062,9 @@
         ],
         "id": "Mozart-Requiem",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           491,
           603,
@@ -2778,6 +3084,9 @@
         ],
         "id": "Mozart-Rondo_Alla_Turca",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2344,
           2785,
@@ -2797,6 +3106,9 @@
         ],
         "id": "Mozart-Symphony_No._25",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           3537,
           4311,
@@ -2816,6 +3128,9 @@
         ],
         "id": "Mozart-Symphony_No._40_in_G",
         "imageUrl": "images/Mozart.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2074,
           2394,
@@ -2835,6 +3150,9 @@
         ],
         "id": "Paganini-Caprice_No._24",
         "imageUrl": "images/Paganini.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           961,
           1168,
@@ -2854,6 +3172,9 @@
         ],
         "id": "Ponchielli-Dance_Of_The_Hours",
         "imageUrl": "images/Ponchielli.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1251,
           1605,
@@ -2873,6 +3194,9 @@
         ],
         "id": "Purcell-Funeral_Of_Queen_Mary",
         "imageUrl": "images/Purcell.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           150,
           179,
@@ -2892,6 +3216,9 @@
         ],
         "id": "Rachmaninoff-Prelude_In_C_Sharp_Minor",
         "imageUrl": "images/Rachmaninoff.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           932,
           1197,
@@ -2911,6 +3238,9 @@
         ],
         "id": "Rachmaninoff-Rhapsody_On_A_Theme_Of_Paganini",
         "imageUrl": "images/Rachmaninoff.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           652,
           831,
@@ -2930,6 +3260,9 @@
         ],
         "id": "Respighi-Pines_Of_The_Appian_Way",
         "imageUrl": "images/Respighi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           317,
           366,
@@ -2949,6 +3282,9 @@
         ],
         "id": "Richard_Wagner-Tristan_And_Isolde",
         "imageUrl": "images/RichardWagner.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2480,
           2814,
@@ -2968,6 +3304,9 @@
         ],
         "id": "Ricketts-Colonel_Bogey_March",
         "imageUrl": "images/Ricketts.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2081,
           2675,
@@ -2987,6 +3326,9 @@
         ],
         "id": "Rimsky_Korsakov-Flight_Of_The_Bumblebee",
         "imageUrl": "images/RimskyKorsakov.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           981,
           1069,
@@ -3006,6 +3348,9 @@
         ],
         "id": "Rossini-Barber_Of_Seville_-_Overture",
         "imageUrl": "images/Rossini.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           281,
           353,
@@ -3025,6 +3370,9 @@
         ],
         "id": "Rossini-William_Tell_Overture_Finale",
         "imageUrl": "images/Rossini.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2153,
           2748,
@@ -3044,13 +3392,16 @@
         ],
         "id": "Russian_Folk-Kalinka",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           210,
           269,
           328
         ],
         "title": "Kalinka",
-        "url": "songs/asia/Russian_Folk-Kalinka.mid"
+        "url": "songs/folk/Russian_Folk-Kalinka.mid"
       },
       "Russian_Folk-Katyusha": {
         "__collections__": {},
@@ -3063,13 +3414,16 @@
         ],
         "id": "Russian_Folk-Katyusha",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           653,
           794,
           855
         ],
         "title": "Katyusha",
-        "url": "songs/asia/Russian_Folk-Katyusha.mid"
+        "url": "songs/folk/Russian_Folk-Katyusha.mid"
       },
       "Russian_Folk-Korobeiniki": {
         "__collections__": {},
@@ -3082,13 +3436,16 @@
         ],
         "id": "Russian_Folk-Korobeiniki",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           473,
           483,
           493
         ],
         "title": "Korobeiniki",
-        "url": "songs/asia/Russian_Folk-Korobeiniki.mid"
+        "url": "songs/folk/Russian_Folk-Korobeiniki.mid"
       },
       "Russian_Folk-Oy,_Da_Ne_Vecher": {
         "__collections__": {},
@@ -3101,13 +3458,16 @@
         ],
         "id": "Russian_Folk-Oy,_Da_Ne_Vecher",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           213,
           220,
           221
         ],
         "title": "Oy, Da Ne Vecher",
-        "url": "songs/asia/Russian_Folk-Oy,_Da_Ne_Vecher.mid"
+        "url": "songs/folk/Russian_Folk-Oy,_Da_Ne_Vecher.mid"
       },
       "Russian_Folk-Polyushka_Polye": {
         "__collections__": {},
@@ -3120,13 +3480,16 @@
         ],
         "id": "Russian_Folk-Polyushka_Polye",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           221,
           222,
           222
         ],
         "title": "Polyushka Polye",
-        "url": "songs/asia/Russian_Folk-Polyushka_Polye.mid"
+        "url": "songs/folk/Russian_Folk-Polyushka_Polye.mid"
       },
       "Russian_Folk-Smuglyanka": {
         "__collections__": {},
@@ -3139,13 +3502,16 @@
         ],
         "id": "Russian_Folk-Smuglyanka",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           799,
           1012,
           1117
         ],
         "title": "Smuglyanka",
-        "url": "songs/asia/Russian_Folk-Smuglyanka.mid"
+        "url": "songs/folk/Russian_Folk-Smuglyanka.mid"
       },
       "Russian_Folk-Troika": {
         "__collections__": {},
@@ -3158,13 +3524,16 @@
         ],
         "id": "Russian_Folk-Troika",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           1174,
           1318,
           1337
         ],
         "title": "Troika",
-        "url": "songs/asia/Russian_Folk-Troika.mid"
+        "url": "songs/folk/Russian_Folk-Troika.mid"
       },
       "Russian_Folk-Tumbalalaika": {
         "__collections__": {},
@@ -3177,13 +3546,16 @@
         ],
         "id": "Russian_Folk-Tumbalalaika",
         "imageUrl": "images/RussianFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           396,
           523,
           543
         ],
         "title": "Tumbalalaika",
-        "url": "songs/asia/Russian_Folk-Tumbalalaika.mid"
+        "url": "songs/folk/Russian_Folk-Tumbalalaika.mid"
       },
       "Saint_Saens-Carnival_Of_The_Animals_-_Aquarium": {
         "__collections__": {},
@@ -3196,6 +3568,9 @@
         ],
         "id": "Saint_Saens-Carnival_Of_The_Animals_-_Aquarium",
         "imageUrl": "images/SaintSaens.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1698,
           1744,
@@ -3215,6 +3590,9 @@
         ],
         "id": "Saint_Saens-Carnival_Of_The_Animals_-_Finale",
         "imageUrl": "images/SaintSaens.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1902,
           2395,
@@ -3234,6 +3612,9 @@
         ],
         "id": "Saint_Saens-Danse_Macabre",
         "imageUrl": "images/SaintSaens.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1020,
           1360,
@@ -3253,6 +3634,9 @@
         ],
         "id": "Saint_Saens-Symphony_No._3",
         "imageUrl": "images/SaintSaens.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           482,
           632,
@@ -3272,6 +3656,9 @@
         ],
         "id": "Samuel_Barber-Adagio_For_Strings",
         "imageUrl": "images/SamuelBarber.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           597,
           693,
@@ -3291,6 +3678,9 @@
         ],
         "id": "Schubert-Ave_Maria",
         "imageUrl": "images/Schubert.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1070,
           1073,
@@ -3310,6 +3700,9 @@
         ],
         "id": "Smetana-Moldau_River",
         "imageUrl": "images/Smetana.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           559,
           711,
@@ -3329,6 +3722,9 @@
         ],
         "id": "Stravinsky-Firebird_Suite_-_Finale",
         "imageUrl": "images/Stravinsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1520,
           1708,
@@ -3348,6 +3744,9 @@
         ],
         "id": "Tchaikovsky-Dance_Of_The_Little_Swans",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           598,
           763,
@@ -3367,6 +3766,9 @@
         ],
         "id": "Tchaikovsky-Dance_Of_The_Reed_Flutes",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           993,
           1288,
@@ -3386,6 +3788,9 @@
         ],
         "id": "Tchaikovsky-Dance_Of_The_Sugar_Plum_Fairy",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           727,
           914,
@@ -3405,6 +3810,9 @@
         ],
         "id": "Tchaikovsky-Marche_Slave",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           383,
           464,
@@ -3424,6 +3832,9 @@
         ],
         "id": "Tchaikovsky-Nutcracker_-_March",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1675,
           2061,
@@ -3443,6 +3854,9 @@
         ],
         "id": "Tchaikovsky-Piano_Concerto_No._1",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1007,
           1258,
@@ -3462,6 +3876,9 @@
         ],
         "id": "Tchaikovsky-Romeo_And_Juliet_Fantasy_Overture",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1227,
           1411,
@@ -3481,6 +3898,9 @@
         ],
         "id": "Tchaikovsky-Sleeping_Beauty",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2110,
           2670,
@@ -3500,6 +3920,9 @@
         ],
         "id": "Tchaikovsky-Swan_Lake",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           326,
           326,
@@ -3519,6 +3942,9 @@
         ],
         "id": "Tchaikovsky-Symphony_No._6",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           512,
           620,
@@ -3538,6 +3964,9 @@
         ],
         "id": "Tchaikovsky-Waltz_Of_The_Flowers",
         "imageUrl": "images/Tchaikovsky.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           602,
           784,
@@ -3557,6 +3986,9 @@
         ],
         "id": "Vaughan_Williams-Fantasia_On_Greensleeves",
         "imageUrl": "images/VaughanWilliams.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           791,
           911,
@@ -3576,6 +4008,9 @@
         ],
         "id": "Vietnamese_Folk-A_Test_Song",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "songs"
+        ],
         "tilesCount": [
           2,
           2,
@@ -3595,13 +4030,16 @@
         ],
         "id": "Vietnamese_Folk-Bac_Kim_Thang",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           148,
           148,
           148
         ],
         "title": "Bac Kim Thang",
-        "url": "songs/vietnam/Vietnamese_Folk-Bac_Kim_Thang.mid"
+        "url": "songs/folk/Vietnamese_Folk-Bac_Kim_Thang.mid"
       },
       "Vietnamese_Folk-Beo_Dat_May_Troi": {
         "__collections__": {},
@@ -3614,13 +4052,16 @@
         ],
         "id": "Vietnamese_Folk-Beo_Dat_May_Troi",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           741,
           751,
           759
         ],
         "title": "Beo Dat May Troi",
-        "url": "songs/vietnam/Vietnamese_Folk-Beo_Dat_May_Troi.mid"
+        "url": "songs/folk/Vietnamese_Folk-Beo_Dat_May_Troi.mid"
       },
       "Vietnamese_Folk-Cay_Truc_Xinh": {
         "__collections__": {},
@@ -3633,13 +4074,16 @@
         ],
         "id": "Vietnamese_Folk-Cay_Truc_Xinh",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           54,
           54,
           54
         ],
         "title": "Cay Truc Xinh",
-        "url": "songs/vietnam/Vietnamese_Folk-Cay_Truc_Xinh.mid"
+        "url": "songs/folk/Vietnamese_Folk-Cay_Truc_Xinh.mid"
       },
       "Vietnamese_Folk-Co_La": {
         "__collections__": {},
@@ -3652,13 +4096,16 @@
         ],
         "id": "Vietnamese_Folk-Co_La",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           59,
           59,
           59
         ],
         "title": "Co La",
-        "url": "songs/vietnam/Vietnamese_Folk-Co_La.mid"
+        "url": "songs/folk/Vietnamese_Folk-Co_La.mid"
       },
       "Vietnamese_Folk-Ly_Cay_Bong": {
         "__collections__": {},
@@ -3671,13 +4118,16 @@
         ],
         "id": "Vietnamese_Folk-Ly_Cay_Bong",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           58,
           58,
           58
         ],
         "title": "Ly Cay Bong",
-        "url": "songs/vietnam/Vietnamese_Folk-Ly_Cay_Bong.mid"
+        "url": "songs/folk/Vietnamese_Folk-Ly_Cay_Bong.mid"
       },
       "Vietnamese_Folk-Nguoi_O_Dung_Ve": {
         "__collections__": {},
@@ -3690,13 +4140,16 @@
         ],
         "id": "Vietnamese_Folk-Nguoi_O_Dung_Ve",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           159,
           159,
           159
         ],
         "title": "Nguoi O Dung Ve",
-        "url": "songs/vietnam/Vietnamese_Folk-Nguoi_O_Dung_Ve.mid"
+        "url": "songs/folk/Vietnamese_Folk-Nguoi_O_Dung_Ve.mid"
       },
       "Vietnamese_Folk-Trong_Com": {
         "__collections__": {},
@@ -3709,13 +4162,16 @@
         ],
         "id": "Vietnamese_Folk-Trong_Com",
         "imageUrl": "images/VietnameseFolk.jpg",
+        "tags": [
+          "folk"
+        ],
         "tilesCount": [
           233,
           233,
           233
         ],
         "title": "Trong Com",
-        "url": "songs/vietnam/Vietnamese_Folk-Trong_Com.mid"
+        "url": "songs/folk/Vietnamese_Folk-Trong_Com.mid"
       },
       "Vittorio_Monti-Czardas": {
         "__collections__": {},
@@ -3728,6 +4184,9 @@
         ],
         "id": "Vittorio_Monti-Czardas",
         "imageUrl": "images/VittorioMonti.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1849,
           2152,
@@ -3747,6 +4206,9 @@
         ],
         "id": "Vivaldi-Four_Seasons_-_Spring",
         "imageUrl": "images/Vivaldi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2023,
           2249,
@@ -3766,6 +4228,9 @@
         ],
         "id": "Vivaldi-Four_Seasons_-_Summer",
         "imageUrl": "images/Vivaldi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           2362,
           2548,
@@ -3785,6 +4250,9 @@
         ],
         "id": "Vivaldi-Four_Seasons_-_Winter",
         "imageUrl": "images/Vivaldi.jpg",
+        "tags": [
+          "classic"
+        ],
         "tilesCount": [
           1064,
           1187,

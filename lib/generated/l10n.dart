@@ -45,6 +45,16 @@ class S {
     );
   }
 
+  /// `Classic`
+  String get classic {
+    return Intl.message(
+      'Classic',
+      name: 'classic',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Electric Guitar`
   String get electric_guitar {
     return Intl.message(
@@ -55,11 +65,41 @@ class S {
     );
   }
 
+  /// `Folk`
+  String get folk {
+    return Intl.message(
+      'Folk',
+      name: 'folk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kpop`
+  String get kpop {
+    return Intl.message(
+      'Kpop',
+      name: 'kpop',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Piano`
   String get piano {
     return Intl.message(
       'Piano',
       name: 'piano',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pop`
+  String get pop {
+    return Intl.message(
+      'Pop',
+      name: 'pop',
       desc: '',
       args: [],
     );

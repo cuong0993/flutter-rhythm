@@ -34,8 +34,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "acoustic_guitar" : MessageLookupByLibrary.simpleMessage("어커스틱 기타"),
+    "classic" : MessageLookupByLibrary.simpleMessage("클래식 음악"),
     "electric_guitar" : MessageLookupByLibrary.simpleMessage("전자 기타"),
+    "folk" : MessageLookupByLibrary.simpleMessage("민속 음악"),
+    "kpop" : MessageLookupByLibrary.simpleMessage("케이팝"),
     "piano" : MessageLookupByLibrary.simpleMessage("피아노"),
+    "pop" : MessageLookupByLibrary.simpleMessage("팝"),
     "txt_about_invite" : MessageLookupByLibrary.simpleMessage("초대하다"),
     "txt_about_rate" : MessageLookupByLibrary.simpleMessage("평가해주세요"),
     "txt_all_ok" : MessageLookupByLibrary.simpleMessage("알겠어요"),

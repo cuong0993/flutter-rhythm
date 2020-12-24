@@ -9,7 +9,11 @@ import 'songs_event.dart';
 import 'songs_state.dart';
 
 class SongsWidget extends StatelessWidget {
-  SongsWidget({Key key}) : super(key: key);
+  final int tagNumber;
+
+  SongsWidget({Key key, @required int tagNumber})
+      : tagNumber = tagNumber,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,43 +22,43 @@ class SongsWidget extends StatelessWidget {
         if (state is SongsInitial) {
           return LoadingWidget();
         } else if (state is SongsLoaded) {
-          final songs = state.songs;
-          final scrollController = ScrollController();
-          scrollController.addListener(() {
-            if (scrollController.offset >=
-                    scrollController.position.maxScrollExtent &&
-                !scrollController.position.outOfRange) {
-              BlocProvider.of<SongsBloc>(context).add(LoadMoreSongs());
-            }
-          });
+          final songsByTag = state.songsByTags[tagNumber];
           return Scrollbar(
-            isAlwaysShown: true,
-            controller: scrollController,
-            child: ListView.builder(
-              controller: scrollController,
-              itemCount:
-                  (state.isLoadingMore) ? songs.length + 1 : songs.length,
-              itemBuilder: (context, index) {
-                if (index == songs.length) {
-                  return Center(
-                    child: SizedBox(
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircularProgressIndicator(),
+            child: NotificationListener<ScrollEndNotification>(
+              child: ListView.builder(
+                itemCount: (state.isLoadingMoreByTags[tagNumber])
+                    ? songsByTag.length + 1
+                    : songsByTag.length,
+                itemBuilder: (context, index) {
+                  if (index == songsByTag.length) {
+                    return Center(
+                      child: SizedBox(
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: CircularProgressIndicator(),
+                        ),
+                        height: 32,
+                        width: 32,
                       ),
-                      height: 32,
-                      width: 32,
-                    ),
+                    );
+                  }
+                  final song = songsByTag[index];
+                  return SongWidget(
+                    song: song,
+                    onTap: () async {
+                      await Navigator.pushNamed(context, Routes.gameConfig,
+                          arguments: song);
+                    },
                   );
+                },
+              ),
+              onNotification: (notification) {
+                if (notification.metrics.pixels > 0 &&
+                    notification.metrics.atEdge) {
+                  BlocProvider.of<SongsBloc>(context)
+                      .add(LoadMoreSongsByTagNumbers([tagNumber]));
                 }
-                final song = songs[index];
-                return SongWidget(
-                  song: song,
-                  onTap: () async {
-                    await Navigator.pushNamed(context, Routes.gameConfig,
-                        arguments: song);
-                  },
-                );
+                return true;
               },
             ),
           );

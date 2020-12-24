@@ -12,6 +12,7 @@ class Song {
   int bpm;
   List<int> tilesCount;
   List<int> duration;
+  List<String> tags;
 
   Song(
     this.id,
@@ -22,6 +23,7 @@ class Song {
     this.bpm,
     this.tilesCount,
     this.duration,
+    this.tags,
   );
 
   factory Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);

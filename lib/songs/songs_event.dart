@@ -9,13 +9,20 @@ abstract class SongsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadMoreSongs extends SongsEvent {}
+class LoadMoreSongsByTagNumbers extends SongsEvent {
+  final List<int> tagNumbers;
+
+  LoadMoreSongsByTagNumbers(this.tagNumbers);
+}
 
 class UpdateSongs extends SongsEvent {
-  final List<Song> songs;
+  final List<List<Song>> songsByTags;
+  final List<bool> isLoadingMoreByTags;
+  final List<bool> isLoadedByTags;
 
-  const UpdateSongs(this.songs);
+  const UpdateSongs(
+      this.songsByTags, this.isLoadingMoreByTags, this.isLoadedByTags);
 
   @override
-  List<Object> get props => [songs];
+  List<Object> get props => [songsByTags, isLoadingMoreByTags, isLoadedByTags];
 }

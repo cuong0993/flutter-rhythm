@@ -1,24 +1,19 @@
-import 'package:equatable/equatable.dart';
 
 import 'song.dart';
 
-abstract class SongsState extends Equatable {
+abstract class SongsState {
   const SongsState();
 }
 
 class SongsInitial extends SongsState {
   const SongsInitial();
-
-  @override
-  List<Object> get props => [];
 }
 
 class SongsLoaded extends SongsState {
-  final List<Song> songs;
-  final bool isLoadingMore;
+  final List<List<Song>> songsByTags;
+  final List<bool> isLoadingMoreByTags;
+  final List<bool> isLoadedByTags;
 
-  const SongsLoaded(this.songs, this.isLoadingMore);
-
-  @override
-  List<Object> get props => [songs, isLoadingMore];
+  const SongsLoaded(
+      this.songsByTags, this.isLoadingMoreByTags, this.isLoadedByTags);
 }

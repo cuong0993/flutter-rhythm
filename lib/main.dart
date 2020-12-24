@@ -26,6 +26,13 @@ import 'user/user_bloc.dart';
 import 'user/user_repository_impl.dart';
 import 'user/user_widget.dart';
 
+const songTags = [
+  'pop',
+  'classic',
+  'folk',
+  'kpop',
+];
+
 void main() async {
   Bloc.observer = SimpleBlocObserver();
   runApp(App());
@@ -58,7 +65,8 @@ class App extends StatelessWidget {
               create: (context) {
                 return SongsBloc(
                   songsRepository: songsRepository,
-                )..add(LoadMoreSongs());
+                )..add(
+                    LoadMoreSongsByTagNumbers(songTags.asMap().keys.toList()));
               },
             ),
             BlocProvider<UserBloc>(

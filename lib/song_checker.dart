@@ -17,6 +17,8 @@ void main() {
     final songsMap = {};
     dir.listSync(recursive: true).whereType<File>().toList().forEach((file) {
       final key = file.uri.toString().split('/').last.replaceAll('.mid', '');
+      final temp = file.uri.toString().split('/');
+      final genre = temp[temp.length - 2];
       print(
           '*************************** Checking $key ***************************');
       final artist = key.split('-').first;
@@ -78,7 +80,9 @@ void main() {
       if (tileCount < 50) {
         print('WARNING Number tile to small $key, number tiles $tileCount');
       }
-      final duration = (0.5 + ((0.0 - tiles.last.initialY) * 1000000)/ speedDpsPerSecond).toInt();
+      final duration =
+          (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / speedDpsPerSecond)
+              .toInt();
       print('Duration is $duration microseconds');
       if (duration > 400000000) {
         print('WARNING  Too long ${duration / 60000000} minutes');
@@ -89,12 +93,20 @@ void main() {
         createTiles(tileChunks, unitDuration, 4).length
       ];
       value['duration'] = [
-        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / (speedDpsPerSecond * 0.75)).toInt(),
-        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / speedDpsPerSecond).toInt(),
-        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / (speedDpsPerSecond *1.25)).toInt()
+        (0.5 +
+                ((0.0 - tiles.last.initialY) * 1000000) /
+                    (speedDpsPerSecond * 0.75))
+            .toInt(),
+        (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / speedDpsPerSecond)
+            .toInt(),
+        (0.5 +
+                ((0.0 - tiles.last.initialY) * 1000000) /
+                    (speedDpsPerSecond * 1.25))
+            .toInt()
       ];
       value['artist'] = artist1;
       value['id'] = key;
+      value['tags'] = [genre];
       value['imageUrl'] = "images/${artist.replaceAll("_", "")}.jpg";
       value['title'] = title;
       value['url'] = file.uri.toString().replaceAll('storage/', '');
