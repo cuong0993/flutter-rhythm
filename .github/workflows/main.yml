@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  flutter_version: "1.22.3"
+  flutter_version: "1.22.5"
 
 jobs:
   buildApk:
