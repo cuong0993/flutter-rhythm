@@ -31,11 +31,11 @@ dependencies:
   cupertino_icons: ^1.0.0
   json_annotation: ^3.1.0
   flutter_cache_manager_firebase: ^1.0.1
-  cached_network_image: ^2.3.3
+  cached_network_image: ^2.5.0
   shared_preferences: ^0.5.12+2
   in_app_review: ^1.0.1+1
   intl: ^0.16.1
-  flutter_email_sender: ^3.0.1
+  flutter_email_sender: ^4.0.0
   package_info: ^0.4.3
   device_info: ^1.0.0
   share: ^0.6.5+4
@@ -43,7 +43,7 @@ dependencies:
   google_sign_in: ^4.5.5
   flutter_facebook_login: ^3.0.0
   firebase_performance: ^0.4.1
-  rxdart: ^0.24.1
+  rxdart: ^0.25.0
   firebase_crashlytics: ^0.2.3+1
 
 dev_dependencies:
