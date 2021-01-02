@@ -1,4 +1,3 @@
-
 import 'song.dart';
 
 abstract class SongsState {
