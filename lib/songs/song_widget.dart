@@ -19,14 +19,6 @@ class SongWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      leading: CachedNetworkImage(
-          width: 40,
-          height: 40,
-          imageUrl: song.imageUrl,
-          placeholder: (context, url) => CircularProgressIndicator(),
-          memCacheWidth: 40.toPixel(),
-          memCacheHeight: 40.toPixel(),
-          cacheManager: FirebaseCacheManager()),
       title: Text(
         song.title,
         style: Theme.of(context).textTheme.headline6,

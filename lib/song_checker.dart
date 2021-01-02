@@ -107,7 +107,6 @@ void main() {
       value['artist'] = artist1;
       value['id'] = key;
       value['tags'] = [genre];
-      value['imageUrl'] = "images/${artist.replaceAll("_", "")}.jpg";
       value['title'] = title;
       value['url'] = file.uri.toString().replaceAll('storage/', '');
       value['__collections__'] = {};

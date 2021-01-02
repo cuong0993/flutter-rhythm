@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "electric_guitar" : MessageLookupByLibrary.simpleMessage("Electric Guitar"),
     "folk" : MessageLookupByLibrary.simpleMessage("Folk"),
     "kpop" : MessageLookupByLibrary.simpleMessage("Kpop"),
+    "other" : MessageLookupByLibrary.simpleMessage("Other genre"),
     "piano" : MessageLookupByLibrary.simpleMessage("Piano"),
     "pop" : MessageLookupByLibrary.simpleMessage("Pop"),
     "txt_about_invite" : MessageLookupByLibrary.simpleMessage("Invite"),

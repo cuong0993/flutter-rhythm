@@ -85,6 +85,16 @@ class S {
     );
   }
 
+  /// `Other genre`
+  String get other {
+    return Intl.message(
+      'Other genre',
+      name: 'other',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Piano`
   String get piano {
     return Intl.message(

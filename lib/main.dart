@@ -31,6 +31,7 @@ const songTags = [
   'classic',
   'folk',
   'kpop',
+  'other',
 ];
 
 void main() async {

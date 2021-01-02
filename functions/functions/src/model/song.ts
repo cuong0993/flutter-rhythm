@@ -3,7 +3,6 @@ export interface Song {
   title: string;
   artist: string;
   url: string;
-  imageUrl: string;
   bpm: number;
   tilesCount: number[];
   duration: number[];

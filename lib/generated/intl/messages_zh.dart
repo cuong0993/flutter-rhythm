@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "electric_guitar" : MessageLookupByLibrary.simpleMessage("电吉他琴"),
     "folk" : MessageLookupByLibrary.simpleMessage("民间音乐"),
     "kpop" : MessageLookupByLibrary.simpleMessage("Kpop"),
+    "other" : MessageLookupByLibrary.simpleMessage("其他类型"),
     "piano" : MessageLookupByLibrary.simpleMessage("钢琴"),
     "pop" : MessageLookupByLibrary.simpleMessage("流行的"),
     "txt_about_invite" : MessageLookupByLibrary.simpleMessage("邀请朋友"),

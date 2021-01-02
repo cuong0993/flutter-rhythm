@@ -21,54 +21,50 @@ class HomeWidget extends StatelessWidget {
         return Scaffold(
           body: DefaultTabController(
             length: songTags.length,
-            child: SafeArea(
-                child: NestedScrollView(
+            child: NestedScrollView(
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
                   SliverAppBar(
-                    snap: true,
-                    floating: true,
-                    pinned: false,
-                    actions: [
-                      IconButton(
-                        icon: Icon(Icons.search_rounded),
-                        onPressed: () {
-                          showSearch(
-                              context: context, delegate: SearchWidget());
-                        },
-                      ),
-                      IconButton(
-                          icon: Image(
-                              image:
-                                  AssetImage('assets/images/img_guitar.png')),
-                          onPressed: () async {
-                            await Navigator.pushNamed(
-                                context, Routes.instrument);
-                          }),
-                      IconButton(
-                          icon: ClipOval(
-                            child: (state is HomeUpdated &&
-                                    !state.user.isAnonymous)
-                                ? CachedNetworkImage(
-                                    imageUrl: state.user.photoUrl,
-                                    placeholder: (context, url) =>
-                                        Icon(Icons.account_circle_rounded),
-                                    memCacheWidth: 24.toPixel(),
-                                    memCacheHeight: 24.toPixel())
-                                : Icon(Icons.account_circle_rounded),
-                          ),
-                          onPressed: () async {
-                            await Navigator.pushNamed(context, Routes.account);
-                          }),
-                      ExtraActions()
-                    ],
-                    flexibleSpace: FlexibleSpaceBar(
-                        title: Text(S.of(context).txt_all_songs)),
-                  ),
-                  SliverPersistentHeader(
-                    delegate: _SliverAppBarDelegate(
-                      TabBar(
+                      title: Text(S.of(context).txt_all_songs),
+                      floating: true,
+                      pinned: true,
+                      snap: true,
+                      actions: [
+                        IconButton(
+                          icon: Icon(Icons.search_rounded),
+                          onPressed: () {
+                            showSearch(
+                                context: context, delegate: SearchWidget());
+                          },
+                        ),
+                        IconButton(
+                            icon: Image(
+                                image:
+                                    AssetImage('assets/images/img_guitar.png')),
+                            onPressed: () async {
+                              await Navigator.pushNamed(
+                                  context, Routes.instrument);
+                            }),
+                        IconButton(
+                            icon: ClipOval(
+                              child: (state is HomeUpdated &&
+                                      !state.user.isAnonymous)
+                                  ? CachedNetworkImage(
+                                      imageUrl: state.user.photoUrl,
+                                      placeholder: (context, url) =>
+                                          Icon(Icons.account_circle_rounded),
+                                      memCacheWidth: 24.toPixel(),
+                                      memCacheHeight: 24.toPixel())
+                                  : Icon(Icons.account_circle_rounded),
+                            ),
+                            onPressed: () async {
+                              await Navigator.pushNamed(
+                                  context, Routes.account);
+                            }),
+                        ExtraActions()
+                      ],
+                      bottom: TabBar(
                         isScrollable: true,
                         tabs: songTags
                             .map((tabName) => Tab(
@@ -81,10 +77,7 @@ class HomeWidget extends StatelessWidget {
                                   ),
                                 ))
                             .toList(),
-                      ),
-                    ),
-                    pinned: true,
-                  ),
+                      )),
                 ];
               },
               body: TabBarView(
@@ -95,36 +88,10 @@ class HomeWidget extends StatelessWidget {
                     .values
                     .toList(),
               ),
-            )),
+            ),
           ),
         );
       },
     );
-  }
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate(this._tabBar);
-
-  final TabBar _tabBar;
-
-  @override
-  double get minExtent => _tabBar.preferredSize.height;
-
-  @override
-  double get maxExtent => _tabBar.preferredSize.height;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-      child: _tabBar,
-    );
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
   }
 }

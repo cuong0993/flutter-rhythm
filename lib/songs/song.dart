@@ -8,7 +8,6 @@ class Song {
   String title;
   String artist;
   String url;
-  String imageUrl;
   int bpm;
   List<int> tilesCount;
   List<int> duration;
@@ -19,7 +18,6 @@ class Song {
     this.title,
     this.artist,
     this.url,
-    this.imageUrl,
     this.bpm,
     this.tilesCount,
     this.duration,
