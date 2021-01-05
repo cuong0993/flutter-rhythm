@@ -1,7 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="SongChecker" type="DartCommandLineRunConfigurationType"
-        factoryName="Dart Command Line Application">
-        <option name="filePath" value="$PROJECT_DIR$/lib/song_checker.dart" />
-        <method v="2" />
-    </configuration>
-</component>
