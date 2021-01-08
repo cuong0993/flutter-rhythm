@@ -25,7 +25,7 @@ class SongsWidget extends StatelessWidget {
           final songsByTag = state.songsByTags[tagNumber];
           return Scrollbar(
             child: NotificationListener<ScrollEndNotification>(
-              child: ListView.builder(
+              child: ListView.separated(
                 itemCount: (state.isLoadingMoreByTags[tagNumber])
                     ? songsByTag.length + 1
                     : songsByTag.length,
@@ -49,6 +49,11 @@ class SongsWidget extends StatelessWidget {
                       await Navigator.pushNamed(context, Routes.gameConfig,
                           arguments: song);
                     },
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return Divider(
+                    height: 4,
                   );
                 },
               ),

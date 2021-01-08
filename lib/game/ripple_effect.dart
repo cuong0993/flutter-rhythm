@@ -3,13 +3,14 @@ import 'dart:ui';
 import 'package:flame/position.dart';
 import 'package:flame/sprite.dart';
 
+import '../main.dart';
 import '../util.dart';
 import 'effect.dart';
 
 Sprite touchSprite = Sprite('${nearestDevicePixelRatioFolder}img_touch.png');
 Paint grayPaint = Paint()
   ..colorFilter =
-      ColorFilter.mode(Color(0xFFFFFFFF).withOpacity(0.1), BlendMode.srcIn);
+      ColorFilter.mode(onBackgroundColor.withOpacity(0.1), BlendMode.srcIn);
 
 class RippleEffect extends Effect {
   static const LIVE_TIME = 0.5;

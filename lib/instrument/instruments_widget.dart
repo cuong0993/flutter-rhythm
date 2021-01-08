@@ -17,7 +17,10 @@ class InstrumentsWidget extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-              title: Text(S.of(context).txt_instrument_title_instruments)),
+              title: Text(S.of(context).txt_instrument_title_instruments, style: Theme.of(context)
+              .appBarTheme
+              .textTheme
+              .headline5)),
           body: (() {
             if (state is UserLoading) {
               return LoadingWidget();
@@ -27,20 +30,23 @@ class InstrumentsWidget extends StatelessWidget {
                 itemCount: instruments.length,
                 itemBuilder: (context, index) {
                   final instrument = instruments[index];
-                  return ListTile(
-                      selected: state.user.user.instrumentId == instrument.id,
-                      selectedTileColor: Theme.of(context).colorScheme.onError,
-                      onTap: () {
-                        BlocProvider.of<UserBloc>(context)
-                            .add(ChangeInstrument(instrument.id));
-                      },
-                      title: Text(Intl.message(
-                        '',
-                        /* FIXME Localization name of instrument should be taken from server, not from local text resources */
-                        name: instrument.id,
-                        desc: '',
-                        args: [],
-                      )));
+                  return RadioListTile<String>(
+                      title: Text(
+                        Intl.message(
+                          '',
+                          /* FIXME Localization name of instrument should be taken from server, not from local text resources */
+                          name: instrument.id,
+                          desc: '',
+                          args: [],
+                        ),
+                        style: Theme.of(context).textTheme.headline6),
+                    value: instrument.id,
+                    groupValue: state.user.user.instrumentId,
+                    onChanged: (String value) {
+                      BlocProvider.of<UserBloc>(context)
+                          .add(ChangeInstrument(value));
+                    },
+                  );
                 },
               );
             } else {

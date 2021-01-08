@@ -22,7 +22,9 @@ class SearchWidget extends SearchDelegate {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context);
+    final theme = Theme.of(context);
+    if (theme.brightness == Brightness.light) return super.appBarTheme(context);
+    return theme;
   }
 
   @override

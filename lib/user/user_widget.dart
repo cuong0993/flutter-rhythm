@@ -18,7 +18,10 @@ class UserWidget extends StatelessWidget {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).txt_page_title_account)),
+            appBar: AppBar(title: Text(S.of(context).txt_page_title_account, style: Theme.of(context)
+                .appBarTheme
+                .textTheme
+                .headline5)),
             body: (() {
               if (state is UserLoading) {
                 return LoadingWidget();
@@ -48,6 +51,8 @@ class UserWidget extends StatelessWidget {
         () {
           if (!state.user.isAnonymous) {
             return Card(
+                color: Colors.transparent,
+                elevation: 0,
                 child: Container(
                     padding: EdgeInsets.all(8.0),
                     child: Row(
@@ -109,6 +114,8 @@ class UserWidget extends StatelessWidget {
                     )));
           } else {
             return Card(
+                color: Colors.transparent,
+                elevation: 0,
                 child: Container(
                     padding: EdgeInsets.all(8.0),
                     child: Column(
@@ -164,97 +171,105 @@ class UserWidget extends StatelessWidget {
           }
         }(),
         Card(
+            color: Colors.transparent,
+            elevation: 0,
             child: Table(
-          children: [
-            TableRow(children: [
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  // if you need this
-                  side: BorderSide(
-                    color: Colors.grey.withOpacity(0.2),
-                    width: 2,
-                  ),
-                ),
-                child: Container(
-                  //color: Colors.white,
-                  //width: 200,
-                  //height: 200,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 8),
-                      Image(
-                        image: AssetImage('assets/images/img_star.png'),
+              children: [
+                TableRow(children: [
+                  Card(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      // if you need this
+                      side: BorderSide(
+                        color: Colors.grey.withOpacity(0.2),
+                        width: 1,
                       ),
-                      SizedBox(height: 8),
-                      Text(state.user.user.stars.toString(),
-                          style: Theme.of(context).textTheme.subtitle1),
-                      SizedBox(height: 8),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  // if you need this
-                  side: BorderSide(
-                    color: Colors.grey.withOpacity(0.2),
-                    width: 2,
-                  ),
-                ),
-                child: Container(
-                  //color: Colors.white,
-                  // width: 200,
-                  //height: 200,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 8),
-                      Image(
-                        image: AssetImage('assets/images/img_note.png'),
+                    ),
+                    child: Container(
+                      //color: Colors.white,
+                      //width: 200,
+                      //height: 200,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 8),
+                          Image(
+                            image: AssetImage('assets/images/img_star.png'),
+                          ),
+                          SizedBox(height: 8),
+                          Text(state.user.user.stars.toString(),
+                              style: Theme.of(context).textTheme.subtitle1),
+                          SizedBox(height: 8),
+                        ],
                       ),
-                      SizedBox(height: 8),
-                      Text(state.user.user.playedNotes.toString(),
-                          style: Theme.of(context).textTheme.subtitle1),
-                      SizedBox(height: 8),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  // if you need this
-                  side: BorderSide(
-                    color: Colors.grey.withOpacity(0.2),
-                    width: 2,
-                  ),
-                ),
-                child: Container(
-                  //color: Colors.white,
-                  //width: 200,
-                  //height: 200,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 8),
-                      Image(
-                        image: AssetImage('assets/images/img_clock.png'),
+                  Card(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      // if you need this
+                      side: BorderSide(
+                        color: Colors.grey.withOpacity(0.2),
+                        width: 1,
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                          state.user.user.playedTime
-                              .toString()
-                              .substring(0, 4)
-                              .toString(),
-                          style: Theme.of(context).textTheme.subtitle1),
-                      SizedBox(height: 8),
-                    ],
+                    ),
+                    child: Container(
+                      //color: Colors.white,
+                      // width: 200,
+                      //height: 200,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 8),
+                          Image(
+                            image: AssetImage('assets/images/img_note.png'),
+                          ),
+                          SizedBox(height: 8),
+                          Text(state.user.user.playedNotes.toString(),
+                              style: Theme.of(context).textTheme.subtitle1),
+                          SizedBox(height: 8),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ]),
-          ],
-        )),
+                  Card(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      // if you need this
+                      side: BorderSide(
+                        color: Colors.grey.withOpacity(0.2),
+                        width: 1,
+                      ),
+                    ),
+                    child: Container(
+                      //color: Colors.white,
+                      //width: 200,
+                      //height: 200,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 8),
+                          Image(
+                            image: AssetImage('assets/images/img_clock.png'),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                              state.user.user.playedTime
+                                  .toString()
+                                  .substring(0, 4)
+                                  .toString(),
+                              style: Theme.of(context).textTheme.subtitle1),
+                          SizedBox(height: 8),
+                        ],
+                      ),
+                    ),
+                  ),
+                ]),
+              ],
+            )),
       ],
     );
   }

@@ -26,10 +26,16 @@ class HomeWidget extends StatelessWidget {
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
                   SliverAppBar(
-                      title: Text(S.of(context).txt_all_songs),
+                      title: Text(S.of(context).txt_all_songs,
+                          style: Theme.of(context)
+                              .appBarTheme
+                              .textTheme
+                              .headline5),
+                      elevation: 2,
                       floating: true,
                       pinned: true,
                       snap: true,
+                      forceElevated: true,
                       actions: [
                         IconButton(
                           icon: Icon(Icons.search_rounded),
@@ -40,8 +46,10 @@ class HomeWidget extends StatelessWidget {
                         ),
                         IconButton(
                             icon: Image(
-                                image:
-                                    AssetImage('assets/images/img_guitar.png')),
+                              image: AssetImage('assets/images/img_guitar.png'),
+                              color:
+                                  Theme.of(context).appBarTheme.iconTheme.color,
+                            ),
                             onPressed: () async {
                               await Navigator.pushNamed(
                                   context, Routes.instrument);

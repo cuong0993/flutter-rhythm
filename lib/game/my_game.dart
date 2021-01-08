@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
 import '../util.dart';
 import 'effect.dart';
 import 'tile/tile.dart';
@@ -23,10 +24,9 @@ class MyGame extends Game with MultiTouchTapDetector {
   final Map<int, _TouchData> _touches = {};
   Function(Tile tile) _onTouched;
   Function() _onCompleted;
-  final _paint = Paint()..color = Color(0xFF1F1929);
+  final _backgroundPaint = Paint()..color = backgroundColor;
   final _grayPaint = Paint()
-    ..colorFilter =
-        ColorFilter.mode(Color(0xFFFFFFFF).withOpacity(0.2), BlendMode.srcIn);
+    ..colorFilter = ColorFilter.mode(onBackgroundColor, BlendMode.srcIn);
 
   final _staffSprite = Sprite('${nearestDevicePixelRatioFolder}img_staff.png');
   final _clefSprite = Sprite('${nearestDevicePixelRatioFolder}img_clef.png');
@@ -56,7 +56,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   @override
   void render(Canvas canvas) {
     final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
-    canvas.drawRect(rect, _paint);
+    canvas.drawRect(rect, _backgroundPaint);
     _staffSprite.renderPosition(canvas, Position(0.0, pauseY - 96 + 24),
         size: Position(screenWidth, 96), overridePaint: _grayPaint);
     _clefSprite.renderPosition(canvas, Position(0.0, pauseY - 96 + 24),

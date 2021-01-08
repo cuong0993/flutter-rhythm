@@ -2,6 +2,7 @@ import 'package:flame/position.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../main.dart';
 import '../../util.dart';
 import 'tile.dart';
 
@@ -12,6 +13,7 @@ extension TileDrawer on Tile {
   void render(Canvas canvas) {
     noteSprite.renderPosition(canvas,
         Position(positionsX[column].toInt().toDouble(), y.toInt().toDouble()),
-        size: Position(width.toInt().toDouble(), height.toInt().toDouble()));
+        size: Position(width.toInt().toDouble(), height.toInt().toDouble()),
+        overridePaint: paint);
   }
 }

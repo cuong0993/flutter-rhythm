@@ -34,6 +34,12 @@ const songTags = [
   'other',
 ];
 
+Color primaryColor;
+Color secondaryColor;
+Color backgroundColor;
+Color onBackgroundColor;
+Paint paint;
+
 void main() async {
   Bloc.observer = SimpleBlocObserver();
   runApp(App());
@@ -90,24 +96,7 @@ class App extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: S.delegate.supportedLocales,
-              /* Peaceful color scheme #5FAAE3 #BAEBFA #FEF3D8 #F2B5AF #939BCB #13436B */
-              theme: ThemeData.from(
-                colorScheme: ColorScheme(
-                  primary: Color(0xff1cdec9),
-                  primaryVariant: Color(0xff00ab98),
-                  secondary: Color(0xffff8383),
-                  secondaryVariant: Color(0xffc85356),
-                  surface: Color(0xff1f1929),
-                  background: Color(0xff1f1929),
-                  error: Color(0xff92222d),
-                  onPrimary: Colors.black,
-                  onSecondary: Colors.black,
-                  onSurface: Colors.white,
-                  onBackground: Colors.white,
-                  onError: Colors.white,
-                  brightness: Brightness.dark,
-                ),
-              ),
+              theme: buildTheme(false),
               routes: {
                 Routes.splash: (context) {
                   return SplashWidget();
@@ -141,5 +130,73 @@ class App extends StatelessWidget {
             );
           }),
         ));
+  }
+
+  ThemeData buildTheme(bool isDark) {
+    primaryColor = Color(0xFF4760E9);
+    final onPrimaryColor = Colors.white;
+    secondaryColor = Color(0xFFFD7C6E);
+    backgroundColor = isDark ? Colors.black : Colors.white;
+    onBackgroundColor = isDark ? Colors.white : Colors.black;
+    paint = Paint()
+      ..colorFilter = ColorFilter.mode(onBackgroundColor, BlendMode.srcIn);
+    final screenHeadingTextStyle =
+        TextStyle(fontSize: 32.0, color: secondaryColor);
+    final screenTaskNameTextStyle =
+        TextStyle(fontSize: 20.0, color: onBackgroundColor);
+    final screenTaskDurationTextStyle =
+        TextStyle(fontSize: 16.0, color: onBackgroundColor);
+    final textTheme = TextTheme(
+      headline5: screenHeadingTextStyle,
+      bodyText2: screenTaskNameTextStyle,
+      bodyText1: screenTaskDurationTextStyle,
+    );
+    return ThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              primary: primaryColor, onPrimary: onPrimaryColor)),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+              primary: onBackgroundColor, onSurface: onBackgroundColor)),
+      scaffoldBackgroundColor: backgroundColor,
+      tabBarTheme: TabBarTheme(
+          indicator: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+          ),
+          labelStyle: screenTaskNameTextStyle,
+          labelColor: primaryColor,
+          unselectedLabelColor: onBackgroundColor),
+      appBarTheme: AppBarTheme(
+        textTheme: textTheme,
+        color: backgroundColor,
+        iconTheme: IconThemeData(color: primaryColor),
+      ),
+      popupMenuTheme: PopupMenuThemeData(color: backgroundColor),
+      colorScheme: ColorScheme(
+        primary: primaryColor,
+        primaryVariant: primaryColor,
+        secondary: secondaryColor,
+        onPrimary: onPrimaryColor,
+        onError: onBackgroundColor,
+        error: backgroundColor,
+        onBackground: onBackgroundColor,
+        secondaryVariant: secondaryColor,
+        background: backgroundColor,
+        onSurface: onBackgroundColor,
+        onSecondary: secondaryColor,
+        brightness: isDark? Brightness.dark : Brightness.light,
+        surface: backgroundColor,
+      ),
+      toggleableActiveColor: primaryColor,
+      iconTheme: IconThemeData(
+        color: primaryColor,
+      ),
+      textTheme: textTheme,
+    );
   }
 }

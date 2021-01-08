@@ -1,6 +1,7 @@
 import 'package:flame/position.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../main.dart';
 import '../../util.dart';
 import '../center_render_text_config.dart';
 import '../effect.dart';
@@ -99,8 +100,7 @@ const noteToName = {
 };
 
 class TileTouchEffect extends Effect {
-  final config =
-      CenterRenderTextConfig(fontSize: 24.0, color: Color(0xFF1CDEC9));
+  final config = CenterRenderTextConfig(fontSize: 24.0, color: primaryColor);
   var _time = 0.0;
   var _isDone = false;
   final _centerX;

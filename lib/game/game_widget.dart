@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../generated/l10n.dart';
+import '../main.dart';
 import 'complete_dialog.dart';
 import 'game_bloc.dart';
 import 'game_event.dart';
@@ -13,7 +14,6 @@ import 'my_game.dart';
 import 'pause_dialog.dart';
 import 'tile/tile.dart';
 import 'tile/tile_converter.dart';
-
 class GameWidget extends StatefulWidget {
   final MyGame _game;
 
@@ -100,8 +100,8 @@ class _GameWidgetState extends State<GameWidget> {
                       percent: (state as GameUpdated).time /
                           (state as GameUpdated).maxTime,
                       linearStrokeCap: LinearStrokeCap.butt,
-                      progressColor: Color(0xFFFF8383),
-                      backgroundColor: Color(0xFFFFFFFF).withOpacity(0.1),
+                      progressColor: secondaryColor,
+                      backgroundColor: onBackgroundColor.withOpacity(0.1),
                     ),
                     Padding(
                       padding: EdgeInsets.all(8),
@@ -132,7 +132,7 @@ class _GameWidgetState extends State<GameWidget> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline4
-                                      .copyWith(color: Color(0xFFFF8383)))
+                                      .copyWith(color: secondaryColor))
                             ],
                           ),
                           Row(
@@ -191,7 +191,7 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
         style: Theme.of(context)
             .textTheme
             .headline5
-            .copyWith(color: Color(0xFF1CDEC9)));
+            .copyWith(color: secondaryColor));
   }
 }
 

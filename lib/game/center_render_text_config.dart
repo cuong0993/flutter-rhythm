@@ -3,11 +3,12 @@ import 'dart:ui';
 import 'package:flame/anchor.dart';
 import 'package:flame/position.dart';
 import 'package:flame/text_config.dart';
+import 'package:flutter/material.dart';
 
 class CenterRenderTextConfig extends TextConfig {
   CenterRenderTextConfig({
     double fontSize = 24.0,
-    Color color = const Color(0xFF000000),
+    Color color = Colors.black,
     String fontFamily = 'Arial',
     TextAlign textAlign = TextAlign.left,
     TextDirection textDirection = TextDirection.ltr,
