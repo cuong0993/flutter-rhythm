@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../generated/l10n.dart';
-import 'locale_bloc.dart';
+import 'setting_bloc.dart';
 
 const map = {'en': 'English', 'ko': '한국어', 'vi': 'Tiếng Việt', 'zh': '汉语'};
 
@@ -28,7 +28,7 @@ class LocaleWidget extends StatelessWidget {
                 value: S.delegate.supportedLocales[index],
                 groupValue: Localizations.localeOf(context),
                 onChanged: (Locale value) {
-                  BlocProvider.of<LocaleBloc>(context)
+                  BlocProvider.of<SettingBloc>(context)
                     ..add(
                         ChangeLocaleEvent(S.delegate.supportedLocales[index]));
                 },

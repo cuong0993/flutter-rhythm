@@ -55,6 +55,16 @@ class S {
     );
   }
 
+  /// `Dark`
+  String get dark {
+    return Intl.message(
+      'Dark',
+      name: 'dark',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Electric Guitar`
   String get electric_guitar {
     return Intl.message(
@@ -85,6 +95,16 @@ class S {
     );
   }
 
+  /// `Light`
+  String get light {
+    return Intl.message(
+      'Light',
+      name: 'light',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Other genre`
   String get other {
     return Intl.message(
@@ -110,6 +130,16 @@ class S {
     return Intl.message(
       'Pop',
       name: 'pop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System default`
+  String get system {
+    return Intl.message(
+      'System default',
+      name: 'system',
       desc: '',
       args: [],
     );
@@ -420,6 +450,16 @@ class S {
     return Intl.message(
       'Start',
       name: 'txt_start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme`
+  String get txt_theme {
+    return Intl.message(
+      'Theme',
+      name: 'txt_theme',
       desc: '',
       args: [],
     );

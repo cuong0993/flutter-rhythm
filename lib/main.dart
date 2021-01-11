@@ -13,9 +13,10 @@ import 'home/home_bloc.dart';
 import 'home/home_widget.dart';
 import 'instrument/instruments_repository_impl.dart';
 import 'instrument/instruments_widget.dart';
-import 'locale/locale_bloc.dart';
-import 'locale/locale_widget.dart';
 import 'routes.dart';
+import 'setting/locale_widget.dart';
+import 'setting/setting_bloc.dart';
+import 'setting/theme_widget.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/songs_bloc.dart';
 import 'songs/songs_event.dart';
@@ -51,6 +52,7 @@ class App extends StatelessWidget {
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
     final songsRepository = SongsRepositoryImpl();
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return MultiRepositoryProvider(
         providers: [
           RepositoryProvider<SongsRepository>(
@@ -58,9 +60,9 @@ class App extends StatelessWidget {
         ],
         child: MultiBlocProvider(
           providers: [
-            BlocProvider<LocaleBloc>(
+            BlocProvider<SettingBloc>(
               create: (context) {
-                return LocaleBloc();
+                return SettingBloc();
               },
             ),
             BlocProvider<AuthenticationBloc>(
@@ -84,11 +86,11 @@ class App extends StatelessWidget {
             )
           ],
           child:
-              BlocBuilder<LocaleBloc, LocaleState>(builder: (context, state) {
+          BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
             return MaterialApp(
               title: 'Hit Notes',
               debugShowCheckedModeBanner: false,
-              locale: (state is LocaleChanged) ? state.locale : null,
+              locale: state.locale,
               localizationsDelegates: [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,
@@ -96,7 +98,9 @@ class App extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: S.delegate.supportedLocales,
+              themeMode: state.themeMode,
               theme: buildTheme(false),
+              darkTheme: buildTheme(true),
               routes: {
                 Routes.splash: (context) {
                   return SplashWidget();
@@ -108,12 +112,19 @@ class App extends StatelessWidget {
                       child: HomeWidget());
                 },
                 Routes.gameConfig: (context) {
+                  primaryColor = Theme.of(context).colorScheme.primary;
+                  secondaryColor = Theme.of(context).colorScheme.secondary;
+                  backgroundColor = Theme.of(context).colorScheme.background;
+                  onBackgroundColor =
+                      Theme.of(context).colorScheme.onBackground;
+                  paint = Paint()
+                    ..colorFilter =
+                        ColorFilter.mode(primaryColor, BlendMode.srcIn);
                   return BlocProvider<GameConfigBloc>(
                       create: (context) => GameConfigBloc(),
                       child: GameConfigWidget());
                 },
                 Routes.game: (context) {
-                  SystemChrome.setEnabledSystemUIOverlays([]);
                   return BlocProvider<GameBloc>(
                       create: (_) => GameBloc(), child: GameWidget());
                 },
@@ -122,6 +133,9 @@ class App extends StatelessWidget {
                 },
                 Routes.language: (context) {
                   return LocaleWidget();
+                },
+                Routes.theme: (context) {
+                  return ThemeWidget();
                 },
                 Routes.instrument: (context) {
                   return InstrumentsWidget();
@@ -133,13 +147,11 @@ class App extends StatelessWidget {
   }
 
   ThemeData buildTheme(bool isDark) {
-    primaryColor = Color(0xFF4760E9);
+    final primaryColor = Color(0xff4760e9);
     final onPrimaryColor = Colors.white;
-    secondaryColor = Color(0xFFFD7C6E);
-    backgroundColor = isDark ? Colors.black : Colors.white;
-    onBackgroundColor = isDark ? Colors.white : Colors.black;
-    paint = Paint()
-      ..colorFilter = ColorFilter.mode(onBackgroundColor, BlendMode.srcIn);
+    final secondaryColor = Color(0xfffd7c6e);
+    final backgroundColor = isDark ? Colors.black : Colors.white;
+    final onBackgroundColor = isDark ? Colors.white : Colors.black;
     final screenHeadingTextStyle =
         TextStyle(fontSize: 32.0, color: secondaryColor);
     final screenTaskNameTextStyle =
