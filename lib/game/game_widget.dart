@@ -114,7 +114,7 @@ class _GameWidgetState extends State<GameWidget> {
                                   style: Theme.of(context).textTheme.headline6),
                               Text(
                                   '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
-                                  style: Theme.of(context).textTheme.subtitle1)
+                                  style: Theme.of(context).textTheme.headline6)
                             ],
                           ),
                           Row(
@@ -191,7 +191,7 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
         style: Theme.of(context)
             .textTheme
             .headline5
-            .copyWith(color: secondaryColor));
+            .copyWith(color: primaryColor));
   }
 }
 

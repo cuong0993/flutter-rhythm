@@ -89,6 +89,9 @@ class ExtraActions extends StatelessWidget {
             break;
           case ExtraAction.language:
             await Navigator.pushNamed(context, Routes.language);
+            break;
+          case ExtraAction.theme:
+            await Navigator.pushNamed(context, Routes.theme);
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuItem<ExtraAction>>[
@@ -108,9 +111,13 @@ class ExtraActions extends StatelessWidget {
           value: ExtraAction.language,
           child: Text(S.of(context).txt_select_language),
         ),
+        PopupMenuItem<ExtraAction>(
+          value: ExtraAction.theme,
+          child: Text(S.of(context).txt_theme),
+        ),
       ],
     );
   }
 }
 
-enum ExtraAction { feedback, rateUs, invite, language }
+enum ExtraAction { feedback, rateUs, invite, language, theme }

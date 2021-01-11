@@ -22,6 +22,7 @@ import 'songs/songs_event.dart';
 import 'songs/songs_repository.dart';
 import 'songs/songs_repository_impl.dart';
 import 'splash_widget.dart';
+import 'theme/theme_widget.dart';
 import 'user/user_bloc.dart';
 import 'user/user_repository_impl.dart';
 import 'user/user_widget.dart';
@@ -51,6 +52,7 @@ class App extends StatelessWidget {
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
     final songsRepository = SongsRepositoryImpl();
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return MultiRepositoryProvider(
         providers: [
           RepositoryProvider<SongsRepository>(
@@ -97,6 +99,7 @@ class App extends StatelessWidget {
               ],
               supportedLocales: S.delegate.supportedLocales,
               theme: buildTheme(false),
+              darkTheme: buildTheme(true),
               routes: {
                 Routes.splash: (context) {
                   return SplashWidget();
@@ -108,12 +111,19 @@ class App extends StatelessWidget {
                       child: HomeWidget());
                 },
                 Routes.gameConfig: (context) {
+                  primaryColor = Theme.of(context).colorScheme.primary;
+                  secondaryColor = Theme.of(context).colorScheme.secondary;
+                  backgroundColor = Theme.of(context).colorScheme.background;
+                  onBackgroundColor =
+                      Theme.of(context).colorScheme.onBackground;
+                  paint = Paint()
+                    ..colorFilter =
+                        ColorFilter.mode(primaryColor, BlendMode.srcIn);
                   return BlocProvider<GameConfigBloc>(
                       create: (context) => GameConfigBloc(),
                       child: GameConfigWidget());
                 },
                 Routes.game: (context) {
-                  SystemChrome.setEnabledSystemUIOverlays([]);
                   return BlocProvider<GameBloc>(
                       create: (_) => GameBloc(), child: GameWidget());
                 },
@@ -122,6 +132,9 @@ class App extends StatelessWidget {
                 },
                 Routes.language: (context) {
                   return LocaleWidget();
+                },
+                Routes.theme: (context) {
+                  return ThemeWidget();
                 },
                 Routes.instrument: (context) {
                   return InstrumentsWidget();
@@ -133,13 +146,11 @@ class App extends StatelessWidget {
   }
 
   ThemeData buildTheme(bool isDark) {
-    primaryColor = Color(0xFF4760E9);
+    final primaryColor = Color(0xff4760e9);
     final onPrimaryColor = Colors.white;
-    secondaryColor = Color(0xFFFD7C6E);
-    backgroundColor = isDark ? Colors.black : Colors.white;
-    onBackgroundColor = isDark ? Colors.white : Colors.black;
-    paint = Paint()
-      ..colorFilter = ColorFilter.mode(onBackgroundColor, BlendMode.srcIn);
+    final secondaryColor = Color(0xfffd7c6e);
+    final backgroundColor = isDark ? Colors.black : Colors.white;
+    final onBackgroundColor = isDark ? Colors.white : Colors.black;
     final screenHeadingTextStyle =
         TextStyle(fontSize: 32.0, color: secondaryColor);
     final screenTaskNameTextStyle =
