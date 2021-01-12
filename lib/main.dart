@@ -23,6 +23,7 @@ import 'songs/songs_event.dart';
 import 'songs/songs_repository.dart';
 import 'songs/songs_repository_impl.dart';
 import 'splash_widget.dart';
+import 'theme/theme_widget.dart';
 import 'user/user_bloc.dart';
 import 'user/user_repository_impl.dart';
 import 'user/user_widget.dart';
