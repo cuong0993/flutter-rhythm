@@ -18,10 +18,9 @@ class UserWidget extends StatelessWidget {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).txt_page_title_account, style: Theme.of(context)
-                .appBarTheme
-                .textTheme
-                .headline5)),
+            appBar: AppBar(
+                title: Text(S.of(context).txt_page_title_account,
+                    style: Theme.of(context).appBarTheme.textTheme.headline5)),
             body: (() {
               if (state is UserLoading) {
                 return LoadingWidget();

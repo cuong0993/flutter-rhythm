@@ -17,7 +17,8 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
             Locale.fromSubtags(languageCode: preferences.localeName)));
       }
       if (preferences.themeName != null) {
-        add(ChangeThemeEvent(ThemeMode.values.firstWhere((e) => e.toString() == preferences.themeName)));
+        add(ChangeThemeEvent(ThemeMode.values
+            .firstWhere((e) => e.toString() == preferences.themeName)));
       }
     });
   }

@@ -13,8 +13,9 @@ class GameConfigWidget extends StatelessWidget {
     return BlocBuilder<GameConfigBloc, GameConfigState>(
         builder: (context, state) {
       return Scaffold(
-          appBar: AppBar(title: Text(S.of(context).txt_configure,
-              style: Theme.of(context).appBarTheme.textTheme.headline5)),
+          appBar: AppBar(
+              title: Text(S.of(context).txt_configure,
+                  style: Theme.of(context).appBarTheme.textTheme.headline5)),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,

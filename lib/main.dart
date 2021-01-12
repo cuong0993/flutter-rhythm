@@ -86,7 +86,7 @@ class App extends StatelessWidget {
             )
           ],
           child:
-          BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
+              BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
             return MaterialApp(
               title: 'Hit Notes',
               debugShowCheckedModeBanner: false,
@@ -201,7 +201,7 @@ class App extends StatelessWidget {
         background: backgroundColor,
         onSurface: onBackgroundColor,
         onSecondary: secondaryColor,
-        brightness: isDark? Brightness.dark : Brightness.light,
+        brightness: isDark ? Brightness.dark : Brightness.light,
         surface: backgroundColor,
       ),
       toggleableActiveColor: primaryColor,

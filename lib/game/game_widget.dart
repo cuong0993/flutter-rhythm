@@ -14,6 +14,7 @@ import 'my_game.dart';
 import 'pause_dialog.dart';
 import 'tile/tile.dart';
 import 'tile/tile_converter.dart';
+
 class GameWidget extends StatefulWidget {
   final MyGame _game;
 

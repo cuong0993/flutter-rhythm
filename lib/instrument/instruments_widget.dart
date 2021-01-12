@@ -17,10 +17,8 @@ class InstrumentsWidget extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-              title: Text(S.of(context).txt_instrument_title_instruments, style: Theme.of(context)
-              .appBarTheme
-              .textTheme
-              .headline5)),
+              title: Text(S.of(context).txt_instrument_title_instruments,
+                  style: Theme.of(context).appBarTheme.textTheme.headline5)),
           body: (() {
             if (state is UserLoading) {
               return LoadingWidget();
@@ -31,7 +29,7 @@ class InstrumentsWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final instrument = instruments[index];
                   return RadioListTile<String>(
-                      title: Text(
+                    title: Text(
                         Intl.message(
                           '',
                           /* FIXME Localization name of instrument should be taken from server, not from local text resources */
