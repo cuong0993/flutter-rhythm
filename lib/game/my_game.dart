@@ -10,7 +10,6 @@ import '../main.dart';
 import '../util.dart';
 import 'effect.dart';
 import 'tile/tile.dart';
-import 'tile/tile_converter.dart';
 import 'tile/tile_effect_spawner.dart';
 import 'tile/tile_input_handler.dart';
 import 'tile/tiles_controller.dart';
@@ -21,7 +20,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   var _state = _MyGameState.PREPARE;
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
-  final Map<int, _TouchData> _touches = {};
+  final Map<int, _TouchPosition> _touches = {};
   Function(Tile tile) _onTouched;
   Function() _onCompleted;
   final _backgroundPaint = Paint()..color = backgroundColor;
@@ -45,7 +44,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   @override
   void onTapDown(int pointerId, TapDownDetails details) {
     _touches[pointerId] =
-        _TouchData(details.globalPosition.dx, details.globalPosition.dy);
+        _TouchPosition(details.globalPosition.dx, details.globalPosition.dy);
   }
 
   @override
@@ -69,6 +68,15 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void update(double delta) {
+    // // FIXME Auto run
+    // for (var i =0; i < _tilesController.tiles.length;i++) {
+    //  final tile = _tilesController.tiles[i];
+    //   if (tile != null && tile.y >= pauseY - 120) {
+    //     _touches[i] = _TouchPosition(0, 0);
+    //   } else {
+    //     break;
+    //   }
+    // }
     _tileEffects.forEach((effect) {
       effect.update(delta);
     });
@@ -80,9 +88,6 @@ class MyGame extends Game with MultiTouchTapDetector {
       while (_accumulator >= _step) {
         var initialYAllowedTouch = double.negativeInfinity;
         _touches.forEach((key, value) {
-          if (!value.handled) {
-            value.handled = true;
-            if (value.y > NON_TOUCH_REGION_HEIGHT) {
               final tile = _tilesController.getNextUntouchedTile();
               if (tile != null) {
                 if (tile.initialY >= initialYAllowedTouch) {
@@ -99,8 +104,6 @@ class MyGame extends Game with MultiTouchTapDetector {
               } else {
                 _onTouched(null);
               }
-            }
-          }
         });
         _touches.clear();
         _accumulator -= _step;
@@ -121,11 +124,9 @@ class MyGame extends Game with MultiTouchTapDetector {
 
 enum _MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
 
-class _TouchData {
-  final touched = true;
-  bool handled = false;
+class _TouchPosition {
   final double x;
   final double y;
 
-  _TouchData(this.x, this.y);
+  _TouchPosition(this.x, this.y);
 }
