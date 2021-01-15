@@ -57,7 +57,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             .ref()
             .child(song.url)
             .writeToFile(tempFile);
-        await task.future;
+        await task;
       }
       final midiFile = MidiParser().parseMidiFromFile(tempFile);
       _tileChunks = createTileChunks(midiFile);
