@@ -15,7 +15,7 @@ Rhythm-based mobile game. Even you don't have any basic knowledge of music instr
 - Upload your song and play your way
 
 
-![screenshots](./timy.png)
+![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/1_en-US.png)
 
 
 
