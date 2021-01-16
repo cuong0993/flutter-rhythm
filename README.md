@@ -23,11 +23,13 @@ Rhythm-based mobile game. Even you don't have any basic knowledge of music instr
 This is a Flutter mobile game targeting Android and iOS.
 
 The code for the Flutter app is contained in the folder `lib` and the
-different native apps are in `android` and `ios`. Extra project assets are in
-`assets`.
+different native apps are in `android` and `ios`.
 
-Firebase config files and cloud functions are inside the `firebase` folder.
+Extra project assets are in `assets`.
 
+Firebase config files and cloud functions are in the `firebase` folder.
+
+Google Play store listing files are in the `fastlane` folder.
 
 # Prerequisites & Getting Started
 
@@ -58,8 +60,27 @@ Next, you’ll need to configure your firebase app for Flutter as described in [
 
 Follow the instructions in `android/README.md`.
 
-# Deployment
+### B3. Deploy firebase functions 
 
-The app is setup to work with a development and production environment. We suggest you create a different Firebase app for each environment. 
+Navigate to the `firebase` directory and deploy all functions and configuration using:
 
-When building for release the app will automatically use the production configuration that you’ve configured in step `B2`.
+```
+$ firebase deploy --project={projectId}
+```
+
+### B4. Synchronize storage 
+
+Install Google Cloud SDK, navigate to the `storage` directory and synchronize storage files using:
+
+```
+$ gsutil -m rsync -r -d ./ gs://{projectId}.appspot.com
+```
+
+### B4. Synchronize database 
+
+Install https://github.com/jloosli/node-firestore-import-export, get service account json file https://firebase.google.com/docs/admin/setup#initialize-sdk, navigate to the `database` directory, backup/restore database using:
+
+```
+$ export GOOGLE_APPLICATION_CREDENTIALS="service-account.json"; ./backup-firestore.sh
+$ export GOOGLE_APPLICATION_CREDENTIALS="service-account.json"; ./restore-firestore.sh
+```
