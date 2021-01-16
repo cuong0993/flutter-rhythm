@@ -16,6 +16,8 @@ Rhythm-based mobile game. Even you don't have any basic knowledge of music instr
 
 
 ![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/1_en-US.png)
+![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/2_en-US.png)
+![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/3_en-US.png)
 
 
 
