@@ -68,10 +68,20 @@ $ firebase deploy --project={projectId}
 
 ### B4. Synchronize storage 
 
-Install Google Cloud SDK, Navigate to the `storage` directory and synchronize storage files using:
+Install Google Cloud SDK, navigate to the `storage` directory and synchronize storage files using:
 
 ```
 $ gsutil -m rsync -r -d ./ gs://{projectId}.appspot.com
+```
+
+### B4. Synchronize database 
+
+Install https://github.com/jloosli/node-firestore-import-export, navigate to the `database` directory, backup/restore database using:
+export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-dev.json"; ./backup-firestore.sh
+
+```
+$ export GOOGLE_APPLICATION_CREDENTIALS="adminsdk.json"; ./backup-firestore.sh
+$ export GOOGLE_APPLICATION_CREDENTIALS="adminsdk.json"; ./restore-firestore.sh
 ```
 
 # Deployment
