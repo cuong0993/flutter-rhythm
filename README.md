@@ -4,6 +4,10 @@
 
 Rhythm-based mobile game. Even you don't have any basic knowledge of music instruments, you still can play with falling notes in the game! ✨
 
+Currently available on the Play store.
+
+<a href='https://play.google.com/store/apps/details?id=com.chaomao.hittick'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/></a>
+
 # Main Features
 
 - Hundreds of songs, from classics of Beethoven, Chopin, Mozart, or Schubert, folk songs to POP/EDM. Will be updated continuously
