@@ -1,22 +1,12 @@
-# Hit Notes app
+# Hit Notes - Play instruments
 
 ![Analyze, build and distribute Android application](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
 
-An amazing open-source group messaging app build with flutter. ✨
+FllutRhythm-based mobile game. ✨
 
 # Main Features
 
 - Multiple groups (similar to Teams in Slack).
-- Multiple *open or private* channels within groups.
-- Sharing of photos and photo collections.
-- React to messages with emoji. 
-- Push-notifications for the message and channel updates.
-- Specific channels for events (e.g. containing date, venue).
-- Editing of event channels.
-- Calendar for all upcoming and past events aggregated over all groups and channels.
-- English and German localization.
-- RSVP for events.
-
 
 ![screenshots](./timy.png)
 
