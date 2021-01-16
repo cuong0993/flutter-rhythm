@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500">
+    <rect width="1024" height="500" fill="#4760e9" ry="2.231"/>
+    <text x="653.036" y="235.093" font-family="sans-serif" font-size="40" font-weight="400" text-anchor="middle" style="line-height:1.25;text-align:center">
+        <tspan x="653.036" y="235.093" fill="#ffffff" font-family="'Roboto Condensed'" style="-inkscape-font-specification:'Roboto Condensed, ';text-align:center">Play music </tspan> <tspan x="653.036" y="286.586" fill="#ffffff" font-family="'Roboto Condensed'" style="-inkscape-font-specification:'Roboto Condensed, ';text-align:center">Hit every single note </tspan>
+    </text>
+    <text x="170.868" y="343.642" font-family="sans-serif" font-size="40" font-weight="400" style="line-height:1.25">
+        <tspan x="170.868" y="343.642" fill="#ffffff" font-family="'Roboto Condensed'" style="-inkscape-font-specification:'Roboto Condensed, '">Hit Notes </tspan>
+    </text>
+    <rect width="144" height="144" x="173.712" y="155.968" fill="#ffffff" ry="33"/>
+    <rect width="54" height="54" x="191.73" y="201.439" fill="#fd7c6e" ry="27"/>
+    <path fill="#4760e9" d="M233.256 173.986a6.57 6.57 0 00-4.791 1.596 6.582 6.582 0 00-.672 9.3l13.455 15.552a41.124 41.124 0 00-4.08-.228 40.716 40.716 0 00-19.335 4.806 6.597 6.597 0 00-4.392 6.216 6.597 6.597 0 006.6 6.597 6.597 6.597 0 003.126-.79l.03.058a27.636 27.636 0 0135.079 6.189 27.633 27.633 0 010 35.61 27.627 27.627 0 01-34.722 6.372 6.597 6.597 0 00-3.789-1.2 6.597 6.597 0 00-6.594 6.6 6.597 6.597 0 003.456 5.799l-.021.042c17.148 9.9 39.045 6.042 51.78-9.132a41.587 41.587 0 002.916-3.951c.3-.33.57-.69.801-1.092l26.679-45.528a6.582 6.582 0 00-2.355-9.03 6.582 6.582 0 00-9.03 2.36l-9.39 16.02v-41.144a6.582 6.582 0 00-6.594-6.594 6.582 6.582 0 00-6.591 6.594v22.5l-27.048-31.26a6.576 6.576 0 00-4.515-2.262z"/>
+</svg>

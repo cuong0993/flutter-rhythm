@@ -1,0 +1,98 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+android {
+    compileSdkVersion 30
+    ndkVersion "22.0.7026061"
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    defaultConfig {
+        applicationId "com.chaomao.hittick"
+        minSdkVersion 16
+        targetSdkVersion 30
+        multiDexEnabled true
+        versionCode 22
+        versionName "1.2.3"
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias keystoreProperties['debugKeyAlias']
+            keyPassword keystoreProperties['debugKeyPassword']
+            storeFile keystoreProperties['debugStoreFile'] ? file(keystoreProperties['debugStoreFile']) : null
+            storePassword keystoreProperties['debugStorePassword']
+        }
+        release {
+            keyAlias keystoreProperties['releaseKeyAlias']
+            keyPassword keystoreProperties['releaseKeyPassword']
+            storeFile keystoreProperties['releaseStoreFile'] ? file(keystoreProperties['releaseStoreFile']) : null
+            storePassword keystoreProperties['releaseStorePassword']
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (variant.buildType.name == 'release' && names.contains("dev")) {
+            setIgnore(true)
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+        }
+
+        stage {
+        }
+
+        prod {
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+}

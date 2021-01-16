@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictFunctionTypes": true,
+    "lib": [
+      "es2017"
+    ],
+    "module": "commonjs",
+    "outDir": "lib",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "target": "es2017"
+  },
+  "compileOnSave": true,
+  "include": [
+    "src"
+  ],
+  "files": [
+    "node_modules/typescript/lib/lib.es6.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
