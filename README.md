@@ -78,9 +78,9 @@ $ gsutil -m rsync -r -d ./ gs://{projectId}.appspot.com
 
 ### B4. Synchronize database 
 
-Install https://github.com/jloosli/node-firestore-import-export, navigate to the `database` directory, backup/restore database using:
+Install https://github.com/jloosli/node-firestore-import-export, get service account json file https://firebase.google.com/docs/admin/setup#initialize-sdk, navigate to the `database` directory, backup/restore database using:
 
 ```
-$ export GOOGLE_APPLICATION_CREDENTIALS="adminsdk.json"; ./backup-firestore.sh
-$ export GOOGLE_APPLICATION_CREDENTIALS="adminsdk.json"; ./restore-firestore.sh
+$ export GOOGLE_APPLICATION_CREDENTIALS="service-account.json"; ./backup-firestore.sh
+$ export GOOGLE_APPLICATION_CREDENTIALS="service-account.json"; ./restore-firestore.sh
 ```
