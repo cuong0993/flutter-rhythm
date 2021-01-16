@@ -2,13 +2,22 @@
 
 ![Analyze, build and distribute Android application](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
 
-FllutRhythm-based mobile game. ✨
+Rhythm-based mobile game. Even you don't have any basic knowledge of music instruments, you still can play with falling notes in the game! ✨
 
 # Main Features
 
-- Multiple groups (similar to Teams in Slack).
+- Hundreds of songs, from classics of Beethoven, Chopin, Mozart, or Schubert, folk songs to POP/EDM. Will be updated continuously
+- Adjustable difficulty level
+- Adjustable tempo
+- Many game modes
+- Many musical instruments
+- Play offline without the internet
+- Upload your song and play your way
 
-![screenshots](./timy.png)
+
+![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/1_en-US.png)
+![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/2_en-US.png)
+![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/3_en-US.png)
 
 
 
