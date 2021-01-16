@@ -25,15 +25,13 @@ Rhythm-based mobile game. Even you don't have any basic knowledge of music instr
 
 # Project Structure
 
-This is a Flutter mobile app targeting Android and iOS.
+This is a Flutter mobile game targeting Android and iOS.
 
 The code for the Flutter app is contained in the folder `lib` and the
 different native apps are in `android` and `ios`. Extra project assets are in
-`assets` and `fonts`.
+`assets`.
 
-As well, this repo hosts a series of Firebase config files and cloud functions.
-
-The documentation for Firebase part is inside the `firebase` folder.
+Firebase config files and cloud functions are inside the `firebase` folder.
 
 
 # Prerequisites & Getting Started
