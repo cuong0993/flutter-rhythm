@@ -1,2 +1,0 @@
-python3 gen_images.py; python3 gen_icon.py
-npm install -g svgo; svgo --pretty --disable=convertColors,removeViewBox --enable=removeDimensions,sortAttrs -r -f ./
