@@ -58,6 +58,22 @@ Next, you’ll need to configure your firebase app for Flutter as described in [
 
 Follow the instructions in `android/README.md`.
 
+### B3. Deploy firebase functions 
+
+Navigate to the `firebase` directory and deploy all functions and configuration using:
+
+```
+$ firebase deploy --project={projectId}
+```
+
+### B4. Synchronize storage 
+
+Install Google Cloud SDK, Navigate to the `storage` directory and synchronize storage files using:
+
+```
+$ gsutil -m rsync -r -d ./ gs://{projectId}.appspot.com
+```
+
 # Deployment
 
 The app is setup to work with a development and production environment. We suggest you create a different Firebase app for each environment. 
