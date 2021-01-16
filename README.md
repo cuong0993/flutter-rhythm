@@ -14,14 +14,9 @@ Rhythm-based mobile game. Even you don't have any basic knowledge of music instr
 - Play offline without the internet
 - Upload your song and play your way
 
-
 ![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/1_en-US.png)
 ![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/2_en-US.png)
 ![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/3_en-US.png)
-
-
-
-
 
 # Project Structure
 
@@ -58,14 +53,6 @@ An initial sign-in method needs to be configured.
 ### B2. Configure firebase app
 
 Next, you’ll need to configure your firebase app for Flutter as described in [Add Firebase to an App / Flutter](https://firebase.google.com/docs/flutter/setup)
-
-**iOS**
-
-- Enter iOS-Bundle-ID: `de.janoodle.circlesApp.debug`
-- Download and rename `GoogleService-Info.plist` to  `GoogleService-Info-Dev.plist`.
-- Copy file to `ios/Runner/Firebase`.
-
-*NOTE: If you’re building for release you’ll additionally need to add a GoogleService-Info-Prod.plist pointing to your production Firebase app.*
 
 **Android**
 
