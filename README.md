@@ -44,41 +44,16 @@ To build and run the mobile apps you’ll need to install [Flutter](https://flut
 $ flutter doctor
 ```
 
-The app is optimised for Android and iOS phones in portrait mode.
-
-**IMPORTANT:** The project only supports Flutter version 1.10.5, you will have to change your configuration to it.
-We cannot make sure that other Flutter versions will work.
-
-```
-$ flutter version 1.10.5
-```
-
-**Note:** Additionally you’ll need to setup the backend and add the GoogleService-Info of your Firebase app to your clients as described below.
-
 ## Backend (Firebase)
 
 The backend is build using Firebase’s `node.js` SDK. All files are provided in the `firebase` folder. To deploy the code create an app and install the firebase CLI (See steps 1 & 2 in [Getting started](https://firebase.google.com/docs/functions/get-started)).
 
-*Note: The following steps assume you’re using Firebases’ free `Spark Plan`. Therefore we’re performing the configuration manually.*
-
-### B1. Setup sign-in method & adding users
-
+### B1. Setup sign-in method
 An initial sign-in method needs to be configured.
 
 - Select your project in [console.firebase.google.com](https://console.firebase.google.com). 
 - Navigate to `Authentication` 
-- Select `Sign-in methods` and activate `Email / Password`.
-
-**Adding a user**
-
-Currently, users need to be added *manually*.  
-
-- In firebase navigate to `Authentication` and select `Users`. 
-- Then `Add user`. 
-
-Please copy the `User-UID` of the created user. We’ll need to add this ID to a group in the next step.
-
-*Note: You’ll need to have at least one user configured to use the app.*
+- Select `Sign-in methods` and activate `Google`, `Facebook` and `Anonymous`.
 
 ### B2. Configure firebase app
 
