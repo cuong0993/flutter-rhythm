@@ -2,7 +2,7 @@
 
 ![Analyze, build and distribute Android application](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
 
-FllutRhythm-based mobile game. ✨
+Rhythm-based mobile game. ✨
 
 # Main Features
 
