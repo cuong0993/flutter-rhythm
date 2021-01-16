@@ -23,11 +23,10 @@ Rhythm-based mobile game. Even you don't have any basic knowledge of music instr
 This is a Flutter mobile game targeting Android and iOS.
 
 The code for the Flutter app is contained in the folder `lib` and the
-different native apps are in `android` and `ios`. Extra project assets are in
-`assets`.
-
-Firebase config files and cloud functions are inside the `firebase` folder.
-
+different native apps are in `android` and `ios`.
+Extra project assets are in `assets`.
+Firebase config files and cloud functions are in the `firebase` folder.
+Google Play store listing files are in the `fastlane` folder.
 
 # Prerequisites & Getting Started
 
