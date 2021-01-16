@@ -100,4 +100,4 @@ Follow the instructions in `android/README.md`.
 
 The app is setup to work with a development and production environment. We suggest you create a different Firebase app for each environment. 
 
-When building for release the app will automatically use the production configuration that you’ve configured in step `B3`.
+When building for release the app will automatically use the production configuration that you’ve configured in step `B2`.
