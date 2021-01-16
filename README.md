@@ -1,6 +1,7 @@
 # Hit Notes app
 
-![Build status](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
+![Analyze, build and distribute Android application](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
+
 An amazing open-source group messaging app build with flutter. ✨
 
 # Main Features
@@ -98,101 +99,8 @@ Next, you’ll need to configure your firebase app for Flutter as described in [
 
 Follow the instructions in `android/README.md`.
 
-### B3. Create and setup database
-In the firebase console select `Database` under `Develop`  and create a Cloud Firestore Database. Setup database in `test mode` if you don't want to care about access permissions now.
-
-At this point, **you need to run and perform login once** on the App, it will create a user document inside the `users` collection.
-
-**You will see an empty screen. To fix that, continue this setup.** You may need to restart the app after the setup is done.
-
-**Create group collection**
-
-- Select the database you’ve just created.
-- `Create collection` and name it `groups`.
-- Add your first group with the following properties:
-
-| name | type | value |
-|:--|:--|:--|
-| abbreviation | string | TE |
-| color | string | ffffff |
-| members | array | *User-UID we’ve retrieved in **Adding a user*** above |
-| name | string | test |
-
-We’ve now setup our first test group. In addition to this step, we’ll need to setup a default `Channel` (e.g. something similar to `#general` in Slack).
-
-**Add the new created Group id to the User document**
-
-- Select the User you have now on your database.
-- Add a new field named `joinedGroups` and make it type `Array`
-- Add an entry in this array, with the value equal to the Group document id from Firestore.
-
-**Create channel sub-collection**
-
-- In the `groups` collection select the newly created group.  
-- `Create collection` within the group called `channels`.
-- Add your first channel with the following properties:
-
-| name | type | value |
-|:--|:--|:--|
-| name | string | general |
-| type | string | TOPIC |
-| visibility | string | OPEN |
-
-**Your Firestore database should look like this (with different ids)**
-
-![screenshots](./firestore-1.png)
-![screenshots](./firestore-2.png)
-![screenshots](./firestore-3.png)
-![screenshots](./firestore-4.png)
-	
-### B4. Deploy firebase functions 
-
-Navigate to the `firebase` directory and deploy all functions using:
-
-```
-$ firebase deploy --only functions
-```
-
-Some features of the app can be used without Cloud Functions running, but some others will not work.
-We recommend you to perform this step to enjoy all features.
-
-### B5. Final steps
-
-Login with the user you’ve created above.
-
-Next create your first `event` to setup the *calendar collection* in our backend. 
-
-**Create an event**
-
-- In the app select the hamburger menu
-- Hit the `+` sign next to `Events`
-- Enter any data you like and hit `Create` 
-
-At the root level of your database you should now see a collection called `calendar` in your firebase console.
-
-Now we’re ready to deploy all other parts of our backend using:
-
-```
-$ firebase deploy
-```
-
-
 # Deployment
 
 The app is setup to work with a development and production environment. We suggest you create a different Firebase app for each environment. 
 
 When building for release the app will automatically use the production configuration that you’ve configured in step `B3`.
-
-# External resources
-
-- [Timy Messenger in itsallwidgets.com](https://itsallwidgets.com/timy-messenger)
-- [Building a Messaging App in Flutter — Part I: Project Structure](https://beltran.work/blog/building-a-messaging-app-in-flutter-part-i-project-structure/)
-- [Building a Messaging App in Flutter — Part II: Main Method](https://beltran.work/blog/building-a-messaging-app-in-flutter-part-ii-main-method/)
-- [Building a Messaging App in Flutter — Part III: Redux](https://beltran.work/blog/building-a-messaging-app-in-flutter-part-iii-redux/)
-
-# About
-
-The concept for Timy was created and developed by [kaalita](https://github.com/kaalita) and [philippmoeser](https://github.com/philippmoeser).
-The initial version is a MVP messaging app focusing on organising events among groups.
-
-We hope this project can be a reference or building block for your next flutter app. 🚀
