@@ -1,7 +1,6 @@
 # Hit Notes app
 
-[![Build Status](https://app.bitrise.io/app/1777d1ca81df02fb/status.svg?token=JR4pw9Z3dElWNrDmy3ImLA&branch=master)](https://app.bitrise.io/app/1777d1ca81df02fb)
-
+![Build status](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
 An amazing open-source group messaging app build with flutter. ✨
 
 # Main Features
