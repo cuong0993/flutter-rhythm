@@ -77,15 +77,8 @@ $ gsutil -m rsync -r -d ./ gs://{projectId}.appspot.com
 ### B4. Synchronize database 
 
 Install https://github.com/jloosli/node-firestore-import-export, navigate to the `database` directory, backup/restore database using:
-export GOOGLE_APPLICATION_CREDENTIALS="adminsdk-dev.json"; ./backup-firestore.sh
 
 ```
 $ export GOOGLE_APPLICATION_CREDENTIALS="adminsdk.json"; ./backup-firestore.sh
 $ export GOOGLE_APPLICATION_CREDENTIALS="adminsdk.json"; ./restore-firestore.sh
 ```
-
-# Deployment
-
-The app is setup to work with a development and production environment. We suggest you create a different Firebase app for each environment. 
-
-When building for release the app will automatically use the production configuration that you’ve configured in step `B2`.
