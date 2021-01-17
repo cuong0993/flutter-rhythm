@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../serializers.dart';
 import '../util.dart';
 import 'user.dart' as user;
 import 'user_repository.dart';
@@ -41,7 +42,8 @@ class UserRepositoryImpl implements UserRepository {
       return AppUser(
           name,
           photoUrl,
-          user.User.fromJson(event.data()),
+          serializers.deserializeWith<user.User>(
+              user.User.serializer, event.data()),
           FirebaseAuth.instance.currentUser.isAnonymous,
           FirebaseAuth.instance.currentUser.metadata.creationTime);
     }).listen((user) {

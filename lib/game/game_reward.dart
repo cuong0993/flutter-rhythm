@@ -1,19 +1,16 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'game_reward.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class GameReward {
-  int stars;
-  int playedNotes;
+abstract class GameReward implements Built<GameReward, GameRewardBuilder> {
+  static Serializer<GameReward> get serializer => _$gameRewardSerializer;
 
-  GameReward(
-    this.stars,
-    this.playedNotes,
-  );
+  factory GameReward([Function(GameRewardBuilder b) updates]) = _$GameReward;
 
-  factory GameReward.fromJson(Map<String, dynamic> json) =>
-      _$GameRewardFromJson(json);
+  GameReward._();
 
-  Map<String, dynamic> toJson() => _$GameRewardToJson(this);
+  int get stars;
+
+  int get playedNotes;
 }

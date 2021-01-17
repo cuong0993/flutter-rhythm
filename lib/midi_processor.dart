@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter_cache_manager_firebase/flutter_cache_manager_firebase.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:soundpool/soundpool.dart';
 
+import 'firebase_cache_manager.dart';
 import 'instrument/instrument.dart';
 
 class MidiProcessor {
@@ -45,14 +45,15 @@ class MidiProcessor {
           .then((files) => {
                 Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
                     .then((soundIds) => {
-                          _noteToSoundIdAndPitches = _instrument.soundNotes.map(
-                              (note, pitchNote) => MapEntry(
+                          _noteToSoundIdAndPitches = _instrument.soundNotes
+                              .map((note, pitchNote) => MapEntry(
                                   note,
                                   Pair(
                                       soundIds[_instrument.soundFiles.keys
                                           .toList()
                                           .indexOf(pitchNote.note)],
-                                      pitchNote.pitch))),
+                                      pitchNote.pitch)))
+                              .asMap(),
                           if (soundIds.length == _instrument.soundFiles.length)
                             {_soundLoadedController.add(true)}
                         })
@@ -85,7 +86,6 @@ class MidiProcessor {
     _soundPool?.release();
     _soundLoadedController.add(false);
     _activeSounds.clear();
-    _noteToSoundIdAndPitches.clear();
   }
 }
 

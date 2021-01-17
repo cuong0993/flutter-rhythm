@@ -1,23 +1,27 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 import 'pitch_note.dart';
 
 part 'instrument.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class Instrument {
-  String id;
-  Map<int, String> soundFiles;
-  Map<int, PitchNote> soundNotes;
-  int minNote;
-  int maxNote;
-  double volume;
+abstract class Instrument implements Built<Instrument, InstrumentBuilder> {
+  static Serializer<Instrument> get serializer => _$instrumentSerializer;
 
-  Instrument(this.id, this.soundFiles, this.soundNotes, this.minNote,
-      this.maxNote, this.volume);
+  factory Instrument([Function(InstrumentBuilder) updates]) = _$Instrument;
 
-  factory Instrument.fromJson(Map<String, dynamic> json) =>
-      _$InstrumentFromJson(json);
+  Instrument._();
 
-  Map<String, dynamic> toJson() => _$InstrumentToJson(this);
+  String get id;
+
+  BuiltMap<int, String> get soundFiles;
+
+  BuiltMap<int, PitchNote> get soundNotes;
+
+  int get minNote;
+
+  int get maxNote;
+
+  double get volume;
 }

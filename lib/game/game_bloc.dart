@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../midi_processor.dart';
+import '../serializers.dart';
 import '../util.dart';
 import 'game_event.dart';
 import 'game_reward.dart';
@@ -141,8 +142,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         'speed': _speed,
         'errorCount': _errorCount,
       });
-      final gameReward =
-          GameReward.fromJson(Map<String, dynamic>.from(response.data));
+      final gameReward = serializers.deserializeWith<GameReward>(
+          GameReward.serializer, Map<String, dynamic>.from(response.data));
       _completeEventController.add(gameReward);
     } else if (event is RestartGame) {
       _time = 0.0;

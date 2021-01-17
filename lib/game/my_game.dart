@@ -88,22 +88,22 @@ class MyGame extends Game with MultiTouchTapDetector {
       while (_accumulator >= _step) {
         var initialYAllowedTouch = double.negativeInfinity;
         _touches.forEach((key, value) {
-              final tile = _tilesController.getNextUntouchedTile();
-              if (tile != null) {
-                if (tile.initialY >= initialYAllowedTouch) {
-                  tile.touchDown();
-                  _tileEffects.addAll(tile.getEffects());
-                  _onTouched(tile);
-                  if (_state == _MyGameState.PAUSE) {
-                    _state = _MyGameState.PLAY;
-                  }
-                  initialYAllowedTouch = tile.initialY;
-                } else {
-                  _onTouched(null);
-                }
-              } else {
-                _onTouched(null);
+          final tile = _tilesController.getNextUntouchedTile();
+          if (tile != null) {
+            if (tile.initialY >= initialYAllowedTouch) {
+              tile.touchDown();
+              _tileEffects.addAll(tile.getEffects());
+              _onTouched(tile);
+              if (_state == _MyGameState.PAUSE) {
+                _state = _MyGameState.PLAY;
               }
+              initialYAllowedTouch = tile.initialY;
+            } else {
+              _onTouched(null);
+            }
+          } else {
+            _onTouched(null);
+          }
         });
         _touches.clear();
         _accumulator -= _step;

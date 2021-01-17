@@ -1,28 +1,27 @@
 import 'dart:core';
 
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'user.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class User {
-  String id;
-  int playedNotes;
-  int stars;
-  Duration playedTime;
-  String instrumentId;
-  List<String> notificationTokens;
+abstract class User implements Built<User, UserBuilder> {
+  static Serializer<User> get serializer => _$userSerializer;
 
-  User(
-    this.id,
-    this.playedNotes,
-    this.playedTime,
-    this.stars,
-    this.instrumentId,
-    this.notificationTokens,
-  );
+  factory User([Function(UserBuilder b) updates]) = _$User;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  User._();
 
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  String get id;
+
+  int get playedNotes;
+
+  int get stars;
+
+  Duration get playedTime;
+
+  String get instrumentId;
+
+  BuiltList<String> get notificationTokens;
 }
