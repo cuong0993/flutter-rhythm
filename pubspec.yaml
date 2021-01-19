@@ -18,15 +18,6 @@ dependencies:
   cloud_functions: ^0.9.0
   flame: 0.28.0
   dart_midi: ^1.0.1
-  #soundpool: ^1.1.2
-  soundpool:
-    git:
-      url: https://github.com/cuong0993/soundpool.git
-      path: soundpool
-  soundpool_platform_interface:
-    git:
-      url: https://github.com/cuong0993/soundpool.git
-      path: soundpool_platform_interface
   percent_indicator: ^2.1.7+4
   cupertino_icons: ^1.0.0
   built_value: ^7.1.0

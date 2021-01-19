@@ -847,24 +847,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  soundpool:
-    dependency: "direct main"
-    description:
-      path: soundpool
-      ref: HEAD
-      resolved-ref: "46750cf7507a9aba1779032e49d2b761eec763ca"
-      url: "https://github.com/cuong0993/soundpool.git"
-    source: git
-    version: "1.1.2"
-  soundpool_platform_interface:
-    dependency: "direct main"
-    description:
-      path: soundpool_platform_interface
-      ref: HEAD
-      resolved-ref: "46750cf7507a9aba1779032e49d2b761eec763ca"
-      url: "https://github.com/cuong0993/soundpool.git"
-    source: git
-    version: "1.0.1"
   source_gen:
     dependency: transitive
     description:
