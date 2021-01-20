@@ -1,16 +1,16 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'pitch_note.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class PitchNote {
-  int note;
-  double pitch;
+abstract class PitchNote implements Built<PitchNote, PitchNoteBuilder> {
+  static Serializer<PitchNote> get serializer => _$pitchNoteSerializer;
 
-  PitchNote(this.note, this.pitch);
+  factory PitchNote([Function(PitchNoteBuilder) updates]) = _$PitchNote;
 
-  factory PitchNote.fromJson(Map<String, dynamic> json) =>
-      _$PitchNoteFromJson(json);
+  PitchNote._();
 
-  Map<String, dynamic> toJson() => _$PitchNoteToJson(this);
+  int get note;
+
+  double get pitch;
 }

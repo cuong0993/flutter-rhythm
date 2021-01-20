@@ -64,7 +64,7 @@
   "@txt_game_complete_loading_gift": {},
   "txt_instrument_title_instruments": "乐器",
   "@txt_instrument_title_instruments": {},
-  "txt_invite_description": "你好，来玩hittick {input}",
+  "txt_invite_description": "你好，来玩Hit Notes{input}",
   "@txt_invite_description": {},
   "txt_joined": "已加入 {input}",
   "@txt_joined": {},

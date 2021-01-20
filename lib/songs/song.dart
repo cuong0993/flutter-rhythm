@@ -1,30 +1,29 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
 part 'song.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class Song {
-  String id;
-  String title;
-  String artist;
-  String url;
-  int bpm;
-  List<int> tilesCount;
-  List<int> duration;
-  List<String> tags;
+abstract class Song implements Built<Song, SongBuilder> {
+  static Serializer<Song> get serializer => _$songSerializer;
 
-  Song(
-    this.id,
-    this.title,
-    this.artist,
-    this.url,
-    this.bpm,
-    this.tilesCount,
-    this.duration,
-    this.tags,
-  );
+  factory Song([Function(SongBuilder b) updates]) = _$Song;
 
-  factory Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
+  Song._();
 
-  Map<String, dynamic> toJson() => _$SongToJson(this);
+  String get id;
+
+  String get title;
+
+  String get artist;
+
+  String get url;
+
+  int get bpm;
+
+  BuiltList<int> get tilesCount;
+
+  BuiltList<int> get duration;
+
+  BuiltList<String> get tags;
 }

@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_cache_manager_firebase/flutter_cache_manager_firebase.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:soundpool/soundpool.dart';
 
+import 'firebase_cache_manager.dart';
 import 'instrument/instrument.dart';
+import 'sound_player.dart';
 
 class MidiProcessor {
   static MidiProcessor _instance;
@@ -26,7 +26,7 @@ class MidiProcessor {
     (Error -12 out of memory)
     */
   static const _maxStreams = 8;
-  Soundpool _soundPool;
+  final _soundPlayer = SoundPlayer();
 
   final _activeSounds = <int>{};
 
@@ -37,22 +37,22 @@ class MidiProcessor {
   void onSelectInstrument(Instrument instrument) {
     if (_instrument != instrument) {
       dispose();
-      _soundPool =
-          Soundpool(streamType: StreamType.music, maxStreams: _maxStreams);
+      _soundPlayer.init(2, _maxStreams);
       _instrument = instrument;
       Future.wait(instrument.soundFiles.values
               .map((e) => FirebaseCacheManager().getSingleFile(e)))
           .then((files) => {
-                Future.wait(files.map((file) => _soundPool.loadPath(file.path)))
+                Future.wait(files.map((file) => _soundPlayer.load(file.path)))
                     .then((soundIds) => {
-                          _noteToSoundIdAndPitches = _instrument.soundNotes.map(
-                              (note, pitchNote) => MapEntry(
+                          _noteToSoundIdAndPitches = _instrument.soundNotes
+                              .map((note, pitchNote) => MapEntry(
                                   note,
                                   Pair(
                                       soundIds[_instrument.soundFiles.keys
                                           .toList()
                                           .indexOf(pitchNote.note)],
-                                      pitchNote.pitch))),
+                                      pitchNote.pitch)))
+                              .asMap(),
                           if (soundIds.length == _instrument.soundFiles.length)
                             {_soundLoadedController.add(true)}
                         })
@@ -71,21 +71,20 @@ class MidiProcessor {
     }
     final soundIdAndPitch = _noteToSoundIdAndPitches[pitchNote];
     if (soundIdAndPitch != null) {
-      _activeSounds.add(await _soundPool.play(soundIdAndPitch.first,
+      _activeSounds.add(await _soundPlayer.play(soundIdAndPitch.first,
           rate: soundIdAndPitch.second));
       if (_activeSounds.length == _maxStreams) {
         final firstSound = _activeSounds.first;
-        await _soundPool.stop(firstSound);
+        await _soundPlayer.stop(firstSound);
         _activeSounds.remove(firstSound);
       }
     }
   }
 
   void dispose() {
-    _soundPool?.release();
+    _soundPlayer?.release();
     _soundLoadedController.add(false);
     _activeSounds.clear();
-    _noteToSoundIdAndPitches.clear();
   }
 }
 
