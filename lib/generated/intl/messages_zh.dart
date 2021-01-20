@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(input) => "${input} 手指";
 
-  static m2(input) => "你好，来玩hittick ${input}";
+  static m2(input) => "你好，来玩Hit Notes${input}";
 
   static m3(input) => "已加入 ${input}";
 
