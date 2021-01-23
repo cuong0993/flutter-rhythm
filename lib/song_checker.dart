@@ -31,14 +31,17 @@ void main() {
       if (track != 2) {
         print('WARNING trackCount $track');
       }
+      value['bpm'] = 0;
       for (final midiEvent in events) {
         if (midiEvent is SetTempoEvent) {
           final tempo = 60000000 ~/ midiEvent.microsecondsPerBeat;
-          print('Tempo is $tempo');
-          value['bpm'] = tempo;
-          break;
+          print('Tempo changes to $tempo');
+          if (value['bpm'] <= tempo) {
+            value['bpm'] = tempo;
+          }
         }
       }
+      print('Select largest tempo ${value['bpm']}');
       final tileChunks = createTileChunks(midiFile);
       final groupByDurationToPrevious = Map.fromEntries(groupBy(
               tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
@@ -53,40 +56,53 @@ void main() {
       final sortCountDurationToPrevious = Map.fromEntries(
           countDurationToPrevious.entries.toList()
             ..sort((e1, e2) => e1.value.compareTo(e2.value)));
-      final unitDuration = sortCountDurationToPrevious.keys.last;
+      final mostCountDurationToPrevious = sortCountDurationToPrevious.keys.last;
 
       groupByDurationToPrevious.entries.forEach((it) {
         print('There are ${it.value.length} tile with duration ${it.key}');
       });
 
-      final tiles = createTiles(tileChunks, unitDuration, NUMBER_TILE_COLUMN);
-      print('There are ${tiles.length} tiles');
+      var singleTileSeconds = 0.0;
+      var unitDuration = 0;
+      final durations = groupByDurationToPrevious.keys.iterator;
       var tick2Second =
           tickToSecond(midiFile.header.ticksPerBeat, value['bpm'] as int);
-      var speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
-      var speedDpsPerSecond = speedDpsPerTick / tick2Second;
-      final singleTileSeconds = unitDuration * tick2Second;
-      if (singleTileSeconds < 0.2) {
+      final minimumSingleTileSeconds = 0.25; // 4 touches per second, slow enough to click continuously
+      while (singleTileSeconds < minimumSingleTileSeconds &&
+          durations.moveNext() &&
+          unitDuration < mostCountDurationToPrevious) {
+        unitDuration = durations.current;
+        singleTileSeconds = unitDuration * tick2Second;
+        print('Change unitDuration $unitDuration');
+        print('Change singleTileSeconds $singleTileSeconds');
+      }
+
+      if (singleTileSeconds < minimumSingleTileSeconds) {
+        print('WARNING $key, Still too fast $singleTileSeconds');
         final newBpm =
-            ((value['bpm'] as int) * (singleTileSeconds / 0.2)).toInt();
-        print('WARNING Too fast $singleTileSeconds $key, set bpm to $newBpm');
+            ((value['bpm'] as int) * (singleTileSeconds / minimumSingleTileSeconds)).toInt();
+        print('Reduce bpm to $newBpm');
         value['bpm'] = newBpm;
         tick2Second =
             tickToSecond(midiFile.header.ticksPerBeat, value['bpm'] as int);
-        speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
-        speedDpsPerSecond = speedDpsPerTick / tick2Second;
       }
+      final speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+      final speedDpsPerSecond = speedDpsPerTick / tick2Second;
+      final tiles = createTiles(tileChunks, unitDuration, NUMBER_TILE_COLUMN);
+      print('There are ${tiles.length} tiles');
       final tileCount = tiles.length;
       if (tileCount < 50) {
         print('WARNING Number tile to small $key, number tiles $tileCount');
       }
       final duration =
           (0.5 + ((0.0 - tiles.last.initialY) * 1000000) / speedDpsPerSecond)
-              .toInt();
-      print('Duration is $duration microseconds');
-      if (duration > 400000000) {
-        print('WARNING  Too long ${duration / 60000000} minutes');
+                  .toInt() /
+              60000000;
+      print('Duration is $duration minutes');
+      if (duration > 10) {
+        print('WARNING Too long $key, $duration minutes');
       }
+      value['unitDuration'] = unitDuration;
       value['tilesCount'] = [
         createTiles(tileChunks, unitDuration, 2).length,
         createTiles(tileChunks, unitDuration, 3).length,

@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
@@ -62,20 +61,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       }
       final midiFile = MidiParser().parseMidiFromFile(tempFile);
       _tileChunks = createTileChunks(midiFile);
-      final groupByDurationToPrevious = Map.fromEntries(groupBy(_tileChunks,
-              (TileChunk tileChunk) => tileChunk.durationToPrevious)
-          .entries
-          .toList()
-            ..sort((e1, e2) => e1.key.compareTo(e2.key)));
-      final countDurationToPrevious = {
-        for (var e in groupByDurationToPrevious.keys)
-          e: groupByDurationToPrevious[e].length
-      };
-
-      final sortCountDurationToPrevious = Map.fromEntries(
-          countDurationToPrevious.entries.toList()
-            ..sort((e1, e2) => e1.value.compareTo(e2.value)));
-      _unitDuration = sortCountDurationToPrevious.keys.last;
+      _unitDuration = song.unitDuration;
       _difficulty = event.difficulty;
       if (event.difficulty == 0) {
         _numberTileColumn = 2;

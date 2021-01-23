@@ -2,4 +2,4 @@
 # sudo apt-get install -y nodejs
 # npm install -g node-firestore-import-export;
 firestore-export --backupFile db.json --prettyPrint;
-./jq-win64.exe --sort-keys . db.json > db1.json; rm db.json; mv db1.json db.json;
+jq --sort-keys . db.json > db1.json; rm db.json; mv db1.json db.json;

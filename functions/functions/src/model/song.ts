@@ -4,6 +4,7 @@ export interface Song {
   artist: string;
   url: string;
   bpm: number;
+  unitDuration: number;
   tilesCount: number[];
   duration: number[];
 }

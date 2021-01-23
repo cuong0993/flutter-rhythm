@@ -30,6 +30,9 @@ class _$SongSerializer implements StructuredSerializer<Song> {
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'bpm',
       serializers.serialize(object.bpm, specifiedType: const FullType(int)),
+      'unitDuration',
+      serializers.serialize(object.unitDuration,
+          specifiedType: const FullType(int)),
       'tilesCount',
       serializers.serialize(object.tilesCount,
           specifiedType:
@@ -78,6 +81,10 @@ class _$SongSerializer implements StructuredSerializer<Song> {
           result.bpm = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'unitDuration':
+          result.unitDuration = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'tilesCount':
           result.tilesCount.replace(serializers.deserialize(value,
                   specifiedType:
@@ -115,6 +122,8 @@ class _$Song extends Song {
   @override
   final int bpm;
   @override
+  final int unitDuration;
+  @override
   final BuiltList<int> tilesCount;
   @override
   final BuiltList<int> duration;
@@ -130,6 +139,7 @@ class _$Song extends Song {
       this.artist,
       this.url,
       this.bpm,
+      this.unitDuration,
       this.tilesCount,
       this.duration,
       this.tags})
@@ -148,6 +158,9 @@ class _$Song extends Song {
     }
     if (bpm == null) {
       throw new BuiltValueNullFieldError('Song', 'bpm');
+    }
+    if (unitDuration == null) {
+      throw new BuiltValueNullFieldError('Song', 'unitDuration');
     }
     if (tilesCount == null) {
       throw new BuiltValueNullFieldError('Song', 'tilesCount');
@@ -176,6 +189,7 @@ class _$Song extends Song {
         artist == other.artist &&
         url == other.url &&
         bpm == other.bpm &&
+        unitDuration == other.unitDuration &&
         tilesCount == other.tilesCount &&
         duration == other.duration &&
         tags == other.tags;
@@ -188,10 +202,12 @@ class _$Song extends Song {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), title.hashCode),
-                            artist.hashCode),
-                        url.hashCode),
-                    bpm.hashCode),
+                        $jc(
+                            $jc($jc($jc(0, id.hashCode), title.hashCode),
+                                artist.hashCode),
+                            url.hashCode),
+                        bpm.hashCode),
+                    unitDuration.hashCode),
                 tilesCount.hashCode),
             duration.hashCode),
         tags.hashCode));
@@ -205,6 +221,7 @@ class _$Song extends Song {
           ..add('artist', artist)
           ..add('url', url)
           ..add('bpm', bpm)
+          ..add('unitDuration', unitDuration)
           ..add('tilesCount', tilesCount)
           ..add('duration', duration)
           ..add('tags', tags))
@@ -235,6 +252,10 @@ class SongBuilder implements Builder<Song, SongBuilder> {
   int get bpm => _$this._bpm;
   set bpm(int bpm) => _$this._bpm = bpm;
 
+  int _unitDuration;
+  int get unitDuration => _$this._unitDuration;
+  set unitDuration(int unitDuration) => _$this._unitDuration = unitDuration;
+
   ListBuilder<int> _tilesCount;
   ListBuilder<int> get tilesCount =>
       _$this._tilesCount ??= new ListBuilder<int>();
@@ -258,6 +279,7 @@ class SongBuilder implements Builder<Song, SongBuilder> {
       _artist = _$v.artist;
       _url = _$v.url;
       _bpm = _$v.bpm;
+      _unitDuration = _$v.unitDuration;
       _tilesCount = _$v.tilesCount?.toBuilder();
       _duration = _$v.duration?.toBuilder();
       _tags = _$v.tags?.toBuilder();
@@ -290,6 +312,7 @@ class SongBuilder implements Builder<Song, SongBuilder> {
               artist: artist,
               url: url,
               bpm: bpm,
+              unitDuration: unitDuration,
               tilesCount: tilesCount.build(),
               duration: duration.build(),
               tags: tags.build());

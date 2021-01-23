@@ -21,6 +21,8 @@ abstract class Song implements Built<Song, SongBuilder> {
 
   int get bpm;
 
+  int get unitDuration;
+
   BuiltList<int> get tilesCount;
 
   BuiltList<int> get duration;
