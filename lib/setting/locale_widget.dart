@@ -12,7 +12,7 @@ class LocaleWidget extends StatelessWidget {
     final scrollController = ScrollController();
     return Scaffold(
         appBar: AppBar(
-            title: Text(S.of(context).txt_select_language,
+            title: Text(S.of(context).txt_language,
                 style: Theme.of(context).appBarTheme.textTheme.headline5)),
         body: Scrollbar(
           isAlwaysShown: true,

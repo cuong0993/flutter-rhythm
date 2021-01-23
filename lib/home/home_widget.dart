@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../extra_actions.dart';
 import '../generated/l10n.dart';
 import '../main.dart';
 import '../routes.dart';
@@ -70,7 +69,12 @@ class HomeWidget extends StatelessWidget {
                               await Navigator.pushNamed(
                                   context, Routes.account);
                             }),
-                        ExtraActions()
+                        IconButton(
+                          icon: Icon(Icons.settings),
+                          onPressed: () async {
+                            await Navigator.pushNamed(context, Routes.setting);
+                          },
+                        ),
                       ],
                       bottom: TabBar(
                         isScrollable: true,

@@ -16,6 +16,7 @@ import 'instrument/instruments_widget.dart';
 import 'routes.dart';
 import 'setting/locale_widget.dart';
 import 'setting/setting_bloc.dart';
+import 'setting/settings_widget.dart';
 import 'setting/theme_widget.dart';
 import 'simple_bloc_observer.dart';
 import 'songs/songs_bloc.dart';
@@ -139,6 +140,9 @@ class App extends StatelessWidget {
                 },
                 Routes.instrument: (context) {
                   return InstrumentsWidget();
+                },
+                Routes.setting: (context) {
+                  return SettingsWidget();
                 },
               },
             );

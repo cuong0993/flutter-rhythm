@@ -7,4 +7,5 @@ class Routes {
   static final language = '/language';
   static final theme = '/theme';
   static final instrument = '/instrument';
+  static final setting = '/setting';
 }

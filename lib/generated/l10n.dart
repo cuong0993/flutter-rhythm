@@ -375,6 +375,16 @@ class S {
     );
   }
 
+  /// `Language`
+  String get txt_language {
+    return Intl.message(
+      'Language',
+      name: 'txt_language',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Level {input}`
   String txt_level(Object input) {
     return Intl.message(
@@ -410,16 +420,6 @@ class S {
     return Intl.message(
       'Account',
       name: 'txt_page_title_account',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Select language`
-  String get txt_select_language {
-    return Intl.message(
-      'Select language',
-      name: 'txt_select_language',
       desc: '',
       args: [],
     );
