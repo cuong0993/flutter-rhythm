@@ -53,7 +53,6 @@ class App extends StatelessWidget {
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
     final songsRepository = SongsRepositoryImpl();
-    SystemChrome.setEnabledSystemUIOverlays([]);
     return MultiRepositoryProvider(
         providers: [
           RepositoryProvider<SongsRepository>(
