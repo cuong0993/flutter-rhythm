@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 import '../generated/l10n.dart';
 import '../main.dart';
@@ -93,16 +92,11 @@ class _GameWidgetState extends State<GameWidget> {
                 color: Colors.transparent,
                 child: Column(
                   children: [
-                    LinearPercentIndicator(
-                      padding: EdgeInsets.zero,
-                      animation: true,
-                      animationDuration: 0,
-                      lineHeight: 8.0,
-                      percent: (state as GameUpdated).time /
-                          (state as GameUpdated).maxTime,
-                      linearStrokeCap: LinearStrokeCap.butt,
-                      progressColor: secondaryColor,
+                    LinearProgressIndicator(
                       backgroundColor: onBackgroundColor.withOpacity(0.1),
+                      valueColor: AlwaysStoppedAnimation<Color>(secondaryColor),
+                      value: (state as GameUpdated).time /
+                          (state as GameUpdated).maxTime,
                     ),
                     Padding(
                       padding: EdgeInsets.all(8),

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -7,7 +6,6 @@ import '../authentication/authentication_bloc.dart';
 import '../authentication/authentication_event.dart';
 import '../generated/l10n.dart';
 import '../loading_widget.dart';
-import '../util.dart';
 import 'user_bloc.dart';
 
 class UserWidget extends StatelessWidget {
@@ -57,14 +55,7 @@ class UserWidget extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         ClipOval(
-                          child: CachedNetworkImage(
-                              width: 72,
-                              height: 72,
-                              imageUrl: state.user.photoUrl,
-                              placeholder: (context, url) =>
-                                  CircularProgressIndicator(),
-                              memCacheWidth: 72.toPixel(),
-                              memCacheHeight: 72.toPixel()),
+                          child: Image.network(state.user.photoUrl, width: 72),
                         ),
                         SizedBox(width: 8),
                         Column(
