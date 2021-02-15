@@ -7,13 +7,12 @@ import '../main.dart';
 import '../routes.dart';
 import '../search/search_widget.dart';
 import '../songs/songs_widget.dart';
-import 'home_bloc.dart';
-import 'home_state.dart';
+import '../user/user_bloc.dart';
 
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return Scaffold(
           body: DefaultTabController(
@@ -53,7 +52,7 @@ class HomeWidget extends StatelessWidget {
                             }),
                         IconButton(
                             icon: ClipOval(
-                              child: (state is HomeUpdated &&
+                              child: (state is UserUpdated &&
                                       !state.user.isAnonymous)
                                   ? Image.network(state.user.photoUrl)
                                   : Icon(Icons.account_circle_rounded),

@@ -2,8 +2,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import 'pitch_note.dart';
-
 part 'instrument.g.dart';
 
 abstract class Instrument implements Built<Instrument, InstrumentBuilder> {
@@ -15,13 +13,11 @@ abstract class Instrument implements Built<Instrument, InstrumentBuilder> {
 
   String get id;
 
-  BuiltMap<int, String> get soundFiles;
+  BuiltMap<int, String> get soundPaths;
 
-  BuiltMap<int, PitchNote> get soundNotes;
+  BuiltMap<int, int> get baseNotes;
 
   int get minNote;
 
   int get maxNote;
-
-  double get volume;
 }

@@ -273,7 +273,7 @@ packages:
       name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.5"
+    version: "1.2.6"
   ffi:
     dependency: transitive
     description:
@@ -371,7 +371,7 @@ packages:
       name: flame
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.29.0"
+    version: "0.29.2"
   flare_dart:
     dependency: transitive
     description:
@@ -397,7 +397,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.1"
+    version: "6.1.2"
   flutter_cache_manager:
     dependency: "direct main"
     description:

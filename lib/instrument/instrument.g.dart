@@ -20,21 +20,18 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
     final result = <Object>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'soundFiles',
-      serializers.serialize(object.soundFiles,
+      'soundPaths',
+      serializers.serialize(object.soundPaths,
           specifiedType: const FullType(
               BuiltMap, const [const FullType(int), const FullType(String)])),
-      'soundNotes',
-      serializers.serialize(object.soundNotes,
-          specifiedType: const FullType(BuiltMap,
-              const [const FullType(int), const FullType(PitchNote)])),
+      'baseNotes',
+      serializers.serialize(object.baseNotes,
+          specifiedType: const FullType(
+              BuiltMap, const [const FullType(int), const FullType(int)])),
       'minNote',
       serializers.serialize(object.minNote, specifiedType: const FullType(int)),
       'maxNote',
       serializers.serialize(object.maxNote, specifiedType: const FullType(int)),
-      'volume',
-      serializers.serialize(object.volume,
-          specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -55,15 +52,15 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'soundFiles':
-          result.soundFiles.replace(serializers.deserialize(value,
+        case 'soundPaths':
+          result.soundPaths.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltMap,
                   const [const FullType(int), const FullType(String)])));
           break;
-        case 'soundNotes':
-          result.soundNotes.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap,
-                  const [const FullType(int), const FullType(PitchNote)])));
+        case 'baseNotes':
+          result.baseNotes.replace(serializers.deserialize(value,
+              specifiedType: const FullType(
+                  BuiltMap, const [const FullType(int), const FullType(int)])));
           break;
         case 'minNote':
           result.minNote = serializers.deserialize(value,
@@ -72,10 +69,6 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
         case 'maxNote':
           result.maxNote = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          break;
-        case 'volume':
-          result.volume = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -88,44 +81,34 @@ class _$Instrument extends Instrument {
   @override
   final String id;
   @override
-  final BuiltMap<int, String> soundFiles;
+  final BuiltMap<int, String> soundPaths;
   @override
-  final BuiltMap<int, PitchNote> soundNotes;
+  final BuiltMap<int, int> baseNotes;
   @override
   final int minNote;
   @override
   final int maxNote;
-  @override
-  final double volume;
 
   factory _$Instrument([void Function(InstrumentBuilder) updates]) =>
       (new InstrumentBuilder()..update(updates)).build();
 
   _$Instrument._(
-      {this.id,
-      this.soundFiles,
-      this.soundNotes,
-      this.minNote,
-      this.maxNote,
-      this.volume})
+      {this.id, this.soundPaths, this.baseNotes, this.minNote, this.maxNote})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Instrument', 'id');
     }
-    if (soundFiles == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'soundFiles');
+    if (soundPaths == null) {
+      throw new BuiltValueNullFieldError('Instrument', 'soundPaths');
     }
-    if (soundNotes == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'soundNotes');
+    if (baseNotes == null) {
+      throw new BuiltValueNullFieldError('Instrument', 'baseNotes');
     }
     if (minNote == null) {
       throw new BuiltValueNullFieldError('Instrument', 'minNote');
     }
     if (maxNote == null) {
       throw new BuiltValueNullFieldError('Instrument', 'maxNote');
-    }
-    if (volume == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'volume');
     }
   }
 
@@ -141,34 +124,30 @@ class _$Instrument extends Instrument {
     if (identical(other, this)) return true;
     return other is Instrument &&
         id == other.id &&
-        soundFiles == other.soundFiles &&
-        soundNotes == other.soundNotes &&
+        soundPaths == other.soundPaths &&
+        baseNotes == other.baseNotes &&
         minNote == other.minNote &&
-        maxNote == other.maxNote &&
-        volume == other.volume;
+        maxNote == other.maxNote;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc($jc($jc(0, id.hashCode), soundFiles.hashCode),
-                    soundNotes.hashCode),
-                minNote.hashCode),
-            maxNote.hashCode),
-        volume.hashCode));
+            $jc($jc($jc(0, id.hashCode), soundPaths.hashCode),
+                baseNotes.hashCode),
+            minNote.hashCode),
+        maxNote.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Instrument')
           ..add('id', id)
-          ..add('soundFiles', soundFiles)
-          ..add('soundNotes', soundNotes)
+          ..add('soundPaths', soundPaths)
+          ..add('baseNotes', baseNotes)
           ..add('minNote', minNote)
-          ..add('maxNote', maxNote)
-          ..add('volume', volume))
+          ..add('maxNote', maxNote))
         .toString();
   }
 }
@@ -180,17 +159,17 @@ class InstrumentBuilder implements Builder<Instrument, InstrumentBuilder> {
   String get id => _$this._id;
   set id(String id) => _$this._id = id;
 
-  MapBuilder<int, String> _soundFiles;
-  MapBuilder<int, String> get soundFiles =>
-      _$this._soundFiles ??= new MapBuilder<int, String>();
-  set soundFiles(MapBuilder<int, String> soundFiles) =>
-      _$this._soundFiles = soundFiles;
+  MapBuilder<int, String> _soundPaths;
+  MapBuilder<int, String> get soundPaths =>
+      _$this._soundPaths ??= new MapBuilder<int, String>();
+  set soundPaths(MapBuilder<int, String> soundPaths) =>
+      _$this._soundPaths = soundPaths;
 
-  MapBuilder<int, PitchNote> _soundNotes;
-  MapBuilder<int, PitchNote> get soundNotes =>
-      _$this._soundNotes ??= new MapBuilder<int, PitchNote>();
-  set soundNotes(MapBuilder<int, PitchNote> soundNotes) =>
-      _$this._soundNotes = soundNotes;
+  MapBuilder<int, int> _baseNotes;
+  MapBuilder<int, int> get baseNotes =>
+      _$this._baseNotes ??= new MapBuilder<int, int>();
+  set baseNotes(MapBuilder<int, int> baseNotes) =>
+      _$this._baseNotes = baseNotes;
 
   int _minNote;
   int get minNote => _$this._minNote;
@@ -200,20 +179,15 @@ class InstrumentBuilder implements Builder<Instrument, InstrumentBuilder> {
   int get maxNote => _$this._maxNote;
   set maxNote(int maxNote) => _$this._maxNote = maxNote;
 
-  double _volume;
-  double get volume => _$this._volume;
-  set volume(double volume) => _$this._volume = volume;
-
   InstrumentBuilder();
 
   InstrumentBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
-      _soundFiles = _$v.soundFiles?.toBuilder();
-      _soundNotes = _$v.soundNotes?.toBuilder();
+      _soundPaths = _$v.soundPaths?.toBuilder();
+      _baseNotes = _$v.baseNotes?.toBuilder();
       _minNote = _$v.minNote;
       _maxNote = _$v.maxNote;
-      _volume = _$v.volume;
       _$v = null;
     }
     return this;
@@ -239,18 +213,17 @@ class InstrumentBuilder implements Builder<Instrument, InstrumentBuilder> {
       _$result = _$v ??
           new _$Instrument._(
               id: id,
-              soundFiles: soundFiles.build(),
-              soundNotes: soundNotes.build(),
+              soundPaths: soundPaths.build(),
+              baseNotes: baseNotes.build(),
               minNote: minNote,
-              maxNote: maxNote,
-              volume: volume);
+              maxNote: maxNote);
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'soundFiles';
-        soundFiles.build();
-        _$failedField = 'soundNotes';
-        soundNotes.build();
+        _$failedField = 'soundPaths';
+        soundPaths.build();
+        _$failedField = 'baseNotes';
+        baseNotes.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Instrument', _$failedField, e.toString());

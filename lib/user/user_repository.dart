@@ -1,7 +1,7 @@
 import 'user.dart';
 
 abstract class UserRepository {
-  void changUser();
+  void subscribeUser();
 
   void changeInstrument(String instrumentId);
 

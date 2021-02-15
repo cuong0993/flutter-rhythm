@@ -8,6 +8,6 @@ import io.flutter.plugin.common.MethodChannel
 class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.chaomao.hitnotes/sound_player").setMethodCallHandler(SoundPlayerPlugin())
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.chaomao.hitnotes/sound_player").setMethodCallHandler(SoundMethodCallHandler())
     }
 }

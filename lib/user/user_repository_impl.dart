@@ -21,7 +21,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> changUser() async {
+  Future<void> subscribeUser() async {
     await _userSubscription?.cancel();
     _userSubscription = FirebaseFirestore.instance
         .collection('users')

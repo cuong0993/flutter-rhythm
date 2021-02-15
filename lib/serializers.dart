@@ -6,7 +6,6 @@ import 'package:built_value/standard_json_plugin.dart';
 
 import 'game/game_reward.dart';
 import 'instrument/instrument.dart';
-import 'instrument/pitch_note.dart';
 import 'songs/song.dart';
 import 'user/user.dart';
 
@@ -17,7 +16,6 @@ part 'serializers.g.dart';
   Instrument,
   Song,
   GameReward,
-  PitchNote,
   User,
 ])
 final Serializers serializers = (_$serializers.toBuilder()

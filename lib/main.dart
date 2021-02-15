@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'authentication/authentication_bloc.dart';
+import 'authentication/authentication_event.dart';
 import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'game_config/game_config_bloc.dart';
 import 'game_config/game_config_widget.dart';
 import 'generated/l10n.dart';
-import 'home/home_bloc.dart';
 import 'home/home_widget.dart';
 import 'instrument/instruments_repository_impl.dart';
 import 'instrument/instruments_widget.dart';
@@ -67,7 +67,8 @@ class App extends StatelessWidget {
             ),
             BlocProvider<AuthenticationBloc>(
               create: (context) {
-                return AuthenticationBloc(userRepository);
+                return AuthenticationBloc(userRepository)
+                  ..add(SignInAnonymouslyEvent());
               },
             ),
             BlocProvider<SongsBloc>(
@@ -106,10 +107,7 @@ class App extends StatelessWidget {
                   return SplashWidget();
                 },
                 Routes.home: (context) {
-                  return BlocProvider<HomeBloc>(
-                      create: (context) =>
-                          HomeBloc(userRepository, instrumentsRepository),
-                      child: HomeWidget());
+                  return HomeWidget();
                 },
                 Routes.gameConfig: (context) {
                   primaryColor = Theme.of(context).colorScheme.primary;

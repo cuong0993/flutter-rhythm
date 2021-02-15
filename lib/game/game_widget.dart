@@ -35,12 +35,14 @@ class _GameWidgetState extends State<GameWidget> {
     BlocProvider.of<GameBloc>(context).pauseStream.listen((event) {
       showDialog<void>(
         context: context,
+        useSafeArea: false,
         builder: (_) => PauseDialog(_onRestart),
       );
     });
     BlocProvider.of<GameBloc>(context).completeStream.listen((event) {
       showDialog<void>(
         context: context,
+        useSafeArea: false,
         builder: (_) => CompleteDialog(event, _onRestart),
       );
     });
@@ -90,54 +92,63 @@ class _GameWidgetState extends State<GameWidget> {
               height: NON_TOUCH_REGION_HEIGHT.toDouble(),
               child: Material(
                 color: Colors.transparent,
-                child: Column(
-                  children: [
-                    LinearProgressIndicator(
-                      backgroundColor: onBackgroundColor.withOpacity(0.1),
-                      valueColor: AlwaysStoppedAnimation<Color>(secondaryColor),
-                      value: (state as GameUpdated).time /
-                          (state as GameUpdated).maxTime,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text((state as GameUpdated).songName,
-                                  style: Theme.of(context).textTheme.headline6),
-                              Text(
-                                  '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
-                                  style: Theme.of(context).textTheme.headline6)
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                iconSize: 38,
-                                icon: Icon(Icons.pause_circle_outline_rounded),
-                                onPressed: () {
-                                  BlocProvider.of<GameBloc>(context)
-                                      .add(PauseGame());
-                                },
-                              ),
-                              Text((state as GameUpdated).tilesCount.toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4
-                                      .copyWith(color: secondaryColor))
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [GuideTextWidget()],
-                          )
-                        ],
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      LinearProgressIndicator(
+                        backgroundColor: onBackgroundColor.withOpacity(0.1),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(secondaryColor),
+                        value: (state as GameUpdated).time /
+                            (state as GameUpdated).maxTime,
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text((state as GameUpdated).songName,
+                                    style:
+                                        Theme.of(context).textTheme.headline6),
+                                Text(
+                                    '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
+                                    style:
+                                        Theme.of(context).textTheme.headline6)
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconButton(
+                                  iconSize: 38,
+                                  icon:
+                                      Icon(Icons.pause_circle_outline_rounded),
+                                  onPressed: () {
+                                    BlocProvider.of<GameBloc>(context)
+                                        .add(PauseGame());
+                                  },
+                                ),
+                                Text(
+                                    (state as GameUpdated)
+                                        .tilesCount
+                                        .toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4
+                                        .copyWith(color: secondaryColor))
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [GuideTextWidget()],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ))
         ]);
@@ -198,22 +209,24 @@ class LoadingSoundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image(
-                      image: AssetImage('assets/images/img_app_icon.png')),
+      child: SafeArea(
+        child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Image(
+                        image: AssetImage('assets/images/img_app_icon.png')),
+                  ),
                 ),
-              ),
-              Text(S.of(context).txt_dialog_loading_sound_description)
-            ],
-          )),
+                Text(S.of(context).txt_dialog_loading_sound_description)
+              ],
+            )),
+      ),
     );
   }
 }
@@ -226,22 +239,24 @@ class LoadingGiftWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image(
-                      image: AssetImage('assets/images/img_app_icon.png')),
+      child: SafeArea(
+        child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Image(
+                        image: AssetImage('assets/images/img_app_icon.png')),
+                  ),
                 ),
-              ),
-              Text(S.of(context).txt_game_complete_loading_gift)
-            ],
-          )),
+                Text(S.of(context).txt_game_complete_loading_gift)
+              ],
+            )),
+      ),
     );
   }
 }

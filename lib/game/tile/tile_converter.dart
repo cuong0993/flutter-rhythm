@@ -13,7 +13,7 @@ const NUMBER_TILE_COLUMN = 4;
 const UNIT_DURATION_HEIGHT = 72;
 const TILE_WIDTH = 36.0;
 const TILE_HEIGHT = TILE_WIDTH;
-const NON_TOUCH_REGION_HEIGHT = 150;
+const NON_TOUCH_REGION_HEIGHT = 160;
 const startVisibleY = 0;
 
 double tickToSecond(int resolution, int bpm) {

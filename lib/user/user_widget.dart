@@ -32,7 +32,7 @@ class UserWidget extends StatelessWidget {
                         child: ListView(
                             shrinkWrap: true,
                             controller: scrollController,
-                            children: <Widget>[buildColumn(state, context)])));
+                            children: <Widget>[buildUI(state, context)])));
               } else {
                 return Container();
               }
@@ -41,226 +41,236 @@ class UserWidget extends StatelessWidget {
     );
   }
 
-  Column buildColumn(UserUpdated state, BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+  Widget buildUI(UserUpdated state, BuildContext context) {
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          () {
+            if (!state.user.isAnonymous) {
+              return buildAnonymousUI(state, context);
+            } else {
+              return buildUserUI(context);
+            }
+          }(),
+          Card(
+              color: Colors.transparent,
+              elevation: 0,
+              child: buildUserStatisticUI(state, context)),
+        ],
+      ),
+    );
+  }
+
+  Table buildUserStatisticUI(UserUpdated state, BuildContext context) {
+    return Table(
       children: [
-        () {
-          if (!state.user.isAnonymous) {
-            return Card(
-                color: Colors.transparent,
-                elevation: 0,
-                child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: <Widget>[
-                        ClipOval(
-                          child: Image.network(state.user.photoUrl, width: 72),
-                        ),
-                        SizedBox(width: 8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              state.user.name,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.today,
-                                  size: 16,
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  S.of(context).txt_joined(DateFormat.yMMMd()
-                                      .format(state.user.creationTime)),
-                                  style: Theme.of(context).textTheme.subtitle1,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Image(
-                                  image: AssetImage(
-                                      'assets/images/img_guitar.png'),
-                                  width: 16,
-                                  height: 16,
-                                ),
-                                SizedBox(width: 8),
-                                Text(S.of(context).txt_using(Intl.message(
-                                      '',
-                                      /* FIXME Localization name of instrument should be taken from server, not from local text resources */
-                                      name: state.user.user.instrumentId,
-                                      desc: '',
-                                      args: [],
-                                    ))),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    )));
-          } else {
-            return Card(
-                color: Colors.transparent,
-                elevation: 0,
-                child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          OutlinedButton(
-                            onPressed: () {
-                              BlocProvider.of<AuthenticationBloc>(context)
-                                ..add(SignInWithGoogleEvent());
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Image(
-                                      image: AssetImage(
-                                          'assets/images/img_google.png')),
-                                  SizedBox(width: 8),
-                                  Text(S.of(context).txt_button_sign_in_google,
-                                      style:
-                                          Theme.of(context).textTheme.subtitle1)
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          OutlinedButton(
-                            onPressed: () {
-                              BlocProvider.of<AuthenticationBloc>(context)
-                                ..add(SignInWithFacebookEvent());
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Image(
-                                      image: AssetImage(
-                                          'assets/images/img_facebook.png')),
-                                  SizedBox(width: 8),
-                                  Text(
-                                      S.of(context).txt_button_sign_in_facebook,
-                                      style:
-                                          Theme.of(context).textTheme.subtitle1)
-                                ],
-                              ),
-                            ),
-                          ),
-                        ])));
-          }
-        }(),
-        Card(
+        TableRow(children: [
+          Card(
             color: Colors.transparent,
             elevation: 0,
-            child: Table(
-              children: [
-                TableRow(children: [
-                  Card(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      // if you need this
-                      side: BorderSide(
-                        color: Colors.grey.withOpacity(0.2),
-                        width: 1,
-                      ),
-                    ),
-                    child: Container(
-                      //color: Colors.white,
-                      //width: 200,
-                      //height: 200,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 8),
-                          Image(
-                            image: AssetImage('assets/images/img_star.png'),
-                          ),
-                          SizedBox(height: 8),
-                          Text(state.user.user.stars.toString(),
-                              style: Theme.of(context).textTheme.subtitle1),
-                          SizedBox(height: 8),
-                        ],
-                      ),
-                    ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              // if you need this
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Container(
+              //color: Colors.white,
+              //width: 200,
+              //height: 200,
+              child: Column(
+                children: [
+                  SizedBox(height: 8),
+                  Image(
+                    image: AssetImage('assets/images/img_star.png'),
                   ),
-                  Card(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      // if you need this
-                      side: BorderSide(
-                        color: Colors.grey.withOpacity(0.2),
-                        width: 1,
-                      ),
-                    ),
-                    child: Container(
-                      //color: Colors.white,
-                      // width: 200,
-                      //height: 200,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 8),
-                          Image(
-                            image: AssetImage('assets/images/img_note.png'),
-                          ),
-                          SizedBox(height: 8),
-                          Text(state.user.user.playedNotes.toString(),
-                              style: Theme.of(context).textTheme.subtitle1),
-                          SizedBox(height: 8),
-                        ],
-                      ),
-                    ),
+                  SizedBox(height: 8),
+                  Text(state.user.user.stars.toString(),
+                      style: Theme.of(context).textTheme.subtitle1),
+                  SizedBox(height: 8),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.transparent,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              // if you need this
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Container(
+              //color: Colors.white,
+              // width: 200,
+              //height: 200,
+              child: Column(
+                children: [
+                  SizedBox(height: 8),
+                  Image(
+                    image: AssetImage('assets/images/img_note.png'),
                   ),
-                  Card(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      // if you need this
-                      side: BorderSide(
-                        color: Colors.grey.withOpacity(0.2),
-                        width: 1,
-                      ),
-                    ),
-                    child: Container(
-                      //color: Colors.white,
-                      //width: 200,
-                      //height: 200,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 8),
-                          Image(
-                            image: AssetImage('assets/images/img_clock.png'),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                              state.user.user.playedTime
-                                  .toString()
-                                  .substring(0, 4)
-                                  .toString(),
-                              style: Theme.of(context).textTheme.subtitle1),
-                          SizedBox(height: 8),
-                        ],
-                      ),
-                    ),
+                  SizedBox(height: 8),
+                  Text(state.user.user.playedNotes.toString(),
+                      style: Theme.of(context).textTheme.subtitle1),
+                  SizedBox(height: 8),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.transparent,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              // if you need this
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Container(
+              //color: Colors.white,
+              //width: 200,
+              //height: 200,
+              child: Column(
+                children: [
+                  SizedBox(height: 8),
+                  Image(
+                    image: AssetImage('assets/images/img_clock.png'),
                   ),
-                ]),
-              ],
-            )),
+                  SizedBox(height: 8),
+                  Text(
+                      state.user.user.playedTime
+                          .toString()
+                          .substring(0, 4)
+                          .toString(),
+                      style: Theme.of(context).textTheme.subtitle1),
+                  SizedBox(height: 8),
+                ],
+              ),
+            ),
+          ),
+        ]),
       ],
     );
+  }
+
+  Card buildUserUI(BuildContext context) {
+    return Card(
+        color: Colors.transparent,
+        elevation: 0,
+        child: Container(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  OutlinedButton(
+                    onPressed: () {
+                      BlocProvider.of<AuthenticationBloc>(context)
+                        ..add(SignInWithGoogleEvent());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Image(
+                              image:
+                                  AssetImage('assets/images/img_google.png')),
+                          SizedBox(width: 8),
+                          Text(S.of(context).txt_button_sign_in_google,
+                              style: Theme.of(context).textTheme.subtitle1)
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  OutlinedButton(
+                    onPressed: () {
+                      BlocProvider.of<AuthenticationBloc>(context)
+                        ..add(SignInWithFacebookEvent());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Image(
+                              image:
+                                  AssetImage('assets/images/img_facebook.png')),
+                          SizedBox(width: 8),
+                          Text(S.of(context).txt_button_sign_in_facebook,
+                              style: Theme.of(context).textTheme.subtitle1)
+                        ],
+                      ),
+                    ),
+                  ),
+                ])));
+  }
+
+  Card buildAnonymousUI(UserUpdated state, BuildContext context) {
+    return Card(
+        color: Colors.transparent,
+        elevation: 0,
+        child: Container(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                ClipOval(
+                  child: Image.network(state.user.photoUrl, width: 72),
+                ),
+                SizedBox(width: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      state.user.name,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.today,
+                          size: 16,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          S.of(context).txt_joined(DateFormat.yMMMd()
+                              .format(state.user.creationTime)),
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/img_guitar.png'),
+                          width: 16,
+                          height: 16,
+                        ),
+                        SizedBox(width: 8),
+                        Text(S.of(context).txt_using(Intl.message(
+                              '',
+                              /* FIXME Localization name of instrument should be taken from server, not from local text resources */
+                              name: state.user.user.instrumentId,
+                              desc: '',
+                              args: [],
+                            ))),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            )));
   }
 }

@@ -37,7 +37,7 @@ class AuthenticationBloc
       if (currentUser == null) {
         await FirebaseAuth.instance.signInAnonymously();
       }
-      _userRepository.changUser();
+      _userRepository.subscribeUser();
       yield Authenticated('Anonymous');
     } catch (_) {
       yield Unauthenticated();
@@ -53,7 +53,7 @@ class AuthenticationBloc
         idToken: googleAuth.idToken,
       );
       await _tryToLinkWithCurrentUser(credential);
-      _userRepository.changUser();
+      _userRepository.subscribeUser();
       yield Authenticated('Google');
     } on Exception {
       yield Unauthenticated();
@@ -68,7 +68,7 @@ class AuthenticationBloc
           final credential =
               FacebookAuthProvider.credential(result.accessToken.token);
           await _tryToLinkWithCurrentUser(credential);
-          _userRepository.changUser();
+          _userRepository.subscribeUser();
           yield Authenticated('Facebook');
           break;
         default:
