@@ -1,6 +1,6 @@
+import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/gestures.dart';
-import 'package:flame/position.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -21,22 +21,33 @@ class MyGame extends Game with MultiTouchTapDetector {
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
   final Map<int, _TouchPosition> _touches = {};
-  Function(Tile tile) _onTouched;
-  Function() _onCompleted;
+  late Function(Tile? tile) _onTouched;
+  late Function() _onCompleted;
   final _backgroundPaint = Paint()..color = backgroundColor;
   final _grayPaint = Paint()
     ..colorFilter = ColorFilter.mode(onBackgroundColor, BlendMode.srcIn);
 
-  final _staffSprite = Sprite('${nearestDevicePixelRatioFolder}img_staff.png');
-  final _clefSprite = Sprite('${nearestDevicePixelRatioFolder}img_clef.png');
+  late Sprite _staffSprite;
+  late Sprite _clefSprite;
 
   void start(List<Tile> tiles, double speedPixelsPerSecond,
-      Function(Tile tile) onTouched, Function() onCompleted) async {
+      Function(Tile? tile) onTouched, Function() onCompleted) async {
     _tilesController.initialize(tiles, speedPixelsPerSecond);
     _state = _MyGameState.PLAY;
     _onTouched = onTouched;
     _onCompleted = onCompleted;
     _accumulator = 0.0;
+  }
+
+  @override
+  Future<void> onLoad() async {
+    _staffSprite = Sprite(
+        await images.load('${nearestDevicePixelRatioFolder}img_staff.png'));
+    _clefSprite = Sprite(
+        await images.load('${nearestDevicePixelRatioFolder}img_clef.png'));
+    await Flame.images.load('${nearestDevicePixelRatioFolder}img_touch.png');
+    await Flame.images
+        .load('${nearestDevicePixelRatioFolder}img_single_note.png');
   }
 
   void pause() {}
@@ -56,10 +67,14 @@ class MyGame extends Game with MultiTouchTapDetector {
   void render(Canvas canvas) {
     final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, _backgroundPaint);
-    _staffSprite.renderPosition(canvas, Position(0.0, pauseY - 96 + 24),
-        size: Position(screenWidth, 96), overridePaint: _grayPaint);
-    _clefSprite.renderPosition(canvas, Position(0.0, pauseY - 96 + 24),
-        size: Position(96, 96), overridePaint: _grayPaint);
+    _staffSprite.render(canvas,
+        position: Vector2(0.0, pauseY - 96 + 24),
+        size: Vector2(screenWidth, 96),
+        overridePaint: _grayPaint);
+    _clefSprite.render(canvas,
+        position: Vector2(0.0, pauseY - 96 + 24),
+        size: Vector2(96, 96),
+        overridePaint: _grayPaint);
     _tilesController.render(canvas);
     _tileEffects.forEach((effect) {
       effect.render(canvas);

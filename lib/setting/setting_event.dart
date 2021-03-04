@@ -10,7 +10,7 @@ class ChangeLocaleEvent extends SettingEvent {
   ChangeLocaleEvent(this.locale);
 
   @override
-  List<Object> get props => [locale];
+  List<Object?> get props => [locale];
 }
 
 class ChangeThemeEvent extends SettingEvent {
@@ -19,15 +19,15 @@ class ChangeThemeEvent extends SettingEvent {
   ChangeThemeEvent(this.theme);
 
   @override
-  List<Object> get props => [theme];
+  List<Object?> get props => [theme];
 }
 
 class LoadThemeAndLocaleEvent extends SettingEvent {
-  final ThemeMode theme;
-  final Locale locale;
+  final ThemeMode? theme;
+  final Locale? locale;
 
   LoadThemeAndLocaleEvent(this.theme, this.locale);
 
   @override
-  List<Object> get props => [theme, locale];
+  List<Object?> get props => [theme, locale];
 }

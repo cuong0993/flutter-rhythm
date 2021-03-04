@@ -36,11 +36,11 @@ const songTags = [
   'other',
 ];
 
-Color primaryColor;
-Color secondaryColor;
-Color backgroundColor;
-Color onBackgroundColor;
-Paint paint;
+late Color primaryColor;
+late Color secondaryColor;
+late Color backgroundColor;
+late Color onBackgroundColor;
+late Paint paint;
 
 void main() async {
   Bloc.observer = SimpleBlocObserver();

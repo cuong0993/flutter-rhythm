@@ -46,7 +46,7 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -89,27 +89,22 @@ class _$Instrument extends Instrument {
   @override
   final int maxNote;
 
-  factory _$Instrument([void Function(InstrumentBuilder) updates]) =>
+  factory _$Instrument([void Function(InstrumentBuilder)? updates]) =>
       (new InstrumentBuilder()..update(updates)).build();
 
   _$Instrument._(
-      {this.id, this.soundPaths, this.baseNotes, this.minNote, this.maxNote})
+      {required this.id,
+      required this.soundPaths,
+      required this.baseNotes,
+      required this.minNote,
+      required this.maxNote})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'id');
-    }
-    if (soundPaths == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'soundPaths');
-    }
-    if (baseNotes == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'baseNotes');
-    }
-    if (minNote == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'minNote');
-    }
-    if (maxNote == null) {
-      throw new BuiltValueNullFieldError('Instrument', 'maxNote');
-    }
+    BuiltValueNullFieldError.checkNotNull(id, 'Instrument', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        soundPaths, 'Instrument', 'soundPaths');
+    BuiltValueNullFieldError.checkNotNull(baseNotes, 'Instrument', 'baseNotes');
+    BuiltValueNullFieldError.checkNotNull(minNote, 'Instrument', 'minNote');
+    BuiltValueNullFieldError.checkNotNull(maxNote, 'Instrument', 'maxNote');
   }
 
   @override
@@ -153,41 +148,42 @@ class _$Instrument extends Instrument {
 }
 
 class InstrumentBuilder implements Builder<Instrument, InstrumentBuilder> {
-  _$Instrument _$v;
+  _$Instrument? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  MapBuilder<int, String> _soundPaths;
+  MapBuilder<int, String>? _soundPaths;
   MapBuilder<int, String> get soundPaths =>
       _$this._soundPaths ??= new MapBuilder<int, String>();
-  set soundPaths(MapBuilder<int, String> soundPaths) =>
+  set soundPaths(MapBuilder<int, String>? soundPaths) =>
       _$this._soundPaths = soundPaths;
 
-  MapBuilder<int, int> _baseNotes;
+  MapBuilder<int, int>? _baseNotes;
   MapBuilder<int, int> get baseNotes =>
       _$this._baseNotes ??= new MapBuilder<int, int>();
-  set baseNotes(MapBuilder<int, int> baseNotes) =>
+  set baseNotes(MapBuilder<int, int>? baseNotes) =>
       _$this._baseNotes = baseNotes;
 
-  int _minNote;
-  int get minNote => _$this._minNote;
-  set minNote(int minNote) => _$this._minNote = minNote;
+  int? _minNote;
+  int? get minNote => _$this._minNote;
+  set minNote(int? minNote) => _$this._minNote = minNote;
 
-  int _maxNote;
-  int get maxNote => _$this._maxNote;
-  set maxNote(int maxNote) => _$this._maxNote = maxNote;
+  int? _maxNote;
+  int? get maxNote => _$this._maxNote;
+  set maxNote(int? maxNote) => _$this._maxNote = maxNote;
 
   InstrumentBuilder();
 
   InstrumentBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _soundPaths = _$v.soundPaths?.toBuilder();
-      _baseNotes = _$v.baseNotes?.toBuilder();
-      _minNote = _$v.minNote;
-      _maxNote = _$v.maxNote;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _soundPaths = $v.soundPaths.toBuilder();
+      _baseNotes = $v.baseNotes.toBuilder();
+      _minNote = $v.minNote;
+      _maxNote = $v.maxNote;
       _$v = null;
     }
     return this;
@@ -195,14 +191,12 @@ class InstrumentBuilder implements Builder<Instrument, InstrumentBuilder> {
 
   @override
   void replace(Instrument other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Instrument;
   }
 
   @override
-  void update(void Function(InstrumentBuilder) updates) {
+  void update(void Function(InstrumentBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -212,13 +206,15 @@ class InstrumentBuilder implements Builder<Instrument, InstrumentBuilder> {
     try {
       _$result = _$v ??
           new _$Instrument._(
-              id: id,
+              id: BuiltValueNullFieldError.checkNotNull(id, 'Instrument', 'id'),
               soundPaths: soundPaths.build(),
               baseNotes: baseNotes.build(),
-              minNote: minNote,
-              maxNote: maxNote);
+              minNote: BuiltValueNullFieldError.checkNotNull(
+                  minNote, 'Instrument', 'minNote'),
+              maxNote: BuiltValueNullFieldError.checkNotNull(
+                  maxNote, 'Instrument', 'maxNote'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'soundPaths';
         soundPaths.build();

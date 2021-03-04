@@ -59,7 +59,7 @@ class _$SongSerializer implements StructuredSerializer<Song> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -130,47 +130,29 @@ class _$Song extends Song {
   @override
   final BuiltList<String> tags;
 
-  factory _$Song([void Function(SongBuilder) updates]) =>
+  factory _$Song([void Function(SongBuilder)? updates]) =>
       (new SongBuilder()..update(updates)).build();
 
   _$Song._(
-      {this.id,
-      this.title,
-      this.artist,
-      this.url,
-      this.bpm,
-      this.unitDuration,
-      this.tilesCount,
-      this.duration,
-      this.tags})
+      {required this.id,
+      required this.title,
+      required this.artist,
+      required this.url,
+      required this.bpm,
+      required this.unitDuration,
+      required this.tilesCount,
+      required this.duration,
+      required this.tags})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('Song', 'id');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Song', 'title');
-    }
-    if (artist == null) {
-      throw new BuiltValueNullFieldError('Song', 'artist');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Song', 'url');
-    }
-    if (bpm == null) {
-      throw new BuiltValueNullFieldError('Song', 'bpm');
-    }
-    if (unitDuration == null) {
-      throw new BuiltValueNullFieldError('Song', 'unitDuration');
-    }
-    if (tilesCount == null) {
-      throw new BuiltValueNullFieldError('Song', 'tilesCount');
-    }
-    if (duration == null) {
-      throw new BuiltValueNullFieldError('Song', 'duration');
-    }
-    if (tags == null) {
-      throw new BuiltValueNullFieldError('Song', 'tags');
-    }
+    BuiltValueNullFieldError.checkNotNull(id, 'Song', 'id');
+    BuiltValueNullFieldError.checkNotNull(title, 'Song', 'title');
+    BuiltValueNullFieldError.checkNotNull(artist, 'Song', 'artist');
+    BuiltValueNullFieldError.checkNotNull(url, 'Song', 'url');
+    BuiltValueNullFieldError.checkNotNull(bpm, 'Song', 'bpm');
+    BuiltValueNullFieldError.checkNotNull(unitDuration, 'Song', 'unitDuration');
+    BuiltValueNullFieldError.checkNotNull(tilesCount, 'Song', 'tilesCount');
+    BuiltValueNullFieldError.checkNotNull(duration, 'Song', 'duration');
+    BuiltValueNullFieldError.checkNotNull(tags, 'Song', 'tags');
   }
 
   @override
@@ -230,59 +212,60 @@ class _$Song extends Song {
 }
 
 class SongBuilder implements Builder<Song, SongBuilder> {
-  _$Song _$v;
+  _$Song? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _artist;
-  String get artist => _$this._artist;
-  set artist(String artist) => _$this._artist = artist;
+  String? _artist;
+  String? get artist => _$this._artist;
+  set artist(String? artist) => _$this._artist = artist;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  int _bpm;
-  int get bpm => _$this._bpm;
-  set bpm(int bpm) => _$this._bpm = bpm;
+  int? _bpm;
+  int? get bpm => _$this._bpm;
+  set bpm(int? bpm) => _$this._bpm = bpm;
 
-  int _unitDuration;
-  int get unitDuration => _$this._unitDuration;
-  set unitDuration(int unitDuration) => _$this._unitDuration = unitDuration;
+  int? _unitDuration;
+  int? get unitDuration => _$this._unitDuration;
+  set unitDuration(int? unitDuration) => _$this._unitDuration = unitDuration;
 
-  ListBuilder<int> _tilesCount;
+  ListBuilder<int>? _tilesCount;
   ListBuilder<int> get tilesCount =>
       _$this._tilesCount ??= new ListBuilder<int>();
-  set tilesCount(ListBuilder<int> tilesCount) =>
+  set tilesCount(ListBuilder<int>? tilesCount) =>
       _$this._tilesCount = tilesCount;
 
-  ListBuilder<int> _duration;
+  ListBuilder<int>? _duration;
   ListBuilder<int> get duration => _$this._duration ??= new ListBuilder<int>();
-  set duration(ListBuilder<int> duration) => _$this._duration = duration;
+  set duration(ListBuilder<int>? duration) => _$this._duration = duration;
 
-  ListBuilder<String> _tags;
+  ListBuilder<String>? _tags;
   ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
-  set tags(ListBuilder<String> tags) => _$this._tags = tags;
+  set tags(ListBuilder<String>? tags) => _$this._tags = tags;
 
   SongBuilder();
 
   SongBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _title = _$v.title;
-      _artist = _$v.artist;
-      _url = _$v.url;
-      _bpm = _$v.bpm;
-      _unitDuration = _$v.unitDuration;
-      _tilesCount = _$v.tilesCount?.toBuilder();
-      _duration = _$v.duration?.toBuilder();
-      _tags = _$v.tags?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _title = $v.title;
+      _artist = $v.artist;
+      _url = $v.url;
+      _bpm = $v.bpm;
+      _unitDuration = $v.unitDuration;
+      _tilesCount = $v.tilesCount.toBuilder();
+      _duration = $v.duration.toBuilder();
+      _tags = $v.tags.toBuilder();
       _$v = null;
     }
     return this;
@@ -290,14 +273,12 @@ class SongBuilder implements Builder<Song, SongBuilder> {
 
   @override
   void replace(Song other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Song;
   }
 
   @override
-  void update(void Function(SongBuilder) updates) {
+  void update(void Function(SongBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -307,17 +288,20 @@ class SongBuilder implements Builder<Song, SongBuilder> {
     try {
       _$result = _$v ??
           new _$Song._(
-              id: id,
-              title: title,
-              artist: artist,
-              url: url,
-              bpm: bpm,
-              unitDuration: unitDuration,
+              id: BuiltValueNullFieldError.checkNotNull(id, 'Song', 'id'),
+              title:
+                  BuiltValueNullFieldError.checkNotNull(title, 'Song', 'title'),
+              artist: BuiltValueNullFieldError.checkNotNull(
+                  artist, 'Song', 'artist'),
+              url: BuiltValueNullFieldError.checkNotNull(url, 'Song', 'url'),
+              bpm: BuiltValueNullFieldError.checkNotNull(bpm, 'Song', 'bpm'),
+              unitDuration: BuiltValueNullFieldError.checkNotNull(
+                  unitDuration, 'Song', 'unitDuration'),
               tilesCount: tilesCount.build(),
               duration: duration.build(),
               tags: tags.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'tilesCount';
         tilesCount.build();

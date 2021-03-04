@@ -39,7 +39,7 @@ MessageLookupByLibrary _findExact(String localeName) {
     case 'zh':
       return messages_zh.messages;
     default:
-      return null;
+      return messages_en.messages;
   }
 }
 
@@ -70,6 +70,6 @@ bool _messagesExistFor(String locale) {
 MessageLookupByLibrary _findGeneratedMessagesFor(String locale) {
   var actualLocale = Intl.verifiedLocale(locale, _messagesExistFor,
       onFailure: (_) => null);
-  if (actualLocale == null) return null;
+  if (actualLocale == null) return messages_en.messages;
   return _findExact(actualLocale);
 }

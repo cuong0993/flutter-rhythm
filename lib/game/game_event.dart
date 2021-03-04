@@ -7,7 +7,7 @@ abstract class GameEvent extends Equatable {
   const GameEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class StartGame extends GameEvent {
@@ -18,7 +18,7 @@ class StartGame extends GameEvent {
   const StartGame(this.song, this.difficulty, this.speed);
 
   @override
-  List<Object> get props => [song, difficulty, speed];
+  List<Object?> get props => [song, difficulty, speed];
 
   @override
   String toString() => 'StartGame { song: $song }';
@@ -30,23 +30,23 @@ class PauseGame extends GameEvent {
   const PauseGame();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class CompleteGame extends GameEvent {
   const CompleteGame();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class TileTouched extends GameEvent {
-  final Tile tile;
+  final Tile? tile;
 
   const TileTouched(this.tile);
 
   @override
-  List<Object> get props => [tile];
+  List<Object?> get props => [tile];
 
   @override
   String toString() => 'TileTouched { tile: $tile }';

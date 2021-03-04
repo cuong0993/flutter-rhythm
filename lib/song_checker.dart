@@ -50,7 +50,7 @@ void main() {
             ..sort((e1, e2) => e1.key.compareTo(e2.key)));
       final countDurationToPrevious = {
         for (var e in groupByDurationToPrevious.keys)
-          e: groupByDurationToPrevious[e].length
+          e: groupByDurationToPrevious[e]!.length
       };
 
       final sortCountDurationToPrevious = Map.fromEntries(

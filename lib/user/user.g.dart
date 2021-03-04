@@ -49,7 +49,7 @@ class _$UserSerializer implements StructuredSerializer<User> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -98,35 +98,24 @@ class _$User extends User {
   @override
   final BuiltList<String> notificationTokens;
 
-  factory _$User([void Function(UserBuilder) updates]) =>
+  factory _$User([void Function(UserBuilder)? updates]) =>
       (new UserBuilder()..update(updates)).build();
 
   _$User._(
-      {this.id,
-      this.playedNotes,
-      this.stars,
-      this.playedTime,
-      this.instrumentId,
-      this.notificationTokens})
+      {required this.id,
+      required this.playedNotes,
+      required this.stars,
+      required this.playedTime,
+      required this.instrumentId,
+      required this.notificationTokens})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('User', 'id');
-    }
-    if (playedNotes == null) {
-      throw new BuiltValueNullFieldError('User', 'playedNotes');
-    }
-    if (stars == null) {
-      throw new BuiltValueNullFieldError('User', 'stars');
-    }
-    if (playedTime == null) {
-      throw new BuiltValueNullFieldError('User', 'playedTime');
-    }
-    if (instrumentId == null) {
-      throw new BuiltValueNullFieldError('User', 'instrumentId');
-    }
-    if (notificationTokens == null) {
-      throw new BuiltValueNullFieldError('User', 'notificationTokens');
-    }
+    BuiltValueNullFieldError.checkNotNull(id, 'User', 'id');
+    BuiltValueNullFieldError.checkNotNull(playedNotes, 'User', 'playedNotes');
+    BuiltValueNullFieldError.checkNotNull(stars, 'User', 'stars');
+    BuiltValueNullFieldError.checkNotNull(playedTime, 'User', 'playedTime');
+    BuiltValueNullFieldError.checkNotNull(instrumentId, 'User', 'instrumentId');
+    BuiltValueNullFieldError.checkNotNull(
+        notificationTokens, 'User', 'notificationTokens');
   }
 
   @override
@@ -174,44 +163,45 @@ class _$User extends User {
 }
 
 class UserBuilder implements Builder<User, UserBuilder> {
-  _$User _$v;
+  _$User? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  int _playedNotes;
-  int get playedNotes => _$this._playedNotes;
-  set playedNotes(int playedNotes) => _$this._playedNotes = playedNotes;
+  int? _playedNotes;
+  int? get playedNotes => _$this._playedNotes;
+  set playedNotes(int? playedNotes) => _$this._playedNotes = playedNotes;
 
-  int _stars;
-  int get stars => _$this._stars;
-  set stars(int stars) => _$this._stars = stars;
+  int? _stars;
+  int? get stars => _$this._stars;
+  set stars(int? stars) => _$this._stars = stars;
 
-  Duration _playedTime;
-  Duration get playedTime => _$this._playedTime;
-  set playedTime(Duration playedTime) => _$this._playedTime = playedTime;
+  Duration? _playedTime;
+  Duration? get playedTime => _$this._playedTime;
+  set playedTime(Duration? playedTime) => _$this._playedTime = playedTime;
 
-  String _instrumentId;
-  String get instrumentId => _$this._instrumentId;
-  set instrumentId(String instrumentId) => _$this._instrumentId = instrumentId;
+  String? _instrumentId;
+  String? get instrumentId => _$this._instrumentId;
+  set instrumentId(String? instrumentId) => _$this._instrumentId = instrumentId;
 
-  ListBuilder<String> _notificationTokens;
+  ListBuilder<String>? _notificationTokens;
   ListBuilder<String> get notificationTokens =>
       _$this._notificationTokens ??= new ListBuilder<String>();
-  set notificationTokens(ListBuilder<String> notificationTokens) =>
+  set notificationTokens(ListBuilder<String>? notificationTokens) =>
       _$this._notificationTokens = notificationTokens;
 
   UserBuilder();
 
   UserBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _playedNotes = _$v.playedNotes;
-      _stars = _$v.stars;
-      _playedTime = _$v.playedTime;
-      _instrumentId = _$v.instrumentId;
-      _notificationTokens = _$v.notificationTokens?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _playedNotes = $v.playedNotes;
+      _stars = $v.stars;
+      _playedTime = $v.playedTime;
+      _instrumentId = $v.instrumentId;
+      _notificationTokens = $v.notificationTokens.toBuilder();
       _$v = null;
     }
     return this;
@@ -219,14 +209,12 @@ class UserBuilder implements Builder<User, UserBuilder> {
 
   @override
   void replace(User other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$User;
   }
 
   @override
-  void update(void Function(UserBuilder) updates) {
+  void update(void Function(UserBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -236,14 +224,18 @@ class UserBuilder implements Builder<User, UserBuilder> {
     try {
       _$result = _$v ??
           new _$User._(
-              id: id,
-              playedNotes: playedNotes,
-              stars: stars,
-              playedTime: playedTime,
-              instrumentId: instrumentId,
+              id: BuiltValueNullFieldError.checkNotNull(id, 'User', 'id'),
+              playedNotes: BuiltValueNullFieldError.checkNotNull(
+                  playedNotes, 'User', 'playedNotes'),
+              stars:
+                  BuiltValueNullFieldError.checkNotNull(stars, 'User', 'stars'),
+              playedTime: BuiltValueNullFieldError.checkNotNull(
+                  playedTime, 'User', 'playedTime'),
+              instrumentId: BuiltValueNullFieldError.checkNotNull(
+                  instrumentId, 'User', 'instrumentId'),
               notificationTokens: notificationTokens.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'notificationTokens';
         notificationTokens.build();

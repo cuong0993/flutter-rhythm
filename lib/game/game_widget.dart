@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +18,7 @@ import 'tile/tile_converter.dart';
 class GameWidget extends StatefulWidget {
   final MyGame _game;
 
-  GameWidget({Key key})
+  GameWidget({Key? key})
       : _game = MyGame(),
         super(key: key);
 
@@ -55,7 +56,7 @@ class _GameWidgetState extends State<GameWidget> {
       BlocProvider.of<GameBloc>(context).add(RestartGame());
     }
 
-    void _onTileTouched(Tile tile) {
+    void _onTileTouched(Tile? tile) {
       BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
     }
 
@@ -72,7 +73,7 @@ class _GameWidgetState extends State<GameWidget> {
     }, child: BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameLoading) {
-          final arguments = (ModalRoute.of(context).settings.arguments as Map);
+          final arguments = (ModalRoute.of(context)!.settings.arguments as Map);
           final song = arguments['song'];
           final difficulty = arguments['difficulty'];
           final speed = arguments['speed'];
@@ -87,7 +88,7 @@ class _GameWidgetState extends State<GameWidget> {
           return LoadingGiftWidget();
         }
         return Stack(children: [
-          widget._game.widget,
+          flame.GameWidget(game: widget._game),
           Container(
               height: NON_TOUCH_REGION_HEIGHT.toDouble(),
               child: Material(
@@ -99,8 +100,7 @@ class _GameWidgetState extends State<GameWidget> {
                         backgroundColor: onBackgroundColor.withOpacity(0.1),
                         valueColor:
                             AlwaysStoppedAnimation<Color>(secondaryColor),
-                        value: (state as GameUpdated).time /
-                            (state as GameUpdated).maxTime,
+                        value: (state as GameUpdated).time / (state).maxTime,
                       ),
                       Padding(
                         padding: EdgeInsets.all(8),
@@ -109,11 +109,11 @@ class _GameWidgetState extends State<GameWidget> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text((state as GameUpdated).songName,
+                                Text((state).songName,
                                     style:
                                         Theme.of(context).textTheme.headline6),
                                 Text(
-                                    '${(state as GameUpdated).time.toInt() ~/ 60}:${((state as GameUpdated).time.toInt() % 60).toString().padLeft(2, '0')}/${(state as GameUpdated).maxTime.toInt() ~/ 60}:${((state as GameUpdated).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
+                                    '${(state).time.toInt() ~/ 60}:${((state).time.toInt() % 60).toString().padLeft(2, '0')}/${(state).maxTime.toInt() ~/ 60}:${((state).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
                                     style:
                                         Theme.of(context).textTheme.headline6)
                               ],
@@ -130,13 +130,10 @@ class _GameWidgetState extends State<GameWidget> {
                                         .add(PauseGame());
                                   },
                                 ),
-                                Text(
-                                    (state as GameUpdated)
-                                        .tilesCount
-                                        .toString(),
+                                Text((state).tilesCount.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headline4
+                                        .headline4!
                                         .copyWith(color: secondaryColor))
                               ],
                             ),
@@ -164,7 +161,7 @@ class GuideTextWidget extends StatefulWidget {
 
 class _GuideTextWidgetState extends State<GuideTextWidget> {
   String _text = '';
-  StreamSubscription _userSubscription;
+  late StreamSubscription _userSubscription;
 
   @override
   void initState() {
@@ -187,7 +184,7 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
 
   @override
   void dispose() {
-    _userSubscription?.cancel();
+    _userSubscription.cancel();
     super.dispose();
   }
 
@@ -196,14 +193,14 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
     return Text('$_text',
         style: Theme.of(context)
             .textTheme
-            .headline5
+            .headline5!
             .copyWith(color: primaryColor));
   }
 }
 
 class LoadingSoundWidget extends StatelessWidget {
   const LoadingSoundWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -233,7 +230,7 @@ class LoadingSoundWidget extends StatelessWidget {
 
 class LoadingGiftWidget extends StatelessWidget {
   const LoadingGiftWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

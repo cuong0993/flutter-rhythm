@@ -9,13 +9,13 @@ import 'game_config_bloc.dart';
 class GameConfigWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final song = ModalRoute.of(context).settings.arguments as Song;
+    final song = ModalRoute.of(context)!.settings.arguments as Song;
     return BlocBuilder<GameConfigBloc, GameConfigState>(
         builder: (context, state) {
       return Scaffold(
           appBar: AppBar(
               title: Text(S.of(context).txt_configure,
-                  style: Theme.of(context).appBarTheme.textTheme.headline5)),
+                  style: Theme.of(context).appBarTheme.textTheme!.headline5)),
           body: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -38,7 +38,7 @@ class GameConfigWidget extends StatelessWidget {
                             caption: S.of(context).txt_fingers(2),
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                ..add(GameConfigChangeDifficultyEvent(0));
+                                  .add(GameConfigChangeDifficultyEvent(0));
                             },
                           ),
                           SizedBox(width: 8),
@@ -48,7 +48,7 @@ class GameConfigWidget extends StatelessWidget {
                             caption: S.of(context).txt_fingers(3),
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                ..add(GameConfigChangeDifficultyEvent(1));
+                                  .add(GameConfigChangeDifficultyEvent(1));
                             },
                           ),
                           SizedBox(width: 8),
@@ -58,7 +58,7 @@ class GameConfigWidget extends StatelessWidget {
                             caption: S.of(context).txt_fingers(4),
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                ..add(GameConfigChangeDifficultyEvent(2));
+                                  .add(GameConfigChangeDifficultyEvent(2));
                             },
                           ),
                           SizedBox(width: 8)
@@ -84,7 +84,7 @@ class GameConfigWidget extends StatelessWidget {
                             caption: 'x0.75',
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                ..add(GameConfigChangeSpeedEvent(0));
+                                  .add(GameConfigChangeSpeedEvent(0));
                             },
                           ),
                           SizedBox(width: 8),
@@ -94,7 +94,7 @@ class GameConfigWidget extends StatelessWidget {
                             caption: 'x1.0',
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                ..add(GameConfigChangeSpeedEvent(1));
+                                  .add(GameConfigChangeSpeedEvent(1));
                             },
                           ),
                           SizedBox(width: 8),
@@ -104,7 +104,7 @@ class GameConfigWidget extends StatelessWidget {
                             caption: 'x1.25',
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                ..add(GameConfigChangeSpeedEvent(2));
+                                  .add(GameConfigChangeSpeedEvent(2));
                             },
                           ),
                           SizedBox(width: 8)
@@ -145,11 +145,11 @@ class CardWidget extends StatelessWidget {
   final GestureTapCallback onTap;
 
   const CardWidget({
-    Key key,
-    @required this.selected,
-    @required this.text,
-    @required this.caption,
-    @required this.onTap,
+    Key? key,
+    required this.selected,
+    required this.text,
+    required this.caption,
+    required this.onTap,
   }) : super(key: key);
 
   @override

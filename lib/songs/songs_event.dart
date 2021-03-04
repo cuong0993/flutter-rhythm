@@ -6,7 +6,7 @@ abstract class SongsEvent extends Equatable {
   const SongsEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class LoadMoreSongsByTagNumbers extends SongsEvent {
@@ -24,5 +24,5 @@ class UpdateSongs extends SongsEvent {
       this.songsByTags, this.isLoadingMoreByTags, this.isLoadedByTags);
 
   @override
-  List<Object> get props => [songsByTags, isLoadingMoreByTags, isLoadedByTags];
+  List<Object?> get props => [songsByTags, isLoadingMoreByTags, isLoadedByTags];
 }

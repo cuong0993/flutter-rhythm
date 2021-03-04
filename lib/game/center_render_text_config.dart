@@ -1,8 +1,6 @@
 import 'dart:ui';
 
-import 'package:flame/anchor.dart';
-import 'package:flame/position.dart';
-import 'package:flame/text_config.dart';
+import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
 class CenterRenderTextConfig extends TextConfig {
@@ -12,7 +10,7 @@ class CenterRenderTextConfig extends TextConfig {
     String fontFamily = 'Arial',
     TextAlign textAlign = TextAlign.left,
     TextDirection textDirection = TextDirection.ltr,
-    double lineHeight,
+    double? lineHeight,
   }) : super(
             fontSize: fontSize,
             color: color,
@@ -22,10 +20,15 @@ class CenterRenderTextConfig extends TextConfig {
             lineHeight: lineHeight);
 
   @override
-  void render(Canvas canvas, String text, Position p,
-      {Anchor anchor = Anchor.topLeft}) {
+  void render(
+    Canvas canvas,
+    String text,
+    Vector2 p, {
+    Anchor anchor = Anchor.topLeft,
+  }) {
     final tp = toTextPainter(text);
-    final translatedPosition = anchor.translate(p, Position.fromSize(tp.size));
+    final translatedPosition =
+        anchor.translate(p, Vector2(tp.size.width, tp.size.height));
     translatedPosition.x -= tp.size.width / 2;
     translatedPosition.y -= tp.size.height / 2;
     tp.paint(canvas, translatedPosition.toOffset());

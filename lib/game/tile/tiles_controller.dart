@@ -63,7 +63,7 @@ class TilesController {
             .y;
   }
 
-  Tile getNextUntouchedTile() {
+  Tile? getNextUntouchedTile() {
     for (var i = 0; i < _visibleTileCount; i++) {
       final tile = tiles[i];
       if (tile.state == TileState.UNTOUCHED) {

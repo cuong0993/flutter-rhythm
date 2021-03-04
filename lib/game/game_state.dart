@@ -6,7 +6,7 @@ abstract class GameState extends Equatable {
   const GameState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class GameLoading extends GameState {}
@@ -19,7 +19,7 @@ class GameStarted extends GameState {
   GameStarted(this.tiles, this.speedPixelsPerSecond, this.gameDuration);
 
   @override
-  List<Object> get props => [tiles, speedPixelsPerSecond, gameDuration];
+  List<Object?> get props => [tiles, speedPixelsPerSecond, gameDuration];
 }
 
 class GameUpdated extends GameState {
@@ -31,7 +31,7 @@ class GameUpdated extends GameState {
   GameUpdated(this.tilesCount, this.songName, this.time, this.maxTime);
 
   @override
-  List<Object> get props => [tilesCount, songName, time, maxTime];
+  List<Object?> get props => [tilesCount, songName, time, maxTime];
 }
 
 class LoadingGift extends GameState {}

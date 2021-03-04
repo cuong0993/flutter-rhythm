@@ -7,5 +7,5 @@ class GameConfigState extends Equatable {
   const GameConfigState(this.difficulty, this.speed);
 
   @override
-  List<Object> get props => [difficulty, speed];
+  List<Object?> get props => [difficulty, speed];
 }

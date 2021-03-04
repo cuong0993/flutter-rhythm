@@ -7,7 +7,7 @@ class Tile {
   TileState state = TileState.UNTOUCHED;
   final double width = TILE_WIDTH;
   final double height = TILE_HEIGHT;
-  Function(Tile tile) onTouched;
+  Function(Tile tile)? onTouched;
   final int column;
 
   Tile(this.note, this.column, this.initialY);

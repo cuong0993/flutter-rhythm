@@ -10,7 +10,7 @@ class GameConfigChangeDifficultyEvent extends GameConfigEvent {
   const GameConfigChangeDifficultyEvent(this.difficulty);
 
   @override
-  List<Object> get props => [difficulty];
+  List<Object?> get props => [difficulty];
 }
 
 class GameConfigChangeSpeedEvent extends GameConfigEvent {
@@ -19,5 +19,5 @@ class GameConfigChangeSpeedEvent extends GameConfigEvent {
   const GameConfigChangeSpeedEvent(this.speed);
 
   @override
-  List<Object> get props => [speed];
+  List<Object?> get props => [speed];
 }

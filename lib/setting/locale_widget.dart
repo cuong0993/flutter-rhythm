@@ -13,7 +13,7 @@ class LocaleWidget extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text(S.of(context).txt_language,
-                style: Theme.of(context).appBarTheme.textTheme.headline5)),
+                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: Scrollbar(
           isAlwaysShown: true,
           controller: scrollController,
@@ -23,14 +23,13 @@ class LocaleWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               return RadioListTile<Locale>(
                 title: Text(
-                    map[S.delegate.supportedLocales[index].languageCode],
+                    map[S.delegate.supportedLocales[index].languageCode]!,
                     style: Theme.of(context).textTheme.headline6),
                 value: S.delegate.supportedLocales[index],
                 groupValue: Localizations.localeOf(context),
-                onChanged: (Locale value) {
-                  BlocProvider.of<SettingBloc>(context)
-                    ..add(
-                        ChangeLocaleEvent(S.delegate.supportedLocales[index]));
+                onChanged: (Locale? value) {
+                  BlocProvider.of<SettingBloc>(context).add(
+                      ChangeLocaleEvent(S.delegate.supportedLocales[index]));
                 },
               );
             },

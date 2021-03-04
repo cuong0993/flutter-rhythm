@@ -46,7 +46,7 @@ class SearchWidget extends SearchDelegate {
           future: songsRepository.searchSongs(query),
           builder: (context, AsyncSnapshot<List<Song>> recentList) {
             if (recentList.connectionState == ConnectionState.done) {
-              final songs = recentList.data;
+              final songs = recentList.requireData;
               return ListView.builder(
                 itemCount: songs.length,
                 itemBuilder: (context, index) {

@@ -13,7 +13,7 @@ class ThemeWidget extends StatelessWidget {
       return Scaffold(
           appBar: AppBar(
               title: Text(S.of(context).txt_theme,
-                  style: Theme.of(context).appBarTheme.textTheme.headline5)),
+                  style: Theme.of(context).appBarTheme.textTheme!.headline5)),
           body: Scrollbar(
             isAlwaysShown: true,
             controller: scrollController,
@@ -33,9 +33,9 @@ class ThemeWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline6),
                   value: ThemeMode.values[index],
                   groupValue: state.themeMode,
-                  onChanged: (ThemeMode value) {
+                  onChanged: (ThemeMode? value) {
                     BlocProvider.of<SettingBloc>(context)
-                      ..add(ChangeThemeEvent(value));
+                        .add(ChangeThemeEvent(value!));
                   },
                 );
               },

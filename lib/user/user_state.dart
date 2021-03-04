@@ -6,7 +6,7 @@ abstract class UserState extends Equatable {
 
 class UserLoading extends UserState {
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class UserUpdated extends UserState {
@@ -16,5 +16,5 @@ class UserUpdated extends UserState {
   UserUpdated(this.user, this.instruments);
 
   @override
-  List<Object> get props => [user, instruments];
+  List<Object?> get props => [user, instruments];
 }

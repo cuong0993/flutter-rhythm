@@ -9,7 +9,7 @@ import '../loading_widget.dart';
 import 'user_bloc.dart';
 
 class UserWidget extends StatelessWidget {
-  UserWidget({Key key}) : super(key: key);
+  UserWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class UserWidget extends StatelessWidget {
         return Scaffold(
             appBar: AppBar(
                 title: Text(S.of(context).txt_page_title_account,
-                    style: Theme.of(context).appBarTheme.textTheme.headline5)),
+                    style: Theme.of(context).appBarTheme.textTheme!.headline5)),
             body: (() {
               if (state is UserLoading) {
                 return LoadingWidget();
@@ -174,7 +174,7 @@ class UserWidget extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {
                       BlocProvider.of<AuthenticationBloc>(context)
-                        ..add(SignInWithGoogleEvent());
+                          .add(SignInWithGoogleEvent());
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
@@ -196,7 +196,7 @@ class UserWidget extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {
                       BlocProvider.of<AuthenticationBloc>(context)
-                        ..add(SignInWithFacebookEvent());
+                          .add(SignInWithFacebookEvent());
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8),

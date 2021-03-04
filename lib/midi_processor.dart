@@ -7,16 +7,16 @@ import 'instrument/instrument.dart';
 import 'sound_player.dart';
 
 class MidiProcessor {
-  static MidiProcessor _instance;
+  static final MidiProcessor _instance = MidiProcessor._();
 
-  MidiProcessor._internal();
-
-  static MidiProcessor getInstance() {
-    _instance ??= MidiProcessor._internal();
+  factory MidiProcessor.getInstance() {
     return _instance;
   }
 
-  Instrument _instrument;
+  MidiProcessor._();
+
+  var _maxNote = 0;
+  var _minNote = 0;
 
   final _soundPlayer = SoundPlayer();
 
@@ -25,36 +25,34 @@ class MidiProcessor {
   Stream<bool> get soundLoadedStream => _soundLoadedController.stream;
   final _soundPaths = <int, String>{};
 
-  void onSelectInstrument(Instrument instrument) {
-    if (_instrument != instrument) {
-      _soundPaths.clear();
-      _soundPlayer.release();
-      _soundLoadedController.add(false);
-      _instrument = instrument;
-      Future.wait(instrument.soundPaths
-              .asMap()
-              .map((note, path) => MapEntry(note, getFile(note, path)))
-              .values
-              .toList())
-          .then((_) async {
-        await _soundPlayer.load(_soundPaths, _instrument.baseNotes.toMap());
-        _soundLoadedController.add(true);
-      });
-    }
+  void changeInstrument(Instrument instrument) {
+    _soundPaths.clear();
+    _soundPlayer.release();
+    _soundLoadedController.add(false);
+    _maxNote = instrument.maxNote;
+    _minNote = instrument.minNote;
+    Future.wait(instrument.soundPaths
+            .asMap()
+            .map((note, path) => MapEntry(note, getFile(note, path)))
+            .values
+            .toList())
+        .then((_) async {
+      await _soundPlayer.load(_soundPaths, instrument.baseNotes.toMap());
+      _soundLoadedController.add(true);
+    });
   }
 
   Future<void> getFile(int note, String path) async {
-    final file = await FirebaseCacheManager().getSingleFile(path);
+    final file = await FirebaseCacheManager.getInstance().getSingleFile(path);
     _soundPaths[note] = file.path;
   }
 
   Future<void> playNote(int note) async {
-    print(note.toString());
     var pitchNote = note.toInt();
-    while (pitchNote > _instrument.maxNote) {
+    while (pitchNote > _maxNote) {
       pitchNote -= 12;
     }
-    while (pitchNote < _instrument.minNote) {
+    while (pitchNote < _minNote) {
       pitchNote += 12;
     }
     await _soundPlayer.play(pitchNote);

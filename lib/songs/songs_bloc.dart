@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../main.dart';
 import 'song.dart';
@@ -12,9 +11,8 @@ import 'songs_state.dart';
 class SongsBloc extends Bloc<SongsEvent, SongsState> {
   final SongsRepository _songsRepository;
 
-  SongsBloc({@required SongsRepository songsRepository})
-      : assert(songsRepository != null),
-        _songsRepository = songsRepository,
+  SongsBloc({required SongsRepository songsRepository})
+      : _songsRepository = songsRepository,
         super(SongsInitial());
 
   @override

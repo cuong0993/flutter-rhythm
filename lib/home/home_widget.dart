@@ -25,7 +25,7 @@ class HomeWidget extends StatelessWidget {
                       title: Text(S.of(context).txt_all_songs,
                           style: Theme.of(context)
                               .appBarTheme
-                              .textTheme
+                              .textTheme!
                               .headline5),
                       elevation: 2,
                       floating: true,
@@ -43,8 +43,10 @@ class HomeWidget extends StatelessWidget {
                         IconButton(
                             icon: Image(
                               image: AssetImage('assets/images/img_guitar.png'),
-                              color:
-                                  Theme.of(context).appBarTheme.iconTheme.color,
+                              color: Theme.of(context)
+                                  .appBarTheme
+                                  .iconTheme!
+                                  .color,
                             ),
                             onPressed: () async {
                               await Navigator.pushNamed(

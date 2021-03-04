@@ -217,34 +217,32 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - audioplayers (0.0.1):
-    - Flutter
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - cloud_firestore (0.16.0):
+  - cloud_firestore (1.0.0):
     - Firebase/Firestore (= 7.3.0)
     - firebase_core
     - Flutter
-  - cloud_functions (0.9.0):
+  - cloud_functions (1.0.0):
     - Firebase/Functions (= 7.3.0)
     - firebase_core
     - Flutter
   - device_info (0.0.1):
     - Flutter
-  - FBSDKCoreKit (5.15.1):
-    - FBSDKCoreKit/Basics (= 5.15.1)
-    - FBSDKCoreKit/Core (= 5.15.1)
-  - FBSDKCoreKit/Basics (5.15.1)
-  - FBSDKCoreKit/Core (5.15.1):
+  - FBSDKCoreKit (9.0.1):
+    - FBSDKCoreKit/Basics (= 9.0.1)
+    - FBSDKCoreKit/Core (= 9.0.1)
+  - FBSDKCoreKit/Basics (9.0.1)
+  - FBSDKCoreKit/Core (9.0.1):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.15.1):
-    - FBSDKLoginKit/Login (= 5.15.1)
-  - FBSDKLoginKit/Login (5.15.1):
-    - FBSDKCoreKit (~> 5.0)
+  - FBSDKLoginKit (9.0.1):
+    - FBSDKLoginKit/Login (= 9.0.1)
+  - FBSDKLoginKit/Login (9.0.1):
+    - FBSDKCoreKit (~> 9.0.1)
   - Firebase/Auth (7.3.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.3.0)
@@ -262,18 +260,18 @@ PODS:
   - Firebase/Storage (7.3.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 7.3.0)
-  - firebase_auth (0.20.0-1):
+  - firebase_auth (1.0.0):
     - Firebase/Auth (= 7.3.0)
     - firebase_core
     - Flutter
-  - firebase_core (0.7.0):
+  - firebase_core (1.0.0):
     - Firebase/CoreOnly (= 7.3.0)
     - Flutter
-  - firebase_dynamic_links (0.7.0-1):
+  - firebase_dynamic_links (0.8.0):
     - Firebase/DynamicLinks (= 7.3.0)
     - firebase_core
     - Flutter
-  - firebase_storage (7.0.0):
+  - firebase_storage (8.0.0):
     - Firebase/Storage (= 7.3.0)
     - firebase_core
     - Flutter
@@ -312,11 +310,9 @@ PODS:
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
   - Flutter (1.0.0)
-  - flutter_email_sender (0.0.1):
-    - Flutter
-  - flutter_facebook_login (0.0.1):
-    - FBSDKCoreKit (~> 5.5)
-    - FBSDKLoginKit (~> 5.5)
+  - flutter_facebook_auth (1.0.0):
+    - FBSDKCoreKit (~> 9.0.0)
+    - FBSDKLoginKit (~> 9.0.0)
     - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -401,7 +397,6 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
   - device_info (from `.symlinks/plugins/device_info/ios`)
@@ -410,8 +405,7 @@ DEPENDENCIES:
   - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
-  - flutter_email_sender (from `.symlinks/plugins/flutter_email_sender/ios`)
-  - flutter_facebook_login (from `.symlinks/plugins/flutter_facebook_login/ios`)
+  - flutter_facebook_auth (from `.symlinks/plugins/flutter_facebook_auth/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
   - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
@@ -449,8 +443,6 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
-  audioplayers:
-    :path: ".symlinks/plugins/audioplayers/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   cloud_functions:
@@ -467,10 +459,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
-  flutter_email_sender:
-    :path: ".symlinks/plugins/flutter_email_sender/ios"
-  flutter_facebook_login:
-    :path: ".symlinks/plugins/flutter_facebook_login/ios"
+  flutter_facebook_auth:
+    :path: ".symlinks/plugins/flutter_facebook_auth/ios"
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
   in_app_review:
@@ -491,18 +481,17 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  cloud_firestore: 433cf1aece50c727965355ae00e8dbeeceae66b1
-  cloud_functions: b4880478d8484299647004b1ee9d2d75b156ee03
+  cloud_firestore: efd6d2bafe5147690cff2ccfbde13752a56fa281
+  cloud_functions: 32ea5ece6048a6029d3280df62afe8ff85598ce9
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
-  FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
-  FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
+  FBSDKCoreKit: fada1a6a0076724678993ff05a633848765ff18c
+  FBSDKLoginKit: d5ffe6d808897019ccf16feb6f0a7ab260bc5cd6
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
-  firebase_auth: b55e5136528dced982022ee073ed4b48f15c055c
-  firebase_core: 91b27774a52f41f8b58484a75edf71197ac01c59
-  firebase_dynamic_links: 14bf04008446c471b5c9f6e6542e14210bf26bd5
-  firebase_storage: 554b8ce9192bfe0bd35f63da42d0d1f6ae819ccc
+  firebase_auth: f07f3ee03813d95157ee08ce763c649c656174b5
+  firebase_core: f47224dd6a9b928b4cf0128b0d004ec9e47d4bf2
+  firebase_dynamic_links: e222260696317885f2f2592fddf8783158f4e7df
+  firebase_storage: a4b292db6551a64c3697c7e67cb1df524b494bb1
   FirebaseAuth: c224a0cf1afa0949bd5c7bfcf154b4f5ce8ddef2
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
@@ -510,9 +499,8 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 1906bf163afdb7c432d2e3b5c40ceb9dd2df5820
   FirebaseFunctions: 56b7275ad46d936b77b64ecacd306e77db7be251
   FirebaseStorage: 5002b1895bfe74a5ce92ad54f966e6162d0da2e5
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_email_sender: 02d7443217d8c41483223627972bfdc09f74276b
-  flutter_facebook_login: cfb5659f686b1c575ef205c6b6fd20db9679d3c4
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_facebook_auth: d952ca599c6a76439c54472b0b225004e1b880c4
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab

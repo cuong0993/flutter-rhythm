@@ -11,7 +11,7 @@ import 'songs_state.dart';
 class SongsWidget extends StatelessWidget {
   final int tagNumber;
 
-  SongsWidget({Key key, @required int tagNumber})
+  SongsWidget({Key? key, required int tagNumber})
       : tagNumber = tagNumber,
         super(key: key);
 
@@ -25,6 +25,14 @@ class SongsWidget extends StatelessWidget {
           final songsByTag = state.songsByTags[tagNumber];
           return Scrollbar(
             child: NotificationListener<ScrollEndNotification>(
+              onNotification: (notification) {
+                if (notification.metrics.pixels > 0 &&
+                    notification.metrics.atEdge) {
+                  BlocProvider.of<SongsBloc>(context)
+                      .add(LoadMoreSongsByTagNumbers([tagNumber]));
+                }
+                return true;
+              },
               child: ListView.separated(
                 itemCount: (state.isLoadingMoreByTags[tagNumber])
                     ? songsByTag.length + 1
@@ -33,12 +41,12 @@ class SongsWidget extends StatelessWidget {
                   if (index == songsByTag.length) {
                     return Center(
                       child: SizedBox(
+                        height: 32,
+                        width: 32,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: CircularProgressIndicator(),
                         ),
-                        height: 32,
-                        width: 32,
                       ),
                     );
                   }
@@ -57,14 +65,6 @@ class SongsWidget extends StatelessWidget {
                   );
                 },
               ),
-              onNotification: (notification) {
-                if (notification.metrics.pixels > 0 &&
-                    notification.metrics.atEdge) {
-                  BlocProvider.of<SongsBloc>(context)
-                      .add(LoadMoreSongsByTagNumbers([tagNumber]));
-                }
-                return true;
-              },
             ),
           );
         } else {

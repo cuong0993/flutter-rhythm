@@ -1,4 +1,4 @@
-import 'package:flame/position.dart';
+import 'package:flame/components.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../main.dart';
@@ -128,6 +128,6 @@ class TileTouchEffect extends Effect {
   @override
   void render(Canvas canvas) {
     config.render(canvas, _text,
-        Position(_centerX.toInt().toDouble(), _centerY.toInt().toDouble()));
+        Vector2(_centerX.toInt().toDouble(), _centerY.toInt().toDouble()));
   }
 }

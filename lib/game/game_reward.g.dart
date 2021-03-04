@@ -37,7 +37,7 @@ class _$GameRewardSerializer implements StructuredSerializer<GameReward> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'stars':
           result.stars = serializers.deserialize(value,
@@ -60,16 +60,13 @@ class _$GameReward extends GameReward {
   @override
   final int playedNotes;
 
-  factory _$GameReward([void Function(GameRewardBuilder) updates]) =>
+  factory _$GameReward([void Function(GameRewardBuilder)? updates]) =>
       (new GameRewardBuilder()..update(updates)).build();
 
-  _$GameReward._({this.stars, this.playedNotes}) : super._() {
-    if (stars == null) {
-      throw new BuiltValueNullFieldError('GameReward', 'stars');
-    }
-    if (playedNotes == null) {
-      throw new BuiltValueNullFieldError('GameReward', 'playedNotes');
-    }
+  _$GameReward._({required this.stars, required this.playedNotes}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(stars, 'GameReward', 'stars');
+    BuiltValueNullFieldError.checkNotNull(
+        playedNotes, 'GameReward', 'playedNotes');
   }
 
   @override
@@ -102,22 +99,23 @@ class _$GameReward extends GameReward {
 }
 
 class GameRewardBuilder implements Builder<GameReward, GameRewardBuilder> {
-  _$GameReward _$v;
+  _$GameReward? _$v;
 
-  int _stars;
-  int get stars => _$this._stars;
-  set stars(int stars) => _$this._stars = stars;
+  int? _stars;
+  int? get stars => _$this._stars;
+  set stars(int? stars) => _$this._stars = stars;
 
-  int _playedNotes;
-  int get playedNotes => _$this._playedNotes;
-  set playedNotes(int playedNotes) => _$this._playedNotes = playedNotes;
+  int? _playedNotes;
+  int? get playedNotes => _$this._playedNotes;
+  set playedNotes(int? playedNotes) => _$this._playedNotes = playedNotes;
 
   GameRewardBuilder();
 
   GameRewardBuilder get _$this {
-    if (_$v != null) {
-      _stars = _$v.stars;
-      _playedNotes = _$v.playedNotes;
+    final $v = _$v;
+    if ($v != null) {
+      _stars = $v.stars;
+      _playedNotes = $v.playedNotes;
       _$v = null;
     }
     return this;
@@ -125,21 +123,23 @@ class GameRewardBuilder implements Builder<GameReward, GameRewardBuilder> {
 
   @override
   void replace(GameReward other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GameReward;
   }
 
   @override
-  void update(void Function(GameRewardBuilder) updates) {
+  void update(void Function(GameRewardBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GameReward build() {
-    final _$result =
-        _$v ?? new _$GameReward._(stars: stars, playedNotes: playedNotes);
+    final _$result = _$v ??
+        new _$GameReward._(
+            stars: BuiltValueNullFieldError.checkNotNull(
+                stars, 'GameReward', 'stars'),
+            playedNotes: BuiltValueNullFieldError.checkNotNull(
+                playedNotes, 'GameReward', 'playedNotes'));
     replace(_$result);
     return _$result;
   }

@@ -19,15 +19,15 @@ import 'tile/tile_converter.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameLoading());
-  String _songName;
-  String _songId;
+  String _songName = '';
+  String _songId = '';
   double _time = 0;
 
-  int _maxTime;
+  int _maxTime = 0;
   int _tilesCount = 0;
-  double _speedDpsPerSecond;
-  List<TileChunk> _tileChunks;
-  int _unitDuration;
+  double _speedDpsPerSecond = 0;
+  List<TileChunk> _tileChunks = [];
+  int _unitDuration = 0;
   var _errorCount = 0;
   var _numberTileColumn = 0;
   var _difficulty = 0;
@@ -98,15 +98,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         }
       }
     } else if (event is TileTouched) {
-      if (event.tile != null) {
-        await MidiProcessor.getInstance().playNote(event.tile.note);
+      final tile = event.tile;
+      if (tile != null) {
+        await MidiProcessor.getInstance().playNote(tile.note);
         _tilesCount += 1;
-        _time = (0.0 - event.tile.initialY) / _speedDpsPerSecond;
+        _time = (0.0 - tile.initialY) / _speedDpsPerSecond;
         yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
-        if (event.tile.y == pauseY) {
+        if (tile.y == pauseY) {
           _errorCount++;
           _guideEventController.add('txt_too_late');
-        } else if (event.tile.y < pauseY - 120) {
+        } else if (tile.y < pauseY - 120) {
           _errorCount++;
           _guideEventController.add('txt_too_early');
         } else {

@@ -1,62 +1,13 @@
-import 'package:meta/meta.dart';
+import 'package:built_value/built_value.dart';
 
-class Note {
-  final int note;
-  final int startTick;
+part 'note.g.dart';
 
-//<editor-fold desc="Data Methods" defaultstate="collapsed">
+abstract class Note implements Built<Note, NoteBuilder> {
+  factory Note([Function(NoteBuilder) updates]) = _$Note;
 
-  const Note({
-    @required this.note,
-    @required this.startTick,
-  });
+  Note._();
 
-  Note copyWith({
-    int note,
-    int startTick,
-  }) {
-    if ((note == null || identical(note, this.note)) &&
-        (startTick == null || identical(startTick, this.startTick))) {
-      return this;
-    }
+  int get note;
 
-    return new Note(
-      note: note ?? this.note,
-      startTick: startTick ?? this.startTick,
-    );
-  }
-
-  @override
-  String toString() {
-    return 'Note{note: $note, startTick: $startTick}';
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is Note &&
-          runtimeType == other.runtimeType &&
-          note == other.note &&
-          startTick == other.startTick);
-
-  @override
-  int get hashCode => note.hashCode ^ startTick.hashCode;
-
-  factory Note.fromMap(Map<String, dynamic> map) {
-    return new Note(
-      note: map['note'] as int,
-      startTick: map['startTick'] as int,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    // ignore: unnecessary_cast
-    return {
-      'note': this.note,
-      'startTick': this.startTick,
-    } as Map<String, dynamic>;
-  }
-
-//</editor-fold>
-
+  int get startTick;
 }

@@ -7,9 +7,9 @@ class SongWidget extends StatelessWidget {
   final Song song;
 
   SongWidget({
-    Key key,
-    @required this.onTap,
-    @required this.song,
+    Key? key,
+    required this.onTap,
+    required this.song,
   }) : super(key: key);
 
   @override

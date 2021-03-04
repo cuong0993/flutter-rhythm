@@ -9,7 +9,7 @@ import '../loading_widget.dart';
 import '../user/user_bloc.dart';
 
 class InstrumentsWidget extends StatelessWidget {
-  InstrumentsWidget({Key key}) : super(key: key);
+  InstrumentsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class InstrumentsWidget extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
               title: Text(S.of(context).txt_instrument_title_instruments,
-                  style: Theme.of(context).appBarTheme.textTheme.headline5)),
+                  style: Theme.of(context).appBarTheme.textTheme!.headline5)),
           body: (() {
             if (state is UserLoading) {
               return LoadingWidget();
@@ -40,9 +40,9 @@ class InstrumentsWidget extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6),
                     value: instrument.id,
                     groupValue: state.user.user.instrumentId,
-                    onChanged: (String value) {
+                    onChanged: (String? value) {
                       BlocProvider.of<UserBloc>(context)
-                          .add(ChangeInstrument(value));
+                          .add(ChangeInstrument(value!));
                     },
                   );
                 },

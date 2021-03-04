@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../user/user_repository.dart';
@@ -14,7 +14,7 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc(this._userRepository) : super(Uninitialized());
   final _googleSignIn = GoogleSignIn();
-  final _facebookLogin = FacebookLogin();
+  final _facebookLogin = FacebookAuth.instance;
   final UserRepository _userRepository;
 
   @override
@@ -47,7 +47,7 @@ class AuthenticationBloc
   Stream<AuthenticationState> _mapSignInWithGoogleEventToState() async* {
     try {
       final googleUser = await _googleSignIn.signIn();
-      final googleAuth = await googleUser.authentication;
+      final googleAuth = await googleUser!.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -62,18 +62,11 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapSignInWithFacebookEventToState() async* {
     try {
-      final result = await _facebookLogin.logIn(['email', 'public_profile']);
-      switch (result.status) {
-        case FacebookLoginStatus.loggedIn:
-          final credential =
-              FacebookAuthProvider.credential(result.accessToken.token);
-          await _tryToLinkWithCurrentUser(credential);
-          _userRepository.subscribeUser();
-          yield Authenticated('Facebook');
-          break;
-        default:
-          yield Unauthenticated();
-      }
+      final accessToken = await _facebookLogin.login(loginBehavior:LoginBehavior.NATIVE_WITH_FALLBACK);
+      final credential = FacebookAuthProvider.credential(accessToken!.token!);
+      await _tryToLinkWithCurrentUser(credential);
+      _userRepository.subscribeUser();
+      yield Authenticated('Facebook');
     } on Exception {
       yield Unauthenticated();
     }
@@ -81,7 +74,7 @@ class AuthenticationBloc
 
   Future<void> _tryToLinkWithCurrentUser(OAuthCredential authCredential) async {
     try {
-      await FirebaseAuth.instance.currentUser
+      await FirebaseAuth.instance.currentUser!
           .linkWithCredential(authCredential);
     } on Exception {
       await FirebaseAuth.instance.signInWithCredential(authCredential);

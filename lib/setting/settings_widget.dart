@@ -2,14 +2,16 @@ import 'dart:io';
 
 import 'package:device_info/device_info.dart';
 import 'package:firebase_core/firebase_core.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:intl/intl.dart';
+import 'package:mailto/mailto.dart';
 import 'package:package_info/package_info.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../generated/l10n.dart';
 import '../routes.dart';
@@ -22,7 +24,7 @@ class SettingsWidget extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text('Settings',
-                style: Theme.of(context).appBarTheme.textTheme.headline5)),
+                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
             return ListView(
@@ -33,7 +35,7 @@ class SettingsWidget extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   subtitle: Text(
-                      map[Localizations.localeOf(context).languageCode],
+                      map[Localizations.localeOf(context).languageCode]!,
                       style: Theme.of(context).textTheme.subtitle1),
                   onTap: () async {
                     await Navigator.pushNamed(context, Routes.language);
@@ -90,12 +92,12 @@ class SettingsWidget extends StatelessWidget {
                         'Version name: $version\n'
                         'Device: $deviceInfo\n'
                         '---------------------\n';
-                    final email = Email(
+                    final email = Mailto(
                       body: extendedBody,
                       subject: '[$appName $version] Feedback',
-                      recipients: ['chaomao.help@gmail.com'],
+                      to: ['chaomao.help@gmail.com'],
                     );
-                    await FlutterEmailSender.send(email);
+                    await launch('$email');
                   },
                 ),
                 ListTile(

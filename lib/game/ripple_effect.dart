@@ -1,13 +1,15 @@
 import 'dart:ui';
 
-import 'package:flame/position.dart';
+import 'package:flame/components.dart';
+import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
 
 import '../main.dart';
 import '../util.dart';
 import 'effect.dart';
 
-Sprite touchSprite = Sprite('${nearestDevicePixelRatioFolder}img_touch.png');
+Sprite touchSprite = Sprite(
+    Flame.images.fromCache('${nearestDevicePixelRatioFolder}img_touch.png'));
 Paint paint = Paint()
   ..colorFilter =
       ColorFilter.mode(primaryColor.withOpacity(0.1), BlendMode.srcIn);
@@ -45,11 +47,10 @@ class RippleEffect extends Effect {
 
   @override
   void render(Canvas canvas) {
-    touchSprite.renderPosition(
-        canvas,
-        Position((_x - _width / 2).toInt().toDouble(),
+    touchSprite.render(canvas,
+        position: Vector2((_x - _width / 2).toInt().toDouble(),
             (_y - _width / 2).toInt().toDouble()),
-        size: Position(_width.toInt().toDouble(), _width.toInt().toDouble()),
+        size: Vector2(_width.toInt().toDouble(), _width.toInt().toDouble()),
         overridePaint: paint);
   }
 }

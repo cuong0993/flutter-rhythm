@@ -11,16 +11,20 @@ part 'setting_state.dart';
 
 class SettingBloc extends Bloc<SettingEvent, SettingState> {
   SettingBloc() : super(SettingState(null, null)) {
-    Preferences.getInstance().then((preferences) {
-      final locale = (preferences.localeName != null)
-          ? Locale.fromSubtags(languageCode: preferences.localeName)
-          : null;
-      final themeMode = (preferences.themeName != null)
-          ? ThemeMode.values
-              .firstWhere((e) => e.toString() == preferences.themeName)
-          : ThemeMode.system;
-      add(LoadThemeAndLocaleEvent(themeMode, locale));
-    });
+    loadSetting();
+  }
+
+  Future loadSetting() async {
+    final localeName = await Preferences.getLocaleName();
+    final themeName = await Preferences.getThemeName();
+
+    final locale = (localeName != null)
+        ? Locale.fromSubtags(languageCode: localeName)
+        : null;
+    final themeMode = (themeName != null)
+        ? ThemeMode.values.firstWhere((e) => e.toString() == themeName)
+        : null;
+    add(LoadThemeAndLocaleEvent(themeMode, locale));
   }
 
   @override
@@ -28,14 +32,10 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     SettingEvent event,
   ) async* {
     if (event is ChangeLocaleEvent) {
-      await Preferences.getInstance().then((preferences) {
-        preferences.localeName = event.locale.languageCode;
-      });
+      await Preferences.setLocaleName(event.locale.languageCode);
       yield SettingState(event.locale, state.themeMode);
     } else if (event is ChangeThemeEvent) {
-      await Preferences.getInstance().then((preferences) {
-        preferences.themeName = event.theme.toString();
-      });
+      await Preferences.setThemeName(event.theme.toString());
       yield SettingState(state.locale, event.theme);
     } else if (event is LoadThemeAndLocaleEvent) {
       yield SettingState(event.locale, event.theme);
