@@ -43,7 +43,7 @@ class UserRepositoryImpl implements UserRepository {
           name,
           photoUrl,
           serializers.deserializeWith<user.User>(
-              user.User.serializer, event.data() as Object),
+              user.User.serializer, event.data() as Object)!,
           FirebaseAuth.instance.currentUser!.isAnonymous,
           FirebaseAuth.instance.currentUser!.metadata.creationTime!);
     }).listen((user) {

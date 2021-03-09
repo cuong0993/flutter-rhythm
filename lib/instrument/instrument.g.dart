@@ -15,9 +15,9 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
   final String wireName = 'Instrument';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Instrument object,
+  Iterable<Object?> serialize(Serializers serializers, Instrument object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'soundPaths',
@@ -38,7 +38,7 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
   }
 
   @override
-  Instrument deserialize(Serializers serializers, Iterable<Object> serialized,
+  Instrument deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new InstrumentBuilder();
 
@@ -46,7 +46,7 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -55,12 +55,12 @@ class _$InstrumentSerializer implements StructuredSerializer<Instrument> {
         case 'soundPaths':
           result.soundPaths.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltMap,
-                  const [const FullType(int), const FullType(String)])));
+                  const [const FullType(int), const FullType(String)]))!);
           break;
         case 'baseNotes':
           result.baseNotes.replace(serializers.deserialize(value,
-              specifiedType: const FullType(
-                  BuiltMap, const [const FullType(int), const FullType(int)])));
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(int), const FullType(int)]))!);
           break;
         case 'minNote':
           result.minNote = serializers.deserialize(value,

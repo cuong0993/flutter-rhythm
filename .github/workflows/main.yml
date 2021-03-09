@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  flutter_version: "2.0.0"
+  flutter_version: "2.0.1"
 
 jobs:
   buildApk:
@@ -48,9 +48,9 @@ jobs:
           sudo echo "$DEBUG_JKS" | base64 -d > android/debug.jks
           sudo echo "$RELEASE_JKS" | base64 -d > android/release.jks
       - name: Build stage application
-        run: flutter build apk --flavor stage --no-sound-null-safety
+        run: flutter build apk --flavor stage
       - name: Build production application
-        run: flutter build apk --flavor prod --no-sound-null-safety
+        run: flutter build apk --flavor prod
       - name: Distribute stage via Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:

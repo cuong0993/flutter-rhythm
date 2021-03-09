@@ -15,9 +15,9 @@ class _$SongSerializer implements StructuredSerializer<Song> {
   final String wireName = 'Song';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Song object,
+  Iterable<Object?> serialize(Serializers serializers, Song object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'title',
@@ -51,7 +51,7 @@ class _$SongSerializer implements StructuredSerializer<Song> {
   }
 
   @override
-  Song deserialize(Serializers serializers, Iterable<Object> serialized,
+  Song deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SongBuilder();
 
@@ -59,7 +59,7 @@ class _$SongSerializer implements StructuredSerializer<Song> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -88,19 +88,19 @@ class _$SongSerializer implements StructuredSerializer<Song> {
         case 'tilesCount':
           result.tilesCount.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))
+                      const FullType(BuiltList, const [const FullType(int)]))!
               as BuiltList<Object>);
           break;
         case 'duration':
           result.duration.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))
+                      const FullType(BuiltList, const [const FullType(int)]))!
               as BuiltList<Object>);
           break;
         case 'tags':
           result.tags.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object>);
           break;
       }

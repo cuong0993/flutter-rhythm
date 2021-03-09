@@ -131,7 +131,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       });
       final gameReward = serializers.deserializeWith<GameReward>(
           GameReward.serializer, Map<String, dynamic>.from(response.data));
-      _completeEventController.add(gameReward);
+      _completeEventController.add(gameReward!);
     } else if (event is RestartGame) {
       _time = 0.0;
       _tilesCount = 0;

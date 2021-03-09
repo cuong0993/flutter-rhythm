@@ -15,9 +15,9 @@ class _$GameRewardSerializer implements StructuredSerializer<GameReward> {
   final String wireName = 'GameReward';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GameReward object,
+  Iterable<Object?> serialize(Serializers serializers, GameReward object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'stars',
       serializers.serialize(object.stars, specifiedType: const FullType(int)),
       'playedNotes',
@@ -29,7 +29,7 @@ class _$GameRewardSerializer implements StructuredSerializer<GameReward> {
   }
 
   @override
-  GameReward deserialize(Serializers serializers, Iterable<Object> serialized,
+  GameReward deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GameRewardBuilder();
 
@@ -37,7 +37,7 @@ class _$GameRewardSerializer implements StructuredSerializer<GameReward> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'stars':
           result.stars = serializers.deserialize(value,

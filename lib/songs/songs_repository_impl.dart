@@ -19,7 +19,7 @@ class SongsRepositoryImpl implements SongsRepository {
             .get())
         .docs
         .map((e) => serializers.deserializeWith<Song>(
-            Song.serializer, e.data() as Object))
+            Song.serializer, e.data() as Object)!)
         .toList();
   }
 
@@ -32,7 +32,7 @@ class SongsRepositoryImpl implements SongsRepository {
             .get())
         .docs
         .map((e) => serializers.deserializeWith<Song>(
-            Song.serializer, e.data() as Object))
+            Song.serializer, e.data() as Object)!)
         .toList();
   }
 }
