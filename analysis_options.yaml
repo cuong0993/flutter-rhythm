@@ -35,11 +35,6 @@ analyzer:
     unused_element: error
     unused_field: error
     unused_local_variable: error
-  exclude: # excluded generated files
-    - lib/songs/song.dart
-    - lib/game/tile/tile_chunk.dart
-    - lib/game/note/note.dart
-    - lib/generated/**
 
 linter:
   rules:

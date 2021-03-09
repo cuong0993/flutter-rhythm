@@ -6,14 +6,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:intl/intl.dart';
 import 'package:mailto/mailto.dart';
 import 'package:package_info/package_info.dart';
 import 'package:share/share.dart';
+import 'package:sprintf/sprintf.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../generated/l10n.dart';
 import '../routes.dart';
 import 'locale_widget.dart';
 import 'setting_bloc.dart';
@@ -31,7 +32,7 @@ class SettingsWidget extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                    S.of(context).txt_language,
+                    AppLocalizations.of(context)!.txt_language,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   subtitle: Text(
@@ -43,7 +44,7 @@ class SettingsWidget extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    S.of(context).txt_theme,
+                    AppLocalizations.of(context)!.txt_theme,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   subtitle: Text(
@@ -60,7 +61,7 @@ class SettingsWidget extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    S.of(context).txt_button_feedback,
+                    AppLocalizations.of(context)!.txt_button_feedback,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   onTap: () async {
@@ -102,7 +103,7 @@ class SettingsWidget extends StatelessWidget {
                 ),
                 ListTile(
                     title: Text(
-                      S.of(context).txt_about_rate,
+                      AppLocalizations.of(context)!.txt_about_rate,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     onTap: () async {
@@ -114,7 +115,7 @@ class SettingsWidget extends StatelessWidget {
                     }),
                 ListTile(
                     title: Text(
-                      S.of(context).txt_about_invite,
+                      AppLocalizations.of(context)!.txt_about_invite,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     onTap: () async {
@@ -144,9 +145,12 @@ class SettingsWidget extends StatelessWidget {
                       final shortLink = await parameters.buildShortLink();
                       final url = shortLink.shortUrl;
                       await Share.share(
-                          S.of(context).txt_invite_description(url),
-                          subject:
-                              S.of(context).txt_dynamic_link_invite_subject);
+                          sprintf(
+                              AppLocalizations.of(context)!
+                                  .txt_invite_description,
+                              [url]),
+                          subject: AppLocalizations.of(context)!
+                              .txt_dynamic_link_invite_subject);
                     }),
               ],
             );

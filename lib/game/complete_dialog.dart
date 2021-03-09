@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../generated/l10n.dart';
 import 'game_reward.dart';
 
 class CompleteDialog extends StatelessWidget {
@@ -66,7 +66,7 @@ class CompleteDialog extends StatelessWidget {
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     },
-                    child: Text(S.of(context).txt_button_quit),
+                    child: Text(AppLocalizations.of(context)!.txt_button_quit),
                   ),
                 ),
                 SizedBox(width: 8),
@@ -76,7 +76,8 @@ class CompleteDialog extends StatelessWidget {
                         _onRestart();
                         Navigator.of(context).pop();
                       },
-                      child: Text(S.of(context).txt_button_restart)),
+                      child: Text(
+                          AppLocalizations.of(context)!.txt_button_restart)),
                 ),
                 SizedBox(width: 8)
               ],

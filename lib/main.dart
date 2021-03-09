@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'authentication/authentication_bloc.dart';
@@ -9,7 +10,6 @@ import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
 import 'game_config/game_config_bloc.dart';
 import 'game_config/game_config_widget.dart';
-import 'generated/l10n.dart';
 import 'home/home_widget.dart';
 import 'instrument/instruments_repository_impl.dart';
 import 'instrument/instruments_widget.dart';
@@ -93,12 +93,12 @@ class App extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               locale: state.locale,
               localizationsDelegates: [
-                S.delegate,
+                AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-              supportedLocales: S.delegate.supportedLocales,
+              supportedLocales: AppLocalizations.supportedLocales,
               themeMode: state.themeMode,
               theme: buildTheme(false),
               darkTheme: buildTheme(true),

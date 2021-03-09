@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
-import '../generated/l10n.dart';
 import 'setting_bloc.dart';
 
 class ThemeWidget extends StatelessWidget {
@@ -12,7 +12,7 @@ class ThemeWidget extends StatelessWidget {
       final scrollController = ScrollController();
       return Scaffold(
           appBar: AppBar(
-              title: Text(S.of(context).txt_theme,
+              title: Text(AppLocalizations.of(context)!.txt_theme,
                   style: Theme.of(context).appBarTheme.textTheme!.headline5)),
           body: Scrollbar(
             isAlwaysShown: true,

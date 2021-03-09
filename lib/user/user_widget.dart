@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:sprintf/sprintf.dart';
 
 import '../authentication/authentication_bloc.dart';
 import '../authentication/authentication_event.dart';
-import '../generated/l10n.dart';
 import '../loading_widget.dart';
 import 'user_bloc.dart';
 
@@ -17,7 +18,8 @@ class UserWidget extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
-                title: Text(S.of(context).txt_page_title_account,
+                title: Text(
+                    AppLocalizations.of(context)!.txt_page_title_account,
                     style: Theme.of(context).appBarTheme.textTheme!.headline5)),
             body: (() {
               if (state is UserLoading) {
@@ -186,7 +188,9 @@ class UserWidget extends StatelessWidget {
                               image:
                                   AssetImage('assets/images/img_google.png')),
                           SizedBox(width: 8),
-                          Text(S.of(context).txt_button_sign_in_google,
+                          Text(
+                              AppLocalizations.of(context)!
+                                  .txt_button_sign_in_google,
                               style: Theme.of(context).textTheme.subtitle1)
                         ],
                       ),
@@ -208,7 +212,9 @@ class UserWidget extends StatelessWidget {
                               image:
                                   AssetImage('assets/images/img_facebook.png')),
                           SizedBox(width: 8),
-                          Text(S.of(context).txt_button_sign_in_facebook,
+                          Text(
+                              AppLocalizations.of(context)!
+                                  .txt_button_sign_in_facebook,
                               style: Theme.of(context).textTheme.subtitle1)
                         ],
                       ),
@@ -245,8 +251,9 @@ class UserWidget extends StatelessWidget {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          S.of(context).txt_joined(DateFormat.yMMMd()
-                              .format(state.user.creationTime)),
+                          sprintf(AppLocalizations.of(context)!.txt_joined, [
+                            DateFormat.yMMMd().format(state.user.creationTime)
+                          ]),
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ],
@@ -259,13 +266,15 @@ class UserWidget extends StatelessWidget {
                           height: 16,
                         ),
                         SizedBox(width: 8),
-                        Text(S.of(context).txt_using(Intl.message(
-                              '',
-                              /* FIXME Localization name of instrument should be taken from server, not from local text resources */
-                              name: state.user.user.instrumentId,
-                              desc: '',
-                              args: [],
-                            ))),
+                        Text(sprintf(AppLocalizations.of(context)!.txt_using, [
+                          Intl.message(
+                            '',
+                            /* FIXME Localization name of instrument should be taken from server, not from local text resources */
+                            name: state.user.user.instrumentId,
+                            desc: '',
+                            args: [],
+                          )
+                        ])),
                       ],
                     ),
                   ],

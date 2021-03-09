@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../generated/l10n.dart';
 import '../main.dart';
 import 'complete_dialog.dart';
 import 'game_bloc.dart';
@@ -169,11 +169,11 @@ class _GuideTextWidgetState extends State<GuideTextWidget> {
         BlocProvider.of<GameBloc>(context).guideStream.listen((event) {
       setState(() {
         if (event == 'txt_too_late') {
-          _text = S.of(context).txt_too_late;
+          _text = AppLocalizations.of(context)!.txt_too_late;
         } else if (event == 'txt_too_early') {
-          _text = S.of(context).txt_too_early;
+          _text = AppLocalizations.of(context)!.txt_too_early;
         } else if (event == 'txt_too_many_fingers') {
-          _text = S.of(context).txt_too_many_fingers;
+          _text = AppLocalizations.of(context)!.txt_too_many_fingers;
         } else if (event == '') {
           _text = '';
         }
@@ -220,7 +220,8 @@ class LoadingSoundWidget extends StatelessWidget {
                         image: AssetImage('assets/images/img_app_icon.png')),
                   ),
                 ),
-                Text(S.of(context).txt_dialog_loading_sound_description)
+                Text(AppLocalizations.of(context)!
+                    .txt_dialog_loading_sound_description)
               ],
             )),
       ),
@@ -250,7 +251,8 @@ class LoadingGiftWidget extends StatelessWidget {
                         image: AssetImage('assets/images/img_app_icon.png')),
                   ),
                 ),
-                Text(S.of(context).txt_game_complete_loading_gift)
+                Text(AppLocalizations.of(context)!
+                    .txt_game_complete_loading_gift)
               ],
             )),
       ),

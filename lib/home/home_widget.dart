@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
-import '../generated/l10n.dart';
 import '../main.dart';
 import '../routes.dart';
 import '../search/search_widget.dart';
@@ -22,7 +22,7 @@ class HomeWidget extends StatelessWidget {
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
                   SliverAppBar(
-                      title: Text(S.of(context).txt_all_songs,
+                      title: Text(AppLocalizations.of(context)!.txt_all_songs,
                           style: Theme.of(context)
                               .appBarTheme
                               .textTheme!

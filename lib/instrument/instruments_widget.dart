@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
-import '../generated/l10n.dart';
 import '../loading_widget.dart';
 import '../user/user_bloc.dart';
 
@@ -17,7 +17,9 @@ class InstrumentsWidget extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-              title: Text(S.of(context).txt_instrument_title_instruments,
+              title: Text(
+                  AppLocalizations.of(context)!
+                      .txt_instrument_title_instruments,
                   style: Theme.of(context).appBarTheme.textTheme!.headline5)),
           body: (() {
             if (state is UserLoading) {
