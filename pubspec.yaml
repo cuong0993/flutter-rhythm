@@ -21,7 +21,6 @@ dependencies:
   dart_midi:
     git:
       url: https://github.com/cuong0993/dart_midi
-  cupertino_icons: ^1.0.2
   built_value: ^8.0.2
   built_collection: ^5.0.0
   flutter_cache_manager: ^3.0.0-nullsafety.1
