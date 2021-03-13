@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/intl.dart';
 
 import '../main.dart';
 import '../routes.dart';
@@ -74,13 +73,7 @@ class HomeWidget extends StatelessWidget {
                         isScrollable: true,
                         tabs: songTags
                             .map((tabName) => Tab(
-                                  text: Intl.message(
-                                    '',
-                                    /* FIXME Localization name of instrument should be taken from server, not from local text resources */
-                                    name: tabName,
-                                    desc: '',
-                                    args: [],
-                                  ),
+                                  text: getSongTagName(context, tabName),
                                 ))
                             .toList(),
                       )),

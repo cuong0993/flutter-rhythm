@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/intl.dart';
 
+import '../main.dart';
 import 'setting_bloc.dart';
 
 class ThemeWidget extends StatelessWidget {
@@ -23,13 +23,7 @@ class ThemeWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return RadioListTile<ThemeMode>(
                   title: Text(
-                      Intl.message(
-                        '',
-                        name:
-                            ThemeMode.values[index].toString().split('.').last,
-                        desc: '',
-                        args: [],
-                      ),
+                      getThemeName(context, ThemeMode.values[index]),
                       style: Theme.of(context).textTheme.headline6),
                   value: ThemeMode.values[index],
                   groupValue: state.themeMode,

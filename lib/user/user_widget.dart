@@ -7,6 +7,7 @@ import 'package:sprintf/sprintf.dart';
 import '../authentication/authentication_bloc.dart';
 import '../authentication/authentication_event.dart';
 import '../loading_widget.dart';
+import '../main.dart';
 import 'user_bloc.dart';
 
 class UserWidget extends StatelessWidget {
@@ -267,13 +268,8 @@ class UserWidget extends StatelessWidget {
                         ),
                         SizedBox(width: 8),
                         Text(sprintf(AppLocalizations.of(context)!.txt_using, [
-                          Intl.message(
-                            '',
-                            /* FIXME Localization name of instrument should be taken from server, not from local text resources */
-                            name: state.user.user.instrumentId,
-                            desc: '',
-                            args: [],
-                          )
+                          getInstrumentName(
+                              context, state.user.user.instrumentId)
                         ])),
                       ],
                     ),

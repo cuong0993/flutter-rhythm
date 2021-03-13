@@ -36,6 +36,49 @@ const songTags = [
   'other',
 ];
 
+String getSongTagName(BuildContext context, String tabName) {
+  switch (tabName) {
+    case 'pop':
+      return AppLocalizations.of(context)!.pop;
+    case 'classic':
+      return AppLocalizations.of(context)!.classic;
+    case 'folk':
+      return AppLocalizations.of(context)!.folk;
+    case 'kpop':
+      return AppLocalizations.of(context)!.kpop;
+    case 'other':
+      return AppLocalizations.of(context)!.other;
+    default:
+      return '';
+  }
+}
+
+String getInstrumentName(BuildContext context, String instrumentId) {
+  switch (instrumentId) {
+    case 'piano':
+      return AppLocalizations.of(context)!.piano;
+    case 'acoustic_guitar':
+      return AppLocalizations.of(context)!.acoustic_guitar;
+    case 'electric_guitar':
+      return AppLocalizations.of(context)!.electric_guitar;
+    default:
+      return '';
+  }
+}
+
+String getThemeName(BuildContext context, ThemeMode themeMode) {
+  switch (themeMode) {
+    case ThemeMode.dark:
+      return AppLocalizations.of(context)!.dark;
+    case ThemeMode.light:
+      return AppLocalizations.of(context)!.light;
+    case ThemeMode.system:
+      return AppLocalizations.of(context)!.system;
+    default:
+      return '';
+  }
+}
+
 late Color primaryColor;
 late Color secondaryColor;
 late Color backgroundColor;

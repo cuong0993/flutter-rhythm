@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/intl.dart';
 
 import '../loading_widget.dart';
+import '../main.dart';
 import '../user/user_bloc.dart';
 
 class InstrumentsWidget extends StatelessWidget {
@@ -32,13 +32,7 @@ class InstrumentsWidget extends StatelessWidget {
                   final instrument = instruments[index];
                   return RadioListTile<String>(
                     title: Text(
-                        Intl.message(
-                          '',
-                          /* FIXME Localization name of instrument should be taken from server, not from local text resources */
-                          name: instrument.id,
-                          desc: '',
-                          args: [],
-                        ),
+                        getInstrumentName(context, instrument.id),
                         style: Theme.of(context).textTheme.headline6),
                     value: instrument.id,
                     groupValue: state.user.user.instrumentId,

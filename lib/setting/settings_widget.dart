@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:in_app_review/in_app_review.dart';
-import 'package:intl/intl.dart';
 import 'package:mailto/mailto.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../main.dart';
 import '../routes.dart';
 import 'locale_widget.dart';
 import 'setting_bloc.dart';
@@ -43,12 +43,8 @@ class SettingsWidget extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   subtitle: Text(
-                      Intl.message(
-                        '',
-                        name: state.themeMode.toString().split('.').last,
-                        desc: '',
-                        args: [],
-                      ),
+                      getThemeName(
+                          context, state.themeMode ?? ThemeMode.system),
                       style: Theme.of(context).textTheme.subtitle1),
                   onTap: () async {
                     await Navigator.pushNamed(context, Routes.theme);
