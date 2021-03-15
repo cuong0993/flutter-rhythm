@@ -8,7 +8,7 @@ import 'routes.dart';
 class SplashWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<AuthenticationBloc>(context).listen((state) {
+    BlocProvider.of<AuthenticationBloc>(context).stream.listen((state) {
       if (state is Authenticated) {
         Navigator.pushNamedAndRemoveUntil(
             context, Routes.home, (route) => false);
