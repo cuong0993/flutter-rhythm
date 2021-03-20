@@ -22,8 +22,7 @@ class ThemeWidget extends StatelessWidget {
               itemCount: ThemeMode.values.length,
               itemBuilder: (context, index) {
                 return RadioListTile<ThemeMode>(
-                  title: Text(
-                      getThemeName(context, ThemeMode.values[index]),
+                  title: Text(getThemeName(context, ThemeMode.values[index]),
                       style: Theme.of(context).textTheme.headline6),
                   value: ThemeMode.values[index],
                   groupValue: state.themeMode,

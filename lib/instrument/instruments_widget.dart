@@ -31,8 +31,7 @@ class InstrumentsWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final instrument = instruments[index];
                   return RadioListTile<String>(
-                    title: Text(
-                        getInstrumentName(context, instrument.id),
+                    title: Text(getInstrumentName(context, instrument.id),
                         style: Theme.of(context).textTheme.headline6),
                     value: instrument.id,
                     groupValue: state.user.user.instrumentId,

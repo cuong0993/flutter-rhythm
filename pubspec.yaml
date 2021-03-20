@@ -10,17 +10,17 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^7.0.0
   equatable: ^2.0.0
-  cloud_firestore: ^1.0.1
+  cloud_firestore: ^1.0.2
   firebase_auth: ^1.0.1
   firebase_storage: ^8.0.0
-  cloud_functions: ^1.0.0
+  cloud_functions: ^1.0.1
   flame: ^1.0.0-rc8
   dart_midi:
     git:
       url: https://github.com/cuong0993/dart_midi
-  built_value: ^8.0.3
+  built_value: ^8.0.4
   built_collection: ^5.0.0
-  flutter_cache_manager: ^3.0.0-nullsafety.1
+  flutter_cache_manager: ^3.0.0-nullsafety.2
   shared_preferences: ^2.0.5
   in_app_review: ^2.0.1
   intl: ^0.17.0
@@ -36,7 +36,7 @@ dependencies:
 dev_dependencies:
   pedantic: ^1.9.2
   build_runner: ^1.12.2
-  built_value_generator: ^8.0.3
+  built_value_generator: ^8.0.4
 
 flutter:
   uses-material-design: true

@@ -1,81 +1,96 @@
-name: Analyze, build and distribute Android application
-
-on:
+name: 'Analyze, build and distribute Android application'
+'on':
   push:
     branches:
       - master
-
 env:
-  flutter_version: "2.0.2"
-
+  flutter_version: 2.0.3
 jobs:
-  buildApk:
-    name: Analyze, build and distribute Android application
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    runs-on: macos-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v1
-      - name: Set up Java
-        uses: actions/setup-java@v1
+        uses: actions/checkout@v2
+      - name: Cache CocoaPods
+        uses: actions/cache@v2
         with:
-          java-version: 1.8
+          path: /Users/runner/Library/Caches/CocoaPods/Pods
+          key: '${{ runner.os }}-cache-cocoapods-${{ hashFiles(''pubspec.lock'') }}'
+      - name: Cache build
+        uses: actions/cache@v2
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Developer/Xcode/DerivedData
+          key: '${{ runner.os }}-build-cache--${{ hashFiles(''pubspec.lock'') }}'
       - name: Cache Flutter dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: /opt/hostedtoolcache/flutter
-          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+          path: /Users/runner/hostedtoolcache/flutter
+          key: '${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}'
       - name: Set up flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: ${{ env.flutter_version }}
+          flutter-version: '${{ env.flutter_version }}'
       - name: Get dependencies
         run: flutter pub get
       - name: Format source code
-        run: find -name "*.dart" -not -path "./lib/generated/*" -exec flutter format --set-exit-if-changed {} \;
+        run: 'flutter format --set-exit-if-changed {} \;'
       - name: Analyze source code
         run: flutter analyze .
       - name: Add config files
         env:
-          KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
-          GOOGLE_SERVICES_STAGE_JSON: ${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}
-          GOOGLE_SERVICES_PROD_JSON: ${{ secrets.GOOGLE_SERVICES_PROD_JSON }}
-          DEBUG_JKS: ${{ secrets.DEBUG_JKS }}
-          RELEASE_JKS: ${{ secrets.RELEASE_JKS }}
-        run: |
+          KEYSTORE_PROPERTIES: '${{ secrets.KEYSTORE_PROPERTIES }}'
+          GOOGLE_SERVICES_STAGE_JSON: '${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}'
+          GOOGLE_SERVICES_PROD_JSON: '${{ secrets.GOOGLE_SERVICES_PROD_JSON }}'
+          DEBUG_JKS: '${{ secrets.DEBUG_JKS }}'
+          RELEASE_JKS: '${{ secrets.RELEASE_JKS }}'
+          GOOGLE_SERVICE_INFO_PLIST: '${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}'
+        run: >
           sudo echo "$KEYSTORE_PROPERTIES" > android/keystore.properties
-          sudo echo $GOOGLE_SERVICES_STAGE_JSON > android/app/src/stage/google-services.json
-          sudo echo $GOOGLE_SERVICES_PROD_JSON > android/app/src/prod/google-services.json
+
+          sudo echo $GOOGLE_SERVICES_STAGE_JSON >
+          android/app/src/stage/google-services.json
+
+          sudo echo $GOOGLE_SERVICES_PROD_JSON >
+          android/app/src/prod/google-services.json
+
           sudo echo "$DEBUG_JKS" | base64 -d > android/debug.jks
+
           sudo echo "$RELEASE_JKS" | base64 -d > android/release.jks
+
+          sudo echo "$GOOGLE_SERVICE_INFO_PLIST" >
+          ios/Runner/GoogleService-Info.plist
       - name: Build stage application
         run: flutter build apk --flavor stage --split-per-abi
       - name: Build production application
         run: flutter build apk --flavor prod --split-per-abi
+      - name: Setup firebase
+        uses: pocket-apps/action-setup-firebase@v2
+        with:
+          firebase-token: '${{ secrets.FIREBASE_TOKEN }}'
       - name: Distribute stage via Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.STAGE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-armeabi-v7a-stage-release.apk
+        run: >-
+          firebase appdistribution:distribute
+          build/app/outputs/flutter-apk/app-armeabi-v7a-stage-release.apk --app
+          "${{ secrets.STAGE_APP_ID }}" --release-notes "$(git log -1
+          --pretty=short)" --groups testers
       - name: Distribute production via Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.PROD_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-armeabi-v7a-prod-release.apk
-      - name: Distribute production via Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.PROD_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-arm64-v8a-prod-release.apk
-      - name: Distribute production via Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.PROD_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-x86_64-prod-release.apk
+        run: >
+          firebase appdistribution:distribute
+          build/app/outputs/flutter-apk/app-armeabi-v7a-prod-release.apk --app
+          "${{ secrets.PROD_APP_ID }}" --release-notes "$(git log -1
+          --pretty=short)" --groups testers
+
+          firebase appdistribution:distribute
+          build/app/outputs/flutter-apk/app-arm64-v8a-prod-release.apk --app
+          "${{ secrets.PROD_APP_ID }}" --release-notes "$(git log -1
+          --pretty=short)" --groups testers
+
+          firebase appdistribution:distribute
+          build/app/outputs/flutter-apk/app-x86_64-prod-release.apk --app "${{
+          secrets.PROD_APP_ID }}" --release-notes "$(git log -1 --pretty=short)"
+          --groups testers
+      - name: Build iOS
+        run: flutter build ios --debug --no-codesign
