@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format_svg
+        name: Run format svg
+        entry: bash -c "svgo --pretty --disable=convertColors,removeViewBox --enable=removeDimensions,sortAttrs -r -f ./"
+        language: system
+      - id: pod_install_ios
+        name: Run pod install iOS
+        entry: bash -c "cd ios; pod install"
+        language: system
+  - repo: https://github.com/Cretezy/flutter-format-pre-commit
+    rev: "4a1df675bb74dea371c17934933e257e46f8dd98"
+    hooks:
+      - id: flutter-format
