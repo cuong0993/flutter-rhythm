@@ -223,11 +223,11 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - cloud_firestore (1.0.2):
+  - cloud_firestore (1.0.3):
     - Firebase/Firestore (= 7.3.0)
     - firebase_core
     - Flutter
-  - cloud_functions (1.0.1):
+  - cloud_functions (1.0.2):
     - Firebase/Functions (= 7.3.0)
     - firebase_core
     - Flutter
@@ -264,7 +264,7 @@ PODS:
   - firebase_core (1.0.2):
     - Firebase/CoreOnly (= 7.3.0)
     - Flutter
-  - firebase_storage (8.0.0):
+  - firebase_storage (8.0.1):
     - Firebase/Storage (= 7.3.0)
     - firebase_core
     - Flutter
@@ -301,7 +301,7 @@ PODS:
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
   - Flutter (1.0.0)
-  - flutter_facebook_auth (1.0.0):
+  - flutter_facebook_auth (2.0.0):
     - FBSDKCoreKit (~> 9.1.0)
     - FBSDKLoginKit (~> 9.1.0)
     - Flutter
@@ -464,15 +464,15 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  cloud_firestore: 1546509577a699bf43c504dd88002753be2f4187
-  cloud_functions: 932fc71f8d3c23f48694593f8b04f17c255b96dd
+  cloud_firestore: abe0e10141b0f61377340dcb308d8fa7a7910a10
+  cloud_functions: fc8e084273a051bcad0b76a6c3851521713805fd
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   FBSDKCoreKit: a00fe2efd780c195a5e09201bf51c56106245b40
   FBSDKLoginKit: d98498c598ec09de657385a9349a1f21119b7f86
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
   firebase_auth: 9f6491ea8e44570323361ae713a2ae3175b3f21a
   firebase_core: e6cbb0d1f7091edfcae31559e58224bfc1e455dc
-  firebase_storage: a4b292db6551a64c3697c7e67cb1df524b494bb1
+  firebase_storage: 8b44822d4aa2dc43bde4b0755e00f06e76188380
   FirebaseAuth: c224a0cf1afa0949bd5c7bfcf154b4f5ce8ddef2
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
@@ -480,7 +480,7 @@ SPEC CHECKSUMS:
   FirebaseFunctions: 56b7275ad46d936b77b64ecacd306e77db7be251
   FirebaseStorage: 5002b1895bfe74a5ce92ad54f966e6162d0da2e5
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  flutter_facebook_auth: 24b6e255a5b2336963da48d0d3eeee4df824c0ed
+  flutter_facebook_auth: 4b170c07b7fce791497093fcc3f134fb215f3f07
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab

@@ -62,9 +62,9 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapSignInWithFacebookEventToState() async* {
     try {
-      final accessToken = await _facebookLogin.login(
+      final loginResult = await _facebookLogin.login(
           loginBehavior: LoginBehavior.NATIVE_WITH_FALLBACK);
-      final credential = FacebookAuthProvider.credential(accessToken.token);
+      final credential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);
       _userRepository.subscribeUser();
       yield Authenticated('Facebook');
