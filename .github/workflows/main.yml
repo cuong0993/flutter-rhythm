@@ -12,18 +12,18 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v2
-      - name: Cache CocoaPods
-        uses: actions/cache@v2
-        with:
-          path: /Users/runner/Library/Caches/CocoaPods/Pods
-          key: '${{ runner.os }}-cache-cocoapods-${{ hashFiles(''pubspec.lock'') }}'
-      - name: Cache build
-        uses: actions/cache@v2
-        with:
-          path: |
-            ios/Pods
-            ~/Library/Developer/Xcode/DerivedData
-          key: '${{ runner.os }}-build-cache--${{ hashFiles(''pubspec.lock'') }}'
+#      - name: Cache CocoaPods
+#        uses: actions/cache@v2
+#        with:
+#          path: /Users/runner/Library/Caches/CocoaPods/Pods
+#          key: '${{ runner.os }}-cache-cocoapods-${{ hashFiles(''pubspec.lock'') }}'
+#      - name: Cache build
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            ios/Pods
+#            ~/Library/Developer/Xcode/DerivedData
+#          key: '${{ runner.os }}-build-cache--${{ hashFiles(''pubspec.lock'') }}'
       - name: Cache Flutter dependencies
         uses: actions/cache@v2
         with:
@@ -36,7 +36,7 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       - name: Format source code
-        run: 'flutter format --set-exit-if-changed {} \;'
+        run: flutter format --set-exit-if-changed .
       - name: Analyze source code
         run: flutter analyze .
       - name: Add config files
@@ -92,5 +92,5 @@ jobs:
           build/app/outputs/flutter-apk/app-x86_64-prod-release.apk --app "${{
           secrets.PROD_APP_ID }}" --release-notes "$(git log -1 --pretty=short)"
           --groups testers
-      - name: Build iOS
-        run: flutter build ios --debug --no-codesign
+#      - name: Build iOS
+#        run: flutter build ios --debug --no-codesign
