@@ -7,12 +7,12 @@ import '../songs/song.dart';
 import '../songs/song_widget.dart';
 import '../songs/songs_repository.dart';
 
-class SearchWidget extends SearchDelegate {
+class SearchWidget extends SearchDelegate<void> {
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
       IconButton(
-        icon: Icon(Icons.close),
+        icon: const Icon(Icons.close),
         onPressed: () {
           query = '';
         },
@@ -44,7 +44,7 @@ class SearchWidget extends SearchDelegate {
       final songsRepository = RepositoryProvider.of<SongsRepository>(context);
       return FutureBuilder<List<Song>>(
           future: songsRepository.searchSongs(query),
-          builder: (context, AsyncSnapshot<List<Song>> recentList) {
+          builder: (context, recentList) {
             if (recentList.connectionState == ConnectionState.done) {
               final songs = recentList.requireData;
               return ListView.builder(

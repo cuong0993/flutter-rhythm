@@ -5,8 +5,9 @@ import '../../main.dart';
 import '../../util.dart';
 import '../center_render_text_config.dart';
 import '../effect.dart';
+import 'tile.dart';
 
-const LIVE_TIME = 0.5;
+const liveTime = 0.5;
 
 const noteToName = {
   21: 'A0',
@@ -103,14 +104,14 @@ class TileTouchEffect extends Effect {
   final config = CenterRenderTextConfig(fontSize: 24.0, color: primaryColor);
   var _time = 0.0;
   var _isDone = false;
-  final _centerX;
-  final _centerY;
-  final _text;
+  final double _centerX;
+  final double _centerY;
+  final String _text;
 
-  TileTouchEffect(_tile)
+  TileTouchEffect(Tile _tile)
       : _centerX = positionsX[_tile.column] + _tile.width / 2.0,
         _centerY = _tile.y + _tile.height / 2.0,
-        _text = noteToName[_tile.note];
+        _text = noteToName[_tile.note]!;
 
   @override
   bool isDone() {
@@ -120,7 +121,7 @@ class TileTouchEffect extends Effect {
   @override
   void update(double delta) {
     _time += delta;
-    if (_time > LIVE_TIME) {
+    if (_time > liveTime) {
       _isDone = true;
     }
   }

@@ -14,7 +14,7 @@ class SplashWidget extends StatelessWidget {
             context, Routes.home, (route) => false);
       }
     });
-    return Scaffold(
+    return const Scaffold(
         body: Center(
             child: Image(image: AssetImage('assets/images/img_app_icon.png'))));
   }

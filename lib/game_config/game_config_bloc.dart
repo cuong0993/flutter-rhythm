@@ -7,7 +7,7 @@ part 'game_config_event.dart';
 part 'game_config_state.dart';
 
 class GameConfigBloc extends Bloc<GameConfigEvent, GameConfigState> {
-  GameConfigBloc() : super(GameConfigState(1, 1));
+  GameConfigBloc() : super(const GameConfigState(1, 1));
 
   @override
   Stream<GameConfigState> mapEventToState(

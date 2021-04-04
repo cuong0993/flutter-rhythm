@@ -81,7 +81,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       }
       final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
       final tick2Second = tickToSecond(midiFile.header.ticksPerBeat, bpm);
-      final speedDpsPerTick = UNIT_DURATION_HEIGHT / _unitDuration;
+      final speedDpsPerTick = unitDurationHeight / _unitDuration;
       _speedDpsPerSecond = speedDpsPerTick / tick2Second;
       final gameDuration =
           (0.5 + (0.0 - tiles.last.initialY) / _speedDpsPerSecond).toInt();
@@ -92,7 +92,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       await for (final value in soundLoadedStream) {
         if (value) {
           yield GameStarted(tiles, _speedDpsPerSecond, _maxTime);
-          await Future.delayed(Duration(milliseconds: 500));
+          await Future<void>.delayed(const Duration(milliseconds: 500));
           yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
           return;
         }
@@ -120,17 +120,19 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     } else if (event is PauseGame) {
       _pauseEventController.add(true);
     } else if (event is CompleteGame) {
-      await Future.delayed(Duration(milliseconds: 500));
+      await Future<void>.delayed(const Duration(milliseconds: 500));
       yield LoadingGift();
-      final response =
-          await FirebaseFunctions.instance.httpsCallable('getGameReward').call({
+      final response = await FirebaseFunctions.instance
+          .httpsCallable('getGameReward')
+          .call<HttpsCallableResult>({
         'songId': _songId,
         'difficulty': _difficulty,
         'speed': _speed,
         'errorCount': _errorCount,
       });
       final gameReward = serializers.deserializeWith<GameReward>(
-          GameReward.serializer, Map<String, dynamic>.from(response.data));
+          GameReward.serializer,
+          Map<String, dynamic>.from(response.data as Map<dynamic, dynamic>));
       _completeEventController.add(gameReward!);
     } else if (event is RestartGame) {
       _time = 0.0;
@@ -138,7 +140,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _errorCount = 0;
       final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
       yield GameStarted(tiles, _speedDpsPerSecond, _maxTime);
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future<void>.delayed(const Duration(milliseconds: 100));
       yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
     }
   }

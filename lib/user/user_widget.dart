@@ -86,14 +86,14 @@ class UserWidget extends StatelessWidget {
               //height: 200,
               child: Column(
                 children: [
-                  SizedBox(height: 8),
-                  Image(
+                  const SizedBox(height: 8),
+                  const Image(
                     image: AssetImage('assets/images/img_star.png'),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(state.user.user.stars.toString(),
                       style: Theme.of(context).textTheme.subtitle1),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
@@ -115,14 +115,14 @@ class UserWidget extends StatelessWidget {
               //height: 200,
               child: Column(
                 children: [
-                  SizedBox(height: 8),
-                  Image(
+                  const SizedBox(height: 8),
+                  const Image(
                     image: AssetImage('assets/images/img_note.png'),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(state.user.user.playedNotes.toString(),
                       style: Theme.of(context).textTheme.subtitle1),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
@@ -144,18 +144,18 @@ class UserWidget extends StatelessWidget {
               //height: 200,
               child: Column(
                 children: [
-                  SizedBox(height: 8),
-                  Image(
+                  const SizedBox(height: 8),
+                  const Image(
                     image: AssetImage('assets/images/img_clock.png'),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                       state.user.user.playedTime
                           .toString()
                           .substring(0, 4)
                           .toString(),
                       style: Theme.of(context).textTheme.subtitle1),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
@@ -170,7 +170,7 @@ class UserWidget extends StatelessWidget {
         color: Colors.transparent,
         elevation: 0,
         child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
@@ -185,10 +185,10 @@ class UserWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Image(
+                          const Image(
                               image:
                                   AssetImage('assets/images/img_google.png')),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
                               AppLocalizations.of(context)!
                                   .txt_button_sign_in_google,
@@ -197,7 +197,7 @@ class UserWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   OutlinedButton(
                     onPressed: () {
                       BlocProvider.of<AuthenticationBloc>(context)
@@ -209,10 +209,10 @@ class UserWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Image(
+                          const Image(
                               image:
                                   AssetImage('assets/images/img_facebook.png')),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
                               AppLocalizations.of(context)!
                                   .txt_button_sign_in_facebook,
@@ -229,13 +229,13 @@ class UserWidget extends StatelessWidget {
         color: Colors.transparent,
         elevation: 0,
         child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: <Widget>[
                 ClipOval(
                   child: Image.network(state.user.photoUrl, width: 72),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -243,14 +243,14 @@ class UserWidget extends StatelessWidget {
                       state.user.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.today,
                           size: 16,
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(
                           sprintf(AppLocalizations.of(context)!.txt_joined, [
                             DateFormat.yMMMd().format(state.user.creationTime)
@@ -261,12 +261,12 @@ class UserWidget extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Image(
+                        const Image(
                           image: AssetImage('assets/images/img_guitar.png'),
                           width: 16,
                           height: 16,
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(sprintf(AppLocalizations.of(context)!.txt_using, [
                           getInstrumentName(
                               context, state.user.user.instrumentId)

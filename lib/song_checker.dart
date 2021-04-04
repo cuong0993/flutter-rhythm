@@ -10,11 +10,11 @@ import 'game/tile/tile_converter.dart';
 void main() {
   File('database/db.json')
       .readAsString()
-      .then((fileContents) => json.decode(fileContents))
+      .then((fileContents) => json.decode(fileContents) as Map)
       .then((jsonData) {
     final dir = Directory('storage/songs');
-    final collections = jsonData['__collections__'];
-    final songs = {};
+    final collections = jsonData['__collections__'] as Map;
+    final songs = <String, Map>{};
     dir.listSync(recursive: true).whereType<File>().toList().forEach((file) {
       final id = file.uri.toString().split('/').last.replaceAll('.mid', '');
       final temp = file.uri.toString().split('/');
@@ -27,7 +27,7 @@ void main() {
       final midiFile = MidiParser().parseMidiFromFile(File(file.path));
       final events = midiFile.tracks[0];
       final track = midiFile.tracks.length;
-      final song = {};
+      final song = <String, dynamic>{};
       if (track != 2) {
         print('WARNING trackCount $track');
       }
@@ -36,18 +36,19 @@ void main() {
         if (midiEvent is SetTempoEvent) {
           final tempo = 60000000 ~/ midiEvent.microsecondsPerBeat;
           print('Tempo changes to $tempo');
-          if (song['bpm'] <= tempo) {
+          if (song['bpm'] as int <= tempo) {
             song['bpm'] = tempo;
           }
         }
       }
       print('Select largest tempo ${song['bpm']}');
       final tileChunks = createTileChunks(midiFile);
-      final groupByDurationToPrevious = Map.fromEntries(groupBy(
-              tileChunks, (TileChunk tileChunk) => tileChunk.durationToPrevious)
-          .entries
-          .toList()
-            ..sort((e1, e2) => e1.key.compareTo(e2.key)));
+      final groupByDurationToPrevious = Map<int, List<TileChunk>>.fromEntries(
+          groupBy<TileChunk, int>(
+                  tileChunks, (tileChunk) => tileChunk.durationToPrevious)
+              .entries
+              .toList()
+                ..sort((e1, e2) => e1.key.compareTo(e2.key)));
       final countDurationToPrevious = {
         for (var e in groupByDurationToPrevious.keys)
           e: groupByDurationToPrevious[e]!.length
@@ -88,9 +89,9 @@ void main() {
         tick2Second =
             tickToSecond(midiFile.header.ticksPerBeat, song['bpm'] as int);
       }
-      final speedDpsPerTick = UNIT_DURATION_HEIGHT / unitDuration;
+      final speedDpsPerTick = unitDurationHeight / unitDuration;
       final speedDpsPerSecond = speedDpsPerTick / tick2Second;
-      final tiles = createTiles(tileChunks, unitDuration, NUMBER_TILE_COLUMN);
+      final tiles = createTiles(tileChunks, unitDuration, numberTileColumn);
       print('There are ${tiles.length} tiles');
       final tileCount = tiles.length;
       if (tileCount < 50) {
@@ -127,7 +128,7 @@ void main() {
       song['tags'] = [genre];
       song['title'] = title;
       song['url'] = file.uri.toString().replaceAll('storage/', '');
-      song['__collections__'] = {};
+      song['__collections__'] = <String, dynamic>{};
       songs[id] = song;
     });
     collections['songs'] = songs;

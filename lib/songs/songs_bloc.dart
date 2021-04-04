@@ -13,7 +13,7 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
 
   SongsBloc({required SongsRepository songsRepository})
       : _songsRepository = songsRepository,
-        super(SongsInitial());
+        super(const SongsInitial());
 
   @override
   Stream<SongsState> mapEventToState(SongsEvent event) async* {

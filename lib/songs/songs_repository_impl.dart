@@ -14,7 +14,7 @@ class SongsRepositoryImpl implements SongsRepository {
             .collection('songs')
             .orderBy('title')
             .where('tags', arrayContains: tag)
-            .startAfter([titleStart])
+            .startAfter(<String>[titleStart])
             .limit(limit)
             .get())
         .docs

@@ -29,43 +29,43 @@ class GameConfigWidget extends StatelessWidget {
                     children: [
                       Text(AppLocalizations.of(context)!.txt_difficulty,
                           style: Theme.of(context).textTheme.headline5),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           CardWidget(
                             selected: state.difficulty == 0,
                             text: AppLocalizations.of(context)!.txt_easy,
                             caption: sprintf(
                                 AppLocalizations.of(context)!.txt_fingers, [2]),
                             onTap: () {
-                              BlocProvider.of<GameConfigBloc>(context)
-                                  .add(GameConfigChangeDifficultyEvent(0));
+                              BlocProvider.of<GameConfigBloc>(context).add(
+                                  const GameConfigChangeDifficultyEvent(0));
                             },
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           CardWidget(
                             selected: state.difficulty == 1,
                             text: AppLocalizations.of(context)!.txt_medium,
                             caption: sprintf(
                                 AppLocalizations.of(context)!.txt_fingers, [3]),
                             onTap: () {
-                              BlocProvider.of<GameConfigBloc>(context)
-                                  .add(GameConfigChangeDifficultyEvent(1));
+                              BlocProvider.of<GameConfigBloc>(context).add(
+                                  const GameConfigChangeDifficultyEvent(1));
                             },
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           CardWidget(
                             selected: state.difficulty == 2,
                             text: AppLocalizations.of(context)!.txt_difficult,
                             caption: sprintf(
                                 AppLocalizations.of(context)!.txt_fingers, [4]),
                             onTap: () {
-                              BlocProvider.of<GameConfigBloc>(context)
-                                  .add(GameConfigChangeDifficultyEvent(2));
+                              BlocProvider.of<GameConfigBloc>(context).add(
+                                  const GameConfigChangeDifficultyEvent(2));
                             },
                           ),
-                          SizedBox(width: 8)
+                          const SizedBox(width: 8)
                         ],
                       )
                     ],
@@ -78,40 +78,40 @@ class GameConfigWidget extends StatelessWidget {
                     children: [
                       Text(AppLocalizations.of(context)!.txt_speed,
                           style: Theme.of(context).textTheme.headline5),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           CardWidget(
                             selected: state.speed == 0,
                             text: AppLocalizations.of(context)!.txt_slow,
                             caption: 'x0.75',
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                  .add(GameConfigChangeSpeedEvent(0));
+                                  .add(const GameConfigChangeSpeedEvent(0));
                             },
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           CardWidget(
                             selected: state.speed == 1,
                             text: AppLocalizations.of(context)!.txt_normal,
                             caption: 'x1.0',
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                  .add(GameConfigChangeSpeedEvent(1));
+                                  .add(const GameConfigChangeSpeedEvent(1));
                             },
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           CardWidget(
                             selected: state.speed == 2,
                             text: AppLocalizations.of(context)!.txt_fast,
                             caption: 'x1.25',
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context)
-                                  .add(GameConfigChangeSpeedEvent(2));
+                                  .add(const GameConfigChangeSpeedEvent(2));
                             },
                           ),
-                          SizedBox(width: 8)
+                          const SizedBox(width: 8)
                         ],
                       )
                     ],
@@ -119,7 +119,7 @@ class GameConfigWidget extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: ElevatedButton(
                           onPressed: () {
@@ -132,7 +132,7 @@ class GameConfigWidget extends StatelessWidget {
                           },
                           child: Text(AppLocalizations.of(context)!.txt_start)),
                     ),
-                    SizedBox(width: 8)
+                    const SizedBox(width: 8)
                   ],
                 )
               ],
@@ -168,11 +168,11 @@ class CardWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(text),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(caption),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                   ],
                 ))
             : OutlinedButton(
@@ -183,11 +183,11 @@ class CardWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(text),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(caption),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                   ],
                 )));
   }

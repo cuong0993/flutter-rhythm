@@ -27,7 +27,7 @@ class LocaleWidget extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6),
                 value: AppLocalizations.supportedLocales[index],
                 groupValue: Localizations.localeOf(context),
-                onChanged: (Locale? value) {
+                onChanged: (value) {
                   BlocProvider.of<SettingBloc>(context).add(ChangeLocaleEvent(
                       AppLocalizations.supportedLocales[index]));
                 },

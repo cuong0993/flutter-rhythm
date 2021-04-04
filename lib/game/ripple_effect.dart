@@ -15,20 +15,19 @@ Paint paint = Paint()
       ColorFilter.mode(primaryColor.withOpacity(0.1), BlendMode.srcIn);
 
 class RippleEffect extends Effect {
-  static const LIVE_TIME = 0.5;
-  static const SIZE = 96;
-  final initialWidth = 0.5 * SIZE;
-  var _width;
-  var _rate;
+  static const liveTime = 0.5;
+  static const size = 96;
+  static const initialWidth = 0.5 * size;
+  double _width;
+  final double _rate;
   var _time = 0.0;
   var _isDone = false;
-  final _x;
-  final _y;
+  final double _x;
+  final double _y;
 
-  RippleEffect(this._x, this._y) {
-    _rate = (SIZE - initialWidth) / LIVE_TIME;
-    _width = initialWidth;
-  }
+  RippleEffect(this._x, this._y)
+      : _rate = (size - initialWidth) / liveTime,
+        _width = initialWidth;
 
   @override
   bool isDone() {
@@ -40,7 +39,7 @@ class RippleEffect extends Effect {
     _time += delta;
     _width = initialWidth + _rate * _time;
 
-    if (_time > LIVE_TIME) {
+    if (_time > liveTime) {
       _isDone = true;
     }
   }

@@ -1,16 +1,15 @@
-import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 
 void main() {
   File('database/db.json')
       .readAsString()
-      .then((fileContents) => json.decode(fileContents))
+      .then((fileContents) => json.decode(fileContents) as Map)
       .then((jsonData) {
-    final collections = jsonData['__collections__'];
-    final users = collections['users'];
-    (users as Map).forEach((key, value) {
-      final newValue = HashMap();
+    final collections = jsonData['__collections__'] as Map;
+    final users = collections['users'] as Map<String, Map>;
+    users.forEach((key, value) {
+      final newValue = <String, dynamic>{};
       newValue['__collections__'] = value['__collections__'];
       newValue['id'] = value['id'];
       newValue['playedNotes'] =

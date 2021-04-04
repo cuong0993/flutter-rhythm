@@ -17,8 +17,7 @@ class HomeWidget extends StatelessWidget {
           body: DefaultTabController(
             length: songTags.length,
             child: NestedScrollView(
-              headerSliverBuilder:
-                  (BuildContext context, bool innerBoxIsScrolled) {
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return <Widget>[
                   SliverAppBar(
                       title: Text(AppLocalizations.of(context)!.txt_all_songs,
@@ -33,15 +32,16 @@ class HomeWidget extends StatelessWidget {
                       forceElevated: true,
                       actions: [
                         IconButton(
-                          icon: Icon(Icons.search_rounded),
+                          icon: const Icon(Icons.search_rounded),
                           onPressed: () {
-                            showSearch(
+                            showSearch<void>(
                                 context: context, delegate: SearchWidget());
                           },
                         ),
                         IconButton(
                             icon: Image(
-                              image: AssetImage('assets/images/img_guitar.png'),
+                              image: const AssetImage(
+                                  'assets/images/img_guitar.png'),
                               color: Theme.of(context)
                                   .appBarTheme
                                   .iconTheme!
@@ -56,14 +56,14 @@ class HomeWidget extends StatelessWidget {
                               child: (state is UserUpdated &&
                                       !state.user.isAnonymous)
                                   ? Image.network(state.user.photoUrl)
-                                  : Icon(Icons.account_circle_rounded),
+                                  : const Icon(Icons.account_circle_rounded),
                             ),
                             onPressed: () async {
                               await Navigator.pushNamed(
                                   context, Routes.account);
                             }),
                         IconButton(
-                          icon: Icon(Icons.settings),
+                          icon: const Icon(Icons.settings),
                           onPressed: () async {
                             await Navigator.pushNamed(context, Routes.setting);
                           },

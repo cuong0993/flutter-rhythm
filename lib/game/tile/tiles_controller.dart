@@ -36,7 +36,7 @@ class TilesController {
     final iterator = tiles.iterator;
     while (iterator.moveNext()) {
       final tile = iterator.current;
-      if (tile.state == TileState.TOUCHED) {
+      if (tile.state == TileState.touched) {
         _visibleTileCount--;
         end++;
       } else {
@@ -58,7 +58,7 @@ class TilesController {
   double _getMaxDeltaY() {
     return pauseY -
         tiles
-            .firstWhere((element) => element.state == TileState.UNTOUCHED,
+            .firstWhere((element) => element.state == TileState.untouched,
                 orElse: () => Tile(0, 0, 0))
             .y;
   }
@@ -66,7 +66,7 @@ class TilesController {
   Tile? getNextUntouchedTile() {
     for (var i = 0; i < _visibleTileCount; i++) {
       final tile = tiles[i];
-      if (tile.state == TileState.UNTOUCHED) {
+      if (tile.state == TileState.untouched) {
         return tile;
       }
     }

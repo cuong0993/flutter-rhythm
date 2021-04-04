@@ -1,7 +1,8 @@
 import 'package:flutter/services.dart';
 
 class SoundPlayer {
-  MethodChannel channel = MethodChannel('com.chaomao.hitnotes/sound_player');
+  MethodChannel channel =
+      const MethodChannel('com.chaomao.hitnotes/sound_player');
 
   Future<void> load(Map<int, String> soundPaths, Map<int, int> baseNotes) {
     print('SoundPlayer load');

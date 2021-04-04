@@ -17,7 +17,7 @@ import 'tile/tiles_controller.dart';
 class MyGame extends Game with MultiTouchTapDetector {
   final _tilesController = TilesController();
   final _tileEffects = <Effect>[];
-  var _state = _MyGameState.PREPARE;
+  var _state = _MyGameState.prepare;
   var _accumulator = 0.0;
   final _step = 1.0 / 60.0;
   final Map<int, _TouchPosition> _touches = {};
@@ -30,10 +30,10 @@ class MyGame extends Game with MultiTouchTapDetector {
   late Sprite _staffSprite;
   late Sprite _clefSprite;
 
-  void start(List<Tile> tiles, double speedPixelsPerSecond,
+  Future<void> start(List<Tile> tiles, double speedPixelsPerSecond,
       Function(Tile? tile) onTouched, Function() onCompleted) async {
     _tilesController.initialize(tiles, speedPixelsPerSecond);
-    _state = _MyGameState.PLAY;
+    _state = _MyGameState.play;
     _onTouched = onTouched;
     _onCompleted = onCompleted;
     _accumulator = 0.0;
@@ -96,7 +96,7 @@ class MyGame extends Game with MultiTouchTapDetector {
       effect.update(delta);
     });
     _tileEffects.removeWhere((effect) => effect.isDone());
-    if (_state != _MyGameState.STOP) {
+    if (_state != _MyGameState.stop) {
       /* Max frame time to avoid spiral of death */
       final restrictedTime = (delta > 0.25) ? 0.25 : delta;
       _accumulator += restrictedTime;
@@ -109,8 +109,8 @@ class MyGame extends Game with MultiTouchTapDetector {
               tile.touchDown();
               _tileEffects.addAll(tile.getEffects());
               _onTouched(tile);
-              if (_state == _MyGameState.PAUSE) {
-                _state = _MyGameState.PLAY;
+              if (_state == _MyGameState.pause) {
+                _state = _MyGameState.play;
               }
               initialYAllowedTouch = tile.initialY;
             } else {
@@ -122,13 +122,13 @@ class MyGame extends Game with MultiTouchTapDetector {
         });
         _touches.clear();
         _accumulator -= _step;
-        if (_state == _MyGameState.PLAY) {
+        if (_state == _MyGameState.play) {
           final actualDeltaTime = _tilesController.tryUpdate(_step);
           if (_step > actualDeltaTime) {
             pause();
           }
           if (_tilesController.tiles.isEmpty) {
-            _state = _MyGameState.COMPLETE;
+            _state = _MyGameState.complete;
             _onCompleted();
           }
         }
@@ -137,7 +137,7 @@ class MyGame extends Game with MultiTouchTapDetector {
   }
 }
 
-enum _MyGameState { PREPARE, PLAY, PAUSE, STOP, COMPLETE }
+enum _MyGameState { prepare, play, pause, stop, complete }
 
 class _TouchPosition {
   final double x;

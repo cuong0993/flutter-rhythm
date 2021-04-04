@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../main.dart';
+import '../songs/song.dart';
 import 'complete_dialog.dart';
 import 'game_bloc.dart';
 import 'game_event.dart';
@@ -61,7 +62,7 @@ class _GameWidgetState extends State<GameWidget> {
     }
 
     void _onCompleted() {
-      BlocProvider.of<GameBloc>(context).add(CompleteGame());
+      BlocProvider.of<GameBloc>(context).add(const CompleteGame());
     }
 
     return WillPopScope(onWillPop: () async {
@@ -74,23 +75,23 @@ class _GameWidgetState extends State<GameWidget> {
       builder: (context, state) {
         if (state is GameLoading) {
           final arguments = (ModalRoute.of(context)!.settings.arguments as Map);
-          final song = arguments['song'];
-          final difficulty = arguments['difficulty'];
-          final speed = arguments['speed'];
+          final song = arguments['song'] as Song;
+          final difficulty = arguments['difficulty'] as int;
+          final speed = arguments['speed'] as int;
           BlocProvider.of<GameBloc>(context)
               .add(StartGame(song, difficulty, speed));
-          return LoadingSoundWidget();
+          return const LoadingSoundWidget();
         } else if (state is GameStarted) {
           widget._game.start(state.tiles, state.speedPixelsPerSecond,
               _onTileTouched, _onCompleted);
-          return LoadingSoundWidget();
+          return const LoadingSoundWidget();
         } else if (state is LoadingGift) {
-          return LoadingGiftWidget();
+          return const LoadingGiftWidget();
         }
         return Stack(children: [
           flame.GameWidget(game: widget._game),
           Container(
-              height: NON_TOUCH_REGION_HEIGHT.toDouble(),
+              height: nonTouchRegionHeight.toDouble(),
               child: Material(
                 color: Colors.transparent,
                 child: SafeArea(
@@ -103,7 +104,7 @@ class _GameWidgetState extends State<GameWidget> {
                         value: (state as GameUpdated).time / (state).maxTime,
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Column(
                           children: [
                             Row(
@@ -123,11 +124,11 @@ class _GameWidgetState extends State<GameWidget> {
                               children: [
                                 IconButton(
                                   iconSize: 38,
-                                  icon:
-                                      Icon(Icons.pause_circle_outline_rounded),
+                                  icon: const Icon(
+                                      Icons.pause_circle_outline_rounded),
                                   onPressed: () {
                                     BlocProvider.of<GameBloc>(context)
-                                        .add(PauseGame());
+                                        .add(const PauseGame());
                                   },
                                 ),
                                 Text((state).tilesCount.toString(),
@@ -208,12 +209,12 @@ class LoadingSoundWidget extends StatelessWidget {
     return Material(
       child: SafeArea(
         child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                const Expanded(
                   child: Align(
                     alignment: Alignment.center,
                     child: Image(
@@ -239,12 +240,12 @@ class LoadingGiftWidget extends StatelessWidget {
     return Material(
       child: SafeArea(
         child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                const Expanded(
                   child: Align(
                     alignment: Alignment.center,
                     child: Image(

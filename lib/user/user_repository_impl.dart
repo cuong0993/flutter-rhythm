@@ -56,6 +56,6 @@ class UserRepositoryImpl implements UserRepository {
     FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
-        .update({'instrumentId': instrumentId});
+        .update(<String, dynamic>{'instrumentId': instrumentId});
   }
 }

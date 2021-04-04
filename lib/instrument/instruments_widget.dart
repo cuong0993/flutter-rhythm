@@ -35,7 +35,7 @@ class InstrumentsWidget extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6),
                     value: instrument.id,
                     groupValue: state.user.user.instrumentId,
-                    onChanged: (String? value) {
+                    onChanged: (value) {
                       BlocProvider.of<UserBloc>(context)
                           .add(ChangeInstrument(value!));
                     },

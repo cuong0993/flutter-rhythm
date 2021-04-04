@@ -8,22 +8,22 @@ import '../note/note.dart';
 import '../tile/tile.dart';
 import '../tile/tile_chunk.dart';
 
-const MINUTE_TO_SECOND = 60;
-const NUMBER_OF_NOTES = 128;
-const NUMBER_TILE_COLUMN = 4;
-const UNIT_DURATION_HEIGHT = 72;
-const TILE_WIDTH = 36.0;
-const TILE_HEIGHT = TILE_WIDTH;
-const NON_TOUCH_REGION_HEIGHT = 160;
+const minuteToSecond = 60;
+const numberOfNotes = 128;
+const numberTileColumn = 4;
+const unitDurationHeight = 72;
+const tileWidth = 36.0;
+const tileHeight = tileWidth;
+const nonTouchRegionHeight = 160;
 const startVisibleY = 0;
 
 double tickToSecond(int resolution, int bpm) {
-  return MINUTE_TO_SECOND.toDouble() / (resolution * bpm);
+  return minuteToSecond.toDouble() / (resolution * bpm);
 }
 
 List<TileChunk> createTileChunks(MidiFile midiFile) {
   final tileNotes = <Note>[];
-  final onsets = List<int>.filled(NUMBER_OF_NOTES, -1, growable: false);
+  final onsets = List<int>.filled(numberOfNotes, -1, growable: false);
   for (final midiTrack in midiFile.tracks) {
     var totalTicks = 0;
     for (final midiEvent in midiTrack) {
@@ -47,9 +47,11 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
   final tileChunks = <TileChunk>[];
 
   var previousStartTick = 0;
-  Map.fromEntries(
-          groupBy(tileNotes, (Note note) => note.startTick).entries.toList()
-            ..sort((e1, e2) => e1.key.compareTo(e2.key)))
+  Map<int, List<Note>>.fromEntries(
+          groupBy<Note, int>(tileNotes, (note) => note.startTick)
+              .entries
+              .toList()
+                ..sort((e1, e2) => e1.key.compareTo(e2.key)))
       .forEach((key, value) {
     tileChunks.add(TileChunk((b) => b
       ..notes = ListBuilder(value)
@@ -77,7 +79,7 @@ List<Tile> createTiles(
       calibratedTick += unitDuration - chunk.durationToPrevious;
     }
     final initialPositionY =
-        -((UNIT_DURATION_HEIGHT / unitDuration) * chunk.startTick +
+        -((unitDurationHeight / unitDuration) * chunk.startTick +
             calibratedTick);
     chunk.notes.asMap().forEach((index, note) {
       if (index < numberTileColumn) {

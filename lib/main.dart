@@ -85,7 +85,7 @@ late Color backgroundColor;
 late Color onBackgroundColor;
 late Paint paint;
 
-void main() async {
+Future<void> main() async {
   Bloc.observer = SimpleBlocObserver();
   runApp(App());
 }
@@ -135,7 +135,7 @@ class App extends StatelessWidget {
               title: 'Hit Notes',
               debugShowCheckedModeBanner: false,
               locale: state.locale,
-              localizationsDelegates: [
+              localizationsDelegates: const [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
@@ -191,9 +191,9 @@ class App extends StatelessWidget {
   }
 
   ThemeData buildTheme(bool isDark) {
-    final primaryColor = Color(0xff4760e9);
+    final primaryColor = const Color(0xff4760e9);
     final onPrimaryColor = Colors.white;
-    final secondaryColor = Color(0xfffd7c6e);
+    final secondaryColor = const Color(0xfffd7c6e);
     final backgroundColor = isDark ? Colors.black : Colors.white;
     final onBackgroundColor = isDark ? Colors.white : Colors.black;
     final screenHeadingTextStyle =

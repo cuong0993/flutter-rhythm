@@ -26,7 +26,7 @@ class ThemeWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline6),
                   value: ThemeMode.values[index],
                   groupValue: state.themeMode,
-                  onChanged: (ThemeMode? value) {
+                  onChanged: (value) {
                     BlocProvider.of<SettingBloc>(context)
                         .add(ChangeThemeEvent(value!));
                   },

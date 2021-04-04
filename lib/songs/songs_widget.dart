@@ -39,7 +39,7 @@ class SongsWidget extends StatelessWidget {
                     : songsByTag.length,
                 itemBuilder: (context, index) {
                   if (index == songsByTag.length) {
-                    return Center(
+                    return const Center(
                       child: SizedBox(
                         height: 32,
                         width: 32,
@@ -59,8 +59,8 @@ class SongsWidget extends StatelessWidget {
                     },
                   );
                 },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Divider(
+                separatorBuilder: (context, index) {
+                  return const Divider(
                     height: 4,
                   );
                 },
