@@ -10,11 +10,11 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^7.0.0
   equatable: ^2.0.0
-  cloud_firestore: ^1.0.3
-  firebase_auth: ^1.0.1
-  firebase_storage: ^8.0.1
-  cloud_functions: ^1.0.2
-  flame: ^1.0.0-rc8
+  cloud_firestore: ^1.0.4
+  firebase_auth: ^1.0.3
+  firebase_storage: ^8.0.3
+  cloud_functions: ^1.0.3
+  flame: ^1.0.0-rc9
   dart_midi:
     git:
       url: https://github.com/cuong0993/dart_midi
@@ -29,7 +29,7 @@ dependencies:
   package_info: ^2.0.0
   device_info: ^2.0.0
   google_sign_in: ^5.0.1
-  flutter_facebook_auth: ^3.3.1
+  flutter_facebook_auth: ^3.3.2+2
   rxdart: ^0.26.0
   sprintf: ^6.0.0
 

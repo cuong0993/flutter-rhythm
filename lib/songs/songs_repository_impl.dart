@@ -18,8 +18,8 @@ class SongsRepositoryImpl implements SongsRepository {
             .limit(limit)
             .get())
         .docs
-        .map((e) => serializers.deserializeWith<Song>(
-            Song.serializer, e.data() as Object)!)
+        .map((e) =>
+            serializers.deserializeWith<Song>(Song.serializer, e.data())!)
         .toList();
   }
 
@@ -31,8 +31,8 @@ class SongsRepositoryImpl implements SongsRepository {
             .where('title', isLessThanOrEqualTo: text + '\uf8ff')
             .get())
         .docs
-        .map((e) => serializers.deserializeWith<Song>(
-            Song.serializer, e.data() as Object)!)
+        .map((e) =>
+            serializers.deserializeWith<Song>(Song.serializer, e.data())!)
         .toList();
   }
 }

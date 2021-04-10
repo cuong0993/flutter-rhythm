@@ -13,7 +13,7 @@ class InstrumentsRepositoryImpl implements InstrumentsRepository {
         .docs
         .map((e) {
       return serializers.deserializeWith<Instrument>(
-          Instrument.serializer, e.data() as Object)!;
+          Instrument.serializer, e.data())!;
     }).toList();
   }
 }
