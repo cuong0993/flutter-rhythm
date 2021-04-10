@@ -42,7 +42,7 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
       if (!isLoadingMoreByTags[tag] && !isLoadedByTags[tag]) {
         isLoadingMoreByTags[tag] = true;
         add(UpdateSongs(songsByTags, isLoadingMoreByTags, isLoadedByTags));
-        final songs = await _songsRepository.songsByTag(songTags[tag],
+        final songs = await _songsRepository.getSongsByTag(songTags[tag],
             songsByTags[tag].isEmpty ? '' : songsByTags[tag].last.title, 20);
 
         songsByTags[tag] += songs;

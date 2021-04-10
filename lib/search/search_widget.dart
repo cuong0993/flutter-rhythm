@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../loading_widget.dart';
 import '../routes.dart';
@@ -8,6 +7,11 @@ import '../songs/song_widget.dart';
 import '../songs/songs_repository.dart';
 
 class SearchWidget extends SearchDelegate<void> {
+  SearchWidget({required SongsRepository songsRepository})
+      : _songsRepository = songsRepository;
+
+  final SongsRepository _songsRepository;
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -41,9 +45,8 @@ class SearchWidget extends SearchDelegate<void> {
     if (query.isEmpty) {
       return Container();
     } else {
-      final songsRepository = RepositoryProvider.of<SongsRepository>(context);
       return FutureBuilder<List<Song>>(
-          future: songsRepository.searchSongs(query),
+          future: _songsRepository.searchSongs(query),
           builder: (context, recentList) {
             if (recentList.connectionState == ConnectionState.done) {
               final songs = recentList.requireData;

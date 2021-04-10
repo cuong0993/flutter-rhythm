@@ -8,7 +8,7 @@ import 'songs_repository.dart';
 
 class SongsRepositoryImpl implements SongsRepository {
   @override
-  Future<List<Song>> songsByTag(
+  Future<List<Song>> getSongsByTag(
       String tag, String titleStart, int limit) async {
     return (await FirebaseFirestore.instance
             .collection('songs')

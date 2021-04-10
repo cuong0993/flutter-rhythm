@@ -96,98 +96,89 @@ class App extends StatelessWidget {
     final userRepository = UserRepositoryImpl();
     final instrumentsRepository = InstrumentsRepositoryImpl();
     final songsRepository = SongsRepositoryImpl();
-    return MultiRepositoryProvider(
-        providers: [
-          RepositoryProvider<SongsRepository>(
-              create: (context) => songsRepository),
-        ],
-        child: MultiBlocProvider(
-          providers: [
-            BlocProvider<SettingBloc>(
-              create: (context) {
-                return SettingBloc();
-              },
-            ),
-            BlocProvider<AuthenticationBloc>(
-              create: (context) {
-                return AuthenticationBloc(userRepository)
-                  ..add(SignInAnonymouslyEvent());
-              },
-            ),
-            BlocProvider<SongsBloc>(
-              create: (context) {
-                return SongsBloc(
-                  songsRepository: songsRepository,
-                )..add(
-                    LoadMoreSongsByTagNumbers(songTags.asMap().keys.toList()));
-              },
-            ),
-            BlocProvider<UserBloc>(
-              create: (context) {
-                return UserBloc(instrumentsRepository,
-                    userRepository: userRepository);
-              },
-            )
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SettingBloc>(
+          create: (context) {
+            return SettingBloc();
+          },
+        ),
+        BlocProvider<AuthenticationBloc>(
+          create: (context) {
+            return AuthenticationBloc(userRepository)
+              ..add(SignInAnonymouslyEvent());
+          },
+        ),
+        BlocProvider<UserBloc>(
+          create: (context) {
+            return UserBloc(instrumentsRepository,
+                userRepository: userRepository);
+          },
+        )
+      ],
+      child: BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
+        return MaterialApp(
+          title: 'Hit Notes',
+          debugShowCheckedModeBanner: false,
+          locale: state.locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
-          child:
-              BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
-            return MaterialApp(
-              title: 'Hit Notes',
-              debugShowCheckedModeBanner: false,
-              locale: state.locale,
-              localizationsDelegates: const [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: AppLocalizations.supportedLocales,
-              themeMode: state.themeMode,
-              theme: buildTheme(false),
-              darkTheme: buildTheme(true),
-              routes: {
-                Routes.splash: (context) {
-                  return SplashWidget();
-                },
-                Routes.home: (context) {
-                  return HomeWidget();
-                },
-                Routes.gameConfig: (context) {
-                  primaryColor = Theme.of(context).colorScheme.primary;
-                  secondaryColor = Theme.of(context).colorScheme.secondary;
-                  backgroundColor = Theme.of(context).colorScheme.background;
-                  onBackgroundColor =
-                      Theme.of(context).colorScheme.onBackground;
-                  paint = Paint()
-                    ..colorFilter =
-                        ColorFilter.mode(primaryColor, BlendMode.srcIn);
-                  return BlocProvider<GameConfigBloc>(
-                      create: (context) => GameConfigBloc(),
-                      child: GameConfigWidget());
-                },
-                Routes.game: (context) {
-                  return BlocProvider<GameBloc>(
-                      create: (_) => GameBloc(), child: GameWidget());
-                },
-                Routes.account: (context) {
-                  return UserWidget();
-                },
-                Routes.language: (context) {
-                  return LocaleWidget();
-                },
-                Routes.theme: (context) {
-                  return ThemeWidget();
-                },
-                Routes.instrument: (context) {
-                  return InstrumentsWidget();
-                },
-                Routes.setting: (context) {
-                  return SettingsWidget();
-                },
-              },
-            );
-          }),
-        ));
+          supportedLocales: AppLocalizations.supportedLocales,
+          themeMode: state.themeMode,
+          theme: buildTheme(false),
+          darkTheme: buildTheme(true),
+          routes: {
+            Routes.splash: (context) {
+              return SplashWidget();
+            },
+            Routes.home: (context) {
+              return RepositoryProvider<SongsRepository>(
+                  create: (context) => songsRepository,
+                  child: BlocProvider<SongsBloc>(
+                      create: (_) => SongsBloc(
+                            songsRepository: songsRepository,
+                          )..add(LoadMoreSongsByTagNumbers(
+                              songTags.asMap().keys.toList())),
+                      child: HomeWidget()));
+            },
+            Routes.gameConfig: (context) {
+              primaryColor = Theme.of(context).colorScheme.primary;
+              secondaryColor = Theme.of(context).colorScheme.secondary;
+              backgroundColor = Theme.of(context).colorScheme.background;
+              onBackgroundColor = Theme.of(context).colorScheme.onBackground;
+              paint = Paint()
+                ..colorFilter = ColorFilter.mode(primaryColor, BlendMode.srcIn);
+              return BlocProvider<GameConfigBloc>(
+                  create: (context) => GameConfigBloc(),
+                  child: GameConfigWidget());
+            },
+            Routes.game: (context) {
+              return BlocProvider<GameBloc>(
+                  create: (_) => GameBloc(), child: GameWidget());
+            },
+            Routes.account: (context) {
+              return UserWidget();
+            },
+            Routes.language: (context) {
+              return LocaleWidget();
+            },
+            Routes.theme: (context) {
+              return ThemeWidget();
+            },
+            Routes.instrument: (context) {
+              return InstrumentsWidget();
+            },
+            Routes.setting: (context) {
+              return SettingsWidget();
+            },
+          },
+        );
+      }),
+    );
   }
 
   ThemeData buildTheme(bool isDark) {
