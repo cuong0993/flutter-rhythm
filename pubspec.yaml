@@ -8,38 +8,38 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_bloc: ^7.0.0
-  equatable: ^2.0.0
+  built_collection: ^5.0.0
+  built_value: ^8.0.4
   cloud_firestore: ^1.0.4
-  firebase_auth: ^1.0.3
-  firebase_storage: ^8.0.3
   cloud_functions: ^1.0.3
-  flame: ^1.0.0-rc9
   dart_midi:
     git:
       url: https://github.com/cuong0993/dart_midi
-  built_value: ^8.0.4
-  built_collection: ^5.0.0
+  device_info: ^2.0.0
+  equatable: ^2.0.0
+  firebase_auth: ^1.0.3
+  firebase_storage: ^8.0.3
+  flame: ^1.0.0-rc9
+  flutter_bloc: ^7.0.0
   flutter_cache_manager: ^3.0.1
-  shared_preferences: ^2.0.5
+  flutter_facebook_auth: ^3.3.2+2
+  google_sign_in: ^5.0.1
   in_app_review: ^2.0.1
   intl: ^0.17.0
   mailto: ^2.0.0-nullsafety.0
-  url_launcher: ^6.0.3
   package_info: ^2.0.0
-  device_info: ^2.0.0
-  google_sign_in: ^5.0.1
-  flutter_facebook_auth: ^3.3.2+2
   rxdart: ^0.26.0
+  shared_preferences: ^2.0.5
   sprintf: ^6.0.0
+  url_launcher: ^6.0.3
 
 dev_dependencies:
-  pedantic: ^1.9.2
   build_runner: ^1.12.2
   built_value_generator: ^8.0.4
+  pedantic: ^1.9.2
 
 flutter:
-  uses-material-design: true
-  generate: true
   assets:
     - assets/images/
+  generate: true
+  uses-material-design: true
