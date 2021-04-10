@@ -16,6 +16,7 @@ linter:
   rules:
     - always_declare_return_types
     - annotate_overrides
+    - avoid_dynamic_calls
     - avoid_types_on_closure_parameters
     - avoid_void_async
     - avoid_web_libraries_in_flutter
