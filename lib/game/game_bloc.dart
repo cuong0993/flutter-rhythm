@@ -123,7 +123,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       await Future<void>.delayed(const Duration(milliseconds: 500));
       yield LoadingGift();
       final response = await FirebaseFunctions.instance
-          .httpsCallable('getGameReward')
+          .httpsCallable('GetGameReward')
           .call<HttpsCallableResult>({
         'songId': _songId,
         'difficulty': _difficulty,

@@ -66,10 +66,12 @@ Follow the instructions in `android/README.md`.
 
 ### B3. Deploy firebase functions 
 
-Navigate to the `firebase` directory and deploy all functions and configuration using:
+Navigate to the `functions/functions` directory and deploy all functions and configuration using:
 
 ```
-$ firebase deploy --project={projectId}
+$ gcloud functions deploy OnUserSignUp --entry-point functions.OnUserSignUp --runtime java11 --trigger-event providers/firebase.auth/eventTypes/user.create --project={projectId} --update-env-vars "GOOGLE_CLOUD_PROJECT={projectId}" --memory=128MB --timeout=540s;
+$ gcloud functions deploy OnUserDeleted --entry-point functions.OnUserDeleted --runtime java11 --trigger-event providers/firebase.auth/eventTypes/user.delete --project={projectId} --update-env-vars "GOOGLE_CLOUD_PROJECT={projectId}" --memory=128MB --timeout=540s;
+$ gcloud functions deploy GetGameReward --entry-point functions.GetGameReward --runtime java11 --trigger-http --allow-unauthenticated --project={projectId} --update-env-vars "GOOGLE_CLOUD_PROJECT={projectId}" --memory=256MB --timeout=540s;
 ```
 
 ### B4. Synchronize storage 

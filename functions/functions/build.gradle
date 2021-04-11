@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        kotlin_version = '1.4.32'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+group 'com.chaomao.functions'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+configurations {
+    invoker
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "com.google.cloud.functions:functions-framework-api:1.0.4"
+    implementation 'com.google.firebase:firebase-admin:7.1.1'
+    invoker "com.google.cloud.functions.invoker:java-function-invoker:1.0.2"
+}
+
+tasks.register("runFunction", JavaExec) {
+    main = 'com.google.cloud.functions.invoker.runner.Invoker'
+    classpath(configurations.invoker)
+    inputs.files(configurations.runtimeClasspath, sourceSets.main.output)
+    args = [
+            '--classpath', files(configurations.runtimeClasspath, sourceSets.main.output).asPath,
+            '--target', project.findProperty('runFunction.target') ?: "com.hyperaware.bfa.cloudfunctions.HelloWorld",
+            '--port', project.findProperty('runFunction.port') ?: "8080"
+    ]
+}
+
+archivesBaseName = 'app'
