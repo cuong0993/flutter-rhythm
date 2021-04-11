@@ -124,15 +124,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       yield LoadingGift();
       final response = await FirebaseFunctions.instance
           .httpsCallable('GetGameReward')
-          .call<HttpsCallableResult>({
+          .call<Map>({
         'songId': _songId,
         'difficulty': _difficulty,
         'speed': _speed,
         'errorCount': _errorCount,
       });
       final gameReward = serializers.deserializeWith<GameReward>(
-          GameReward.serializer,
-          Map<String, dynamic>.from(response.data as Map<dynamic, dynamic>));
+          GameReward.serializer, Map<String, dynamic>.from(response.data));
       _completeEventController.add(gameReward!);
     } else if (event is RestartGame) {
       _time = 0.0;
