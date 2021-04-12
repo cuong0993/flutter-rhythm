@@ -3,11 +3,10 @@ import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:in_app_review/in_app_review.dart';
-import 'package:mailto/mailto.dart';
 import 'package:package_info/package_info.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 import '../routes.dart';
@@ -84,12 +83,12 @@ class SettingsWidget extends StatelessWidget {
                         'Version name: $version\n'
                         'Device: $deviceInfo\n'
                         '---------------------\n';
-                    final email = Mailto(
+                    final email = Email(
                       body: extendedBody,
                       subject: '[$appName $version] Feedback',
-                      to: ['chaomao.help@gmail.com'],
+                      recipients: ['chaomao.help@gmail.com'],
                     );
-                    await launch('$email');
+                    await FlutterEmailSender.send(email);
                   },
                 ),
                 ListTile(
