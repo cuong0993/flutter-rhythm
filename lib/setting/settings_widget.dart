@@ -19,7 +19,7 @@ class SettingsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Settings',
+            title: Text(AppLocalizations.of(context)!.txt_settings,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
