@@ -9,3 +9,4 @@ keystore.properties
 debug.jks
 release.jks
 google-services.json
+service_account.json

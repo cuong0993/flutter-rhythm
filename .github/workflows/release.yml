@@ -1,0 +1,68 @@
+name: Release
+'on':
+  push:
+    tags:
+      - '*'
+env:
+  flutter_version: 2.0.4
+jobs:
+  build:
+    name: Build
+    runs-on: macos-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v2
+        with:
+          path: /Users/runner/hostedtoolcache/flutter
+          key: '${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}'
+      - name: Set up flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '${{ env.flutter_version }}'
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Add config files
+        env:
+          KEYSTORE_PROPERTIES: '${{ secrets.KEYSTORE_PROPERTIES }}'
+          SERVICE_ACCOUNT: '${{ secrets.SERVICE_ACCOUNT }}'
+          GOOGLE_SERVICES_STAGE_JSON: '${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}'
+          GOOGLE_SERVICES_PROD_JSON: '${{ secrets.GOOGLE_SERVICES_PROD_JSON }}'
+          RELEASE_JKS: '${{ secrets.RELEASE_JKS }}'
+        run: >
+          sudo echo "$KEYSTORE_PROPERTIES" > android/keystore.properties
+
+          sudo echo "$SERVICE_ACCOUNT" > android/service_account.json
+
+          sudo echo $GOOGLE_SERVICES_STAGE_JSON >
+          android/app/src/stage/google-services.json
+
+          sudo echo $GOOGLE_SERVICES_PROD_JSON >
+          android/app/src/prod/google-services.json
+
+          sudo echo "$RELEASE_JKS" | base64 -d > android/release.jks
+      - name: Build stage application
+        run: >-
+          flutter build apk --obfuscate
+          --split-debug-info=build/app/outputs/symbols --flavor stage
+          --split-per-abi
+      - name: Build production application
+        run: >-
+          flutter build apk --obfuscate
+          --split-debug-info=build/app/outputs/symbols --flavor prod
+          --split-per-abi
+      - name: Upload production to Google Play internal track
+        run: >-
+          cd android; fastlane supply --track=internal
+          --apk_paths=../build/app/outputs/flutter-apk/app-armeabi-v7a-prod-release.apk,../build/app/outputs/flutter-apk/app-arm64-v8a-prod-release.apk,../build/app/outputs/flutter-apk/app-x86_64-prod-release.apk
+      - name: Setup firebase
+        uses: pocket-apps/action-setup-firebase@v2
+        with:
+          firebase-token: '${{ secrets.FIREBASE_TOKEN }}'
+      - name: Distribute stage via Firebase
+        run: >-
+          firebase appdistribution:distribute
+          build/app/outputs/flutter-apk/app-armeabi-v7a-stage-release.apk --app
+          "${{ secrets.STAGE_APP_ID }}" --release-notes "$(git log -1
+          --pretty=short)" --groups testers
