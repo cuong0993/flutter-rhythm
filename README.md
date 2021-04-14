@@ -18,9 +18,9 @@ Currently available on the Play store.
 - Play offline without the internet
 - Upload your song and play your way
 
-![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/1_en-US.png)
-![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/2_en-US.png)
-![screenshots](./fastlane/metadata/en-US/images/phoneScreenshots/3_en-US.png)
+![screenshots](./android/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png)
+![screenshots](./android/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png)
+![screenshots](./android/fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png)
 
 # Project Structure
 
