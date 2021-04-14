@@ -47,8 +47,6 @@ $ flutter doctor
 
 ## Backend (Firebase)
 
-The backend is build using Firebase’s `node.js` SDK. All files are provided in the `firebase` folder. To deploy the code create an app and install the firebase CLI (See steps 1 & 2 in [Getting started](https://firebase.google.com/docs/functions/get-started)).
-
 ### B1. Setup sign-in method
 An initial sign-in method needs to be configured.
 
@@ -64,22 +62,12 @@ Next, you’ll need to configure your firebase app for Flutter as described in [
 
 Follow the instructions in `android/README.md`.
 
-### B3. Deploy firebase functions 
+### B3. Deploy functions and synchronize storage
 
-Navigate to the `functions/functions` directory and deploy all functions and configuration using:
-
-```
-$ gcloud functions deploy OnUserSignUp --entry-point functions.OnUserSignUp --runtime java11 --trigger-event providers/firebase.auth/eventTypes/user.create --project={projectId} --update-env-vars "GOOGLE_CLOUD_PROJECT={projectId}" --memory=128MB --timeout=540s;
-$ gcloud functions deploy OnUserDeleted --entry-point functions.OnUserDeleted --runtime java11 --trigger-event providers/firebase.auth/eventTypes/user.delete --project={projectId} --update-env-vars "GOOGLE_CLOUD_PROJECT={projectId}" --memory=128MB --timeout=540s;
-$ gcloud functions deploy GetGameReward --entry-point functions.GetGameReward --runtime java11 --trigger-http --allow-unauthenticated --project={projectId} --update-env-vars "GOOGLE_CLOUD_PROJECT={projectId}" --memory=256MB --timeout=540s;
-```
-
-### B4. Synchronize storage 
-
-Install Google Cloud SDK, navigate to the `storage` directory and synchronize storage files using:
+Install Google Cloud SDK and run:
 
 ```
-$ gsutil -m rsync -r -d ./ gs://{projectId}.appspot.com
+$ ./synchronize_firebase.sh projectId
 ```
 
 ### B4. Synchronize database 
