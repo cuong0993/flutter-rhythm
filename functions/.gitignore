@@ -1,9 +1,0 @@
-.firebaserc
-/.vs/
-/.vscode/
-/functions/lib/
-*.log
-/functions/node_modules/
-
-## Google api key to access play console
-/functions/service_account.json
