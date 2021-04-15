@@ -6,7 +6,7 @@ class Preferences {
 
   static Future<String?> getLocaleName() async {
     final pref = await SharedPreferences.getInstance();
-    pref.getString(preferenceLocaleName);
+    return pref.getString(preferenceLocaleName);
   }
 
   static Future<void> setLocaleName(String localeName) async {
@@ -16,7 +16,7 @@ class Preferences {
 
   static Future<String?> getThemeName() async {
     final pref = await SharedPreferences.getInstance();
-    pref.getString(preferenceThemeName);
+    return pref.getString(preferenceThemeName);
   }
 
   static Future<void> setThemeName(String themeName) async {
