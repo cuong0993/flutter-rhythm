@@ -1,16 +1,17 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import '../preferences.dart';
-
-part 'setting_event.dart';
-part 'setting_state.dart';
+import 'setting_event.dart';
+import 'setting_state.dart';
 
 class SettingBloc extends Bloc<SettingEvent, SettingState> {
-  SettingBloc() : super(SettingState(null, null)) {
+  SettingBloc()
+      : super(SettingState((b) => b
+          ..locale = null
+          ..themeName = null)) {
     loadSetting();
   }
 
@@ -21,10 +22,9 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     final locale = (localeName != null)
         ? Locale.fromSubtags(languageCode: localeName)
         : null;
-    final themeMode = (themeName != null)
-        ? ThemeMode.values.firstWhere((e) => e.toString() == themeName)
-        : null;
-    add(LoadThemeAndLocaleEvent(themeMode, locale));
+    add(LoadThemeAndLocaleEvent((b) => b
+      ..themeName = themeName
+      ..locale = locale));
   }
 
   @override
@@ -33,12 +33,18 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
   ) async* {
     if (event is ChangeLocaleEvent) {
       await Preferences.setLocaleName(event.locale.languageCode);
-      yield SettingState(event.locale, state.themeMode);
+      yield SettingState((b) => b
+        ..locale = event.locale
+        ..themeName = state.themeName);
     } else if (event is ChangeThemeEvent) {
-      await Preferences.setThemeName(event.theme.toString());
-      yield SettingState(state.locale, event.theme);
+      await Preferences.setThemeName(event.themeName);
+      yield SettingState((b) => b
+        ..locale = state.locale
+        ..themeName = event.themeName);
     } else if (event is LoadThemeAndLocaleEvent) {
-      yield SettingState(event.locale, event.theme);
+      yield SettingState((b) => b
+        ..locale = event.locale
+        ..themeName = event.themeName);
     }
   }
 }

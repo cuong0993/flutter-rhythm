@@ -1,28 +1,33 @@
-import 'package:equatable/equatable.dart';
+import 'package:built_value/built_value.dart';
 
 import 'song.dart';
 
-abstract class SongsEvent extends Equatable {
-  const SongsEvent();
+part 'songs_event.g.dart';
 
-  @override
-  List<Object?> get props => [];
+abstract class SongsEvent {}
+
+abstract class LoadMoreSongsByTagNumbers
+    implements
+        Built<LoadMoreSongsByTagNumbers, LoadMoreSongsByTagNumbersBuilder>,
+        SongsEvent {
+  factory LoadMoreSongsByTagNumbers(
+          [Function(LoadMoreSongsByTagNumbersBuilder) updates]) =
+      _$LoadMoreSongsByTagNumbers;
+
+  LoadMoreSongsByTagNumbers._();
+
+  List<int> get tagNumbers;
 }
 
-class LoadMoreSongsByTagNumbers extends SongsEvent {
-  final List<int> tagNumbers;
+abstract class UpdateSongs
+    implements Built<UpdateSongs, UpdateSongsBuilder>, SongsEvent {
+  factory UpdateSongs([Function(UpdateSongsBuilder) updates]) = _$UpdateSongs;
 
-  LoadMoreSongsByTagNumbers(this.tagNumbers);
-}
+  UpdateSongs._();
 
-class UpdateSongs extends SongsEvent {
-  final List<List<Song>> songsByTags;
-  final List<bool> isLoadingMoreByTags;
-  final List<bool> isLoadedByTags;
+  List<List<Song>> get songsByTags;
 
-  const UpdateSongs(
-      this.songsByTags, this.isLoadingMoreByTags, this.isLoadedByTags);
+  List<bool> get isLoadingMoreByTags;
 
-  @override
-  List<Object?> get props => [songsByTags, isLoadingMoreByTags, isLoadedByTags];
+  List<bool> get isLoadedByTags;
 }

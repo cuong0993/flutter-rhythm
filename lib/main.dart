@@ -16,6 +16,7 @@ import 'instrument/instruments_widget.dart';
 import 'routes.dart';
 import 'setting/locale_widget.dart';
 import 'setting/setting_bloc.dart';
+import 'setting/setting_state.dart';
 import 'setting/settings_widget.dart';
 import 'setting/theme_widget.dart';
 import 'simple_bloc_observer.dart';
@@ -128,7 +129,9 @@ class App extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
-          themeMode: state.themeMode,
+          themeMode: ThemeMode.values.firstWhere(
+              (element) => element.toString() == state.themeName,
+              orElse: () => ThemeMode.system),
           theme: buildTheme(false),
           darkTheme: buildTheme(true),
           routes: {
@@ -141,8 +144,8 @@ class App extends StatelessWidget {
                   child: BlocProvider<SongsBloc>(
                       create: (_) => SongsBloc(
                             songsRepository: songsRepository,
-                          )..add(LoadMoreSongsByTagNumbers(
-                              songTags.asMap().keys.toList())),
+                          )..add(LoadMoreSongsByTagNumbers((b) =>
+                              b..tagNumbers = songTags.asMap().keys.toList())),
                       child: HomeWidget()));
             },
             Routes.gameConfig: (context) {

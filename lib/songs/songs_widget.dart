@@ -28,8 +28,9 @@ class SongsWidget extends StatelessWidget {
               onNotification: (notification) {
                 if (notification.metrics.pixels > 0 &&
                     notification.metrics.atEdge) {
-                  BlocProvider.of<SongsBloc>(context)
-                      .add(LoadMoreSongsByTagNumbers([tagNumber]));
+                  BlocProvider.of<SongsBloc>(context).add(
+                      LoadMoreSongsByTagNumbers(
+                          (b) => b..tagNumbers = [tagNumber]));
                 }
                 return true;
               },

@@ -12,6 +12,7 @@ import '../main.dart';
 import '../routes.dart';
 import 'locale_widget.dart';
 import 'setting_bloc.dart';
+import 'setting_state.dart';
 
 class SettingsWidget extends StatelessWidget {
   @override
@@ -43,7 +44,11 @@ class SettingsWidget extends StatelessWidget {
                   ),
                   subtitle: Text(
                       getThemeName(
-                          context, state.themeMode ?? ThemeMode.system),
+                          context,
+                          ThemeMode.values.firstWhere(
+                              (element) =>
+                                  element.toString() == state.themeName,
+                              orElse: () => ThemeMode.system)),
                       style: Theme.of(context).textTheme.subtitle1),
                   onTap: () async {
                     await Navigator.pushNamed(context, Routes.theme);

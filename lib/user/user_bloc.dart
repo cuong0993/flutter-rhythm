@@ -1,15 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 
-import '../instrument/instrument.dart';
 import '../instrument/instruments_repository.dart';
 import '../midi_processor.dart';
+import 'user_event.dart';
 import 'user_repository.dart';
-
-part 'user_event.dart';
-part 'user_state.dart';
+import 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository _userRepository;
@@ -21,7 +18,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         super(UserLoading()) {
     _userRepository.getCurrentUser().listen((user) async {
       final instruments = await _instrumentsRepository.instruments();
-      add(UpdateUser(user, instruments));
+      add(UpdateUser((b) => b
+        ..user = user
+        ..instruments = instruments));
     });
   }
 
@@ -39,7 +38,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
                 (instrument) => instrument.id == event.user.user.instrumentId);
         MidiProcessor.getInstance().changeInstrument(instrument);
       }
-      yield UserUpdated(event.user, event.instruments);
+      yield UserUpdated((b) => b
+        ..user = event.user
+        ..instruments = event.instruments);
     } else if (event is ChangeInstrument) {
       _userRepository.changeInstrument(event.instrumentId);
     }

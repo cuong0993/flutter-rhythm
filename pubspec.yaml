@@ -16,7 +16,6 @@ dependencies:
     git:
       url: https://github.com/cuong0993/dart_midi
   device_info:
-  equatable:
   firebase_auth:
   firebase_storage:
   flame:

@@ -1,20 +1,26 @@
-part of 'user_bloc.dart';
+import 'package:built_value/built_value.dart';
 
-abstract class UserState extends Equatable {
-  const UserState();
+import '../instrument/instrument.dart';
+import 'user_repository.dart';
+
+part 'user_state.g.dart';
+
+abstract class UserState {}
+
+abstract class UserLoading
+    implements Built<UserLoading, UserLoadingBuilder>, UserState {
+  factory UserLoading([Function(UserLoadingBuilder) updates]) = _$UserLoading;
+
+  UserLoading._();
 }
 
-class UserLoading extends UserState {
-  @override
-  List<Object?> get props => [];
-}
+abstract class UserUpdated
+    implements Built<UserUpdated, UserUpdatedBuilder>, UserState {
+  factory UserUpdated([Function(UserUpdatedBuilder) updates]) = _$UserUpdated;
 
-class UserUpdated extends UserState {
-  final AppUser user;
-  final List<Instrument> instruments;
+  UserUpdated._();
 
-  UserUpdated(this.user, this.instruments);
+  AppUser get user;
 
-  @override
-  List<Object?> get props => [user, instruments];
+  List<Instrument> get instruments;
 }

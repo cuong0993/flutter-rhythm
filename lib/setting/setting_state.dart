@@ -1,11 +1,17 @@
-part of 'setting_bloc.dart';
+import 'dart:ui';
 
-class SettingState extends Equatable {
-  final Locale? locale;
-  final ThemeMode? themeMode;
+import 'package:built_value/built_value.dart';
 
-  SettingState(this.locale, this.themeMode);
+part 'setting_state.g.dart';
 
-  @override
-  List<Object?> get props => [locale, themeMode];
+abstract class SettingState
+    implements Built<SettingState, SettingStateBuilder> {
+  factory SettingState([Function(SettingStateBuilder) updates]) =
+      _$SettingState;
+
+  SettingState._();
+
+  Locale? get locale;
+
+  String? get themeName;
 }

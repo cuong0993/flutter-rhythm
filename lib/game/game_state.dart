@@ -1,39 +1,57 @@
-import 'package:equatable/equatable.dart';
+import 'package:built_value/built_value.dart';
 
 import 'tile/tile.dart';
 
-abstract class GameState extends Equatable {
-  const GameState();
+part 'game_state.g.dart';
 
-  @override
-  List<Object?> get props => [];
+abstract class GameState {}
+
+abstract class GameLoading
+    implements Built<GameLoading, GameLoadingBuilder>, GameState {
+  factory GameLoading([Function(GameLoadingBuilder) updates]) = _$GameLoading;
+
+  GameLoading._();
 }
 
-class GameLoading extends GameState {}
+abstract class GameStarted
+    implements Built<GameStarted, GameStartedBuilder>, GameState {
+  factory GameStarted([Function(GameStartedBuilder) updates]) = _$GameStarted;
 
-class GameStarted extends GameState {
-  final List<Tile> tiles;
-  final double speedPixelsPerSecond;
-  final int gameDuration;
+  GameStarted._();
 
-  GameStarted(this.tiles, this.speedPixelsPerSecond, this.gameDuration);
+  List<Tile> get tiles;
 
-  @override
-  List<Object?> get props => [tiles, speedPixelsPerSecond, gameDuration];
+  double get speedPixelsPerSecond;
+
+  int get gameDuration;
 }
 
-class GameUpdated extends GameState {
-  final int tilesCount;
-  final String songName;
-  final double time;
-  final int maxTime;
+abstract class GameUpdated
+    implements Built<GameUpdated, GameUpdatedBuilder>, GameState {
+  factory GameUpdated([Function(GameUpdatedBuilder) updates]) = _$GameUpdated;
 
-  GameUpdated(this.tilesCount, this.songName, this.time, this.maxTime);
+  GameUpdated._();
 
-  @override
-  List<Object?> get props => [tilesCount, songName, time, maxTime];
+  int get tilesCount;
+
+  String get songName;
+
+  double get time;
+
+  int get maxTime;
 }
 
-class LoadingGift extends GameState {}
+abstract class LoadingGift
+    implements Built<LoadingGift, LoadingGiftBuilder>, GameState {
+  factory LoadingGift([Function(LoadingGiftBuilder) updates]) = _$LoadingGift;
 
-class GameNotLoaded extends GameState {}
+  LoadingGift._();
+}
+
+abstract class GameNotLoaded
+    implements Built<GameNotLoaded, GameNotLoadedBuilder>, GameState {
+  factory GameNotLoaded([Function(GameNotLoadedBuilder) updates]) =
+      _$GameNotLoaded;
+
+  GameNotLoaded._();
+}

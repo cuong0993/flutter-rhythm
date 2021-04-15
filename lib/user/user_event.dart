@@ -1,24 +1,29 @@
-part of 'user_bloc.dart';
+import 'package:built_value/built_value.dart';
 
-abstract class UserEvent extends Equatable {
-  const UserEvent();
+import '../instrument/instrument.dart';
+import 'user_repository.dart';
+
+part 'user_event.g.dart';
+
+abstract class UserEvent {}
+
+abstract class UpdateUser
+    implements Built<UpdateUser, UpdateUserBuilder>, UserEvent {
+  factory UpdateUser([Function(UpdateUserBuilder) updates]) = _$UpdateUser;
+
+  UpdateUser._();
+
+  AppUser get user;
+
+  List<Instrument> get instruments;
 }
 
-class UpdateUser extends UserEvent {
-  final AppUser user;
-  final List<Instrument> instruments;
+abstract class ChangeInstrument
+    implements Built<ChangeInstrument, ChangeInstrumentBuilder>, UserEvent {
+  factory ChangeInstrument([Function(ChangeInstrumentBuilder) updates]) =
+      _$ChangeInstrument;
 
-  UpdateUser(this.user, this.instruments);
+  ChangeInstrument._();
 
-  @override
-  List<Object?> get props => [user, instruments];
-}
-
-class ChangeInstrument extends UserEvent {
-  final String instrumentId;
-
-  ChangeInstrument(this.instrumentId);
-
-  @override
-  List<Object?> get props => [instrumentId];
+  String get instrumentId;
 }

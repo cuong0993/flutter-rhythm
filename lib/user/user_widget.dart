@@ -9,6 +9,7 @@ import '../authentication/authentication_event.dart';
 import '../loading_widget.dart';
 import '../main.dart';
 import 'user_bloc.dart';
+import 'user_state.dart';
 
 class UserWidget extends StatelessWidget {
   UserWidget({Key? key}) : super(key: key);

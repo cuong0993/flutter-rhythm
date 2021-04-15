@@ -8,6 +8,7 @@ import '../search/search_widget.dart';
 import '../songs/songs_repository.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_bloc.dart';
+import '../user/user_state.dart';
 
 class HomeWidget extends StatelessWidget {
   @override

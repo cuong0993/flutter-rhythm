@@ -1,33 +1,44 @@
-part of 'setting_bloc.dart';
+import 'dart:ui';
 
-abstract class SettingEvent extends Equatable {
-  const SettingEvent();
+import 'package:built_value/built_value.dart';
+
+part 'setting_event.g.dart';
+
+abstract class SettingEvent {}
+
+abstract class ChangeLocaleEvent
+    implements
+        Built<ChangeLocaleEvent, ChangeLocaleEventBuilder>,
+        SettingEvent {
+  factory ChangeLocaleEvent([Function(ChangeLocaleEventBuilder) updates]) =
+      _$ChangeLocaleEvent;
+
+  ChangeLocaleEvent._();
+
+  Locale get locale;
 }
 
-class ChangeLocaleEvent extends SettingEvent {
-  final Locale locale;
+abstract class ChangeThemeEvent
+    implements Built<ChangeThemeEvent, ChangeThemeEventBuilder>, SettingEvent {
+  factory ChangeThemeEvent([Function(ChangeThemeEventBuilder) updates]) =
+      _$ChangeThemeEvent;
 
-  ChangeLocaleEvent(this.locale);
+  ChangeThemeEvent._();
 
-  @override
-  List<Object?> get props => [locale];
+  String get themeName;
 }
 
-class ChangeThemeEvent extends SettingEvent {
-  final ThemeMode theme;
+abstract class LoadThemeAndLocaleEvent
+    implements
+        Built<LoadThemeAndLocaleEvent, LoadThemeAndLocaleEventBuilder>,
+        SettingEvent {
+  factory LoadThemeAndLocaleEvent(
+          [Function(LoadThemeAndLocaleEventBuilder) updates]) =
+      _$LoadThemeAndLocaleEvent;
 
-  ChangeThemeEvent(this.theme);
+  LoadThemeAndLocaleEvent._();
 
-  @override
-  List<Object?> get props => [theme];
-}
+  String? get themeName;
 
-class LoadThemeAndLocaleEvent extends SettingEvent {
-  final ThemeMode? theme;
-  final Locale? locale;
-
-  LoadThemeAndLocaleEvent(this.theme, this.locale);
-
-  @override
-  List<Object?> get props => [theme, locale];
+  Locale? get locale;
 }

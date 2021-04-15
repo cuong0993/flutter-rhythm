@@ -13,7 +13,7 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
 
   SongsBloc({required SongsRepository songsRepository})
       : _songsRepository = songsRepository,
-        super(const SongsInitial());
+        super(SongsInitial());
 
   @override
   Stream<SongsState> mapEventToState(SongsEvent event) async* {
@@ -21,8 +21,10 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
       yield* _mapLoadMoreSongsToState(event);
     }
     if (event is UpdateSongs) {
-      yield SongsLoaded(
-          event.songsByTags, event.isLoadingMoreByTags, event.isLoadedByTags);
+      yield SongsLoaded((b) => b
+        ..songsByTags = event.songsByTags
+        ..isLoadingMoreByTags = event.isLoadingMoreByTags
+        ..isLoadedByTags = event.isLoadedByTags);
     }
   }
 
@@ -41,14 +43,20 @@ class SongsBloc extends Bloc<SongsEvent, SongsState> {
     event.tagNumbers.forEach((tag) async {
       if (!isLoadingMoreByTags[tag] && !isLoadedByTags[tag]) {
         isLoadingMoreByTags[tag] = true;
-        add(UpdateSongs(songsByTags, isLoadingMoreByTags, isLoadedByTags));
+        add(UpdateSongs((b) => b
+          ..songsByTags = songsByTags
+          ..isLoadingMoreByTags = isLoadingMoreByTags
+          ..isLoadedByTags = isLoadedByTags));
         final songs = await _songsRepository.getSongsByTag(songTags[tag],
             songsByTags[tag].isEmpty ? '' : songsByTags[tag].last.title, 20);
 
         songsByTags[tag] += songs;
         isLoadingMoreByTags[tag] = false;
         isLoadedByTags[tag] = songs.isEmpty;
-        add(UpdateSongs(songsByTags, isLoadingMoreByTags, isLoadedByTags));
+        add(UpdateSongs((b) => b
+          ..songsByTags = songsByTags
+          ..isLoadingMoreByTags = isLoadingMoreByTags
+          ..isLoadedByTags = isLoadedByTags));
       }
     });
   }

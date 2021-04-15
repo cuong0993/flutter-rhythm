@@ -1,18 +1,38 @@
-import 'package:equatable/equatable.dart';
+import 'package:built_value/built_value.dart';
 
-abstract class AuthenticationEvent extends Equatable {}
+part 'authentication_event.g.dart';
 
-class SignInAnonymouslyEvent extends AuthenticationEvent {
-  @override
-  List<Object?> get props => [];
+abstract class AuthenticationEvent {}
+
+abstract class SignInAnonymouslyEvent
+    implements
+        Built<SignInAnonymouslyEvent, SignInAnonymouslyEventBuilder>,
+        AuthenticationEvent {
+  factory SignInAnonymouslyEvent(
+          [Function(SignInAnonymouslyEventBuilder) updates]) =
+      _$SignInAnonymouslyEvent;
+
+  SignInAnonymouslyEvent._();
 }
 
-class SignInWithGoogleEvent extends AuthenticationEvent {
-  @override
-  List<Object?> get props => [];
+abstract class SignInWithGoogleEvent
+    implements
+        Built<SignInWithGoogleEvent, SignInWithGoogleEventBuilder>,
+        AuthenticationEvent {
+  factory SignInWithGoogleEvent(
+          [Function(SignInWithGoogleEventBuilder) updates]) =
+      _$SignInWithGoogleEvent;
+
+  SignInWithGoogleEvent._();
 }
 
-class SignInWithFacebookEvent extends AuthenticationEvent {
-  @override
-  List<Object?> get props => [];
+abstract class SignInWithFacebookEvent
+    implements
+        Built<SignInWithFacebookEvent, SignInWithFacebookEventBuilder>,
+        AuthenticationEvent {
+  factory SignInWithFacebookEvent(
+          [Function(SignInWithFacebookEventBuilder) updates]) =
+      _$SignInWithFacebookEvent;
+
+  SignInWithFacebookEvent._();
 }

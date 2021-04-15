@@ -4,6 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../main.dart';
 import 'setting_bloc.dart';
+import 'setting_event.dart';
+import 'setting_state.dart';
 
 class ThemeWidget extends StatelessWidget {
   @override
@@ -21,14 +23,14 @@ class ThemeWidget extends StatelessWidget {
               controller: scrollController,
               itemCount: ThemeMode.values.length,
               itemBuilder: (context, index) {
-                return RadioListTile<ThemeMode>(
+                return RadioListTile<String>(
                   title: Text(getThemeName(context, ThemeMode.values[index]),
                       style: Theme.of(context).textTheme.headline6),
-                  value: ThemeMode.values[index],
-                  groupValue: state.themeMode,
+                  value: ThemeMode.values[index].toString(),
+                  groupValue: state.themeName,
                   onChanged: (value) {
                     BlocProvider.of<SettingBloc>(context)
-                        .add(ChangeThemeEvent(value!));
+                        .add(ChangeThemeEvent((b) => b..themeName = value!));
                   },
                 );
               },

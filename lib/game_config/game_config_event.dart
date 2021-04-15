@@ -1,23 +1,32 @@
-part of 'game_config_bloc.dart';
+import 'package:built_value/built_value.dart';
 
-abstract class GameConfigEvent extends Equatable {
-  const GameConfigEvent();
+part 'game_config_event.g.dart';
+
+abstract class GameConfigEvent {}
+
+abstract class GameConfigChangeDifficultyEvent
+    implements
+        Built<GameConfigChangeDifficultyEvent,
+            GameConfigChangeDifficultyEventBuilder>,
+        GameConfigEvent {
+  factory GameConfigChangeDifficultyEvent(
+          [Function(GameConfigChangeDifficultyEventBuilder) updates]) =
+      _$GameConfigChangeDifficultyEvent;
+
+  GameConfigChangeDifficultyEvent._();
+
+  int get difficulty;
 }
 
-class GameConfigChangeDifficultyEvent extends GameConfigEvent {
-  final int difficulty;
+abstract class GameConfigChangeSpeedEvent
+    implements
+        Built<GameConfigChangeSpeedEvent, GameConfigChangeSpeedEventBuilder>,
+        GameConfigEvent {
+  factory GameConfigChangeSpeedEvent(
+          [Function(GameConfigChangeSpeedEventBuilder) updates]) =
+      _$GameConfigChangeSpeedEvent;
 
-  const GameConfigChangeDifficultyEvent(this.difficulty);
+  GameConfigChangeSpeedEvent._();
 
-  @override
-  List<Object?> get props => [difficulty];
-}
-
-class GameConfigChangeSpeedEvent extends GameConfigEvent {
-  final int speed;
-
-  const GameConfigChangeSpeedEvent(this.speed);
-
-  @override
-  List<Object?> get props => [speed];
+  int get speed;
 }

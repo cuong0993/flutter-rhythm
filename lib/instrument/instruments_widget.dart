@@ -7,6 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../loading_widget.dart';
 import '../main.dart';
 import '../user/user_bloc.dart';
+import '../user/user_event.dart';
+import '../user/user_state.dart';
 
 class InstrumentsWidget extends StatelessWidget {
   InstrumentsWidget({Key? key}) : super(key: key);
@@ -36,8 +38,8 @@ class InstrumentsWidget extends StatelessWidget {
                     value: instrument.id,
                     groupValue: state.user.user.instrumentId,
                     onChanged: (value) {
-                      BlocProvider.of<UserBloc>(context)
-                          .add(ChangeInstrument(value!));
+                      BlocProvider.of<UserBloc>(context).add(
+                          ChangeInstrument((b) => b..instrumentId = value!));
                     },
                   );
                 },

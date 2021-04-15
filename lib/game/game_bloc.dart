@@ -91,9 +91,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       final soundLoadedStream = MidiProcessor.getInstance().soundLoadedStream;
       await for (final value in soundLoadedStream) {
         if (value) {
-          yield GameStarted(tiles, _speedDpsPerSecond, _maxTime);
+          yield GameStarted((b) => b
+            ..tiles = tiles
+            ..speedPixelsPerSecond = _speedDpsPerSecond
+            ..gameDuration = _maxTime);
           await Future<void>.delayed(const Duration(milliseconds: 500));
-          yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
+          yield GameUpdated((b) => b
+            ..tilesCount = _tilesCount
+            ..songName = _songName
+            ..time = _time
+            ..maxTime = _maxTime);
           return;
         }
       }
@@ -103,7 +110,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         await MidiProcessor.getInstance().playNote(tile.note);
         _tilesCount += 1;
         _time = (0.0 - tile.initialY) / _speedDpsPerSecond;
-        yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
+        yield GameUpdated((b) => b
+          ..tilesCount = _tilesCount
+          ..songName = _songName
+          ..time = _time
+          ..maxTime = _maxTime);
         if (tile.y == pauseY) {
           _errorCount++;
           _guideEventController.add('txt_too_late');
@@ -138,9 +149,16 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       _tilesCount = 0;
       _errorCount = 0;
       final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
-      yield GameStarted(tiles, _speedDpsPerSecond, _maxTime);
+      yield GameStarted((b) => b
+        ..tiles = tiles
+        ..speedPixelsPerSecond = _speedDpsPerSecond
+        ..gameDuration = _maxTime);
       await Future<void>.delayed(const Duration(milliseconds: 100));
-      yield GameUpdated(_tilesCount, _songName, _time, _maxTime);
+      yield GameUpdated((b) => b
+        ..tilesCount = _tilesCount
+        ..songName = _songName
+        ..time = _time
+        ..maxTime = _maxTime);
     }
   }
 }

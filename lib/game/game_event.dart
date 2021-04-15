@@ -1,53 +1,58 @@
-import 'package:equatable/equatable.dart';
+import 'package:built_value/built_value.dart';
 
 import '../game/tile/tile.dart';
 import '../songs/song.dart';
 
-abstract class GameEvent extends Equatable {
-  const GameEvent();
+part 'game_event.g.dart';
 
-  @override
-  List<Object?> get props => [];
+abstract class GameEvent {}
+
+abstract class StartGame
+    implements Built<StartGame, StartGameBuilder>, GameEvent {
+  Song get song;
+
+  int get difficulty;
+
+  int get speed;
+
+  factory StartGame([Function(StartGameBuilder) updates]) = _$StartGame;
+
+  StartGame._();
 }
 
-class StartGame extends GameEvent {
-  final Song song;
-  final int difficulty;
-  final int speed;
+abstract class RestartGame
+    implements Built<RestartGame, RestartGameBuilder>, GameEvent {
+  String get type;
 
-  const StartGame(this.song, this.difficulty, this.speed);
+  factory RestartGame([Function(RestartGameBuilder) updates]) = _$RestartGame;
 
-  @override
-  List<Object?> get props => [song, difficulty, speed];
-
-  @override
-  String toString() => 'StartGame { song: $song }';
+  RestartGame._();
 }
 
-class RestartGame extends GameEvent {}
+abstract class PauseGame
+    implements Built<PauseGame, PauseGameBuilder>, GameEvent {
+  String get type;
 
-class PauseGame extends GameEvent {
-  const PauseGame();
+  factory PauseGame([Function(PauseGameBuilder) updates]) = _$PauseGame;
 
-  @override
-  List<Object?> get props => [];
+  PauseGame._();
 }
 
-class CompleteGame extends GameEvent {
-  const CompleteGame();
+abstract class CompleteGame
+    implements Built<CompleteGame, CompleteGameBuilder>, GameEvent {
+  String get type;
 
-  @override
-  List<Object?> get props => [];
+  factory CompleteGame([Function(CompleteGameBuilder) updates]) =
+      _$CompleteGame;
+
+  CompleteGame._();
 }
 
-class TileTouched extends GameEvent {
-  final Tile? tile;
+abstract class TileTouched
+    implements Built<TileTouched, TileTouchedBuilder>, GameEvent {
+  Tile? get tile;
 
-  const TileTouched(this.tile);
+  factory TileTouched([Function(TileTouchedBuilder) updates]) = _$TileTouched;
 
-  @override
-  List<Object?> get props => [tile];
-
-  @override
-  String toString() => 'TileTouched { tile: $tile }';
+  TileTouched._();
 }

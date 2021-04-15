@@ -58,11 +58,12 @@ class _GameWidgetState extends State<GameWidget> {
     }
 
     void _onTileTouched(Tile? tile) {
-      BlocProvider.of<GameBloc>(context).add(TileTouched(tile));
+      BlocProvider.of<GameBloc>(context)
+          .add(TileTouched((b) => b..tile = tile));
     }
 
     void _onCompleted() {
-      BlocProvider.of<GameBloc>(context).add(const CompleteGame());
+      BlocProvider.of<GameBloc>(context).add(CompleteGame());
     }
 
     return WillPopScope(onWillPop: () async {
@@ -78,8 +79,10 @@ class _GameWidgetState extends State<GameWidget> {
           final song = arguments['song'] as Song;
           final difficulty = arguments['difficulty'] as int;
           final speed = arguments['speed'] as int;
-          BlocProvider.of<GameBloc>(context)
-              .add(StartGame(song, difficulty, speed));
+          BlocProvider.of<GameBloc>(context).add(StartGame((b) => b
+            ..song = song.toBuilder()
+            ..difficulty = difficulty
+            ..speed = speed));
           return const LoadingSoundWidget();
         } else if (state is GameStarted) {
           widget._game.start(state.tiles, state.speedPixelsPerSecond,
@@ -128,7 +131,7 @@ class _GameWidgetState extends State<GameWidget> {
                                       Icons.pause_circle_outline_rounded),
                                   onPressed: () {
                                     BlocProvider.of<GameBloc>(context)
-                                        .add(const PauseGame());
+                                        .add(PauseGame());
                                   },
                                 ),
                                 Text((state).tilesCount.toString(),

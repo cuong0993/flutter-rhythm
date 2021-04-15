@@ -6,6 +6,8 @@ import 'package:sprintf/sprintf.dart';
 import '../routes.dart';
 import '../songs/song.dart';
 import 'game_config_bloc.dart';
+import 'game_config_event.dart';
+import 'game_config_state.dart';
 
 class GameConfigWidget extends StatelessWidget {
   @override
@@ -40,7 +42,8 @@ class GameConfigWidget extends StatelessWidget {
                                 AppLocalizations.of(context)!.txt_fingers, [2]),
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context).add(
-                                  const GameConfigChangeDifficultyEvent(0));
+                                  GameConfigChangeDifficultyEvent(
+                                      (b) => b..difficulty = 0));
                             },
                           ),
                           const SizedBox(width: 8),
@@ -51,7 +54,8 @@ class GameConfigWidget extends StatelessWidget {
                                 AppLocalizations.of(context)!.txt_fingers, [3]),
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context).add(
-                                  const GameConfigChangeDifficultyEvent(1));
+                                  GameConfigChangeDifficultyEvent(
+                                      (b) => b..difficulty = 1));
                             },
                           ),
                           const SizedBox(width: 8),
@@ -62,7 +66,8 @@ class GameConfigWidget extends StatelessWidget {
                                 AppLocalizations.of(context)!.txt_fingers, [4]),
                             onTap: () {
                               BlocProvider.of<GameConfigBloc>(context).add(
-                                  const GameConfigChangeDifficultyEvent(2));
+                                  GameConfigChangeDifficultyEvent(
+                                      (b) => b..difficulty = 2));
                             },
                           ),
                           const SizedBox(width: 8)
@@ -87,8 +92,9 @@ class GameConfigWidget extends StatelessWidget {
                             text: AppLocalizations.of(context)!.txt_slow,
                             caption: 'x0.75',
                             onTap: () {
-                              BlocProvider.of<GameConfigBloc>(context)
-                                  .add(const GameConfigChangeSpeedEvent(0));
+                              BlocProvider.of<GameConfigBloc>(context).add(
+                                  GameConfigChangeSpeedEvent(
+                                      (b) => b..speed = 0));
                             },
                           ),
                           const SizedBox(width: 8),
@@ -97,8 +103,9 @@ class GameConfigWidget extends StatelessWidget {
                             text: AppLocalizations.of(context)!.txt_normal,
                             caption: 'x1.0',
                             onTap: () {
-                              BlocProvider.of<GameConfigBloc>(context)
-                                  .add(const GameConfigChangeSpeedEvent(1));
+                              BlocProvider.of<GameConfigBloc>(context).add(
+                                  GameConfigChangeSpeedEvent(
+                                      (b) => b..speed = 1));
                             },
                           ),
                           const SizedBox(width: 8),
@@ -107,8 +114,9 @@ class GameConfigWidget extends StatelessWidget {
                             text: AppLocalizations.of(context)!.txt_fast,
                             caption: 'x1.25',
                             onTap: () {
-                              BlocProvider.of<GameConfigBloc>(context)
-                                  .add(const GameConfigChangeSpeedEvent(2));
+                              BlocProvider.of<GameConfigBloc>(context).add(
+                                  GameConfigChangeSpeedEvent(
+                                      (b) => b..speed = 2));
                             },
                           ),
                           const SizedBox(width: 8)

@@ -1,24 +1,33 @@
-import 'package:equatable/equatable.dart';
+import 'package:built_value/built_value.dart';
 
-abstract class AuthenticationState extends Equatable {
-  const AuthenticationState();
+part 'authentication_state.g.dart';
 
-  @override
-  List<Object?> get props => [];
+abstract class AuthenticationState {}
+
+abstract class Uninitialized
+    implements Built<Uninitialized, UninitializedBuilder>, AuthenticationState {
+  factory Uninitialized([Function(UninitializedBuilder) updates]) =
+      _$Uninitialized;
+
+  Uninitialized._();
 }
 
-class Uninitialized extends AuthenticationState {}
+abstract class Authenticated
+    implements Built<Authenticated, AuthenticatedBuilder>, AuthenticationState {
+  String get type;
 
-class Authenticated extends AuthenticationState {
-  final String type;
+  factory Authenticated([Function(AuthenticatedBuilder) updates]) =
+      _$Authenticated;
 
-  const Authenticated(this.type);
-
-  @override
-  List<Object?> get props => [type];
-
-  @override
-  String toString() => 'Authenticated { type: $type }';
+  Authenticated._();
 }
 
-class Unauthenticated extends AuthenticationState {}
+abstract class Unauthenticated
+    implements
+        Built<Unauthenticated, UnauthenticatedBuilder>,
+        AuthenticationState {
+  factory Unauthenticated([Function(UnauthenticatedBuilder) updates]) =
+      _$Unauthenticated;
+
+  Unauthenticated._();
+}

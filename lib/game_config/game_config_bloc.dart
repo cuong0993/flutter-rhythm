@@ -1,22 +1,28 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 
-part 'game_config_event.dart';
-part 'game_config_state.dart';
+import 'game_config_event.dart';
+import 'game_config_state.dart';
 
 class GameConfigBloc extends Bloc<GameConfigEvent, GameConfigState> {
-  GameConfigBloc() : super(const GameConfigState(1, 1));
+  GameConfigBloc()
+      : super(GameConfigState((b) => b
+          ..speed = 1
+          ..difficulty = 1));
 
   @override
   Stream<GameConfigState> mapEventToState(
     GameConfigEvent event,
   ) async* {
     if (event is GameConfigChangeDifficultyEvent) {
-      yield GameConfigState(event.difficulty, state.speed);
+      yield GameConfigState((b) => b
+        ..difficulty = event.difficulty
+        ..speed = state.speed);
     } else if (event is GameConfigChangeSpeedEvent) {
-      yield GameConfigState(state.difficulty, event.speed);
+      yield GameConfigState((b) => b
+        ..difficulty = state.difficulty
+        ..speed = event.speed);
     }
   }
 }

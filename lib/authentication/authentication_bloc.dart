@@ -38,7 +38,7 @@ class AuthenticationBloc
         await FirebaseAuth.instance.signInAnonymously();
       }
       _userRepository.subscribeUser();
-      yield const Authenticated('Anonymous');
+      yield Authenticated((b) => b..type = 'Anonymous');
     } catch (_) {
       yield Unauthenticated();
     }
@@ -54,7 +54,7 @@ class AuthenticationBloc
       );
       await _tryToLinkWithCurrentUser(credential);
       _userRepository.subscribeUser();
-      yield const Authenticated('Google');
+      yield Authenticated((b) => b..type = 'Google');
     } on Exception {
       yield Unauthenticated();
     }
@@ -68,7 +68,7 @@ class AuthenticationBloc
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);
       _userRepository.subscribeUser();
-      yield const Authenticated('Facebook');
+      yield Authenticated((b) => b..type = 'Facebook');
     } on Exception {
       yield Unauthenticated();
     }

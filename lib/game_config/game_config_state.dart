@@ -1,11 +1,15 @@
-part of 'game_config_bloc.dart';
+import 'package:built_value/built_value.dart';
 
-class GameConfigState extends Equatable {
-  final int difficulty;
-  final int speed;
+part 'game_config_state.g.dart';
 
-  const GameConfigState(this.difficulty, this.speed);
+abstract class GameConfigState
+    implements Built<GameConfigState, GameConfigStateBuilder> {
+  factory GameConfigState([Function(GameConfigStateBuilder) updates]) =
+      _$GameConfigState;
 
-  @override
-  List<Object?> get props => [difficulty, speed];
+  GameConfigState._();
+
+  int get difficulty;
+
+  int get speed;
 }

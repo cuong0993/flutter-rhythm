@@ -1,18 +1,28 @@
+import 'package:built_value/built_value.dart';
+
 import 'song.dart';
 
-abstract class SongsState {
-  const SongsState();
+part 'songs_state.g.dart';
+
+abstract class SongsState {}
+
+abstract class SongsInitial
+    implements Built<SongsInitial, SongsInitialBuilder>, SongsState {
+  factory SongsInitial([Function(SongsInitialBuilder) updates]) =
+      _$SongsInitial;
+
+  SongsInitial._();
 }
 
-class SongsInitial extends SongsState {
-  const SongsInitial();
-}
+abstract class SongsLoaded
+    implements Built<SongsLoaded, SongsLoadedBuilder>, SongsState {
+  factory SongsLoaded([Function(SongsLoadedBuilder) updates]) = _$SongsLoaded;
 
-class SongsLoaded extends SongsState {
-  final List<List<Song>> songsByTags;
-  final List<bool> isLoadingMoreByTags;
-  final List<bool> isLoadedByTags;
+  SongsLoaded._();
 
-  const SongsLoaded(
-      this.songsByTags, this.isLoadingMoreByTags, this.isLoadedByTags);
+  List<List<Song>> get songsByTags;
+
+  List<bool> get isLoadingMoreByTags;
+
+  List<bool> get isLoadedByTags;
 }
