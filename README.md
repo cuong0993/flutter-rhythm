@@ -1,6 +1,6 @@
 # Hit Notes - Play instruments
 
-![Analyze, build and distribute Android application](https://github.com/cuong0993/HitNotes/workflows/Analyze,%20build%20and%20distribute%20Android%20application/badge.svg)
+[![Build](https://github.com/cuong0993/HitNotes/actions/workflows/build.yml/badge.svg)](https://github.com/cuong0993/HitNotes/actions/workflows/build.yml)
 
 Rhythm-based mobile game. Even you don't have any basic knowledge of music instruments, you still can play with falling notes in the game! ✨
 
@@ -31,9 +31,7 @@ different native apps are in `android` and `ios`.
 
 Extra project assets are in `assets`.
 
-Firebase config files and cloud functions are in the `firebase` folder.
-
-Google Play store listing files are in the `fastlane` folder.
+Firebase config files and cloud functions are in the `functions` folder.
 
 # Prerequisites & Getting Started
 
