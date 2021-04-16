@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../serializers.dart';
 import 'instrument.dart';
 import 'instruments_repository.dart';
+
+final instrumentRepositoryProvider =
+    Provider<InstrumentsRepository>((ref) => InstrumentsRepositoryImpl());
 
 class InstrumentsRepositoryImpl implements InstrumentsRepository {
   @override

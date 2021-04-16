@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
 import '../routes.dart';
 import '../songs/song.dart';
 import '../songs/song_widget.dart';
-import '../songs/songs_repository.dart';
+import '../songs/songs_repository_impl.dart';
 
 class SearchWidget extends SearchDelegate<void> {
-  SearchWidget({required SongsRepository songsRepository})
-      : _songsRepository = songsRepository;
-
-  final SongsRepository _songsRepository;
-
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -46,7 +42,7 @@ class SearchWidget extends SearchDelegate<void> {
       return Container();
     } else {
       return FutureBuilder<List<Song>>(
-          future: _songsRepository.searchSongs(query),
+          future: context.read(songRepositoryProvider).searchSongs(query),
           builder: (context, recentList) {
             if (recentList.connectionState == ConnectionState.done) {
               final songs = recentList.requireData;

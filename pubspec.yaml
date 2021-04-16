@@ -19,9 +19,9 @@ dependencies:
   firebase_auth:
   firebase_storage:
   flame:
-  flutter_bloc:
   flutter_cache_manager:
   flutter_facebook_auth:
+  flutter_riverpod:
   google_sign_in:
   in_app_review:
   intl:

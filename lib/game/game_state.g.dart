@@ -66,7 +66,9 @@ class _$GameStarted extends GameStarted {
   @override
   final double speedPixelsPerSecond;
   @override
-  final int gameDuration;
+  final int duration;
+  @override
+  final String songName;
 
   factory _$GameStarted([void Function(GameStartedBuilder)? updates]) =>
       (new GameStartedBuilder()..update(updates)).build();
@@ -74,13 +76,14 @@ class _$GameStarted extends GameStarted {
   _$GameStarted._(
       {required this.tiles,
       required this.speedPixelsPerSecond,
-      required this.gameDuration})
+      required this.duration,
+      required this.songName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(tiles, 'GameStarted', 'tiles');
     BuiltValueNullFieldError.checkNotNull(
         speedPixelsPerSecond, 'GameStarted', 'speedPixelsPerSecond');
-    BuiltValueNullFieldError.checkNotNull(
-        gameDuration, 'GameStarted', 'gameDuration');
+    BuiltValueNullFieldError.checkNotNull(duration, 'GameStarted', 'duration');
+    BuiltValueNullFieldError.checkNotNull(songName, 'GameStarted', 'songName');
   }
 
   @override
@@ -96,13 +99,16 @@ class _$GameStarted extends GameStarted {
     return other is GameStarted &&
         tiles == other.tiles &&
         speedPixelsPerSecond == other.speedPixelsPerSecond &&
-        gameDuration == other.gameDuration;
+        duration == other.duration &&
+        songName == other.songName;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, tiles.hashCode), speedPixelsPerSecond.hashCode),
-        gameDuration.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, tiles.hashCode), speedPixelsPerSecond.hashCode),
+            duration.hashCode),
+        songName.hashCode));
   }
 
   @override
@@ -110,7 +116,8 @@ class _$GameStarted extends GameStarted {
     return (newBuiltValueToStringHelper('GameStarted')
           ..add('tiles', tiles)
           ..add('speedPixelsPerSecond', speedPixelsPerSecond)
-          ..add('gameDuration', gameDuration))
+          ..add('duration', duration)
+          ..add('songName', songName))
         .toString();
   }
 }
@@ -127,9 +134,13 @@ class GameStartedBuilder implements Builder<GameStarted, GameStartedBuilder> {
   set speedPixelsPerSecond(double? speedPixelsPerSecond) =>
       _$this._speedPixelsPerSecond = speedPixelsPerSecond;
 
-  int? _gameDuration;
-  int? get gameDuration => _$this._gameDuration;
-  set gameDuration(int? gameDuration) => _$this._gameDuration = gameDuration;
+  int? _duration;
+  int? get duration => _$this._duration;
+  set duration(int? duration) => _$this._duration = duration;
+
+  String? _songName;
+  String? get songName => _$this._songName;
+  set songName(String? songName) => _$this._songName = songName;
 
   GameStartedBuilder();
 
@@ -138,7 +149,8 @@ class GameStartedBuilder implements Builder<GameStarted, GameStartedBuilder> {
     if ($v != null) {
       _tiles = $v.tiles;
       _speedPixelsPerSecond = $v.speedPixelsPerSecond;
-      _gameDuration = $v.gameDuration;
+      _duration = $v.duration;
+      _songName = $v.songName;
       _$v = null;
     }
     return this;
@@ -163,130 +175,10 @@ class GameStartedBuilder implements Builder<GameStarted, GameStartedBuilder> {
                 tiles, 'GameStarted', 'tiles'),
             speedPixelsPerSecond: BuiltValueNullFieldError.checkNotNull(
                 speedPixelsPerSecond, 'GameStarted', 'speedPixelsPerSecond'),
-            gameDuration: BuiltValueNullFieldError.checkNotNull(
-                gameDuration, 'GameStarted', 'gameDuration'));
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GameUpdated extends GameUpdated {
-  @override
-  final int tilesCount;
-  @override
-  final String songName;
-  @override
-  final double time;
-  @override
-  final int maxTime;
-
-  factory _$GameUpdated([void Function(GameUpdatedBuilder)? updates]) =>
-      (new GameUpdatedBuilder()..update(updates)).build();
-
-  _$GameUpdated._(
-      {required this.tilesCount,
-      required this.songName,
-      required this.time,
-      required this.maxTime})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        tilesCount, 'GameUpdated', 'tilesCount');
-    BuiltValueNullFieldError.checkNotNull(songName, 'GameUpdated', 'songName');
-    BuiltValueNullFieldError.checkNotNull(time, 'GameUpdated', 'time');
-    BuiltValueNullFieldError.checkNotNull(maxTime, 'GameUpdated', 'maxTime');
-  }
-
-  @override
-  GameUpdated rebuild(void Function(GameUpdatedBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GameUpdatedBuilder toBuilder() => new GameUpdatedBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GameUpdated &&
-        tilesCount == other.tilesCount &&
-        songName == other.songName &&
-        time == other.time &&
-        maxTime == other.maxTime;
-  }
-
-  @override
-  int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, tilesCount.hashCode), songName.hashCode), time.hashCode),
-        maxTime.hashCode));
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper('GameUpdated')
-          ..add('tilesCount', tilesCount)
-          ..add('songName', songName)
-          ..add('time', time)
-          ..add('maxTime', maxTime))
-        .toString();
-  }
-}
-
-class GameUpdatedBuilder implements Builder<GameUpdated, GameUpdatedBuilder> {
-  _$GameUpdated? _$v;
-
-  int? _tilesCount;
-  int? get tilesCount => _$this._tilesCount;
-  set tilesCount(int? tilesCount) => _$this._tilesCount = tilesCount;
-
-  String? _songName;
-  String? get songName => _$this._songName;
-  set songName(String? songName) => _$this._songName = songName;
-
-  double? _time;
-  double? get time => _$this._time;
-  set time(double? time) => _$this._time = time;
-
-  int? _maxTime;
-  int? get maxTime => _$this._maxTime;
-  set maxTime(int? maxTime) => _$this._maxTime = maxTime;
-
-  GameUpdatedBuilder();
-
-  GameUpdatedBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _tilesCount = $v.tilesCount;
-      _songName = $v.songName;
-      _time = $v.time;
-      _maxTime = $v.maxTime;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GameUpdated other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GameUpdated;
-  }
-
-  @override
-  void update(void Function(GameUpdatedBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  _$GameUpdated build() {
-    final _$result = _$v ??
-        new _$GameUpdated._(
-            tilesCount: BuiltValueNullFieldError.checkNotNull(
-                tilesCount, 'GameUpdated', 'tilesCount'),
+            duration: BuiltValueNullFieldError.checkNotNull(
+                duration, 'GameStarted', 'duration'),
             songName: BuiltValueNullFieldError.checkNotNull(
-                songName, 'GameUpdated', 'songName'),
-            time: BuiltValueNullFieldError.checkNotNull(
-                time, 'GameUpdated', 'time'),
-            maxTime: BuiltValueNullFieldError.checkNotNull(
-                maxTime, 'GameUpdated', 'maxTime'));
+                songName, 'GameStarted', 'songName'));
     replace(_$result);
     return _$result;
   }
@@ -346,56 +238,92 @@ class LoadingGiftBuilder implements Builder<LoadingGift, LoadingGiftBuilder> {
   }
 }
 
-class _$GameNotLoaded extends GameNotLoaded {
-  factory _$GameNotLoaded([void Function(GameNotLoadedBuilder)? updates]) =>
-      (new GameNotLoadedBuilder()..update(updates)).build();
+class _$GameCompleted extends GameCompleted {
+  @override
+  final GameReward gameReward;
 
-  _$GameNotLoaded._() : super._();
+  factory _$GameCompleted([void Function(GameCompletedBuilder)? updates]) =>
+      (new GameCompletedBuilder()..update(updates)).build();
+
+  _$GameCompleted._({required this.gameReward}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        gameReward, 'GameCompleted', 'gameReward');
+  }
 
   @override
-  GameNotLoaded rebuild(void Function(GameNotLoadedBuilder) updates) =>
+  GameCompleted rebuild(void Function(GameCompletedBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GameNotLoadedBuilder toBuilder() => new GameNotLoadedBuilder()..replace(this);
+  GameCompletedBuilder toBuilder() => new GameCompletedBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GameNotLoaded;
+    return other is GameCompleted && gameReward == other.gameReward;
   }
 
   @override
   int get hashCode {
-    return 988970491;
+    return $jf($jc(0, gameReward.hashCode));
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper('GameNotLoaded').toString();
+    return (newBuiltValueToStringHelper('GameCompleted')
+          ..add('gameReward', gameReward))
+        .toString();
   }
 }
 
-class GameNotLoadedBuilder
-    implements Builder<GameNotLoaded, GameNotLoadedBuilder> {
-  _$GameNotLoaded? _$v;
+class GameCompletedBuilder
+    implements Builder<GameCompleted, GameCompletedBuilder> {
+  _$GameCompleted? _$v;
 
-  GameNotLoadedBuilder();
+  GameRewardBuilder? _gameReward;
+  GameRewardBuilder get gameReward =>
+      _$this._gameReward ??= new GameRewardBuilder();
+  set gameReward(GameRewardBuilder? gameReward) =>
+      _$this._gameReward = gameReward;
 
-  @override
-  void replace(GameNotLoaded other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GameNotLoaded;
+  GameCompletedBuilder();
+
+  GameCompletedBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _gameReward = $v.gameReward.toBuilder();
+      _$v = null;
+    }
+    return this;
   }
 
   @override
-  void update(void Function(GameNotLoadedBuilder)? updates) {
+  void replace(GameCompleted other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GameCompleted;
+  }
+
+  @override
+  void update(void Function(GameCompletedBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$GameNotLoaded build() {
-    final _$result = _$v ?? new _$GameNotLoaded._();
+  _$GameCompleted build() {
+    _$GameCompleted _$result;
+    try {
+      _$result = _$v ?? new _$GameCompleted._(gameReward: gameReward.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'gameReward';
+        gameReward.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GameCompleted', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

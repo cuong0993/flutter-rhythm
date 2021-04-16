@@ -1,55 +1,56 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
 import '../main.dart';
-import '../user/user_bloc.dart';
-import '../user/user_event.dart';
+import '../user/user_model.dart';
+import '../user/user_repository_impl.dart';
 import '../user/user_state.dart';
+import 'instruments_model.dart';
+import 'instruments_state.dart';
 
-class InstrumentsWidget extends StatelessWidget {
-  InstrumentsWidget({Key? key}) : super(key: key);
-
+class InstrumentsWidget extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-              title: Text(
-                  AppLocalizations.of(context)!
-                      .txt_instrument_title_instruments,
-                  style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-          body: (() {
-            if (state is UserLoading) {
-              return LoadingWidget();
-            } else if (state is UserUpdated) {
-              final instruments = state.instruments;
-              return ListView.builder(
-                itemCount: instruments.length,
-                itemBuilder: (context, index) {
-                  final instrument = instruments[index];
-                  return RadioListTile<String>(
-                    title: Text(getInstrumentName(context, instrument.id),
-                        style: Theme.of(context).textTheme.headline6),
-                    value: instrument.id,
-                    groupValue: state.user.user.instrumentId,
-                    onChanged: (value) {
-                      BlocProvider.of<UserBloc>(context).add(
-                          ChangeInstrument((b) => b..instrumentId = value!));
-                    },
-                  );
-                },
-              );
-            } else {
-              return Container();
-            }
-          }()),
-        );
-      },
+  Widget build(BuildContext context, ScopedReader watch) {
+    final instrumentsState = watch(instrumentsStateProvider);
+    final userState = watch(userStateProvider);
+    return Scaffold(
+      appBar: AppBar(
+          title: Text(
+              AppLocalizations.of(context)!.txt_instrument_title_instruments,
+              style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+      body: (() {
+        if (instrumentsState is InstrumentsLoading) {
+          return LoadingWidget();
+        } else if (instrumentsState is InstrumentsUpdated) {
+          if (userState is UserUpdated) {
+            final instruments = instrumentsState.instruments;
+            return ListView.builder(
+              itemCount: instruments.length,
+              itemBuilder: (context, index) {
+                final instrument = instruments[index];
+                return RadioListTile<String>(
+                  title: Text(getInstrumentName(context, instrument.id),
+                      style: Theme.of(context).textTheme.headline6),
+                  value: instrument.id,
+                  groupValue: userState.user.user.instrumentId,
+                  onChanged: (value) {
+                    context
+                        .read(userRepositoryProvider)
+                        .changeInstrument(value!);
+                  },
+                );
+              },
+            );
+          } else {
+            return LoadingWidget();
+          }
+        } else {
+          return Container();
+        }
+      }()),
     );
   }
 }

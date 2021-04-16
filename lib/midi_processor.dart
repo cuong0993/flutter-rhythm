@@ -33,7 +33,7 @@ class MidiProcessor {
     _minNote = instrument.minNote;
     Future.wait(instrument.soundPaths
             .asMap()
-            .map((note, path) => MapEntry(note, getFile(note, path)))
+            .map((note, path) => MapEntry(note, _getFile(note, path)))
             .values
             .toList())
         .then((_) async {
@@ -42,7 +42,7 @@ class MidiProcessor {
     });
   }
 
-  Future<void> getFile(int note, String path) async {
+  Future<void> _getFile(int note, String path) async {
     final file = await FirebaseCacheManager.getInstance().getSingleFile(path);
     _soundPaths[note] = file.path;
   }

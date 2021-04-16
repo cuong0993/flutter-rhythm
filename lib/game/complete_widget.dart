@@ -3,11 +3,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'game_reward.dart';
 
-class CompleteDialog extends StatelessWidget {
+class CompleteWidget extends StatelessWidget {
   final GameReward _gameReward;
   final Function() _onRestart;
 
-  const CompleteDialog(this._gameReward, this._onRestart);
+  const CompleteWidget(this._gameReward, this._onRestart);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,6 @@ class CompleteDialog extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
-                      Navigator.of(context).pop();
                     },
                     child: Text(AppLocalizations.of(context)!.txt_button_quit),
                   ),
@@ -74,7 +73,6 @@ class CompleteDialog extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         _onRestart();
-                        Navigator.of(context).pop();
                       },
                       child: Text(
                           AppLocalizations.of(context)!.txt_button_restart)),

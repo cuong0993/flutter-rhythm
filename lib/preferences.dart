@@ -1,26 +1,38 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Preferences {
+final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
+  throw UnimplementedError();
+});
+
+final sharedUtilityProvider = Provider<SharedUtility>((ref) {
+  final _sharedPrefs = ref.watch(sharedPreferencesProvider);
+  return SharedUtility(pref: _sharedPrefs);
+});
+
+class SharedUtility {
+  SharedUtility({
+    required this.pref,
+  });
+
+  final SharedPreferences pref;
+
   static const preferenceLocaleName = 'LocaleName';
   static const preferenceThemeName = 'ThemeName';
 
-  static Future<String?> getLocaleName() async {
-    final pref = await SharedPreferences.getInstance();
+  String? getLocaleName() {
     return pref.getString(preferenceLocaleName);
   }
 
-  static Future<void> setLocaleName(String localeName) async {
-    final pref = await SharedPreferences.getInstance();
+  Future<void> setLocaleName(String localeName) async {
     await pref.setString(preferenceLocaleName, localeName);
   }
 
-  static Future<String?> getThemeName() async {
-    final pref = await SharedPreferences.getInstance();
+  String? getThemeName() {
     return pref.getString(preferenceThemeName);
   }
 
-  static Future<void> setThemeName(String themeName) async {
-    final pref = await SharedPreferences.getInstance();
+  Future<void> setThemeName(String themeName) async {
     await pref.setString(preferenceThemeName, themeName);
   }
 }

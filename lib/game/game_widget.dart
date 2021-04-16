@@ -2,21 +2,19 @@ import 'dart:async';
 
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../main.dart';
-import '../songs/song.dart';
-import 'complete_dialog.dart';
-import 'game_bloc.dart';
-import 'game_event.dart';
+import 'complete_widget.dart';
+import 'game_model.dart';
 import 'game_state.dart';
 import 'my_game.dart';
 import 'pause_dialog.dart';
 import 'tile/tile.dart';
 import 'tile/tile_converter.dart';
 
-class GameWidget extends StatefulWidget {
+class GameWidget extends ConsumerWidget {
   final MyGame _game;
 
   GameWidget({Key? key})
@@ -24,177 +22,150 @@ class GameWidget extends StatefulWidget {
         super(key: key);
 
   @override
-  _GameWidgetState createState() => _GameWidgetState();
-}
-
-class _GameWidgetState extends State<GameWidget> {
-  @override
-  void initState() {
+  Widget build(BuildContext context, ScopedReader watch) {
     void _onRestart() {
-      BlocProvider.of<GameBloc>(context).add(RestartGame());
-    }
-
-    BlocProvider.of<GameBloc>(context).pauseStream.listen((event) {
-      showDialog<void>(
-        context: context,
-        useSafeArea: false,
-        builder: (_) => PauseDialog(_onRestart),
-      );
-    });
-    BlocProvider.of<GameBloc>(context).completeStream.listen((event) {
-      showDialog<void>(
-        context: context,
-        useSafeArea: false,
-        builder: (_) => CompleteDialog(event, _onRestart),
-      );
-    });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    void _onRestart() {
-      BlocProvider.of<GameBloc>(context).add(RestartGame());
+      context.read(gameStateProvider.notifier).restart();
     }
 
     void _onTileTouched(Tile? tile) {
-      BlocProvider.of<GameBloc>(context)
-          .add(TileTouched((b) => b..tile = tile));
+      context.read(gameStateProvider.notifier).touchTile(tile);
     }
 
     void _onCompleted() {
-      BlocProvider.of<GameBloc>(context).add(CompleteGame());
+      context.read(gameStateProvider.notifier).complete();
     }
 
-    return WillPopScope(onWillPop: () async {
-      await showDialog<void>(
-        context: context,
-        builder: (_) => PauseDialog(_onRestart),
-      );
-      return Future.value(false);
-    }, child: BlocBuilder<GameBloc, GameState>(
-      builder: (context, state) {
-        if (state is GameLoading) {
-          final arguments = (ModalRoute.of(context)!.settings.arguments as Map);
-          final song = arguments['song'] as Song;
-          final difficulty = arguments['difficulty'] as int;
-          final speed = arguments['speed'] as int;
-          BlocProvider.of<GameBloc>(context).add(StartGame((b) => b
-            ..song = song.toBuilder()
-            ..difficulty = difficulty
-            ..speed = speed));
-          return const LoadingSoundWidget();
-        } else if (state is GameStarted) {
-          widget._game.start(state.tiles, state.speedPixelsPerSecond,
-              _onTileTouched, _onCompleted);
-          return const LoadingSoundWidget();
-        } else if (state is LoadingGift) {
-          return const LoadingGiftWidget();
-        }
-        return Stack(children: [
-          flame.GameWidget(game: widget._game),
-          Container(
-              height: nonTouchRegionHeight.toDouble(),
-              child: Material(
-                color: Colors.transparent,
-                child: SafeArea(
-                  child: Column(
-                    children: [
-                      LinearProgressIndicator(
-                        backgroundColor: onBackgroundColor.withOpacity(0.1),
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(secondaryColor),
-                        value: (state as GameUpdated).time / (state).maxTime,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
+    final gameState = watch(gameStateProvider);
+    return ProviderListener(
+        provider: isPausedProvider,
+        onChange: (context, gameState) {
+          showDialog<void>(
+            context: context,
+            useSafeArea: false,
+            builder: (_) => PauseDialog(_onRestart),
+          );
+        },
+        child: WillPopScope(
+          onWillPop: () async {
+            context.read(isPausedProvider).state = true;
+            return Future.value(false);
+          },
+          child: () {
+            if (gameState is GameLoading) {
+              return const LoadingSoundWidget();
+            } else if (gameState is LoadingGift) {
+              return const LoadingGiftWidget();
+            } else if (gameState is GameCompleted) {
+              return CompleteWidget(gameState.gameReward, _onRestart);
+            } else if (gameState is GameStarted) {
+              _game.start(gameState.tiles, gameState.speedPixelsPerSecond,
+                  _onTileTouched, _onCompleted);
+              return Stack(children: [
+                flame.GameWidget(game: _game),
+                Container(
+                    height: nonTouchRegionHeight.toDouble(),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: SafeArea(
                         child: Column(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text((state).songName,
-                                    style:
-                                        Theme.of(context).textTheme.headline6),
-                                Text(
-                                    '${(state).time.toInt() ~/ 60}:${((state).time.toInt() % 60).toString().padLeft(2, '0')}/${(state).maxTime.toInt() ~/ 60}:${((state).maxTime.toInt() % 60).toString().padLeft(2, '0')}',
-                                    style:
-                                        Theme.of(context).textTheme.headline6)
-                              ],
+                            Consumer(
+                              builder: (context, watch, child) {
+                                final time = watch(timeProvider);
+                                return LinearProgressIndicator(
+                                  backgroundColor:
+                                      onBackgroundColor.withOpacity(0.1),
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      secondaryColor),
+                                  value: time.state / gameState.duration,
+                                );
+                              },
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(
-                                  iconSize: 38,
-                                  icon: const Icon(
-                                      Icons.pause_circle_outline_rounded),
-                                  onPressed: () {
-                                    BlocProvider.of<GameBloc>(context)
-                                        .add(PauseGame());
-                                  },
-                                ),
-                                Text((state).tilesCount.toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline4!
-                                        .copyWith(color: secondaryColor))
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [GuideTextWidget()],
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text((gameState).songName,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6),
+                                      Consumer(
+                                        builder: (context, watch, child) {
+                                          final time = watch(timeProvider);
+                                          return Text(
+                                              '${time.state.toInt() ~/ 60}:${(time.state.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration.toInt() ~/ 60}:${(gameState.duration.toInt() % 60).toString().padLeft(2, '0')}',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline6);
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(
+                                        iconSize: 38,
+                                        icon: const Icon(
+                                            Icons.pause_circle_outline_rounded),
+                                        onPressed: () {
+                                          context.read(isPausedProvider).state =
+                                              true;
+                                        },
+                                      ),
+                                      Consumer(
+                                        builder: (context, watch, child) {
+                                          final tilesCount =
+                                              watch(tilesCountProvider);
+                                          return Text(
+                                              tilesCount.state.toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline4!
+                                                  .copyWith(
+                                                      color: secondaryColor));
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [GuideTextWidget()],
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                ),
-              ))
-        ]);
-      },
-    ));
+                      ),
+                    ))
+              ]);
+            } else {
+              return Container();
+            }
+          }(),
+        ));
   }
 }
 
-class GuideTextWidget extends StatefulWidget {
+class GuideTextWidget extends ConsumerWidget {
   @override
-  _GuideTextWidgetState createState() => _GuideTextWidgetState();
-}
-
-class _GuideTextWidgetState extends State<GuideTextWidget> {
-  String _text = '';
-  late StreamSubscription _userSubscription;
-
-  @override
-  void initState() {
-    _userSubscription =
-        BlocProvider.of<GameBloc>(context).guideStream.listen((event) {
-      setState(() {
-        if (event == 'txt_too_late') {
-          _text = AppLocalizations.of(context)!.txt_too_late;
-        } else if (event == 'txt_too_early') {
-          _text = AppLocalizations.of(context)!.txt_too_early;
-        } else if (event == 'txt_too_many_fingers') {
-          _text = AppLocalizations.of(context)!.txt_too_many_fingers;
-        } else if (event == '') {
-          _text = '';
-        }
-      });
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _userSubscription.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('$_text',
+  Widget build(BuildContext context, ScopedReader watch) {
+    final guideText = watch(guideTextProvider);
+    var text = '';
+    if (guideText.state == 'txt_too_late') {
+      text = AppLocalizations.of(context)!.txt_too_late;
+    } else if (guideText.state == 'txt_too_early') {
+      text = AppLocalizations.of(context)!.txt_too_early;
+    } else if (guideText.state == 'txt_too_many_fingers') {
+      text = AppLocalizations.of(context)!.txt_too_many_fingers;
+    }
+    return Text('$text',
         style: Theme.of(context)
             .textTheme
             .headline5!

@@ -1,5 +1,6 @@
 import 'package:built_value/built_value.dart';
 
+import 'game_reward.dart';
 import 'tile/tile.dart';
 
 part 'game_state.g.dart';
@@ -23,22 +24,9 @@ abstract class GameStarted
 
   double get speedPixelsPerSecond;
 
-  int get gameDuration;
-}
-
-abstract class GameUpdated
-    implements Built<GameUpdated, GameUpdatedBuilder>, GameState {
-  factory GameUpdated([Function(GameUpdatedBuilder) updates]) = _$GameUpdated;
-
-  GameUpdated._();
-
-  int get tilesCount;
+  int get duration;
 
   String get songName;
-
-  double get time;
-
-  int get maxTime;
 }
 
 abstract class LoadingGift
@@ -48,10 +36,12 @@ abstract class LoadingGift
   LoadingGift._();
 }
 
-abstract class GameNotLoaded
-    implements Built<GameNotLoaded, GameNotLoadedBuilder>, GameState {
-  factory GameNotLoaded([Function(GameNotLoadedBuilder) updates]) =
-      _$GameNotLoaded;
+abstract class GameCompleted
+    implements Built<GameCompleted, GameCompletedBuilder>, GameState {
+  factory GameCompleted([Function(GameCompletedBuilder) updates]) =
+      _$GameCompleted;
 
-  GameNotLoaded._();
+  GameCompleted._();
+
+  GameReward get gameReward;
 }

@@ -63,16 +63,12 @@ class UserLoadingBuilder implements Builder<UserLoading, UserLoadingBuilder> {
 class _$UserUpdated extends UserUpdated {
   @override
   final AppUser user;
-  @override
-  final List<Instrument> instruments;
 
   factory _$UserUpdated([void Function(UserUpdatedBuilder)? updates]) =>
       (new UserUpdatedBuilder()..update(updates)).build();
 
-  _$UserUpdated._({required this.user, required this.instruments}) : super._() {
+  _$UserUpdated._({required this.user}) : super._() {
     BuiltValueNullFieldError.checkNotNull(user, 'UserUpdated', 'user');
-    BuiltValueNullFieldError.checkNotNull(
-        instruments, 'UserUpdated', 'instruments');
   }
 
   @override
@@ -85,21 +81,17 @@ class _$UserUpdated extends UserUpdated {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserUpdated &&
-        user == other.user &&
-        instruments == other.instruments;
+    return other is UserUpdated && user == other.user;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, user.hashCode), instruments.hashCode));
+    return $jf($jc(0, user.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserUpdated')
-          ..add('user', user)
-          ..add('instruments', instruments))
+    return (newBuiltValueToStringHelper('UserUpdated')..add('user', user))
         .toString();
   }
 }
@@ -111,18 +103,12 @@ class UserUpdatedBuilder implements Builder<UserUpdated, UserUpdatedBuilder> {
   AppUser? get user => _$this._user;
   set user(AppUser? user) => _$this._user = user;
 
-  List<Instrument>? _instruments;
-  List<Instrument>? get instruments => _$this._instruments;
-  set instruments(List<Instrument>? instruments) =>
-      _$this._instruments = instruments;
-
   UserUpdatedBuilder();
 
   UserUpdatedBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _user = $v.user;
-      _instruments = $v.instruments;
       _$v = null;
     }
     return this;
@@ -144,9 +130,7 @@ class UserUpdatedBuilder implements Builder<UserUpdated, UserUpdatedBuilder> {
     final _$result = _$v ??
         new _$UserUpdated._(
             user: BuiltValueNullFieldError.checkNotNull(
-                user, 'UserUpdated', 'user'),
-            instruments: BuiltValueNullFieldError.checkNotNull(
-                instruments, 'UserUpdated', 'instruments'));
+                user, 'UserUpdated', 'user'));
     replace(_$result);
     return _$result;
   }

@@ -1,6 +1,5 @@
 import 'package:built_value/built_value.dart';
 
-import '../instrument/instrument.dart';
 import 'user_repository.dart';
 
 part 'user_state.g.dart';
@@ -21,6 +20,4 @@ abstract class UserUpdated
   UserUpdated._();
 
   AppUser get user;
-
-  List<Instrument> get instruments;
 }

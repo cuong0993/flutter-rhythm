@@ -2,12 +2,16 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../serializers.dart';
 import '../util.dart';
 import 'user.dart' as user;
 import 'user_repository.dart';
+
+final userRepositoryProvider =
+    Provider<UserRepositoryImpl>((ref) => UserRepositoryImpl());
 
 class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl();

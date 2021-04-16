@@ -1,32 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'authentication/authentication_bloc.dart';
-import 'authentication/authentication_event.dart';
-import 'game/game_bloc.dart';
 import 'game/game_widget.dart';
-import 'game_config/game_config_bloc.dart';
 import 'game_config/game_config_widget.dart';
 import 'home/home_widget.dart';
-import 'instrument/instruments_repository_impl.dart';
 import 'instrument/instruments_widget.dart';
+import 'preferences.dart';
 import 'routes.dart';
+import 'setting/locale.dart';
 import 'setting/locale_widget.dart';
-import 'setting/setting_bloc.dart';
-import 'setting/setting_state.dart';
 import 'setting/settings_widget.dart';
+import 'setting/theme.dart';
 import 'setting/theme_widget.dart';
-import 'simple_bloc_observer.dart';
-import 'songs/songs_bloc.dart';
-import 'songs/songs_event.dart';
-import 'songs/songs_repository.dart';
-import 'songs/songs_repository_impl.dart';
 import 'splash_widget.dart';
-import 'user/user_bloc.dart';
-import 'user/user_repository_impl.dart';
 import 'user/user_widget.dart';
 
 const songTags = [
@@ -87,104 +77,76 @@ late Color onBackgroundColor;
 late Paint paint;
 
 Future<void> main() async {
-  Bloc.observer = SimpleBlocObserver();
-  runApp(App());
+  WidgetsFlutterBinding.ensureInitialized();
+  final sharedPreferences = await SharedPreferences.getInstance();
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: App(),
+    ),
+  );
 }
 
-class App extends StatelessWidget {
+class App extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    final userRepository = UserRepositoryImpl();
-    final instrumentsRepository = InstrumentsRepositoryImpl();
-    final songsRepository = SongsRepositoryImpl();
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<SettingBloc>(
-          create: (context) {
-            return SettingBloc();
-          },
-        ),
-        BlocProvider<AuthenticationBloc>(
-          create: (context) {
-            return AuthenticationBloc(userRepository)
-              ..add(SignInAnonymouslyEvent());
-          },
-        ),
-        BlocProvider<UserBloc>(
-          create: (context) {
-            return UserBloc(instrumentsRepository,
-                userRepository: userRepository);
-          },
-        )
+  Widget build(BuildContext context, ScopedReader watch) {
+    final themeMode = watch(themeModeProvider);
+    final locale = watch(localeProvider);
+    return MaterialApp(
+      title: 'Hit Notes',
+      debugShowCheckedModeBanner: false,
+      locale: locale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      child: BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
-        return MaterialApp(
-          title: 'Hit Notes',
-          debugShowCheckedModeBanner: false,
-          locale: state.locale,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          themeMode: ThemeMode.values.firstWhere(
-              (element) => element.toString() == state.themeName,
-              orElse: () => ThemeMode.system),
-          theme: buildTheme(false),
-          darkTheme: buildTheme(true),
-          routes: {
-            Routes.splash: (context) {
-              return SplashWidget();
-            },
-            Routes.home: (context) {
-              return RepositoryProvider<SongsRepository>(
-                  create: (context) => songsRepository,
-                  child: BlocProvider<SongsBloc>(
-                      create: (_) => SongsBloc(
-                            songsRepository: songsRepository,
-                          )..add(LoadMoreSongsByTagNumbers((b) =>
-                              b..tagNumbers = songTags.asMap().keys.toList())),
-                      child: HomeWidget()));
-            },
-            Routes.gameConfig: (context) {
-              primaryColor = Theme.of(context).colorScheme.primary;
-              secondaryColor = Theme.of(context).colorScheme.secondary;
-              backgroundColor = Theme.of(context).colorScheme.background;
-              onBackgroundColor = Theme.of(context).colorScheme.onBackground;
-              paint = Paint()
-                ..colorFilter = ColorFilter.mode(primaryColor, BlendMode.srcIn);
-              return BlocProvider<GameConfigBloc>(
-                  create: (context) => GameConfigBloc(),
-                  child: GameConfigWidget());
-            },
-            Routes.game: (context) {
-              return BlocProvider<GameBloc>(
-                  create: (_) => GameBloc(), child: GameWidget());
-            },
-            Routes.account: (context) {
-              return UserWidget();
-            },
-            Routes.language: (context) {
-              return LocaleWidget();
-            },
-            Routes.theme: (context) {
-              return ThemeWidget();
-            },
-            Routes.instrument: (context) {
-              return InstrumentsWidget();
-            },
-            Routes.setting: (context) {
-              return SettingsWidget();
-            },
-          },
-        );
-      }),
+      supportedLocales: AppLocalizations.supportedLocales,
+      themeMode: themeMode,
+      theme: buildDarkTheme(false),
+      darkTheme: buildDarkTheme(true),
+      routes: {
+        Routes.splash: (context) {
+          return SplashWidget();
+        },
+        Routes.home: (context) {
+          return HomeWidget();
+        },
+        Routes.gameConfig: (context) {
+          primaryColor = Theme.of(context).colorScheme.primary;
+          secondaryColor = Theme.of(context).colorScheme.secondary;
+          backgroundColor = Theme.of(context).colorScheme.background;
+          onBackgroundColor = Theme.of(context).colorScheme.onBackground;
+          paint = Paint()
+            ..colorFilter = ColorFilter.mode(primaryColor, BlendMode.srcIn);
+          return GameConfigWidget();
+        },
+        Routes.game: (context) {
+          return GameWidget();
+        },
+        Routes.account: (context) {
+          return UserWidget();
+        },
+        Routes.language: (context) {
+          return LocaleWidget();
+        },
+        Routes.theme: (context) {
+          return ThemeWidget();
+        },
+        Routes.instrument: (context) {
+          return InstrumentsWidget();
+        },
+        Routes.setting: (context) {
+          return SettingsWidget();
+        },
+      },
     );
   }
 
-  ThemeData buildTheme(bool isDark) {
+  ThemeData buildDarkTheme(bool isDark) {
     final primaryColor = const Color(0xff4760e9);
     final onPrimaryColor = Colors.white;
     final secondaryColor = const Color(0xfffd7c6e);

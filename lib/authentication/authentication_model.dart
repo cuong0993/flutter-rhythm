@@ -1,36 +1,27 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../user/user_repository.dart';
-import 'authentication_event.dart';
+import '../user/user_repository_impl.dart';
 import 'authentication_state.dart';
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
-  AuthenticationBloc(this._userRepository) : super(Uninitialized());
+final authenticationProvider =
+    StateNotifierProvider<AuthenticationModel, AuthenticationState>((ref) {
+  return AuthenticationModel(ref.read(userRepositoryProvider));
+});
+
+class AuthenticationModel extends StateNotifier<AuthenticationState> {
+  AuthenticationModel(this._userRepository) : super(Uninitialized());
   final _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookAuth.instance;
   final UserRepository _userRepository;
 
-  @override
-  Stream<AuthenticationState> mapEventToState(
-    AuthenticationEvent event,
-  ) async* {
-    if (event is SignInAnonymouslyEvent) {
-      yield* _mapSignInAnonymouslyEventToState();
-    } else if (event is SignInWithGoogleEvent) {
-      yield* _mapSignInWithGoogleEventToState();
-    } else if (event is SignInWithFacebookEvent) {
-      yield* _mapSignInWithFacebookEventToState();
-    }
-  }
-
-  Stream<AuthenticationState> _mapSignInAnonymouslyEventToState() async* {
+  Future signInAnonymously() async {
     try {
       await Firebase.initializeApp();
       final currentUser = FirebaseAuth.instance.currentUser;
@@ -38,13 +29,13 @@ class AuthenticationBloc
         await FirebaseAuth.instance.signInAnonymously();
       }
       _userRepository.subscribeUser();
-      yield Authenticated((b) => b..type = 'Anonymous');
+      state = Authenticated((b) => b..type = 'Anonymous');
     } catch (_) {
-      yield Unauthenticated();
+      state = Unauthenticated();
     }
   }
 
-  Stream<AuthenticationState> _mapSignInWithGoogleEventToState() async* {
+  Future signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
       final googleAuth = await googleUser!.authentication;
@@ -54,13 +45,13 @@ class AuthenticationBloc
       );
       await _tryToLinkWithCurrentUser(credential);
       _userRepository.subscribeUser();
-      yield Authenticated((b) => b..type = 'Google');
+      state = Authenticated((b) => b..type = 'Google');
     } on Exception {
-      yield Unauthenticated();
+      state = Unauthenticated();
     }
   }
 
-  Stream<AuthenticationState> _mapSignInWithFacebookEventToState() async* {
+  Future signInWithFacebook() async {
     try {
       final loginResult = await _facebookLogin.login(
           loginBehavior: LoginBehavior.NATIVE_WITH_FALLBACK);
@@ -68,9 +59,9 @@ class AuthenticationBloc
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);
       _userRepository.subscribeUser();
-      yield Authenticated((b) => b..type = 'Facebook');
+      state = Authenticated((b) => b..type = 'Facebook');
     } on Exception {
-      yield Unauthenticated();
+      state = Unauthenticated();
     }
   }
 

@@ -1,72 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:sprintf/sprintf.dart';
 
-import '../authentication/authentication_bloc.dart';
-import '../authentication/authentication_event.dart';
+import '../authentication/authentication_model.dart';
 import '../loading_widget.dart';
 import '../main.dart';
-import 'user_bloc.dart';
+import 'user_model.dart';
 import 'user_state.dart';
 
-class UserWidget extends StatelessWidget {
-  UserWidget({Key? key}) : super(key: key);
-
+class UserWidget extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      builder: (context, state) {
-        return Scaffold(
-            appBar: AppBar(
-                title: Text(
-                    AppLocalizations.of(context)!.txt_page_title_account,
-                    style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-            body: (() {
-              if (state is UserLoading) {
-                return LoadingWidget();
-              } else if (state is UserUpdated) {
-                final scrollController = ScrollController();
-                return Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Scrollbar(
-                        isAlwaysShown: true,
+  Widget build(BuildContext context, ScopedReader watch) {
+    final userState = watch(userStateProvider);
+    return Scaffold(
+        appBar: AppBar(
+            title: Text(AppLocalizations.of(context)!.txt_page_title_account,
+                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+        body: (() {
+          if (userState is UserLoading) {
+            return LoadingWidget();
+          } else if (userState is UserUpdated) {
+            final scrollController = ScrollController();
+            return Padding(
+                padding: const EdgeInsets.all(8),
+                child: Scrollbar(
+                    isAlwaysShown: true,
+                    controller: scrollController,
+                    child: ListView(
+                        shrinkWrap: true,
                         controller: scrollController,
-                        child: ListView(
-                            shrinkWrap: true,
-                            controller: scrollController,
-                            children: <Widget>[buildUI(state, context)])));
-              } else {
-                return Container();
-              }
-            }()));
-      },
-    );
+                        children: <Widget>[_buildUI(userState, context)])));
+          } else {
+            return Container();
+          }
+        }()));
   }
 
-  Widget buildUI(UserUpdated state, BuildContext context) {
+  Widget _buildUI(UserUpdated state, BuildContext context) {
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           () {
             if (!state.user.isAnonymous) {
-              return buildAnonymousUI(state, context);
+              return _buildAnonymousUI(state, context);
             } else {
-              return buildUserUI(context);
+              return _buildUserUI(context);
             }
           }(),
           Card(
               color: Colors.transparent,
               elevation: 0,
-              child: buildUserStatisticUI(state, context)),
+              child: _buildUserStatisticUI(state, context)),
         ],
       ),
     );
   }
 
-  Table buildUserStatisticUI(UserUpdated state, BuildContext context) {
+  Table _buildUserStatisticUI(UserUpdated state, BuildContext context) {
     return Table(
       children: [
         TableRow(children: [
@@ -166,7 +159,7 @@ class UserWidget extends StatelessWidget {
     );
   }
 
-  Card buildUserUI(BuildContext context) {
+  Card _buildUserUI(BuildContext context) {
     return Card(
         color: Colors.transparent,
         elevation: 0,
@@ -177,8 +170,9 @@ class UserWidget extends StatelessWidget {
                 children: <Widget>[
                   OutlinedButton(
                     onPressed: () {
-                      BlocProvider.of<AuthenticationBloc>(context)
-                          .add(SignInWithGoogleEvent());
+                      context
+                          .read(authenticationProvider.notifier)
+                          .signInWithGoogle();
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
@@ -201,8 +195,9 @@ class UserWidget extends StatelessWidget {
                   const SizedBox(height: 8),
                   OutlinedButton(
                     onPressed: () {
-                      BlocProvider.of<AuthenticationBloc>(context)
-                          .add(SignInWithFacebookEvent());
+                      context
+                          .read(authenticationProvider.notifier)
+                          .signInWithFacebook();
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
@@ -225,7 +220,7 @@ class UserWidget extends StatelessWidget {
                 ])));
   }
 
-  Card buildAnonymousUI(UserUpdated state, BuildContext context) {
+  Card _buildAnonymousUI(UserUpdated state, BuildContext context) {
     return Card(
         color: Colors.transparent,
         elevation: 0,

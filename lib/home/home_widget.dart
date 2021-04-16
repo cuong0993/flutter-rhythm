@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../main.dart';
 import '../routes.dart';
 import '../search/search_widget.dart';
-import '../songs/songs_repository.dart';
 import '../songs/songs_widget.dart';
-import '../user/user_bloc.dart';
+import '../user/user_model.dart';
 import '../user/user_state.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -33,11 +32,7 @@ class HomeWidget extends StatelessWidget {
                       icon: const Icon(Icons.search_rounded),
                       onPressed: () {
                         showSearch<void>(
-                            context: context,
-                            delegate: SearchWidget(
-                                songsRepository:
-                                    RepositoryProvider.of<SongsRepository>(
-                                        context)));
+                            context: context, delegate: SearchWidget());
                       },
                     ),
                     IconButton(
@@ -49,14 +44,15 @@ class HomeWidget extends StatelessWidget {
                         onPressed: () async {
                           await Navigator.pushNamed(context, Routes.instrument);
                         }),
-                    IconButton(icon: ClipOval(
-                      child: BlocBuilder<UserBloc, UserState>(
-                          builder: (context, state) {
-                        return (state is UserUpdated && !state.user.isAnonymous)
-                            ? Image.network(state.user.photoUrl)
+                    IconButton(icon: ClipOval(child: Consumer(
+                      builder: (context, watch, child) {
+                        final userState = watch(userStateProvider);
+                        return (userState is UserUpdated &&
+                                !userState.user.isAnonymous)
+                            ? Image.network(userState.user.photoUrl)
                             : const Icon(Icons.account_circle_rounded);
-                      }),
-                    ), onPressed: () async {
+                      },
+                    )), onPressed: () async {
                       await Navigator.pushNamed(context, Routes.account);
                     }),
                     IconButton(
