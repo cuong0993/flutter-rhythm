@@ -6,8 +6,12 @@ repos:
         entry: bash -c "svgo --pretty -r -f ./"
         language: system
       - id: format_flutter
-        name: Run format flutter
+        name: Run flutter format
         entry: bash -c "flutter format --set-exit-if-changed ."
+        language: system
+      - id: format_flutter
+        name: Run flutter analyze
+        entry: bash -c "flutter analyze ."
         language: system
       - id: pod_install_ios
         name: Run pod install iOS
