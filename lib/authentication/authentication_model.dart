@@ -12,7 +12,8 @@ import 'authentication_state.dart';
 
 final authenticationProvider =
     StateNotifierProvider<AuthenticationModel, AuthenticationState>((ref) {
-  return AuthenticationModel(ref.read(userRepositoryProvider));
+  return AuthenticationModel(ref.read(userRepositoryProvider))
+    .._checkAndSignInAnonymously();
 });
 
 class AuthenticationModel extends StateNotifier<AuthenticationState> {
@@ -21,7 +22,7 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
   final _facebookLogin = FacebookAuth.instance;
   final UserRepository _userRepository;
 
-  Future signInAnonymously() async {
+  Future _checkAndSignInAnonymously() async {
     try {
       await Firebase.initializeApp();
       final currentUser = FirebaseAuth.instance.currentUser;

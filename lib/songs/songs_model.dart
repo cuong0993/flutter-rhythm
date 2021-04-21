@@ -8,7 +8,8 @@ import 'songs_repository_impl.dart';
 import 'songs_state.dart';
 
 final songsStateProvider = StateNotifierProvider<SongsModel, SongsState>((ref) {
-  return SongsModel(ref.read(songRepositoryProvider));
+  return SongsModel(ref.read(songRepositoryProvider))
+    ..loadMoreSongsByTagNumbers(songTags.asMap().keys.toList());
 });
 
 class SongsModel extends StateNotifier<SongsState> {

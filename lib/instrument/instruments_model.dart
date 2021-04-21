@@ -7,7 +7,8 @@ import 'instruments_state.dart';
 
 final instrumentsStateProvider =
     StateNotifierProvider<InstrumentsModel, InstrumentsState>((ref) {
-  return InstrumentsModel(ref.read(instrumentRepositoryProvider));
+  return InstrumentsModel(ref.read(instrumentRepositoryProvider))
+    .._loadInstruments();
 });
 
 class InstrumentsModel extends StateNotifier<InstrumentsState> {
@@ -15,7 +16,7 @@ class InstrumentsModel extends StateNotifier<InstrumentsState> {
 
   final InstrumentsRepository _instrumentRepository;
 
-  Future<void> loadInstruments() async {
+  Future<void> _loadInstruments() async {
     final instruments = await _instrumentRepository.instruments();
     state = InstrumentsUpdated((b) => b..instruments = instruments);
   }
