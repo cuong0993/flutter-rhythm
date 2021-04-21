@@ -116,15 +116,15 @@ class App extends ConsumerWidget {
           return HomeWidget();
         },
         Routes.gameConfig: (context) {
+          return GameConfigWidget();
+        },
+        Routes.game: (context) {
           primaryColor = Theme.of(context).colorScheme.primary;
           secondaryColor = Theme.of(context).colorScheme.secondary;
           backgroundColor = Theme.of(context).colorScheme.background;
           onBackgroundColor = Theme.of(context).colorScheme.onBackground;
           paint = Paint()
             ..colorFilter = ColorFilter.mode(primaryColor, BlendMode.srcIn);
-          return GameConfigWidget();
-        },
-        Routes.game: (context) {
           return GameWidget();
         },
         Routes.account: (context) {
