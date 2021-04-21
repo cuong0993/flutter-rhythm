@@ -17,13 +17,18 @@ import 'tile/tile.dart';
 import 'tile/tile_chunk.dart';
 import 'tile/tile_converter.dart';
 
-final tilesCountProvider = StateProvider((ref) => 0);
-final timeProvider = StateProvider((ref) => 0.0);
-final guideTextProvider = StateProvider((ref) => '');
-final isPausedProvider = StateProvider((ref) => false);
+final tilesCountProvider = StateProvider.autoDispose((ref) => 0);
+final timeProvider = StateProvider.autoDispose((ref) => 0.0);
+final guideTextProvider = StateProvider.autoDispose((ref) => '');
+final isPausedProvider = StateProvider.autoDispose((ref) => false);
 
-final gameStateProvider = StateNotifierProvider<GameModel, GameState>((ref) {
-  return GameModel(ref.read);
+final gameStateFamilyProvider = StateNotifierProvider.autoDispose
+    .family<GameModel, GameState, Map>((ref, arguments) {
+  final song = arguments['song'] as Song;
+  final difficulty = arguments['difficulty'] as int;
+  final speed = arguments['speed'] as int;
+  final gameModel = GameModel(ref.read).._startGame(song, difficulty, speed);
+  return gameModel;
 });
 
 class GameModel extends StateNotifier<GameState> {
@@ -42,8 +47,7 @@ class GameModel extends StateNotifier<GameState> {
   int _errorCount = 0;
   int _duration = 0;
 
-  Future startGame(Song song, int difficulty, int speed) async {
-    state = GameLoading();
+  Future _startGame(Song song, int difficulty, int speed) async {
     final directory = await getApplicationSupportDirectory();
     final tempFile = File('${directory.path}/${song.url}');
     if (!tempFile.existsSync()) {

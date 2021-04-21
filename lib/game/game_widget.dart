@@ -23,6 +23,10 @@ class GameWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final gameStateProvider = gameStateFamilyProvider(arguments);
+    final gameState = watch(gameStateProvider);
+
     void _onRestart() {
       context.read(gameStateProvider.notifier).restart();
     }
@@ -35,7 +39,6 @@ class GameWidget extends ConsumerWidget {
       context.read(gameStateProvider.notifier).complete();
     }
 
-    final gameState = watch(gameStateProvider);
     return ProviderListener(
         provider: isPausedProvider,
         onChange: (context, gameState) {

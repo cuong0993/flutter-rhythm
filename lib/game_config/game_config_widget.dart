@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sprintf/sprintf.dart';
 
-import '../game/game_model.dart';
 import '../routes.dart';
 import '../songs/song.dart';
 import 'game_config_model.dart';
@@ -130,11 +129,12 @@ class GameConfigWidget extends ConsumerWidget {
                   Expanded(
                     child: ElevatedButton(
                         onPressed: () {
-                          context.read(gameStateProvider.notifier).startGame(
-                              song,
-                              gameConfigState.difficulty,
-                              gameConfigState.speed);
-                          Navigator.pushNamed(context, Routes.game);
+                          Navigator.pushNamed(context, Routes.game,
+                              arguments: <String, dynamic>{
+                                'song': song,
+                                'difficulty': gameConfigState.difficulty,
+                                'speed': gameConfigState.speed
+                              });
                         },
                         child: Text(AppLocalizations.of(context)!.txt_start)),
                   ),
