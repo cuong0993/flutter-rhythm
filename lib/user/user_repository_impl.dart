@@ -31,6 +31,7 @@ class UserRepositoryImpl implements UserRepository {
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .snapshots()
+        .where((event) => event.exists)
         .map((event) {
       var photoUrl = '';
       var name = '';
