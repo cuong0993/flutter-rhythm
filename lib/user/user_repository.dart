@@ -1,11 +1,9 @@
 import 'user.dart';
 
 abstract class UserRepository {
-  void subscribeUser();
-
   void changeInstrument(String instrumentId);
 
-  Stream<AppUser> getCurrentUser();
+  Stream<AppUser> observeCurrentUser();
 }
 
 class AppUser {

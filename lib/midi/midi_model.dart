@@ -1,34 +1,25 @@
-import 'dart:async';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:rxdart/rxdart.dart';
+import '../firebase_cache_manager.dart';
+import '../instrument/instrument.dart';
+import '../sound_player.dart';
 
-import 'firebase_cache_manager.dart';
-import 'instrument/instrument.dart';
-import 'sound_player.dart';
+final midiProvider = StateNotifierProvider<MidiModel, bool>((ref) {
+  return MidiModel();
+});
 
-class MidiProcessor {
-  static final MidiProcessor _instance = MidiProcessor._();
-
-  factory MidiProcessor.getInstance() {
-    return _instance;
-  }
-
-  MidiProcessor._();
+class MidiModel extends StateNotifier<bool> {
+  MidiModel() : super(false);
 
   var _maxNote = 0;
   var _minNote = 0;
-
   final _soundPlayer = SoundPlayer();
-
-  final _soundLoadedController = BehaviorSubject<bool>();
-
-  Stream<bool> get soundLoadedStream => _soundLoadedController.stream;
   final _soundPaths = <int, String>{};
 
   void changeInstrument(Instrument instrument) {
     _soundPaths.clear();
     _soundPlayer.release();
-    _soundLoadedController.add(false);
+    state = false;
     _maxNote = instrument.maxNote;
     _minNote = instrument.minNote;
     Future.wait(instrument.soundPaths
@@ -38,7 +29,7 @@ class MidiProcessor {
             .toList())
         .then((_) async {
       await _soundPlayer.load(_soundPaths, instrument.baseNotes.toMap());
-      _soundLoadedController.add(true);
+      state = true;
     });
   }
 

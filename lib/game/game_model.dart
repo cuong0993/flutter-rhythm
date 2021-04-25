@@ -7,7 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../midi_processor.dart';
+import '../midi/midi_model.dart';
 import '../serializers.dart';
 import '../songs/song.dart';
 import '../util.dart';
@@ -88,23 +88,17 @@ class GameModel extends StateNotifier<GameState> {
     _tilesCount = 0;
     _errorCount = 0;
     _duration = duration;
-    final soundLoadedStream = MidiProcessor.getInstance().soundLoadedStream;
-    await for (final value in soundLoadedStream) {
-      if (value) {
-        state = GameStarted((b) => b
-          ..tiles = tiles
-          ..speedPixelsPerSecond = _speedDpsPerSecond
-          ..duration = _duration
-          ..songName = _songName);
-        return;
-      }
-    }
+    state = GameStarted((b) => b
+      ..tiles = tiles
+      ..speedPixelsPerSecond = _speedDpsPerSecond
+      ..duration = _duration
+      ..songName = _songName);
   }
 
-  Future touchTile(Tile? tile) async {
+  void touchTile(Tile? tile) {
     var guideText = '';
     if (tile != null) {
-      await MidiProcessor.getInstance().playNote(tile.note);
+      _read(midiProvider.notifier).playNote(tile.note);
       _tilesCount += 1;
       _time = (0.0 - tile.initialY) / _speedDpsPerSecond;
       _read(tilesCountProvider).state = _tilesCount;
@@ -139,7 +133,7 @@ class GameModel extends StateNotifier<GameState> {
     state = GameCompleted((b) => b..gameReward = gameReward!.toBuilder());
   }
 
-  Future restart() async {
+  void restart() {
     _time = 0.0;
     _tilesCount = 0;
     _errorCount = 0;

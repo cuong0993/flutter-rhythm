@@ -6,21 +6,17 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../user/user_repository.dart';
-import '../user/user_repository_impl.dart';
 import 'authentication_state.dart';
 
 final authenticationProvider =
     StateNotifierProvider<AuthenticationModel, AuthenticationState>((ref) {
-  return AuthenticationModel(ref.read(userRepositoryProvider))
-    .._checkAndSignInAnonymously();
+  return AuthenticationModel().._checkAndSignInAnonymously();
 });
 
 class AuthenticationModel extends StateNotifier<AuthenticationState> {
-  AuthenticationModel(this._userRepository) : super(Uninitialized());
+  AuthenticationModel() : super(Uninitialized());
   final _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookAuth.instance;
-  final UserRepository _userRepository;
 
   Future _checkAndSignInAnonymously() async {
     try {
@@ -29,7 +25,6 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
       if (currentUser == null) {
         await FirebaseAuth.instance.signInAnonymously();
       }
-      _userRepository.subscribeUser();
       state = Authenticated((b) => b..type = 'Anonymous');
     } catch (_) {
       state = Unauthenticated();
@@ -45,7 +40,6 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
         idToken: googleAuth.idToken,
       );
       await _tryToLinkWithCurrentUser(credential);
-      _userRepository.subscribeUser();
       state = Authenticated((b) => b..type = 'Google');
     } on Exception {
       state = Unauthenticated();
@@ -59,7 +53,6 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
       final credential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);
-      _userRepository.subscribeUser();
       state = Authenticated((b) => b..type = 'Facebook');
     } on Exception {
       state = Unauthenticated();

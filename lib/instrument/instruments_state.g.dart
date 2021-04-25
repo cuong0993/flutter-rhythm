@@ -6,142 +6,97 @@ part of 'instruments_state.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$InstrumentsLoading extends InstrumentsLoading {
-  factory _$InstrumentsLoading(
-          [void Function(InstrumentsLoadingBuilder)? updates]) =>
-      (new InstrumentsLoadingBuilder()..update(updates)).build();
-
-  _$InstrumentsLoading._() : super._();
-
-  @override
-  InstrumentsLoading rebuild(
-          void Function(InstrumentsLoadingBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  InstrumentsLoadingBuilder toBuilder() =>
-      new InstrumentsLoadingBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is InstrumentsLoading;
-  }
-
-  @override
-  int get hashCode {
-    return 569944570;
-  }
-
-  @override
-  String toString() {
-    return newBuiltValueToStringHelper('InstrumentsLoading').toString();
-  }
-}
-
-class InstrumentsLoadingBuilder
-    implements Builder<InstrumentsLoading, InstrumentsLoadingBuilder> {
-  _$InstrumentsLoading? _$v;
-
-  InstrumentsLoadingBuilder();
-
-  @override
-  void replace(InstrumentsLoading other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$InstrumentsLoading;
-  }
-
-  @override
-  void update(void Function(InstrumentsLoadingBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  _$InstrumentsLoading build() {
-    final _$result = _$v ?? new _$InstrumentsLoading._();
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$InstrumentsUpdated extends InstrumentsUpdated {
+class _$InstrumentsState extends InstrumentsState {
   @override
   final List<Instrument> instruments;
+  @override
+  final String? selectedInstrumentId;
 
-  factory _$InstrumentsUpdated(
-          [void Function(InstrumentsUpdatedBuilder)? updates]) =>
-      (new InstrumentsUpdatedBuilder()..update(updates)).build();
+  factory _$InstrumentsState(
+          [void Function(InstrumentsStateBuilder)? updates]) =>
+      (new InstrumentsStateBuilder()..update(updates)).build();
 
-  _$InstrumentsUpdated._({required this.instruments}) : super._() {
+  _$InstrumentsState._({required this.instruments, this.selectedInstrumentId})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        instruments, 'InstrumentsUpdated', 'instruments');
+        instruments, 'InstrumentsState', 'instruments');
   }
 
   @override
-  InstrumentsUpdated rebuild(
-          void Function(InstrumentsUpdatedBuilder) updates) =>
+  InstrumentsState rebuild(void Function(InstrumentsStateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  InstrumentsUpdatedBuilder toBuilder() =>
-      new InstrumentsUpdatedBuilder()..replace(this);
+  InstrumentsStateBuilder toBuilder() =>
+      new InstrumentsStateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is InstrumentsUpdated && instruments == other.instruments;
+    return other is InstrumentsState &&
+        instruments == other.instruments &&
+        selectedInstrumentId == other.selectedInstrumentId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, instruments.hashCode));
+    return $jf(
+        $jc($jc(0, instruments.hashCode), selectedInstrumentId.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('InstrumentsUpdated')
-          ..add('instruments', instruments))
+    return (newBuiltValueToStringHelper('InstrumentsState')
+          ..add('instruments', instruments)
+          ..add('selectedInstrumentId', selectedInstrumentId))
         .toString();
   }
 }
 
-class InstrumentsUpdatedBuilder
-    implements Builder<InstrumentsUpdated, InstrumentsUpdatedBuilder> {
-  _$InstrumentsUpdated? _$v;
+class InstrumentsStateBuilder
+    implements Builder<InstrumentsState, InstrumentsStateBuilder> {
+  _$InstrumentsState? _$v;
 
   List<Instrument>? _instruments;
   List<Instrument>? get instruments => _$this._instruments;
   set instruments(List<Instrument>? instruments) =>
       _$this._instruments = instruments;
 
-  InstrumentsUpdatedBuilder();
+  String? _selectedInstrumentId;
+  String? get selectedInstrumentId => _$this._selectedInstrumentId;
+  set selectedInstrumentId(String? selectedInstrumentId) =>
+      _$this._selectedInstrumentId = selectedInstrumentId;
 
-  InstrumentsUpdatedBuilder get _$this {
+  InstrumentsStateBuilder();
+
+  InstrumentsStateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _instruments = $v.instruments;
+      _selectedInstrumentId = $v.selectedInstrumentId;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(InstrumentsUpdated other) {
+  void replace(InstrumentsState other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$InstrumentsUpdated;
+    _$v = other as _$InstrumentsState;
   }
 
   @override
-  void update(void Function(InstrumentsUpdatedBuilder)? updates) {
+  void update(void Function(InstrumentsStateBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$InstrumentsUpdated build() {
+  _$InstrumentsState build() {
     final _$result = _$v ??
-        new _$InstrumentsUpdated._(
+        new _$InstrumentsState._(
             instruments: BuiltValueNullFieldError.checkNotNull(
-                instruments, 'InstrumentsUpdated', 'instruments'));
+                instruments, 'InstrumentsState', 'instruments'),
+            selectedInstrumentId: selectedInstrumentId);
     replace(_$result);
     return _$result;
   }

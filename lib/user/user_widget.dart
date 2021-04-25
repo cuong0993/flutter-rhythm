@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:sprintf/sprintf.dart';
 
-import '../authentication/authentication_model.dart';
+import '../authentication/authentication_widget.dart';
 import '../loading_widget.dart';
 import '../main.dart';
 import 'user_model.dart';
@@ -47,7 +47,7 @@ class UserWidget extends ConsumerWidget {
             if (!state.user.isAnonymous) {
               return _buildAnonymousUI(state, context);
             } else {
-              return _buildUserUI(context);
+              return const AuthenticationWidget();
             }
           }(),
           Card(
@@ -157,67 +157,6 @@ class UserWidget extends ConsumerWidget {
         ]),
       ],
     );
-  }
-
-  Card _buildUserUI(BuildContext context) {
-    return Card(
-        color: Colors.transparent,
-        elevation: 0,
-        child: Container(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  OutlinedButton(
-                    onPressed: () {
-                      context
-                          .read(authenticationProvider.notifier)
-                          .signInWithGoogle();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          const Image(
-                              image:
-                                  AssetImage('assets/images/img_google.png')),
-                          const SizedBox(width: 8),
-                          Text(
-                              AppLocalizations.of(context)!
-                                  .txt_button_sign_in_google,
-                              style: Theme.of(context).textTheme.subtitle1)
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  OutlinedButton(
-                    onPressed: () {
-                      context
-                          .read(authenticationProvider.notifier)
-                          .signInWithFacebook();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          const Image(
-                              image:
-                                  AssetImage('assets/images/img_facebook.png')),
-                          const SizedBox(width: 8),
-                          Text(
-                              AppLocalizations.of(context)!
-                                  .txt_button_sign_in_facebook,
-                              style: Theme.of(context).textTheme.subtitle1)
-                        ],
-                      ),
-                    ),
-                  ),
-                ])));
   }
 
   Card _buildAnonymousUI(UserUpdated state, BuildContext context) {

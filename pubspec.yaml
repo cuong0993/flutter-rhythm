@@ -27,7 +27,6 @@ dependencies:
   intl:
   flutter_email_sender:
   package_info:
-  rxdart:
   shared_preferences:
   sprintf:
 

@@ -4,26 +4,14 @@ import 'instrument.dart';
 
 part 'instruments_state.g.dart';
 
-abstract class InstrumentsState {}
+abstract class InstrumentsState
+    implements Built<InstrumentsState, InstrumentsStateBuilder> {
+  factory InstrumentsState([Function(InstrumentsStateBuilder) updates]) =
+      _$InstrumentsState;
 
-abstract class InstrumentsLoading
-    implements
-        Built<InstrumentsLoading, InstrumentsLoadingBuilder>,
-        InstrumentsState {
-  factory InstrumentsLoading([Function(InstrumentsLoadingBuilder) updates]) =
-      _$InstrumentsLoading;
-
-  InstrumentsLoading._();
-}
-
-abstract class InstrumentsUpdated
-    implements
-        Built<InstrumentsUpdated, InstrumentsUpdatedBuilder>,
-        InstrumentsState {
-  factory InstrumentsUpdated([Function(InstrumentsUpdatedBuilder) updates]) =
-      _$InstrumentsUpdated;
-
-  InstrumentsUpdated._();
+  InstrumentsState._();
 
   List<Instrument> get instruments;
+
+  String? get selectedInstrumentId;
 }
