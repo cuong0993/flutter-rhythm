@@ -61,8 +61,8 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
 
   Future<void> _tryToLinkWithCurrentUser(OAuthCredential authCredential) async {
     try {
-      await FirebaseAuth.instance.currentUser!
-          .linkWithCredential(authCredential);
+      await FirebaseAuth.instance.currentUser
+          ?.linkWithCredential(authCredential);
     } on Exception {
       await FirebaseAuth.instance.signInWithCredential(authCredential);
     }

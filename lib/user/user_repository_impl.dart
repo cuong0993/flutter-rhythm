@@ -10,7 +10,7 @@ import 'user.dart' as user;
 import 'user_repository.dart';
 
 final userRepositoryProvider =
-    Provider<UserRepositoryImpl>((ref) => UserRepositoryImpl());
+    Provider<UserRepository>((ref) => UserRepositoryImpl());
 
 class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl();
@@ -41,8 +41,8 @@ class UserRepositoryImpl implements UserRepository {
           photoUrl,
           serializers.deserializeWith<user.User>(
               user.User.serializer, event.data())!,
-          FirebaseAuth.instance.currentUser!.isAnonymous,
-          FirebaseAuth.instance.currentUser!.metadata.creationTime!);
+          firebaseUser.isAnonymous,
+          firebaseUser.metadata.creationTime!);
     });
   }
 
