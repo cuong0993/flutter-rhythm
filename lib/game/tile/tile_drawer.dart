@@ -1,10 +1,10 @@
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../../main.dart';
 import '../../util.dart';
+import '../colors.dart';
 import 'tile.dart';
 
 Sprite noteSprite = Sprite(Flame.images

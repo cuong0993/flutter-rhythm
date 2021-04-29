@@ -20,12 +20,12 @@ dependencies:
   firebase_storage:
   flame:
   flutter_cache_manager:
+  flutter_email_sender:
   flutter_facebook_auth:
   flutter_riverpod:
   google_sign_in:
   in_app_review:
   intl:
-  flutter_email_sender:
   package_info:
   shared_preferences:
   sprintf:

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../main.dart';
 import 'instruments_model.dart';
 
 class InstrumentsWidget extends ConsumerWidget {
@@ -40,5 +38,18 @@ class InstrumentsWidget extends ConsumerWidget {
         }
       }(),
     );
+  }
+}
+
+String getInstrumentName(BuildContext context, String instrumentId) {
+  switch (instrumentId) {
+    case 'piano':
+      return AppLocalizations.of(context)!.piano;
+    case 'acoustic_guitar':
+      return AppLocalizations.of(context)!.acoustic_guitar;
+    case 'electric_guitar':
+      return AppLocalizations.of(context)!.electric_guitar;
+    default:
+      return '';
   }
 }

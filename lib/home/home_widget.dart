@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../main.dart';
 import '../routes.dart';
 import '../search/search_widget.dart';
+import '../songs/songs_model.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_model.dart';
 import '../user/user_state.dart';
@@ -83,5 +83,22 @@ class HomeWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+String getSongTagName(BuildContext context, String tabName) {
+  switch (tabName) {
+    case 'pop':
+      return AppLocalizations.of(context)!.pop;
+    case 'classic':
+      return AppLocalizations.of(context)!.classic;
+    case 'folk':
+      return AppLocalizations.of(context)!.folk;
+    case 'kpop':
+      return AppLocalizations.of(context)!.kpop;
+    case 'other':
+      return AppLocalizations.of(context)!.other;
+    default:
+      return '';
   }
 }

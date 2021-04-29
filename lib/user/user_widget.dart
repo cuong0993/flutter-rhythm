@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:sprintf/sprintf.dart';
 
 import '../authentication/authentication_widget.dart';
+import '../instrument/instruments_widget.dart';
 import '../loading_widget.dart';
-import '../main.dart';
 import 'user_model.dart';
 import 'user_state.dart';
 

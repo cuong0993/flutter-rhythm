@@ -1,11 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../main.dart';
 import 'song.dart';
 import 'songs_repository.dart';
 import 'songs_repository_impl.dart';
 import 'songs_state.dart';
+
+const songTags = [
+  'pop',
+  'classic',
+  'folk',
+  'kpop',
+  'other',
+];
 
 final songsStateProvider = StateNotifierProvider<SongsModel, SongsState>((ref) {
   return SongsModel(ref.read(songRepositoryProvider))

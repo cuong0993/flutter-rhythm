@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../main.dart';
 import '../midi/midi_model.dart';
+import 'colors.dart';
 import 'complete_widget.dart';
 import 'game_model.dart';
 import 'game_state.dart';

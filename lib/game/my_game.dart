@@ -2,12 +2,10 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flame/sprite.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../main.dart';
 import '../util.dart';
+import 'colors.dart';
 import 'effect.dart';
 import 'tile/tile.dart';
 import 'tile/tile_effect_spawner.dart';

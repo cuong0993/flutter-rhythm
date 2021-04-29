@@ -8,10 +8,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 
-import '../main.dart';
+import '../locale/locale_widget.dart';
 import '../routes.dart';
-import 'locale_widget.dart';
-import 'theme.dart';
+import '../theme/theme_model.dart';
+import '../theme/theme_widget.dart';
 
 class SettingsWidget extends StatelessWidget {
   @override

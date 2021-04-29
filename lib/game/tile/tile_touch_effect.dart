@@ -1,9 +1,9 @@
 import 'package:flame/components.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../../main.dart';
 import '../../util.dart';
 import '../center_render_text_config.dart';
+import '../colors.dart';
 import '../effect.dart';
 import 'tile.dart';
 

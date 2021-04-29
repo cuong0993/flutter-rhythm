@@ -4,8 +4,8 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
 
-import '../main.dart';
 import '../util.dart';
+import 'colors.dart';
 import 'effect.dart';
 
 Sprite touchSprite = Sprite(
