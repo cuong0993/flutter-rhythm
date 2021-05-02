@@ -7,7 +7,7 @@ import '../routes.dart';
 import '../songs/song.dart';
 import 'game_config_model.dart';
 
-class GameConfigWidget extends ConsumerWidget {
+class GameConfigPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final song = ModalRoute.of(context)!.settings.arguments as Song;

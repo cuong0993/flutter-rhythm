@@ -5,12 +5,12 @@ import 'package:intl/intl.dart';
 import 'package:sprintf/sprintf.dart';
 
 import '../authentication/authentication_widget.dart';
-import '../instrument/instruments_widget.dart';
+import '../instrument/instruments_page.dart';
 import '../loading_widget.dart';
 import 'user_model.dart';
 import 'user_state.dart';
 
-class UserWidget extends ConsumerWidget {
+class UserPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final userState = watch(userStateProvider);

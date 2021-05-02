@@ -6,18 +6,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'game/colors.dart';
 import 'game/game_widget.dart';
-import 'game_config/game_config_widget.dart';
-import 'home/home_widget.dart';
-import 'instrument/instruments_widget.dart';
+import 'game_config/game_config_page.dart';
+import 'home/home_page.dart';
+import 'instrument/instruments_page.dart';
 import 'locale/locale_model.dart';
-import 'locale/locale_widget.dart';
+import 'locale/locale_page.dart';
 import 'preferences.dart';
 import 'routes.dart';
-import 'setting/settings_widget.dart';
-import 'splash_widget.dart';
+import 'setting/settings_page.dart';
+import 'splash_page.dart';
 import 'theme/theme_model.dart';
-import 'theme/theme_widget.dart';
-import 'user/user_widget.dart';
+import 'theme/theme_page.dart';
+import 'user/user_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,13 +53,13 @@ class App extends ConsumerWidget {
       darkTheme: buildTheme(isDark: true),
       routes: {
         Routes.splash: (context) {
-          return SplashWidget();
+          return SplashPage();
         },
         Routes.home: (context) {
-          return HomeWidget();
+          return HomePage();
         },
         Routes.gameConfig: (context) {
-          return GameConfigWidget();
+          return GameConfigPage();
         },
         Routes.game: (context) {
           primaryColor = Theme.of(context).colorScheme.primary;
@@ -71,19 +71,19 @@ class App extends ConsumerWidget {
           return GameWidget();
         },
         Routes.account: (context) {
-          return UserWidget();
+          return UserPage();
         },
         Routes.language: (context) {
-          return LocaleWidget();
+          return LocalePage();
         },
         Routes.theme: (context) {
-          return ThemeWidget();
+          return ThemePage();
         },
         Routes.instrument: (context) {
-          return InstrumentsWidget();
+          return InstrumentsPage();
         },
         Routes.setting: (context) {
-          return SettingsWidget();
+          return SettingsPage();
         },
       },
     );

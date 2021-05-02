@@ -8,12 +8,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 
-import '../locale/locale_widget.dart';
+import '../locale/locale_page.dart';
 import '../routes.dart';
 import '../theme/theme_model.dart';
-import '../theme/theme_widget.dart';
+import '../theme/theme_page.dart';
 
-class SettingsWidget extends StatelessWidget {
+class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +27,8 @@ class SettingsWidget extends StatelessWidget {
                 AppLocalizations.of(context)!.txt_language,
                 style: Theme.of(context).textTheme.headline6,
               ),
-              subtitle: Text(map[Localizations.localeOf(context).languageCode]!,
+              subtitle: Text(
+                  localeStrings[Localizations.localeOf(context).languageCode]!,
                   style: Theme.of(context).textTheme.subtitle1),
               onTap: () async {
                 await Navigator.pushNamed(context, Routes.language);

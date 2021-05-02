@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../loading_widget.dart';
 import 'instruments_model.dart';
 
-class InstrumentsWidget extends ConsumerWidget {
+class InstrumentsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final instrumentsState = watch(instrumentsStateProvider);

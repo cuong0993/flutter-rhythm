@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'theme_model.dart';
 
-class ThemeWidget extends ConsumerWidget {
+class ThemePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final themeMode = watch(themeModeProvider);

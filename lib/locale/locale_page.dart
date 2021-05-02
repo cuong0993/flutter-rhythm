@@ -4,9 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'locale_model.dart';
 
-const map = {'en': 'English', 'ko': '한국어', 'vi': 'Tiếng Việt', 'zh': '汉语'};
+const localeStrings = {
+  'en': 'English',
+  'ko': '한국어',
+  'vi': 'Tiếng Việt',
+  'zh': '汉语'
+};
 
-class LocaleWidget extends StatelessWidget {
+class LocalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scrollController = ScrollController();
@@ -23,7 +28,8 @@ class LocaleWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               return RadioListTile<Locale>(
                 title: Text(
-                    map[AppLocalizations.supportedLocales[index].languageCode]!,
+                    localeStrings[
+                        AppLocalizations.supportedLocales[index].languageCode]!,
                     style: Theme.of(context).textTheme.headline6),
                 value: AppLocalizations.supportedLocales[index],
                 groupValue: Localizations.localeOf(context),

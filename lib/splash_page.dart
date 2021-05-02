@@ -5,7 +5,7 @@ import 'authentication/authentication_model.dart';
 import 'authentication/authentication_state.dart';
 import 'routes.dart';
 
-class SplashWidget extends ConsumerWidget {
+class SplashPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     return ProviderListener(

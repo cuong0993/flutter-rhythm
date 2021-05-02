@@ -9,7 +9,7 @@ import '../songs/songs_widget.dart';
 import '../user/user_model.dart';
 import '../user/user_state.dart';
 
-class HomeWidget extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
