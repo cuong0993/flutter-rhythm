@@ -65,7 +65,7 @@ Follow the instructions in `android/README.md`.
 Install Google Cloud SDK and run:
 
 ```
-$ ./synchronize_firebase.sh projectId
+$ ./synchronize_backend.sh projectId
 ```
 
 ### B4. Synchronize database 
