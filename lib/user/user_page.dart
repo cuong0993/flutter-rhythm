@@ -45,7 +45,7 @@ class UserPage extends ConsumerWidget {
         children: [
           () {
             if (!state.user.isAnonymous) {
-              return _buildAnonymousUI(state, context);
+              return _buildUserDetailsUI(state, context);
             } else {
               return const AuthenticationWidget();
             }
@@ -159,7 +159,7 @@ class UserPage extends ConsumerWidget {
     );
   }
 
-  Card _buildAnonymousUI(UserUpdated state, BuildContext context) {
+  Card _buildUserDetailsUI(UserUpdated state, BuildContext context) {
     return Card(
         color: Colors.transparent,
         elevation: 0,
