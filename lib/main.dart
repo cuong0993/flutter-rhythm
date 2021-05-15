@@ -19,11 +19,23 @@ import 'theme/theme_model.dart';
 import 'theme/theme_page.dart';
 import 'user/user_page.dart';
 
+class Logger extends ProviderObserver {
+  @override
+  void didUpdateProvider(ProviderBase provider, Object? newValue) {
+    print('''
+{
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "newValue": "$newValue"
+}''');
+  }
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
   runApp(
     ProviderScope(
+      observers: [Logger()],
       overrides: [
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
       ],
