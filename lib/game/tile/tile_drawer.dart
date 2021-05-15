@@ -3,8 +3,8 @@ import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
 import '../colors.dart';
+import '../util.dart';
 import 'tile.dart';
 
 Sprite noteSprite = Sprite(Flame.images

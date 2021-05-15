@@ -1,6 +1,6 @@
-import '../../util.dart';
 import '../effect.dart';
 import '../ripple_effect.dart';
+import '../util.dart';
 import 'tile.dart';
 import 'tile_touch_effect.dart';
 

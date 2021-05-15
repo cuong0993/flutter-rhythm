@@ -62,7 +62,7 @@ class UserLoadingBuilder implements Builder<UserLoading, UserLoadingBuilder> {
 
 class _$UserUpdated extends UserUpdated {
   @override
-  final AppUser user;
+  final User user;
 
   factory _$UserUpdated([void Function(UserUpdatedBuilder)? updates]) =>
       (new UserUpdatedBuilder()..update(updates)).build();
@@ -99,16 +99,16 @@ class _$UserUpdated extends UserUpdated {
 class UserUpdatedBuilder implements Builder<UserUpdated, UserUpdatedBuilder> {
   _$UserUpdated? _$v;
 
-  AppUser? _user;
-  AppUser? get user => _$this._user;
-  set user(AppUser? user) => _$this._user = user;
+  UserBuilder? _user;
+  UserBuilder get user => _$this._user ??= new UserBuilder();
+  set user(UserBuilder? user) => _$this._user = user;
 
   UserUpdatedBuilder();
 
   UserUpdatedBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _user = $v.user;
+      _user = $v.user.toBuilder();
       _$v = null;
     }
     return this;
@@ -127,10 +127,20 @@ class UserUpdatedBuilder implements Builder<UserUpdated, UserUpdatedBuilder> {
 
   @override
   _$UserUpdated build() {
-    final _$result = _$v ??
-        new _$UserUpdated._(
-            user: BuiltValueNullFieldError.checkNotNull(
-                user, 'UserUpdated', 'user'));
+    _$UserUpdated _$result;
+    try {
+      _$result = _$v ?? new _$UserUpdated._(user: user.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'user';
+        user.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'UserUpdated', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

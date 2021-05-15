@@ -12,6 +12,4 @@ abstract class InstrumentsState
   InstrumentsState._();
 
   List<Instrument> get instruments;
-
-  String? get selectedInstrumentId;
 }

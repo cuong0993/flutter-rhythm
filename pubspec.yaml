@@ -12,6 +12,7 @@ dependencies:
   built_value:
   cloud_firestore:
   cloud_functions:
+  collection:
   dart_midi:
     git:
       url: https://github.com/cuong0993/dart_midi

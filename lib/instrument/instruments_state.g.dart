@@ -9,15 +9,12 @@ part of 'instruments_state.dart';
 class _$InstrumentsState extends InstrumentsState {
   @override
   final List<Instrument> instruments;
-  @override
-  final String? selectedInstrumentId;
 
   factory _$InstrumentsState(
           [void Function(InstrumentsStateBuilder)? updates]) =>
       (new InstrumentsStateBuilder()..update(updates)).build();
 
-  _$InstrumentsState._({required this.instruments, this.selectedInstrumentId})
-      : super._() {
+  _$InstrumentsState._({required this.instruments}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         instruments, 'InstrumentsState', 'instruments');
   }
@@ -33,22 +30,18 @@ class _$InstrumentsState extends InstrumentsState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is InstrumentsState &&
-        instruments == other.instruments &&
-        selectedInstrumentId == other.selectedInstrumentId;
+    return other is InstrumentsState && instruments == other.instruments;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc(0, instruments.hashCode), selectedInstrumentId.hashCode));
+    return $jf($jc(0, instruments.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('InstrumentsState')
-          ..add('instruments', instruments)
-          ..add('selectedInstrumentId', selectedInstrumentId))
+          ..add('instruments', instruments))
         .toString();
   }
 }
@@ -62,18 +55,12 @@ class InstrumentsStateBuilder
   set instruments(List<Instrument>? instruments) =>
       _$this._instruments = instruments;
 
-  String? _selectedInstrumentId;
-  String? get selectedInstrumentId => _$this._selectedInstrumentId;
-  set selectedInstrumentId(String? selectedInstrumentId) =>
-      _$this._selectedInstrumentId = selectedInstrumentId;
-
   InstrumentsStateBuilder();
 
   InstrumentsStateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _instruments = $v.instruments;
-      _selectedInstrumentId = $v.selectedInstrumentId;
       _$v = null;
     }
     return this;
@@ -95,8 +82,7 @@ class InstrumentsStateBuilder
     final _$result = _$v ??
         new _$InstrumentsState._(
             instruments: BuiltValueNullFieldError.checkNotNull(
-                instruments, 'InstrumentsState', 'instruments'),
-            selectedInstrumentId: selectedInstrumentId);
+                instruments, 'InstrumentsState', 'instruments'));
     replace(_$result);
     return _$result;
   }

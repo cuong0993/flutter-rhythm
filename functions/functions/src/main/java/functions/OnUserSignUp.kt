@@ -5,8 +5,8 @@ import com.google.cloud.functions.RawBackgroundFunction
 import com.google.firebase.cloud.FirestoreClient
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import java.util.*
 import java.util.logging.Logger
-
 
 @Suppress("unused")
 class OnUserSignUp : RawBackgroundFunction {
@@ -17,12 +17,15 @@ class OnUserSignUp : RawBackgroundFunction {
             val uid = body["uid"].asString
             val docRef = db.collection("users").document(uid)
             val user = User(
-                    id = uid,
-                    playedNotes = 0,
-                    stars = 0,
-                    playedTime = 0,
-                    instrumentId = "piano",
-                    notificationTokens = listOf()
+                id = uid,
+                playedNotes = 0,
+                stars = 0,
+                playedTime = 0,
+                instrumentId = "piano",
+                name = "",
+                photoUrl = "",
+                anonymous = true,
+                creationTime = Date()
             )
             docRef.set(user).get()
             logger.info("Create profile success $uid")

@@ -44,7 +44,7 @@ class UserPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           () {
-            if (!state.user.isAnonymous) {
+            if (!state.user.anonymous) {
               return _buildUserDetailsUI(state, context);
             } else {
               return const AuthenticationWidget();
@@ -85,7 +85,7 @@ class UserPage extends ConsumerWidget {
                     image: AssetImage('assets/images/img_star.png'),
                   ),
                   const SizedBox(height: 8),
-                  Text(state.user.user.stars.toString(),
+                  Text(state.user.stars.toString(),
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: 8),
                 ],
@@ -114,7 +114,7 @@ class UserPage extends ConsumerWidget {
                     image: AssetImage('assets/images/img_note.png'),
                   ),
                   const SizedBox(height: 8),
-                  Text(state.user.user.playedNotes.toString(),
+                  Text(state.user.playedNotes.toString(),
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: 8),
                 ],
@@ -144,7 +144,7 @@ class UserPage extends ConsumerWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                      state.user.user.playedTime
+                      state.user.playedTime
                           .toString()
                           .substring(0, 4)
                           .toString(),
@@ -168,7 +168,13 @@ class UserPage extends ConsumerWidget {
             child: Row(
               children: <Widget>[
                 ClipOval(
-                  child: Image.network(state.user.photoUrl, width: 72),
+                  child: Image.network(state.user.photoUrl,
+                      errorBuilder: (context, exception, stackTrace) {
+                    return const Icon(
+                      Icons.account_circle_rounded,
+                      size: 72,
+                    );
+                  }, width: 72),
                 ),
                 const SizedBox(width: 8),
                 Column(
@@ -203,8 +209,7 @@ class UserPage extends ConsumerWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(sprintf(AppLocalizations.of(context)!.txt_using, [
-                          getInstrumentName(
-                              context, state.user.user.instrumentId)
+                          getInstrumentName(context, state.user.instrumentId)
                         ])),
                       ],
                     ),

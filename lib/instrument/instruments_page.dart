@@ -4,11 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
 import 'instruments_model.dart';
+import 'instruments_repository_impl.dart';
 
 class InstrumentsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final instrumentsState = watch(instrumentsStateProvider);
+    final selectedInstrumentId = watch(selectedInstrumentIdProvider);
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -24,11 +26,12 @@ class InstrumentsPage extends ConsumerWidget {
                 title: Text(getInstrumentName(context, instrument.id),
                     style: Theme.of(context).textTheme.headline6),
                 value: instrument.id,
-                groupValue: instrumentsState.selectedInstrumentId,
+                groupValue: selectedInstrumentId.state,
                 onChanged: (value) {
                   context
-                      .read(instrumentsStateProvider.notifier)
-                      .selectInstrument(value!);
+                      .read(instrumentRepositoryProvider)
+                      .changeInstrument(value!);
+                  context.read(selectedInstrumentIdProvider).state = value;
                 },
               );
             },

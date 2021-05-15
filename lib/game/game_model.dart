@@ -10,12 +10,12 @@ import 'package:path_provider/path_provider.dart';
 import '../midi/midi_model.dart';
 import '../serializers.dart';
 import '../songs/song.dart';
-import '../util.dart';
 import 'game_reward.dart';
 import 'game_state.dart';
 import 'tile/tile.dart';
 import 'tile/tile_chunk.dart';
 import 'tile/tile_converter.dart';
+import 'util.dart';
 
 final tilesCountProvider = StateProvider.autoDispose((ref) => 0);
 final timeProvider = StateProvider.autoDispose((ref) => 0.0);

@@ -4,9 +4,9 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
 
-import '../util.dart';
 import 'colors.dart';
 import 'effect.dart';
+import 'util.dart';
 
 Sprite touchSprite = Sprite(
     Flame.images.fromCache('${nearestDevicePixelRatioFolder}img_touch.png'));

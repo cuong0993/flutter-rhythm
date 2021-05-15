@@ -1,7 +1,7 @@
 import 'dart:collection';
 import 'dart:ui';
 
-import 'game/tile/tile_converter.dart';
+import 'tile/tile_converter.dart';
 
 final screenWidth = window.physicalSize.width / window.devicePixelRatio;
 final screenHeight = window.physicalSize.height / window.devicePixelRatio;
@@ -31,12 +31,6 @@ String nearestDevicePixelRatioFolder = () {
     return candidates[lower]!;
   }
 }();
-
-extension DpToPixelConverter on int {
-  int toPixel() {
-    return (this * window.devicePixelRatio).toInt();
-  }
-}
 
 final positionsX = () {
   final positionXs = <double>[];

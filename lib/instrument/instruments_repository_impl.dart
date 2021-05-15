@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../serializers.dart';
@@ -19,5 +20,13 @@ class InstrumentsRepositoryImpl implements InstrumentsRepository {
       return serializers.deserializeWith<Instrument>(
           Instrument.serializer, e.data())!;
     }).toList();
+  }
+
+  @override
+  void changeInstrument(String instrumentId) {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update(<String, dynamic>{'instrumentId': instrumentId});
   }
 }

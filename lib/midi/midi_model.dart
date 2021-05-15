@@ -2,10 +2,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../firebase_cache_manager.dart';
 import '../instrument/instrument.dart';
+import '../instrument/instruments_model.dart';
 import '../sound_player.dart';
 
 final midiProvider = StateNotifierProvider<MidiModel, bool>((ref) {
-  return MidiModel();
+  final selectedInstrument = ref.watch(selectedInstrumentProvider);
+  final midiModel = MidiModel();
+  if (selectedInstrument != null) {
+    midiModel._loadSound(selectedInstrument);
+  }
+  return midiModel;
 });
 
 class MidiModel extends StateNotifier<bool> {
@@ -16,10 +22,8 @@ class MidiModel extends StateNotifier<bool> {
   final _soundPlayer = SoundPlayer();
   final _soundPaths = <int, String>{};
 
-  void changeInstrument(Instrument instrument) {
-    _soundPaths.clear();
+  void _loadSound(Instrument instrument) {
     _soundPlayer.release();
-    state = false;
     _maxNote = instrument.maxNote;
     _minNote = instrument.minNote;
     Future.wait(instrument.soundPaths

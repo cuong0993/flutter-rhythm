@@ -4,13 +4,13 @@ import 'package:flame/gestures.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 
-import '../util.dart';
 import 'colors.dart';
 import 'effect.dart';
 import 'tile/tile.dart';
 import 'tile/tile_effect_spawner.dart';
 import 'tile/tile_input_handler.dart';
 import 'tile/tiles_controller.dart';
+import 'util.dart';
 
 class MyGame extends Game with MultiTouchTapDetector {
   final _tilesController = TilesController();

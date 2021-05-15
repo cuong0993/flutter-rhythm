@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
+import '../util.dart';
 import 'tile.dart';
 import 'tile_converter.dart';
 import 'tile_drawer.dart';

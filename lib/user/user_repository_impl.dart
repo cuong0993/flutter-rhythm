@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../serializers.dart';
-import '../util.dart';
-import 'user.dart' as user;
+import 'user.dart';
 import 'user_repository.dart';
 
 final userRepositoryProvider =
@@ -16,41 +15,27 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl();
 
   @override
-  Stream<AppUser> observeCurrentUser() {
-    final firebaseUser = FirebaseAuth.instance.currentUser!;
+  Stream<User> observeCurrentUser() {
+    final firebaseUser = firebase.FirebaseAuth.instance.currentUser!;
     return FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseUser.uid)
         .snapshots()
         .where((event) => event.exists)
-        .map((event) {
-      var photoUrl = '';
-      var name = '';
-      firebaseUser.providerData.forEach((userInfo) {
-        if (userInfo.providerId == 'facebook.com') {
-          photoUrl =
-              '${userInfo.photoURL}?height=${96.toPixel()}&width=${96.toPixel()}';
-        } else if (userInfo.providerId == 'google.com') {
-          photoUrl =
-              userInfo.photoURL!.replaceAll('s96-c', 's${96.toPixel()}-c');
-        }
-        name = userInfo.displayName!;
-      });
-      return AppUser(
-          name,
-          photoUrl,
-          serializers.deserializeWith<user.User>(
-              user.User.serializer, event.data())!,
-          firebaseUser.isAnonymous,
-          firebaseUser.metadata.creationTime!);
-    });
+        .map((event) =>
+            serializers.deserializeWith<User>(User.serializer, event.data())!);
   }
 
   @override
-  void changeInstrument(String instrumentId) {
+  void update(String name, String photoUrl) {
+    final firebaseUser = firebase.FirebaseAuth.instance.currentUser!;
     FirebaseFirestore.instance
         .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .update(<String, dynamic>{'instrumentId': instrumentId});
+        .doc(firebaseUser.uid)
+        .update(<String, dynamic>{
+      'name': name,
+      'photoUrl': photoUrl,
+      'anonymous': false
+    });
   }
 }

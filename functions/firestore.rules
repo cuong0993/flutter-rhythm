@@ -13,7 +13,7 @@ service cloud.firestore {
       allow update: if isItMine() && isUpdatingInstrumentId();
       allow delete: if false;
       function isUpdatingInstrumentId() {
-        return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['instrumentId', 'notificationTokens']);
+        return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['instrumentId', 'name', 'photoUrl', 'anonymous']);
       }
     }
     match /songs/{songId} {

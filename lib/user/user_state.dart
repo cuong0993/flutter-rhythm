@@ -1,6 +1,5 @@
 import 'package:built_value/built_value.dart';
-
-import 'user_repository.dart';
+import 'user.dart';
 
 part 'user_state.g.dart';
 
@@ -19,5 +18,5 @@ abstract class UserUpdated
 
   UserUpdated._();
 
-  AppUser get user;
+  User get user;
 }

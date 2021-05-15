@@ -7,11 +7,11 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'game/game_reward.dart';
 import 'instrument/instrument.dart';
 import 'songs/song.dart';
+import 'timestamp_serializer_plugin.dart';
 import 'user/user.dart';
 
 part 'serializers.g.dart';
 
-//add all of the built value types that require serialization
 @SerializersFor([
   Instrument,
   Song,
@@ -20,5 +20,6 @@ part 'serializers.g.dart';
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DurationSerializer())
-      ..addPlugin(StandardJsonPlugin()))
+      ..addPlugin(StandardJsonPlugin())
+      ..addPlugin(TimestampSerializerPlugin()))
     .build();

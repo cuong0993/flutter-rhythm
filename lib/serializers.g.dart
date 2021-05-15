@@ -12,9 +12,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Song.serializer)
       ..add(User.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
           () => new ListBuilder<int>())
       ..addBuilderFactory(

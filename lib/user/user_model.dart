@@ -19,16 +19,11 @@ class UserModel extends StateNotifier<UserState> {
       _subscription?.cancel();
       _subscription =
           _read(userRepositoryProvider).observeCurrentUser().listen((user) {
-        if (!_instrumentLoaded) {
-          _read(instrumentsStateProvider.notifier)
-              .selectInstrument(user.user.instrumentId, isFromServer: true);
-          _instrumentLoaded = true;
-        }
-        state = UserUpdated((b) => b..user = user);
+        _read(selectedInstrumentIdProvider).state = user.instrumentId;
+        state = UserUpdated((b) => b..user = user.toBuilder());
       });
     }
   }
-  var _instrumentLoaded = false;
 
   StreamSubscription? _subscription;
   final Reader _read;

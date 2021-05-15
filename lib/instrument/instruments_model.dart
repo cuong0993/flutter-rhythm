@@ -1,10 +1,20 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../midi/midi_model.dart';
-import '../user/user_repository_impl.dart';
+import 'instrument.dart';
 import 'instruments_repository_impl.dart';
 import 'instruments_state.dart';
+
+final selectedInstrumentIdProvider = StateProvider<String?>((_) => null);
+
+final selectedInstrumentProvider = Provider<Instrument?>(((ref) {
+  final selectedInstrumentId = ref.watch(selectedInstrumentIdProvider).state;
+  final instruments = ref.watch(instrumentsStateProvider).instruments;
+  final instrument =
+      instruments.firstWhereOrNull((e) => e.id == selectedInstrumentId);
+  return instrument;
+}));
 
 final instrumentsStateProvider =
     StateNotifierProvider<InstrumentsModel, InstrumentsState>((ref) {
@@ -19,23 +29,6 @@ class InstrumentsModel extends StateNotifier<InstrumentsState> {
 
   Future<void> _loadInstruments() async {
     final instruments = await _read(instrumentRepositoryProvider).instruments();
-    if (state.instruments.isEmpty && state.selectedInstrumentId != null) {
-      final instrument = instruments.firstWhere(
-          (instrument) => instrument.id == state.selectedInstrumentId);
-      _read(midiProvider.notifier).changeInstrument(instrument);
-    }
     state = state.rebuild((b) => b..instruments = instruments);
-  }
-
-  void selectInstrument(String instrumentId, {bool isFromServer = false}) {
-    if (state.instruments.isNotEmpty) {
-      final instrument = state.instruments
-          .firstWhere((instrument) => instrument.id == instrumentId);
-      _read(midiProvider.notifier).changeInstrument(instrument);
-    }
-    if (!isFromServer) {
-      _read(userRepositoryProvider).changeInstrument(instrumentId);
-    }
-    state = state.rebuild((b) => b..selectedInstrumentId = instrumentId);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../midi/midi_model.dart';
 
 import '../routes.dart';
 import '../search/search_widget.dart';
@@ -46,10 +47,18 @@ class HomePage extends StatelessWidget {
                         }),
                     IconButton(icon: ClipOval(child: Consumer(
                       builder: (context, watch, child) {
+                        // FIXME To load midi
+                        watch(midiProvider);
                         final userState = watch(userStateProvider);
                         return (userState is UserUpdated &&
-                                !userState.user.isAnonymous)
-                            ? Image.network(userState.user.photoUrl)
+                                !userState.user.anonymous)
+                            ? Image.network(
+                                userState.user.photoUrl,
+                                errorBuilder: (context, exception, stackTrace) {
+                                  return const Icon(
+                                      Icons.account_circle_rounded);
+                                },
+                              )
                             : const Icon(Icons.account_circle_rounded);
                       },
                     )), onPressed: () async {

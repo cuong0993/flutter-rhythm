@@ -1,22 +1,25 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../user/user_repository_impl.dart';
 
 import 'authentication_state.dart';
 
 final authenticationProvider =
     StateNotifierProvider<AuthenticationModel, AuthenticationState>((ref) {
-  return AuthenticationModel().._checkAndSignInAnonymously();
+  return AuthenticationModel(ref.read).._checkAndSignInAnonymously();
 });
 
 class AuthenticationModel extends StateNotifier<AuthenticationState> {
-  AuthenticationModel() : super(Uninitialized());
+  AuthenticationModel(this._read) : super(Uninitialized());
   final _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookAuth.instance;
+  final Reader _read;
 
   Future _checkAndSignInAnonymously() async {
     try {
@@ -61,10 +64,31 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
 
   Future<void> _tryToLinkWithCurrentUser(OAuthCredential authCredential) async {
     try {
-      await FirebaseAuth.instance.currentUser
-          ?.linkWithCredential(authCredential);
+      final userInfo = (await FirebaseAuth.instance.currentUser
+              ?.linkWithCredential(authCredential))!
+          .additionalUserInfo!;
+      final name = userInfo.profile!['name'] as String;
+      final photoUrl = (userInfo.providerId == 'google.com')
+          ? (userInfo.profile!['picture'] as String)
+              .replaceAll('s96-c', 's${96.toPixel()}-c')
+          : '';
+      _read(userRepositoryProvider).update(name, photoUrl);
     } on Exception {
-      await FirebaseAuth.instance.signInWithCredential(authCredential);
+      final userInfo =
+          (await FirebaseAuth.instance.signInWithCredential(authCredential))
+              .additionalUserInfo!;
+      final name = userInfo.profile!['name'] as String;
+      final photoUrl = (userInfo.providerId == 'google.com')
+          ? (userInfo.profile!['picture'] as String)
+              .replaceAll('s96-c', 's${96.toPixel()}-c')
+          : '';
+      _read(userRepositoryProvider).update(name, photoUrl);
     }
+  }
+}
+
+extension DpToPixelConverter on int {
+  int toPixel() {
+    return (this * window.devicePixelRatio).toInt();
   }
 }

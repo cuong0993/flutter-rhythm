@@ -1,10 +1,10 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-import '../../util.dart';
 import '../center_render_text_config.dart';
 import '../colors.dart';
 import '../effect.dart';
+import '../util.dart';
 import 'tile.dart';
 
 const liveTime = 0.5;
