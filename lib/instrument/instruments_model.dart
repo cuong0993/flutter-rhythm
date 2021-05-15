@@ -4,31 +4,32 @@ import 'package:state_notifier/state_notifier.dart';
 
 import 'instrument.dart';
 import 'instruments_repository_impl.dart';
-import 'instruments_state.dart';
 
 final selectedInstrumentIdProvider = StateProvider<String?>((_) => null);
 
 final selectedInstrumentProvider = Provider<Instrument?>(((ref) {
   final selectedInstrumentId = ref.watch(selectedInstrumentIdProvider).state;
-  final instruments = ref.watch(instrumentsStateProvider).instruments;
-  final instrument =
-      instruments.firstWhereOrNull((e) => e.id == selectedInstrumentId);
-  return instrument;
+  final instruments = ref.watch(instrumentsProvider);
+  return instruments.when(
+      data: (instruments) =>
+          instruments.firstWhereOrNull((e) => e.id == selectedInstrumentId),
+      loading: () => null,
+      error: (_, __) => null);
 }));
 
-final instrumentsStateProvider =
-    StateNotifierProvider<InstrumentsModel, InstrumentsState>((ref) {
+final instrumentsProvider =
+    StateNotifierProvider<InstrumentsModel, AsyncValue<List<Instrument>>>(
+        (ref) {
   return InstrumentsModel(ref.read).._loadInstruments();
 });
 
-class InstrumentsModel extends StateNotifier<InstrumentsState> {
-  InstrumentsModel(this._read)
-      : super(InstrumentsState((b) => b..instruments = []));
+class InstrumentsModel extends StateNotifier<AsyncValue<List<Instrument>>> {
+  InstrumentsModel(this._read) : super(const AsyncValue.loading());
 
   final Reader _read;
 
   Future<void> _loadInstruments() async {
     final instruments = await _read(instrumentRepositoryProvider).instruments();
-    state = state.rebuild((b) => b..instruments = instruments);
+    state = AsyncValue.data(instruments);
   }
 }

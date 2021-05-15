@@ -16,24 +16,24 @@ class SongsWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final songsState = watch(songsStateProvider);
-    if (songsState is SongsInitial) {
+    final songs = watch(songsProvider);
+    if (songs is SongsInitial) {
       return LoadingWidget();
-    } else if (songsState is SongsLoaded) {
-      final songsByTag = songsState.songsByTags[tagNumber];
+    } else if (songs is SongsLoaded) {
+      final songsByTag = songs.songsByTags[tagNumber];
       return Scrollbar(
         child: NotificationListener<ScrollEndNotification>(
           onNotification: (notification) {
             if (notification.metrics.pixels > 0 &&
                 notification.metrics.atEdge) {
               context
-                  .read(songsStateProvider.notifier)
+                  .read(songsProvider.notifier)
                   .loadMoreSongsByTagNumbers([tagNumber]);
             }
             return true;
           },
           child: ListView.separated(
-            itemCount: (songsState.isLoadingMoreByTags[tagNumber])
+            itemCount: (songs.isLoadingMoreByTags[tagNumber])
                 ? songsByTag.length + 1
                 : songsByTag.length,
             itemBuilder: (context, index) {

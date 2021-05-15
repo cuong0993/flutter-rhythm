@@ -7,45 +7,42 @@ import 'package:sprintf/sprintf.dart';
 import '../authentication/authentication_widget.dart';
 import '../instrument/instruments_page.dart';
 import '../loading_widget.dart';
+import 'user.dart';
 import 'user_model.dart';
-import 'user_state.dart';
 
 class UserPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final userState = watch(userStateProvider);
+    final user = watch(userProvider);
     return Scaffold(
         appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.txt_page_title_account,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-        body: (() {
-          if (userState is UserLoading) {
-            return LoadingWidget();
-          } else if (userState is UserUpdated) {
-            final scrollController = ScrollController();
-            return Padding(
-                padding: const EdgeInsets.all(8),
-                child: Scrollbar(
-                    isAlwaysShown: true,
-                    controller: scrollController,
-                    child: ListView(
-                        shrinkWrap: true,
-                        controller: scrollController,
-                        children: <Widget>[_buildUI(userState, context)])));
-          } else {
-            return Container();
-          }
-        }()));
+        body: user.when(
+            data: (user) {
+              final scrollController = ScrollController();
+              return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Scrollbar(
+                      isAlwaysShown: true,
+                      controller: scrollController,
+                      child: ListView(
+                          shrinkWrap: true,
+                          controller: scrollController,
+                          children: <Widget>[_buildUI(user, context)])));
+            },
+            loading: () => LoadingWidget(),
+            error: (_, __) => LoadingWidget()));
   }
 
-  Widget _buildUI(UserUpdated state, BuildContext context) {
+  Widget _buildUI(User user, BuildContext context) {
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           () {
-            if (!state.user.anonymous) {
-              return _buildUserDetailsUI(state, context);
+            if (!user.anonymous) {
+              return _buildUserDetailsUI(user, context);
             } else {
               return const AuthenticationWidget();
             }
@@ -53,13 +50,13 @@ class UserPage extends ConsumerWidget {
           Card(
               color: Colors.transparent,
               elevation: 0,
-              child: _buildUserStatisticUI(state, context)),
+              child: _buildUserStatisticUI(user, context)),
         ],
       ),
     );
   }
 
-  Table _buildUserStatisticUI(UserUpdated state, BuildContext context) {
+  Table _buildUserStatisticUI(User user, BuildContext context) {
     return Table(
       children: [
         TableRow(children: [
@@ -85,7 +82,7 @@ class UserPage extends ConsumerWidget {
                     image: AssetImage('assets/images/img_star.png'),
                   ),
                   const SizedBox(height: 8),
-                  Text(state.user.stars.toString(),
+                  Text(user.stars.toString(),
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: 8),
                 ],
@@ -114,7 +111,7 @@ class UserPage extends ConsumerWidget {
                     image: AssetImage('assets/images/img_note.png'),
                   ),
                   const SizedBox(height: 8),
-                  Text(state.user.playedNotes.toString(),
+                  Text(user.playedNotes.toString(),
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: 8),
                 ],
@@ -143,11 +140,7 @@ class UserPage extends ConsumerWidget {
                     image: AssetImage('assets/images/img_clock.png'),
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                      state.user.playedTime
-                          .toString()
-                          .substring(0, 4)
-                          .toString(),
+                  Text(user.playedTime.toString().substring(0, 4).toString(),
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: 8),
                 ],
@@ -159,7 +152,7 @@ class UserPage extends ConsumerWidget {
     );
   }
 
-  Card _buildUserDetailsUI(UserUpdated state, BuildContext context) {
+  Card _buildUserDetailsUI(User user, BuildContext context) {
     return Card(
         color: Colors.transparent,
         elevation: 0,
@@ -168,7 +161,7 @@ class UserPage extends ConsumerWidget {
             child: Row(
               children: <Widget>[
                 ClipOval(
-                  child: Image.network(state.user.photoUrl,
+                  child: Image.network(user.photoUrl,
                       errorBuilder: (context, exception, stackTrace) {
                     return const Icon(
                       Icons.account_circle_rounded,
@@ -181,7 +174,7 @@ class UserPage extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      state.user.name,
+                      user.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     const SizedBox(height: 8),
@@ -193,9 +186,8 @@ class UserPage extends ConsumerWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          sprintf(AppLocalizations.of(context)!.txt_joined, [
-                            DateFormat.yMMMd().format(state.user.creationTime)
-                          ]),
+                          sprintf(AppLocalizations.of(context)!.txt_joined,
+                              [DateFormat.yMMMd().format(user.creationTime)]),
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ],
@@ -208,9 +200,8 @@ class UserPage extends ConsumerWidget {
                           height: 16,
                         ),
                         const SizedBox(width: 8),
-                        Text(sprintf(AppLocalizations.of(context)!.txt_using, [
-                          getInstrumentName(context, state.user.instrumentId)
-                        ])),
+                        Text(sprintf(AppLocalizations.of(context)!.txt_using,
+                            [getInstrumentName(context, user.instrumentId)])),
                       ],
                     ),
                   ],

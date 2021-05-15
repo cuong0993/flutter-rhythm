@@ -9,37 +9,34 @@ import 'instruments_repository_impl.dart';
 class InstrumentsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final instrumentsState = watch(instrumentsStateProvider);
+    final instruments = watch(instrumentsProvider);
     final selectedInstrumentId = watch(selectedInstrumentIdProvider);
     return Scaffold(
       appBar: AppBar(
           title: Text(
               AppLocalizations.of(context)!.txt_instrument_title_instruments,
               style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-      body: () {
-        if (instrumentsState.instruments.isNotEmpty) {
-          return ListView.builder(
-            itemCount: instrumentsState.instruments.length,
-            itemBuilder: (context, index) {
-              final instrument = instrumentsState.instruments[index];
-              return RadioListTile<String>(
-                title: Text(getInstrumentName(context, instrument.id),
-                    style: Theme.of(context).textTheme.headline6),
-                value: instrument.id,
-                groupValue: selectedInstrumentId.state,
-                onChanged: (value) {
-                  context
-                      .read(instrumentRepositoryProvider)
-                      .changeInstrument(value!);
-                  context.read(selectedInstrumentIdProvider).state = value;
+      body: instruments.when(
+          data: (instruments) => ListView.builder(
+                itemCount: instruments.length,
+                itemBuilder: (context, index) {
+                  final instrument = instruments[index];
+                  return RadioListTile<String>(
+                    title: Text(getInstrumentName(context, instrument.id),
+                        style: Theme.of(context).textTheme.headline6),
+                    value: instrument.id,
+                    groupValue: selectedInstrumentId.state,
+                    onChanged: (value) {
+                      context
+                          .read(instrumentRepositoryProvider)
+                          .changeInstrument(value!);
+                      context.read(selectedInstrumentIdProvider).state = value;
+                    },
+                  );
                 },
-              );
-            },
-          );
-        } else {
-          return LoadingWidget();
-        }
-      }(),
+              ),
+          loading: () => LoadingWidget(),
+          error: (_, __) => LoadingWidget()),
     );
   }
 }

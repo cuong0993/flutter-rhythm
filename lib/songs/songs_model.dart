@@ -14,7 +14,7 @@ const songTags = [
   'other',
 ];
 
-final songsStateProvider = StateNotifierProvider<SongsModel, SongsState>((ref) {
+final songsProvider = StateNotifierProvider<SongsModel, SongsState>((ref) {
   return SongsModel(ref.read(songRepositoryProvider))
     ..loadMoreSongsByTagNumbers(songTags.asMap().keys.toList());
 });

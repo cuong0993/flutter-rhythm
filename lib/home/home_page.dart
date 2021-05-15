@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../midi/midi_model.dart';
 
+import '../midi/midi_model.dart';
 import '../routes.dart';
 import '../search/search_widget.dart';
 import '../songs/songs_model.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_model.dart';
-import '../user/user_state.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -49,17 +48,20 @@ class HomePage extends StatelessWidget {
                       builder: (context, watch, child) {
                         // FIXME To load midi
                         watch(midiProvider);
-                        final userState = watch(userStateProvider);
-                        return (userState is UserUpdated &&
-                                !userState.user.anonymous)
-                            ? Image.network(
-                                userState.user.photoUrl,
-                                errorBuilder: (context, exception, stackTrace) {
-                                  return const Icon(
-                                      Icons.account_circle_rounded);
-                                },
-                              )
-                            : const Icon(Icons.account_circle_rounded);
+                        final user = watch(userProvider);
+                        return user.when(
+                            data: (user) => Image.network(
+                                  user.photoUrl,
+                                  errorBuilder:
+                                      (context, exception, stackTrace) {
+                                    return const Icon(
+                                        Icons.account_circle_rounded);
+                                  },
+                                ),
+                            loading: () =>
+                                const Icon(Icons.account_circle_rounded),
+                            error: (_, __) =>
+                                const Icon(Icons.account_circle_rounded));
                       },
                     )), onPressed: () async {
                       await Navigator.pushNamed(context, Routes.account);
