@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
             children: songTags
                 .asMap()
                 .map((index, tabName) =>
-                    MapEntry(index, SongsWidget(tagNumber: index)))
+                    MapEntry(index, SongsWidget(tag: tabName)))
                 .values
                 .toList(),
           ),

@@ -2,9 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import 'song.dart';
-import 'songs_repository.dart';
 import 'songs_repository_impl.dart';
-import 'songs_state.dart';
 
 const songTags = [
   'pop',
@@ -14,41 +12,45 @@ const songTags = [
   'other',
 ];
 
-final songsProvider = StateNotifierProvider<SongsModel, SongsState>((ref) {
-  return SongsModel(ref.read(songRepositoryProvider))
-    ..loadMoreSongsByTagNumbers(songTags.asMap().keys.toList());
+final isLoadingByTagProvider =
+    StateProvider.family<bool, String>((_, __) => false);
+final isLoadedByTagsProvider =
+    StateProvider.family<bool, String>((_, __) => false);
+
+final songsByTagProvider =
+    StateNotifierProvider.family<SongsModel, AsyncValue<List<Song>>, String>(
+        (ref, tag) {
+  return SongsModel(ref.read, tag);
 });
 
-class SongsModel extends StateNotifier<SongsState> {
-  SongsModel(this._songRepository) : super(SongsState.loading());
+class SongsModel extends StateNotifier<AsyncValue<List<Song>>> {
+  SongsModel(this._read, this._tag) : super(const AsyncValue.loading()) {
+    _read(songRepositoryProvider)
+        .getSongsByTag(_tag, '', 20)
+        .then((songs) => {state = AsyncValue.data(songs)});
+  }
 
-  final SongsRepository _songRepository;
+  final String _tag;
+  final Reader _read;
 
-  void loadMoreSongsByTagNumbers(List<int> tagNumbers) {
-    final songsByTags = (state is SongsStateLoaded)
-        ? (state as SongsStateLoaded).songsByTags
-        : songTags.map((e) => <Song>[]).toList();
-    final isLoadingMoreByTags = (state is SongsStateLoaded)
-        ? (state as SongsStateLoaded).isLoadingMoreByTags
-        : songTags.map((e) => false).toList();
-    final isLoadedByTags = (state is SongsStateLoaded)
-        ? (state as SongsStateLoaded).isLoadedByTags
-        : songTags.map((e) => false).toList();
-
-    tagNumbers.forEach((tag) async {
-      if (!isLoadingMoreByTags[tag] && !isLoadedByTags[tag]) {
-        isLoadingMoreByTags[tag] = true;
-        state =
-            SongsState.loaded(songsByTags, isLoadingMoreByTags, isLoadedByTags);
-        final songs = await _songRepository.getSongsByTag(songTags[tag],
-            songsByTags[tag].isEmpty ? '' : songsByTags[tag].last.title, 20);
-
-        songsByTags[tag] += songs;
-        isLoadingMoreByTags[tag] = false;
-        isLoadedByTags[tag] = songs.isEmpty;
-        state =
-            SongsState.loaded(songsByTags, isLoadingMoreByTags, isLoadedByTags);
-      }
-    });
+  Future<void> loadMoreSongs() async {
+    final isLoading = _read(isLoadingByTagProvider(_tag)).state;
+    final isLoaded = _read(isLoadedByTagsProvider(_tag)).state;
+    if (!isLoading && !isLoaded) {
+      _read(isLoadingByTagProvider(_tag)).state = true;
+      final titleStart = state.when(
+          data: (songs) => songs.isEmpty ? '' : songs.last.title,
+          loading: () => '',
+          error: (_, __) => '');
+      final loadedSongs = state.when(
+          data: (songs) => songs,
+          loading: () => <Song>[],
+          error: (_, __) => <Song>[]);
+      final songs = await _read(songRepositoryProvider)
+          .getSongsByTag(_tag, titleStart, 20);
+      _read(isLoadingByTagProvider(_tag)).state = false;
+      _read(isLoadedByTagsProvider(_tag)).state = songs.isEmpty;
+      state = AsyncValue.data(loadedSongs + songs);
+    }
   }
 }
