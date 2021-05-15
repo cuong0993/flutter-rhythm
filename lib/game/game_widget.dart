@@ -59,13 +59,13 @@ class GameWidget extends ConsumerWidget {
             return Future.value(false);
           },
           child: () {
-            if (gameState is GameLoading) {
+            if (gameState is GameStateLoading) {
               return const LoadingSoundWidget();
-            } else if (gameState is LoadingGift) {
+            } else if (gameState is GameStateLoadingGift) {
               return const LoadingGiftWidget();
-            } else if (gameState is GameCompleted) {
+            } else if (gameState is GameStateCompleted) {
               return CompleteWidget(gameState.gameReward, _onRestart);
-            } else if (gameState is GameStarted) {
+            } else if (gameState is GameStateStarted) {
               _game.start(gameState.tiles, gameState.speedPixelsPerSecond,
                   _onTileTouched, _onCompleted);
               return Stack(children: [

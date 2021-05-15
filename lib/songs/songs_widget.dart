@@ -17,9 +17,9 @@ class SongsWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final songs = watch(songsProvider);
-    if (songs is SongsInitial) {
+    if (songs is SongsStateLoading) {
       return LoadingWidget();
-    } else if (songs is SongsLoaded) {
+    } else if (songs is SongsStateLoaded) {
       final songsByTag = songs.songsByTags[tagNumber];
       return Scrollbar(
         child: NotificationListener<ScrollEndNotification>(

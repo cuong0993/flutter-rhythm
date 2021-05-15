@@ -6,8 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../user/user_repository_impl.dart';
 
+import '../user/user_repository_impl.dart';
 import 'authentication_state.dart';
 
 final authenticationProvider =
@@ -16,7 +16,7 @@ final authenticationProvider =
 });
 
 class AuthenticationModel extends StateNotifier<AuthenticationState> {
-  AuthenticationModel(this._read) : super(Uninitialized());
+  AuthenticationModel(this._read) : super(AuthenticationState.loading());
   final _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookAuth.instance;
   final Reader _read;
@@ -28,9 +28,9 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
       if (currentUser == null) {
         await FirebaseAuth.instance.signInAnonymously();
       }
-      state = Authenticated((b) => b..type = 'Anonymous');
+      state = AuthenticationState.anonymousAuthenticated();
     } catch (_) {
-      state = Unauthenticated();
+      state = AuthenticationState.unauthenticated();
     }
   }
 
@@ -43,9 +43,9 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
         idToken: googleAuth.idToken,
       );
       await _tryToLinkWithCurrentUser(credential);
-      state = Authenticated((b) => b..type = 'Google');
+      state = AuthenticationState.googleAuthenticated();
     } on Exception {
-      state = Unauthenticated();
+      state = AuthenticationState.unauthenticated();
     }
   }
 
@@ -56,9 +56,9 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
       final credential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);
-      state = Authenticated((b) => b..type = 'Facebook');
+      state = AuthenticationState.facebookAuthenticated();
     } on Exception {
-      state = Unauthenticated();
+      state = AuthenticationState.unauthenticated();
     }
   }
 

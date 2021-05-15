@@ -1,31 +1,21 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'song.freezed.dart';
 part 'song.g.dart';
 
-abstract class Song implements Built<Song, SongBuilder> {
-  static Serializer<Song> get serializer => _$songSerializer;
+@freezed
+class Song with _$Song {
+  factory Song(
+    String id,
+    String title,
+    String artist,
+    String url,
+    int bpm,
+    int unitDuration,
+    List<int> tilesCount,
+    List<int> duration,
+    List<String> tags,
+  ) = _Song;
 
-  factory Song([Function(SongBuilder b) updates]) = _$Song;
-
-  Song._();
-
-  String get id;
-
-  String get title;
-
-  String get artist;
-
-  String get url;
-
-  int get bpm;
-
-  int get unitDuration;
-
-  BuiltList<int> get tilesCount;
-
-  BuiltList<int> get duration;
-
-  BuiltList<String> get tags;
+  factory Song.fromJson(Map<String, dynamic> json) => _$SongFromJson(json);
 }

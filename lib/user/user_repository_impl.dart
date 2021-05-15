@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../serializers.dart';
 import 'user.dart';
 import 'user_repository.dart';
 
@@ -22,8 +21,7 @@ class UserRepositoryImpl implements UserRepository {
         .doc(firebaseUser.uid)
         .snapshots()
         .where((event) => event.exists)
-        .map((event) =>
-            serializers.deserializeWith<User>(User.serializer, event.data())!);
+        .map((event) => User.fromJson(event.data()!));
   }
 
   @override

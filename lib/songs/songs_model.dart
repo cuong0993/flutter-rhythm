@@ -20,38 +20,34 @@ final songsProvider = StateNotifierProvider<SongsModel, SongsState>((ref) {
 });
 
 class SongsModel extends StateNotifier<SongsState> {
-  SongsModel(this._songRepository) : super(SongsInitial());
+  SongsModel(this._songRepository) : super(SongsState.loading());
 
   final SongsRepository _songRepository;
 
   void loadMoreSongsByTagNumbers(List<int> tagNumbers) {
-    final songsByTags = (state is SongsLoaded)
-        ? (state as SongsLoaded).songsByTags
+    final songsByTags = (state is SongsStateLoaded)
+        ? (state as SongsStateLoaded).songsByTags
         : songTags.map((e) => <Song>[]).toList();
-    final isLoadingMoreByTags = (state is SongsLoaded)
-        ? (state as SongsLoaded).isLoadingMoreByTags
+    final isLoadingMoreByTags = (state is SongsStateLoaded)
+        ? (state as SongsStateLoaded).isLoadingMoreByTags
         : songTags.map((e) => false).toList();
-    final isLoadedByTags = (state is SongsLoaded)
-        ? (state as SongsLoaded).isLoadedByTags
+    final isLoadedByTags = (state is SongsStateLoaded)
+        ? (state as SongsStateLoaded).isLoadedByTags
         : songTags.map((e) => false).toList();
 
     tagNumbers.forEach((tag) async {
       if (!isLoadingMoreByTags[tag] && !isLoadedByTags[tag]) {
         isLoadingMoreByTags[tag] = true;
-        state = SongsLoaded((b) => b
-          ..songsByTags = songsByTags
-          ..isLoadingMoreByTags = isLoadingMoreByTags
-          ..isLoadedByTags = isLoadedByTags);
+        state =
+            SongsState.loaded(songsByTags, isLoadingMoreByTags, isLoadedByTags);
         final songs = await _songRepository.getSongsByTag(songTags[tag],
             songsByTags[tag].isEmpty ? '' : songsByTags[tag].last.title, 20);
 
         songsByTags[tag] += songs;
         isLoadingMoreByTags[tag] = false;
         isLoadedByTags[tag] = songs.isEmpty;
-        state = SongsLoaded((b) => b
-          ..songsByTags = songsByTags
-          ..isLoadingMoreByTags = isLoadingMoreByTags
-          ..isLoadedByTags = isLoadedByTags);
+        state =
+            SongsState.loaded(songsByTags, isLoadingMoreByTags, isLoadedByTags);
       }
     });
   }

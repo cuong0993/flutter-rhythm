@@ -1,30 +1,24 @@
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../timestamp_converter.dart';
+
+part 'user.freezed.dart';
 part 'user.g.dart';
 
-abstract class User implements Built<User, UserBuilder> {
-  static Serializer<User> get serializer => _$userSerializer;
+@freezed
+class User with _$User {
+  factory User(
+    String id,
+    int playedNotes,
+    int stars,
+    Duration playedTime,
+    String instrumentId,
+    String name,
+    String photoUrl,
+    bool anonymous,
+    @TimestampConverter() DateTime creationTime,
+  ) = _User;
 
-  factory User([Function(UserBuilder b) updates]) = _$User;
-
-  User._();
-
-  String get id;
-
-  int get playedNotes;
-
-  int get stars;
-
-  Duration get playedTime;
-
-  String get instrumentId;
-
-  String get name;
-
-  String get photoUrl;
-
-  bool get anonymous;
-
-  DateTime get creationTime;
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

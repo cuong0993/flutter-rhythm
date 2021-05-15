@@ -1,13 +1,11 @@
-import 'package:built_value/built_value.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'note.g.dart';
+part 'note.freezed.dart';
 
-abstract class Note implements Built<Note, NoteBuilder> {
-  factory Note([Function(NoteBuilder) updates]) = _$Note;
-
-  Note._();
-
-  int get note;
-
-  int get startTick;
+@freezed
+class Note with _$Note {
+  factory Note(
+    int note,
+    int startTick,
+  ) = _Note;
 }

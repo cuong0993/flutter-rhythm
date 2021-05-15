@@ -8,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../midi/midi_model.dart';
-import '../serializers.dart';
 import '../songs/song.dart';
 import 'game_reward.dart';
 import 'game_state.dart';
@@ -32,7 +31,7 @@ final gameStateFamilyProvider = StateNotifierProvider.autoDispose
 });
 
 class GameModel extends StateNotifier<GameState> {
-  GameModel(this._read) : super(GameLoading());
+  GameModel(this._read) : super(GameState.loading());
   final Reader _read;
   List<TileChunk> _tileChunks = [];
   int _unitDuration = 0;
@@ -88,11 +87,7 @@ class GameModel extends StateNotifier<GameState> {
     _tilesCount = 0;
     _errorCount = 0;
     _duration = duration;
-    state = GameStarted((b) => b
-      ..tiles = tiles
-      ..speedPixelsPerSecond = _speedDpsPerSecond
-      ..duration = _duration
-      ..songName = _songName);
+    state = GameState.started(tiles, _speedDpsPerSecond, _duration, _songName);
   }
 
   void touchTile(Tile? tile) {
@@ -119,7 +114,7 @@ class GameModel extends StateNotifier<GameState> {
 
   Future complete() async {
     await Future<void>.delayed(const Duration(milliseconds: 500));
-    state = LoadingGift();
+    state = GameState.loadingGift();
     final response = await FirebaseFunctions.instance
         .httpsCallable('GetGameReward')
         .call<Map>({
@@ -128,9 +123,9 @@ class GameModel extends StateNotifier<GameState> {
       'speed': _speed,
       'errorCount': _errorCount,
     });
-    final gameReward = serializers.deserializeWith<GameReward>(
-        GameReward.serializer, Map<String, dynamic>.from(response.data));
-    state = GameCompleted((b) => b..gameReward = gameReward!.toBuilder());
+    final gameReward =
+        GameReward.fromJson(Map<String, dynamic>.from(response.data));
+    state = GameState.completed(gameReward);
   }
 
   void restart() {
@@ -138,11 +133,7 @@ class GameModel extends StateNotifier<GameState> {
     _tilesCount = 0;
     _errorCount = 0;
     final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
-    state = GameStarted((b) => b
-      ..tiles = tiles
-      ..speedPixelsPerSecond = _speedDpsPerSecond
-      ..duration = _duration
-      ..songName = _songName);
+    state = GameState.started(tiles, _speedDpsPerSecond, _duration, _songName);
     _read(tilesCountProvider).state = _tilesCount;
     _read(timeProvider).state = _time;
     _read(guideTextProvider).state = '';

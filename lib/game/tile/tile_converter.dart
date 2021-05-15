@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_midi/dart_midi.dart';
 
@@ -36,9 +35,7 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
       } else if (midiEvent is NoteOffEvent) {
         final noteValue = midiEvent.noteNumber;
         if (onsets[noteValue] >= 0) {
-          tileNotes.add(Note((b) => b
-            ..note = noteValue
-            ..startTick = onsets[noteValue]));
+          tileNotes.add(Note(noteValue, onsets[noteValue]));
           onsets[noteValue] = -1;
         }
       }
@@ -53,10 +50,8 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
               .toList()
                 ..sort((e1, e2) => e1.key.compareTo(e2.key)))
       .forEach((key, value) {
-    tileChunks.add(TileChunk((b) => b
-      ..notes = ListBuilder(value)
-      ..durationToPrevious = value[0].startTick - previousStartTick
-      ..startTick = value[0].startTick));
+    tileChunks.add(TileChunk(
+        value, value[0].startTick - previousStartTick, value[0].startTick));
     previousStartTick = value[0].startTick;
   });
   return tileChunks;

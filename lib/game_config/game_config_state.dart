@@ -1,15 +1,11 @@
-import 'package:built_value/built_value.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'game_config_state.g.dart';
+part 'game_config_state.freezed.dart';
 
-abstract class GameConfigState
-    implements Built<GameConfigState, GameConfigStateBuilder> {
-  factory GameConfigState([Function(GameConfigStateBuilder) updates]) =
-      _$GameConfigState;
-
-  GameConfigState._();
-
-  int get difficulty;
-
-  int get speed;
+@freezed
+class GameConfigState with _$GameConfigState {
+  factory GameConfigState(
+    int difficulty,
+    int speed,
+  ) = _GameConfigState;
 }

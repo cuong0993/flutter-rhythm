@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../serializers.dart';
 import 'song.dart';
 import 'songs_repository.dart';
 
@@ -22,8 +21,7 @@ class SongsRepositoryImpl implements SongsRepository {
             .limit(limit)
             .get())
         .docs
-        .map((e) =>
-            serializers.deserializeWith<Song>(Song.serializer, e.data())!)
+        .map((e) => Song.fromJson(e.data()))
         .toList();
   }
 
@@ -35,8 +33,7 @@ class SongsRepositoryImpl implements SongsRepository {
             .where('title', isLessThanOrEqualTo: text + '\uf8ff')
             .get())
         .docs
-        .map((e) =>
-            serializers.deserializeWith<Song>(Song.serializer, e.data())!)
+        .map((e) => Song.fromJson(e.data()))
         .toList();
   }
 }

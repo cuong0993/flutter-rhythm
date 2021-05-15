@@ -27,12 +27,11 @@ class MidiModel extends StateNotifier<bool> {
     _maxNote = instrument.maxNote;
     _minNote = instrument.minNote;
     Future.wait(instrument.soundPaths
-            .asMap()
             .map((note, path) => MapEntry(note, _getFile(note, path)))
             .values
             .toList())
         .then((_) async {
-      await _soundPlayer.load(_soundPaths, instrument.baseNotes.toMap());
+      await _soundPlayer.load(_soundPaths, instrument.baseNotes);
       state = true;
     });
   }

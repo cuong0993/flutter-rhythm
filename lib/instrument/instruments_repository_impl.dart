@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../serializers.dart';
 import 'instrument.dart';
 import 'instruments_repository.dart';
 
@@ -16,10 +15,8 @@ class InstrumentsRepositoryImpl implements InstrumentsRepository {
   Future<List<Instrument>> instruments() async {
     return (await FirebaseFirestore.instance.collection('instruments').get())
         .docs
-        .map((e) {
-      return serializers.deserializeWith<Instrument>(
-          Instrument.serializer, e.data())!;
-    }).toList();
+        .map((e) => Instrument.fromJson(e.data()))
+        .toList();
   }
 
   @override

@@ -1,33 +1,20 @@
-import 'package:built_value/built_value.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'authentication_state.g.dart';
+part 'authentication_state.freezed.dart';
 
-abstract class AuthenticationState {}
+@freezed
+class AuthenticationState with _$AuthenticationState {
+  factory AuthenticationState.loading() = AuthenticationStateLoading;
 
-abstract class Uninitialized
-    implements Built<Uninitialized, UninitializedBuilder>, AuthenticationState {
-  factory Uninitialized([Function(UninitializedBuilder) updates]) =
-      _$Uninitialized;
+  factory AuthenticationState.anonymousAuthenticated() =
+      AuthenticationStateAnonymousAuthenticated;
 
-  Uninitialized._();
-}
+  factory AuthenticationState.googleAuthenticated() =
+      AuthenticationStateGoogleAuthenticated;
 
-abstract class Authenticated
-    implements Built<Authenticated, AuthenticatedBuilder>, AuthenticationState {
-  String get type;
+  factory AuthenticationState.facebookAuthenticated() =
+      AuthenticationStateFacebookAuthenticated;
 
-  factory Authenticated([Function(AuthenticatedBuilder) updates]) =
-      _$Authenticated;
-
-  Authenticated._();
-}
-
-abstract class Unauthenticated
-    implements
-        Built<Unauthenticated, UnauthenticatedBuilder>,
-        AuthenticationState {
-  factory Unauthenticated([Function(UnauthenticatedBuilder) updates]) =
-      _$Unauthenticated;
-
-  Unauthenticated._();
+  factory AuthenticationState.unauthenticated() =
+      AuthenticationStateUnauthenticated;
 }

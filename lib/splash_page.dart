@@ -11,7 +11,9 @@ class SplashPage extends ConsumerWidget {
     return ProviderListener(
         provider: authenticationProvider,
         onChange: (context, state) {
-          if (state is Authenticated) {
+          if (state is AuthenticationStateAnonymousAuthenticated ||
+              state is AuthenticationStateGoogleAuthenticated ||
+              state is AuthenticationStateFacebookAuthenticated) {
             Navigator.pushNamedAndRemoveUntil(
                 context, Routes.home, (route) => false);
           }

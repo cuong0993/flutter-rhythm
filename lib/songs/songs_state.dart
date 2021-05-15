@@ -1,28 +1,16 @@
-import 'package:built_value/built_value.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'song.dart';
 
-part 'songs_state.g.dart';
+part 'songs_state.freezed.dart';
 
-abstract class SongsState {}
+@freezed
+class SongsState with _$SongsState {
+  factory SongsState.loading() = SongsStateLoading;
 
-abstract class SongsInitial
-    implements Built<SongsInitial, SongsInitialBuilder>, SongsState {
-  factory SongsInitial([Function(SongsInitialBuilder) updates]) =
-      _$SongsInitial;
-
-  SongsInitial._();
-}
-
-abstract class SongsLoaded
-    implements Built<SongsLoaded, SongsLoadedBuilder>, SongsState {
-  factory SongsLoaded([Function(SongsLoadedBuilder) updates]) = _$SongsLoaded;
-
-  SongsLoaded._();
-
-  List<List<Song>> get songsByTags;
-
-  List<bool> get isLoadingMoreByTags;
-
-  List<bool> get isLoadedByTags;
+  factory SongsState.loaded(
+    List<List<Song>> songsByTags,
+    List<bool> isLoadingMoreByTags,
+    List<bool> isLoadedByTags,
+  ) = SongsStateLoaded;
 }

@@ -8,16 +8,13 @@ final gameConfigStateProvider =
 });
 
 class GameConfigModel extends StateNotifier<GameConfigState> {
-  GameConfigModel()
-      : super(GameConfigState((b) => b
-          ..speed = 1
-          ..difficulty = 1));
+  GameConfigModel() : super(GameConfigState(1, 1));
 
   void changeDifficulty(int difficulty) {
-    state = state.rebuild((b) => b..difficulty = difficulty);
+    state = state.copyWith(difficulty: difficulty);
   }
 
   void changeSpeed(int speed) {
-    state = state.rebuild((b) => b..speed = speed);
+    state = state.copyWith(speed: speed);
   }
 }

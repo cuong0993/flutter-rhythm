@@ -1,47 +1,18 @@
-import 'package:built_value/built_value.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'game_reward.dart';
 import 'tile/tile.dart';
 
-part 'game_state.g.dart';
+part 'game_state.freezed.dart';
 
-abstract class GameState {}
+@freezed
+class GameState with _$GameState {
+  factory GameState.loading() = GameStateLoading;
 
-abstract class GameLoading
-    implements Built<GameLoading, GameLoadingBuilder>, GameState {
-  factory GameLoading([Function(GameLoadingBuilder) updates]) = _$GameLoading;
+  factory GameState.started(List<Tile> tiles, double speedPixelsPerSecond,
+      int duration, String songName) = GameStateStarted;
 
-  GameLoading._();
-}
+  factory GameState.loadingGift() = GameStateLoadingGift;
 
-abstract class GameStarted
-    implements Built<GameStarted, GameStartedBuilder>, GameState {
-  factory GameStarted([Function(GameStartedBuilder) updates]) = _$GameStarted;
-
-  GameStarted._();
-
-  List<Tile> get tiles;
-
-  double get speedPixelsPerSecond;
-
-  int get duration;
-
-  String get songName;
-}
-
-abstract class LoadingGift
-    implements Built<LoadingGift, LoadingGiftBuilder>, GameState {
-  factory LoadingGift([Function(LoadingGiftBuilder) updates]) = _$LoadingGift;
-
-  LoadingGift._();
-}
-
-abstract class GameCompleted
-    implements Built<GameCompleted, GameCompletedBuilder>, GameState {
-  factory GameCompleted([Function(GameCompletedBuilder) updates]) =
-      _$GameCompleted;
-
-  GameCompleted._();
-
-  GameReward get gameReward;
+  factory GameState.completed(GameReward gameReward) = GameStateCompleted;
 }

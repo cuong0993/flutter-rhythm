@@ -1,18 +1,14 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../note/note.dart';
 
-part 'tile_chunk.g.dart';
+part 'tile_chunk.freezed.dart';
 
-abstract class TileChunk implements Built<TileChunk, TileChunkBuilder> {
-  factory TileChunk([Function(TileChunkBuilder) updates]) = _$TileChunk;
-
-  TileChunk._();
-
-  BuiltList<Note> get notes;
-
-  int get durationToPrevious;
-
-  int get startTick;
+@freezed
+class TileChunk with _$TileChunk {
+  factory TileChunk(
+    List<Note> notes,
+    int durationToPrevious,
+    int startTick,
+  ) = _TileChunk;
 }

@@ -1,16 +1,15 @@
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'game_reward.freezed.dart';
 part 'game_reward.g.dart';
 
-abstract class GameReward implements Built<GameReward, GameRewardBuilder> {
-  static Serializer<GameReward> get serializer => _$gameRewardSerializer;
+@freezed
+class GameReward with _$GameReward {
+  factory GameReward(
+    int stars,
+    int playedNotes,
+  ) = _GameReward;
 
-  factory GameReward([Function(GameRewardBuilder b) updates]) = _$GameReward;
-
-  GameReward._();
-
-  int get stars;
-
-  int get playedNotes;
+  factory GameReward.fromJson(Map<String, dynamic> json) =>
+      _$GameRewardFromJson(json);
 }
