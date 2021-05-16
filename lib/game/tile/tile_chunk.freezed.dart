@@ -31,9 +31,7 @@ const $TileChunk = _$TileChunkTearOff();
 /// @nodoc
 mixin _$TileChunk {
   List<Note> get notes => throw _privateConstructorUsedError;
-
   int get durationToPrevious => throw _privateConstructorUsedError;
-
   int get startTick => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -45,7 +43,6 @@ mixin _$TileChunk {
 abstract class $TileChunkCopyWith<$Res> {
   factory $TileChunkCopyWith(TileChunk value, $Res Function(TileChunk) then) =
       _$TileChunkCopyWithImpl<$Res>;
-
   $Res call({List<Note> notes, int durationToPrevious, int startTick});
 }
 
@@ -54,7 +51,6 @@ class _$TileChunkCopyWithImpl<$Res> implements $TileChunkCopyWith<$Res> {
   _$TileChunkCopyWithImpl(this._value, this._then);
 
   final TileChunk _value;
-
   // ignore: unused_field
   final $Res Function(TileChunk) _then;
 
@@ -86,7 +82,6 @@ abstract class _$TileChunkCopyWith<$Res> implements $TileChunkCopyWith<$Res> {
   factory _$TileChunkCopyWith(
           _TileChunk value, $Res Function(_TileChunk) then) =
       __$TileChunkCopyWithImpl<$Res>;
-
   @override
   $Res call({List<Note> notes, int durationToPrevious, int startTick});
 }
@@ -173,13 +168,10 @@ abstract class _TileChunk implements TileChunk {
 
   @override
   List<Note> get notes => throw _privateConstructorUsedError;
-
   @override
   int get durationToPrevious => throw _privateConstructorUsedError;
-
   @override
   int get startTick => throw _privateConstructorUsedError;
-
   @override
   @JsonKey(ignore: true)
   _$TileChunkCopyWith<_TileChunk> get copyWith =>

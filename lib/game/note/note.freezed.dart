@@ -30,7 +30,6 @@ const $Note = _$NoteTearOff();
 /// @nodoc
 mixin _$Note {
   int get note => throw _privateConstructorUsedError;
-
   int get startTick => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -41,7 +40,6 @@ mixin _$Note {
 abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
-
   $Res call({int note, int startTick});
 }
 
@@ -50,7 +48,6 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
   _$NoteCopyWithImpl(this._value, this._then);
 
   final Note _value;
-
   // ignore: unused_field
   final $Res Function(Note) _then;
 
@@ -76,7 +73,6 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
 abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
   factory _$NoteCopyWith(_Note value, $Res Function(_Note) then) =
       __$NoteCopyWithImpl<$Res>;
-
   @override
   $Res call({int note, int startTick});
 }
@@ -151,10 +147,8 @@ abstract class _Note implements Note {
 
   @override
   int get note => throw _privateConstructorUsedError;
-
   @override
   int get startTick => throw _privateConstructorUsedError;
-
   @override
   @JsonKey(ignore: true)
   _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;
