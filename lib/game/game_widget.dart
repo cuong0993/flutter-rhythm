@@ -79,13 +79,13 @@ class GameWidget extends ConsumerWidget {
                           children: [
                             Consumer(
                               builder: (context, watch, child) {
-                                final time = watch(timeProvider);
+                                final time = watch(timeProvider).state;
                                 return LinearProgressIndicator(
                                   backgroundColor:
                                       onBackgroundColor.withOpacity(0.1),
                                   valueColor: AlwaysStoppedAnimation<Color>(
                                       secondaryColor),
-                                  value: time.state / gameState.duration,
+                                  value: time / gameState.duration,
                                 );
                               },
                             ),
@@ -103,9 +103,10 @@ class GameWidget extends ConsumerWidget {
                                               .headline6),
                                       Consumer(
                                         builder: (context, watch, child) {
-                                          final time = watch(timeProvider);
+                                          final time =
+                                              watch(timeProvider).state;
                                           return Text(
-                                              '${time.state.toInt() ~/ 60}:${(time.state.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration.toInt() ~/ 60}:${(gameState.duration.toInt() % 60).toString().padLeft(2, '0')}',
+                                              '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration.toInt() ~/ 60}:${(gameState.duration.toInt() % 60).toString().padLeft(2, '0')}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .headline6);
@@ -129,9 +130,8 @@ class GameWidget extends ConsumerWidget {
                                       Consumer(
                                         builder: (context, watch, child) {
                                           final tilesCount =
-                                              watch(tilesCountProvider);
-                                          return Text(
-                                              tilesCount.state.toString(),
+                                              watch(tilesCountProvider).state;
+                                          return Text(tilesCount.toString(),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .headline4!
@@ -164,13 +164,13 @@ class GameWidget extends ConsumerWidget {
 class GuideTextWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final guideText = watch(guideTextProvider);
+    final guideText = watch(guideTextProvider).state;
     var text = '';
-    if (guideText.state == 'txt_too_late') {
+    if (guideText == 'txt_too_late') {
       text = AppLocalizations.of(context)!.txt_too_late;
-    } else if (guideText.state == 'txt_too_early') {
+    } else if (guideText == 'txt_too_early') {
       text = AppLocalizations.of(context)!.txt_too_early;
-    } else if (guideText.state == 'txt_too_many_fingers') {
+    } else if (guideText == 'txt_too_many_fingers') {
       text = AppLocalizations.of(context)!.txt_too_many_fingers;
     }
     return Text('$text',

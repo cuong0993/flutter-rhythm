@@ -10,7 +10,7 @@ class InstrumentsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final instruments = watch(instrumentsProvider);
-    final selectedInstrumentId = watch(selectedInstrumentIdProvider);
+    final selectedInstrumentId = watch(selectedInstrumentIdProvider).state;
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -25,7 +25,7 @@ class InstrumentsPage extends ConsumerWidget {
                     title: Text(getInstrumentName(context, instrument.id),
                         style: Theme.of(context).textTheme.headline6),
                     value: instrument.id,
-                    groupValue: selectedInstrumentId.state,
+                    groupValue: selectedInstrumentId,
                     onChanged: (value) {
                       context
                           .read(instrumentRepositoryProvider)
