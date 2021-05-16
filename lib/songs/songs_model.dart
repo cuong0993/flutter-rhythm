@@ -12,7 +12,7 @@ const songTags = [
   'other',
 ];
 
-final isLoadingByTagProvider =
+final isLoadingNextPageByTagProvider =
     StateProvider.family<bool, String>((_, __) => false);
 final isLoadedByTagsProvider =
     StateProvider.family<bool, String>((_, __) => false);
@@ -34,10 +34,10 @@ class SongsModel extends StateNotifier<AsyncValue<List<Song>>> {
   final Reader _read;
 
   Future<void> loadMoreSongs() async {
-    final isLoading = _read(isLoadingByTagProvider(_tag)).state;
+    final isLoading = _read(isLoadingNextPageByTagProvider(_tag)).state;
     final isLoaded = _read(isLoadedByTagsProvider(_tag)).state;
     if (!isLoading && !isLoaded) {
-      _read(isLoadingByTagProvider(_tag)).state = true;
+      _read(isLoadingNextPageByTagProvider(_tag)).state = true;
       final titleStart = state.when(
           data: (songs) => songs.isEmpty ? '' : songs.last.title,
           loading: () => '',
@@ -48,7 +48,7 @@ class SongsModel extends StateNotifier<AsyncValue<List<Song>>> {
           error: (_, __) => <Song>[]);
       final songs = await _read(songRepositoryProvider)
           .getSongsByTag(_tag, titleStart, 20);
-      _read(isLoadingByTagProvider(_tag)).state = false;
+      _read(isLoadingNextPageByTagProvider(_tag)).state = false;
       _read(isLoadedByTagsProvider(_tag)).state = songs.isEmpty;
       state = AsyncValue.data(loadedSongs + songs);
     }

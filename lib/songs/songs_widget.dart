@@ -56,7 +56,7 @@ class SongsWidget extends ConsumerWidget {
                 Consumer(
                   builder: (context, watch, child) {
                     final isLoadingByTag =
-                        watch(isLoadingByTagProvider(_tag)).state;
+                        watch(isLoadingNextPageByTagProvider(_tag)).state;
                     return isLoadingByTag
                         ? const Center(
                             child: SizedBox(
