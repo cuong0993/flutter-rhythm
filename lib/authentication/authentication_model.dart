@@ -66,14 +66,26 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
               ?.linkWithCredential(authCredential))!
           .additionalUserInfo!;
       final name = userInfo.profile!['name'] as String;
-      final photoUrl = userInfo.profile!['picture'] as String;
+      var photoUrl = '';
+      if (userInfo.providerId == 'google.com') {
+        photoUrl = userInfo.profile!['picture'] as String;
+      } else if (userInfo.providerId == 'facebook.com') {
+        // ignore: avoid_dynamic_calls
+        photoUrl = userInfo.profile!['picture']['data']['url'] as String;
+      }
       _read(userRepositoryProvider).update(name, photoUrl);
     } on Exception {
       final userInfo =
           (await FirebaseAuth.instance.signInWithCredential(authCredential))
               .additionalUserInfo!;
       final name = userInfo.profile!['name'] as String;
-      final photoUrl = userInfo.profile!['picture'] as String;
+      var photoUrl = '';
+      if (userInfo.providerId == 'google.com') {
+        photoUrl = userInfo.profile!['picture'] as String;
+      } else if (userInfo.providerId == 'facebook.com') {
+        // ignore: avoid_dynamic_calls
+        photoUrl = userInfo.profile!['picture']['data']['url'] as String;
+      }
       _read(userRepositoryProvider).update(name, photoUrl);
     }
   }
