@@ -6,14 +6,8 @@ part 'authentication_state.freezed.dart';
 class AuthenticationState with _$AuthenticationState {
   factory AuthenticationState.loading() = AuthenticationStateLoading;
 
-  factory AuthenticationState.anonymousAuthenticated() =
-      AuthenticationStateAnonymousAuthenticated;
-
-  factory AuthenticationState.googleAuthenticated() =
-      AuthenticationStateGoogleAuthenticated;
-
-  factory AuthenticationState.facebookAuthenticated() =
-      AuthenticationStateFacebookAuthenticated;
+  factory AuthenticationState.authenticated() =
+      AuthenticationStateAuthenticated;
 
   factory AuthenticationState.unauthenticated() =
       AuthenticationStateUnauthenticated;

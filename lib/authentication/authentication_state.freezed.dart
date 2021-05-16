@@ -20,16 +20,8 @@ class _$AuthenticationStateTearOff {
     return AuthenticationStateLoading();
   }
 
-  AuthenticationStateAnonymousAuthenticated anonymousAuthenticated() {
-    return AuthenticationStateAnonymousAuthenticated();
-  }
-
-  AuthenticationStateGoogleAuthenticated googleAuthenticated() {
-    return AuthenticationStateGoogleAuthenticated();
-  }
-
-  AuthenticationStateFacebookAuthenticated facebookAuthenticated() {
-    return AuthenticationStateFacebookAuthenticated();
+  AuthenticationStateAuthenticated authenticated() {
+    return AuthenticationStateAuthenticated();
   }
 
   AuthenticationStateUnauthenticated unauthenticated() {
@@ -45,18 +37,14 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() anonymousAuthenticated,
-    required TResult Function() googleAuthenticated,
-    required TResult Function() facebookAuthenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? anonymousAuthenticated,
-    TResult Function()? googleAuthenticated,
-    TResult Function()? facebookAuthenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) =>
@@ -64,12 +52,8 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationStateLoading value) loading,
-    required TResult Function(AuthenticationStateAnonymousAuthenticated value)
-        anonymousAuthenticated,
-    required TResult Function(AuthenticationStateGoogleAuthenticated value)
-        googleAuthenticated,
-    required TResult Function(AuthenticationStateFacebookAuthenticated value)
-        facebookAuthenticated,
+    required TResult Function(AuthenticationStateAuthenticated value)
+        authenticated,
     required TResult Function(AuthenticationStateUnauthenticated value)
         unauthenticated,
   }) =>
@@ -77,12 +61,7 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationStateLoading value)? loading,
-    TResult Function(AuthenticationStateAnonymousAuthenticated value)?
-        anonymousAuthenticated,
-    TResult Function(AuthenticationStateGoogleAuthenticated value)?
-        googleAuthenticated,
-    TResult Function(AuthenticationStateFacebookAuthenticated value)?
-        facebookAuthenticated,
+    TResult Function(AuthenticationStateAuthenticated value)? authenticated,
     TResult Function(AuthenticationStateUnauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) =>
@@ -148,9 +127,7 @@ class _$AuthenticationStateLoading implements AuthenticationStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() anonymousAuthenticated,
-    required TResult Function() googleAuthenticated,
-    required TResult Function() facebookAuthenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) {
     return loading();
@@ -160,9 +137,7 @@ class _$AuthenticationStateLoading implements AuthenticationStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? anonymousAuthenticated,
-    TResult Function()? googleAuthenticated,
-    TResult Function()? facebookAuthenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -176,12 +151,8 @@ class _$AuthenticationStateLoading implements AuthenticationStateLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationStateLoading value) loading,
-    required TResult Function(AuthenticationStateAnonymousAuthenticated value)
-        anonymousAuthenticated,
-    required TResult Function(AuthenticationStateGoogleAuthenticated value)
-        googleAuthenticated,
-    required TResult Function(AuthenticationStateFacebookAuthenticated value)
-        facebookAuthenticated,
+    required TResult Function(AuthenticationStateAuthenticated value)
+        authenticated,
     required TResult Function(AuthenticationStateUnauthenticated value)
         unauthenticated,
   }) {
@@ -192,12 +163,7 @@ class _$AuthenticationStateLoading implements AuthenticationStateLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationStateLoading value)? loading,
-    TResult Function(AuthenticationStateAnonymousAuthenticated value)?
-        anonymousAuthenticated,
-    TResult Function(AuthenticationStateGoogleAuthenticated value)?
-        googleAuthenticated,
-    TResult Function(AuthenticationStateFacebookAuthenticated value)?
-        facebookAuthenticated,
+    TResult Function(AuthenticationStateAuthenticated value)? authenticated,
     TResult Function(AuthenticationStateUnauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) {
@@ -213,43 +179,42 @@ abstract class AuthenticationStateLoading implements AuthenticationState {
 }
 
 /// @nodoc
-abstract class $AuthenticationStateAnonymousAuthenticatedCopyWith<$Res> {
-  factory $AuthenticationStateAnonymousAuthenticatedCopyWith(
-          AuthenticationStateAnonymousAuthenticated value,
-          $Res Function(AuthenticationStateAnonymousAuthenticated) then) =
-      _$AuthenticationStateAnonymousAuthenticatedCopyWithImpl<$Res>;
+abstract class $AuthenticationStateAuthenticatedCopyWith<$Res> {
+  factory $AuthenticationStateAuthenticatedCopyWith(
+          AuthenticationStateAuthenticated value,
+          $Res Function(AuthenticationStateAuthenticated) then) =
+      _$AuthenticationStateAuthenticatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AuthenticationStateAnonymousAuthenticatedCopyWithImpl<$Res>
+class _$AuthenticationStateAuthenticatedCopyWithImpl<$Res>
     extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements $AuthenticationStateAnonymousAuthenticatedCopyWith<$Res> {
-  _$AuthenticationStateAnonymousAuthenticatedCopyWithImpl(
-      AuthenticationStateAnonymousAuthenticated _value,
-      $Res Function(AuthenticationStateAnonymousAuthenticated) _then)
-      : super(_value,
-            (v) => _then(v as AuthenticationStateAnonymousAuthenticated));
+    implements $AuthenticationStateAuthenticatedCopyWith<$Res> {
+  _$AuthenticationStateAuthenticatedCopyWithImpl(
+      AuthenticationStateAuthenticated _value,
+      $Res Function(AuthenticationStateAuthenticated) _then)
+      : super(_value, (v) => _then(v as AuthenticationStateAuthenticated));
 
   @override
-  AuthenticationStateAnonymousAuthenticated get _value =>
-      super._value as AuthenticationStateAnonymousAuthenticated;
+  AuthenticationStateAuthenticated get _value =>
+      super._value as AuthenticationStateAuthenticated;
 }
 
 /// @nodoc
 
-class _$AuthenticationStateAnonymousAuthenticated
-    implements AuthenticationStateAnonymousAuthenticated {
-  _$AuthenticationStateAnonymousAuthenticated();
+class _$AuthenticationStateAuthenticated
+    implements AuthenticationStateAuthenticated {
+  _$AuthenticationStateAuthenticated();
 
   @override
   String toString() {
-    return 'AuthenticationState.anonymousAuthenticated()';
+    return 'AuthenticationState.authenticated()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AuthenticationStateAnonymousAuthenticated);
+        (other is AuthenticationStateAuthenticated);
   }
 
   @override
@@ -259,26 +224,22 @@ class _$AuthenticationStateAnonymousAuthenticated
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() anonymousAuthenticated,
-    required TResult Function() googleAuthenticated,
-    required TResult Function() facebookAuthenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) {
-    return anonymousAuthenticated();
+    return authenticated();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? anonymousAuthenticated,
-    TResult Function()? googleAuthenticated,
-    TResult Function()? facebookAuthenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
-    if (anonymousAuthenticated != null) {
-      return anonymousAuthenticated();
+    if (authenticated != null) {
+      return authenticated();
     }
     return orElse();
   }
@@ -287,268 +248,32 @@ class _$AuthenticationStateAnonymousAuthenticated
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationStateLoading value) loading,
-    required TResult Function(AuthenticationStateAnonymousAuthenticated value)
-        anonymousAuthenticated,
-    required TResult Function(AuthenticationStateGoogleAuthenticated value)
-        googleAuthenticated,
-    required TResult Function(AuthenticationStateFacebookAuthenticated value)
-        facebookAuthenticated,
+    required TResult Function(AuthenticationStateAuthenticated value)
+        authenticated,
     required TResult Function(AuthenticationStateUnauthenticated value)
         unauthenticated,
   }) {
-    return anonymousAuthenticated(this);
+    return authenticated(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationStateLoading value)? loading,
-    TResult Function(AuthenticationStateAnonymousAuthenticated value)?
-        anonymousAuthenticated,
-    TResult Function(AuthenticationStateGoogleAuthenticated value)?
-        googleAuthenticated,
-    TResult Function(AuthenticationStateFacebookAuthenticated value)?
-        facebookAuthenticated,
+    TResult Function(AuthenticationStateAuthenticated value)? authenticated,
     TResult Function(AuthenticationStateUnauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) {
-    if (anonymousAuthenticated != null) {
-      return anonymousAuthenticated(this);
+    if (authenticated != null) {
+      return authenticated(this);
     }
     return orElse();
   }
 }
 
-abstract class AuthenticationStateAnonymousAuthenticated
-    implements AuthenticationState {
-  factory AuthenticationStateAnonymousAuthenticated() =
-      _$AuthenticationStateAnonymousAuthenticated;
-}
-
-/// @nodoc
-abstract class $AuthenticationStateGoogleAuthenticatedCopyWith<$Res> {
-  factory $AuthenticationStateGoogleAuthenticatedCopyWith(
-          AuthenticationStateGoogleAuthenticated value,
-          $Res Function(AuthenticationStateGoogleAuthenticated) then) =
-      _$AuthenticationStateGoogleAuthenticatedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$AuthenticationStateGoogleAuthenticatedCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements $AuthenticationStateGoogleAuthenticatedCopyWith<$Res> {
-  _$AuthenticationStateGoogleAuthenticatedCopyWithImpl(
-      AuthenticationStateGoogleAuthenticated _value,
-      $Res Function(AuthenticationStateGoogleAuthenticated) _then)
-      : super(
-            _value, (v) => _then(v as AuthenticationStateGoogleAuthenticated));
-
-  @override
-  AuthenticationStateGoogleAuthenticated get _value =>
-      super._value as AuthenticationStateGoogleAuthenticated;
-}
-
-/// @nodoc
-
-class _$AuthenticationStateGoogleAuthenticated
-    implements AuthenticationStateGoogleAuthenticated {
-  _$AuthenticationStateGoogleAuthenticated();
-
-  @override
-  String toString() {
-    return 'AuthenticationState.googleAuthenticated()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AuthenticationStateGoogleAuthenticated);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() anonymousAuthenticated,
-    required TResult Function() googleAuthenticated,
-    required TResult Function() facebookAuthenticated,
-    required TResult Function() unauthenticated,
-  }) {
-    return googleAuthenticated();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? anonymousAuthenticated,
-    TResult Function()? googleAuthenticated,
-    TResult Function()? facebookAuthenticated,
-    TResult Function()? unauthenticated,
-    required TResult orElse(),
-  }) {
-    if (googleAuthenticated != null) {
-      return googleAuthenticated();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthenticationStateLoading value) loading,
-    required TResult Function(AuthenticationStateAnonymousAuthenticated value)
-        anonymousAuthenticated,
-    required TResult Function(AuthenticationStateGoogleAuthenticated value)
-        googleAuthenticated,
-    required TResult Function(AuthenticationStateFacebookAuthenticated value)
-        facebookAuthenticated,
-    required TResult Function(AuthenticationStateUnauthenticated value)
-        unauthenticated,
-  }) {
-    return googleAuthenticated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthenticationStateLoading value)? loading,
-    TResult Function(AuthenticationStateAnonymousAuthenticated value)?
-        anonymousAuthenticated,
-    TResult Function(AuthenticationStateGoogleAuthenticated value)?
-        googleAuthenticated,
-    TResult Function(AuthenticationStateFacebookAuthenticated value)?
-        facebookAuthenticated,
-    TResult Function(AuthenticationStateUnauthenticated value)? unauthenticated,
-    required TResult orElse(),
-  }) {
-    if (googleAuthenticated != null) {
-      return googleAuthenticated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthenticationStateGoogleAuthenticated
-    implements AuthenticationState {
-  factory AuthenticationStateGoogleAuthenticated() =
-      _$AuthenticationStateGoogleAuthenticated;
-}
-
-/// @nodoc
-abstract class $AuthenticationStateFacebookAuthenticatedCopyWith<$Res> {
-  factory $AuthenticationStateFacebookAuthenticatedCopyWith(
-          AuthenticationStateFacebookAuthenticated value,
-          $Res Function(AuthenticationStateFacebookAuthenticated) then) =
-      _$AuthenticationStateFacebookAuthenticatedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$AuthenticationStateFacebookAuthenticatedCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res>
-    implements $AuthenticationStateFacebookAuthenticatedCopyWith<$Res> {
-  _$AuthenticationStateFacebookAuthenticatedCopyWithImpl(
-      AuthenticationStateFacebookAuthenticated _value,
-      $Res Function(AuthenticationStateFacebookAuthenticated) _then)
-      : super(_value,
-            (v) => _then(v as AuthenticationStateFacebookAuthenticated));
-
-  @override
-  AuthenticationStateFacebookAuthenticated get _value =>
-      super._value as AuthenticationStateFacebookAuthenticated;
-}
-
-/// @nodoc
-
-class _$AuthenticationStateFacebookAuthenticated
-    implements AuthenticationStateFacebookAuthenticated {
-  _$AuthenticationStateFacebookAuthenticated();
-
-  @override
-  String toString() {
-    return 'AuthenticationState.facebookAuthenticated()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AuthenticationStateFacebookAuthenticated);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() anonymousAuthenticated,
-    required TResult Function() googleAuthenticated,
-    required TResult Function() facebookAuthenticated,
-    required TResult Function() unauthenticated,
-  }) {
-    return facebookAuthenticated();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? anonymousAuthenticated,
-    TResult Function()? googleAuthenticated,
-    TResult Function()? facebookAuthenticated,
-    TResult Function()? unauthenticated,
-    required TResult orElse(),
-  }) {
-    if (facebookAuthenticated != null) {
-      return facebookAuthenticated();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthenticationStateLoading value) loading,
-    required TResult Function(AuthenticationStateAnonymousAuthenticated value)
-        anonymousAuthenticated,
-    required TResult Function(AuthenticationStateGoogleAuthenticated value)
-        googleAuthenticated,
-    required TResult Function(AuthenticationStateFacebookAuthenticated value)
-        facebookAuthenticated,
-    required TResult Function(AuthenticationStateUnauthenticated value)
-        unauthenticated,
-  }) {
-    return facebookAuthenticated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthenticationStateLoading value)? loading,
-    TResult Function(AuthenticationStateAnonymousAuthenticated value)?
-        anonymousAuthenticated,
-    TResult Function(AuthenticationStateGoogleAuthenticated value)?
-        googleAuthenticated,
-    TResult Function(AuthenticationStateFacebookAuthenticated value)?
-        facebookAuthenticated,
-    TResult Function(AuthenticationStateUnauthenticated value)? unauthenticated,
-    required TResult orElse(),
-  }) {
-    if (facebookAuthenticated != null) {
-      return facebookAuthenticated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthenticationStateFacebookAuthenticated
-    implements AuthenticationState {
-  factory AuthenticationStateFacebookAuthenticated() =
-      _$AuthenticationStateFacebookAuthenticated;
+abstract class AuthenticationStateAuthenticated implements AuthenticationState {
+  factory AuthenticationStateAuthenticated() =
+      _$AuthenticationStateAuthenticated;
 }
 
 /// @nodoc
@@ -597,9 +322,7 @@ class _$AuthenticationStateUnauthenticated
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() anonymousAuthenticated,
-    required TResult Function() googleAuthenticated,
-    required TResult Function() facebookAuthenticated,
+    required TResult Function() authenticated,
     required TResult Function() unauthenticated,
   }) {
     return unauthenticated();
@@ -609,9 +332,7 @@ class _$AuthenticationStateUnauthenticated
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? anonymousAuthenticated,
-    TResult Function()? googleAuthenticated,
-    TResult Function()? facebookAuthenticated,
+    TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -625,12 +346,8 @@ class _$AuthenticationStateUnauthenticated
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationStateLoading value) loading,
-    required TResult Function(AuthenticationStateAnonymousAuthenticated value)
-        anonymousAuthenticated,
-    required TResult Function(AuthenticationStateGoogleAuthenticated value)
-        googleAuthenticated,
-    required TResult Function(AuthenticationStateFacebookAuthenticated value)
-        facebookAuthenticated,
+    required TResult Function(AuthenticationStateAuthenticated value)
+        authenticated,
     required TResult Function(AuthenticationStateUnauthenticated value)
         unauthenticated,
   }) {
@@ -641,12 +358,7 @@ class _$AuthenticationStateUnauthenticated
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationStateLoading value)? loading,
-    TResult Function(AuthenticationStateAnonymousAuthenticated value)?
-        anonymousAuthenticated,
-    TResult Function(AuthenticationStateGoogleAuthenticated value)?
-        googleAuthenticated,
-    TResult Function(AuthenticationStateFacebookAuthenticated value)?
-        facebookAuthenticated,
+    TResult Function(AuthenticationStateAuthenticated value)? authenticated,
     TResult Function(AuthenticationStateUnauthenticated value)? unauthenticated,
     required TResult orElse(),
   }) {
