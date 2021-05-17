@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
@@ -16,12 +17,17 @@ final userProvider = StateNotifierProvider<UserModel, AsyncValue<User>>((ref) {
 class UserModel extends StateNotifier<AsyncValue<User>> {
   UserModel(this._read) : super(const AsyncValue.loading()) {
     {
-      _subscription?.cancel();
-      _subscription =
-          _read(userRepositoryProvider).observeCurrentUser().listen((user) {
-        _read(selectedInstrumentIdProvider).state = user.instrumentId;
-        state = AsyncValue.data(user);
-      });
+      final firebaseUser = firebase.FirebaseAuth.instance.currentUser;
+      if (firebaseUser != null) {
+        _subscription?.cancel();
+        _subscription =
+            _read(userRepositoryProvider).observeCurrentUser().listen((user) {
+          _read(selectedInstrumentIdProvider).state = user.instrumentId;
+          state = AsyncValue.data(user);
+        });
+      } else {
+        state = AsyncValue.error('Unauthenticated');
+      }
     }
   }
 
