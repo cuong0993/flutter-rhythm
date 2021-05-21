@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../midi/midi_model.dart';
@@ -9,91 +10,88 @@ import '../songs/songs_model.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_model.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DefaultTabController(
-        length: songTags.length,
-        child: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                  title: Text(AppLocalizations.of(context)!.txt_all_songs,
-                      style:
-                          Theme.of(context).appBarTheme.textTheme!.headline5),
-                  elevation: 2,
-                  floating: true,
-                  pinned: true,
-                  snap: true,
-                  forceElevated: true,
-                  actions: [
-                    IconButton(
-                      icon: const Icon(Icons.search_rounded),
-                      onPressed: () {
-                        showSearch<void>(
-                            context: context, delegate: SearchWidget());
-                      },
-                    ),
-                    IconButton(
-                        icon: Image(
-                          image:
-                              const AssetImage('assets/images/img_guitar.png'),
-                          color: Theme.of(context).appBarTheme.iconTheme!.color,
-                        ),
-                        onPressed: () async {
-                          await Navigator.pushNamed(context, Routes.instrument);
-                        }),
-                    IconButton(icon: ClipOval(child: Consumer(
-                      builder: (context, watch, child) {
-                        // FIXME To load midi
-                        watch(midiProvider);
-                        final user = watch(userProvider);
-                        return user.when(
-                            data: (user) => Image.network(
-                                  user.photoUrl,
-                                  errorBuilder:
-                                      (context, exception, stackTrace) {
-                                    return const Icon(
-                                        Icons.account_circle_rounded);
-                                  },
-                                ),
-                            loading: () =>
-                                const Icon(Icons.account_circle_rounded),
-                            error: (_, __) =>
-                                const Icon(Icons.account_circle_rounded));
-                      },
-                    )), onPressed: () async {
-                      await Navigator.pushNamed(context, Routes.account);
-                    }),
-                    IconButton(
-                      icon: const Icon(Icons.settings),
+    return Scaffold(body: HookBuilder(builder: (context) {
+      final tabController = useTabController(initialLength: songTags.length);
+      return NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+                title: Text(AppLocalizations.of(context)!.txt_all_songs,
+                    style: Theme.of(context).appBarTheme.textTheme!.headline5),
+                elevation: 2,
+                floating: true,
+                pinned: true,
+                snap: true,
+                forceElevated: true,
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.search_rounded),
+                    onPressed: () {
+                      showSearch<void>(
+                          context: context, delegate: SearchWidget());
+                    },
+                  ),
+                  IconButton(
+                      icon: Image(
+                        image: const AssetImage('assets/images/img_guitar.png'),
+                        color: Theme.of(context).appBarTheme.iconTheme!.color,
+                      ),
                       onPressed: () async {
-                        await Navigator.pushNamed(context, Routes.setting);
-                      },
-                    ),
-                  ],
-                  bottom: TabBar(
-                    isScrollable: true,
-                    tabs: songTags
-                        .map((tabName) => Tab(
-                              text: getSongTagName(context, tabName),
-                            ))
-                        .toList(),
-                  )),
-            ];
-          },
-          body: TabBarView(
-            children: songTags
-                .asMap()
-                .map((index, tabName) =>
-                    MapEntry(index, SongsWidget(tag: tabName)))
-                .values
-                .toList(),
-          ),
+                        await Navigator.pushNamed(context, Routes.instrument);
+                      }),
+                  IconButton(icon: ClipOval(child: Consumer(
+                    builder: (context, watch, child) {
+                      // FIXME To load midi
+                      watch(midiProvider);
+                      final user = watch(userProvider);
+                      return user.when(
+                          data: (user) => Image.network(
+                                user.photoUrl,
+                                errorBuilder: (context, exception, stackTrace) {
+                                  return const Icon(
+                                      Icons.account_circle_rounded);
+                                },
+                              ),
+                          loading: () =>
+                              const Icon(Icons.account_circle_rounded),
+                          error: (_, __) =>
+                              const Icon(Icons.account_circle_rounded));
+                    },
+                  )), onPressed: () async {
+                    await Navigator.pushNamed(context, Routes.account);
+                  }),
+                  IconButton(
+                    icon: const Icon(Icons.settings),
+                    onPressed: () async {
+                      await Navigator.pushNamed(context, Routes.setting);
+                    },
+                  ),
+                ],
+                bottom: TabBar(
+                  isScrollable: true,
+                  controller: tabController,
+                  tabs: songTags
+                      .map((tabName) => Tab(
+                            text: getSongTagName(context, tabName),
+                          ))
+                      .toList(),
+                )),
+          ];
+        },
+        body: TabBarView(
+          controller: tabController,
+          children: songTags
+              .asMap()
+              .map((index, tabName) =>
+                  MapEntry(index, SongsWidget(tag: tabName)))
+              .values
+              .toList(),
         ),
-      ),
-    );
+      );
+    }));
   }
 }
 

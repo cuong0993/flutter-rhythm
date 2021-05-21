@@ -1,39 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'theme_model.dart';
 
-class ThemePage extends ConsumerWidget {
+class ThemePage extends HookWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final themeMode = watch(themeModeProvider);
-    final scrollController = ScrollController();
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.txt_theme,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-        body: Scrollbar(
-          isAlwaysShown: true,
-          controller: scrollController,
-          child: ListView.builder(
+        body: HookBuilder(builder: (context) {
+          final scrollController = useScrollController();
+          final themeMode = useProvider(themeModeProvider);
+          return Scrollbar(
+            isAlwaysShown: true,
             controller: scrollController,
-            itemCount: ThemeMode.values.length,
-            itemBuilder: (context, index) {
-              return RadioListTile<ThemeMode>(
-                title: Text(getThemeName(context, ThemeMode.values[index]),
-                    style: Theme.of(context).textTheme.headline6),
-                value: ThemeMode.values[index],
-                groupValue: themeMode,
-                onChanged: (value) {
-                  context
-                      .read(themeModeProvider.notifier)
-                      .setThemeMode(context, value!);
-                },
-              );
-            },
-          ),
-        ));
+            child: ListView.builder(
+              controller: scrollController,
+              itemCount: ThemeMode.values.length,
+              itemBuilder: (context, index) {
+                return RadioListTile<ThemeMode>(
+                  title: Text(getThemeName(context, ThemeMode.values[index]),
+                      style: Theme.of(context).textTheme.headline6),
+                  value: ThemeMode.values[index],
+                  groupValue: themeMode,
+                  onChanged: (value) {
+                    context
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(context, value!);
+                  },
+                );
+              },
+            ),
+          );
+        }));
   }
 }
 

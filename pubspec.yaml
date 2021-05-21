@@ -21,9 +21,10 @@ dependencies:
   flutter_cache_manager:
   flutter_email_sender:
   flutter_facebook_auth:
-  flutter_riverpod:
+  flutter_hooks:
   freezed_annotation:
   google_sign_in:
+  hooks_riverpod:
   in_app_review:
   intl:
   package_info:

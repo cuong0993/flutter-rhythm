@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -10,29 +11,31 @@ import '../loading_widget.dart';
 import 'user.dart';
 import 'user_model.dart';
 
-class UserPage extends ConsumerWidget {
+class UserPage extends HookWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final user = watch(userProvider);
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.txt_page_title_account,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-        body: user.when(
-            data: (user) {
-              final scrollController = ScrollController();
-              return Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Scrollbar(
-                      isAlwaysShown: true,
-                      controller: scrollController,
-                      child: ListView(
-                          shrinkWrap: true,
-                          controller: scrollController,
-                          children: <Widget>[_buildUI(user, context)])));
-            },
-            loading: () => LoadingWidget(),
-            error: (_, __) => LoadingWidget()));
+        body: HookBuilder(builder: (context) {
+          final user = useProvider(userProvider);
+          return user.when(
+              data: (user) {
+                final scrollController = useScrollController();
+                return Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Scrollbar(
+                        isAlwaysShown: true,
+                        controller: scrollController,
+                        child: ListView(
+                            shrinkWrap: true,
+                            controller: scrollController,
+                            children: <Widget>[_buildUI(user, context)])));
+              },
+              loading: () => LoadingWidget(),
+              error: (_, __) => LoadingWidget());
+        }));
   }
 
   Widget _buildUI(User user, BuildContext context) {
