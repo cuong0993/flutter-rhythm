@@ -68,7 +68,7 @@ class SongsWidget extends ConsumerWidget {
                               ),
                             ),
                           )
-                        : Container();
+                        : const SizedBox.shrink();
                   },
                 )
               ],

@@ -39,7 +39,7 @@ class SearchWidget extends SearchDelegate<void> {
   @override
   Widget buildResults(BuildContext context) {
     if (query.isEmpty) {
-      return Container();
+      return const SizedBox.shrink();
     } else {
       return FutureBuilder<List<Song>>(
           future: context.read(songRepositoryProvider).searchSongs(query),

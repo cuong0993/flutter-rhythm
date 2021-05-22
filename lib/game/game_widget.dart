@@ -154,7 +154,7 @@ class GameWidget extends ConsumerWidget {
                     ))
               ]);
             } else {
-              return Container();
+              return const SizedBox.shrink();
             }
           }(),
         ));
