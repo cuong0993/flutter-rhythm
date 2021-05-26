@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'game_reward.dart';
 
@@ -65,7 +65,7 @@ class CompleteWidget extends StatelessWidget {
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     },
-                    child: Text(AppLocalizations.of(context)!.txt_button_quit),
+                    child: Text(L10n.of(context)!.txt_button_quit),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -74,8 +74,7 @@ class CompleteWidget extends StatelessWidget {
                       onPressed: () {
                         _onRestart();
                       },
-                      child: Text(
-                          AppLocalizations.of(context)!.txt_button_restart)),
+                      child: Text(L10n.of(context)!.txt_button_restart)),
                 ),
                 const SizedBox(width: 8)
               ],

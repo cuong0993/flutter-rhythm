@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'authentication_model.dart';
@@ -35,9 +35,7 @@ class AuthenticationWidget extends StatelessWidget {
                               image:
                                   AssetImage('assets/images/img_google.png')),
                           const SizedBox(width: 8),
-                          Text(
-                              AppLocalizations.of(context)!
-                                  .txt_button_sign_in_google,
+                          Text(L10n.of(context)!.txt_button_sign_in_google,
                               style: Theme.of(context).textTheme.subtitle1)
                         ],
                       ),
@@ -60,9 +58,7 @@ class AuthenticationWidget extends StatelessWidget {
                               image:
                                   AssetImage('assets/images/img_facebook.png')),
                           const SizedBox(width: 8),
-                          Text(
-                              AppLocalizations.of(context)!
-                                  .txt_button_sign_in_facebook,
+                          Text(L10n.of(context)!.txt_button_sign_in_facebook,
                               style: Theme.of(context).textTheme.subtitle1)
                         ],
                       ),

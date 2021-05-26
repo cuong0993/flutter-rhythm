@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../midi/midi_model.dart';
@@ -167,11 +167,11 @@ class GuideTextWidget extends ConsumerWidget {
     final guideText = watch(guideTextProvider).state;
     var text = '';
     if (guideText == 'txt_too_late') {
-      text = AppLocalizations.of(context)!.txt_too_late;
+      text = L10n.of(context)!.txt_too_late;
     } else if (guideText == 'txt_too_early') {
-      text = AppLocalizations.of(context)!.txt_too_early;
+      text = L10n.of(context)!.txt_too_early;
     } else if (guideText == 'txt_too_many_fingers') {
-      text = AppLocalizations.of(context)!.txt_too_many_fingers;
+      text = L10n.of(context)!.txt_too_many_fingers;
     }
     return Text('$text',
         style: Theme.of(context)
@@ -203,8 +203,7 @@ class LoadingSoundWidget extends StatelessWidget {
                         image: AssetImage('assets/images/img_app_icon.png')),
                   ),
                 ),
-                Text(AppLocalizations.of(context)!
-                    .txt_dialog_loading_sound_description)
+                Text(L10n.of(context)!.txt_dialog_loading_sound_description)
               ],
             )),
       ),
@@ -234,8 +233,7 @@ class LoadingGiftWidget extends StatelessWidget {
                         image: AssetImage('assets/images/img_app_icon.png')),
                   ),
                 ),
-                Text(AppLocalizations.of(context)!
-                    .txt_game_complete_loading_gift)
+                Text(L10n.of(context)!.txt_game_complete_loading_gift)
               ],
             )),
       ),

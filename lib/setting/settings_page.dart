@@ -4,7 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
@@ -19,13 +19,13 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.txt_settings,
+            title: Text(L10n.of(context)!.txt_settings,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: ListView(
           children: [
             ListTile(
                 title: Text(
-                  AppLocalizations.of(context)!.txt_language,
+                  L10n.of(context)!.txt_language,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 subtitle: Text(
@@ -35,7 +35,7 @@ class SettingsPage extends StatelessWidget {
                 onTap: () => AutoRouter.of(context).push(const LocaleRoute())),
             ListTile(
                 title: Text(
-                  AppLocalizations.of(context)!.txt_theme,
+                  L10n.of(context)!.txt_theme,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 subtitle: Consumer(builder: (context, watch, child) {
@@ -46,7 +46,7 @@ class SettingsPage extends StatelessWidget {
                 onTap: () => AutoRouter.of(context).push(const ThemeRoute())),
             ListTile(
               title: Text(
-                AppLocalizations.of(context)!.txt_button_feedback,
+                L10n.of(context)!.txt_button_feedback,
                 style: Theme.of(context).textTheme.headline6,
               ),
               onTap: () async {
@@ -88,7 +88,7 @@ class SettingsPage extends StatelessWidget {
             ),
             ListTile(
                 title: Text(
-                  AppLocalizations.of(context)!.txt_about_rate,
+                  L10n.of(context)!.txt_about_rate,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () async {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,21 +18,20 @@ class LocalePage extends HookWidget {
     final scrollController = useScrollController();
     return Scaffold(
         appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.txt_language,
+            title: Text(L10n.of(context)!.txt_language,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: Scrollbar(
           isAlwaysShown: true,
           controller: scrollController,
           child: ListView.builder(
             controller: scrollController,
-            itemCount: AppLocalizations.supportedLocales.length,
+            itemCount: L10n.supportedLocales.length,
             itemBuilder: (context, index) {
               return RadioListTile<Locale>(
                 title: Text(
-                    localeStrings[
-                        AppLocalizations.supportedLocales[index].languageCode]!,
+                    localeStrings[L10n.supportedLocales[index].languageCode]!,
                     style: Theme.of(context).textTheme.headline6),
-                value: AppLocalizations.supportedLocales[index],
+                value: L10n.supportedLocales[index],
                 groupValue: Localizations.localeOf(context),
                 onChanged: (value) {
                   context

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
@@ -13,8 +13,7 @@ class InstrumentsPage extends ConsumerWidget {
     final selectedInstrumentId = watch(selectedInstrumentIdProvider).state;
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-              AppLocalizations.of(context)!.txt_instrument_title_instruments,
+          title: Text(L10n.of(context)!.txt_instrument_title_instruments,
               style: Theme.of(context).appBarTheme.textTheme!.headline5)),
       body: instruments.when(
           data: (instruments) => ListView.builder(
@@ -44,11 +43,11 @@ class InstrumentsPage extends ConsumerWidget {
 String getInstrumentName(BuildContext context, String instrumentId) {
   switch (instrumentId) {
     case 'piano':
-      return AppLocalizations.of(context)!.piano;
+      return L10n.of(context)!.piano;
     case 'acoustic_guitar':
-      return AppLocalizations.of(context)!.acoustic_guitar;
+      return L10n.of(context)!.acoustic_guitar;
     case 'electric_guitar':
-      return AppLocalizations.of(context)!.electric_guitar;
+      return L10n.of(context)!.electric_guitar;
     default:
       return '';
   }

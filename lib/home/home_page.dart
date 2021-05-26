@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +20,7 @@ class HomePage extends HookWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-                title: Text(AppLocalizations.of(context)!.txt_all_songs,
+                title: Text(L10n.of(context)!.txt_all_songs,
                     style: Theme.of(context).appBarTheme.textTheme!.headline5),
                 elevation: 2,
                 floating: true,
@@ -98,15 +98,15 @@ class HomePage extends HookWidget {
 String getSongTagName(BuildContext context, String tabName) {
   switch (tabName) {
     case 'pop':
-      return AppLocalizations.of(context)!.pop;
+      return L10n.of(context)!.pop;
     case 'classic':
-      return AppLocalizations.of(context)!.classic;
+      return L10n.of(context)!.classic;
     case 'folk':
-      return AppLocalizations.of(context)!.folk;
+      return L10n.of(context)!.folk;
     case 'kpop':
-      return AppLocalizations.of(context)!.kpop;
+      return L10n.of(context)!.kpop;
     case 'other':
-      return AppLocalizations.of(context)!.other;
+      return L10n.of(context)!.other;
     default:
       return '';
   }

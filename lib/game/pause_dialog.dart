@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class PauseDialog extends StatelessWidget {
   final Function() _onRestart;
@@ -21,21 +21,20 @@ class PauseDialog extends StatelessWidget {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },
-              child: Text(AppLocalizations.of(context)!.txt_button_quit),
+              child: Text(L10n.of(context)!.txt_button_quit),
             ),
             ElevatedButton(
               onPressed: () {
                 _onRestart();
                 Navigator.of(context).pop();
               },
-              child: Text(AppLocalizations.of(context)!.txt_button_restart),
+              child: Text(L10n.of(context)!.txt_button_restart),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child:
-                  Text(AppLocalizations.of(context)!.txt_game_button_continue),
+              child: Text(L10n.of(context)!.txt_game_button_continue),
             )
           ],
         ),

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -20,7 +20,7 @@ class GameConfigPage extends ConsumerWidget {
 
     return Scaffold(
         appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.txt_configure,
+            title: Text(L10n.of(context)!.txt_configure,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: SafeArea(
           child: Column(
@@ -32,7 +32,7 @@ class GameConfigPage extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.txt_difficulty,
+                    Text(L10n.of(context)!.txt_difficulty,
                         style: Theme.of(context).textTheme.headline5),
                     const SizedBox(height: 8),
                     Row(
@@ -40,9 +40,8 @@ class GameConfigPage extends ConsumerWidget {
                         const SizedBox(width: 8),
                         CardWidget(
                           selected: gameConfigState.difficulty == 0,
-                          text: AppLocalizations.of(context)!.txt_easy,
-                          caption: sprintf(
-                              AppLocalizations.of(context)!.txt_fingers, [2]),
+                          text: L10n.of(context)!.txt_easy,
+                          caption: sprintf(L10n.of(context)!.txt_fingers, [2]),
                           onTap: () {
                             context
                                 .read(gameConfigStateProvider.notifier)
@@ -52,9 +51,8 @@ class GameConfigPage extends ConsumerWidget {
                         const SizedBox(width: 8),
                         CardWidget(
                           selected: gameConfigState.difficulty == 1,
-                          text: AppLocalizations.of(context)!.txt_medium,
-                          caption: sprintf(
-                              AppLocalizations.of(context)!.txt_fingers, [3]),
+                          text: L10n.of(context)!.txt_medium,
+                          caption: sprintf(L10n.of(context)!.txt_fingers, [3]),
                           onTap: () {
                             context
                                 .read(gameConfigStateProvider.notifier)
@@ -64,9 +62,8 @@ class GameConfigPage extends ConsumerWidget {
                         const SizedBox(width: 8),
                         CardWidget(
                           selected: gameConfigState.difficulty == 2,
-                          text: AppLocalizations.of(context)!.txt_difficult,
-                          caption: sprintf(
-                              AppLocalizations.of(context)!.txt_fingers, [4]),
+                          text: L10n.of(context)!.txt_difficult,
+                          caption: sprintf(L10n.of(context)!.txt_fingers, [4]),
                           onTap: () {
                             context
                                 .read(gameConfigStateProvider.notifier)
@@ -84,7 +81,7 @@ class GameConfigPage extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.txt_speed,
+                    Text(L10n.of(context)!.txt_speed,
                         style: Theme.of(context).textTheme.headline5),
                     const SizedBox(height: 8),
                     Row(
@@ -92,7 +89,7 @@ class GameConfigPage extends ConsumerWidget {
                         const SizedBox(width: 8),
                         CardWidget(
                           selected: gameConfigState.speed == 0,
-                          text: AppLocalizations.of(context)!.txt_slow,
+                          text: L10n.of(context)!.txt_slow,
                           caption: 'x0.75',
                           onTap: () {
                             context
@@ -103,7 +100,7 @@ class GameConfigPage extends ConsumerWidget {
                         const SizedBox(width: 8),
                         CardWidget(
                           selected: gameConfigState.speed == 1,
-                          text: AppLocalizations.of(context)!.txt_normal,
+                          text: L10n.of(context)!.txt_normal,
                           caption: 'x1.0',
                           onTap: () {
                             context
@@ -114,7 +111,7 @@ class GameConfigPage extends ConsumerWidget {
                         const SizedBox(width: 8),
                         CardWidget(
                           selected: gameConfigState.speed == 2,
-                          text: AppLocalizations.of(context)!.txt_fast,
+                          text: L10n.of(context)!.txt_fast,
                           caption: 'x1.25',
                           onTap: () {
                             context
@@ -151,7 +148,7 @@ class GameConfigPage extends ConsumerWidget {
                             'speed': gameConfigState.speed
                           }));
                         },
-                        child: Text(AppLocalizations.of(context)!.txt_start)),
+                        child: Text(L10n.of(context)!.txt_start)),
                   ),
                   const SizedBox(width: 8)
                 ],

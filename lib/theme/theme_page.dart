@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,7 +11,7 @@ class ThemePage extends HookWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.txt_theme,
+            title: Text(L10n.of(context)!.txt_theme,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: HookBuilder(builder: (context) {
           final scrollController = useScrollController();
@@ -44,11 +44,11 @@ class ThemePage extends HookWidget {
 String getThemeName(BuildContext context, ThemeMode themeMode) {
   switch (themeMode) {
     case ThemeMode.dark:
-      return AppLocalizations.of(context)!.dark;
+      return L10n.of(context)!.dark;
     case ThemeMode.light:
-      return AppLocalizations.of(context)!.light;
+      return L10n.of(context)!.light;
     case ThemeMode.system:
-      return AppLocalizations.of(context)!.system;
+      return L10n.of(context)!.system;
     default:
       return '';
   }

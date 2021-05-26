@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +16,7 @@ class UserPage extends HookWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text(AppLocalizations.of(context)!.txt_page_title_account,
+            title: Text(L10n.of(context)!.txt_page_title_account,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: HookBuilder(builder: (context) {
           final user = useProvider(userProvider);
@@ -189,7 +189,7 @@ class UserPage extends HookWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          sprintf(AppLocalizations.of(context)!.txt_joined,
+                          sprintf(L10n.of(context)!.txt_joined,
                               [DateFormat.yMMMd().format(user.creationTime)]),
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
@@ -203,7 +203,7 @@ class UserPage extends HookWidget {
                           height: 16,
                         ),
                         const SizedBox(width: 8),
-                        Text(sprintf(AppLocalizations.of(context)!.txt_using,
+                        Text(sprintf(L10n.of(context)!.txt_using,
                             [getInstrumentName(context, user.instrumentId)])),
                       ],
                     ),
