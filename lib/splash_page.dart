@@ -1,9 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'authentication/authentication_model.dart';
 import 'authentication/authentication_state.dart';
-import 'routes.dart';
+import 'router/router.dart';
 
 class SplashPage extends ConsumerWidget {
   @override
@@ -12,8 +13,7 @@ class SplashPage extends ConsumerWidget {
         provider: authenticationProvider,
         onChange: (context, state) {
           if (state is AuthenticationStateAuthenticated) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, Routes.home, (route) => false);
+            AutoRouter.of(context).replace(const HomeRoute());
           }
         },
         child: const Scaffold(

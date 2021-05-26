@@ -8,6 +8,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  auto_route:
   cloud_firestore:
   cloud_functions:
   collection:
@@ -32,6 +33,7 @@ dependencies:
   sprintf:
 
 dev_dependencies:
+  auto_route_generator:
   build_runner:
   freezed:
   json_serializable:

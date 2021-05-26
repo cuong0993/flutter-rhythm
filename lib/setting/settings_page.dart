@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -9,7 +10,7 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 
 import '../locale/locale_page.dart';
-import '../routes.dart';
+import '../router/router.dart';
 import '../theme/theme_model.dart';
 import '../theme/theme_page.dart';
 
@@ -23,31 +24,26 @@ class SettingsPage extends StatelessWidget {
         body: ListView(
           children: [
             ListTile(
-              title: Text(
-                AppLocalizations.of(context)!.txt_language,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              subtitle: Text(
-                  localeStrings[Localizations.localeOf(context).languageCode]!,
-                  style: Theme.of(context).textTheme.subtitle1),
-              onTap: () async {
-                await Navigator.pushNamed(context, Routes.language);
-              },
-            ),
+                title: Text(
+                  AppLocalizations.of(context)!.txt_language,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                subtitle: Text(
+                    localeStrings[
+                        Localizations.localeOf(context).languageCode]!,
+                    style: Theme.of(context).textTheme.subtitle1),
+                onTap: () => AutoRouter.of(context).push(const LocaleRoute())),
             ListTile(
-              title: Text(
-                AppLocalizations.of(context)!.txt_theme,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              subtitle: Consumer(builder: (context, watch, child) {
-                final themeMode = watch(themeModeProvider);
-                return Text(getThemeName(context, themeMode),
-                    style: Theme.of(context).textTheme.subtitle1);
-              }),
-              onTap: () async {
-                await Navigator.pushNamed(context, Routes.theme);
-              },
-            ),
+                title: Text(
+                  AppLocalizations.of(context)!.txt_theme,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                subtitle: Consumer(builder: (context, watch, child) {
+                  final themeMode = watch(themeModeProvider);
+                  return Text(getThemeName(context, themeMode),
+                      style: Theme.of(context).textTheme.subtitle1);
+                }),
+                onTap: () => AutoRouter.of(context).push(const ThemeRoute())),
             ListTile(
               title: Text(
                 AppLocalizations.of(context)!.txt_button_feedback,

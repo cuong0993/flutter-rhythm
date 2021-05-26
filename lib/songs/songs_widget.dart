@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../routes.dart';
+import '../router/router.dart';
 import 'song_widget.dart';
 import 'songs_model.dart';
 
@@ -36,13 +37,9 @@ class SongsWidget extends ConsumerWidget {
                         itemBuilder: (context, index) {
                           final song = songsByTag[index];
                           return SongWidget(
-                            song: song,
-                            onTap: () async {
-                              await Navigator.pushNamed(
-                                  context, Routes.gameConfig,
-                                  arguments: song);
-                            },
-                          );
+                              song: song,
+                              onTap: () => AutoRouter.of(context)
+                                  .push(GameConfigRoute(song: song)));
                         },
                         separatorBuilder: (context, index) {
                           return const Divider(

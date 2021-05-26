@@ -13,6 +13,7 @@ analyzer:
     implicit-dynamic: false
   exclude:
     - "**/*.g.dart"
+    - "**/*.gr.dart"
     - "**/*.freezed.dart"
 
 linter:

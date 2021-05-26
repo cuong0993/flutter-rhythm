@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../midi/midi_model.dart';
-import '../routes.dart';
+import '../router/router.dart';
 import '../search/search_widget.dart';
 import '../songs/songs_model.dart';
 import '../songs/songs_widget.dart';
@@ -39,36 +40,35 @@ class HomePage extends HookWidget {
                         image: const AssetImage('assets/images/img_guitar.png'),
                         color: Theme.of(context).appBarTheme.iconTheme!.color,
                       ),
-                      onPressed: () async {
-                        await Navigator.pushNamed(context, Routes.instrument);
-                      }),
-                  IconButton(icon: ClipOval(child: Consumer(
-                    builder: (context, watch, child) {
-                      // FIXME To load midi
-                      watch(midiProvider);
-                      final user = watch(userProvider);
-                      return user.when(
-                          data: (user) => Image.network(
-                                user.photoUrl,
-                                errorBuilder: (context, exception, stackTrace) {
-                                  return const Icon(
-                                      Icons.account_circle_rounded);
-                                },
-                              ),
-                          loading: () =>
-                              const Icon(Icons.account_circle_rounded),
-                          error: (_, __) =>
-                              const Icon(Icons.account_circle_rounded));
-                    },
-                  )), onPressed: () async {
-                    await Navigator.pushNamed(context, Routes.account);
-                  }),
+                      onPressed: () => AutoRouter.of(context)
+                          .push(const InstrumentsRoute())),
                   IconButton(
-                    icon: const Icon(Icons.settings),
-                    onPressed: () async {
-                      await Navigator.pushNamed(context, Routes.setting);
-                    },
-                  ),
+                      icon: ClipOval(child: Consumer(
+                        builder: (context, watch, child) {
+                          // FIXME To load midi
+                          watch(midiProvider);
+                          final user = watch(userProvider);
+                          return user.when(
+                              data: (user) => Image.network(
+                                    user.photoUrl,
+                                    errorBuilder:
+                                        (context, exception, stackTrace) {
+                                      return const Icon(
+                                          Icons.account_circle_rounded);
+                                    },
+                                  ),
+                              loading: () =>
+                                  const Icon(Icons.account_circle_rounded),
+                              error: (_, __) =>
+                                  const Icon(Icons.account_circle_rounded));
+                        },
+                      )),
+                      onPressed: () =>
+                          AutoRouter.of(context).push(const UserRoute())),
+                  IconButton(
+                      icon: const Icon(Icons.settings),
+                      onPressed: () =>
+                          AutoRouter.of(context).push(const SettingsRoute())),
                 ],
                 bottom: TabBar(
                   isScrollable: true,

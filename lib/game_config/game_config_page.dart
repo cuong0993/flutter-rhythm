@@ -1,16 +1,21 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sprintf/sprintf.dart';
 
-import '../routes.dart';
+import '../game/colors.dart';
+import '../router/router.dart';
 import '../songs/song.dart';
 import 'game_config_model.dart';
 
 class GameConfigPage extends ConsumerWidget {
+  final Song song;
+
+  GameConfigPage({required this.song});
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final song = ModalRoute.of(context)!.settings.arguments as Song;
     final gameConfigState = watch(gameConfigStateProvider);
 
     return Scaffold(
@@ -129,12 +134,22 @@ class GameConfigPage extends ConsumerWidget {
                   Expanded(
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.game,
-                              arguments: <String, dynamic>{
-                                'song': song,
-                                'difficulty': gameConfigState.difficulty,
-                                'speed': gameConfigState.speed
-                              });
+                          primaryColor = Theme.of(context).colorScheme.primary;
+                          secondaryColor =
+                              Theme.of(context).colorScheme.secondary;
+                          backgroundColor =
+                              Theme.of(context).colorScheme.background;
+                          onBackgroundColor =
+                              Theme.of(context).colorScheme.onBackground;
+                          paint = Paint()
+                            ..colorFilter =
+                                ColorFilter.mode(primaryColor, BlendMode.srcIn);
+                          AutoRouter.of(context)
+                              .push(GameRoute(arguments: <String, dynamic>{
+                            'song': song,
+                            'difficulty': gameConfigState.difficulty,
+                            'speed': gameConfigState.speed
+                          }));
                         },
                         child: Text(AppLocalizations.of(context)!.txt_start)),
                   ),

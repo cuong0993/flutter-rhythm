@@ -15,16 +15,16 @@ import 'pause_dialog.dart';
 import 'tile/tile.dart';
 import 'tile/tile_converter.dart';
 
-class GameWidget extends ConsumerWidget {
+class GamePage extends ConsumerWidget {
   final MyGame _game;
+  final Map<String, dynamic> arguments;
 
-  GameWidget({Key? key})
+  GamePage({Key? key, required this.arguments})
       : _game = MyGame(),
         super(key: key);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final midiLoaded = watch(midiProvider);
     if (!midiLoaded) {
       return const LoadingSoundWidget();

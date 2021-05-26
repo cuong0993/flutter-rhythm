@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../routes.dart';
+import '../router/router.dart';
 import '../songs/song.dart';
 import '../songs/song_widget.dart';
 import '../songs/songs_repository_impl.dart';
@@ -51,12 +52,9 @@ class SearchWidget extends SearchDelegate<void> {
                 itemBuilder: (context, index) {
                   final song = songs[index];
                   return SongWidget(
-                    song: song,
-                    onTap: () async {
-                      await Navigator.pushNamed(context, Routes.gameConfig,
-                          arguments: song);
-                    },
-                  );
+                      song: song,
+                      onTap: () => AutoRouter.of(context)
+                          .push(GameConfigRoute(song: song)));
                 },
               );
             } else {
