@@ -51,9 +51,9 @@ class MyGame extends Game with MultiTouchTapDetector {
   void pause() {}
 
   @override
-  void onTapDown(int pointerId, TapDownDetails details) {
+  void onTapDown(int pointerId, TapDownInfo info) {
     _touches[pointerId] =
-        _TouchPosition(details.globalPosition.dx, details.globalPosition.dy);
+        _TouchPosition(info.raw.globalPosition.dx, info.raw.globalPosition.dy);
   }
 
   @override

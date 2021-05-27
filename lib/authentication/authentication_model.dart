@@ -50,7 +50,7 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
   Future signInWithFacebook() async {
     try {
       final loginResult = await _facebookLogin.login(
-          loginBehavior: LoginBehavior.NATIVE_WITH_FALLBACK);
+          loginBehavior: LoginBehavior.nativeWithFallback);
       final credential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);

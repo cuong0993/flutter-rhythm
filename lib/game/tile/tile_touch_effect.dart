@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-import '../center_render_text_config.dart';
+import '../center_text_paint.dart';
 import '../colors.dart';
 import '../effect.dart';
 import '../util.dart';
@@ -101,7 +101,7 @@ const noteToName = {
 };
 
 class TileTouchEffect extends Effect {
-  final config = CenterRenderTextConfig(fontSize: 24.0, color: primaryColor);
+  final _textPaint = CenterTextPaint(fontSize: 24.0, color: primaryColor);
   var _time = 0.0;
   var _isDone = false;
   final double _centerX;
@@ -128,7 +128,7 @@ class TileTouchEffect extends Effect {
 
   @override
   void render(Canvas canvas) {
-    config.render(canvas, _text,
+    _textPaint.render(canvas, _text,
         Vector2(_centerX.toInt().toDouble(), _centerY.toInt().toDouble()));
   }
 }
