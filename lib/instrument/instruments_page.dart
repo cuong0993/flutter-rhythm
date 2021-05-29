@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../loading_widget.dart';
 import 'instruments_model.dart';
 import 'instruments_repository_impl.dart';
 
-class InstrumentsPage extends ConsumerWidget {
+class InstrumentsPage extends HookWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final instruments = watch(instrumentsProvider);
-    final selectedInstrumentId = watch(selectedInstrumentIdProvider).state;
+  Widget build(BuildContext context) {
+    final instruments = useProvider(instrumentsProvider);
+    final selectedInstrumentId =
+        useProvider(selectedInstrumentIdProvider).state;
     return Scaffold(
       appBar: AppBar(
           title: Text(L10n.of(context)!.txt_instrument_title_instruments,

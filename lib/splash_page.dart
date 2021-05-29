@@ -6,9 +6,9 @@ import 'authentication/authentication_model.dart';
 import 'authentication/authentication_state.dart';
 import 'router/router.dart';
 
-class SplashPage extends ConsumerWidget {
+class SplashPage extends StatelessWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
+  Widget build(BuildContext context) {
     return ProviderListener(
         provider: authenticationProvider,
         onChange: (context, state) {

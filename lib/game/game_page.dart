@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../midi/midi_model.dart';
 import 'colors.dart';
@@ -15,7 +17,7 @@ import 'pause_dialog.dart';
 import 'tile/tile.dart';
 import 'tile/tile_converter.dart';
 
-class GamePage extends ConsumerWidget {
+class GamePage extends HookWidget {
   final MyGame _game;
   final Map<String, dynamic> arguments;
 
@@ -24,14 +26,14 @@ class GamePage extends ConsumerWidget {
         super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final midiLoaded = watch(midiProvider);
+  Widget build(BuildContext context) {
+    final midiLoaded = useProvider(midiProvider);
     if (!midiLoaded) {
       return const LoadingSoundWidget();
     }
 
     final gameStateProvider = gameStateFamilyProvider(arguments);
-    final gameState = watch(gameStateProvider);
+    final gameState = useProvider(gameStateProvider);
     void _onRestart() {
       context.read(gameStateProvider.notifier).restart();
     }
@@ -77,9 +79,9 @@ class GamePage extends ConsumerWidget {
                       child: SafeArea(
                         child: Column(
                           children: [
-                            Consumer(
-                              builder: (context, watch, child) {
-                                final time = watch(timeProvider).state;
+                            HookBuilder(
+                              builder: (context) {
+                                final time = useProvider(timeProvider).state;
                                 return LinearProgressIndicator(
                                   backgroundColor:
                                       onBackgroundColor.withOpacity(0.1),
@@ -101,10 +103,10 @@ class GamePage extends ConsumerWidget {
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline6),
-                                      Consumer(
-                                        builder: (context, watch, child) {
+                                      HookBuilder(
+                                        builder: (context) {
                                           final time =
-                                              watch(timeProvider).state;
+                                              useProvider(timeProvider).state;
                                           return Text(
                                               '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration.toInt() ~/ 60}:${(gameState.duration.toInt() % 60).toString().padLeft(2, '0')}',
                                               style: Theme.of(context)
@@ -127,10 +129,11 @@ class GamePage extends ConsumerWidget {
                                               true;
                                         },
                                       ),
-                                      Consumer(
-                                        builder: (context, watch, child) {
+                                      HookBuilder(
+                                        builder: (context) {
                                           final tilesCount =
-                                              watch(tilesCountProvider).state;
+                                              useProvider(tilesCountProvider)
+                                                  .state;
                                           return Text(tilesCount.toString(),
                                               style: Theme.of(context)
                                                   .textTheme
@@ -161,10 +164,10 @@ class GamePage extends ConsumerWidget {
   }
 }
 
-class GuideTextWidget extends ConsumerWidget {
+class GuideTextWidget extends HookWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final guideText = watch(guideTextProvider).state;
+  Widget build(BuildContext context) {
+    final guideText = useProvider(guideTextProvider).state;
     var text = '';
     if (guideText == 'txt_too_late') {
       text = L10n.of(context)!.txt_too_late;

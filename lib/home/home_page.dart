@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../midi/midi_model.dart';
 import '../router/router.dart';
@@ -43,11 +43,11 @@ class HomePage extends HookWidget {
                       onPressed: () => AutoRouter.of(context)
                           .push(const InstrumentsRoute())),
                   IconButton(
-                      icon: ClipOval(child: Consumer(
-                        builder: (context, watch, child) {
+                      icon: ClipOval(child: HookBuilder(
+                        builder: (context) {
                           // FIXME To load midi
-                          watch(midiProvider);
-                          final user = watch(userProvider);
+                          useProvider(midiProvider);
+                          final user = useProvider(userProvider);
                           return user.when(
                               data: (user) => Image.network(
                                     user.photoUrl,

@@ -11,7 +11,7 @@ import '../loading_widget.dart';
 import 'user.dart';
 import 'user_model.dart';
 
-class UserPage extends HookWidget {
+class UserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +22,12 @@ class UserPage extends HookWidget {
           final user = useProvider(userProvider);
           return user.when(
               data: (user) {
-                final scrollController = useScrollController();
                 return Padding(
                     padding: const EdgeInsets.all(8),
                     child: Scrollbar(
                         isAlwaysShown: true,
-                        controller: scrollController,
-                        child: ListView(
-                            shrinkWrap: true,
-                            controller: scrollController,
-                            children: <Widget>[_buildUI(user, context)])));
+                        child: SingleChildScrollView(
+                            child: _buildUI(user, context))));
               },
               loading: () => LoadingWidget(),
               error: (_, __) => LoadingWidget());

@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'theme_model.dart';
 
-class ThemePage extends HookWidget {
+class ThemePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,13 +14,10 @@ class ThemePage extends HookWidget {
             title: Text(L10n.of(context)!.txt_theme,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: HookBuilder(builder: (context) {
-          final scrollController = useScrollController();
           final themeMode = useProvider(themeModeProvider);
           return Scrollbar(
             isAlwaysShown: true,
-            controller: scrollController,
             child: ListView.builder(
-              controller: scrollController,
               itemCount: ThemeMode.values.length,
               itemBuilder: (context, index) {
                 return RadioListTile<ThemeMode>(

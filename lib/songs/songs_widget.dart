@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../loading_widget.dart';
 import '../router/router.dart';
 import 'song_widget.dart';
 import 'songs_model.dart';
 
-class SongsWidget extends ConsumerWidget {
+class SongsWidget extends HookWidget {
   final String _tag;
 
   SongsWidget({Key? key, required String tag})
@@ -15,13 +17,14 @@ class SongsWidget extends ConsumerWidget {
         super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final songsByTag = watch(songsByTagProvider(_tag));
+  Widget build(BuildContext context) {
+    final songsByTag = useProvider(songsByTagProvider(_tag));
     return songsByTag.when(
         data: (songsByTag) => Column(
               children: [
                 Expanded(
                   child: Scrollbar(
+                    isAlwaysShown: true,
                     child: NotificationListener<ScrollEndNotification>(
                       onNotification: (notification) {
                         if (notification.metrics.pixels > 0 &&
@@ -50,10 +53,10 @@ class SongsWidget extends ConsumerWidget {
                     ),
                   ),
                 ),
-                Consumer(
-                  builder: (context, watch, child) {
+                HookBuilder(
+                  builder: (context) {
                     final isLoadingByTag =
-                        watch(isLoadingNextPageByTagProvider(_tag)).state;
+                        useProvider(isLoadingNextPageByTagProvider(_tag)).state;
                     return isLoadingByTag
                         ? const Center(
                             child: SizedBox(

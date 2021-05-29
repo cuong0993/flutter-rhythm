@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'locale/locale_model.dart';
@@ -34,13 +36,13 @@ Future<void> main() async {
   );
 }
 
-class App extends ConsumerWidget {
+class App extends HookWidget {
   final _rootRouter = RootRouter();
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final themeMode = watch(themeModeProvider);
-    final locale = watch(localeProvider);
+  Widget build(BuildContext context) {
+    final themeMode = useProvider(themeModeProvider);
+    final locale = useProvider(localeProvider);
     return MaterialApp.router(
       title: 'Hit Notes',
       debugShowCheckedModeBanner: false,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'locale_model.dart';
@@ -12,19 +11,16 @@ const localeStrings = {
   'zh': '汉语'
 };
 
-class LocalePage extends HookWidget {
+class LocalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final scrollController = useScrollController();
     return Scaffold(
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_language,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
         body: Scrollbar(
           isAlwaysShown: true,
-          controller: scrollController,
           child: ListView.builder(
-            controller: scrollController,
             itemCount: L10n.supportedLocales.length,
             itemBuilder: (context, index) {
               return RadioListTile<Locale>(

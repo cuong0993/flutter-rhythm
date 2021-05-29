@@ -5,7 +5,8 @@ import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 
@@ -38,8 +39,8 @@ class SettingsPage extends StatelessWidget {
                   L10n.of(context)!.txt_theme,
                   style: Theme.of(context).textTheme.headline6,
                 ),
-                subtitle: Consumer(builder: (context, watch, child) {
-                  final themeMode = watch(themeModeProvider);
+                subtitle: HookBuilder(builder: (context) {
+                  final themeMode = useProvider(themeModeProvider);
                   return Text(getThemeName(context, themeMode),
                       style: Theme.of(context).textTheme.subtitle1);
                 }),
