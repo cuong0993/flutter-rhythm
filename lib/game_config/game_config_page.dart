@@ -21,18 +21,16 @@ class GameConfigPage extends HookWidget {
     final gameConfigState = useProvider(gameConfigStateProvider);
 
     return Scaffold(
-        appBar: AppBar(
-            title: Text(L10n.of(context)!.txt_configure,
-                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+          title: Text(L10n.of(context)!.txt_configure,
+              style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+      body: SafeArea(
+        child: Scrollbar(
+          isAlwaysShown: true,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Column(
                   children: [
                     Text(L10n.of(context)!.txt_difficulty,
                         style: Theme.of(context).textTheme.headline5),
@@ -77,11 +75,8 @@ class GameConfigPage extends HookWidget {
                     )
                   ],
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                const SizedBox(height: 16),
+                Column(
                   children: [
                     Text(L10n.of(context)!.txt_speed,
                         style: Theme.of(context).textTheme.headline5),
@@ -126,38 +121,31 @@ class GameConfigPage extends HookWidget {
                     )
                   ],
                 ),
-              ),
-              Row(
-                children: [
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          primaryColor = Theme.of(context).colorScheme.primary;
-                          secondaryColor =
-                              Theme.of(context).colorScheme.secondary;
-                          backgroundColor =
-                              Theme.of(context).colorScheme.background;
-                          onBackgroundColor =
-                              Theme.of(context).colorScheme.onBackground;
-                          paint = Paint()
-                            ..colorFilter =
-                                ColorFilter.mode(primaryColor, BlendMode.srcIn);
-                          AutoRouter.of(context)
-                              .push(GameRoute(arguments: <String, dynamic>{
-                            'song': song,
-                            'difficulty': gameConfigState.difficulty,
-                            'speed': gameConfigState.speed
-                          }));
-                        },
-                        child: Text(L10n.of(context)!.txt_start)),
-                  ),
-                  const SizedBox(width: 8)
-                ],
-              )
-            ],
+              ],
+            ),
           ),
-        ));
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: ElevatedButton(
+            onPressed: () {
+              primaryColor = Theme.of(context).colorScheme.primary;
+              secondaryColor = Theme.of(context).colorScheme.secondary;
+              backgroundColor = Theme.of(context).colorScheme.background;
+              onBackgroundColor = Theme.of(context).colorScheme.onBackground;
+              paint = Paint()
+                ..colorFilter = ColorFilter.mode(primaryColor, BlendMode.srcIn);
+              AutoRouter.of(context)
+                  .push(GameRoute(arguments: <String, dynamic>{
+                'song': song,
+                'difficulty': gameConfigState.difficulty,
+                'speed': gameConfigState.speed
+              }));
+            },
+            child: Text(L10n.of(context)!.txt_start)),
+      ),
+    );
   }
 }
 
