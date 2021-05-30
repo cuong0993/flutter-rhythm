@@ -15,7 +15,6 @@ import 'game_state.dart';
 import 'my_game.dart';
 import 'pause_dialog.dart';
 import 'tile/tile.dart';
-import 'tile/tile_converter.dart';
 
 class GamePage extends HookWidget {
   final MyGame _game;
@@ -47,19 +46,20 @@ class GamePage extends HookWidget {
     }
 
     return ProviderListener(
-        provider: isPausedProvider,
-        onChange: (context, gameState) {
-          showDialog<void>(
-            context: context,
-            useSafeArea: false,
-            builder: (_) => PauseDialog(_onRestart),
-          );
+      provider: isPausedProvider,
+      onChange: (context, gameState) {
+        showDialog<void>(
+          context: context,
+          useSafeArea: false,
+          builder: (_) => PauseDialog(_onRestart),
+        );
+      },
+      child: WillPopScope(
+        onWillPop: () async {
+          context.read(isPausedProvider).state = true;
+          return Future.value(false);
         },
-        child: WillPopScope(
-          onWillPop: () async {
-            context.read(isPausedProvider).state = true;
-            return Future.value(false);
-          },
+        child: Material(
           child: () {
             if (gameState is GameStateLoading) {
               return const LoadingSoundWidget();
@@ -72,87 +72,84 @@ class GamePage extends HookWidget {
                   _onTileTouched, _onCompleted);
               return Stack(children: [
                 flame.GameWidget(game: _game),
-                Container(
-                    height: nonTouchRegionHeight.toDouble(),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: SafeArea(
-                        child: Column(
-                          children: [
-                            HookBuilder(
-                              builder: (context) {
-                                final time = useProvider(timeProvider).state;
-                                return LinearProgressIndicator(
-                                  backgroundColor:
-                                      onBackgroundColor.withOpacity(0.1),
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                      secondaryColor),
-                                  value: time / gameState.duration,
-                                );
-                              },
+                Align(
+                    alignment: Alignment.topCenter,
+                    child: SafeArea(
+                      child: Column(
+                        children: [
+                          HookBuilder(
+                            builder: (context) {
+                              final time = useProvider(timeProvider).state;
+                              return LinearProgressIndicator(
+                                backgroundColor:
+                                    onBackgroundColor.withOpacity(0.1),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    secondaryColor),
+                                value: time / gameState.duration,
+                              );
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text((gameState).songName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6),
+                                    HookBuilder(
+                                      builder: (context) {
+                                        final time =
+                                            useProvider(timeProvider).state;
+                                        return Text(
+                                            '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration.toInt() ~/ 60}:${(gameState.duration.toInt() % 60).toString().padLeft(2, '0')}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline6);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconButton(
+                                      iconSize: 38,
+                                      icon: const Icon(
+                                          Icons.pause_circle_outline_rounded),
+                                      onPressed: () {
+                                        context.read(isPausedProvider).state =
+                                            true;
+                                      },
+                                    ),
+                                    HookBuilder(
+                                      builder: (context) {
+                                        final tilesCount =
+                                            useProvider(tilesCountProvider)
+                                                .state;
+                                        return Text(tilesCount.toString(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline4!
+                                                .copyWith(
+                                                    color: secondaryColor));
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [GuideTextWidget()],
+                                )
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text((gameState).songName,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline6),
-                                      HookBuilder(
-                                        builder: (context) {
-                                          final time =
-                                              useProvider(timeProvider).state;
-                                          return Text(
-                                              '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration.toInt() ~/ 60}:${(gameState.duration.toInt() % 60).toString().padLeft(2, '0')}',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline6);
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      IconButton(
-                                        iconSize: 38,
-                                        icon: const Icon(
-                                            Icons.pause_circle_outline_rounded),
-                                        onPressed: () {
-                                          context.read(isPausedProvider).state =
-                                              true;
-                                        },
-                                      ),
-                                      HookBuilder(
-                                        builder: (context) {
-                                          final tilesCount =
-                                              useProvider(tilesCountProvider)
-                                                  .state;
-                                          return Text(tilesCount.toString(),
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline4!
-                                                  .copyWith(
-                                                      color: secondaryColor));
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [GuideTextWidget()],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
                     ))
               ]);
@@ -160,7 +157,9 @@ class GamePage extends HookWidget {
               return const SizedBox.shrink();
             }
           }(),
-        ));
+        ),
+      ),
+    );
   }
 }
 

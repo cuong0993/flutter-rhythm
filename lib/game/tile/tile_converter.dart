@@ -13,7 +13,6 @@ const numberTileColumn = 4;
 const unitDurationHeight = 72;
 const tileWidth = 36.0;
 const tileHeight = tileWidth;
-const nonTouchRegionHeight = 160;
 const startVisibleY = 0;
 
 double tickToSecond(int resolution, int bpm) {
