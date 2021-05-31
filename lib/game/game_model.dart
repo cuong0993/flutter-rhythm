@@ -11,6 +11,7 @@ import '../midi/midi_model.dart';
 import '../songs/song.dart';
 import 'game_reward.dart';
 import 'game_state.dart';
+import 'my_game.dart';
 import 'tile/tile.dart';
 import 'tile/tile_chunk.dart';
 import 'tile/tile_converter.dart';
@@ -45,6 +46,7 @@ class GameModel extends StateNotifier<GameState> {
   int _tilesCount = 0;
   int _errorCount = 0;
   int _duration = 0;
+  final MyGame game = MyGame();
 
   Future _startGame(Song song, int difficulty, int speed) async {
     final directory = await getApplicationSupportDirectory();
@@ -87,10 +89,11 @@ class GameModel extends StateNotifier<GameState> {
     _tilesCount = 0;
     _errorCount = 0;
     _duration = duration;
-    state = GameState.started(tiles, _speedDpsPerSecond, _duration, _songName);
+    await game.start(tiles, _speedDpsPerSecond, _onTouchTile, _onComplete);
+    state = GameState.playing(_duration, _songName);
   }
 
-  void touchTile(Tile? tile) {
+  void _onTouchTile(Tile? tile) {
     var guideText = '';
     if (tile != null) {
       _read(midiProvider.notifier).playNote(tile.note);
@@ -112,9 +115,9 @@ class GameModel extends StateNotifier<GameState> {
     _read(guideTextProvider).state = guideText;
   }
 
-  Future complete() async {
+  Future _onComplete() async {
     await Future<void>.delayed(const Duration(milliseconds: 500));
-    state = GameState.loadingGift();
+    state = GameState.gettingGift();
     final response = await FirebaseFunctions.instance
         .httpsCallable('GetGameReward')
         .call<Map>({
@@ -128,12 +131,13 @@ class GameModel extends StateNotifier<GameState> {
     state = GameState.completed(gameReward);
   }
 
-  void restart() {
+  Future<void> onRestart() async {
     _time = 0.0;
     _tilesCount = 0;
     _errorCount = 0;
     final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
-    state = GameState.started(tiles, _speedDpsPerSecond, _duration, _songName);
+    await game.start(tiles, _speedDpsPerSecond, _onTouchTile, _onComplete);
+    state = GameState.playing(_duration, _songName);
     _read(tilesCountProvider).state = _tilesCount;
     _read(timeProvider).state = _time;
     _read(guideTextProvider).state = '';

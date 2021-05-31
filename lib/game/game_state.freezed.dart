@@ -20,18 +20,15 @@ class _$GameStateTearOff {
     return GameStateLoading();
   }
 
-  GameStateStarted started(List<Tile> tiles, double speedPixelsPerSecond,
-      int duration, String songName) {
-    return GameStateStarted(
-      tiles,
-      speedPixelsPerSecond,
+  GameStatePlaying playing(int duration, String songName) {
+    return GameStatePlaying(
       duration,
       songName,
     );
   }
 
-  GameStateLoadingGift loadingGift() {
-    return GameStateLoadingGift();
+  GameStateGettingGift gettingGift() {
+    return GameStateGettingGift();
   }
 
   GameStateCompleted completed(GameReward gameReward) {
@@ -49,20 +46,16 @@ mixin _$GameState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)
-        started,
-    required TResult Function() loadingGift,
+    required TResult Function(int duration, String songName) playing,
+    required TResult Function() gettingGift,
     required TResult Function(GameReward gameReward) completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)?
-        started,
-    TResult Function()? loadingGift,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
     TResult Function(GameReward gameReward)? completed,
     required TResult orElse(),
   }) =>
@@ -70,16 +63,16 @@ mixin _$GameState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
-    required TResult Function(GameStateStarted value) started,
-    required TResult Function(GameStateLoadingGift value) loadingGift,
+    required TResult Function(GameStatePlaying value) playing,
+    required TResult Function(GameStateGettingGift value) gettingGift,
     required TResult Function(GameStateCompleted value) completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStateStarted value)? started,
-    TResult Function(GameStateLoadingGift value)? loadingGift,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
     TResult Function(GameStateCompleted value)? completed,
     required TResult orElse(),
   }) =>
@@ -141,10 +134,8 @@ class _$GameStateLoading implements GameStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)
-        started,
-    required TResult Function() loadingGift,
+    required TResult Function(int duration, String songName) playing,
+    required TResult Function() gettingGift,
     required TResult Function(GameReward gameReward) completed,
   }) {
     return loading();
@@ -154,10 +145,8 @@ class _$GameStateLoading implements GameStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)?
-        started,
-    TResult Function()? loadingGift,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
     TResult Function(GameReward gameReward)? completed,
     required TResult orElse(),
   }) {
@@ -171,8 +160,8 @@ class _$GameStateLoading implements GameStateLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
-    required TResult Function(GameStateStarted value) started,
-    required TResult Function(GameStateLoadingGift value) loadingGift,
+    required TResult Function(GameStatePlaying value) playing,
+    required TResult Function(GameStateGettingGift value) gettingGift,
     required TResult Function(GameStateCompleted value) completed,
   }) {
     return loading(this);
@@ -182,8 +171,8 @@ class _$GameStateLoading implements GameStateLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStateStarted value)? started,
-    TResult Function(GameStateLoadingGift value)? loadingGift,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
     TResult Function(GameStateCompleted value)? completed,
     required TResult orElse(),
   }) {
@@ -199,43 +188,29 @@ abstract class GameStateLoading implements GameState {
 }
 
 /// @nodoc
-abstract class $GameStateStartedCopyWith<$Res> {
-  factory $GameStateStartedCopyWith(
-          GameStateStarted value, $Res Function(GameStateStarted) then) =
-      _$GameStateStartedCopyWithImpl<$Res>;
-  $Res call(
-      {List<Tile> tiles,
-      double speedPixelsPerSecond,
-      int duration,
-      String songName});
+abstract class $GameStatePlayingCopyWith<$Res> {
+  factory $GameStatePlayingCopyWith(
+          GameStatePlaying value, $Res Function(GameStatePlaying) then) =
+      _$GameStatePlayingCopyWithImpl<$Res>;
+  $Res call({int duration, String songName});
 }
 
 /// @nodoc
-class _$GameStateStartedCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
-    implements $GameStateStartedCopyWith<$Res> {
-  _$GameStateStartedCopyWithImpl(
-      GameStateStarted _value, $Res Function(GameStateStarted) _then)
-      : super(_value, (v) => _then(v as GameStateStarted));
+class _$GameStatePlayingCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
+    implements $GameStatePlayingCopyWith<$Res> {
+  _$GameStatePlayingCopyWithImpl(
+      GameStatePlaying _value, $Res Function(GameStatePlaying) _then)
+      : super(_value, (v) => _then(v as GameStatePlaying));
 
   @override
-  GameStateStarted get _value => super._value as GameStateStarted;
+  GameStatePlaying get _value => super._value as GameStatePlaying;
 
   @override
   $Res call({
-    Object? tiles = freezed,
-    Object? speedPixelsPerSecond = freezed,
     Object? duration = freezed,
     Object? songName = freezed,
   }) {
-    return _then(GameStateStarted(
-      tiles == freezed
-          ? _value.tiles
-          : tiles // ignore: cast_nullable_to_non_nullable
-              as List<Tile>,
-      speedPixelsPerSecond == freezed
-          ? _value.speedPixelsPerSecond
-          : speedPixelsPerSecond // ignore: cast_nullable_to_non_nullable
-              as double,
+    return _then(GameStatePlaying(
       duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -250,14 +225,9 @@ class _$GameStateStartedCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GameStateStarted implements GameStateStarted {
-  _$GameStateStarted(
-      this.tiles, this.speedPixelsPerSecond, this.duration, this.songName);
+class _$GameStatePlaying implements GameStatePlaying {
+  _$GameStatePlaying(this.duration, this.songName);
 
-  @override
-  final List<Tile> tiles;
-  @override
-  final double speedPixelsPerSecond;
   @override
   final int duration;
   @override
@@ -265,18 +235,13 @@ class _$GameStateStarted implements GameStateStarted {
 
   @override
   String toString() {
-    return 'GameState.started(tiles: $tiles, speedPixelsPerSecond: $speedPixelsPerSecond, duration: $duration, songName: $songName)';
+    return 'GameState.playing(duration: $duration, songName: $songName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GameStateStarted &&
-            (identical(other.tiles, tiles) ||
-                const DeepCollectionEquality().equals(other.tiles, tiles)) &&
-            (identical(other.speedPixelsPerSecond, speedPixelsPerSecond) ||
-                const DeepCollectionEquality().equals(
-                    other.speedPixelsPerSecond, speedPixelsPerSecond)) &&
+        (other is GameStatePlaying &&
             (identical(other.duration, duration) ||
                 const DeepCollectionEquality()
                     .equals(other.duration, duration)) &&
@@ -288,42 +253,36 @@ class _$GameStateStarted implements GameStateStarted {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(tiles) ^
-      const DeepCollectionEquality().hash(speedPixelsPerSecond) ^
       const DeepCollectionEquality().hash(duration) ^
       const DeepCollectionEquality().hash(songName);
 
   @JsonKey(ignore: true)
   @override
-  $GameStateStartedCopyWith<GameStateStarted> get copyWith =>
-      _$GameStateStartedCopyWithImpl<GameStateStarted>(this, _$identity);
+  $GameStatePlayingCopyWith<GameStatePlaying> get copyWith =>
+      _$GameStatePlayingCopyWithImpl<GameStatePlaying>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)
-        started,
-    required TResult Function() loadingGift,
+    required TResult Function(int duration, String songName) playing,
+    required TResult Function() gettingGift,
     required TResult Function(GameReward gameReward) completed,
   }) {
-    return started(tiles, speedPixelsPerSecond, duration, songName);
+    return playing(duration, songName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)?
-        started,
-    TResult Function()? loadingGift,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
     TResult Function(GameReward gameReward)? completed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(tiles, speedPixelsPerSecond, duration, songName);
+    if (playing != null) {
+      return playing(duration, songName);
     }
     return orElse();
   }
@@ -332,74 +291,71 @@ class _$GameStateStarted implements GameStateStarted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
-    required TResult Function(GameStateStarted value) started,
-    required TResult Function(GameStateLoadingGift value) loadingGift,
+    required TResult Function(GameStatePlaying value) playing,
+    required TResult Function(GameStateGettingGift value) gettingGift,
     required TResult Function(GameStateCompleted value) completed,
   }) {
-    return started(this);
+    return playing(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStateStarted value)? started,
-    TResult Function(GameStateLoadingGift value)? loadingGift,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
     TResult Function(GameStateCompleted value)? completed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (playing != null) {
+      return playing(this);
     }
     return orElse();
   }
 }
 
-abstract class GameStateStarted implements GameState {
-  factory GameStateStarted(List<Tile> tiles, double speedPixelsPerSecond,
-      int duration, String songName) = _$GameStateStarted;
+abstract class GameStatePlaying implements GameState {
+  factory GameStatePlaying(int duration, String songName) = _$GameStatePlaying;
 
-  List<Tile> get tiles => throw _privateConstructorUsedError;
-  double get speedPixelsPerSecond => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
   String get songName => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GameStateStartedCopyWith<GameStateStarted> get copyWith =>
+  $GameStatePlayingCopyWith<GameStatePlaying> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GameStateLoadingGiftCopyWith<$Res> {
-  factory $GameStateLoadingGiftCopyWith(GameStateLoadingGift value,
-          $Res Function(GameStateLoadingGift) then) =
-      _$GameStateLoadingGiftCopyWithImpl<$Res>;
+abstract class $GameStateGettingGiftCopyWith<$Res> {
+  factory $GameStateGettingGiftCopyWith(GameStateGettingGift value,
+          $Res Function(GameStateGettingGift) then) =
+      _$GameStateGettingGiftCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameStateLoadingGiftCopyWithImpl<$Res>
+class _$GameStateGettingGiftCopyWithImpl<$Res>
     extends _$GameStateCopyWithImpl<$Res>
-    implements $GameStateLoadingGiftCopyWith<$Res> {
-  _$GameStateLoadingGiftCopyWithImpl(
-      GameStateLoadingGift _value, $Res Function(GameStateLoadingGift) _then)
-      : super(_value, (v) => _then(v as GameStateLoadingGift));
+    implements $GameStateGettingGiftCopyWith<$Res> {
+  _$GameStateGettingGiftCopyWithImpl(
+      GameStateGettingGift _value, $Res Function(GameStateGettingGift) _then)
+      : super(_value, (v) => _then(v as GameStateGettingGift));
 
   @override
-  GameStateLoadingGift get _value => super._value as GameStateLoadingGift;
+  GameStateGettingGift get _value => super._value as GameStateGettingGift;
 }
 
 /// @nodoc
 
-class _$GameStateLoadingGift implements GameStateLoadingGift {
-  _$GameStateLoadingGift();
+class _$GameStateGettingGift implements GameStateGettingGift {
+  _$GameStateGettingGift();
 
   @override
   String toString() {
-    return 'GameState.loadingGift()';
+    return 'GameState.gettingGift()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GameStateLoadingGift);
+    return identical(this, other) || (other is GameStateGettingGift);
   }
 
   @override
@@ -409,28 +365,24 @@ class _$GameStateLoadingGift implements GameStateLoadingGift {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)
-        started,
-    required TResult Function() loadingGift,
+    required TResult Function(int duration, String songName) playing,
+    required TResult Function() gettingGift,
     required TResult Function(GameReward gameReward) completed,
   }) {
-    return loadingGift();
+    return gettingGift();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)?
-        started,
-    TResult Function()? loadingGift,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
     TResult Function(GameReward gameReward)? completed,
     required TResult orElse(),
   }) {
-    if (loadingGift != null) {
-      return loadingGift();
+    if (gettingGift != null) {
+      return gettingGift();
     }
     return orElse();
   }
@@ -439,31 +391,31 @@ class _$GameStateLoadingGift implements GameStateLoadingGift {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
-    required TResult Function(GameStateStarted value) started,
-    required TResult Function(GameStateLoadingGift value) loadingGift,
+    required TResult Function(GameStatePlaying value) playing,
+    required TResult Function(GameStateGettingGift value) gettingGift,
     required TResult Function(GameStateCompleted value) completed,
   }) {
-    return loadingGift(this);
+    return gettingGift(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStateStarted value)? started,
-    TResult Function(GameStateLoadingGift value)? loadingGift,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
     TResult Function(GameStateCompleted value)? completed,
     required TResult orElse(),
   }) {
-    if (loadingGift != null) {
-      return loadingGift(this);
+    if (gettingGift != null) {
+      return gettingGift(this);
     }
     return orElse();
   }
 }
 
-abstract class GameStateLoadingGift implements GameState {
-  factory GameStateLoadingGift() = _$GameStateLoadingGift;
+abstract class GameStateGettingGift implements GameState {
+  factory GameStateGettingGift() = _$GameStateGettingGift;
 }
 
 /// @nodoc
@@ -542,10 +494,8 @@ class _$GameStateCompleted implements GameStateCompleted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)
-        started,
-    required TResult Function() loadingGift,
+    required TResult Function(int duration, String songName) playing,
+    required TResult Function() gettingGift,
     required TResult Function(GameReward gameReward) completed,
   }) {
     return completed(gameReward);
@@ -555,10 +505,8 @@ class _$GameStateCompleted implements GameStateCompleted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Tile> tiles, double speedPixelsPerSecond,
-            int duration, String songName)?
-        started,
-    TResult Function()? loadingGift,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
     TResult Function(GameReward gameReward)? completed,
     required TResult orElse(),
   }) {
@@ -572,8 +520,8 @@ class _$GameStateCompleted implements GameStateCompleted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
-    required TResult Function(GameStateStarted value) started,
-    required TResult Function(GameStateLoadingGift value) loadingGift,
+    required TResult Function(GameStatePlaying value) playing,
+    required TResult Function(GameStateGettingGift value) gettingGift,
     required TResult Function(GameStateCompleted value) completed,
   }) {
     return completed(this);
@@ -583,8 +531,8 @@ class _$GameStateCompleted implements GameStateCompleted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStateStarted value)? started,
-    TResult Function(GameStateLoadingGift value)? loadingGift,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
     TResult Function(GameStateCompleted value)? completed,
     required TResult orElse(),
   }) {

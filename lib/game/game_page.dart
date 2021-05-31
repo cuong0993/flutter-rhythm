@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -12,17 +10,12 @@ import 'colors.dart';
 import 'complete_widget.dart';
 import 'game_model.dart';
 import 'game_state.dart';
-import 'my_game.dart';
 import 'pause_dialog.dart';
-import 'tile/tile.dart';
 
 class GamePage extends HookWidget {
-  final MyGame _game;
   final Map<String, dynamic> arguments;
 
-  GamePage({Key? key, required this.arguments})
-      : _game = MyGame(),
-        super(key: key);
+  GamePage({Key? key, required this.arguments}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +27,7 @@ class GamePage extends HookWidget {
     final gameStateProvider = gameStateFamilyProvider(arguments);
     final gameState = useProvider(gameStateProvider);
     void _onRestart() {
-      context.read(gameStateProvider.notifier).restart();
-    }
-
-    void _onTileTouched(Tile? tile) {
-      context.read(gameStateProvider.notifier).touchTile(tile);
-    }
-
-    void _onCompleted() {
-      context.read(gameStateProvider.notifier).complete();
+      context.read(gameStateProvider.notifier).onRestart();
     }
 
     return ProviderListener(
@@ -55,7 +40,7 @@ class GamePage extends HookWidget {
         );
       },
       child: WillPopScope(
-        onWillPop: () async {
+        onWillPop: () {
           context.read(isPausedProvider).state = true;
           return Future.value(false);
         },
@@ -63,15 +48,14 @@ class GamePage extends HookWidget {
           child: () {
             if (gameState is GameStateLoading) {
               return const LoadingSoundWidget();
-            } else if (gameState is GameStateLoadingGift) {
+            } else if (gameState is GameStateGettingGift) {
               return const LoadingGiftWidget();
             } else if (gameState is GameStateCompleted) {
               return CompleteWidget(gameState.gameReward, _onRestart);
-            } else if (gameState is GameStateStarted) {
-              _game.start(gameState.tiles, gameState.speedPixelsPerSecond,
-                  _onTileTouched, _onCompleted);
+            } else if (gameState is GameStatePlaying) {
               return Stack(children: [
-                flame.GameWidget(game: _game),
+                flame.GameWidget(
+                    game: context.read(gameStateProvider.notifier).game),
                 Align(
                     alignment: Alignment.topCenter,
                     child: SafeArea(
