@@ -20,6 +20,7 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<!-- Google Sign-In section -->
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -31,6 +32,7 @@
 			</array>
 		</dict>
 	</array>
+	<!-- End of the Google Sign-In section -->
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>

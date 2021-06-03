@@ -13,8 +13,3 @@ repos:
         name: Run flutter analyze
         entry: bash -c "flutter analyze ."
         language: system
-      - id: pod_install_ios
-        name: Run pod install iOS
-        entry: bash -c "cd ios; pod install"
-        language: system
-        files: ^ios/
