@@ -12,6 +12,18 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v2
+      - name: Cache CocoaPods
+        uses: actions/cache@v2
+        with:
+          path: /Users/runner/Library/Caches/CocoaPods/Pods
+          key: '${{ runner.os }}-cache-cocoapods-${{ hashFiles(''pubspec.lock'') }}'
+      - name: Cache build
+        uses: actions/cache@v2
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Developer/Xcode/DerivedData
+          key: '${{ runner.os }}-build-cache--${{ hashFiles(''pubspec.lock'') }}'
       - name: Cache Flutter dependencies
         uses: actions/cache@v2
         with:
@@ -30,6 +42,7 @@ jobs:
           GOOGLE_SERVICES_STAGE_JSON: '${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}'
           GOOGLE_SERVICES_PROD_JSON: '${{ secrets.GOOGLE_SERVICES_PROD_JSON }}'
           RELEASE_JKS: '${{ secrets.RELEASE_JKS }}'
+          GOOGLE_SERVICE_INFO_PLIST: '${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}'
         run: >
           sudo echo "$KEYSTORE_PROPERTIES" > android/keystore.properties
 
@@ -42,6 +55,9 @@ jobs:
           android/app/src/prod/google-services.json
 
           sudo echo "$RELEASE_JKS" | base64 -d > android/release.jks
+
+          sudo echo "$GOOGLE_SERVICE_INFO_PLIST" >
+          ios/Runner/Firebase/GoogleService-Info-Dev.plist
       - name: Build stage application
         run: >-
           flutter build apk --obfuscate
@@ -65,3 +81,5 @@ jobs:
           build/app/outputs/flutter-apk/app-stage-release.apk --app
           "${{ secrets.STAGE_APP_ID }}" --release-notes "$(git log -1
           --pretty=short)" --groups testers
+      - name: Build iOS
+        run: flutter build ios --debug --no-codesign
