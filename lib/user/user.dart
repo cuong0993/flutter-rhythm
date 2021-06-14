@@ -8,17 +8,17 @@ part 'user.g.dart';
 
 @freezed
 class User with _$User {
-  factory User(
-    String id,
-    int playedNotes,
-    int stars,
-    Duration playedTime,
-    String instrumentId,
-    String name,
-    String photoUrl,
-    bool anonymous,
-    @TimestampConverter() DateTime creationTime,
-  ) = _User;
+  factory User({
+    required String id,
+    required int playedNotes,
+    required int stars,
+    required Duration playedTime,
+    required String instrumentId,
+    required String name,
+    required String photoUrl,
+    required bool anonymous,
+    @TimestampConverter() required DateTime creationTime,
+  }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

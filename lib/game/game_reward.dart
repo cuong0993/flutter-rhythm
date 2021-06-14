@@ -5,10 +5,10 @@ part 'game_reward.g.dart';
 
 @freezed
 class GameReward with _$GameReward {
-  factory GameReward(
-    int stars,
-    int playedNotes,
-  ) = _GameReward;
+  factory GameReward({
+    required int stars,
+    required int playedNotes,
+  }) = _GameReward;
 
   factory GameReward.fromJson(Map<String, dynamic> json) =>
       _$GameRewardFromJson(json);

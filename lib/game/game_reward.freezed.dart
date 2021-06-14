@@ -20,10 +20,10 @@ GameReward _$GameRewardFromJson(Map<String, dynamic> json) {
 class _$GameRewardTearOff {
   const _$GameRewardTearOff();
 
-  _GameReward call(int stars, int playedNotes) {
+  _GameReward call({required int stars, required int playedNotes}) {
     return _GameReward(
-      stars,
-      playedNotes,
+      stars: stars,
+      playedNotes: playedNotes,
     );
   }
 
@@ -105,11 +105,11 @@ class __$GameRewardCopyWithImpl<$Res> extends _$GameRewardCopyWithImpl<$Res>
     Object? playedNotes = freezed,
   }) {
     return _then(_GameReward(
-      stars == freezed
+      stars: stars == freezed
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
               as int,
-      playedNotes == freezed
+      playedNotes: playedNotes == freezed
           ? _value.playedNotes
           : playedNotes // ignore: cast_nullable_to_non_nullable
               as int,
@@ -120,7 +120,7 @@ class __$GameRewardCopyWithImpl<$Res> extends _$GameRewardCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_GameReward implements _GameReward {
-  _$_GameReward(this.stars, this.playedNotes);
+  _$_GameReward({required this.stars, required this.playedNotes});
 
   factory _$_GameReward.fromJson(Map<String, dynamic> json) =>
       _$_$_GameRewardFromJson(json);
@@ -164,7 +164,8 @@ class _$_GameReward implements _GameReward {
 }
 
 abstract class _GameReward implements GameReward {
-  factory _GameReward(int stars, int playedNotes) = _$_GameReward;
+  factory _GameReward({required int stars, required int playedNotes}) =
+      _$_GameReward;
 
   factory _GameReward.fromJson(Map<String, dynamic> json) =
       _$_GameReward.fromJson;

@@ -4,8 +4,8 @@ part 'note.freezed.dart';
 
 @freezed
 class Note with _$Note {
-  factory Note(
-    int note,
-    int startTick,
-  ) = _Note;
+  factory Note({
+    required int note,
+    required int startTick,
+  }) = _Note;
 }

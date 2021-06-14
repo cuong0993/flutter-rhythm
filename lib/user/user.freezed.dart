@@ -21,25 +21,25 @@ class _$UserTearOff {
   const _$UserTearOff();
 
   _User call(
-      String id,
-      int playedNotes,
-      int stars,
-      Duration playedTime,
-      String instrumentId,
-      String name,
-      String photoUrl,
-      bool anonymous,
-      @TimestampConverter() DateTime creationTime) {
+      {required String id,
+      required int playedNotes,
+      required int stars,
+      required Duration playedTime,
+      required String instrumentId,
+      required String name,
+      required String photoUrl,
+      required bool anonymous,
+      @TimestampConverter() required DateTime creationTime}) {
     return _User(
-      id,
-      playedNotes,
-      stars,
-      playedTime,
-      instrumentId,
-      name,
-      photoUrl,
-      anonymous,
-      creationTime,
+      id: id,
+      playedNotes: playedNotes,
+      stars: stars,
+      playedTime: playedTime,
+      instrumentId: instrumentId,
+      name: name,
+      photoUrl: photoUrl,
+      anonymous: anonymous,
+      creationTime: creationTime,
     );
   }
 
@@ -185,39 +185,39 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? creationTime = freezed,
   }) {
     return _then(_User(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      playedNotes == freezed
+      playedNotes: playedNotes == freezed
           ? _value.playedNotes
           : playedNotes // ignore: cast_nullable_to_non_nullable
               as int,
-      stars == freezed
+      stars: stars == freezed
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
               as int,
-      playedTime == freezed
+      playedTime: playedTime == freezed
           ? _value.playedTime
           : playedTime // ignore: cast_nullable_to_non_nullable
               as Duration,
-      instrumentId == freezed
+      instrumentId: instrumentId == freezed
           ? _value.instrumentId
           : instrumentId // ignore: cast_nullable_to_non_nullable
               as String,
-      name == freezed
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      photoUrl == freezed
+      photoUrl: photoUrl == freezed
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      anonymous == freezed
+      anonymous: anonymous == freezed
           ? _value.anonymous
           : anonymous // ignore: cast_nullable_to_non_nullable
               as bool,
-      creationTime == freezed
+      creationTime: creationTime == freezed
           ? _value.creationTime
           : creationTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
@@ -229,15 +229,15 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User implements _User {
   _$_User(
-      this.id,
-      this.playedNotes,
-      this.stars,
-      this.playedTime,
-      this.instrumentId,
-      this.name,
-      this.photoUrl,
-      this.anonymous,
-      @TimestampConverter() this.creationTime);
+      {required this.id,
+      required this.playedNotes,
+      required this.stars,
+      required this.playedTime,
+      required this.instrumentId,
+      required this.name,
+      required this.photoUrl,
+      required this.anonymous,
+      @TimestampConverter() required this.creationTime});
 
   factory _$_User.fromJson(Map<String, dynamic> json) =>
       _$_$_UserFromJson(json);
@@ -323,15 +323,15 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   factory _User(
-      String id,
-      int playedNotes,
-      int stars,
-      Duration playedTime,
-      String instrumentId,
-      String name,
-      String photoUrl,
-      bool anonymous,
-      @TimestampConverter() DateTime creationTime) = _$_User;
+      {required String id,
+      required int playedNotes,
+      required int stars,
+      required Duration playedTime,
+      required String instrumentId,
+      required String name,
+      required String photoUrl,
+      required bool anonymous,
+      @TimestampConverter() required DateTime creationTime}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 

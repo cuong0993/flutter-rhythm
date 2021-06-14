@@ -34,7 +34,7 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
       } else if (midiEvent is NoteOffEvent) {
         final noteValue = midiEvent.noteNumber;
         if (onsets[noteValue] >= 0) {
-          tileNotes.add(Note(noteValue, onsets[noteValue]));
+          tileNotes.add(Note(note: noteValue, startTick: onsets[noteValue]));
           onsets[noteValue] = -1;
         }
       }
@@ -48,10 +48,12 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
               .entries
               .toList()
                 ..sort((e1, e2) => e1.key.compareTo(e2.key)))
-      .forEach((key, value) {
+      .forEach((key, notes) {
     tileChunks.add(TileChunk(
-        value, value[0].startTick - previousStartTick, value[0].startTick));
-    previousStartTick = value[0].startTick;
+        notes: notes,
+        durationToPrevious: notes[0].startTick - previousStartTick,
+        startTick: notes[0].startTick));
+    previousStartTick = notes[0].startTick;
   });
   return tileChunks;
 }

@@ -8,8 +8,8 @@ part of 'game_reward.dart';
 
 _$_GameReward _$_$_GameRewardFromJson(Map<String, dynamic> json) {
   return _$_GameReward(
-    json['stars'] as int,
-    json['playedNotes'] as int,
+    stars: json['stars'] as int,
+    playedNotes: json['playedNotes'] as int,
   );
 }
 

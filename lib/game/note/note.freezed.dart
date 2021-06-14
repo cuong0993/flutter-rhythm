@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NoteTearOff {
   const _$NoteTearOff();
 
-  _Note call(int note, int startTick) {
+  _Note call({required int note, required int startTick}) {
     return _Note(
-      note,
-      startTick,
+      note: note,
+      startTick: startTick,
     );
   }
 }
@@ -92,11 +92,11 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
     Object? startTick = freezed,
   }) {
     return _then(_Note(
-      note == freezed
+      note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as int,
-      startTick == freezed
+      startTick: startTick == freezed
           ? _value.startTick
           : startTick // ignore: cast_nullable_to_non_nullable
               as int,
@@ -107,7 +107,7 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Note implements _Note {
-  _$_Note(this.note, this.startTick);
+  _$_Note({required this.note, required this.startTick});
 
   @override
   final int note;
@@ -143,7 +143,7 @@ class _$_Note implements _Note {
 }
 
 abstract class _Note implements Note {
-  factory _Note(int note, int startTick) = _$_Note;
+  factory _Note({required int note, required int startTick}) = _$_Note;
 
   @override
   int get note => throw _privateConstructorUsedError;

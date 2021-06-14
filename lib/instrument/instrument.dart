@@ -5,13 +5,13 @@ part 'instrument.g.dart';
 
 @freezed
 class Instrument with _$Instrument {
-  factory Instrument(
-    String id,
-    Map<int, String> soundPaths,
-    Map<int, int> baseNotes,
-    int minNote,
-    int maxNote,
-  ) = _Instrument;
+  factory Instrument({
+    required String id,
+    required Map<int, String> soundPaths,
+    required Map<int, int> baseNotes,
+    required int minNote,
+    required int maxNote,
+  }) = _Instrument;
 
   factory Instrument.fromJson(Map<String, dynamic> json) =>
       _$InstrumentFromJson(json);

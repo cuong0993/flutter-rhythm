@@ -21,25 +21,25 @@ class _$SongTearOff {
   const _$SongTearOff();
 
   _Song call(
-      String id,
-      String title,
-      String artist,
-      String url,
-      int bpm,
-      int unitDuration,
-      List<int> tilesCount,
-      List<int> duration,
-      List<String> tags) {
+      {required String id,
+      required String title,
+      required String artist,
+      required String url,
+      required int bpm,
+      required int unitDuration,
+      required List<int> tilesCount,
+      required List<int> duration,
+      required List<String> tags}) {
     return _Song(
-      id,
-      title,
-      artist,
-      url,
-      bpm,
-      unitDuration,
-      tilesCount,
-      duration,
-      tags,
+      id: id,
+      title: title,
+      artist: artist,
+      url: url,
+      bpm: bpm,
+      unitDuration: unitDuration,
+      tilesCount: tilesCount,
+      duration: duration,
+      tags: tags,
     );
   }
 
@@ -184,39 +184,39 @@ class __$SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res>
     Object? tags = freezed,
   }) {
     return _then(_Song(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title == freezed
+      title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      artist == freezed
+      artist: artist == freezed
           ? _value.artist
           : artist // ignore: cast_nullable_to_non_nullable
               as String,
-      url == freezed
+      url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      bpm == freezed
+      bpm: bpm == freezed
           ? _value.bpm
           : bpm // ignore: cast_nullable_to_non_nullable
               as int,
-      unitDuration == freezed
+      unitDuration: unitDuration == freezed
           ? _value.unitDuration
           : unitDuration // ignore: cast_nullable_to_non_nullable
               as int,
-      tilesCount == freezed
+      tilesCount: tilesCount == freezed
           ? _value.tilesCount
           : tilesCount // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      duration == freezed
+      duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      tags == freezed
+      tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -227,8 +227,16 @@ class __$SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Song implements _Song {
-  _$_Song(this.id, this.title, this.artist, this.url, this.bpm,
-      this.unitDuration, this.tilesCount, this.duration, this.tags);
+  _$_Song(
+      {required this.id,
+      required this.title,
+      required this.artist,
+      required this.url,
+      required this.bpm,
+      required this.unitDuration,
+      required this.tilesCount,
+      required this.duration,
+      required this.tags});
 
   factory _$_Song.fromJson(Map<String, dynamic> json) =>
       _$_$_SongFromJson(json);
@@ -310,15 +318,15 @@ class _$_Song implements _Song {
 
 abstract class _Song implements Song {
   factory _Song(
-      String id,
-      String title,
-      String artist,
-      String url,
-      int bpm,
-      int unitDuration,
-      List<int> tilesCount,
-      List<int> duration,
-      List<String> tags) = _$_Song;
+      {required String id,
+      required String title,
+      required String artist,
+      required String url,
+      required int bpm,
+      required int unitDuration,
+      required List<int> tilesCount,
+      required List<int> duration,
+      required List<String> tags}) = _$_Song;
 
   factory _Song.fromJson(Map<String, dynamic> json) = _$_Song.fromJson;
 

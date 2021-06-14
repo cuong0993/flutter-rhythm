@@ -8,15 +8,15 @@ part of 'instrument.dart';
 
 _$_Instrument _$_$_InstrumentFromJson(Map<String, dynamic> json) {
   return _$_Instrument(
-    json['id'] as String,
-    (json['soundPaths'] as Map<String, dynamic>).map(
+    id: json['id'] as String,
+    soundPaths: (json['soundPaths'] as Map<String, dynamic>).map(
       (k, e) => MapEntry(int.parse(k), e as String),
     ),
-    (json['baseNotes'] as Map<String, dynamic>).map(
+    baseNotes: (json['baseNotes'] as Map<String, dynamic>).map(
       (k, e) => MapEntry(int.parse(k), e as int),
     ),
-    json['minNote'] as int,
-    json['maxNote'] as int,
+    minNote: json['minNote'] as int,
+    maxNote: json['maxNote'] as int,
   );
 }
 

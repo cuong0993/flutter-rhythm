@@ -6,9 +6,9 @@ part 'tile_chunk.freezed.dart';
 
 @freezed
 class TileChunk with _$TileChunk {
-  factory TileChunk(
-    List<Note> notes,
-    int durationToPrevious,
-    int startTick,
-  ) = _TileChunk;
+  factory TileChunk({
+    required List<Note> notes,
+    required int durationToPrevious,
+    required int startTick,
+  }) = _TileChunk;
 }

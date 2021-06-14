@@ -16,11 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TileChunkTearOff {
   const _$TileChunkTearOff();
 
-  _TileChunk call(List<Note> notes, int durationToPrevious, int startTick) {
+  _TileChunk call(
+      {required List<Note> notes,
+      required int durationToPrevious,
+      required int startTick}) {
     return _TileChunk(
-      notes,
-      durationToPrevious,
-      startTick,
+      notes: notes,
+      durationToPrevious: durationToPrevious,
+      startTick: startTick,
     );
   }
 }
@@ -102,15 +105,15 @@ class __$TileChunkCopyWithImpl<$Res> extends _$TileChunkCopyWithImpl<$Res>
     Object? startTick = freezed,
   }) {
     return _then(_TileChunk(
-      notes == freezed
+      notes: notes == freezed
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
-      durationToPrevious == freezed
+      durationToPrevious: durationToPrevious == freezed
           ? _value.durationToPrevious
           : durationToPrevious // ignore: cast_nullable_to_non_nullable
               as int,
-      startTick == freezed
+      startTick: startTick == freezed
           ? _value.startTick
           : startTick // ignore: cast_nullable_to_non_nullable
               as int,
@@ -121,7 +124,10 @@ class __$TileChunkCopyWithImpl<$Res> extends _$TileChunkCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TileChunk implements _TileChunk {
-  _$_TileChunk(this.notes, this.durationToPrevious, this.startTick);
+  _$_TileChunk(
+      {required this.notes,
+      required this.durationToPrevious,
+      required this.startTick});
 
   @override
   final List<Note> notes;
@@ -163,8 +169,10 @@ class _$_TileChunk implements _TileChunk {
 }
 
 abstract class _TileChunk implements TileChunk {
-  factory _TileChunk(List<Note> notes, int durationToPrevious, int startTick) =
-      _$_TileChunk;
+  factory _TileChunk(
+      {required List<Note> notes,
+      required int durationToPrevious,
+      required int startTick}) = _$_TileChunk;
 
   @override
   List<Note> get notes => throw _privateConstructorUsedError;

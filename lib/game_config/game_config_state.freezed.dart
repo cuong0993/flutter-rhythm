@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$GameConfigStateTearOff {
   const _$GameConfigStateTearOff();
 
-  _GameConfigState call(int difficulty, int speed) {
+  _GameConfigState call({required int difficulty, required int speed}) {
     return _GameConfigState(
-      difficulty,
-      speed,
+      difficulty: difficulty,
+      speed: speed,
     );
   }
 }
@@ -99,11 +99,11 @@ class __$GameConfigStateCopyWithImpl<$Res>
     Object? speed = freezed,
   }) {
     return _then(_GameConfigState(
-      difficulty == freezed
+      difficulty: difficulty == freezed
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
-      speed == freezed
+      speed: speed == freezed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
               as int,
@@ -114,7 +114,7 @@ class __$GameConfigStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GameConfigState implements _GameConfigState {
-  _$_GameConfigState(this.difficulty, this.speed);
+  _$_GameConfigState({required this.difficulty, required this.speed});
 
   @override
   final int difficulty;
@@ -150,7 +150,8 @@ class _$_GameConfigState implements _GameConfigState {
 }
 
 abstract class _GameConfigState implements GameConfigState {
-  factory _GameConfigState(int difficulty, int speed) = _$_GameConfigState;
+  factory _GameConfigState({required int difficulty, required int speed}) =
+      _$_GameConfigState;
 
   @override
   int get difficulty => throw _privateConstructorUsedError;

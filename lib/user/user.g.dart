@@ -8,15 +8,16 @@ part of 'user.dart';
 
 _$_User _$_$_UserFromJson(Map<String, dynamic> json) {
   return _$_User(
-    json['id'] as String,
-    json['playedNotes'] as int,
-    json['stars'] as int,
-    Duration(microseconds: json['playedTime'] as int),
-    json['instrumentId'] as String,
-    json['name'] as String,
-    json['photoUrl'] as String,
-    json['anonymous'] as bool,
-    const TimestampConverter().fromJson(json['creationTime'] as Timestamp),
+    id: json['id'] as String,
+    playedNotes: json['playedNotes'] as int,
+    stars: json['stars'] as int,
+    playedTime: Duration(microseconds: json['playedTime'] as int),
+    instrumentId: json['instrumentId'] as String,
+    name: json['name'] as String,
+    photoUrl: json['photoUrl'] as String,
+    anonymous: json['anonymous'] as bool,
+    creationTime:
+        const TimestampConverter().fromJson(json['creationTime'] as Timestamp),
   );
 }
 

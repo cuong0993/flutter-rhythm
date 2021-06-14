@@ -8,15 +8,16 @@ part of 'song.dart';
 
 _$_Song _$_$_SongFromJson(Map<String, dynamic> json) {
   return _$_Song(
-    json['id'] as String,
-    json['title'] as String,
-    json['artist'] as String,
-    json['url'] as String,
-    json['bpm'] as int,
-    json['unitDuration'] as int,
-    (json['tilesCount'] as List<dynamic>).map((e) => e as int).toList(),
-    (json['duration'] as List<dynamic>).map((e) => e as int).toList(),
-    (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+    id: json['id'] as String,
+    title: json['title'] as String,
+    artist: json['artist'] as String,
+    url: json['url'] as String,
+    bpm: json['bpm'] as int,
+    unitDuration: json['unitDuration'] as int,
+    tilesCount:
+        (json['tilesCount'] as List<dynamic>).map((e) => e as int).toList(),
+    duration: (json['duration'] as List<dynamic>).map((e) => e as int).toList(),
+    tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 

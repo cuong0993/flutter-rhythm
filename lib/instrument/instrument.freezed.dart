@@ -20,14 +20,18 @@ Instrument _$InstrumentFromJson(Map<String, dynamic> json) {
 class _$InstrumentTearOff {
   const _$InstrumentTearOff();
 
-  _Instrument call(String id, Map<int, String> soundPaths,
-      Map<int, int> baseNotes, int minNote, int maxNote) {
+  _Instrument call(
+      {required String id,
+      required Map<int, String> soundPaths,
+      required Map<int, int> baseNotes,
+      required int minNote,
+      required int maxNote}) {
     return _Instrument(
-      id,
-      soundPaths,
-      baseNotes,
-      minNote,
-      maxNote,
+      id: id,
+      soundPaths: soundPaths,
+      baseNotes: baseNotes,
+      minNote: minNote,
+      maxNote: maxNote,
     );
   }
 
@@ -140,23 +144,23 @@ class __$InstrumentCopyWithImpl<$Res> extends _$InstrumentCopyWithImpl<$Res>
     Object? maxNote = freezed,
   }) {
     return _then(_Instrument(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      soundPaths == freezed
+      soundPaths: soundPaths == freezed
           ? _value.soundPaths
           : soundPaths // ignore: cast_nullable_to_non_nullable
               as Map<int, String>,
-      baseNotes == freezed
+      baseNotes: baseNotes == freezed
           ? _value.baseNotes
           : baseNotes // ignore: cast_nullable_to_non_nullable
               as Map<int, int>,
-      minNote == freezed
+      minNote: minNote == freezed
           ? _value.minNote
           : minNote // ignore: cast_nullable_to_non_nullable
               as int,
-      maxNote == freezed
+      maxNote: maxNote == freezed
           ? _value.maxNote
           : maxNote // ignore: cast_nullable_to_non_nullable
               as int,
@@ -168,7 +172,11 @@ class __$InstrumentCopyWithImpl<$Res> extends _$InstrumentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Instrument implements _Instrument {
   _$_Instrument(
-      this.id, this.soundPaths, this.baseNotes, this.minNote, this.maxNote);
+      {required this.id,
+      required this.soundPaths,
+      required this.baseNotes,
+      required this.minNote,
+      required this.maxNote});
 
   factory _$_Instrument.fromJson(Map<String, dynamic> json) =>
       _$_$_InstrumentFromJson(json);
@@ -229,8 +237,12 @@ class _$_Instrument implements _Instrument {
 }
 
 abstract class _Instrument implements Instrument {
-  factory _Instrument(String id, Map<int, String> soundPaths,
-      Map<int, int> baseNotes, int minNote, int maxNote) = _$_Instrument;
+  factory _Instrument(
+      {required String id,
+      required Map<int, String> soundPaths,
+      required Map<int, int> baseNotes,
+      required int minNote,
+      required int maxNote}) = _$_Instrument;
 
   factory _Instrument.fromJson(Map<String, dynamic> json) =
       _$_Instrument.fromJson;
