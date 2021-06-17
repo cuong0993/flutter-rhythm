@@ -12,6 +12,8 @@ import '../songs/songs_widget.dart';
 import '../user/user_model.dart';
 
 class HomePage extends HookWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: HookBuilder(builder: (context) {

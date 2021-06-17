@@ -12,7 +12,7 @@ import 'songs_model.dart';
 class SongsWidget extends HookWidget {
   final String _tag;
 
-  SongsWidget({Key? key, required String tag})
+  const SongsWidget({Key? key, required String tag})
       : _tag = tag,
         super(key: key);
 
@@ -73,7 +73,7 @@ class SongsWidget extends HookWidget {
                 )
               ],
             ),
-        loading: () => LoadingWidget(),
-        error: (_, __) => LoadingWidget());
+        loading: () => const LoadingWidget(),
+        error: (_, __) => const LoadingWidget());
   }
 }

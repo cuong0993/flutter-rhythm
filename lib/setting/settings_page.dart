@@ -16,6 +16,8 @@ import '../theme/theme_model.dart';
 import '../theme/theme_page.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

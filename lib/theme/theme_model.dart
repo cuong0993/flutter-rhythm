@@ -26,12 +26,12 @@ class ThemeModel extends StateNotifier<ThemeMode> {
 }
 
 ThemeData buildTheme({bool isDark = false}) {
-  final primaryColor = const Color(0xff4760e9);
+  const primaryColor = Color(0xff4760e9);
   final onPrimaryColor = Colors.white;
-  final secondaryColor = const Color(0xfffd7c6e);
+  const secondaryColor = Color(0xfffd7c6e);
   final backgroundColor = isDark ? Colors.black : Colors.white;
   final onBackgroundColor = isDark ? Colors.white : Colors.black;
-  final screenHeadingTextStyle =
+  const screenHeadingTextStyle =
       TextStyle(fontSize: 32.0, color: secondaryColor);
   final screenTaskNameTextStyle =
       TextStyle(fontSize: 20.0, color: onBackgroundColor);
@@ -51,7 +51,7 @@ ThemeData buildTheme({bool isDark = false}) {
             primary: onBackgroundColor, onSurface: onBackgroundColor)),
     scaffoldBackgroundColor: backgroundColor,
     tabBarTheme: TabBarTheme(
-        indicator: BoxDecoration(
+        indicator: const BoxDecoration(
           border: Border(
             bottom: BorderSide(
               color: primaryColor,
@@ -65,7 +65,7 @@ ThemeData buildTheme({bool isDark = false}) {
     appBarTheme: AppBarTheme(
       textTheme: textTheme,
       color: backgroundColor,
-      iconTheme: IconThemeData(color: primaryColor),
+      iconTheme: const IconThemeData(color: primaryColor),
     ),
     popupMenuTheme: PopupMenuThemeData(color: backgroundColor),
     colorScheme: ColorScheme(
@@ -84,7 +84,7 @@ ThemeData buildTheme({bool isDark = false}) {
       surface: backgroundColor,
     ),
     toggleableActiveColor: primaryColor,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: primaryColor,
     ),
     textTheme: textTheme,

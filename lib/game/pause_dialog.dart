@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class PauseDialog extends StatelessWidget {
-  final Function() _onRestart;
+  final Function() onRestart;
 
-  const PauseDialog(this._onRestart);
+  const PauseDialog({Key? key, required this.onRestart}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class PauseDialog extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                _onRestart();
+                onRestart();
                 Navigator.of(context).pop();
               },
               child: Text(L10n.of(context)!.txt_button_restart),

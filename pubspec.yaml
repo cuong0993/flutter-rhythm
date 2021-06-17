@@ -28,6 +28,7 @@ dependencies:
   hooks_riverpod:
   in_app_review:
   intl:
+  logging:
   package_info:
   shared_preferences:
   sprintf:
@@ -35,9 +36,9 @@ dependencies:
 dev_dependencies:
   auto_route_generator:
   build_runner:
+  flutter_lints:
   freezed:
   json_serializable:
-  pedantic:
 
 flutter:
   assets:

@@ -51,13 +51,13 @@ class MyGame extends Game with MultiTouchTapDetector {
   void pause() {}
 
   @override
-  void onTapDown(int pointerId, TapDownInfo info) {
-    _touches[pointerId] =
-        _TouchPosition(info.raw.globalPosition.dx, info.raw.globalPosition.dy);
+  void onTapDown(int pointerId, TapDownInfo event) {
+    _touches[pointerId] = _TouchPosition(
+        event.raw.globalPosition.dx, event.raw.globalPosition.dy);
   }
 
   @override
-  void onTapUp(int pointerId, _) {
+  void onTapUp(int pointerId, TapUpInfo event) {
     _touches.remove(pointerId);
   }
 
@@ -74,13 +74,13 @@ class MyGame extends Game with MultiTouchTapDetector {
         size: Vector2(96, 96),
         overridePaint: _grayPaint);
     _tilesController.render(canvas);
-    _tileEffects.forEach((effect) {
+    for (final effect in _tileEffects) {
       effect.render(canvas);
-    });
+    }
   }
 
   @override
-  void update(double delta) {
+  void update(double dt) {
     // // FIXME Auto run
     // for (var i =0; i < _tilesController.tiles.length;i++) {
     //  final tile = _tilesController.tiles[i];
@@ -90,13 +90,13 @@ class MyGame extends Game with MultiTouchTapDetector {
     //     break;
     //   }
     // }
-    _tileEffects.forEach((effect) {
-      effect.update(delta);
-    });
+    for (final effect in _tileEffects) {
+      effect.update(dt);
+    }
     _tileEffects.removeWhere((effect) => effect.isDone());
     if (_state != _MyGameState.stop) {
       /* Max frame time to avoid spiral of death */
-      final restrictedTime = (delta > 0.25) ? 0.25 : delta;
+      final restrictedTime = (dt > 0.25) ? 0.25 : dt;
       _accumulator += restrictedTime;
       while (_accumulator >= _step) {
         var initialYAllowedTouch = double.negativeInfinity;

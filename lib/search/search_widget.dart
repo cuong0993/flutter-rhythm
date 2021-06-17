@@ -58,7 +58,7 @@ class SearchWidget extends SearchDelegate<void> {
                 },
               );
             } else {
-              return LoadingWidget();
+              return const LoadingWidget();
             }
           });
     }
@@ -66,8 +66,6 @@ class SearchWidget extends SearchDelegate<void> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Container(
-      child: LoadingWidget(),
-    );
+    return const LoadingWidget();
   }
 }

@@ -6,7 +6,7 @@ class SongWidget extends StatelessWidget {
   final GestureTapCallback onTap;
   final Song song;
 
-  SongWidget({
+  const SongWidget({
     Key? key,
     required this.onTap,
     required this.song,

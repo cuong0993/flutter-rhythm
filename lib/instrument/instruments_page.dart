@@ -9,6 +9,8 @@ import 'instruments_model.dart';
 import 'instruments_repository_impl.dart';
 
 class InstrumentsPage extends HookWidget {
+  const InstrumentsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final instruments = useProvider(instrumentsProvider);
@@ -37,8 +39,8 @@ class InstrumentsPage extends HookWidget {
                   );
                 },
               ),
-          loading: () => LoadingWidget(),
-          error: (_, __) => LoadingWidget()),
+          loading: () => const LoadingWidget(),
+          error: (_, __) => const LoadingWidget()),
     );
   }
 }

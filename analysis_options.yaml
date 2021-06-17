@@ -1,5 +1,4 @@
-include: package:pedantic/analysis_options.yaml
-
+include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
     missing_required_param: error
@@ -12,52 +11,51 @@ analyzer:
     implicit-casts: false
     implicit-dynamic: false
   exclude:
-    - "**/*.g.dart"
-    - "**/*.gr.dart"
-    - "**/*.freezed.dart"
-
+    - '**/*.g.dart'
+    - '**/*.gr.dart'
+    - '**/*.freezed.dart'
 linter:
   rules:
-    - always_declare_return_types
-    - annotate_overrides
-    - avoid_dynamic_calls
-    - avoid_types_on_closure_parameters
-    - avoid_void_async
-    - avoid_web_libraries_in_flutter
-    - await_only_futures
-    - camel_case_types
-    - cancel_subscriptions
-    - close_sinks
-    - constant_identifier_names
-    - control_flow_in_finally
-    - directives_ordering
-    - empty_statements
-    - file_names
-    - hash_and_equals
-    - implementation_imports
-    - invariant_booleans
-    - iterable_contains_unrelated_type
-    - library_prefixes
-    - list_remove_unrelated_type
-    - literal_only_boolean_expressions
-    - non_constant_identifier_names
-    - one_member_abstracts
-    - only_throw_errors
-    - overridden_fields
-    - package_api_docs
-    - package_names
-    - package_prefixed_library_names
-    - prefer_const_constructors
-    - prefer_const_literals_to_create_immutables
-    - prefer_final_in_for_each
-    - prefer_final_locals
-    - prefer_mixin
-    - prefer_relative_imports
-    - sort_unnamed_constructors_first
-    - test_types_in_equals
-    - throw_in_finally
-    - type_annotate_public_apis
-    - unawaited_futures
-    - unnecessary_brace_in_string_interps
-    - unnecessary_getters_setters
-    - unnecessary_statements
+    always_declare_return_types: true
+    annotate_overrides: true
+    avoid_dynamic_calls: true
+    avoid_types_on_closure_parameters: true
+    avoid_void_async: true
+    avoid_web_libraries_in_flutter: true
+    await_only_futures: true
+    camel_case_types: true
+    cancel_subscriptions: true
+    close_sinks: true
+    constant_identifier_names: true
+    control_flow_in_finally: true
+    directives_ordering: true
+    empty_statements: true
+    file_names: true
+    hash_and_equals: true
+    implementation_imports: true
+    invariant_booleans: true
+    iterable_contains_unrelated_type: true
+    library_prefixes: true
+    list_remove_unrelated_type: true
+    literal_only_boolean_expressions: true
+    non_constant_identifier_names: true
+    one_member_abstracts: true
+    only_throw_errors: true
+    overridden_fields: true
+    package_api_docs: true
+    package_names: true
+    package_prefixed_library_names: true
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: true
+    prefer_mixin: true
+    prefer_relative_imports: true
+    sort_unnamed_constructors_first: true
+    test_types_in_equals: true
+    throw_in_finally: true
+    type_annotate_public_apis: true
+    unawaited_futures: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_getters_setters: true
+    unnecessary_statements: true

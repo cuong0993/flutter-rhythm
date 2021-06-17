@@ -27,18 +27,18 @@ class RootRouter extends _i1.RootStackRouter {
     SplashRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i3.SplashPage();
+          return const _i3.SplashPage();
         }),
     HomeRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i4.HomePage();
+          return const _i4.HomePage();
         }),
     GameConfigRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<GameConfigRouteArgs>();
-          return _i5.GameConfigPage(song: args.song);
+          return _i5.GameConfigPage(key: args.key, song: args.song);
         }),
     GameRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -49,27 +49,27 @@ class RootRouter extends _i1.RootStackRouter {
     UserRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i7.UserPage();
+          return const _i7.UserPage();
         }),
     LocaleRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i8.LocalePage();
+          return const _i8.LocalePage();
         }),
     ThemeRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i9.ThemePage();
+          return const _i9.ThemePage();
         }),
     InstrumentsRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i10.InstrumentsPage();
+          return const _i10.InstrumentsPage();
         }),
     SettingsRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i11.SettingsPage();
+          return const _i11.SettingsPage();
         })
   };
 
@@ -100,14 +100,18 @@ class HomeRoute extends _i1.PageRouteInfo {
 }
 
 class GameConfigRoute extends _i1.PageRouteInfo<GameConfigRouteArgs> {
-  GameConfigRoute({required _i12.Song song})
-      : super(name, path: '/gameConfig', args: GameConfigRouteArgs(song: song));
+  GameConfigRoute({_i2.Key? key, required _i12.Song song})
+      : super(name,
+            path: '/gameConfig',
+            args: GameConfigRouteArgs(key: key, song: song));
 
   static const String name = 'GameConfigRoute';
 }
 
 class GameConfigRouteArgs {
-  const GameConfigRouteArgs({required this.song});
+  const GameConfigRouteArgs({this.key, required this.song});
+
+  final _i2.Key? key;
 
   final _i12.Song song;
 }

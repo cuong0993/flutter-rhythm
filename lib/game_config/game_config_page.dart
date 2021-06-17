@@ -14,7 +14,7 @@ import 'game_config_model.dart';
 class GameConfigPage extends HookWidget {
   final Song song;
 
-  GameConfigPage({required this.song});
+  const GameConfigPage({Key? key, required this.song}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

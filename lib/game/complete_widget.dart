@@ -4,10 +4,12 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'game_reward.dart';
 
 class CompleteWidget extends StatelessWidget {
-  final GameReward _gameReward;
-  final Function() _onRestart;
+  final GameReward gameReward;
+  final Function() onRestart;
 
-  const CompleteWidget(this._gameReward, this._onRestart);
+  const CompleteWidget(
+      {Key? key, required this.gameReward, required this.onRestart})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +30,17 @@ class CompleteWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image(
-                              image: AssetImage((_gameReward.stars >= 1)
+                              image: AssetImage((gameReward.stars >= 1)
                                   ? 'assets/images/img_star_rate.png'
                                   : 'assets/images/img_star_rate_disable.png')),
                           const SizedBox(width: 8),
                           Image(
-                              image: AssetImage((_gameReward.stars >= 2)
+                              image: AssetImage((gameReward.stars >= 2)
                                   ? 'assets/images/img_star_rate.png'
                                   : 'assets/images/img_star_rate_disable.png')),
                           const SizedBox(width: 8),
                           Image(
-                              image: AssetImage((_gameReward.stars >= 3)
+                              image: AssetImage((gameReward.stars >= 3)
                                   ? 'assets/images/img_star_rate.png'
                                   : 'assets/images/img_star_rate_disable.png')),
                         ],
@@ -50,7 +52,7 @@ class CompleteWidget extends StatelessWidget {
                           const Image(
                               image: AssetImage('assets/images/img_note.png')),
                           const SizedBox(width: 8),
-                          Text(_gameReward.playedNotes.toString())
+                          Text(gameReward.playedNotes.toString())
                         ],
                       ),
                     ],
@@ -72,7 +74,7 @@ class CompleteWidget extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                       onPressed: () {
-                        _onRestart();
+                        onRestart();
                       },
                       child: Text(L10n.of(context)!.txt_button_restart)),
                 ),

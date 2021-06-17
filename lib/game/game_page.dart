@@ -15,7 +15,7 @@ import 'pause_dialog.dart';
 class GamePage extends HookWidget {
   final Map<String, dynamic> arguments;
 
-  GamePage({Key? key, required this.arguments}) : super(key: key);
+  const GamePage({Key? key, required this.arguments}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class GamePage extends HookWidget {
         showDialog<void>(
           context: context,
           useSafeArea: false,
-          builder: (_) => PauseDialog(_onRestart),
+          builder: (_) => PauseDialog(onRestart: _onRestart),
         );
       },
       child: WillPopScope(
@@ -51,7 +51,8 @@ class GamePage extends HookWidget {
             } else if (gameState is GameStateGettingGift) {
               return const LoadingGiftWidget();
             } else if (gameState is GameStateCompleted) {
-              return CompleteWidget(gameState.gameReward, _onRestart);
+              return CompleteWidget(
+                  gameReward: gameState.gameReward, onRestart: _onRestart);
             } else if (gameState is GameStatePlaying) {
               return Stack(children: [
                 flame.GameWidget(
@@ -128,7 +129,7 @@ class GamePage extends HookWidget {
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [GuideTextWidget()],
+                                  children: const [GuideTextWidget()],
                                 )
                               ],
                             ),
@@ -148,6 +149,8 @@ class GamePage extends HookWidget {
 }
 
 class GuideTextWidget extends HookWidget {
+  const GuideTextWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final guideText = useProvider(guideTextProvider).state;
@@ -159,7 +162,7 @@ class GuideTextWidget extends HookWidget {
     } else if (guideText == 'txt_too_many_fingers') {
       text = L10n.of(context)!.txt_too_many_fingers;
     }
-    return Text('$text',
+    return Text(text,
         style: Theme.of(context)
             .textTheme
             .headline5!

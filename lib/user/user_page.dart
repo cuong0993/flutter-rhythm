@@ -12,6 +12,8 @@ import 'user.dart';
 import 'user_model.dart';
 
 class UserPage extends StatelessWidget {
+  const UserPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +31,8 @@ class UserPage extends StatelessWidget {
                         child: SingleChildScrollView(
                             child: _buildUI(user, context))));
               },
-              loading: () => LoadingWidget(),
-              error: (_, __) => LoadingWidget());
+              loading: () => const LoadingWidget(),
+              error: (_, __) => const LoadingWidget());
         }));
   }
 
@@ -70,22 +72,17 @@ class UserPage extends StatelessWidget {
                 width: 1,
               ),
             ),
-            child: Container(
-              //color: Colors.white,
-              //width: 200,
-              //height: 200,
-              child: Column(
-                children: [
-                  const SizedBox(height: 8),
-                  const Image(
-                    image: AssetImage('assets/images/img_star.png'),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(user.stars.toString(),
-                      style: Theme.of(context).textTheme.subtitle1),
-                  const SizedBox(height: 8),
-                ],
-              ),
+            child: Column(
+              children: [
+                const SizedBox(height: 8),
+                const Image(
+                  image: AssetImage('assets/images/img_star.png'),
+                ),
+                const SizedBox(height: 8),
+                Text(user.stars.toString(),
+                    style: Theme.of(context).textTheme.subtitle1),
+                const SizedBox(height: 8),
+              ],
             ),
           ),
           Card(
@@ -99,22 +96,17 @@ class UserPage extends StatelessWidget {
                 width: 1,
               ),
             ),
-            child: Container(
-              //color: Colors.white,
-              // width: 200,
-              //height: 200,
-              child: Column(
-                children: [
-                  const SizedBox(height: 8),
-                  const Image(
-                    image: AssetImage('assets/images/img_note.png'),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(user.playedNotes.toString(),
-                      style: Theme.of(context).textTheme.subtitle1),
-                  const SizedBox(height: 8),
-                ],
-              ),
+            child: Column(
+              children: [
+                const SizedBox(height: 8),
+                const Image(
+                  image: AssetImage('assets/images/img_note.png'),
+                ),
+                const SizedBox(height: 8),
+                Text(user.playedNotes.toString(),
+                    style: Theme.of(context).textTheme.subtitle1),
+                const SizedBox(height: 8),
+              ],
             ),
           ),
           Card(
@@ -128,22 +120,17 @@ class UserPage extends StatelessWidget {
                 width: 1,
               ),
             ),
-            child: Container(
-              //color: Colors.white,
-              //width: 200,
-              //height: 200,
-              child: Column(
-                children: [
-                  const SizedBox(height: 8),
-                  const Image(
-                    image: AssetImage('assets/images/img_clock.png'),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(user.playedTime.toString().substring(0, 4).toString(),
-                      style: Theme.of(context).textTheme.subtitle1),
-                  const SizedBox(height: 8),
-                ],
-              ),
+            child: Column(
+              children: [
+                const SizedBox(height: 8),
+                const Image(
+                  image: AssetImage('assets/images/img_clock.png'),
+                ),
+                const SizedBox(height: 8),
+                Text(user.playedTime.toString().substring(0, 4).toString(),
+                    style: Theme.of(context).textTheme.subtitle1),
+                const SizedBox(height: 8),
+              ],
             ),
           ),
         ]),

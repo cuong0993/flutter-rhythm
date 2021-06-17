@@ -12,6 +12,8 @@ const localeStrings = {
 };
 
 class LocalePage extends StatelessWidget {
+  const LocalePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
