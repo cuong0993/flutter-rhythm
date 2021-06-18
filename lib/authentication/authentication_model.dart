@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -16,7 +15,6 @@ class AuthenticationModel extends StateNotifier<AuthenticationState> {
   AuthenticationModel(this._read) : super(AuthenticationState.loading()) {
     Future.microtask(() async {
       try {
-        await Firebase.initializeApp();
         final currentUser = FirebaseAuth.instance.currentUser;
         if (currentUser == null) {
           await FirebaseAuth.instance.signInAnonymously();

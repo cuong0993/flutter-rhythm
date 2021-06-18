@@ -17,6 +17,8 @@ dependencies:
       url: https://github.com/cuong0993/dart_midi
   device_info:
   firebase_auth:
+  firebase_core:
+  firebase_crashlytics:
   firebase_storage:
   flame:
   flutter_cache_manager:

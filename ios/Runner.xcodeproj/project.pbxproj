@@ -139,7 +139,6 @@
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
 				0EADE707BC7A6F8907898DAF /* [CP] Check Pods Manifest.lock */,
-				C911BCEE2668C6E7001CDE60 /* Firebase include GoogleService-Info.plist */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
@@ -148,6 +147,8 @@
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				48DC310C9D231B00C00E69A4 /* [CP] Embed Pods Frameworks */,
 				622E97B450816936BE0BF622 /* [CP] Copy Pods Resources */,
+				C911BCEE2668C6E7001CDE60 /* Firebase include GoogleService-Info.plist */,
+				C9CA358E267C98B3006C47C4 /* Run Firebase Crashlytics script */,
 			);
 			buildRules = (
 			);
@@ -309,6 +310,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "PATH_TO_GOOGLE_PLISTS=\"${PROJECT_DIR}/Runner/Firebase/\"\n\ncase \"${CONFIGURATION}\" in\n\n\"Debug\" )\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-Info-Dev.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n\"Release\" | \"Profile\" )\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-Info-Prod.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n*)\n;;\nesac\n";
+		};
+		C9CA358E267C98B3006C47C4 /* Run Firebase Crashlytics script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Firebase Crashlytics script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/FirebaseCrashlytics/run\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
