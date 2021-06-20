@@ -30,8 +30,7 @@ jobs:
           path: /Users/runner/hostedtoolcache/flutter
           key: '${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}'
       - name: Set up flutter
-        # FIXME https://github.com/subosito/flutter-action/issues/105:
-        uses: subosito/flutter-action@v1.5.1
+        uses: subosito/flutter-action@v1
         with:
           flutter-version: '${{ env.flutter_version }}'
       - name: Get dependencies
