@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sprintf/sprintf.dart';
 
 import '../game/colors.dart';
@@ -11,14 +9,14 @@ import '../router/router.dart';
 import '../songs/song.dart';
 import 'game_config_model.dart';
 
-class GameConfigPage extends HookWidget {
+class GameConfigPage extends ConsumerWidget {
   final Song song;
 
   const GameConfigPage({Key? key, required this.song}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final gameConfigState = useProvider(gameConfigStateProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final gameConfigState = ref.watch(gameConfigStateProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +41,7 @@ class GameConfigPage extends HookWidget {
                           text: L10n.of(context)!.txt_easy,
                           caption: sprintf(L10n.of(context)!.txt_fingers, [2]),
                           onTap: () {
-                            context
+                            ref
                                 .read(gameConfigStateProvider.notifier)
                                 .changeDifficulty(0);
                           },
@@ -54,7 +52,7 @@ class GameConfigPage extends HookWidget {
                           text: L10n.of(context)!.txt_medium,
                           caption: sprintf(L10n.of(context)!.txt_fingers, [3]),
                           onTap: () {
-                            context
+                            ref
                                 .read(gameConfigStateProvider.notifier)
                                 .changeDifficulty(1);
                           },
@@ -65,7 +63,7 @@ class GameConfigPage extends HookWidget {
                           text: L10n.of(context)!.txt_difficult,
                           caption: sprintf(L10n.of(context)!.txt_fingers, [4]),
                           onTap: () {
-                            context
+                            ref
                                 .read(gameConfigStateProvider.notifier)
                                 .changeDifficulty(2);
                           },
@@ -89,7 +87,7 @@ class GameConfigPage extends HookWidget {
                           text: L10n.of(context)!.txt_slow,
                           caption: 'x0.75',
                           onTap: () {
-                            context
+                            ref
                                 .read(gameConfigStateProvider.notifier)
                                 .changeSpeed(0);
                           },
@@ -100,7 +98,7 @@ class GameConfigPage extends HookWidget {
                           text: L10n.of(context)!.txt_normal,
                           caption: 'x1.0',
                           onTap: () {
-                            context
+                            ref
                                 .read(gameConfigStateProvider.notifier)
                                 .changeSpeed(1);
                           },
@@ -111,7 +109,7 @@ class GameConfigPage extends HookWidget {
                           text: L10n.of(context)!.txt_fast,
                           caption: 'x1.25',
                           onTap: () {
-                            context
+                            ref
                                 .read(gameConfigStateProvider.notifier)
                                 .changeSpeed(2);
                           },

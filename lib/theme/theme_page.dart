@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'theme_model.dart';
 
@@ -15,8 +13,8 @@ class ThemePage extends StatelessWidget {
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_theme,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-        body: HookBuilder(builder: (context) {
-          final themeMode = useProvider(themeModeProvider);
+        body: Consumer(builder: (context, ref, child) {
+          final themeMode = ref.watch(themeModeProvider);
           return Scrollbar(
             isAlwaysShown: true,
             child: ListView.builder(
@@ -28,7 +26,7 @@ class ThemePage extends StatelessWidget {
                   value: ThemeMode.values[index],
                   groupValue: themeMode,
                   onChanged: (value) {
-                    context
+                    ref
                         .read(themeModeProvider.notifier)
                         .setThemeMode(context, value!);
                   },

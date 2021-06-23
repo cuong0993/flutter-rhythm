@@ -4,13 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'authentication_model.dart';
 
-class AuthenticationWidget extends StatelessWidget {
+class AuthenticationWidget extends ConsumerWidget {
   const AuthenticationWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
         color: Colors.transparent,
         elevation: 0,
@@ -21,8 +21,8 @@ class AuthenticationWidget extends StatelessWidget {
                 children: <Widget>[
                   OutlinedButton(
                     onPressed: () {
-                      context
-                          .read(authenticationProvider.notifier)
+                      ref
+                          .watch(authenticationProvider.notifier)
                           .signInWithGoogle();
                     },
                     child: Padding(
@@ -44,8 +44,8 @@ class AuthenticationWidget extends StatelessWidget {
                   const SizedBox(height: 8),
                   OutlinedButton(
                     onPressed: () {
-                      context
-                          .read(authenticationProvider.notifier)
+                      ref
+                          .watch(authenticationProvider.notifier)
                           .signInWithFacebook();
                     },
                     child: Padding(

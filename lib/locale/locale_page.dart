@@ -11,11 +11,11 @@ const localeStrings = {
   'zh': '汉语'
 };
 
-class LocalePage extends StatelessWidget {
+class LocalePage extends ConsumerWidget {
   const LocalePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_language,
@@ -32,9 +32,7 @@ class LocalePage extends StatelessWidget {
                 value: L10n.supportedLocales[index],
                 groupValue: Localizations.localeOf(context),
                 onChanged: (value) {
-                  context
-                      .read(localeProvider.notifier)
-                      .setLocale(context, value!);
+                  ref.read(localeProvider.notifier).setLocale(context, value!);
                 },
               );
             },

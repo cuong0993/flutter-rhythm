@@ -9,16 +9,16 @@ final localeProvider = StateNotifierProvider<LocaleModel, Locale?>((ref) {
   final locale = (localeName != null)
       ? Locale.fromSubtags(languageCode: localeName)
       : null;
-  return LocaleModel(locale);
+  return LocaleModel(ref.read, locale);
 });
 
 class LocaleModel extends StateNotifier<Locale?> {
-  LocaleModel(this.defaultLocale) : super(defaultLocale);
+  final Reader _read;
 
-  final Locale? defaultLocale;
+  LocaleModel(this._read, Locale? defaultLocale) : super(defaultLocale);
 
   Future setLocale(BuildContext context, Locale locale) async {
-    await context.read(sharedUtilityProvider).setLocaleName(locale.toString());
+    await _read(sharedUtilityProvider).setLocaleName(locale.toString());
     state = locale;
   }
 }

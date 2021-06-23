@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../midi/midi_model.dart';
@@ -11,12 +12,12 @@ import '../songs/songs_model.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_model.dart';
 
-class HomePage extends HookWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: HookBuilder(builder: (context) {
+    return Scaffold(body: HookConsumer(builder: (context, ref, child) {
       final tabController = useTabController(initialLength: songTags.length);
       return NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -34,7 +35,7 @@ class HomePage extends HookWidget {
                     icon: const Icon(Icons.search_rounded),
                     onPressed: () {
                       showSearch<void>(
-                          context: context, delegate: SearchWidget());
+                          context: context, delegate: SearchWidget(ref.read));
                     },
                   ),
                   IconButton(
@@ -45,11 +46,11 @@ class HomePage extends HookWidget {
                       onPressed: () => AutoRouter.of(context)
                           .push(const InstrumentsRoute())),
                   IconButton(
-                      icon: ClipOval(child: HookBuilder(
-                        builder: (context) {
+                      icon: ClipOval(child: Consumer(
+                        builder: (context, ref, child) {
                           // FIXME To load midi
-                          useProvider(midiProvider);
-                          final user = useProvider(userProvider);
+                          ref.watch(midiProvider);
+                          final user = ref.watch(userProvider);
                           return user.when(
                               data: (user) => Image.network(
                                     user.photoUrl,

@@ -9,6 +9,10 @@ import '../songs/song_widget.dart';
 import '../songs/songs_repository_impl.dart';
 
 class SearchWidget extends SearchDelegate<void> {
+  final Reader _read;
+
+  SearchWidget(this._read);
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -43,7 +47,7 @@ class SearchWidget extends SearchDelegate<void> {
       return const SizedBox.shrink();
     } else {
       return FutureBuilder<List<Song>>(
-          future: context.read(songRepositoryProvider).searchSongs(query),
+          future: _read(songRepositoryProvider).searchSongs(query),
           builder: (context, recentList) {
             if (recentList.connectionState == ConnectionState.done) {
               final songs = recentList.requireData;

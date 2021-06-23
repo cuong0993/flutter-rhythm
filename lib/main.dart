@@ -3,9 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,11 +14,32 @@ import 'theme/theme_model.dart';
 
 class LogProviderObserver extends ProviderObserver {
   @override
-  void didUpdateProvider(ProviderBase provider, Object? newValue) {
-    Logger.root.info('''
+  void didAddProvider(ProviderBase provider, Object? value) {
+    Logger.root.info('''Add
+{
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "value": "$value"
+}''');
+  }
+
+  @override
+  void didUpdateProvider(
+    ProviderBase provider,
+    Object? previousValue,
+    Object? newValue,
+  ) {
+    Logger.root.info('''Update
 {
   "provider": "${provider.name ?? provider.runtimeType}",
   "newValue": "$newValue"
+}''');
+  }
+
+  @override
+  void didDisposeProvider(ProviderBase provider) {
+    Logger.root.info('''Dispose
+{
+  "provider": "${provider.name ?? provider.runtimeType}"
 }''');
   }
 }
@@ -47,15 +66,15 @@ Future<void> main() async {
   );
 }
 
-class App extends HookWidget {
+class App extends ConsumerWidget {
   App({Key? key}) : super(key: key);
 
   final _rootRouter = RootRouter();
 
   @override
-  Widget build(BuildContext context) {
-    final themeMode = useProvider(themeModeProvider);
-    final locale = useProvider(localeProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+    final locale = ref.watch(localeProvider);
     return MaterialApp.router(
       title: 'Hit Notes',
       debugShowCheckedModeBanner: false,

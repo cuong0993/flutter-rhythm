@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../loading_widget.dart';
 import 'instruments_model.dart';
 import 'instruments_repository_impl.dart';
 
-class InstrumentsPage extends HookWidget {
+class InstrumentsPage extends ConsumerWidget {
   const InstrumentsPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final instruments = useProvider(instrumentsProvider);
-    final selectedInstrumentId =
-        useProvider(selectedInstrumentIdProvider).state;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final instruments = ref.watch(instrumentsProvider);
+    final selectedInstrumentId = ref.watch(selectedInstrumentIdProvider).state;
     return Scaffold(
       appBar: AppBar(
           title: Text(L10n.of(context)!.txt_instrument_title_instruments,
@@ -31,10 +28,10 @@ class InstrumentsPage extends HookWidget {
                     value: instrument.id,
                     groupValue: selectedInstrumentId,
                     onChanged: (value) {
-                      context
-                          .read(instrumentRepositoryProvider)
+                      ref
+                          .watch(instrumentRepositoryProvider)
                           .changeInstrument(value!);
-                      context.read(selectedInstrumentIdProvider).state = value;
+                      ref.read(selectedInstrumentIdProvider).state = value;
                     },
                   );
                 },

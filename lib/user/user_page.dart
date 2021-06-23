@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -20,8 +19,8 @@ class UserPage extends StatelessWidget {
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_page_title_account,
                 style: Theme.of(context).appBarTheme.textTheme!.headline5)),
-        body: HookBuilder(builder: (context) {
-          final user = useProvider(userProvider);
+        body: Consumer(builder: (context, ref, child) {
+          final user = ref.watch(userProvider);
           return user.when(
               data: (user) {
                 return Padding(

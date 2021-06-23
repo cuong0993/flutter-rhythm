@@ -9,18 +9,15 @@ final themeModeProvider = StateNotifierProvider<ThemeModel, ThemeMode>((ref) {
   final themeMode = ThemeMode.values.firstWhere(
       (element) => element.toString() == themeName,
       orElse: () => ThemeMode.system);
-  return ThemeModel(themeMode);
+  return ThemeModel(ref.read, themeMode);
 });
 
 class ThemeModel extends StateNotifier<ThemeMode> {
-  ThemeModel(this.defaultThemeMode) : super(defaultThemeMode);
-
-  final ThemeMode defaultThemeMode;
+  ThemeModel(this._read, ThemeMode defaultThemeMode) : super(defaultThemeMode);
+  final Reader _read;
 
   Future setThemeMode(BuildContext context, ThemeMode themeMode) async {
-    await context
-        .read(sharedUtilityProvider)
-        .setThemeName(themeMode.toString());
+    await _read(sharedUtilityProvider).setThemeName(themeMode.toString());
     state = themeMode;
   }
 }
