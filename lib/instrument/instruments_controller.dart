@@ -18,13 +18,14 @@ final selectedInstrumentProvider = Provider<Instrument?>(((ref) {
 }));
 
 final instrumentsProvider =
-    StateNotifierProvider<InstrumentsModel, AsyncValue<List<Instrument>>>(
+    StateNotifierProvider<InstrumentsController, AsyncValue<List<Instrument>>>(
         (ref) {
-  return InstrumentsModel(ref.read).._loadInstruments();
+  return InstrumentsController(ref.read).._loadInstruments();
 });
 
-class InstrumentsModel extends StateNotifier<AsyncValue<List<Instrument>>> {
-  InstrumentsModel(this._read) : super(const AsyncValue.loading());
+class InstrumentsController
+    extends StateNotifier<AsyncValue<List<Instrument>>> {
+  InstrumentsController(this._read) : super(const AsyncValue.loading());
 
   final Reader _read;
 

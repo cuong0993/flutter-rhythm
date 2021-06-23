@@ -11,7 +11,7 @@ import 'package:package_info/package_info.dart';
 
 import '../locale/locale_page.dart';
 import '../router/router.dart';
-import '../theme/theme_model.dart';
+import '../theme/theme_controller.dart';
 import '../theme/theme_page.dart';
 
 class SettingsPage extends StatelessWidget {

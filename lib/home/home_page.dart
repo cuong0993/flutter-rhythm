@@ -5,12 +5,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../midi/midi_model.dart';
+import '../midi/midi_controller.dart';
 import '../router/router.dart';
 import '../search/search_widget.dart';
-import '../songs/songs_model.dart';
+import '../songs/songs_controller.dart';
 import '../songs/songs_widget.dart';
-import '../user/user_model.dart';
+import '../user/user_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                       icon: ClipOval(child: Consumer(
                         builder: (context, ref, child) {
                           // FIXME To load midi
-                          ref.watch(midiProvider);
+                          ref.watch(midiLoadedProvider);
                           final user = ref.watch(userProvider);
                           return user.when(
                               data: (user) => Image.network(

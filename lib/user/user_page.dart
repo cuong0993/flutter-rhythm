@@ -8,7 +8,7 @@ import '../authentication/authentication_widget.dart';
 import '../instrument/instruments_page.dart';
 import '../loading_widget.dart';
 import 'user.dart';
-import 'user_model.dart';
+import 'user_controller.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);

@@ -7,10 +7,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'locale/locale_model.dart';
+import 'locale/locale_controller.dart';
 import 'preferences.dart';
 import 'router/router.dart';
-import 'theme/theme_model.dart';
+import 'theme/theme_controller.dart';
 
 class LogProviderObserver extends ProviderObserver {
   @override

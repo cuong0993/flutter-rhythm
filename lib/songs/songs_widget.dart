@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../loading_widget.dart';
 import '../router/router.dart';
 import 'song_widget.dart';
-import 'songs_model.dart';
+import 'songs_controller.dart';
 
 class SongsWidget extends ConsumerWidget {
   final String _tag;
@@ -53,9 +53,9 @@ class SongsWidget extends ConsumerWidget {
                 ),
                 Consumer(
                   builder: (context, ref, child) {
-                    final isLoadingByTag =
+                    final isLoadingNextPage =
                         ref.watch(isLoadingNextPageByTagProvider(_tag)).state;
-                    return isLoadingByTag
+                    return isLoadingNextPage
                         ? const Center(
                             child: SizedBox(
                               height: 32,

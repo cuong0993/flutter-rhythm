@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import 'instruments_model.dart';
+import 'instruments_controller.dart';
 import 'instruments_repository_impl.dart';
 
 class InstrumentsPage extends ConsumerWidget {

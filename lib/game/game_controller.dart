@@ -7,7 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../midi/midi_model.dart';
+import '../midi/midi_controller.dart';
 import '../songs/song.dart';
 import 'game_reward.dart';
 import 'game_state.dart';
@@ -23,16 +23,15 @@ final guideTextProvider = StateProvider.autoDispose((ref) => '');
 final isPausedProvider = StateProvider.autoDispose((ref) => false);
 
 final gameStateFamilyProvider = StateNotifierProvider.autoDispose
-    .family<GameModel, GameState, Map>((ref, arguments) {
+    .family<GameController, GameState, Map>((ref, arguments) {
   final song = arguments['song'] as Song;
   final difficulty = arguments['difficulty'] as int;
   final speed = arguments['speed'] as int;
-  final gameModel = GameModel(ref.read).._startGame(song, difficulty, speed);
-  return gameModel;
+  return GameController(ref.read).._startGame(song, difficulty, speed);
 });
 
-class GameModel extends StateNotifier<GameState> {
-  GameModel(this._read) : super(GameState.loading());
+class GameController extends StateNotifier<GameState> {
+  GameController(this._read) : super(GameState.loading());
   final Reader _read;
   List<TileChunk> _tileChunks = [];
   int _unitDuration = 0;
@@ -96,7 +95,7 @@ class GameModel extends StateNotifier<GameState> {
   void _onTouchTile(Tile? tile) {
     var guideText = '';
     if (tile != null) {
-      _read(midiProvider.notifier).playNote(tile.note);
+      _read(midiLoadedProvider.notifier).playNote(tile.note);
       _tilesCount += 1;
       _time = (0.0 - tile.initialY) / _speedDpsPerSecond;
       _read(tilesCountProvider).state = _tilesCount;

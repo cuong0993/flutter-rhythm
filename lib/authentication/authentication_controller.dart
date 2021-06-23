@@ -7,12 +7,12 @@ import '../user/user_repository_impl.dart';
 import 'authentication_state.dart';
 
 final authenticationProvider =
-    StateNotifierProvider<AuthenticationModel, AuthenticationState>((ref) {
-  return AuthenticationModel(ref.read);
+    StateNotifierProvider<AuthenticationController, AuthenticationState>((ref) {
+  return AuthenticationController(ref.read);
 });
 
-class AuthenticationModel extends StateNotifier<AuthenticationState> {
-  AuthenticationModel(this._read) : super(AuthenticationState.loading()) {
+class AuthenticationController extends StateNotifier<AuthenticationState> {
+  AuthenticationController(this._read) : super(AuthenticationState.loading()) {
     Future.microtask(() async {
       try {
         final currentUser = FirebaseAuth.instance.currentUser;

@@ -17,14 +17,13 @@ final isLoadingNextPageByTagProvider =
 final isLoadedByTagsProvider =
     StateProvider.family<bool, String>((_, __) => false);
 
-final songsByTagProvider =
-    StateNotifierProvider.family<SongsModel, AsyncValue<List<Song>>, String>(
-        (ref, tag) {
-  return SongsModel(ref.read, tag);
+final songsByTagProvider = StateNotifierProvider.family<SongsController,
+    AsyncValue<List<Song>>, String>((ref, tag) {
+  return SongsController(ref.read, tag);
 });
 
-class SongsModel extends StateNotifier<AsyncValue<List<Song>>> {
-  SongsModel(this._read, this._tag) : super(const AsyncValue.loading()) {
+class SongsController extends StateNotifier<AsyncValue<List<Song>>> {
+  SongsController(this._read, this._tag) : super(const AsyncValue.loading()) {
     _read(songRepositoryProvider)
         .getSongsByTag(_tag, '', 20)
         .then((songs) => {state = AsyncValue.data(songs)});

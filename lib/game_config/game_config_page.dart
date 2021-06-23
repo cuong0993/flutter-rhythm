@@ -7,7 +7,7 @@ import 'package:sprintf/sprintf.dart';
 import '../game/colors.dart';
 import '../router/router.dart';
 import '../songs/song.dart';
-import 'game_config_model.dart';
+import 'game_config_controller.dart';
 
 class GameConfigPage extends ConsumerWidget {
   final Song song;

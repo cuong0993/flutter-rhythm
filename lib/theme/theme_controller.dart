@@ -4,16 +4,18 @@ import 'package:state_notifier/state_notifier.dart';
 
 import '../preferences.dart';
 
-final themeModeProvider = StateNotifierProvider<ThemeModel, ThemeMode>((ref) {
+final themeModeProvider =
+    StateNotifierProvider<ThemeController, ThemeMode>((ref) {
   final themeName = ref.read(sharedUtilityProvider).getThemeName();
   final themeMode = ThemeMode.values.firstWhere(
       (element) => element.toString() == themeName,
       orElse: () => ThemeMode.system);
-  return ThemeModel(ref.read, themeMode);
+  return ThemeController(ref.read, themeMode);
 });
 
-class ThemeModel extends StateNotifier<ThemeMode> {
-  ThemeModel(this._read, ThemeMode defaultThemeMode) : super(defaultThemeMode);
+class ThemeController extends StateNotifier<ThemeMode> {
+  ThemeController(this._read, ThemeMode defaultThemeMode)
+      : super(defaultThemeMode);
   final Reader _read;
 
   Future setThemeMode(BuildContext context, ThemeMode themeMode) async {

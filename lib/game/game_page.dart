@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../midi/midi_model.dart';
+import '../midi/midi_controller.dart';
 import 'colors.dart';
 import 'complete_widget.dart';
-import 'game_model.dart';
+import 'game_controller.dart';
 import 'game_state.dart';
 import 'pause_dialog.dart';
 
@@ -17,7 +17,7 @@ class GamePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final midiLoaded = ref.watch(midiProvider);
+    final midiLoaded = ref.watch(midiLoadedProvider);
     if (!midiLoaded) {
       return const LoadingSoundWidget();
     }

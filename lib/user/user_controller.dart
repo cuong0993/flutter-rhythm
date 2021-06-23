@@ -4,18 +4,19 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../authentication/authentication_model.dart';
-import '../instrument/instruments_model.dart';
+import '../authentication/authentication_controller.dart';
+import '../instrument/instruments_controller.dart';
 import 'user.dart';
 import 'user_repository_impl.dart';
 
-final userProvider = StateNotifierProvider<UserModel, AsyncValue<User>>((ref) {
+final userProvider =
+    StateNotifierProvider<UserController, AsyncValue<User>>((ref) {
   ref.watch(authenticationProvider);
-  return UserModel(ref.read);
+  return UserController(ref.read);
 });
 
-class UserModel extends StateNotifier<AsyncValue<User>> {
-  UserModel(this._read) : super(const AsyncValue.loading()) {
+class UserController extends StateNotifier<AsyncValue<User>> {
+  UserController(this._read) : super(const AsyncValue.loading()) {
     {
       final firebaseUser = firebase.FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {

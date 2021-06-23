@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'theme_model.dart';
+import 'theme_controller.dart';
 
 class ThemePage extends StatelessWidget {
   const ThemePage({Key? key}) : super(key: key);
