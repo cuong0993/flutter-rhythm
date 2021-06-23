@@ -76,14 +76,14 @@ class RootRouter extends _i1.RootStackRouter {
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(SplashRoute.name, path: '/'),
-        _i1.RouteConfig(HomeRoute.name, path: '/home'),
-        _i1.RouteConfig(GameConfigRoute.name, path: '/gameConfig'),
-        _i1.RouteConfig(GameRoute.name, path: '/game'),
-        _i1.RouteConfig(UserRoute.name, path: '/user'),
-        _i1.RouteConfig(LocaleRoute.name, path: '/locale'),
-        _i1.RouteConfig(ThemeRoute.name, path: '/theme'),
-        _i1.RouteConfig(InstrumentsRoute.name, path: '/instrument'),
-        _i1.RouteConfig(SettingsRoute.name, path: '/setting')
+        _i1.RouteConfig(HomeRoute.name, path: '/home-page'),
+        _i1.RouteConfig(GameConfigRoute.name, path: '/game-config-page'),
+        _i1.RouteConfig(GameRoute.name, path: '/game-page'),
+        _i1.RouteConfig(UserRoute.name, path: '/user-page'),
+        _i1.RouteConfig(LocaleRoute.name, path: '/locale-page'),
+        _i1.RouteConfig(ThemeRoute.name, path: '/theme-page'),
+        _i1.RouteConfig(InstrumentsRoute.name, path: '/instruments-page'),
+        _i1.RouteConfig(SettingsRoute.name, path: '/settings-page')
       ];
 }
 
@@ -94,7 +94,7 @@ class SplashRoute extends _i1.PageRouteInfo {
 }
 
 class HomeRoute extends _i1.PageRouteInfo {
-  const HomeRoute() : super(name, path: '/home');
+  const HomeRoute() : super(name, path: '/home-page');
 
   static const String name = 'HomeRoute';
 }
@@ -102,7 +102,7 @@ class HomeRoute extends _i1.PageRouteInfo {
 class GameConfigRoute extends _i1.PageRouteInfo<GameConfigRouteArgs> {
   GameConfigRoute({_i2.Key? key, required _i12.Song song})
       : super(name,
-            path: '/gameConfig',
+            path: '/game-config-page',
             args: GameConfigRouteArgs(key: key, song: song));
 
   static const String name = 'GameConfigRoute';
@@ -119,7 +119,8 @@ class GameConfigRouteArgs {
 class GameRoute extends _i1.PageRouteInfo<GameRouteArgs> {
   GameRoute({_i2.Key? key, required Map<String, dynamic> arguments})
       : super(name,
-            path: '/game', args: GameRouteArgs(key: key, arguments: arguments));
+            path: '/game-page',
+            args: GameRouteArgs(key: key, arguments: arguments));
 
   static const String name = 'GameRoute';
 }
@@ -133,31 +134,31 @@ class GameRouteArgs {
 }
 
 class UserRoute extends _i1.PageRouteInfo {
-  const UserRoute() : super(name, path: '/user');
+  const UserRoute() : super(name, path: '/user-page');
 
   static const String name = 'UserRoute';
 }
 
 class LocaleRoute extends _i1.PageRouteInfo {
-  const LocaleRoute() : super(name, path: '/locale');
+  const LocaleRoute() : super(name, path: '/locale-page');
 
   static const String name = 'LocaleRoute';
 }
 
 class ThemeRoute extends _i1.PageRouteInfo {
-  const ThemeRoute() : super(name, path: '/theme');
+  const ThemeRoute() : super(name, path: '/theme-page');
 
   static const String name = 'ThemeRoute';
 }
 
 class InstrumentsRoute extends _i1.PageRouteInfo {
-  const InstrumentsRoute() : super(name, path: '/instrument');
+  const InstrumentsRoute() : super(name, path: '/instruments-page');
 
   static const String name = 'InstrumentsRoute';
 }
 
 class SettingsRoute extends _i1.PageRouteInfo {
-  const SettingsRoute() : super(name, path: '/setting');
+  const SettingsRoute() : super(name, path: '/settings-page');
 
   static const String name = 'SettingsRoute';
 }

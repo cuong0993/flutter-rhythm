@@ -21,35 +21,27 @@ export 'router.gr.dart';
       page: SplashPage,
     ),
     AutoRoute<dynamic>(
-      path: '/home',
       page: HomePage,
     ),
     AutoRoute<dynamic>(
-      path: '/gameConfig',
       page: GameConfigPage,
     ),
     AutoRoute<dynamic>(
-      path: '/game',
       page: GamePage,
     ),
     AutoRoute<dynamic>(
-      path: '/user',
       page: UserPage,
     ),
     AutoRoute<dynamic>(
-      path: '/locale',
       page: LocalePage,
     ),
     AutoRoute<dynamic>(
-      path: '/theme',
       page: ThemePage,
     ),
     AutoRoute<dynamic>(
-      path: '/instrument',
       page: InstrumentsPage,
     ),
     AutoRoute<dynamic>(
-      path: '/setting',
       page: SettingsPage,
     ),
   ],
