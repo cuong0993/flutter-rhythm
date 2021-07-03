@@ -25,10 +25,10 @@ dependencies:
   flutter_email_sender:
   flutter_facebook_auth:
   flutter_hooks:
-  flutter_riverpod: ^1.0.0-dev.1
+  flutter_riverpod: ^1.0.0-dev.6
   freezed_annotation:
   google_sign_in:
-  hooks_riverpod: ^1.0.0-dev.1
+  hooks_riverpod: ^1.0.0-dev.6
   in_app_review:
   intl:
   logging:

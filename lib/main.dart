@@ -14,7 +14,8 @@ import 'theme/theme_controller.dart';
 
 class LogProviderObserver extends ProviderObserver {
   @override
-  void didAddProvider(ProviderBase provider, Object? value) {
+  void didAddProvider(
+      ProviderBase provider, Object? value, ProviderContainer container) {
     Logger.root.info('''Add
 {
   "provider": "${provider.name ?? provider.runtimeType}",
@@ -23,11 +24,8 @@ class LogProviderObserver extends ProviderObserver {
   }
 
   @override
-  void didUpdateProvider(
-    ProviderBase provider,
-    Object? previousValue,
-    Object? newValue,
-  ) {
+  void didUpdateProvider(ProviderBase provider, Object? previousValue,
+      Object? newValue, ProviderContainer container) {
     Logger.root.info('''Update
 {
   "provider": "${provider.name ?? provider.runtimeType}",
@@ -36,7 +34,7 @@ class LogProviderObserver extends ProviderObserver {
   }
 
   @override
-  void didDisposeProvider(ProviderBase provider) {
+  void didDisposeProvider(ProviderBase provider, ProviderContainer containers) {
     Logger.root.info('''Dispose
 {
   "provider": "${provider.name ?? provider.runtimeType}"

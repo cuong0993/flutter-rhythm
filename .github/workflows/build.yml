@@ -4,7 +4,7 @@ name: Build
     branches:
       - master
 env:
-  flutter_version: 2.2.2
+  flutter_version: 2.2.3
 jobs:
   build:
     name: Build
@@ -21,6 +21,9 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           flutter-version: '${{ env.flutter_version }}'
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
       - name: Get dependencies
         run: flutter pub get
       - name: Format source code

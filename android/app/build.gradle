@@ -24,7 +24,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion = 30
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -32,8 +32,6 @@ android {
 
     lintOptions {
         disable 'InvalidPackage'
-        //FIXME https://github.com/flutter/flutter/issues/58247
-        checkReleaseBuilds false
     }
 
     defaultConfig {
