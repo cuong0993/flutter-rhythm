@@ -21,7 +21,7 @@ class GameConfigPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(L10n.of(context)!.txt_configure,
-              style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+              style: Theme.of(context).appBarTheme.toolbarTextStyle)),
       body: SafeArea(
         child: Scrollbar(
           isAlwaysShown: true,

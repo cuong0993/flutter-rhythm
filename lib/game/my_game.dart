@@ -1,6 +1,6 @@
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import 'package:flame/gestures.dart';
+import 'package:flame/input.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ import 'tile/tile_input_handler.dart';
 import 'tile/tiles_controller.dart';
 import 'util.dart';
 
-class MyGame extends Game with MultiTouchTapDetector {
+class MyGame extends FlameGame with MultiTouchTapDetector {
   final _tilesController = TilesController();
   final _tileEffects = <Effect>[];
   var _state = _MyGameState.prepare;
@@ -63,6 +63,7 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void render(Canvas canvas) {
+    super.render(canvas);
     final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, _backgroundPaint);
     _staffSprite.render(canvas,
@@ -81,6 +82,7 @@ class MyGame extends Game with MultiTouchTapDetector {
 
   @override
   void update(double dt) {
+    super.update(dt);
     // // FIXME Auto run
     // for (var i =0; i < _tilesController.tiles.length;i++) {
     //  final tile = _tilesController.tiles[i];

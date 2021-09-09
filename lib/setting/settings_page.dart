@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_settings,
-                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+                style: Theme.of(context).appBarTheme.toolbarTextStyle)),
         body: ListView(
           children: [
             ListTile(

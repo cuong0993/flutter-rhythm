@@ -87,13 +87,13 @@ class RootRouter extends _i1.RootStackRouter {
       ];
 }
 
-class SplashRoute extends _i1.PageRouteInfo {
+class SplashRoute extends _i1.PageRouteInfo<void> {
   const SplashRoute() : super(name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
-class HomeRoute extends _i1.PageRouteInfo {
+class HomeRoute extends _i1.PageRouteInfo<void> {
   const HomeRoute() : super(name, path: '/home-page');
 
   static const String name = 'HomeRoute';
@@ -133,31 +133,31 @@ class GameRouteArgs {
   final Map<String, dynamic> arguments;
 }
 
-class UserRoute extends _i1.PageRouteInfo {
+class UserRoute extends _i1.PageRouteInfo<void> {
   const UserRoute() : super(name, path: '/user-page');
 
   static const String name = 'UserRoute';
 }
 
-class LocaleRoute extends _i1.PageRouteInfo {
+class LocaleRoute extends _i1.PageRouteInfo<void> {
   const LocaleRoute() : super(name, path: '/locale-page');
 
   static const String name = 'LocaleRoute';
 }
 
-class ThemeRoute extends _i1.PageRouteInfo {
+class ThemeRoute extends _i1.PageRouteInfo<void> {
   const ThemeRoute() : super(name, path: '/theme-page');
 
   static const String name = 'ThemeRoute';
 }
 
-class InstrumentsRoute extends _i1.PageRouteInfo {
+class InstrumentsRoute extends _i1.PageRouteInfo<void> {
   const InstrumentsRoute() : super(name, path: '/instruments-page');
 
   static const String name = 'InstrumentsRoute';
 }
 
-class SettingsRoute extends _i1.PageRouteInfo {
+class SettingsRoute extends _i1.PageRouteInfo<void> {
   const SettingsRoute() : super(name, path: '/settings-page');
 
   static const String name = 'SettingsRoute';

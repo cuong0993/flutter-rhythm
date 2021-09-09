@@ -19,7 +19,7 @@ class LocalePage extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_language,
-                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+                style: Theme.of(context).appBarTheme.toolbarTextStyle)),
         body: Scrollbar(
           isAlwaysShown: true,
           child: ListView.builder(

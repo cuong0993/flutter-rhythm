@@ -33,3 +33,4 @@ Runner/GeneratedPluginRegistrant.*
 !default.perspectivev3
 /Runner/Firebase/GoogleService-Info-Dev.plist
 /Runner/Firebase/GoogleService-Info-Prod.plist
+/build/

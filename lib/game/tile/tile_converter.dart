@@ -47,7 +47,7 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
           groupBy<Note, int>(tileNotes, (note) => note.startTick)
               .entries
               .toList()
-                ..sort((e1, e2) => e1.key.compareTo(e2.key)))
+            ..sort((e1, e2) => e1.key.compareTo(e2.key)))
       .forEach((key, notes) {
     tileChunks.add(TileChunk(
         notes: notes,

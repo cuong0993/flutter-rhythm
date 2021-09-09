@@ -12,7 +12,7 @@ class ThemePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text(L10n.of(context)!.txt_theme,
-                style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+                style: Theme.of(context).appBarTheme.toolbarTextStyle)),
         body: Consumer(builder: (context, ref, child) {
           final themeMode = ref.watch(themeModeProvider);
           return Scrollbar(

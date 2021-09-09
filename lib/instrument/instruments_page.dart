@@ -16,7 +16,7 @@ class InstrumentsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(L10n.of(context)!.txt_instrument_title_instruments,
-              style: Theme.of(context).appBarTheme.textTheme!.headline5)),
+              style: Theme.of(context).appBarTheme.toolbarTextStyle)),
       body: instruments.when(
           data: (instruments) => ListView.builder(
                 itemCount: instruments.length,

@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
           return <Widget>[
             SliverAppBar(
                 title: Text(L10n.of(context)!.txt_all_songs,
-                    style: Theme.of(context).appBarTheme.textTheme!.headline5),
+                    style: Theme.of(context).appBarTheme.toolbarTextStyle),
                 elevation: 2,
                 floating: true,
                 pinned: true,

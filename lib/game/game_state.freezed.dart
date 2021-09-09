@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'game_state.dart';
 
@@ -52,6 +53,14 @@ mixin _$GameState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
+    TResult Function(GameReward gameReward)? completed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(int duration, String songName)? playing,
@@ -66,6 +75,14 @@ mixin _$GameState {
     required TResult Function(GameStatePlaying value) playing,
     required TResult Function(GameStateGettingGift value) gettingGift,
     required TResult Function(GameStateCompleted value) completed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
+    TResult Function(GameStateCompleted value)? completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -143,6 +160,17 @@ class _$GameStateLoading implements GameStateLoading {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
+    TResult Function(GameReward gameReward)? completed,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(int duration, String songName)? playing,
@@ -165,6 +193,17 @@ class _$GameStateLoading implements GameStateLoading {
     required TResult Function(GameStateCompleted value) completed,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
+    TResult Function(GameStateCompleted value)? completed,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -274,6 +313,17 @@ class _$GameStatePlaying implements GameStatePlaying {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
+    TResult Function(GameReward gameReward)? completed,
+  }) {
+    return playing?.call(duration, songName);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(int duration, String songName)? playing,
@@ -296,6 +346,17 @@ class _$GameStatePlaying implements GameStatePlaying {
     required TResult Function(GameStateCompleted value) completed,
   }) {
     return playing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
+    TResult Function(GameStateCompleted value)? completed,
+  }) {
+    return playing?.call(this);
   }
 
   @override
@@ -374,6 +435,17 @@ class _$GameStateGettingGift implements GameStateGettingGift {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
+    TResult Function(GameReward gameReward)? completed,
+  }) {
+    return gettingGift?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(int duration, String songName)? playing,
@@ -396,6 +468,17 @@ class _$GameStateGettingGift implements GameStateGettingGift {
     required TResult Function(GameStateCompleted value) completed,
   }) {
     return gettingGift(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
+    TResult Function(GameStateCompleted value)? completed,
+  }) {
+    return gettingGift?.call(this);
   }
 
   @override
@@ -503,6 +586,17 @@ class _$GameStateCompleted implements GameStateCompleted {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(int duration, String songName)? playing,
+    TResult Function()? gettingGift,
+    TResult Function(GameReward gameReward)? completed,
+  }) {
+    return completed?.call(gameReward);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(int duration, String songName)? playing,
@@ -525,6 +619,17 @@ class _$GameStateCompleted implements GameStateCompleted {
     required TResult Function(GameStateCompleted value) completed,
   }) {
     return completed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStatePlaying value)? playing,
+    TResult Function(GameStateGettingGift value)? gettingGift,
+    TResult Function(GameStateCompleted value)? completed,
+  }) {
+    return completed?.call(this);
   }
 
   @override

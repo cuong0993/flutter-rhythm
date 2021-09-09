@@ -62,7 +62,7 @@ ThemeData buildTheme({bool isDark = false}) {
         labelColor: primaryColor,
         unselectedLabelColor: onBackgroundColor),
     appBarTheme: AppBarTheme(
-      textTheme: textTheme,
+      toolbarTextStyle: screenHeadingTextStyle,
       color: backgroundColor,
       iconTheme: const IconThemeData(color: primaryColor),
     ),
