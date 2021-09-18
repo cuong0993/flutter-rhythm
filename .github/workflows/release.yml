@@ -47,29 +47,35 @@ jobs:
           RELEASE_JKS: '${{ secrets.RELEASE_JKS }}'
           GOOGLE_SERVICE_INFO_PLIST: '${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}'
         run: >
-          sudo echo "$KEYSTORE_PROPERTIES" > android/keystore.properties
+          sudo echo "$KEYSTORE_PROPERTIES" > android/key.properties
 
           sudo echo "$SERVICE_ACCOUNT" > android/service_account.json
 
+          mkdir -p android/app/src/stage
+
           sudo echo $GOOGLE_SERVICES_STAGE_JSON >
           android/app/src/stage/google-services.json
+
+          mkdir -p android/app/src/prod
 
           sudo echo $GOOGLE_SERVICES_PROD_JSON >
           android/app/src/prod/google-services.json
 
           sudo echo "$RELEASE_JKS" | base64 -d > android/release.jks
 
+          mkdir -p ios/Runner/dev
+
           sudo echo "$GOOGLE_SERVICE_INFO_PLIST" >
-          ios/Runner/Firebase/GoogleService-Info-Dev.plist
+          ios/Runner/dev/GoogleService-Info.plist
       - name: Build stage application
         run: >-
           flutter build apk --obfuscate
-          --split-debug-info=build/app/outputs/symbols --flavor stage
+          --split-debug-info=build/app/outputs/symbols --flavor stage --target lib/main-stage.dart
       - name: Build production application
         run: >-
           flutter build apk --obfuscate
           --split-debug-info=build/app/outputs/symbols --flavor prod
-          --split-per-abi
+          --split-per-abi --target lib/main-prod.dart
       - name: Upload production to Google Play internal track
         run: >-
           cd android; fastlane supply --track=internal
@@ -85,4 +91,4 @@ jobs:
           "${{ secrets.STAGE_APP_ID }}" --release-notes "$(git log -1
           --pretty=short)" --groups testers
       - name: Build iOS
-        run: flutter build ios --debug --no-codesign
+        run: flutter build ios --debug --flavor=dev --no-codesign --target lib/main-dev.dart

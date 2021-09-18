@@ -24,53 +24,46 @@ class RootRouter extends _i1.RootStackRouter {
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i3.SplashPage();
-        }),
-    HomeRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i4.HomePage();
-        }),
-    GameConfigRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<GameConfigRouteArgs>();
-          return _i5.GameConfigPage(key: args.key, song: args.song);
-        }),
-    GameRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<GameRouteArgs>();
-          return _i6.GamePage(key: args.key, arguments: args.arguments);
-        }),
-    UserRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i7.UserPage();
-        }),
-    LocaleRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i8.LocalePage();
-        }),
-    ThemeRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i9.ThemePage();
-        }),
-    InstrumentsRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i10.InstrumentsPage();
-        }),
-    SettingsRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i11.SettingsPage();
-        })
+    SplashRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i3.SplashPage());
+    },
+    HomeRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.HomePage());
+    },
+    GameConfigRoute.name: (routeData) {
+      final args = routeData.argsAs<GameConfigRouteArgs>();
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i5.GameConfigPage(key: args.key, song: args.song));
+    },
+    GameRoute.name: (routeData) {
+      final args = routeData.argsAs<GameRouteArgs>();
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i6.GamePage(key: args.key, arguments: args.arguments));
+    },
+    UserRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i7.UserPage());
+    },
+    LocaleRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i8.LocalePage());
+    },
+    ThemeRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i9.ThemePage());
+    },
+    InstrumentsRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i10.InstrumentsPage());
+    },
+    SettingsRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i11.SettingsPage());
+    }
   };
 
   @override

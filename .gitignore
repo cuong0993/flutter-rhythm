@@ -39,3 +39,11 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+google-services.json
+service_account.json
+
+GoogleService-Info.plist
+/ios/build/
+
+/flavor/

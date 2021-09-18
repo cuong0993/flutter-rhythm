@@ -1,47 +1,122 @@
 name: hitnotes
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  auto_route:
-  cloud_firestore:
-  cloud_functions:
-  collection:
+  auto_route: null
+  cloud_firestore: null
+  cloud_functions: null
+  collection: null
   dart_midi:
     git:
-      url: https://github.com/cuong0993/dart_midi
-  device_info:
-  firebase_auth:
-  firebase_core:
-  firebase_crashlytics:
-  firebase_storage:
-  flame:
-  flutter_cache_manager:
-  flutter_email_sender:
-  flutter_facebook_auth:
-  flutter_hooks:
+      url: 'https://github.com/cuong0993/dart_midi'
+  device_info: null
+  firebase_auth: null
+  firebase_core: null
+  firebase_crashlytics: null
+  firebase_storage: null
+  flame: null
+  flutter_cache_manager: null
+  flutter_email_sender: null
+  flutter_facebook_auth: null
+  flutter_hooks: null
   flutter_riverpod: ^1.0.0-dev.6
-  freezed_annotation:
-  google_sign_in:
+  freezed_annotation: null
+  google_sign_in: null
   hooks_riverpod: ^1.0.0-dev.6
-  in_app_review:
-  intl:
-  logging:
-  package_info:
-  shared_preferences:
-  sprintf:
+  in_app_review: null
+  intl: null
+  logging: null
+  package_info: null
+  shared_preferences: null
+  sprintf: null
 
 dev_dependencies:
-  auto_route_generator:
-  build_runner:
-  flutter_lints:
-  freezed:
-  json_serializable:
+  auto_route_generator: null
+  build_runner: null
+  flutter_launcher_icons: null
+  flutter_flavorizr: null
+  flutter_lints: null
+  flutter_native_splash: null
+  freezed: null
+  json_serializable: null
+
+flutter_icons:
+  image_path_android: assets/blank.png
+  image_path_ios: assets/blank.png
+  android: true
+  ios: true
+  adaptive_icon_background: assets/blank.png
+  adaptive_icon_foreground: assets/blank.png
+
+flutter_native_splash:
+  color: '#000000'
+  image: assets/blank.png
+flavorizr:
+  app:
+    android:
+      flavorDimensions: default
+    ios:
+      buildSettings:
+        EXCLUDED_ARCHS[sdk=iphonesimulator*]: i386 arm64
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+
+  flavors:
+    dev:
+      app:
+        name: Hit Notes Dev
+      android:
+        applicationId: com.chaomao.hittick
+        generateDummyAssets: false
+        firebase:
+          config: flavor/android/dev/google-services.json
+      ios:
+        bundleId: com.chaomao.hittick
+        generateDummyAssets: false
+        firebase:
+          config: flavor/ios/dev/GoogleService-Info.plist
+        buildSettings:
+          GOOGLE_SERVICE_REVERSED_CLIENT_ID: >-
+            com.googleusercontent.apps.839556303918-sjt2kvium8hd02orlelqujl5c3e4rb8k
+
+    stage:
+      app:
+        name: Hit Notes Stage
+      android:
+        applicationId: com.chaomao.hittick
+        generateDummyAssets: false
+        firebase:
+          config: flavor/android/stage/google-services.json
+      ios:
+        bundleId: com.chaomao.hittick
+        generateDummyAssets: false
+        firebase:
+          config: flavor/ios/stage/GoogleService-Info.plist
+        buildSettings:
+          GOOGLE_SERVICE_REVERSED_CLIENT_ID: >-
+            com.googleusercontent.apps.839556303918-sjt2kvium8hd02orlelqujl5c3e4rb8k
+
+    prod:
+      app:
+        name: Hit Notes
+      android:
+        applicationId: com.chaomao.hittick
+        generateDummyAssets: false
+        firebase:
+          config: flavor/android/prod/google-services.json
+      ios:
+        bundleId: com.chaomao.hittick
+        generateDummyAssets: false
+        firebase:
+          config: flavor/ios/prod/GoogleService-Info.plist
+        buildSettings:
+          GOOGLE_SERVICE_REVERSED_CLIENT_ID: >-
+            com.googleusercontent.apps.839556303918-sjt2kvium8hd02orlelqujl5c3e4rb8k
 
 flutter:
   assets:

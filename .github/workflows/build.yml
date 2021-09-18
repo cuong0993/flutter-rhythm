@@ -36,7 +36,9 @@ jobs:
           GOOGLE_SERVICES_STAGE_JSON: '${{ secrets.GOOGLE_SERVICES_STAGE_JSON }}'
           RELEASE_JKS: '${{ secrets.RELEASE_JKS }}'
         run: >
-          sudo echo "$KEYSTORE_PROPERTIES" > android/keystore.properties
+          sudo echo "$KEYSTORE_PROPERTIES" > android/key.properties
+
+          mkdir -p android/app/src/stage
 
           sudo echo $GOOGLE_SERVICES_STAGE_JSON >
           android/app/src/stage/google-services.json
@@ -46,4 +48,4 @@ jobs:
         run: >-
           flutter build apk --obfuscate
           --split-debug-info=build/app/outputs/symbols --flavor stage
-          --split-per-abi
+          --split-per-abi --target lib/main-stage.dart
