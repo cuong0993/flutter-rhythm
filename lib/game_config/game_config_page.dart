@@ -124,8 +124,7 @@ class GameConfigPage extends ConsumerWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+      bottomNavigationBar: SafeArea(
         child: ElevatedButton(
             onPressed: () {
               primaryColor = Theme.of(context).colorScheme.primary;
