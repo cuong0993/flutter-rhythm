@@ -39,12 +39,12 @@ class SongsController extends StateNotifier<AsyncValue<List<Song>>> {
       _read(isLoadingNextPageByTagProvider(_tag)).state = true;
       final titleStart = state.when(
           data: (songs) => songs.isEmpty ? '' : songs.last.title,
-          loading: () => '',
-          error: (_, __) => '');
+          loading: (_) => '',
+          error: (_, __, ___) => '');
       final loadedSongs = state.when(
           data: (songs) => songs,
-          loading: () => <Song>[],
-          error: (_, __) => <Song>[]);
+          loading: (_) => <Song>[],
+          error: (_, __, ___) => <Song>[]);
       final songs = await _read(songRepositoryProvider)
           .getSongsByTag(_tag, titleStart, 20);
       _read(isLoadingNextPageByTagProvider(_tag)).state = false;

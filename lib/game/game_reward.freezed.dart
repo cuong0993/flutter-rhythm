@@ -28,7 +28,7 @@ class _$GameRewardTearOff {
     );
   }
 
-  GameReward fromJson(Map<String, Object> json) {
+  GameReward fromJson(Map<String, Object?> json) {
     return GameReward.fromJson(json);
   }
 }
@@ -139,19 +139,15 @@ class _$_GameReward implements _GameReward {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GameReward &&
-            (identical(other.stars, stars) ||
-                const DeepCollectionEquality().equals(other.stars, stars)) &&
+        (other.runtimeType == runtimeType &&
+            other is _GameReward &&
+            (identical(other.stars, stars) || other.stars == stars) &&
             (identical(other.playedNotes, playedNotes) ||
-                const DeepCollectionEquality()
-                    .equals(other.playedNotes, playedNotes)));
+                other.playedNotes == playedNotes));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(stars) ^
-      const DeepCollectionEquality().hash(playedNotes);
+  int get hashCode => Object.hash(runtimeType, stars, playedNotes);
 
   @JsonKey(ignore: true)
   @override
@@ -172,9 +168,9 @@ abstract class _GameReward implements GameReward {
       _$_GameReward.fromJson;
 
   @override
-  int get stars => throw _privateConstructorUsedError;
+  int get stars;
   @override
-  int get playedNotes => throw _privateConstructorUsedError;
+  int get playedNotes;
   @override
   @JsonKey(ignore: true)
   _$GameRewardCopyWith<_GameReward> get copyWith =>

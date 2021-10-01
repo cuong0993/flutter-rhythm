@@ -60,9 +60,9 @@ class HomePage extends StatelessWidget {
                                           Icons.account_circle_rounded);
                                     },
                                   ),
-                              loading: () =>
+                              loading: (_) =>
                                   const Icon(Icons.account_circle_rounded),
-                              error: (_, __) =>
+                              error: (_, __, ___) =>
                                   const Icon(Icons.account_circle_rounded));
                         },
                       )),

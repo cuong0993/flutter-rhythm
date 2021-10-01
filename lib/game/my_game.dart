@@ -39,6 +39,7 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
 
   @override
   Future<void> onLoad() async {
+    await super.onLoad();
     _staffSprite = Sprite(
         await images.load('${nearestDevicePixelRatioFolder}img_staff.png'));
     _clefSprite = Sprite(

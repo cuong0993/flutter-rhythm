@@ -7,7 +7,11 @@ repos:
         language: system
       - id: format_flutter
         name: Run flutter format
-        entry: bash -c "flutter format --set-exit-if-changed ."
+        entry: bash -c "flutter format ."
+        language: system
+      - id: flutter_pub_upgrade
+        name: Run flutter pub upgrade
+        entry: bash -c "flutter pub upgrade"
         language: system
       - id: format_flutter
         name: Run flutter analyze

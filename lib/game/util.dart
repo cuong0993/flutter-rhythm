@@ -35,7 +35,7 @@ String nearestDevicePixelRatioFolder = () {
 final positionsX = () {
   final positionXs = <double>[];
   const tilePad = 24;
-  final paddedTileWidth = tileWidth + 2 * tilePad;
+  const paddedTileWidth = tileWidth + 2 * tilePad;
   final padLeftRight = (screenWidth - numberTileColumn * paddedTileWidth) / 2;
   for (var column = 0; column < numberTileColumn; column++) {
     positionXs.add(padLeftRight + column * paddedTileWidth + tilePad);

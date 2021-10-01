@@ -36,7 +36,7 @@ class _$InstrumentTearOff {
     );
   }
 
-  Instrument fromJson(Map<String, Object> json) {
+  Instrument fromJson(Map<String, Object?> json) {
     return Instrument.fromJson(json);
   }
 }
@@ -201,30 +201,24 @@ class _$_Instrument implements _Instrument {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Instrument &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.soundPaths, soundPaths) ||
-                const DeepCollectionEquality()
-                    .equals(other.soundPaths, soundPaths)) &&
-            (identical(other.baseNotes, baseNotes) ||
-                const DeepCollectionEquality()
-                    .equals(other.baseNotes, baseNotes)) &&
-            (identical(other.minNote, minNote) ||
-                const DeepCollectionEquality()
-                    .equals(other.minNote, minNote)) &&
-            (identical(other.maxNote, maxNote) ||
-                const DeepCollectionEquality().equals(other.maxNote, maxNote)));
+        (other.runtimeType == runtimeType &&
+            other is _Instrument &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality()
+                .equals(other.soundPaths, soundPaths) &&
+            const DeepCollectionEquality().equals(other.baseNotes, baseNotes) &&
+            (identical(other.minNote, minNote) || other.minNote == minNote) &&
+            (identical(other.maxNote, maxNote) || other.maxNote == maxNote));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(soundPaths) ^
-      const DeepCollectionEquality().hash(baseNotes) ^
-      const DeepCollectionEquality().hash(minNote) ^
-      const DeepCollectionEquality().hash(maxNote);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(soundPaths),
+      const DeepCollectionEquality().hash(baseNotes),
+      minNote,
+      maxNote);
 
   @JsonKey(ignore: true)
   @override
@@ -249,15 +243,15 @@ abstract class _Instrument implements Instrument {
       _$_Instrument.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  Map<int, String> get soundPaths => throw _privateConstructorUsedError;
+  Map<int, String> get soundPaths;
   @override
-  Map<int, int> get baseNotes => throw _privateConstructorUsedError;
+  Map<int, int> get baseNotes;
   @override
-  int get minNote => throw _privateConstructorUsedError;
+  int get minNote;
   @override
-  int get maxNote => throw _privateConstructorUsedError;
+  int get maxNote;
   @override
   @JsonKey(ignore: true)
   _$InstrumentCopyWith<_Instrument> get copyWith =>

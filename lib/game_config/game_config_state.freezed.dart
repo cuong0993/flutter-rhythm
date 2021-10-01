@@ -130,19 +130,15 @@ class _$_GameConfigState implements _GameConfigState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GameConfigState &&
+        (other.runtimeType == runtimeType &&
+            other is _GameConfigState &&
             (identical(other.difficulty, difficulty) ||
-                const DeepCollectionEquality()
-                    .equals(other.difficulty, difficulty)) &&
-            (identical(other.speed, speed) ||
-                const DeepCollectionEquality().equals(other.speed, speed)));
+                other.difficulty == difficulty) &&
+            (identical(other.speed, speed) || other.speed == speed));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(difficulty) ^
-      const DeepCollectionEquality().hash(speed);
+  int get hashCode => Object.hash(runtimeType, difficulty, speed);
 
   @JsonKey(ignore: true)
   @override
@@ -155,9 +151,9 @@ abstract class _GameConfigState implements GameConfigState {
       _$_GameConfigState;
 
   @override
-  int get difficulty => throw _privateConstructorUsedError;
+  int get difficulty;
   @override
-  int get speed => throw _privateConstructorUsedError;
+  int get speed;
   @override
   @JsonKey(ignore: true)
   _$GameConfigStateCopyWith<_GameConfigState> get copyWith =>

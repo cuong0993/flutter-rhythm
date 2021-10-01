@@ -13,8 +13,8 @@ final selectedInstrumentProvider = Provider<Instrument?>(((ref) {
   return instruments.when(
       data: (instruments) =>
           instruments.firstWhereOrNull((e) => e.id == selectedInstrumentId),
-      loading: () => null,
-      error: (_, __) => null);
+      loading: (_) => null,
+      error: (_, __, ___) => null);
 }));
 
 final instrumentsProvider =

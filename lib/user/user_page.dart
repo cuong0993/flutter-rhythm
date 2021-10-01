@@ -30,8 +30,8 @@ class UserPage extends StatelessWidget {
                         child: SingleChildScrollView(
                             child: _buildUI(user, context))));
               },
-              loading: () => const LoadingWidget(),
-              error: (_, __) => const LoadingWidget());
+              loading: (_) => const LoadingWidget(),
+              error: (_, __, ___) => const LoadingWidget());
         }));
   }
 

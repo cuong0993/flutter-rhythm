@@ -44,7 +44,7 @@ class _$SongTearOff {
     );
   }
 
-  Song fromJson(Map<String, Object> json) {
+  Song fromJson(Map<String, Object?> json) {
     return Song.fromJson(json);
   }
 }
@@ -268,42 +268,33 @@ class _$_Song implements _Song {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Song &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.artist, artist) ||
-                const DeepCollectionEquality().equals(other.artist, artist)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.bpm, bpm) ||
-                const DeepCollectionEquality().equals(other.bpm, bpm)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Song &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.artist, artist) || other.artist == artist) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.bpm, bpm) || other.bpm == bpm) &&
             (identical(other.unitDuration, unitDuration) ||
-                const DeepCollectionEquality()
-                    .equals(other.unitDuration, unitDuration)) &&
-            (identical(other.tilesCount, tilesCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.tilesCount, tilesCount)) &&
-            (identical(other.duration, duration) ||
-                const DeepCollectionEquality()
-                    .equals(other.duration, duration)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+                other.unitDuration == unitDuration) &&
+            const DeepCollectionEquality()
+                .equals(other.tilesCount, tilesCount) &&
+            const DeepCollectionEquality().equals(other.duration, duration) &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(artist) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(bpm) ^
-      const DeepCollectionEquality().hash(unitDuration) ^
-      const DeepCollectionEquality().hash(tilesCount) ^
-      const DeepCollectionEquality().hash(duration) ^
-      const DeepCollectionEquality().hash(tags);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      artist,
+      url,
+      bpm,
+      unitDuration,
+      const DeepCollectionEquality().hash(tilesCount),
+      const DeepCollectionEquality().hash(duration),
+      const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -331,23 +322,23 @@ abstract class _Song implements Song {
   factory _Song.fromJson(Map<String, dynamic> json) = _$_Song.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get artist => throw _privateConstructorUsedError;
+  String get artist;
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  int get bpm => throw _privateConstructorUsedError;
+  int get bpm;
   @override
-  int get unitDuration => throw _privateConstructorUsedError;
+  int get unitDuration;
   @override
-  List<int> get tilesCount => throw _privateConstructorUsedError;
+  List<int> get tilesCount;
   @override
-  List<int> get duration => throw _privateConstructorUsedError;
+  List<int> get duration;
   @override
-  List<String> get tags => throw _privateConstructorUsedError;
+  List<String> get tags;
   @override
   @JsonKey(ignore: true)
   _$SongCopyWith<_Song> get copyWith => throw _privateConstructorUsedError;

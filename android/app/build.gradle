@@ -95,13 +95,6 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        if (variant.buildType.name == 'release' && names.contains("dev")) {
-            setIgnore(true)
-        }
-    }
 }
 
 flutter {

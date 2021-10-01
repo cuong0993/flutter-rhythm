@@ -27,7 +27,7 @@ class UserController extends StateNotifier<AsyncValue<User>> {
           state = AsyncValue.data(user);
         });
       } else {
-        state = AsyncValue.error('Unauthenticated');
+        state = const AsyncValue.error('Unauthenticated');
       }
     }
   }

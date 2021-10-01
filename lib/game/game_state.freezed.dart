@@ -141,7 +141,8 @@ class _$GameStateLoading implements GameStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GameStateLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GameStateLoading);
   }
 
   @override
@@ -280,20 +281,16 @@ class _$GameStatePlaying implements GameStatePlaying {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GameStatePlaying &&
+        (other.runtimeType == runtimeType &&
+            other is GameStatePlaying &&
             (identical(other.duration, duration) ||
-                const DeepCollectionEquality()
-                    .equals(other.duration, duration)) &&
+                other.duration == duration) &&
             (identical(other.songName, songName) ||
-                const DeepCollectionEquality()
-                    .equals(other.songName, songName)));
+                other.songName == songName));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(duration) ^
-      const DeepCollectionEquality().hash(songName);
+  int get hashCode => Object.hash(runtimeType, duration, songName);
 
   @JsonKey(ignore: true)
   @override
@@ -378,8 +375,8 @@ class _$GameStatePlaying implements GameStatePlaying {
 abstract class GameStatePlaying implements GameState {
   factory GameStatePlaying(int duration, String songName) = _$GameStatePlaying;
 
-  int get duration => throw _privateConstructorUsedError;
-  String get songName => throw _privateConstructorUsedError;
+  int get duration;
+  String get songName;
   @JsonKey(ignore: true)
   $GameStatePlayingCopyWith<GameStatePlaying> get copyWith =>
       throw _privateConstructorUsedError;
@@ -416,7 +413,8 @@ class _$GameStateGettingGift implements GameStateGettingGift {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GameStateGettingGift);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GameStateGettingGift);
   }
 
   @override
@@ -558,15 +556,14 @@ class _$GameStateCompleted implements GameStateCompleted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GameStateCompleted &&
+        (other.runtimeType == runtimeType &&
+            other is GameStateCompleted &&
             (identical(other.gameReward, gameReward) ||
-                const DeepCollectionEquality()
-                    .equals(other.gameReward, gameReward)));
+                other.gameReward == gameReward));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(gameReward);
+  int get hashCode => Object.hash(runtimeType, gameReward);
 
   @JsonKey(ignore: true)
   @override
@@ -651,7 +648,7 @@ class _$GameStateCompleted implements GameStateCompleted {
 abstract class GameStateCompleted implements GameState {
   factory GameStateCompleted(GameReward gameReward) = _$GameStateCompleted;
 
-  GameReward get gameReward => throw _privateConstructorUsedError;
+  GameReward get gameReward;
   @JsonKey(ignore: true)
   $GameStateCompletedCopyWith<GameStateCompleted> get copyWith =>
       throw _privateConstructorUsedError;

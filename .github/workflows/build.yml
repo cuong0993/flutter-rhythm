@@ -4,7 +4,7 @@ name: Build
     branches:
       - master
 env:
-  flutter_version: 2.5.1
+  flutter_version: 2.5.2
 jobs:
   build:
     name: Build

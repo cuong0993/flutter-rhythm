@@ -69,7 +69,7 @@ void main() {
       var unitDuration = 0;
       final durations = groupByDurationToPrevious.keys.iterator;
       var tick2Second =
-          tickToSecond(midiFile.header.ticksPerBeat, song['bpm'] as int);
+          tickToSecond(midiFile.header.ticksPerBeat!, song['bpm'] as int);
       const minimumSingleTileSeconds =
           0.25; // 4 touches per second, slow enough to click continuously
       while (singleTileSeconds < minimumSingleTileSeconds &&
@@ -89,7 +89,7 @@ void main() {
         Logger.root.info('Reduce bpm to $newBpm');
         song['bpm'] = newBpm;
         tick2Second =
-            tickToSecond(midiFile.header.ticksPerBeat, song['bpm'] as int);
+            tickToSecond(midiFile.header.ticksPerBeat!, song['bpm'] as int);
       }
       final speedDpsPerTick = unitDurationHeight / unitDuration;
       final speedDpsPerSecond = speedDpsPerTick / tick2Second;

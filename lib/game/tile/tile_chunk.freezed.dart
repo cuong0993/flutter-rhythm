@@ -145,23 +145,21 @@ class _$_TileChunk implements _TileChunk {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TileChunk &&
-            (identical(other.notes, notes) ||
-                const DeepCollectionEquality().equals(other.notes, notes)) &&
+        (other.runtimeType == runtimeType &&
+            other is _TileChunk &&
+            const DeepCollectionEquality().equals(other.notes, notes) &&
             (identical(other.durationToPrevious, durationToPrevious) ||
-                const DeepCollectionEquality()
-                    .equals(other.durationToPrevious, durationToPrevious)) &&
+                other.durationToPrevious == durationToPrevious) &&
             (identical(other.startTick, startTick) ||
-                const DeepCollectionEquality()
-                    .equals(other.startTick, startTick)));
+                other.startTick == startTick));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(notes) ^
-      const DeepCollectionEquality().hash(durationToPrevious) ^
-      const DeepCollectionEquality().hash(startTick);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(notes),
+      durationToPrevious,
+      startTick);
 
   @JsonKey(ignore: true)
   @override
@@ -176,11 +174,11 @@ abstract class _TileChunk implements TileChunk {
       required int startTick}) = _$_TileChunk;
 
   @override
-  List<Note> get notes => throw _privateConstructorUsedError;
+  List<Note> get notes;
   @override
-  int get durationToPrevious => throw _privateConstructorUsedError;
+  int get durationToPrevious;
   @override
-  int get startTick => throw _privateConstructorUsedError;
+  int get startTick;
   @override
   @JsonKey(ignore: true)
   _$TileChunkCopyWith<_TileChunk> get copyWith =>

@@ -350,86 +350,86 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - cloud_firestore (2.5.3):
-    - Firebase/Firestore (= 8.6.0)
+    - Firebase/Firestore (= 8.7.0)
     - firebase_core
     - Flutter
-  - cloud_functions (3.0.3):
-    - Firebase/Functions (= 8.6.0)
+  - cloud_functions (3.0.4):
+    - Firebase/Functions (= 8.7.0)
     - firebase_core
     - Flutter
   - device_info (0.0.1):
     - Flutter
-  - FBAEMKit (11.1.0):
-    - FBAEMKit/AEM (= 11.1.0)
-  - FBAEMKit/AEM (11.1.0):
-    - FBSDKCoreKit_Basics (~> 11.1.0)
-  - FBSDKCoreKit (11.1.0):
-    - FBSDKCoreKit/Core (= 11.1.0)
-  - FBSDKCoreKit/Core (11.1.0):
-    - FBAEMKit (~> 11.1.0)
-    - FBSDKCoreKit_Basics (~> 11.1.0)
-  - FBSDKCoreKit_Basics (11.1.0):
-    - FBSDKCoreKit_Basics/Basics (= 11.1.0)
-  - FBSDKCoreKit_Basics/Basics (11.1.0)
-  - FBSDKLoginKit (11.1.0):
-    - FBSDKLoginKit/Login (= 11.1.0)
-  - FBSDKLoginKit/Login (11.1.0):
-    - FBSDKCoreKit (~> 11.1.0)
-    - FBSDKCoreKit_Basics (~> 11.1.0)
-  - Firebase/Auth (8.6.0):
+  - FBAEMKit (11.2.1):
+    - FBAEMKit/AEM (= 11.2.1)
+  - FBAEMKit/AEM (11.2.1):
+    - FBSDKCoreKit_Basics (~> 11.2.1)
+  - FBSDKCoreKit (11.2.1):
+    - FBSDKCoreKit/Core (= 11.2.1)
+  - FBSDKCoreKit/Core (11.2.1):
+    - FBAEMKit (~> 11.2.1)
+    - FBSDKCoreKit_Basics (~> 11.2.1)
+  - FBSDKCoreKit_Basics (11.2.1):
+    - FBSDKCoreKit_Basics/Basics (= 11.2.1)
+  - FBSDKCoreKit_Basics/Basics (11.2.1)
+  - FBSDKLoginKit (11.2.1):
+    - FBSDKLoginKit/Login (= 11.2.1)
+  - FBSDKLoginKit/Login (11.2.1):
+    - FBSDKCoreKit (~> 11.2.1)
+    - FBSDKCoreKit_Basics (~> 11.2.1)
+  - Firebase/Auth (8.7.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 8.6.0)
-  - Firebase/CoreOnly (8.6.0):
-    - FirebaseCore (= 8.6.0)
-  - Firebase/Crashlytics (8.6.0):
+    - FirebaseAuth (~> 8.7.0)
+  - Firebase/CoreOnly (8.7.0):
+    - FirebaseCore (= 8.7.0)
+  - Firebase/Crashlytics (8.7.0):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 8.6.0)
-  - Firebase/Firestore (8.6.0):
+    - FirebaseCrashlytics (~> 8.7.0)
+  - Firebase/Firestore (8.7.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (~> 8.6.0)
-  - Firebase/Functions (8.6.0):
+    - FirebaseFirestore (~> 8.7.0)
+  - Firebase/Functions (8.7.0):
     - Firebase/CoreOnly
-    - FirebaseFunctions (~> 8.6.0)
-  - Firebase/Storage (8.6.0):
+    - FirebaseFunctions (~> 8.7.0)
+  - Firebase/Storage (8.7.0):
     - Firebase/CoreOnly
-    - FirebaseStorage (~> 8.6.0)
-  - firebase_auth (3.1.1):
-    - Firebase/Auth (= 8.6.0)
+    - FirebaseStorage (~> 8.7.0)
+  - firebase_auth (3.1.3):
+    - Firebase/Auth (= 8.7.0)
     - firebase_core
     - Flutter
-  - firebase_core (1.6.0):
-    - Firebase/CoreOnly (= 8.6.0)
+  - firebase_core (1.7.0):
+    - Firebase/CoreOnly (= 8.7.0)
     - Flutter
-  - firebase_crashlytics (2.2.1):
-    - Firebase/Crashlytics (= 8.6.0)
+  - firebase_crashlytics (2.2.3):
+    - Firebase/Crashlytics (= 8.7.0)
     - firebase_core
     - Flutter
-  - firebase_storage (10.0.3):
-    - Firebase/Storage (= 8.6.0)
+  - firebase_storage (10.0.5):
+    - Firebase/Storage (= 8.7.0)
     - firebase_core
     - Flutter
-  - FirebaseAuth (8.6.0):
+  - FirebaseAuth (8.7.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
     - GoogleUtilities/Environment (~> 7.4)
     - GTMSessionFetcher/Core (~> 1.5)
-  - FirebaseCore (8.6.0):
+  - FirebaseCore (8.7.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.7.0):
+  - FirebaseCoreDiagnostics (8.8.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
-  - FirebaseCrashlytics (8.6.0):
+  - FirebaseCrashlytics (8.7.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
     - GoogleDataTransport (~> 9.0)
     - GoogleUtilities/Environment (~> 7.4)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseFirestore (8.6.0):
+  - FirebaseFirestore (8.7.0):
     - abseil/algorithm (= 0.20200225.0)
     - abseil/base (= 0.20200225.0)
     - abseil/container/flat_hash_map (= 0.20200225.0)
@@ -442,23 +442,23 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30908.0)
-  - FirebaseFunctions (8.6.0):
+  - FirebaseFunctions (8.7.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
-  - FirebaseInstallations (8.7.0):
+  - FirebaseInstallations (8.8.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseStorage (8.6.0):
+  - FirebaseStorage (8.7.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
   - Flutter (1.0.0)
   - flutter_email_sender (0.0.1):
     - Flutter
-  - flutter_facebook_auth (2.0.0):
-    - FBSDKCoreKit (~> 11.1.0)
-    - FBSDKLoginKit (~> 11.1.0)
+  - flutter_facebook_auth (3.5.1):
+    - FBSDKCoreKit (~> 11.2.0)
+    - FBSDKLoginKit (~> 11.2.0)
     - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -629,31 +629,31 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  cloud_firestore: bb4fcf1d62a2bf48586fad7a7e9612f20a719cda
-  cloud_functions: eb40a5d5eed6baa51d163b7d0b06d2679ba4aac6
+  cloud_firestore: a09fdd53707eadea99f93ca5ad8e95e4c1ab1108
+  cloud_functions: 63c8f00dc59eb3c6defe188a29e08a0520133a8c
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
-  FBAEMKit: 5c8a8d08e5b2c79628490784883e0fcc75b12615
-  FBSDKCoreKit: 7ccb8b4bb2b5ee2ad94327b774dc23f03509675d
-  FBSDKCoreKit_Basics: 8f978bce195845f609b0ec6b425949d0d24f525b
-  FBSDKLoginKit: d65eb587a9eaa89295338fb0bb3b358bde0b7ae4
-  Firebase: 21ac9f28b09a8bdfc005f34c984fca84e7e8786d
-  firebase_auth: a5da789c2876fda3ad7407bd2828e502dfeebc42
-  firebase_core: c21ac09a8d23afd3594b56ed786bad12e5266bba
-  firebase_crashlytics: b0581024be6112af8821de61e5a37fdb292373f0
-  firebase_storage: 75fc62b16cfbb268ea4e90729be5729e3dc38b1e
-  FirebaseAuth: 223adeeb2262b417532e89bf06a960e3a0a1e9e4
-  FirebaseCore: 620b677f70f5470a8e59cb77f3ddc666f6f09785
-  FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
-  FirebaseCrashlytics: 58f8ecea7c799c61c50e8111d2e438424a8a1d2e
-  FirebaseFirestore: 7b8bd72aff4d3ad91498343e81fdbaa994ce8abe
-  FirebaseFunctions: 7639390ac39a914ab7a137fd162956b99cba59a7
-  FirebaseInstallations: ede6fb72bb6337914e5888b399271259d0c4910c
-  FirebaseStorage: 2765944230981e63f8bd2938d9d5819158b7c34c
+  FBAEMKit: 5de0a7aaa854eec69bb5be20795952a63d38a5f6
+  FBSDKCoreKit: bf655f808b040ed66a72b9922911b39d703e64f4
+  FBSDKCoreKit_Basics: 73ebe3a27eb688ac5b5aa7e99f68992993042115
+  FBSDKLoginKit: 2e76831ef08d356b8f9150ea51cce865074ea304
+  Firebase: bc9325d5ee2041524bac78a5213d0e530c651309
+  firebase_auth: 25f34550b0023cbc3824731240608cd0aa515ca2
+  firebase_core: f5ac1f2726a2bd0468cea0161eddeea3d83d7e3e
+  firebase_crashlytics: 16f2d46200fab0b7085912fd473f77c06b3c69f7
+  firebase_storage: d4ced699e5106374a16961d8f2028a0ed34b748d
+  FirebaseAuth: 2e7d029977648c67a5d51a263d4cbab76d34cf12
+  FirebaseCore: f4804c1d3f4bbbefc88904d15653038f2c99ddf7
+  FirebaseCoreDiagnostics: fe77f42da6329d6d83d21fd9d621a6b704413bfc
+  FirebaseCrashlytics: 6fac03d1eef054833b71c929c93ab95c12989728
+  FirebaseFirestore: e722ba956610c45d368d9787689e2aa41b809e68
+  FirebaseFunctions: 9b78e79a3de4ee00ca1af7fd8c5fd7ed76fbf702
+  FirebaseInstallations: 2563cb18a723ef9c6ef18318a49519b75dce613c
+  FirebaseStorage: 2e6e58fe31fb0061fdce3f156d0ebc964e9de6ba
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_email_sender: 02d7443217d8c41483223627972bfdc09f74276b
-  flutter_facebook_auth: 528d51ea1324741b366fa87fa5dfd41016422364
+  flutter_facebook_auth: 870a465b1afff3ace7a592bd44665d921991726c
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  google_sign_in: de494e5e993986afae63e22a32441e30c35c9823
+  google_sign_in: c5cecea71f3be43282263550556e311c4cc03582
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 8de2a97a17e15b6b98e38e8770e2d129a57c0040

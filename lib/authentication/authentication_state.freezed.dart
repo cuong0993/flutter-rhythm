@@ -132,7 +132,9 @@ class _$AuthenticationStateLoading implements AuthenticationStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is AuthenticationStateLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AuthenticationStateLoading);
   }
 
   @override
@@ -249,7 +251,8 @@ class _$AuthenticationStateAuthenticated
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AuthenticationStateAuthenticated);
+        (other.runtimeType == runtimeType &&
+            other is AuthenticationStateAuthenticated);
   }
 
   @override
@@ -367,7 +370,8 @@ class _$AuthenticationStateUnauthenticated
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AuthenticationStateUnauthenticated);
+        (other.runtimeType == runtimeType &&
+            other is AuthenticationStateUnauthenticated);
   }
 
   @override

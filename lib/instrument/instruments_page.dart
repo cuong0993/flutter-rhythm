@@ -36,8 +36,8 @@ class InstrumentsPage extends ConsumerWidget {
                   );
                 },
               ),
-          loading: () => const LoadingWidget(),
-          error: (_, __) => const LoadingWidget()),
+          loading: (_) => const LoadingWidget(),
+          error: (_, __, ___) => const LoadingWidget()),
     );
   }
 }

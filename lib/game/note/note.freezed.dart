@@ -123,19 +123,15 @@ class _$_Note implements _Note {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Note &&
-            (identical(other.note, note) ||
-                const DeepCollectionEquality().equals(other.note, note)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Note &&
+            (identical(other.note, note) || other.note == note) &&
             (identical(other.startTick, startTick) ||
-                const DeepCollectionEquality()
-                    .equals(other.startTick, startTick)));
+                other.startTick == startTick));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(note) ^
-      const DeepCollectionEquality().hash(startTick);
+  int get hashCode => Object.hash(runtimeType, note, startTick);
 
   @JsonKey(ignore: true)
   @override
@@ -147,9 +143,9 @@ abstract class _Note implements Note {
   factory _Note({required int note, required int startTick}) = _$_Note;
 
   @override
-  int get note => throw _privateConstructorUsedError;
+  int get note;
   @override
-  int get startTick => throw _privateConstructorUsedError;
+  int get startTick;
   @override
   @JsonKey(ignore: true)
   _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;

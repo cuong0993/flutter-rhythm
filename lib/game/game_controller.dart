@@ -77,7 +77,7 @@ class GameController extends StateNotifier<GameState> {
       bpm = song.bpm;
     }
     final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
-    final tick2Second = tickToSecond(midiFile.header.ticksPerBeat, bpm);
+    final tick2Second = tickToSecond(midiFile.header.ticksPerBeat!, bpm);
     final speedDpsPerTick = unitDurationHeight / _unitDuration;
     _speedDpsPerSecond = speedDpsPerTick / tick2Second;
     final duration =

@@ -4,7 +4,7 @@ name: Release
     tags:
       - '*'
 env:
-  flutter_version: 2.5.1
+  flutter_version: 2.5.2
 jobs:
   build:
     name: Build

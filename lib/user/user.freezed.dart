@@ -44,7 +44,7 @@ class _$UserTearOff {
     );
   }
 
-  User fromJson(Map<String, Object> json) {
+  User fromJson(Map<String, Object?> json) {
     return User.fromJson(json);
   }
 }
@@ -270,45 +270,28 @@ class _$_User implements _User {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _User &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other.runtimeType == runtimeType &&
+            other is _User &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.playedNotes, playedNotes) ||
-                const DeepCollectionEquality()
-                    .equals(other.playedNotes, playedNotes)) &&
-            (identical(other.stars, stars) ||
-                const DeepCollectionEquality().equals(other.stars, stars)) &&
+                other.playedNotes == playedNotes) &&
+            (identical(other.stars, stars) || other.stars == stars) &&
             (identical(other.playedTime, playedTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.playedTime, playedTime)) &&
+                other.playedTime == playedTime) &&
             (identical(other.instrumentId, instrumentId) ||
-                const DeepCollectionEquality()
-                    .equals(other.instrumentId, instrumentId)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+                other.instrumentId == instrumentId) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.photoUrl, photoUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.photoUrl, photoUrl)) &&
+                other.photoUrl == photoUrl) &&
             (identical(other.anonymous, anonymous) ||
-                const DeepCollectionEquality()
-                    .equals(other.anonymous, anonymous)) &&
+                other.anonymous == anonymous) &&
             (identical(other.creationTime, creationTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.creationTime, creationTime)));
+                other.creationTime == creationTime));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(playedNotes) ^
-      const DeepCollectionEquality().hash(stars) ^
-      const DeepCollectionEquality().hash(playedTime) ^
-      const DeepCollectionEquality().hash(instrumentId) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(photoUrl) ^
-      const DeepCollectionEquality().hash(anonymous) ^
-      const DeepCollectionEquality().hash(creationTime);
+  int get hashCode => Object.hash(runtimeType, id, playedNotes, stars,
+      playedTime, instrumentId, name, photoUrl, anonymous, creationTime);
 
   @JsonKey(ignore: true)
   @override
@@ -336,24 +319,24 @@ abstract class _User implements User {
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  int get playedNotes => throw _privateConstructorUsedError;
+  int get playedNotes;
   @override
-  int get stars => throw _privateConstructorUsedError;
+  int get stars;
   @override
-  Duration get playedTime => throw _privateConstructorUsedError;
+  Duration get playedTime;
   @override
-  String get instrumentId => throw _privateConstructorUsedError;
+  String get instrumentId;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get photoUrl => throw _privateConstructorUsedError;
+  String get photoUrl;
   @override
-  bool get anonymous => throw _privateConstructorUsedError;
+  bool get anonymous;
   @override
   @TimestampConverter()
-  DateTime get creationTime => throw _privateConstructorUsedError;
+  DateTime get creationTime;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

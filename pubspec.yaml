@@ -8,43 +8,44 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  auto_route: null
-  cloud_firestore: null
-  cloud_functions: null
-  collection: null
+  auto_route: any
+  cloud_firestore: any
+  cloud_functions: any
+  collection: any
   dart_midi:
     git:
-      url: 'https://github.com/cuong0993/dart_midi'
-  device_info: null
-  firebase_auth: null
-  firebase_core: null
-  firebase_crashlytics: null
-  firebase_storage: null
-  flame: null
-  flutter_cache_manager: null
-  flutter_email_sender: null
-  flutter_facebook_auth: null
-  flutter_hooks: null
+      url: 'https://github.com/feelfreelinux/dart_midi'
+  device_info: any
+  firebase_auth: any
+  firebase_core: any
+  firebase_crashlytics: any
+  firebase_storage: any
+  flame: any
+  flutter_cache_manager: any
+  flutter_email_sender: any
+  flutter_facebook_auth: any
+  flutter_hooks: any
   flutter_riverpod: ^1.0.0-dev.6
-  freezed_annotation: null
-  google_sign_in: null
+  freezed_annotation: any
+  google_sign_in: any
   hooks_riverpod: ^1.0.0-dev.6
-  in_app_review: null
-  intl: null
-  logging: null
-  package_info: null
-  shared_preferences: null
-  sprintf: null
+  in_app_review: any
+  intl: any
+  json_annotation: any
+  logging: any
+  package_info: any
+  shared_preferences: any
+  sprintf: any
 
 dev_dependencies:
-  auto_route_generator: null
-  build_runner: null
-  flutter_launcher_icons: null
-  flutter_flavorizr: null
-  flutter_lints: null
-  flutter_native_splash: null
-  freezed: null
-  json_serializable: null
+  auto_route_generator: any
+  build_runner: any
+  flutter_launcher_icons: any
+  flutter_flavorizr: any
+  flutter_lints: any
+  flutter_native_splash: any
+  freezed: any
+  json_serializable: any
 
 flutter_icons:
   image_path_android: assets/blank.png

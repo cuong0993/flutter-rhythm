@@ -1,99 +1,106 @@
+// **************************************************************************
+// AutoRouteGenerator
+// **************************************************************************
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/material.dart' as _i2;
+import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
 
-import '../game/game_page.dart' as _i6;
-import '../game_config/game_config_page.dart' as _i5;
-import '../home/home_page.dart' as _i4;
-import '../instrument/instruments_page.dart' as _i10;
-import '../locale/locale_page.dart' as _i8;
-import '../setting/settings_page.dart' as _i11;
+import '../game/game_page.dart' as _i4;
+import '../game_config/game_config_page.dart' as _i3;
+import '../home/home_page.dart' as _i2;
+import '../instrument/instruments_page.dart' as _i8;
+import '../locale/locale_page.dart' as _i6;
+import '../setting/settings_page.dart' as _i9;
 import '../songs/song.dart' as _i12;
-import '../splash_page.dart' as _i3;
-import '../theme/theme_page.dart' as _i9;
-import '../user/user_page.dart' as _i7;
+import '../splash_page.dart' as _i1;
+import '../theme/theme_page.dart' as _i7;
+import '../user/user_page.dart' as _i5;
 
-class RootRouter extends _i1.RootStackRouter {
-  RootRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+class RootRouter extends _i10.RootStackRouter {
+  RootRouter([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i1.PageFactory> pagesMap = {
+  final Map<String, _i10.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.SplashPage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.SplashPage());
     },
     HomeRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.HomePage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i2.HomePage());
     },
     GameConfigRoute.name: (routeData) {
       final args = routeData.argsAs<GameConfigRouteArgs>();
-      return _i1.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i5.GameConfigPage(key: args.key, song: args.song));
+          child: _i3.GameConfigPage(key: args.key, song: args.song));
     },
     GameRoute.name: (routeData) {
       final args = routeData.argsAs<GameRouteArgs>();
-      return _i1.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i6.GamePage(key: args.key, arguments: args.arguments));
+          child: _i4.GamePage(key: args.key, arguments: args.arguments));
     },
     UserRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.UserPage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i5.UserPage());
     },
     LocaleRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.LocalePage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.LocalePage());
     },
     ThemeRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i9.ThemePage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i7.ThemePage());
     },
     InstrumentsRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i10.InstrumentsPage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i8.InstrumentsPage());
     },
     SettingsRoute.name: (routeData) {
-      return _i1.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i11.SettingsPage());
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i9.SettingsPage());
     }
   };
 
   @override
-  List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(SplashRoute.name, path: '/'),
-        _i1.RouteConfig(HomeRoute.name, path: '/home-page'),
-        _i1.RouteConfig(GameConfigRoute.name, path: '/game-config-page'),
-        _i1.RouteConfig(GameRoute.name, path: '/game-page'),
-        _i1.RouteConfig(UserRoute.name, path: '/user-page'),
-        _i1.RouteConfig(LocaleRoute.name, path: '/locale-page'),
-        _i1.RouteConfig(ThemeRoute.name, path: '/theme-page'),
-        _i1.RouteConfig(InstrumentsRoute.name, path: '/instruments-page'),
-        _i1.RouteConfig(SettingsRoute.name, path: '/settings-page')
+  List<_i10.RouteConfig> get routes => [
+        _i10.RouteConfig(SplashRoute.name, path: '/'),
+        _i10.RouteConfig(HomeRoute.name, path: '/home-page'),
+        _i10.RouteConfig(GameConfigRoute.name, path: '/game-config-page'),
+        _i10.RouteConfig(GameRoute.name, path: '/game-page'),
+        _i10.RouteConfig(UserRoute.name, path: '/user-page'),
+        _i10.RouteConfig(LocaleRoute.name, path: '/locale-page'),
+        _i10.RouteConfig(ThemeRoute.name, path: '/theme-page'),
+        _i10.RouteConfig(InstrumentsRoute.name, path: '/instruments-page'),
+        _i10.RouteConfig(SettingsRoute.name, path: '/settings-page')
       ];
 }
 
-class SplashRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i1.SplashPage]
+class SplashRoute extends _i10.PageRouteInfo<void> {
   const SplashRoute() : super(name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
-class HomeRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i2.HomePage]
+class HomeRoute extends _i10.PageRouteInfo<void> {
   const HomeRoute() : super(name, path: '/home-page');
 
   static const String name = 'HomeRoute';
 }
 
-class GameConfigRoute extends _i1.PageRouteInfo<GameConfigRouteArgs> {
-  GameConfigRoute({_i2.Key? key, required _i12.Song song})
+/// generated route for [_i3.GameConfigPage]
+class GameConfigRoute extends _i10.PageRouteInfo<GameConfigRouteArgs> {
+  GameConfigRoute({_i11.Key? key, required _i12.Song song})
       : super(name,
             path: '/game-config-page',
             args: GameConfigRouteArgs(key: key, song: song));
@@ -104,13 +111,14 @@ class GameConfigRoute extends _i1.PageRouteInfo<GameConfigRouteArgs> {
 class GameConfigRouteArgs {
   const GameConfigRouteArgs({this.key, required this.song});
 
-  final _i2.Key? key;
+  final _i11.Key? key;
 
   final _i12.Song song;
 }
 
-class GameRoute extends _i1.PageRouteInfo<GameRouteArgs> {
-  GameRoute({_i2.Key? key, required Map<String, dynamic> arguments})
+/// generated route for [_i4.GamePage]
+class GameRoute extends _i10.PageRouteInfo<GameRouteArgs> {
+  GameRoute({_i11.Key? key, required Map<String, dynamic> arguments})
       : super(name,
             path: '/game-page',
             args: GameRouteArgs(key: key, arguments: arguments));
@@ -121,36 +129,41 @@ class GameRoute extends _i1.PageRouteInfo<GameRouteArgs> {
 class GameRouteArgs {
   const GameRouteArgs({this.key, required this.arguments});
 
-  final _i2.Key? key;
+  final _i11.Key? key;
 
   final Map<String, dynamic> arguments;
 }
 
-class UserRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i5.UserPage]
+class UserRoute extends _i10.PageRouteInfo<void> {
   const UserRoute() : super(name, path: '/user-page');
 
   static const String name = 'UserRoute';
 }
 
-class LocaleRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i6.LocalePage]
+class LocaleRoute extends _i10.PageRouteInfo<void> {
   const LocaleRoute() : super(name, path: '/locale-page');
 
   static const String name = 'LocaleRoute';
 }
 
-class ThemeRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i7.ThemePage]
+class ThemeRoute extends _i10.PageRouteInfo<void> {
   const ThemeRoute() : super(name, path: '/theme-page');
 
   static const String name = 'ThemeRoute';
 }
 
-class InstrumentsRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i8.InstrumentsPage]
+class InstrumentsRoute extends _i10.PageRouteInfo<void> {
   const InstrumentsRoute() : super(name, path: '/instruments-page');
 
   static const String name = 'InstrumentsRoute';
 }
 
-class SettingsRoute extends _i1.PageRouteInfo<void> {
+/// generated route for [_i9.SettingsPage]
+class SettingsRoute extends _i10.PageRouteInfo<void> {
   const SettingsRoute() : super(name, path: '/settings-page');
 
   static const String name = 'SettingsRoute';
