@@ -18,7 +18,9 @@ class SplashPage extends ConsumerWidget {
       }
     });
     return const Scaffold(
-        body: Center(
-            child: Image(image: AssetImage('assets/images/img_app_icon.png'))));
+      body: Center(
+        child: Image(image: AssetImage('assets/images/img_app_icon.png')),
+      ),
+    );
   }
 }

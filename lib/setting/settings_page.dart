@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_review/in_app_review.dart';
@@ -18,34 +19,42 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-            title: Text(L10n.of(context)!.txt_settings,
-                style: Theme.of(context).appBarTheme.toolbarTextStyle)),
+          title: Text(
+            L10n.of(context)!.txt_settings,
+            style: Theme.of(context).appBarTheme.toolbarTextStyle,
+          ),
+        ),
         body: ListView(
           children: [
             ListTile(
-                title: Text(
-                  L10n.of(context)!.txt_language,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                subtitle: Text(
-                    localeStrings[
-                        Localizations.localeOf(context).languageCode]!,
-                    style: Theme.of(context).textTheme.subtitle1),
-                onTap: () => AutoRouter.of(context).push(const LocaleRoute())),
+              title: Text(
+                L10n.of(context)!.txt_language,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              subtitle: Text(
+                localeStrings[Localizations.localeOf(context).languageCode]!,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+              onTap: () => AutoRouter.of(context).push(const LocaleRoute()),
+            ),
             ListTile(
-                title: Text(
-                  L10n.of(context)!.txt_theme,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                subtitle: Consumer(builder: (context, ref, child) {
+              title: Text(
+                L10n.of(context)!.txt_theme,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              subtitle: Consumer(
+                builder: (context, ref, child) {
                   final themeMode = ref.watch(themeModeProvider);
-                  return Text(getThemeName(context, themeMode),
-                      style: Theme.of(context).textTheme.subtitle1);
-                }),
-                onTap: () => AutoRouter.of(context).push(const ThemeRoute())),
+                  return Text(
+                    getThemeName(context, themeMode),
+                    style: Theme.of(context).textTheme.subtitle1,
+                  );
+                },
+              ),
+              onTap: () => AutoRouter.of(context).push(const ThemeRoute()),
+            ),
             ListTile(
               title: Text(
                 L10n.of(context)!.txt_button_feedback,
@@ -89,18 +98,19 @@ class SettingsPage extends StatelessWidget {
               },
             ),
             ListTile(
-                title: Text(
-                  L10n.of(context)!.txt_about_rate,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                onTap: () async {
-                  final _inAppReview = InAppReview.instance;
-                  await _inAppReview.openStoreListing(
-                    appStoreId: '_appStoreId',
-                    microsoftStoreId: '_microsoftStoreId',
-                  );
-                }),
+              title: Text(
+                L10n.of(context)!.txt_about_rate,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              onTap: () async {
+                final _inAppReview = InAppReview.instance;
+                await _inAppReview.openStoreListing(
+                  appStoreId: '_appStoreId',
+                  microsoftStoreId: '_microsoftStoreId',
+                );
+              },
+            ),
           ],
-        ));
-  }
+        ),
+      );
 }

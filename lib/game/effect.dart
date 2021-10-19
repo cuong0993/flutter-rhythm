@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class Effect {
-  bool isDone() {
-    return false;
-  }
+  bool isDone() => false;
 
   void update(double delta) {}
 

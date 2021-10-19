@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state_notifier/state_notifier.dart';
 
 import 'song.dart';
 import 'songs_repository_impl.dart';
@@ -17,10 +16,10 @@ final isLoadingNextPageByTagProvider =
 final isLoadedByTagsProvider =
     StateProvider.family<bool, String>((_, __) => false);
 
-final songsByTagProvider = StateNotifierProvider.family<SongsController,
-    AsyncValue<List<Song>>, String>((ref, tag) {
-  return SongsController(ref.read, tag);
-});
+final songsByTagProvider = StateNotifierProvider.family<
+    SongsController,
+    AsyncValue<List<Song>>,
+    String>((ref, tag) => SongsController(ref.read, tag));
 
 class SongsController extends StateNotifier<AsyncValue<List<Song>>> {
   SongsController(this._read, this._tag) : super(const AsyncValue.loading()) {
@@ -38,13 +37,15 @@ class SongsController extends StateNotifier<AsyncValue<List<Song>>> {
     if (!isLoading && !isLoaded) {
       _read(isLoadingNextPageByTagProvider(_tag)).state = true;
       final titleStart = state.when(
-          data: (songs) => songs.isEmpty ? '' : songs.last.title,
-          loading: (_) => '',
-          error: (_, __, ___) => '');
+        data: (songs) => songs.isEmpty ? '' : songs.last.title,
+        loading: (_) => '',
+        error: (_, __, ___) => '',
+      );
       final loadedSongs = state.when(
-          data: (songs) => songs,
-          loading: (_) => <Song>[],
-          error: (_, __, ___) => <Song>[]);
+        data: (songs) => songs,
+        loading: (_) => <Song>[],
+        error: (_, __, ___) => <Song>[],
+      );
       final songs = await _read(songRepositoryProvider)
           .getSongsByTag(_tag, titleStart, 20);
       _read(isLoadingNextPageByTagProvider(_tag)).state = false;

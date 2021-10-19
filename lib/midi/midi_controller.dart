@@ -26,11 +26,12 @@ class MidiController extends StateNotifier<bool> {
     _soundPlayer.release();
     _maxNote = instrument.maxNote;
     _minNote = instrument.minNote;
-    Future.wait(instrument.soundPaths
-            .map((note, path) => MapEntry(note, _getFile(note, path)))
-            .values
-            .toList())
-        .then((_) async {
+    Future.wait(
+      instrument.soundPaths
+          .map((note, path) => MapEntry(note, _getFile(note, path)))
+          .values
+          .toList(),
+    ).then((_) async {
       await _soundPlayer.load(_soundPaths, instrument.baseNotes);
       state = true;
     });
@@ -42,7 +43,7 @@ class MidiController extends StateNotifier<bool> {
   }
 
   Future<void> playNote(int note) async {
-    var pitchNote = note.toInt();
+    var pitchNote = note;
     while (pitchNote > _maxNote) {
       pitchNote -= 12;
     }

@@ -7,9 +7,9 @@ import '../user/user_repository_impl.dart';
 import 'authentication_state.dart';
 
 final authenticationProvider =
-    StateNotifierProvider<AuthenticationController, AuthenticationState>((ref) {
-  return AuthenticationController(ref.read);
-});
+    StateNotifierProvider<AuthenticationController, AuthenticationState>(
+  (ref) => AuthenticationController(ref.read),
+);
 
 class AuthenticationController extends StateNotifier<AuthenticationState> {
   AuthenticationController(this._read) : super(AuthenticationState.loading()) {
@@ -20,7 +20,7 @@ class AuthenticationController extends StateNotifier<AuthenticationState> {
           await FirebaseAuth.instance.signInAnonymously();
         }
         state = AuthenticationState.authenticated();
-      } catch (_) {
+      } on FirebaseException catch (_) {
         state = AuthenticationState.unauthenticated();
       }
     });
@@ -48,7 +48,8 @@ class AuthenticationController extends StateNotifier<AuthenticationState> {
   Future signInWithFacebook() async {
     try {
       final loginResult = await _facebookLogin.login(
-          loginBehavior: LoginBehavior.nativeWithFallback);
+        loginBehavior: LoginBehavior.nativeWithFallback,
+      );
       final credential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);

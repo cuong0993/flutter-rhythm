@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,29 +16,35 @@ class InstrumentsPage extends ConsumerWidget {
     final selectedInstrumentId = ref.watch(selectedInstrumentIdProvider).state;
     return Scaffold(
       appBar: AppBar(
-          title: Text(L10n.of(context)!.txt_instrument_title_instruments,
-              style: Theme.of(context).appBarTheme.toolbarTextStyle)),
+        title: Text(
+          L10n.of(context)!.txt_instrument_title_instruments,
+          style: Theme.of(context).appBarTheme.toolbarTextStyle,
+        ),
+      ),
       body: instruments.when(
-          data: (instruments) => ListView.builder(
-                itemCount: instruments.length,
-                itemBuilder: (context, index) {
-                  final instrument = instruments[index];
-                  return RadioListTile<String>(
-                    title: Text(getInstrumentName(context, instrument.id),
-                        style: Theme.of(context).textTheme.headline6),
-                    value: instrument.id,
-                    groupValue: selectedInstrumentId,
-                    onChanged: (value) {
-                      ref
-                          .watch(instrumentRepositoryProvider)
-                          .changeInstrument(value!);
-                      ref.read(selectedInstrumentIdProvider).state = value;
-                    },
-                  );
-                },
+        data: (instruments) => ListView.builder(
+          itemCount: instruments.length,
+          itemBuilder: (context, index) {
+            final instrument = instruments[index];
+            return RadioListTile<String>(
+              title: Text(
+                getInstrumentName(context, instrument.id),
+                style: Theme.of(context).textTheme.headline6,
               ),
-          loading: (_) => const LoadingWidget(),
-          error: (_, __, ___) => const LoadingWidget()),
+              value: instrument.id,
+              groupValue: selectedInstrumentId,
+              onChanged: (value) {
+                ref
+                    .watch(instrumentRepositoryProvider)
+                    .changeInstrument(value!);
+                ref.read(selectedInstrumentIdProvider).state = value;
+              },
+            );
+          },
+        ),
+        loading: (_) => const LoadingWidget(),
+        error: (_, __, ___) => const LoadingWidget(),
+      ),
     );
   }
 }

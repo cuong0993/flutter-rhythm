@@ -12,30 +12,46 @@ import 'preferences.dart';
 class LogProviderObserver extends ProviderObserver {
   @override
   void didAddProvider(
-      ProviderBase provider, Object? value, ProviderContainer container) {
-    Logger.root.info('''Add
+    ProviderBase provider,
+    Object? value,
+    ProviderContainer container,
+  ) {
+    Logger.root.info(
+      '''
+Add
 {
   "provider": "${provider.name ?? provider.runtimeType}",
   "value": "$value"
-}''');
+}''',
+    );
   }
 
   @override
-  void didUpdateProvider(ProviderBase provider, Object? previousValue,
-      Object? newValue, ProviderContainer container) {
-    Logger.root.info('''Update
+  void didUpdateProvider(
+    ProviderBase provider,
+    Object? previousValue,
+    Object? newValue,
+    ProviderContainer container,
+  ) {
+    Logger.root.info(
+      '''
+Update
 {
   "provider": "${provider.name ?? provider.runtimeType}",
   "newValue": "$newValue"
-}''');
+}''',
+    );
   }
 
   @override
   void didDisposeProvider(ProviderBase provider, ProviderContainer containers) {
-    Logger.root.info('''Dispose
+    Logger.root.info(
+      '''
+Dispose
 {
   "provider": "${provider.name ?? provider.runtimeType}"
-}''');
+}''',
+    );
   }
 }
 

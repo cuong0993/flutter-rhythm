@@ -21,7 +21,8 @@ void main() {
       final temp = file.uri.toString().split('/');
       final genre = temp[temp.length - 2];
       Logger.root.info(
-          '*************************** Checking $id ***************************');
+        '*************************** Checking $id ***************************',
+      );
       final artist = id.split('-').first;
       final title = id.replaceAll('$artist-', '').replaceAll('_', ' ');
       final artist1 = artist.replaceAll('_', ' ');
@@ -45,19 +46,21 @@ void main() {
       Logger.root.info('Select largest tempo ${song['bpm']}');
       final tileChunks = createTileChunks(midiFile);
       final groupByDurationToPrevious = Map<int, List<TileChunk>>.fromEntries(
-          groupBy<TileChunk, int>(
-                  tileChunks, (tileChunk) => tileChunk.durationToPrevious)
-              .entries
-              .toList()
-            ..sort((e1, e2) => e1.key.compareTo(e2.key)));
+        groupBy<TileChunk, int>(
+          tileChunks,
+          (tileChunk) => tileChunk.durationToPrevious,
+        ).entries.toList()
+          ..sort((e1, e2) => e1.key.compareTo(e2.key)),
+      );
       final countDurationToPrevious = {
         for (var e in groupByDurationToPrevious.keys)
           e: groupByDurationToPrevious[e]!.length
       };
 
       final sortCountDurationToPrevious = Map.fromEntries(
-          countDurationToPrevious.entries.toList()
-            ..sort((e1, e2) => e1.value.compareTo(e2.value)));
+        countDurationToPrevious.entries.toList()
+          ..sort((e1, e2) => e1.value.compareTo(e2.value)),
+      );
       final mostCountDurationToPrevious = sortCountDurationToPrevious.keys.last;
 
       for (final it in groupByDurationToPrevious.entries) {

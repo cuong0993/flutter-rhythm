@@ -12,12 +12,11 @@ final instrumentRepositoryProvider =
 
 class InstrumentsRepositoryImpl implements InstrumentsRepository {
   @override
-  Future<List<Instrument>> instruments() async {
-    return (await FirebaseFirestore.instance.collection('instruments').get())
-        .docs
-        .map((e) => Instrument.fromJson(e.data()))
-        .toList();
-  }
+  Future<List<Instrument>> instruments() async =>
+      (await FirebaseFirestore.instance.collection('instruments').get())
+          .docs
+          .map((e) => Instrument.fromJson(e.data()))
+          .toList();
 
   @override
   void changeInstrument(String instrumentId) {

@@ -11,12 +11,14 @@ class CenterTextPaint extends TextPaint {
     TextDirection textDirection = TextDirection.ltr,
     double? lineHeight,
   }) : super(
-            config: TextPaintConfig(
-                fontSize: fontSize,
-                color: color,
-                fontFamily: fontFamily,
-                textDirection: textDirection,
-                lineHeight: lineHeight));
+          config: TextPaintConfig(
+            fontSize: fontSize,
+            color: color,
+            fontFamily: fontFamily,
+            textDirection: textDirection,
+            lineHeight: lineHeight,
+          ),
+        );
 
   @override
   void render(
@@ -27,9 +29,9 @@ class CenterTextPaint extends TextPaint {
   }) {
     final tp = toTextPainter(text);
     final translatedPosition =
-        anchor.translate(p, Vector2(tp.size.width, tp.size.height));
-    translatedPosition.x -= tp.size.width / 2;
-    translatedPosition.y -= tp.size.height / 2;
+        anchor.translate(p, Vector2(tp.size.width, tp.size.height))
+          ..x -= tp.size.width / 2
+          ..y -= tp.size.height / 2;
     tp.paint(canvas, translatedPosition.toOffset());
   }
 }

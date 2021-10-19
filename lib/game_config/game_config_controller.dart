@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'game_config_state.dart';
 
 final gameConfigStateProvider =
-    StateNotifierProvider<GameConfigController, GameConfigState>((ref) {
-  return GameConfigController();
-});
+    StateNotifierProvider<GameConfigController, GameConfigState>(
+  (ref) => GameConfigController(),
+);
 
 class GameConfigController extends StateNotifier<GameConfigState> {
   GameConfigController() : super(GameConfigState(difficulty: 1, speed: 1));

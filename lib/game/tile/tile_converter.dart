@@ -15,13 +15,12 @@ const tileWidth = 36.0;
 const tileHeight = tileWidth;
 const startVisibleY = 0;
 
-double tickToSecond(int resolution, int bpm) {
-  return minuteToSecond.toDouble() / (resolution * bpm);
-}
+double tickToSecond(int resolution, int bpm) =>
+    minuteToSecond.toDouble() / (resolution * bpm);
 
 List<TileChunk> createTileChunks(MidiFile midiFile) {
   final tileNotes = <Note>[];
-  final onsets = List<int>.filled(numberOfNotes, -1, growable: false);
+  final onsets = List<int>.filled(numberOfNotes, -1);
   for (final midiTrack in midiFile.tracks) {
     var totalTicks = 0;
     for (final midiEvent in midiTrack) {
@@ -44,15 +43,16 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
 
   var previousStartTick = 0;
   Map<int, List<Note>>.fromEntries(
-          groupBy<Note, int>(tileNotes, (note) => note.startTick)
-              .entries
-              .toList()
-            ..sort((e1, e2) => e1.key.compareTo(e2.key)))
-      .forEach((key, notes) {
-    tileChunks.add(TileChunk(
+    groupBy<Note, int>(tileNotes, (note) => note.startTick).entries.toList()
+      ..sort((e1, e2) => e1.key.compareTo(e2.key)),
+  ).forEach((key, notes) {
+    tileChunks.add(
+      TileChunk(
         notes: notes,
         durationToPrevious: notes[0].startTick - previousStartTick,
-        startTick: notes[0].startTick));
+        startTick: notes[0].startTick,
+      ),
+    );
     previousStartTick = notes[0].startTick;
   });
   return tileChunks;

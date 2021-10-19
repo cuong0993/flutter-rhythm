@@ -4,10 +4,6 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   auto_route: any
   cloud_firestore: any
   cloud_functions: any
@@ -21,28 +17,32 @@ dependencies:
   firebase_crashlytics: any
   firebase_storage: any
   flame: any
+  flutter:
+    sdk: flutter
   flutter_cache_manager: any
   flutter_email_sender: any
   flutter_facebook_auth: any
   flutter_hooks: any
-  flutter_riverpod: ^1.0.0-dev.6
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^1.0.0-dev.0
   freezed_annotation: any
   google_sign_in: any
-  hooks_riverpod: ^1.0.0-dev.6
+  hooks_riverpod: ^1.0.0-dev.0
   in_app_review: any
   intl: any
   json_annotation: any
   logging: any
   package_info: any
+  path_provider: any
   shared_preferences: any
   sprintf: any
 
 dev_dependencies:
   auto_route_generator: any
   build_runner: any
-  flutter_launcher_icons: any
   flutter_flavorizr: any
-  flutter_lints: any
+  flutter_launcher_icons: any
   flutter_native_splash: any
   freezed: any
   json_serializable: any

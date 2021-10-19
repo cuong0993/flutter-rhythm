@@ -20,17 +20,13 @@ class SharedUtility {
   static const preferenceLocaleName = 'LocaleName';
   static const preferenceThemeName = 'ThemeName';
 
-  String? getLocaleName() {
-    return pref.getString(preferenceLocaleName);
-  }
+  String? getLocaleName() => pref.getString(preferenceLocaleName);
 
   Future<void> setLocaleName(String localeName) async {
     await pref.setString(preferenceLocaleName, localeName);
   }
 
-  String? getThemeName() {
-    return pref.getString(preferenceThemeName);
-  }
+  String? getThemeName() => pref.getString(preferenceThemeName);
 
   Future<void> setThemeName(String themeName) async {
     await pref.setString(preferenceThemeName, themeName);

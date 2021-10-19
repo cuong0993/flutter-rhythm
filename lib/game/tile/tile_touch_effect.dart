@@ -101,22 +101,20 @@ const noteToName = {
 };
 
 class TileTouchEffect extends Effect {
-  final _textPaint = CenterTextPaint(fontSize: 24.0, color: primaryColor);
+  TileTouchEffect(Tile _tile)
+      : _centerX = positionsX[_tile.column] + _tile.width / 2.0,
+        _centerY = _tile.y + _tile.height / 2.0,
+        _text = noteToName[_tile.note]!;
+
+  final _textPaint = CenterTextPaint(color: primaryColor);
   var _time = 0.0;
   var _isDone = false;
   final double _centerX;
   final double _centerY;
   final String _text;
 
-  TileTouchEffect(Tile _tile)
-      : _centerX = positionsX[_tile.column] + _tile.width / 2.0,
-        _centerY = _tile.y + _tile.height / 2.0,
-        _text = noteToName[_tile.note]!;
-
   @override
-  bool isDone() {
-    return _isDone;
-  }
+  bool isDone() => _isDone;
 
   @override
   void update(double delta) {
@@ -128,7 +126,10 @@ class TileTouchEffect extends Effect {
 
   @override
   void render(Canvas canvas) {
-    _textPaint.render(canvas, _text,
-        Vector2(_centerX.toInt().toDouble(), _centerY.toInt().toDouble()));
+    _textPaint.render(
+      canvas,
+      _text,
+      Vector2(_centerX.toInt().toDouble(), _centerY.toInt().toDouble()),
+    );
   }
 }

@@ -40,13 +40,13 @@ class RootRouter extends _i10.RootStackRouter {
       final args = routeData.argsAs<GameConfigRouteArgs>();
       return _i10.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i3.GameConfigPage(key: args.key, song: args.song));
+          child: _i3.GameConfigPage(song: args.song, key: args.key));
     },
     GameRoute.name: (routeData) {
       final args = routeData.argsAs<GameRouteArgs>();
       return _i10.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i4.GamePage(key: args.key, arguments: args.arguments));
+          child: _i4.GamePage(arguments: args.arguments, key: args.key));
     },
     UserRoute.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
@@ -100,38 +100,38 @@ class HomeRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for [_i3.GameConfigPage]
 class GameConfigRoute extends _i10.PageRouteInfo<GameConfigRouteArgs> {
-  GameConfigRoute({_i11.Key? key, required _i12.Song song})
+  GameConfigRoute({required _i12.Song song, _i11.Key? key})
       : super(name,
             path: '/game-config-page',
-            args: GameConfigRouteArgs(key: key, song: song));
+            args: GameConfigRouteArgs(song: song, key: key));
 
   static const String name = 'GameConfigRoute';
 }
 
 class GameConfigRouteArgs {
-  const GameConfigRouteArgs({this.key, required this.song});
-
-  final _i11.Key? key;
+  const GameConfigRouteArgs({required this.song, this.key});
 
   final _i12.Song song;
+
+  final _i11.Key? key;
 }
 
 /// generated route for [_i4.GamePage]
 class GameRoute extends _i10.PageRouteInfo<GameRouteArgs> {
-  GameRoute({_i11.Key? key, required Map<String, dynamic> arguments})
+  GameRoute({required Map<String, dynamic> arguments, _i11.Key? key})
       : super(name,
             path: '/game-page',
-            args: GameRouteArgs(key: key, arguments: arguments));
+            args: GameRouteArgs(arguments: arguments, key: key));
 
   static const String name = 'GameRoute';
 }
 
 class GameRouteArgs {
-  const GameRouteArgs({this.key, required this.arguments});
-
-  final _i11.Key? key;
+  const GameRouteArgs({required this.arguments, this.key});
 
   final Map<String, dynamic> arguments;
+
+  final _i11.Key? key;
 }
 
 /// generated route for [_i5.UserPage]

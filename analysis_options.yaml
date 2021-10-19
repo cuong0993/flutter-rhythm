@@ -1,4 +1,4 @@
-include: package:flutter_lints/flutter.yaml
+include: all_lint_rules.yaml
 analyzer:
   errors:
     missing_required_param: error
@@ -14,48 +14,32 @@ analyzer:
     - '**/*.g.dart'
     - '**/*.gr.dart'
     - '**/*.freezed.dart'
+    - '**/*.config.dart'
 linter:
   rules:
-    always_declare_return_types: true
-    annotate_overrides: true
-    avoid_dynamic_calls: true
-    avoid_types_on_closure_parameters: true
-    avoid_void_async: true
-    avoid_web_libraries_in_flutter: true
-    await_only_futures: true
-    camel_case_types: true
-    cancel_subscriptions: true
-    close_sinks: true
-    constant_identifier_names: true
-    control_flow_in_finally: true
-    directives_ordering: true
-    empty_statements: true
-    file_names: true
-    hash_and_equals: true
-    implementation_imports: true
-    invariant_booleans: true
-    iterable_contains_unrelated_type: true
-    library_prefixes: true
-    list_remove_unrelated_type: true
-    literal_only_boolean_expressions: true
-    non_constant_identifier_names: true
-    one_member_abstracts: true
-    only_throw_errors: true
-    overridden_fields: true
-    package_api_docs: true
-    package_names: true
-    package_prefixed_library_names: true
-    prefer_const_constructors: true
-    prefer_const_literals_to_create_immutables: true
-    prefer_final_in_for_each: true
-    prefer_final_locals: true
-    prefer_mixin: true
-    prefer_relative_imports: true
-    sort_unnamed_constructors_first: true
-    test_types_in_equals: true
-    throw_in_finally: true
-    type_annotate_public_apis: true
-    unawaited_futures: true
-    unnecessary_brace_in_string_interps: true
-    unnecessary_getters_setters: true
-    unnecessary_statements: true
+
+    # too verbose
+    prefer_final_parameters: false
+
+    # Too verbose with little value, and this is taken care of by the Flutter devtool anyway.
+    diagnostic_describe_all_properties: false
+
+    # Conflicts with `prefer_single_quotes`
+    # Single quotes are easier to type and don't compromise on readability.
+    prefer_double_quotes: false
+
+    # This project doesn't use Flutter-style todos
+    flutter_style_todos: false
+
+    # Boring as it sometimes force a line of 81 characters to be split in two.
+    # As long as we try to respect that 80 characters limit, going slightly
+    # above is fine.
+    lines_longer_than_80_chars: false
+
+    # Conflicts with disabling `implicit-dynamic`
+    avoid_annotating_with_dynamic: false
+
+    # conflicts with `prefer_relative_imports`
+    always_use_package_imports: false
+
+    public_member_api_docs: false

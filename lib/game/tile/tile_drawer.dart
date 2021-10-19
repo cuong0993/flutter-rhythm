@@ -7,15 +7,20 @@ import '../colors.dart';
 import '../util.dart';
 import 'tile.dart';
 
-Sprite noteSprite = Sprite(Flame.images
-    .fromCache('${nearestDevicePixelRatioFolder}img_single_note.png'));
+Sprite noteSprite = Sprite(
+  Flame.images.fromCache('${nearestDevicePixelRatioFolder}img_single_note.png'),
+);
 
 extension TileDrawer on Tile {
   void render(Canvas canvas) {
-    noteSprite.render(canvas,
-        position: Vector2(
-            positionsX[column].toInt().toDouble(), y.toInt().toDouble()),
-        size: Vector2(width.toInt().toDouble(), height.toInt().toDouble()),
-        overridePaint: paint);
+    noteSprite.render(
+      canvas,
+      position: Vector2(
+        positionsX[column].toInt().toDouble(),
+        y.toInt().toDouble(),
+      ),
+      size: Vector2(width.toInt().toDouble(), height.toInt().toDouble()),
+      overridePaint: paint,
+    );
   }
 }

@@ -28,8 +28,12 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
   late Sprite _staffSprite;
   late Sprite _clefSprite;
 
-  Future<void> start(List<Tile> tiles, double speedPixelsPerSecond,
-      Function(Tile? tile) onTouched, Function() onCompleted) async {
+  Future<void> start(
+    List<Tile> tiles,
+    double speedPixelsPerSecond,
+    Function(Tile? tile) onTouched,
+    Function() onCompleted,
+  ) async {
     _tilesController.initialize(tiles, speedPixelsPerSecond);
     _state = _MyGameState.play;
     _onTouched = onTouched;
@@ -41,9 +45,11 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
   Future<void> onLoad() async {
     await super.onLoad();
     _staffSprite = Sprite(
-        await images.load('${nearestDevicePixelRatioFolder}img_staff.png'));
+      await images.load('${nearestDevicePixelRatioFolder}img_staff.png'),
+    );
     _clefSprite = Sprite(
-        await images.load('${nearestDevicePixelRatioFolder}img_clef.png'));
+      await images.load('${nearestDevicePixelRatioFolder}img_clef.png'),
+    );
     await Flame.images.load('${nearestDevicePixelRatioFolder}img_touch.png');
     await Flame.images
         .load('${nearestDevicePixelRatioFolder}img_single_note.png');
@@ -67,14 +73,18 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
     super.render(canvas);
     final rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, _backgroundPaint);
-    _staffSprite.render(canvas,
-        position: Vector2(0.0, pauseY - 96 + 24),
-        size: Vector2(screenWidth, 96),
-        overridePaint: _grayPaint);
-    _clefSprite.render(canvas,
-        position: Vector2(0.0, pauseY - 96 + 24),
-        size: Vector2(96, 96),
-        overridePaint: _grayPaint);
+    _staffSprite.render(
+      canvas,
+      position: Vector2(0, pauseY - 96 + 24),
+      size: Vector2(screenWidth, 96),
+      overridePaint: _grayPaint,
+    );
+    _clefSprite.render(
+      canvas,
+      position: Vector2(0, pauseY - 96 + 24),
+      size: Vector2(96, 96),
+      overridePaint: _grayPaint,
+    );
     _tilesController.render(canvas);
     for (final effect in _tileEffects) {
       effect.render(canvas);
@@ -103,25 +113,26 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
       _accumulator += restrictedTime;
       while (_accumulator >= _step) {
         var initialYAllowedTouch = double.negativeInfinity;
-        _touches.forEach((key, value) {
-          final tile = _tilesController.getNextUntouchedTile();
-          if (tile != null) {
-            if (tile.initialY >= initialYAllowedTouch) {
-              tile.touchDown();
-              _tileEffects.addAll(tile.getEffects());
-              _onTouched(tile);
-              if (_state == _MyGameState.pause) {
-                _state = _MyGameState.play;
+        _touches
+          ..forEach((key, value) {
+            final tile = _tilesController.getNextUntouchedTile();
+            if (tile != null) {
+              if (tile.initialY >= initialYAllowedTouch) {
+                tile.touchDown();
+                _tileEffects.addAll(tile.getEffects());
+                _onTouched(tile);
+                if (_state == _MyGameState.pause) {
+                  _state = _MyGameState.play;
+                }
+                initialYAllowedTouch = tile.initialY;
+              } else {
+                _onTouched(null);
               }
-              initialYAllowedTouch = tile.initialY;
             } else {
               _onTouched(null);
             }
-          } else {
-            _onTouched(null);
-          }
-        });
-        _touches.clear();
+          })
+          ..clear();
         _accumulator -= _step;
         if (_state == _MyGameState.play) {
           final actualDeltaTime = _tilesController.tryUpdate(_step);
@@ -141,8 +152,8 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
 enum _MyGameState { prepare, play, pause, stop, complete }
 
 class _TouchPosition {
+  _TouchPosition(this.x, this.y);
+
   final double x;
   final double y;
-
-  _TouchPosition(this.x, this.y);
 }

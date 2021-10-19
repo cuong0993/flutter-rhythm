@@ -3,31 +3,29 @@ import 'package:flutter/material.dart';
 import 'song.dart';
 
 class SongWidget extends StatelessWidget {
+  const SongWidget({
+    required this.onTap,
+    required this.song,
+    Key? key,
+  }) : super(key: key);
+
   final GestureTapCallback onTap;
   final Song song;
 
-  const SongWidget({
-    Key? key,
-    required this.onTap,
-    required this.song,
-  }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onTap,
-      title: Text(
-        song.title,
-        style: Theme.of(context).textTheme.headline6,
-      ),
-      subtitle: song.artist.isNotEmpty
-          ? Text(
-              song.artist,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.subtitle1,
-            )
-          : null,
-    );
-  }
+  Widget build(BuildContext context) => ListTile(
+        onTap: onTap,
+        title: Text(
+          song.title,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        subtitle: song.artist.isNotEmpty
+            ? Text(
+                song.artist,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.subtitle1,
+              )
+            : null,
+      );
 }

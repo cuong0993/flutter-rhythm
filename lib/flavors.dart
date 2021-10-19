@@ -4,6 +4,7 @@ enum Flavor {
   prod,
 }
 
+// ignore: avoid_classes_with_only_static_members
 class F {
   static Flavor? appFlavor;
 
@@ -15,7 +16,7 @@ class F {
         return 'Hit Notes Stage';
       case Flavor.prod:
         return 'Hit Notes';
-      default:
+      case null:
         return 'title';
     }
   }

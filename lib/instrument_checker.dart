@@ -25,7 +25,7 @@ void main() {
         soundPaths[file.path.split('/').last.split('.').first] =
             file.path.replaceAll('storage/', '');
       });
-      final notes = soundPaths.keys.map((e) => int.parse(e)).toList()..sort();
+      final notes = soundPaths.keys.map(int.parse).toList()..sort();
       final maxNote = notes.last;
       final minNote = notes.first;
       var i = 0;
@@ -36,7 +36,7 @@ void main() {
         } else if ((i + 1) < notes.length && note > (notes[i] + 2)) {
           i++;
         }
-        final int = notes[i].toInt();
+        final int = notes[i];
         baseNotes[note.toString()] = int;
       }
 

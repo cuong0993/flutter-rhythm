@@ -55,13 +55,14 @@ class TilesController {
     }
   }
 
-  double _getMaxDeltaY() {
-    return pauseY -
-        tiles
-            .firstWhere((element) => element.state == TileState.untouched,
-                orElse: () => Tile(0, 0, 0))
-            .y;
-  }
+  double _getMaxDeltaY() =>
+      pauseY -
+      tiles
+          .firstWhere(
+            (element) => element.state == TileState.untouched,
+            orElse: () => Tile(0, 0, 0),
+          )
+          .y;
 
   Tile? getNextUntouchedTile() {
     for (var i = 0; i < _visibleTileCount; i++) {

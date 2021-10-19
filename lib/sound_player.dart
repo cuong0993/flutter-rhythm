@@ -7,8 +7,13 @@ class SoundPlayer {
 
   Future<void> load(Map<int, String> soundPaths, Map<int, int> baseNotes) {
     Logger.root.info('SoundPlayer load');
-    return channel.invokeMethod('load',
-        <String, dynamic>{'soundPaths': soundPaths, 'baseNotes': baseNotes});
+    return channel.invokeMethod(
+      'load',
+      <String, dynamic>{
+        'soundPaths': soundPaths,
+        'baseNotes': baseNotes,
+      },
+    );
   }
 
   Future<void> play(int note) {

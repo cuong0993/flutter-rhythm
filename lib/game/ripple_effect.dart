@@ -9,12 +9,17 @@ import 'effect.dart';
 import 'util.dart';
 
 Sprite touchSprite = Sprite(
-    Flame.images.fromCache('${nearestDevicePixelRatioFolder}img_touch.png'));
+  Flame.images.fromCache('${nearestDevicePixelRatioFolder}img_touch.png'),
+);
 Paint paint = Paint()
   ..colorFilter =
       ColorFilter.mode(primaryColor.withOpacity(0.1), BlendMode.srcIn);
 
 class RippleEffect extends Effect {
+  RippleEffect(this._x, this._y)
+      : _rate = (size - initialWidth) / liveTime,
+        _width = initialWidth;
+
   static const liveTime = 0.5;
   static const size = 96;
   static const initialWidth = 0.5 * size;
@@ -25,14 +30,8 @@ class RippleEffect extends Effect {
   final double _x;
   final double _y;
 
-  RippleEffect(this._x, this._y)
-      : _rate = (size - initialWidth) / liveTime,
-        _width = initialWidth;
-
   @override
-  bool isDone() {
-    return _isDone;
-  }
+  bool isDone() => _isDone;
 
   @override
   void update(double delta) {
@@ -46,10 +45,14 @@ class RippleEffect extends Effect {
 
   @override
   void render(Canvas canvas) {
-    touchSprite.render(canvas,
-        position: Vector2((_x - _width / 2).toInt().toDouble(),
-            (_y - _width / 2).toInt().toDouble()),
-        size: Vector2(_width.toInt().toDouble(), _width.toInt().toDouble()),
-        overridePaint: paint);
+    touchSprite.render(
+      canvas,
+      position: Vector2(
+        (_x - _width / 2).toInt().toDouble(),
+        (_y - _width / 2).toInt().toDouble(),
+      ),
+      size: Vector2(_width.toInt().toDouble(), _width.toInt().toDouble()),
+      overridePaint: paint,
+    );
   }
 }
