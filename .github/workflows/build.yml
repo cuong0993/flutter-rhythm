@@ -4,7 +4,7 @@ name: Build
     branches:
       - master
 env:
-  flutter_version: 2.5.2
+  flutter_version: 2.5.3
 jobs:
   build:
     name: Build
@@ -23,7 +23,7 @@ jobs:
           flutter-version: '${{ env.flutter_version }}'
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: 12.x
       - name: Get dependencies
         run: flutter pub get
       - name: Format source code
@@ -47,5 +47,7 @@ jobs:
       - name: Build stage application
         run: >-
           flutter build apk --obfuscate
-          --split-debug-info=build/app/outputs/symbols --flavor stage
-          --split-per-abi --target lib/main-stage.dart
+          --split-debug-info=build/app/outputs/symbols --split-per-abi
+          --dart-define=ENV_APP_NAME="Hit Notes Stage"
+          --dart-define=ENV_FLAVOR=stage
+          --dart-define=ENV_FACEBOOK_APP_ID=134284937214878

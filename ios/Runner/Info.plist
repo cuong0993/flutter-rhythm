@@ -11,7 +11,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>$(BUNDLE_NAME)</string>
+		<string>$(ENV_APP_NAME)</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -25,10 +25,13 @@
 				<string>Editor</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
+					<string>fb$(ENV_FACEBOOK_APP_ID)</string>
 					<string>$(GOOGLE_SERVICE_REVERSED_CLIENT_ID)</string>
 				</array>
 			</dict>
 		</array>
+		<key>FacebookAppID</key>
+        <string>$(ENV_FACEBOOK_APP_ID)</string>
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>

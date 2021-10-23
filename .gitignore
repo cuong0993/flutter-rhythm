@@ -43,7 +43,6 @@ app.*.map.json
 google-services.json
 service_account.json
 
+/ios/Flutter/Environment.xcconfig
 GoogleService-Info.plist
 /ios/build/
-
-/flavor/

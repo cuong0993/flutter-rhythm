@@ -42,7 +42,7 @@ packages:
       name: auto_route
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
   auto_route_generator:
     dependency: "direct dev"
     description:
@@ -386,13 +386,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.6.0+2"
-  flutter_flavorizr:
-    dependency: "direct dev"
-    description:
-      name: flutter_flavorizr
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   flutter_hooks:
     dependency: "direct main"
     description:

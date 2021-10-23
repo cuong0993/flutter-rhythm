@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1020"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Generate Dart defines"
+               scriptText = "function entry_decode() { echo &quot;${*}&quot; | base64 --decode; }&#10;IFS=&apos;,&apos; read -r -a define_items &lt;&lt;&lt; &quot;$DART_DEFINES&quot;&#10;for index in &quot;${!define_items[@]}&quot;&#10;do&#10;    define_items[$index]=$(entry_decode &quot;${define_items[$index]}&quot;);&#10;done&#10;printf &quot;%s\n&quot; &quot;${define_items[@]}&quot; |grep &apos;^ENV_&apos; &gt; ${SRCROOT}/Flutter/Environment.xcconfig&#10;&#10;printf &quot;%s\n&quot; &quot;Copy GoogleService-Info&quot;&#10;ENV_FLAVOR_KEY_VALUE=&quot;$(printf &quot;%s\n&quot; &quot;${define_items[@]}&quot;|grep &quot;^ENV_FLAVOR=.*&quot;)&quot;&#10;ENV_FLAVOR=&quot;$(printf &quot;%s\n&quot; &quot;$ENV_FLAVOR_KEY_VALUE&quot; | awk -F&quot;=&quot; &apos;{print $2}&apos;)&quot;&#10;touch &quot;${SRCROOT}&quot;/Runner/GoogleService-Info.plist&#10;chmod 666 &quot;${SRCROOT}&quot;/Runner/GoogleService-Info.plist&#10;&#10;printf &quot;%s\n&quot; &quot;File is ${SRCROOT}/Runner/${ENV_FLAVOR}/GoogleService-Info.plist&quot;&#10;cat &quot;${SRCROOT}/Runner/${ENV_FLAVOR}/GoogleService-Info.plist&quot; &gt; &quot;${SRCROOT}&quot;/Runner/GoogleService-Info.plist&#10;&#10;echo &quot;GOOGLE_SERVICE_REVERSED_CLIENT_ID=$(/usr/libexec/PlistBuddy -c &apos;print &quot;:REVERSED_CLIENT_ID&quot;&apos; &quot;${SRCROOT}&quot;/Runner/GoogleService-Info.plist)&quot; &gt;&gt; ${SRCROOT}/Flutter/Environment.xcconfig&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "97C146ED1CF9000F007C117D"
+                     BuildableName = "Runner.app"
+                     BlueprintName = "Runner"
+                     ReferencedContainer = "container:Runner.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -27,8 +45,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -38,8 +54,8 @@
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -61,8 +77,6 @@
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Profile"

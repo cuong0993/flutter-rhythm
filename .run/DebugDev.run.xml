@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DebugDev" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="additionalArgs" value="--dart-define=ENV_APP_NAME=&quot;Hit Notes Dev&quot; --dart-define=ENV_FLAVOR=dev --dart-define=ENV_FACEBOOK_APP_ID=134284937214878" />
+    <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+    <method v="2" />
+  </configuration>
+</component>
