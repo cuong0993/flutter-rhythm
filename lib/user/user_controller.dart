@@ -22,7 +22,7 @@ class UserController extends StateNotifier<AsyncValue<User>> {
         _subscription?.cancel();
         _subscription =
             _read(userRepositoryProvider).observeCurrentUser().listen((user) {
-          _read(selectedInstrumentIdProvider).state = user.instrumentId;
+          _read(selectedInstrumentIdProvider.state).state = user.instrumentId;
           state = AsyncValue.data(user);
         });
       } else {

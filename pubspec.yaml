@@ -25,10 +25,10 @@ dependencies:
   flutter_hooks: any
   flutter_localizations:
     sdk: flutter
-  flutter_riverpod: ^1.0.0-dev.0
+  flutter_riverpod: any
   freezed_annotation: any
   google_sign_in: any
-  hooks_riverpod: ^1.0.0-dev.0
+  hooks_riverpod: any
   in_app_review: any
   intl: any
   json_annotation: ^4.3.0

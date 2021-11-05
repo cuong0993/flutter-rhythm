@@ -35,8 +35,8 @@ class UserPage extends StatelessWidget {
                   ),
                 ),
               ),
-              loading: (_) => const LoadingWidget(),
-              error: (_, __, ___) => const LoadingWidget(),
+              loading: () => const LoadingWidget(),
+              error: (_, __) => const LoadingWidget(),
             );
           },
         ),

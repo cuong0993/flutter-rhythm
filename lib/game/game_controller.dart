@@ -98,8 +98,8 @@ class GameController extends StateNotifier<GameState> {
       _read(midiLoadedProvider.notifier).playNote(tile.note);
       _tilesCount += 1;
       _time = (0.0 - tile.initialY) / _speedDpsPerSecond;
-      _read(tilesCountProvider).state = _tilesCount;
-      _read(timeProvider).state = _time;
+      _read(tilesCountProvider.state).state = _tilesCount;
+      _read(timeProvider.state).state = _time;
       if (tile.y >= pauseY) {
         _errorCount++;
         guideText = 'txt_too_late';
@@ -111,7 +111,7 @@ class GameController extends StateNotifier<GameState> {
       _errorCount++;
       guideText = 'txt_too_many_fingers';
     }
-    _read(guideTextProvider).state = guideText;
+    _read(guideTextProvider.state).state = guideText;
   }
 
   Future _onComplete() async {
@@ -137,8 +137,8 @@ class GameController extends StateNotifier<GameState> {
     final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
     await game.start(tiles, _speedDpsPerSecond, _onTouchTile, _onComplete);
     state = GameState.playing(_duration, _songName);
-    _read(tilesCountProvider).state = _tilesCount;
-    _read(timeProvider).state = _time;
-    _read(guideTextProvider).state = '';
+    _read(tilesCountProvider.state).state = _tilesCount;
+    _read(timeProvider.state).state = _time;
+    _read(guideTextProvider.state).state = '';
   }
 }

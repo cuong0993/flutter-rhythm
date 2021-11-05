@@ -67,7 +67,7 @@ android {
         resValue "string", "app_name", dartEnvironmentVariables.ENV_APP_NAME ? dartEnvironmentVariables.ENV_APP_NAME : "hittick"
         resValue "string", "facebook_app_id", dartEnvironmentVariables.ENV_FACEBOOK_APP_ID ? dartEnvironmentVariables.ENV_FACEBOOK_APP_ID : ""
         applicationId "com.chaomao.hittick"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 31
         multiDexEnabled true
         versionCode 32

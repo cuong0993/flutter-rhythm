@@ -13,7 +13,8 @@ class InstrumentsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final instruments = ref.watch(instrumentsProvider);
-    final selectedInstrumentId = ref.watch(selectedInstrumentIdProvider).state;
+    final selectedInstrumentId =
+        ref.watch(selectedInstrumentIdProvider.state).state;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -37,13 +38,13 @@ class InstrumentsPage extends ConsumerWidget {
                 ref
                     .watch(instrumentRepositoryProvider)
                     .changeInstrument(value!);
-                ref.read(selectedInstrumentIdProvider).state = value;
+                ref.read(selectedInstrumentIdProvider.state).state = value;
               },
             );
           },
         ),
-        loading: (_) => const LoadingWidget(),
-        error: (_, __, ___) => const LoadingWidget(),
+        loading: () => const LoadingWidget(),
+        error: (_, __) => const LoadingWidget(),
       ),
     );
   }

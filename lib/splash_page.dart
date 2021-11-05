@@ -11,7 +11,7 @@ class SplashPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(authenticationProvider, (state) {
+    ref.listen(authenticationProvider, (_, state) {
       if (state is AuthenticationStateAuthenticated ||
           state is AuthenticationStateUnauthenticated) {
         AutoRouter.of(context).replace(const HomeRoute());

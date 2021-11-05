@@ -7,13 +7,14 @@ import 'instruments_repository_impl.dart';
 final selectedInstrumentIdProvider = StateProvider<String?>((_) => null);
 
 final selectedInstrumentProvider = Provider<Instrument?>((ref) {
-  final selectedInstrumentId = ref.watch(selectedInstrumentIdProvider).state;
+  final selectedInstrumentId =
+      ref.watch(selectedInstrumentIdProvider.state).state;
   final instruments = ref.watch(instrumentsProvider);
   return instruments.when(
     data: (instruments) =>
         instruments.firstWhereOrNull((e) => e.id == selectedInstrumentId),
-    loading: (_) => null,
-    error: (_, __, ___) => null,
+    loading: () => null,
+    error: (_, __) => null,
   );
 });
 

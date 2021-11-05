@@ -53,7 +53,7 @@ class SongsWidget extends ConsumerWidget {
           Consumer(
             builder: (context, ref, child) {
               final isLoadingNextPage =
-                  ref.watch(isLoadingNextPageByTagProvider(_tag)).state;
+                  ref.watch(isLoadingNextPageByTagProvider(_tag).state).state;
               return isLoadingNextPage
                   ? const Center(
                       child: SizedBox(
@@ -70,8 +70,8 @@ class SongsWidget extends ConsumerWidget {
           )
         ],
       ),
-      loading: (_) => const LoadingWidget(),
-      error: (_, __, ___) => const LoadingWidget(),
+      loading: () => const LoadingWidget(),
+      error: (_, __) => const LoadingWidget(),
     );
   }
 }

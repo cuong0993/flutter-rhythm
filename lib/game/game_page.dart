@@ -1,6 +1,5 @@
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
-
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,7 +32,7 @@ class GamePage extends ConsumerWidget {
       ref.read(gameStateProvider.notifier).onRestart();
     }
 
-    ref.listen(isPausedProvider, (state) {
+    ref.listen(isPausedProvider, (_, state) {
       showDialog<void>(
         context: context,
         useSafeArea: false,
@@ -42,7 +41,7 @@ class GamePage extends ConsumerWidget {
     });
     return WillPopScope(
       onWillPop: () {
-        ref.read(isPausedProvider).state = true;
+        ref.read(isPausedProvider.state).state = true;
         return Future.value(false);
       },
       child: Material(
@@ -69,7 +68,7 @@ class GamePage extends ConsumerWidget {
                       children: [
                         Consumer(
                           builder: (context, ref, child) {
-                            final time = ref.watch(timeProvider).state;
+                            final time = ref.watch(timeProvider.state).state;
                             return LinearProgressIndicator(
                               backgroundColor:
                                   onBackgroundColor.withOpacity(0.1),
@@ -95,7 +94,7 @@ class GamePage extends ConsumerWidget {
                                   Consumer(
                                     builder: (context, ref, child) {
                                       final time =
-                                          ref.watch(timeProvider).state;
+                                          ref.watch(timeProvider.state).state;
                                       return Text(
                                         '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration ~/ 60}:${(gameState.duration % 60).toString().padLeft(2, '0')}',
                                         style: Theme.of(context)
@@ -116,13 +115,15 @@ class GamePage extends ConsumerWidget {
                                       Icons.pause_circle_outline_rounded,
                                     ),
                                     onPressed: () {
-                                      ref.read(isPausedProvider).state = true;
+                                      ref.read(isPausedProvider.state).state =
+                                          true;
                                     },
                                   ),
                                   Consumer(
                                     builder: (context, ref, child) {
-                                      final tilesCount =
-                                          ref.watch(tilesCountProvider).state;
+                                      final tilesCount = ref
+                                          .watch(tilesCountProvider.state)
+                                          .state;
                                       return Text(
                                         tilesCount.toString(),
                                         style: Theme.of(context)
@@ -161,7 +162,7 @@ class GuideTextWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final guideText = ref.watch(guideTextProvider).state;
+    final guideText = ref.watch(guideTextProvider.state).state;
     var text = '';
     if (guideText == 'txt_too_late') {
       text = L10n.of(context)!.txt_too_late;
