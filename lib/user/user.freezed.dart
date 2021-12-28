@@ -272,26 +272,33 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _User &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.playedNotes, playedNotes) ||
-                other.playedNotes == playedNotes) &&
-            (identical(other.stars, stars) || other.stars == stars) &&
-            (identical(other.playedTime, playedTime) ||
-                other.playedTime == playedTime) &&
-            (identical(other.instrumentId, instrumentId) ||
-                other.instrumentId == instrumentId) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
-            (identical(other.anonymous, anonymous) ||
-                other.anonymous == anonymous) &&
-            (identical(other.creationTime, creationTime) ||
-                other.creationTime == creationTime));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.playedNotes, playedNotes) &&
+            const DeepCollectionEquality().equals(other.stars, stars) &&
+            const DeepCollectionEquality()
+                .equals(other.playedTime, playedTime) &&
+            const DeepCollectionEquality()
+                .equals(other.instrumentId, instrumentId) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.photoUrl, photoUrl) &&
+            const DeepCollectionEquality().equals(other.anonymous, anonymous) &&
+            const DeepCollectionEquality()
+                .equals(other.creationTime, creationTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, playedNotes, stars,
-      playedTime, instrumentId, name, photoUrl, anonymous, creationTime);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(playedNotes),
+      const DeepCollectionEquality().hash(stars),
+      const DeepCollectionEquality().hash(playedTime),
+      const DeepCollectionEquality().hash(instrumentId),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(photoUrl),
+      const DeepCollectionEquality().hash(anonymous),
+      const DeepCollectionEquality().hash(creationTime));
 
   @JsonKey(ignore: true)
   @override

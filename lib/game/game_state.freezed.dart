@@ -283,14 +283,15 @@ class _$GameStatePlaying implements GameStatePlaying {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is GameStatePlaying &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
-            (identical(other.songName, songName) ||
-                other.songName == songName));
+            const DeepCollectionEquality().equals(other.duration, duration) &&
+            const DeepCollectionEquality().equals(other.songName, songName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, duration, songName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(duration),
+      const DeepCollectionEquality().hash(songName));
 
   @JsonKey(ignore: true)
   @override
@@ -558,12 +559,13 @@ class _$GameStateCompleted implements GameStateCompleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is GameStateCompleted &&
-            (identical(other.gameReward, gameReward) ||
-                other.gameReward == gameReward));
+            const DeepCollectionEquality()
+                .equals(other.gameReward, gameReward));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, gameReward);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(gameReward));
 
   @JsonKey(ignore: true)
   @override

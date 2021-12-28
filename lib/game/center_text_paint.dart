@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +6,11 @@ class CenterTextPaint extends TextPaint {
     double fontSize = 24.0,
     Color color = Colors.black,
     String fontFamily = 'Arial',
-    TextDirection textDirection = TextDirection.ltr,
-    double? lineHeight,
   }) : super(
-          config: TextPaintConfig(
+          style: TextStyle(
             fontSize: fontSize,
             color: color,
             fontFamily: fontFamily,
-            textDirection: textDirection,
-            lineHeight: lineHeight,
           ),
         );
 

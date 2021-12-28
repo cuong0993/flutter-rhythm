@@ -270,13 +270,13 @@ class _$_Song implements _Song {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Song &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.artist, artist) || other.artist == artist) &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.bpm, bpm) || other.bpm == bpm) &&
-            (identical(other.unitDuration, unitDuration) ||
-                other.unitDuration == unitDuration) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.artist, artist) &&
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.bpm, bpm) &&
+            const DeepCollectionEquality()
+                .equals(other.unitDuration, unitDuration) &&
             const DeepCollectionEquality()
                 .equals(other.tilesCount, tilesCount) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
@@ -286,12 +286,12 @@ class _$_Song implements _Song {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      title,
-      artist,
-      url,
-      bpm,
-      unitDuration,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(artist),
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(bpm),
+      const DeepCollectionEquality().hash(unitDuration),
       const DeepCollectionEquality().hash(tilesCount),
       const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(tags));

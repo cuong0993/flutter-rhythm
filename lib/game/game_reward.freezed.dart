@@ -141,13 +141,16 @@ class _$_GameReward implements _GameReward {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GameReward &&
-            (identical(other.stars, stars) || other.stars == stars) &&
-            (identical(other.playedNotes, playedNotes) ||
-                other.playedNotes == playedNotes));
+            const DeepCollectionEquality().equals(other.stars, stars) &&
+            const DeepCollectionEquality()
+                .equals(other.playedNotes, playedNotes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stars, playedNotes);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(stars),
+      const DeepCollectionEquality().hash(playedNotes));
 
   @JsonKey(ignore: true)
   @override

@@ -125,13 +125,15 @@ class _$_Note implements _Note {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Note &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.startTick, startTick) ||
-                other.startTick == startTick));
+            const DeepCollectionEquality().equals(other.note, note) &&
+            const DeepCollectionEquality().equals(other.startTick, startTick));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, note, startTick);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(note),
+      const DeepCollectionEquality().hash(startTick));
 
   @JsonKey(ignore: true)
   @override

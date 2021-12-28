@@ -132,13 +132,16 @@ class _$_GameConfigState implements _GameConfigState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GameConfigState &&
-            (identical(other.difficulty, difficulty) ||
-                other.difficulty == difficulty) &&
-            (identical(other.speed, speed) || other.speed == speed));
+            const DeepCollectionEquality()
+                .equals(other.difficulty, difficulty) &&
+            const DeepCollectionEquality().equals(other.speed, speed));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, difficulty, speed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(difficulty),
+      const DeepCollectionEquality().hash(speed));
 
   @JsonKey(ignore: true)
   @override

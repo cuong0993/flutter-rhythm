@@ -11,7 +11,7 @@ dependencies:
   dart_midi:
     git:
       url: 'https://github.com/feelfreelinux/dart_midi'
-  device_info: any
+  device_info_plus: any
   firebase_auth: any
   firebase_core: any
   firebase_crashlytics: any
@@ -31,9 +31,9 @@ dependencies:
   hooks_riverpod: any
   in_app_review: any
   intl: any
-  json_annotation: ^4.3.0
+  json_annotation: any
   logging: any
-  package_info: any
+  package_info_plus: any
   path_provider: any
   shared_preferences: any
   sprintf: any

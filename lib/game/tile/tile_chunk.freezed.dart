@@ -148,18 +148,17 @@ class _$_TileChunk implements _TileChunk {
         (other.runtimeType == runtimeType &&
             other is _TileChunk &&
             const DeepCollectionEquality().equals(other.notes, notes) &&
-            (identical(other.durationToPrevious, durationToPrevious) ||
-                other.durationToPrevious == durationToPrevious) &&
-            (identical(other.startTick, startTick) ||
-                other.startTick == startTick));
+            const DeepCollectionEquality()
+                .equals(other.durationToPrevious, durationToPrevious) &&
+            const DeepCollectionEquality().equals(other.startTick, startTick));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(notes),
-      durationToPrevious,
-      startTick);
+      const DeepCollectionEquality().hash(durationToPrevious),
+      const DeepCollectionEquality().hash(startTick));
 
   @JsonKey(ignore: true)
   @override

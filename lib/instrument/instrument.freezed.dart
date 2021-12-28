@@ -203,22 +203,22 @@ class _$_Instrument implements _Instrument {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Instrument &&
-            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.soundPaths, soundPaths) &&
             const DeepCollectionEquality().equals(other.baseNotes, baseNotes) &&
-            (identical(other.minNote, minNote) || other.minNote == minNote) &&
-            (identical(other.maxNote, maxNote) || other.maxNote == maxNote));
+            const DeepCollectionEquality().equals(other.minNote, minNote) &&
+            const DeepCollectionEquality().equals(other.maxNote, maxNote));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(soundPaths),
       const DeepCollectionEquality().hash(baseNotes),
-      minNote,
-      maxNote);
+      const DeepCollectionEquality().hash(minNote),
+      const DeepCollectionEquality().hash(maxNote));
 
   @JsonKey(ignore: true)
   @override

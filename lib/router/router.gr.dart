@@ -84,24 +84,27 @@ class RootRouter extends _i10.RootStackRouter {
       ];
 }
 
-/// generated route for [_i1.SplashPage]
+/// generated route for
+/// [_i1.SplashPage]
 class SplashRoute extends _i10.PageRouteInfo<void> {
-  const SplashRoute() : super(name, path: '/');
+  const SplashRoute() : super(SplashRoute.name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
-/// generated route for [_i2.HomePage]
+/// generated route for
+/// [_i2.HomePage]
 class HomeRoute extends _i10.PageRouteInfo<void> {
-  const HomeRoute() : super(name, path: '/home-page');
+  const HomeRoute() : super(HomeRoute.name, path: '/home-page');
 
   static const String name = 'HomeRoute';
 }
 
-/// generated route for [_i3.GameConfigPage]
+/// generated route for
+/// [_i3.GameConfigPage]
 class GameConfigRoute extends _i10.PageRouteInfo<GameConfigRouteArgs> {
   GameConfigRoute({required _i12.Song song, _i11.Key? key})
-      : super(name,
+      : super(GameConfigRoute.name,
             path: '/game-config-page',
             args: GameConfigRouteArgs(song: song, key: key));
 
@@ -114,12 +117,18 @@ class GameConfigRouteArgs {
   final _i12.Song song;
 
   final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'GameConfigRouteArgs{song: $song, key: $key}';
+  }
 }
 
-/// generated route for [_i4.GamePage]
+/// generated route for
+/// [_i4.GamePage]
 class GameRoute extends _i10.PageRouteInfo<GameRouteArgs> {
   GameRoute({required Map<String, dynamic> arguments, _i11.Key? key})
-      : super(name,
+      : super(GameRoute.name,
             path: '/game-page',
             args: GameRouteArgs(arguments: arguments, key: key));
 
@@ -132,39 +141,50 @@ class GameRouteArgs {
   final Map<String, dynamic> arguments;
 
   final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'GameRouteArgs{arguments: $arguments, key: $key}';
+  }
 }
 
-/// generated route for [_i5.UserPage]
+/// generated route for
+/// [_i5.UserPage]
 class UserRoute extends _i10.PageRouteInfo<void> {
-  const UserRoute() : super(name, path: '/user-page');
+  const UserRoute() : super(UserRoute.name, path: '/user-page');
 
   static const String name = 'UserRoute';
 }
 
-/// generated route for [_i6.LocalePage]
+/// generated route for
+/// [_i6.LocalePage]
 class LocaleRoute extends _i10.PageRouteInfo<void> {
-  const LocaleRoute() : super(name, path: '/locale-page');
+  const LocaleRoute() : super(LocaleRoute.name, path: '/locale-page');
 
   static const String name = 'LocaleRoute';
 }
 
-/// generated route for [_i7.ThemePage]
+/// generated route for
+/// [_i7.ThemePage]
 class ThemeRoute extends _i10.PageRouteInfo<void> {
-  const ThemeRoute() : super(name, path: '/theme-page');
+  const ThemeRoute() : super(ThemeRoute.name, path: '/theme-page');
 
   static const String name = 'ThemeRoute';
 }
 
-/// generated route for [_i8.InstrumentsPage]
+/// generated route for
+/// [_i8.InstrumentsPage]
 class InstrumentsRoute extends _i10.PageRouteInfo<void> {
-  const InstrumentsRoute() : super(name, path: '/instruments-page');
+  const InstrumentsRoute()
+      : super(InstrumentsRoute.name, path: '/instruments-page');
 
   static const String name = 'InstrumentsRoute';
 }
 
-/// generated route for [_i9.SettingsPage]
+/// generated route for
+/// [_i9.SettingsPage]
 class SettingsRoute extends _i10.PageRouteInfo<void> {
-  const SettingsRoute() : super(name, path: '/settings-page');
+  const SettingsRoute() : super(SettingsRoute.name, path: '/settings-page');
 
   static const String name = 'SettingsRoute';
 }
