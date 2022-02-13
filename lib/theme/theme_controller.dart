@@ -26,7 +26,7 @@ class ThemeController extends StateNotifier<ThemeMode> {
 
 ThemeData buildTheme({bool isDark = false}) {
   const primaryColor = Color(0xff4760e9);
-  final onPrimaryColor = Colors.white;
+  const onPrimaryColor = Colors.white;
   const secondaryColor = Color(0xfffd7c6e);
   final backgroundColor = isDark ? Colors.black : Colors.white;
   final onBackgroundColor = isDark ? Colors.white : Colors.black;
@@ -75,13 +75,11 @@ ThemeData buildTheme({bool isDark = false}) {
     popupMenuTheme: PopupMenuThemeData(color: backgroundColor),
     colorScheme: ColorScheme(
       primary: primaryColor,
-      primaryVariant: primaryColor,
       secondary: secondaryColor,
       onPrimary: onPrimaryColor,
       onError: onBackgroundColor,
       error: backgroundColor,
       onBackground: onBackgroundColor,
-      secondaryVariant: secondaryColor,
       background: backgroundColor,
       onSurface: onBackgroundColor,
       onSecondary: secondaryColor,
