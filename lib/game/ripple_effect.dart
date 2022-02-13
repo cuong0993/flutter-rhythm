@@ -21,7 +21,7 @@ class RippleEffect extends Effect {
 
   static const liveTime = 0.5;
   static const size = 96;
-  static const initialWidth = 0.5 * size;
+  static const initialWidth = size * 0.5;
   double _width;
   final double _rate;
   var _time = 0.0;

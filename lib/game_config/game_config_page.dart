@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sprintf/sprintf.dart';
 
 import '../game/colors.dart';
-import '../router/router.dart';
+import '../router/root_router.dart';
 import '../songs/song.dart';
 import 'game_config_controller.dart';
 
@@ -77,9 +77,9 @@ class GameConfigPage extends ConsumerWidget {
                                 .changeDifficulty(2);
                           },
                         ),
-                        const SizedBox(width: 8)
+                        const SizedBox(width: 8),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -125,9 +125,9 @@ class GameConfigPage extends ConsumerWidget {
                                 .changeSpeed(2);
                           },
                         ),
-                        const SizedBox(width: 8)
+                        const SizedBox(width: 8),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ],
@@ -149,7 +149,7 @@ class GameConfigPage extends ConsumerWidget {
                 arguments: <String, dynamic>{
                   'song': song,
                   'difficulty': gameConfigState.difficulty,
-                  'speed': gameConfigState.speed
+                  'speed': gameConfigState.speed,
                 },
               ),
             );

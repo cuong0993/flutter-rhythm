@@ -39,9 +39,11 @@ class GamePage extends ConsumerWidget {
         builder: (_) => PauseDialog(onRestart: _onRestart),
       );
     });
+
     return WillPopScope(
       onWillPop: () {
         ref.read(isPausedProvider.state).state = true;
+
         return Future.value(false);
       },
       child: Material(
@@ -69,6 +71,7 @@ class GamePage extends ConsumerWidget {
                         Consumer(
                           builder: (context, ref, child) {
                             final time = ref.watch(timeProvider.state).state;
+
                             return LinearProgressIndicator(
                               backgroundColor:
                                   onBackgroundColor.withOpacity(0.1),
@@ -95,6 +98,7 @@ class GamePage extends ConsumerWidget {
                                     builder: (context, ref, child) {
                                       final time =
                                           ref.watch(timeProvider.state).state;
+
                                       return Text(
                                         '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration ~/ 60}:${(gameState.duration % 60).toString().padLeft(2, '0')}',
                                         style: Theme.of(context)
@@ -124,6 +128,7 @@ class GamePage extends ConsumerWidget {
                                       final tilesCount = ref
                                           .watch(tilesCountProvider.state)
                                           .state;
+
                                       return Text(
                                         tilesCount.toString(),
                                         style: Theme.of(context)
@@ -138,14 +143,14 @@ class GamePage extends ConsumerWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: const [GuideTextWidget()],
-                              )
+                              ),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             );
           } else {
@@ -171,6 +176,7 @@ class GuideTextWidget extends ConsumerWidget {
     } else if (guideText == 'txt_too_many_fingers') {
       text = L10n.of(context)!.txt_too_many_fingers;
     }
+
     return Text(
       text,
       style:
@@ -199,7 +205,7 @@ class LoadingSoundWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(L10n.of(context)!.txt_dialog_loading_sound_description)
+                Text(L10n.of(context)!.txt_dialog_loading_sound_description),
               ],
             ),
           ),
@@ -227,7 +233,7 @@ class LoadingGiftWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(L10n.of(context)!.txt_game_complete_loading_gift)
+                Text(L10n.of(context)!.txt_game_complete_loading_gift),
               ],
             ),
           ),

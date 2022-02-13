@@ -19,6 +19,7 @@ class ThemePage extends StatelessWidget {
         body: Consumer(
           builder: (context, ref, child) {
             final themeMode = ref.watch(themeModeProvider);
+
             return Scrollbar(
               isAlwaysShown: true,
               child: ListView.builder(
@@ -31,9 +32,7 @@ class ThemePage extends StatelessWidget {
                   value: ThemeMode.values[index],
                   groupValue: themeMode,
                   onChanged: (value) {
-                    ref
-                        .read(themeModeProvider.notifier)
-                        .setThemeMode(context, value!);
+                    ref.read(themeModeProvider.notifier).setThemeMode(value!);
                   },
                 ),
               ),

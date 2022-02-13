@@ -11,7 +11,7 @@ String nearestDevicePixelRatioFolder = () {
     1.5: '1.5x/',
     2.0: '2.0x/',
     3.0: '3.0x/',
-    4.0: '4.0x/'
+    4.0: '4.0x/',
   });
   final value = window.devicePixelRatio;
   if (candidates.containsKey(value)) {
@@ -25,21 +25,19 @@ String nearestDevicePixelRatioFolder = () {
   if (upper == null) {
     return candidates[lower]!;
   }
-  if (value > (lower + upper) / 2) {
-    return candidates[upper]!;
-  } else {
-    return candidates[lower]!;
-  }
+
+  return value > (lower + upper) / 2 ? candidates[upper]! : candidates[lower]!;
 }();
 
 final positionsX = () {
   final positionXs = <double>[];
   const tilePad = 24;
-  const paddedTileWidth = tileWidth + 2 * tilePad;
+  const paddedTileWidth = tileWidth + tilePad * 2;
   final padLeftRight = (screenWidth - numberTileColumn * paddedTileWidth) / 2;
   for (var column = 0; column < numberTileColumn; column++) {
     positionXs.add(padLeftRight + column * paddedTileWidth + tilePad);
   }
+
   return positionXs;
 }();
 final pauseY = screenHeight - 48;

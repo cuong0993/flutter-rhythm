@@ -5,13 +5,14 @@ final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError();
 });
 
-final sharedUtilityProvider = Provider<SharedUtility>((ref) {
+final sharedUtilityProvider = Provider<Preferences>((ref) {
   final _sharedPrefs = ref.watch(sharedPreferencesProvider);
-  return SharedUtility(pref: _sharedPrefs);
+
+  return Preferences(pref: _sharedPrefs);
 });
 
-class SharedUtility {
-  SharedUtility({
+class Preferences {
+  Preferences({
     required this.pref,
   });
 

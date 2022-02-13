@@ -62,7 +62,7 @@ class CompleteWidget extends StatelessWidget {
                             image: AssetImage('assets/images/img_note.png'),
                           ),
                           const SizedBox(width: 8),
-                          Text(gameReward.playedNotes.toString())
+                          Text(gameReward.playedNotes.toString()),
                         ],
                       ),
                     ],
@@ -88,9 +88,9 @@ class CompleteWidget extends StatelessWidget {
                       child: Text(L10n.of(context)!.txt_button_restart),
                     ),
                   ),
-                  const SizedBox(width: 8)
+                  const SizedBox(width: 8),
                 ],
-              )
+              ),
             ],
           ),
         ),

@@ -9,7 +9,7 @@ const localeStrings = {
   'en': 'English',
   'ko': '한국어',
   'vi': 'Tiếng Việt',
-  'zh': '汉语'
+  'zh': '汉语',
 };
 
 class LocalePage extends ConsumerWidget {
@@ -35,7 +35,7 @@ class LocalePage extends ConsumerWidget {
               value: L10n.supportedLocales[index],
               groupValue: Localizations.localeOf(context),
               onChanged: (value) {
-                ref.read(localeProvider.notifier).setLocale(context, value!);
+                ref.read(localeProvider.notifier).setLocale(value!);
               },
             ),
           ),

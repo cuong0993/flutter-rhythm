@@ -10,7 +10,7 @@ import '../splash_page.dart';
 import '../theme/theme_page.dart';
 import '../user/user_page.dart';
 
-export 'router.gr.dart';
+export 'root_router.gr.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',

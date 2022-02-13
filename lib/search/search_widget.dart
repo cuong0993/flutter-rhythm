@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../router/router.dart';
+import '../router/root_router.dart';
 import '../songs/song.dart';
 import '../songs/song_widget.dart';
 import '../songs/songs_repository_impl.dart';
@@ -29,6 +29,7 @@ class SearchWidget extends SearchDelegate<void> {
     if (theme.brightness == Brightness.light) {
       return super.appBarTheme(context);
     }
+
     return theme;
   }
 
@@ -40,33 +41,31 @@ class SearchWidget extends SearchDelegate<void> {
       );
 
   @override
-  Widget buildResults(BuildContext context) {
-    if (query.isEmpty) {
-      return const SizedBox.shrink();
-    } else {
-      return FutureBuilder<List<Song>>(
-        future: _read(songRepositoryProvider).searchSongs(query),
-        builder: (context, recentList) {
-          if (recentList.connectionState == ConnectionState.done) {
-            final songs = recentList.requireData;
-            return ListView.builder(
-              itemCount: songs.length,
-              itemBuilder: (context, index) {
-                final song = songs[index];
-                return SongWidget(
-                  song: song,
-                  onTap: () =>
-                      AutoRouter.of(context).push(GameConfigRoute(song: song)),
-                );
-              },
-            );
-          } else {
-            return const LoadingWidget();
-          }
-        },
-      );
-    }
-  }
+  Widget buildResults(BuildContext context) => query.isEmpty
+      ? const SizedBox.shrink()
+      : FutureBuilder<List<Song>>(
+          future: _read(songRepositoryProvider).searchSongs(query),
+          builder: (context, recentList) {
+            if (recentList.connectionState == ConnectionState.done) {
+              final songs = recentList.requireData;
+
+              return ListView.builder(
+                itemCount: songs.length,
+                itemBuilder: (context, index) {
+                  final song = songs[index];
+
+                  return SongWidget(
+                    song: song,
+                    onTap: () => AutoRouter.of(context)
+                        .push(GameConfigRoute(song: song)),
+                  );
+                },
+              );
+            } else {
+              return const LoadingWidget();
+            }
+          },
+        );
 
   @override
   Widget buildSuggestions(BuildContext context) => const LoadingWidget();

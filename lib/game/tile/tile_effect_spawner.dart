@@ -7,6 +7,6 @@ import 'tile_touch_effect.dart';
 extension TileEffectSpawner on Tile {
   List<Effect> getEffects() => [
         RippleEffect(positionsX[column] + width / 2, y + height / 2),
-        TileTouchEffect(this)
+        TileTouchEffect(this),
       ];
 }

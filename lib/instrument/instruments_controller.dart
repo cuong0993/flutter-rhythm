@@ -10,6 +10,7 @@ final selectedInstrumentProvider = Provider<Instrument?>((ref) {
   final selectedInstrumentId =
       ref.watch(selectedInstrumentIdProvider.state).state;
   final instruments = ref.watch(instrumentsProvider);
+
   return instruments.when(
     data: (instruments) =>
         instruments.firstWhereOrNull((e) => e.id == selectedInstrumentId),

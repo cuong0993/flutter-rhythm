@@ -27,6 +27,7 @@ final gameStateFamilyProvider = StateNotifierProvider.autoDispose
   final song = arguments['song'] as Song;
   final difficulty = arguments['difficulty'] as int;
   final speed = arguments['speed'] as int;
+
   return GameController(ref.read).._startGame(song, difficulty, speed);
 });
 

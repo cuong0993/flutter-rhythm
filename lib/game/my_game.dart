@@ -55,7 +55,9 @@ class MyGame extends FlameGame with MultiTouchTapDetector {
         .load('${nearestDevicePixelRatioFolder}img_single_note.png');
   }
 
-  void pause() {}
+  void pause() {
+    // TODO Do nothing
+  }
 
   @override
   void onTapDown(int pointerId, TapDownInfo info) {

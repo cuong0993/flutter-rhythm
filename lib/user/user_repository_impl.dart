@@ -16,6 +16,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Stream<User> observeCurrentUser() {
     final firebaseUser = firebase.FirebaseAuth.instance.currentUser!;
+
     return FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseUser.uid)
@@ -33,7 +34,7 @@ class UserRepositoryImpl implements UserRepository {
         .update(<String, dynamic>{
       'name': name,
       'photoUrl': photoUrl,
-      'anonymous': false
+      'anonymous': false,
     });
   }
 }

@@ -34,7 +34,7 @@ class AuthenticationWidget extends ConsumerWidget {
                       Text(
                         L10n.of(context)!.txt_button_sign_in_google,
                         style: Theme.of(context).textTheme.subtitle1,
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -57,7 +57,7 @@ class AuthenticationWidget extends ConsumerWidget {
                       Text(
                         L10n.of(context)!.txt_button_sign_in_facebook,
                         style: Theme.of(context).textTheme.subtitle1,
-                      )
+                      ),
                     ],
                   ),
                 ),

@@ -8,6 +8,7 @@ final localeProvider = StateNotifierProvider<LocaleController, Locale?>((ref) {
   final locale = (localeName != null)
       ? Locale.fromSubtags(languageCode: localeName)
       : null;
+
   return LocaleController(ref.read, locale);
 });
 
@@ -16,7 +17,7 @@ class LocaleController extends StateNotifier<Locale?> {
 
   final Reader _read;
 
-  Future setLocale(BuildContext context, Locale locale) async {
+  Future setLocale(Locale locale) async {
     await _read(sharedUtilityProvider).setLocaleName(locale.toString());
     state = locale;
   }

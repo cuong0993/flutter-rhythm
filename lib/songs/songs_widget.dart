@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../router/router.dart';
+import '../router/root_router.dart';
 import 'song_widget.dart';
 import 'songs_controller.dart';
 
@@ -19,6 +19,7 @@ class SongsWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final songsByTag = ref.watch(songsByTagProvider(_tag));
+
     return songsByTag.when(
       data: (songsByTag) => Column(
         children: [
@@ -31,12 +32,14 @@ class SongsWidget extends ConsumerWidget {
                       notification.metrics.atEdge) {
                     ref.read(songsByTagProvider(_tag).notifier).loadMoreSongs();
                   }
+
                   return true;
                 },
                 child: ListView.separated(
                   itemCount: songsByTag.length,
                   itemBuilder: (context, index) {
                     final song = songsByTag[index];
+
                     return SongWidget(
                       song: song,
                       onTap: () => AutoRouter.of(context)
@@ -54,6 +57,7 @@ class SongsWidget extends ConsumerWidget {
             builder: (context, ref, child) {
               final isLoadingNextPage =
                   ref.watch(isLoadingNextPageByTagProvider(_tag).state).state;
+
               return isLoadingNextPage
                   ? const Center(
                       child: SizedBox(
@@ -67,7 +71,7 @@ class SongsWidget extends ConsumerWidget {
                     )
                   : const SizedBox.shrink();
             },
-          )
+          ),
         ],
       ),
       loading: () => const LoadingWidget(),

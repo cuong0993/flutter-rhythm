@@ -11,6 +11,7 @@ final midiLoadedProvider = StateNotifierProvider<MidiController, bool>((ref) {
   if (selectedInstrument != null) {
     controller._loadSound(selectedInstrument);
   }
+
   return controller;
 });
 

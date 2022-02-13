@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../midi/midi_controller.dart';
-import '../router/router.dart';
+import '../router/root_router.dart';
 import '../search/search_widget.dart';
 import '../songs/songs_controller.dart';
 import '../songs/songs_widget.dart';
@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
           builder: (context, ref, child) {
             final tabController =
                 useTabController(initialLength: songTags.length);
+
             return NestedScrollView(
               headerSliverBuilder: (context, innerBoxIsScrolled) => <Widget>[
                 SliverAppBar(
@@ -58,6 +59,7 @@ class HomePage extends StatelessWidget {
                             // FIXME To load midi
                             ref.watch(midiLoadedProvider);
                             final user = ref.watch(userProvider);
+
                             return user.when(
                               data: (user) => Image.network(
                                 user.photoUrl,

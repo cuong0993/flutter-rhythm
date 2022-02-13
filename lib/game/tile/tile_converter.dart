@@ -55,6 +55,7 @@ List<TileChunk> createTileChunks(MidiFile midiFile) {
     );
     previousStartTick = notes[0].startTick;
   });
+
   return tileChunks;
 }
 
@@ -85,5 +86,6 @@ List<Tile> createTiles(
       }
     });
   }
+
   return tiles;
 }

@@ -11,7 +11,7 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../locale/locale_page.dart';
-import '../router/router.dart';
+import '../router/root_router.dart';
 import '../theme/theme_controller.dart';
 import '../theme/theme_page.dart';
 
@@ -47,6 +47,7 @@ class SettingsPage extends StatelessWidget {
               subtitle: Consumer(
                 builder: (context, ref, child) {
                   final themeMode = ref.watch(themeModeProvider);
+
                   return Text(
                     getThemeName(context, themeMode),
                     style: Theme.of(context).textTheme.subtitle1,

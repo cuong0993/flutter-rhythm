@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'locale/locale_controller.dart';
-import 'router/router.dart';
+import 'router/root_router.dart';
 import 'theme/theme_controller.dart';
 
 class App extends ConsumerWidget {
@@ -17,6 +17,7 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
     final locale = ref.watch(localeProvider);
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       locale: locale,

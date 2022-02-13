@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'authentication/authentication_controller.dart';
 import 'authentication/authentication_state.dart';
-import 'router/router.dart';
+import 'router/root_router.dart';
 
 class SplashPage extends ConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class SplashPage extends ConsumerWidget {
         AutoRouter.of(context).replace(const HomeRoute());
       }
     });
+
     return const Scaffold(
       body: Center(
         child: Image(image: AssetImage('assets/images/img_app_icon.png')),

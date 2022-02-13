@@ -97,7 +97,7 @@ const noteToName = {
   105: 'A7',
   106: 'A#7',
   107: 'B7',
-  108: 'C8'
+  108: 'C8',
 };
 
 class TileTouchEffect extends Effect {

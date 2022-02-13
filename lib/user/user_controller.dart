@@ -11,6 +11,7 @@ import 'user_repository_impl.dart';
 final userProvider =
     StateNotifierProvider<UserController, AsyncValue<User>>((ref) {
   ref.watch(authenticationProvider);
+
   return UserController(ref.read);
 });
 

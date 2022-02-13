@@ -38,7 +38,7 @@ class PauseDialog extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 child: Text(L10n.of(context)!.txt_game_button_continue),
-              )
+              ),
             ],
           ),
         ),

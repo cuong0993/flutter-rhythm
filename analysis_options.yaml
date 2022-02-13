@@ -1,5 +1,7 @@
 include: all_lint_rules.yaml
 analyzer:
+  plugins:
+    - dart_code_metrics
   errors:
     missing_required_param: error
     omit_local_variable_types: error
@@ -43,3 +45,37 @@ linter:
     always_use_package_imports: false
 
     public_member_api_docs: false
+
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    maximum-nesting-level: 5
+    number-of-parameters: 4
+    source-lines-of-code: 80
+  metrics-exclude:
+    - test/**
+  rules:
+    # - avoid-ignoring-return-values
+    # - avoid-late-keyword
+    # - avoid-nested-conditional-expressions
+    - avoid-unused-parameters
+    - binary-expression-operand-order
+    - double-literal-format
+    - newline-before-return
+    - no-boolean-literal-compare
+    - no-empty-block
+    # - no-equal-arguments
+    - no-equal-then-else
+    - no-object-declaration
+    - prefer-conditional-expressions
+    - prefer-correct-identifier-length
+    - prefer-correct-type-name
+    # - prefer-first
+    - prefer-last
+    - prefer-match-file-name
+    - prefer-trailing-comma
+    - prefer-correct-identifier-length:
+        min-identifier-length: 1

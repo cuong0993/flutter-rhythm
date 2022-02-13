@@ -41,6 +41,7 @@ dependencies:
 dev_dependencies:
   auto_route_generator: any
   build_runner: any
+  dart_code_metrics: any
   flutter_launcher_icons: any
   flutter_native_splash: any
   freezed: any

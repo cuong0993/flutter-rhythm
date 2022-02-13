@@ -15,6 +15,7 @@ class InstrumentsPage extends ConsumerWidget {
     final instruments = ref.watch(instrumentsProvider);
     final selectedInstrumentId =
         ref.watch(selectedInstrumentIdProvider.state).state;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -27,6 +28,7 @@ class InstrumentsPage extends ConsumerWidget {
           itemCount: instruments.length,
           itemBuilder: (context, index) {
             final instrument = instruments[index];
+
             return RadioListTile<String>(
               title: Text(
                 getInstrumentName(context, instrument.id),

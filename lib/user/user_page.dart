@@ -25,6 +25,7 @@ class UserPage extends StatelessWidget {
         body: Consumer(
           builder: (context, ref, child) {
             final user = ref.watch(userProvider);
+
             return user.when(
               data: (user) => Padding(
                 padding: const EdgeInsets.all(8),
@@ -46,13 +47,10 @@ class UserPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            () {
-              if (!user.anonymous) {
-                return _buildUserDetailsUI(user, context);
-              } else {
-                return const AuthenticationWidget();
-              }
-            }(),
+            if (!user.anonymous)
+              _buildUserDetailsUI(user, context)
+            else
+              const AuthenticationWidget(),
             Card(
               color: Colors.transparent,
               elevation: 0,
@@ -205,7 +203,7 @@ class UserPage extends StatelessWidget {
                     ],
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

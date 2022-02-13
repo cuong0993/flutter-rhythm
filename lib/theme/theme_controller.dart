@@ -10,6 +10,7 @@ final themeModeProvider =
     (element) => element.toString() == themeName,
     orElse: () => ThemeMode.system,
   );
+
   return ThemeController(ref.read, themeMode);
 });
 
@@ -18,7 +19,7 @@ class ThemeController extends StateNotifier<ThemeMode> {
       : super(defaultThemeMode);
   final Reader _read;
 
-  Future setThemeMode(BuildContext context, ThemeMode themeMode) async {
+  Future setThemeMode(ThemeMode themeMode) async {
     await _read(sharedUtilityProvider).setThemeName(themeMode.toString());
     state = themeMode;
   }
@@ -40,6 +41,7 @@ ThemeData buildTheme({bool isDark = false}) {
     bodyText2: screenTaskNameTextStyle,
     bodyText1: screenTaskDurationTextStyle,
   );
+
   return ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

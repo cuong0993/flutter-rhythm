@@ -8,6 +8,7 @@ import 'package:logging/logging.dart';
 import 'game/tile/tile_chunk.dart';
 import 'game/tile/tile_converter.dart';
 
+// ignore: long-method
 void main() {
   File('database/db.json')
       .readAsString()
@@ -54,7 +55,7 @@ void main() {
       );
       final countDurationToPrevious = {
         for (var e in groupByDurationToPrevious.keys)
-          e: groupByDurationToPrevious[e]!.length
+          e: groupByDurationToPrevious[e]!.length,
       };
 
       final sortCountDurationToPrevious = Map.fromEntries(
@@ -115,7 +116,7 @@ void main() {
       song['tilesCount'] = [
         createTiles(tileChunks, unitDuration, 2).length,
         createTiles(tileChunks, unitDuration, 3).length,
-        createTiles(tileChunks, unitDuration, 4).length
+        createTiles(tileChunks, unitDuration, 4).length,
       ];
       song['duration'] = [
         (0.5 +
@@ -127,7 +128,7 @@ void main() {
         (0.5 +
                 ((0.0 - tiles.last.initialY) * 1000000) /
                     (speedDpsPerSecond * 1.25))
-            .toInt()
+            .toInt(),
       ];
       song['id'] = id;
       song['artist'] = artist1;

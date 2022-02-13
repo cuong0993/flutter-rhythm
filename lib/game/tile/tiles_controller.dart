@@ -28,6 +28,7 @@ class TilesController {
     for (var i = 0; i < _visibleTileCount; i++) {
       tiles[i].updateY(_deltaY);
     }
+
     return actualDelta;
   }
 
@@ -71,6 +72,7 @@ class TilesController {
         return tile;
       }
     }
+
     return null;
   }
 
