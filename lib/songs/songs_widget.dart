@@ -25,7 +25,7 @@ class SongsWidget extends ConsumerWidget {
         children: [
           Expanded(
             child: Scrollbar(
-              isAlwaysShown: true,
+              thumbVisibility: true,
               child: NotificationListener<ScrollEndNotification>(
                 onNotification: (notification) {
                   if (notification.metrics.pixels > 0 &&

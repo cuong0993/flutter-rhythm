@@ -21,7 +21,7 @@ class ThemePage extends StatelessWidget {
             final themeMode = ref.watch(themeModeProvider);
 
             return Scrollbar(
-              isAlwaysShown: true,
+              thumbVisibility: true,
               child: ListView.builder(
                 itemCount: ThemeMode.values.length,
                 itemBuilder: (context, index) => RadioListTile<ThemeMode>(

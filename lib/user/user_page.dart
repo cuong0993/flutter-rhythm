@@ -30,7 +30,7 @@ class UserPage extends StatelessWidget {
               data: (user) => Padding(
                 padding: const EdgeInsets.all(8),
                 child: Scrollbar(
-                  isAlwaysShown: true,
+                  thumbVisibility: true,
                   child: SingleChildScrollView(
                     child: _buildUI(user, context),
                   ),

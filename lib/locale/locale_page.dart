@@ -24,7 +24,7 @@ class LocalePage extends ConsumerWidget {
           ),
         ),
         body: Scrollbar(
-          isAlwaysShown: true,
+          thumbVisibility: true,
           child: ListView.builder(
             itemCount: L10n.supportedLocales.length,
             itemBuilder: (context, index) => RadioListTile<Locale>(
