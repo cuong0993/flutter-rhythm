@@ -8,7 +8,7 @@ import 'authentication_state.dart';
 
 final authenticationProvider =
     StateNotifierProvider<AuthenticationController, AuthenticationState>(
-  (ref) => AuthenticationController(ref.read),
+  AuthenticationController.new,
 );
 
 class AuthenticationController extends StateNotifier<AuthenticationState> {
@@ -28,7 +28,7 @@ class AuthenticationController extends StateNotifier<AuthenticationState> {
 
   final _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookAuth.instance;
-  final Reader _read;
+  final StateNotifierProviderRef _read;
 
   Future signInWithGoogle() async {
     try {
@@ -47,9 +47,7 @@ class AuthenticationController extends StateNotifier<AuthenticationState> {
 
   Future signInWithFacebook() async {
     try {
-      final loginResult = await _facebookLogin.login(
-        loginBehavior: LoginBehavior.nativeWithFallback,
-      );
+      final loginResult = await _facebookLogin.login();
       final credential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await _tryToLinkWithCurrentUser(credential);
@@ -72,7 +70,7 @@ class AuthenticationController extends StateNotifier<AuthenticationState> {
         // ignore: avoid_dynamic_calls
         photoUrl = userInfo.profile!['picture']['data']['url'] as String;
       }
-      _read(userRepositoryProvider).update(name, photoUrl);
+      _read.read(userRepositoryProvider).update(name, photoUrl);
     } on Exception {
       final userInfo =
           (await FirebaseAuth.instance.signInWithCredential(authCredential))
@@ -85,7 +83,7 @@ class AuthenticationController extends StateNotifier<AuthenticationState> {
         // ignore: avoid_dynamic_calls
         photoUrl = userInfo.profile!['picture']['data']['url'] as String;
       }
-      _read(userRepositoryProvider).update(name, photoUrl);
+      _read.read(userRepositoryProvider).update(name, photoUrl);
     }
   }
 }

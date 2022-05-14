@@ -6,12 +6,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../midi/midi_controller.dart';
-import '../router/root_router.dart';
+import '../router/root_router.gr.dart';
 import '../search/search_widget.dart';
 import '../songs/songs_controller.dart';
 import '../songs/songs_widget.dart';
 import '../user/user_controller.dart';
 
+@RoutePage<dynamic>()
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         showSearch<void>(
                           context: context,
-                          delegate: SearchWidget(ref.read),
+                          delegate: SearchWidget(ref),
                         );
                       },
                     ),

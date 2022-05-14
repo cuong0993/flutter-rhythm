@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flame/game.dart' as flame;
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
@@ -11,6 +12,7 @@ import 'game_controller.dart';
 import 'game_state.dart';
 import 'pause_dialog.dart';
 
+@RoutePage<dynamic>()
 class GamePage extends ConsumerWidget {
   const GamePage({
     required this.arguments,
@@ -42,7 +44,7 @@ class GamePage extends ConsumerWidget {
 
     return WillPopScope(
       onWillPop: () {
-        ref.read(isPausedProvider.state).state = true;
+        ref.read(isPausedProvider.notifier).state = true;
 
         return Future.value(false);
       },
@@ -70,7 +72,7 @@ class GamePage extends ConsumerWidget {
                       children: [
                         Consumer(
                           builder: (context, ref, child) {
-                            final time = ref.watch(timeProvider.state).state;
+                            final time = ref.watch(timeProvider.notifier).state;
 
                             return LinearProgressIndicator(
                               backgroundColor:
@@ -92,18 +94,19 @@ class GamePage extends ConsumerWidget {
                                   Text(
                                     gameState.songName,
                                     style:
-                                        Theme.of(context).textTheme.headline6,
+                                        Theme.of(context).textTheme.titleLarge,
                                   ),
                                   Consumer(
                                     builder: (context, ref, child) {
-                                      final time =
-                                          ref.watch(timeProvider.state).state;
+                                      final time = ref
+                                          .watch(timeProvider.notifier)
+                                          .state;
 
                                       return Text(
                                         '${time.toInt() ~/ 60}:${(time.toInt() % 60).toString().padLeft(2, '0')}/${gameState.duration ~/ 60}:${(gameState.duration % 60).toString().padLeft(2, '0')}',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .headline6,
+                                            .titleLarge,
                                       );
                                     },
                                   ),
@@ -119,21 +122,22 @@ class GamePage extends ConsumerWidget {
                                       Icons.pause_circle_outline_rounded,
                                     ),
                                     onPressed: () {
-                                      ref.read(isPausedProvider.state).state =
-                                          true;
+                                      ref
+                                          .read(isPausedProvider.notifier)
+                                          .state = true;
                                     },
                                   ),
                                   Consumer(
                                     builder: (context, ref, child) {
                                       final tilesCount = ref
-                                          .watch(tilesCountProvider.state)
+                                          .watch(tilesCountProvider.notifier)
                                           .state;
 
                                       return Text(
                                         tilesCount.toString(),
                                         style: Theme.of(context)
                                             .textTheme
-                                            .headline4!
+                                            .headlineMedium!
                                             .copyWith(color: secondaryColor),
                                       );
                                     },
@@ -167,7 +171,7 @@ class GuideTextWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final guideText = ref.watch(guideTextProvider.state).state;
+    final guideText = ref.watch(guideTextProvider.notifier).state;
     var text = '';
     if (guideText == 'txt_too_late') {
       text = L10n.of(context)!.txt_too_late;
@@ -179,8 +183,10 @@ class GuideTextWidget extends ConsumerWidget {
 
     return Text(
       text,
-      style:
-          Theme.of(context).textTheme.headline5!.copyWith(color: primaryColor),
+      style: Theme.of(context)
+          .textTheme
+          .headlineSmall!
+          .copyWith(color: primaryColor),
     );
   }
 }

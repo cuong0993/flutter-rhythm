@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'game_state.dart';
 
@@ -12,36 +12,7 @@ part of 'game_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GameStateTearOff {
-  const _$GameStateTearOff();
-
-  GameStateLoading loading() {
-    return GameStateLoading();
-  }
-
-  GameStatePlaying playing(int duration, String songName) {
-    return GameStatePlaying(
-      duration,
-      songName,
-    );
-  }
-
-  GameStateGettingGift gettingGift() {
-    return GameStateGettingGift();
-  }
-
-  GameStateCompleted completed(GameReward gameReward) {
-    return GameStateCompleted(
-      gameReward,
-    );
-  }
-}
-
-/// @nodoc
-const $GameState = _$GameStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GameState {
@@ -55,10 +26,10 @@ mixin _$GameState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(int duration, String songName)? playing,
-    TResult Function()? gettingGift,
-    TResult Function(GameReward gameReward)? completed,
+    TResult? Function()? loading,
+    TResult? Function(int duration, String songName)? playing,
+    TResult? Function()? gettingGift,
+    TResult? Function(GameReward gameReward)? completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,10 +51,10 @@ mixin _$GameState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStatePlaying value)? playing,
-    TResult Function(GameStateGettingGift value)? gettingGift,
-    TResult Function(GameStateCompleted value)? completed,
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStatePlaying value)? playing,
+    TResult? Function(GameStateGettingGift value)? gettingGift,
+    TResult? Function(GameStateCompleted value)? completed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,34 +71,34 @@ mixin _$GameState {
 /// @nodoc
 abstract class $GameStateCopyWith<$Res> {
   factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) =
-      _$GameStateCopyWithImpl<$Res>;
+      _$GameStateCopyWithImpl<$Res, GameState>;
 }
 
 /// @nodoc
-class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
+class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
+    implements $GameStateCopyWith<$Res> {
   _$GameStateCopyWithImpl(this._value, this._then);
 
-  final GameState _value;
   // ignore: unused_field
-  final $Res Function(GameState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $GameStateLoadingCopyWith<$Res> {
-  factory $GameStateLoadingCopyWith(
-          GameStateLoading value, $Res Function(GameStateLoading) then) =
-      _$GameStateLoadingCopyWithImpl<$Res>;
+abstract class _$$GameStateLoadingCopyWith<$Res> {
+  factory _$$GameStateLoadingCopyWith(
+          _$GameStateLoading value, $Res Function(_$GameStateLoading) then) =
+      __$$GameStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameStateLoadingCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
-    implements $GameStateLoadingCopyWith<$Res> {
-  _$GameStateLoadingCopyWithImpl(
-      GameStateLoading _value, $Res Function(GameStateLoading) _then)
-      : super(_value, (v) => _then(v as GameStateLoading));
-
-  @override
-  GameStateLoading get _value => super._value as GameStateLoading;
+class __$$GameStateLoadingCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStateLoading>
+    implements _$$GameStateLoadingCopyWith<$Res> {
+  __$$GameStateLoadingCopyWithImpl(
+      _$GameStateLoading _value, $Res Function(_$GameStateLoading) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -143,7 +114,7 @@ class _$GameStateLoading implements GameStateLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is GameStateLoading);
+        (other.runtimeType == runtimeType && other is _$GameStateLoading);
   }
 
   @override
@@ -163,10 +134,10 @@ class _$GameStateLoading implements GameStateLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(int duration, String songName)? playing,
-    TResult Function()? gettingGift,
-    TResult Function(GameReward gameReward)? completed,
+    TResult? Function()? loading,
+    TResult? Function(int duration, String songName)? playing,
+    TResult? Function()? gettingGift,
+    TResult? Function(GameReward gameReward)? completed,
   }) {
     return loading?.call();
   }
@@ -200,10 +171,10 @@ class _$GameStateLoading implements GameStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStatePlaying value)? playing,
-    TResult Function(GameStateGettingGift value)? gettingGift,
-    TResult Function(GameStateCompleted value)? completed,
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStatePlaying value)? playing,
+    TResult? Function(GameStateGettingGift value)? gettingGift,
+    TResult? Function(GameStateCompleted value)? completed,
   }) {
     return loading?.call(this);
   }
@@ -229,34 +200,34 @@ abstract class GameStateLoading implements GameState {
 }
 
 /// @nodoc
-abstract class $GameStatePlayingCopyWith<$Res> {
-  factory $GameStatePlayingCopyWith(
-          GameStatePlaying value, $Res Function(GameStatePlaying) then) =
-      _$GameStatePlayingCopyWithImpl<$Res>;
+abstract class _$$GameStatePlayingCopyWith<$Res> {
+  factory _$$GameStatePlayingCopyWith(
+          _$GameStatePlaying value, $Res Function(_$GameStatePlaying) then) =
+      __$$GameStatePlayingCopyWithImpl<$Res>;
+  @useResult
   $Res call({int duration, String songName});
 }
 
 /// @nodoc
-class _$GameStatePlayingCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res>
-    implements $GameStatePlayingCopyWith<$Res> {
-  _$GameStatePlayingCopyWithImpl(
-      GameStatePlaying _value, $Res Function(GameStatePlaying) _then)
-      : super(_value, (v) => _then(v as GameStatePlaying));
+class __$$GameStatePlayingCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStatePlaying>
+    implements _$$GameStatePlayingCopyWith<$Res> {
+  __$$GameStatePlayingCopyWithImpl(
+      _$GameStatePlaying _value, $Res Function(_$GameStatePlaying) _then)
+      : super(_value, _then);
 
-  @override
-  GameStatePlaying get _value => super._value as GameStatePlaying;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? duration = freezed,
-    Object? songName = freezed,
+    Object? duration = null,
+    Object? songName = null,
   }) {
-    return _then(GameStatePlaying(
-      duration == freezed
+    return _then(_$GameStatePlaying(
+      null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int,
-      songName == freezed
+      null == songName
           ? _value.songName
           : songName // ignore: cast_nullable_to_non_nullable
               as String,
@@ -283,21 +254,21 @@ class _$GameStatePlaying implements GameStatePlaying {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GameStatePlaying &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.songName, songName));
+            other is _$GameStatePlaying &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.songName, songName) ||
+                other.songName == songName));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(songName));
+  int get hashCode => Object.hash(runtimeType, duration, songName);
 
   @JsonKey(ignore: true)
   @override
-  $GameStatePlayingCopyWith<GameStatePlaying> get copyWith =>
-      _$GameStatePlayingCopyWithImpl<GameStatePlaying>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GameStatePlayingCopyWith<_$GameStatePlaying> get copyWith =>
+      __$$GameStatePlayingCopyWithImpl<_$GameStatePlaying>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -313,10 +284,10 @@ class _$GameStatePlaying implements GameStatePlaying {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(int duration, String songName)? playing,
-    TResult Function()? gettingGift,
-    TResult Function(GameReward gameReward)? completed,
+    TResult? Function()? loading,
+    TResult? Function(int duration, String songName)? playing,
+    TResult? Function()? gettingGift,
+    TResult? Function(GameReward gameReward)? completed,
   }) {
     return playing?.call(duration, songName);
   }
@@ -350,10 +321,10 @@ class _$GameStatePlaying implements GameStatePlaying {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStatePlaying value)? playing,
-    TResult Function(GameStateGettingGift value)? gettingGift,
-    TResult Function(GameStateCompleted value)? completed,
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStatePlaying value)? playing,
+    TResult? Function(GameStateGettingGift value)? gettingGift,
+    TResult? Function(GameStateCompleted value)? completed,
   }) {
     return playing?.call(this);
   }
@@ -375,32 +346,30 @@ class _$GameStatePlaying implements GameStatePlaying {
 }
 
 abstract class GameStatePlaying implements GameState {
-  factory GameStatePlaying(int duration, String songName) = _$GameStatePlaying;
+  factory GameStatePlaying(final int duration, final String songName) =
+      _$GameStatePlaying;
 
   int get duration;
   String get songName;
   @JsonKey(ignore: true)
-  $GameStatePlayingCopyWith<GameStatePlaying> get copyWith =>
+  _$$GameStatePlayingCopyWith<_$GameStatePlaying> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GameStateGettingGiftCopyWith<$Res> {
-  factory $GameStateGettingGiftCopyWith(GameStateGettingGift value,
-          $Res Function(GameStateGettingGift) then) =
-      _$GameStateGettingGiftCopyWithImpl<$Res>;
+abstract class _$$GameStateGettingGiftCopyWith<$Res> {
+  factory _$$GameStateGettingGiftCopyWith(_$GameStateGettingGift value,
+          $Res Function(_$GameStateGettingGift) then) =
+      __$$GameStateGettingGiftCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GameStateGettingGiftCopyWithImpl<$Res>
-    extends _$GameStateCopyWithImpl<$Res>
-    implements $GameStateGettingGiftCopyWith<$Res> {
-  _$GameStateGettingGiftCopyWithImpl(
-      GameStateGettingGift _value, $Res Function(GameStateGettingGift) _then)
-      : super(_value, (v) => _then(v as GameStateGettingGift));
-
-  @override
-  GameStateGettingGift get _value => super._value as GameStateGettingGift;
+class __$$GameStateGettingGiftCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStateGettingGift>
+    implements _$$GameStateGettingGiftCopyWith<$Res> {
+  __$$GameStateGettingGiftCopyWithImpl(_$GameStateGettingGift _value,
+      $Res Function(_$GameStateGettingGift) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -416,7 +385,7 @@ class _$GameStateGettingGift implements GameStateGettingGift {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is GameStateGettingGift);
+        (other.runtimeType == runtimeType && other is _$GameStateGettingGift);
   }
 
   @override
@@ -436,10 +405,10 @@ class _$GameStateGettingGift implements GameStateGettingGift {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(int duration, String songName)? playing,
-    TResult Function()? gettingGift,
-    TResult Function(GameReward gameReward)? completed,
+    TResult? Function()? loading,
+    TResult? Function(int duration, String songName)? playing,
+    TResult? Function()? gettingGift,
+    TResult? Function(GameReward gameReward)? completed,
   }) {
     return gettingGift?.call();
   }
@@ -473,10 +442,10 @@ class _$GameStateGettingGift implements GameStateGettingGift {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStatePlaying value)? playing,
-    TResult Function(GameStateGettingGift value)? gettingGift,
-    TResult Function(GameStateCompleted value)? completed,
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStatePlaying value)? playing,
+    TResult? Function(GameStateGettingGift value)? gettingGift,
+    TResult? Function(GameStateCompleted value)? completed,
   }) {
     return gettingGift?.call(this);
   }
@@ -502,32 +471,31 @@ abstract class GameStateGettingGift implements GameState {
 }
 
 /// @nodoc
-abstract class $GameStateCompletedCopyWith<$Res> {
-  factory $GameStateCompletedCopyWith(
-          GameStateCompleted value, $Res Function(GameStateCompleted) then) =
-      _$GameStateCompletedCopyWithImpl<$Res>;
+abstract class _$$GameStateCompletedCopyWith<$Res> {
+  factory _$$GameStateCompletedCopyWith(_$GameStateCompleted value,
+          $Res Function(_$GameStateCompleted) then) =
+      __$$GameStateCompletedCopyWithImpl<$Res>;
+  @useResult
   $Res call({GameReward gameReward});
 
   $GameRewardCopyWith<$Res> get gameReward;
 }
 
 /// @nodoc
-class _$GameStateCompletedCopyWithImpl<$Res>
-    extends _$GameStateCopyWithImpl<$Res>
-    implements $GameStateCompletedCopyWith<$Res> {
-  _$GameStateCompletedCopyWithImpl(
-      GameStateCompleted _value, $Res Function(GameStateCompleted) _then)
-      : super(_value, (v) => _then(v as GameStateCompleted));
+class __$$GameStateCompletedCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStateCompleted>
+    implements _$$GameStateCompletedCopyWith<$Res> {
+  __$$GameStateCompletedCopyWithImpl(
+      _$GameStateCompleted _value, $Res Function(_$GameStateCompleted) _then)
+      : super(_value, _then);
 
-  @override
-  GameStateCompleted get _value => super._value as GameStateCompleted;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gameReward = freezed,
+    Object? gameReward = null,
   }) {
-    return _then(GameStateCompleted(
-      gameReward == freezed
+    return _then(_$GameStateCompleted(
+      null == gameReward
           ? _value.gameReward
           : gameReward // ignore: cast_nullable_to_non_nullable
               as GameReward,
@@ -535,6 +503,7 @@ class _$GameStateCompletedCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $GameRewardCopyWith<$Res> get gameReward {
     return $GameRewardCopyWith<$Res>(_value.gameReward, (value) {
       return _then(_value.copyWith(gameReward: value));
@@ -559,19 +528,20 @@ class _$GameStateCompleted implements GameStateCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GameStateCompleted &&
-            const DeepCollectionEquality()
-                .equals(other.gameReward, gameReward));
+            other is _$GameStateCompleted &&
+            (identical(other.gameReward, gameReward) ||
+                other.gameReward == gameReward));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(gameReward));
+  int get hashCode => Object.hash(runtimeType, gameReward);
 
   @JsonKey(ignore: true)
   @override
-  $GameStateCompletedCopyWith<GameStateCompleted> get copyWith =>
-      _$GameStateCompletedCopyWithImpl<GameStateCompleted>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$GameStateCompletedCopyWith<_$GameStateCompleted> get copyWith =>
+      __$$GameStateCompletedCopyWithImpl<_$GameStateCompleted>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -587,10 +557,10 @@ class _$GameStateCompleted implements GameStateCompleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(int duration, String songName)? playing,
-    TResult Function()? gettingGift,
-    TResult Function(GameReward gameReward)? completed,
+    TResult? Function()? loading,
+    TResult? Function(int duration, String songName)? playing,
+    TResult? Function()? gettingGift,
+    TResult? Function(GameReward gameReward)? completed,
   }) {
     return completed?.call(gameReward);
   }
@@ -624,10 +594,10 @@ class _$GameStateCompleted implements GameStateCompleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GameStateLoading value)? loading,
-    TResult Function(GameStatePlaying value)? playing,
-    TResult Function(GameStateGettingGift value)? gettingGift,
-    TResult Function(GameStateCompleted value)? completed,
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStatePlaying value)? playing,
+    TResult? Function(GameStateGettingGift value)? gettingGift,
+    TResult? Function(GameStateCompleted value)? completed,
   }) {
     return completed?.call(this);
   }
@@ -649,10 +619,11 @@ class _$GameStateCompleted implements GameStateCompleted {
 }
 
 abstract class GameStateCompleted implements GameState {
-  factory GameStateCompleted(GameReward gameReward) = _$GameStateCompleted;
+  factory GameStateCompleted(final GameReward gameReward) =
+      _$GameStateCompleted;
 
   GameReward get gameReward;
   @JsonKey(ignore: true)
-  $GameStateCompletedCopyWith<GameStateCompleted> get copyWith =>
+  _$$GameStateCompletedCopyWith<_$GameStateCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }

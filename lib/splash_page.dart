@@ -4,8 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'authentication/authentication_controller.dart';
 import 'authentication/authentication_state.dart';
-import 'router/root_router.dart';
+import 'router/root_router.gr.dart';
 
+@RoutePage<dynamic>()
 class SplashPage extends ConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
 

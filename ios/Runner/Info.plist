@@ -32,6 +32,8 @@
 		</array>
 		<key>FacebookAppID</key>
         <string>$(ENV_FACEBOOK_APP_ID)</string>
+        <key>FacebookClientToken</key>
+        <string>$(ENV_FACEBOOK_APP_SECRET)</string>
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>
@@ -52,5 +54,9 @@
 		<false/>
 		<key>UIStatusBarHidden</key>
 		<false/>
-	</dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
 </plist>

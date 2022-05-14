@@ -16,26 +16,26 @@ final isLoadingNextPageByTagProvider =
 final isLoadedByTagsProvider =
     StateProvider.family<bool, String>((_, __) => false);
 
-final songsByTagProvider = StateNotifierProvider.family<
-    SongsController,
-    AsyncValue<List<Song>>,
-    String>((ref, tag) => SongsController(ref.read, tag));
+final songsByTagProvider = StateNotifierProvider.family<SongsController,
+    AsyncValue<List<Song>>, String>(SongsController.new);
 
 class SongsController extends StateNotifier<AsyncValue<List<Song>>> {
   SongsController(this._read, this._tag) : super(const AsyncValue.loading()) {
-    _read(songRepositoryProvider)
+    _read
+        .read(songRepositoryProvider)
         .getSongsByTag(_tag, '', 20)
         .then((songs) => {state = AsyncValue.data(songs)});
   }
 
   final String _tag;
-  final Reader _read;
+  final StateNotifierProviderRef _read;
 
   Future<void> loadMoreSongs() async {
-    final isLoading = _read(isLoadingNextPageByTagProvider(_tag).state).state;
-    final isLoaded = _read(isLoadedByTagsProvider(_tag).state).state;
+    final isLoading =
+        _read.read(isLoadingNextPageByTagProvider(_tag).notifier).state;
+    final isLoaded = _read.read(isLoadedByTagsProvider(_tag).notifier).state;
     if (!isLoading && !isLoaded) {
-      _read(isLoadingNextPageByTagProvider(_tag).state).state = true;
+      _read.read(isLoadingNextPageByTagProvider(_tag).notifier).state = true;
       final titleStart = state.when(
         data: (songs) => songs.isEmpty ? '' : songs.last.title,
         loading: () => '',
@@ -46,10 +46,11 @@ class SongsController extends StateNotifier<AsyncValue<List<Song>>> {
         loading: () => <Song>[],
         error: (_, __) => <Song>[],
       );
-      final songs = await _read(songRepositoryProvider)
+      final songs = await _read
+          .read(songRepositoryProvider)
           .getSongsByTag(_tag, titleStart, 20);
-      _read(isLoadingNextPageByTagProvider(_tag).state).state = false;
-      _read(isLoadedByTagsProvider(_tag).state).state = songs.isEmpty;
+      _read.read(isLoadingNextPageByTagProvider(_tag).notifier).state = false;
+      _read.read(isLoadedByTagsProvider(_tag).notifier).state = songs.isEmpty;
       state = AsyncValue.data(loadedSongs + songs);
     }
   }

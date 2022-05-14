@@ -6,10 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sprintf/sprintf.dart';
 
 import '../game/colors.dart';
-import '../router/root_router.dart';
+import '../router/root_router.gr.dart';
 import '../songs/song.dart';
 import 'game_config_controller.dart';
 
+@RoutePage<dynamic>()
 class GameConfigPage extends ConsumerWidget {
   const GameConfigPage({
     required this.song,
@@ -31,7 +32,7 @@ class GameConfigPage extends ConsumerWidget {
       ),
       body: SafeArea(
         child: Scrollbar(
-          isAlwaysShown: true,
+          thumbVisibility: true,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -39,7 +40,7 @@ class GameConfigPage extends ConsumerWidget {
                   children: [
                     Text(
                       L10n.of(context)!.txt_difficulty,
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 8),
                     Row(
@@ -87,7 +88,7 @@ class GameConfigPage extends ConsumerWidget {
                   children: [
                     Text(
                       L10n.of(context)!.txt_speed,
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 8),
                     Row(

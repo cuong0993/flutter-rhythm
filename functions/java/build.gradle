@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlin_version = '1.5.30'
+        kotlin_version = '1.7.20'
     }
     repositories {
         mavenCentral()
@@ -35,8 +35,8 @@ configurations {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "com.google.cloud.functions:functions-framework-api:1.0.4"
-    implementation 'com.google.firebase:firebase-admin:8.0.1'
-    invoker "com.google.cloud.functions.invoker:java-function-invoker:1.0.2"
+    implementation 'com.google.firebase:firebase-admin:9.0.0'
+    invoker "com.google.cloud.functions.invoker:java-function-invoker:1.1.1"
 }
 
 tasks.register("runFunction", JavaExec) {

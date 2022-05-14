@@ -38,7 +38,7 @@ Update
   @override
   void didDisposeProvider(
     ProviderBase<dynamic> provider,
-    ProviderContainer containers,
+    ProviderContainer container,
   ) {
     Logger.root.info(
       '''

@@ -1,4 +1,4 @@
-# Hit Notes - Play instruments
+# Flutter Rhythm - Play instruments
 
 [![Build](https://github.com/cuong0993/HitNotes/actions/workflows/build.yml/badge.svg)](https://github.com/cuong0993/HitNotes/actions/workflows/build.yml)
 

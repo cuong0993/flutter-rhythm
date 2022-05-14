@@ -28,12 +28,12 @@ final gameStateFamilyProvider = StateNotifierProvider.autoDispose
   final difficulty = arguments['difficulty'] as int;
   final speed = arguments['speed'] as int;
 
-  return GameController(ref.read).._startGame(song, difficulty, speed);
+  return GameController(ref).._startGame(song, difficulty, speed);
 });
 
 class GameController extends StateNotifier<GameState> {
   GameController(this._read) : super(GameState.loading());
-  final Reader _read;
+  final StateNotifierProviderRef _read;
   List<TileChunk> _tileChunks = [];
   int _unitDuration = 0;
   var _difficulty = 0;
@@ -96,11 +96,11 @@ class GameController extends StateNotifier<GameState> {
   void _onTouchTile(Tile? tile) {
     var guideText = '';
     if (tile != null) {
-      _read(midiLoadedProvider.notifier).playNote(tile.note);
+      _read.read(midiLoadedProvider.notifier).playNote(tile.note);
       _tilesCount += 1;
       _time = (0.0 - tile.initialY) / _speedDpsPerSecond;
-      _read(tilesCountProvider.state).state = _tilesCount;
-      _read(timeProvider.state).state = _time;
+      _read.read(tilesCountProvider.notifier).state = _tilesCount;
+      _read.read(timeProvider.notifier).state = _time;
       if (tile.y >= pauseY) {
         _errorCount++;
         guideText = 'txt_too_late';
@@ -112,7 +112,7 @@ class GameController extends StateNotifier<GameState> {
       _errorCount++;
       guideText = 'txt_too_many_fingers';
     }
-    _read(guideTextProvider.state).state = guideText;
+    _read.read(guideTextProvider.notifier).state = guideText;
   }
 
   Future _onComplete() async {
@@ -138,8 +138,8 @@ class GameController extends StateNotifier<GameState> {
     final tiles = createTiles(_tileChunks, _unitDuration, _numberTileColumn);
     await game.start(tiles, _speedDpsPerSecond, _onTouchTile, _onComplete);
     state = GameState.playing(_duration, _songName);
-    _read(tilesCountProvider.state).state = _tilesCount;
-    _read(timeProvider.state).state = _time;
-    _read(guideTextProvider.state).state = '';
+    _read.read(tilesCountProvider.notifier).state = _tilesCount;
+    _read.read(timeProvider.notifier).state = _time;
+    _read.read(guideTextProvider.notifier).state = '';
   }
 }

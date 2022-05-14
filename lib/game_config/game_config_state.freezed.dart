@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'game_config_state.dart';
 
@@ -12,22 +12,7 @@ part of 'game_config_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GameConfigStateTearOff {
-  const _$GameConfigStateTearOff();
-
-  _GameConfigState call({required int difficulty, required int speed}) {
-    return _GameConfigState(
-      difficulty: difficulty,
-      speed: speed,
-    );
-  }
-}
-
-/// @nodoc
-const $GameConfigState = _$GameConfigStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GameConfigState {
@@ -43,69 +28,71 @@ mixin _$GameConfigState {
 abstract class $GameConfigStateCopyWith<$Res> {
   factory $GameConfigStateCopyWith(
           GameConfigState value, $Res Function(GameConfigState) then) =
-      _$GameConfigStateCopyWithImpl<$Res>;
+      _$GameConfigStateCopyWithImpl<$Res, GameConfigState>;
+  @useResult
   $Res call({int difficulty, int speed});
 }
 
 /// @nodoc
-class _$GameConfigStateCopyWithImpl<$Res>
+class _$GameConfigStateCopyWithImpl<$Res, $Val extends GameConfigState>
     implements $GameConfigStateCopyWith<$Res> {
   _$GameConfigStateCopyWithImpl(this._value, this._then);
 
-  final GameConfigState _value;
   // ignore: unused_field
-  final $Res Function(GameConfigState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? difficulty = freezed,
-    Object? speed = freezed,
+    Object? difficulty = null,
+    Object? speed = null,
   }) {
     return _then(_value.copyWith(
-      difficulty: difficulty == freezed
+      difficulty: null == difficulty
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
-      speed: speed == freezed
+      speed: null == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$GameConfigStateCopyWith<$Res>
+abstract class _$$_GameConfigStateCopyWith<$Res>
     implements $GameConfigStateCopyWith<$Res> {
-  factory _$GameConfigStateCopyWith(
-          _GameConfigState value, $Res Function(_GameConfigState) then) =
-      __$GameConfigStateCopyWithImpl<$Res>;
+  factory _$$_GameConfigStateCopyWith(
+          _$_GameConfigState value, $Res Function(_$_GameConfigState) then) =
+      __$$_GameConfigStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int difficulty, int speed});
 }
 
 /// @nodoc
-class __$GameConfigStateCopyWithImpl<$Res>
-    extends _$GameConfigStateCopyWithImpl<$Res>
-    implements _$GameConfigStateCopyWith<$Res> {
-  __$GameConfigStateCopyWithImpl(
-      _GameConfigState _value, $Res Function(_GameConfigState) _then)
-      : super(_value, (v) => _then(v as _GameConfigState));
+class __$$_GameConfigStateCopyWithImpl<$Res>
+    extends _$GameConfigStateCopyWithImpl<$Res, _$_GameConfigState>
+    implements _$$_GameConfigStateCopyWith<$Res> {
+  __$$_GameConfigStateCopyWithImpl(
+      _$_GameConfigState _value, $Res Function(_$_GameConfigState) _then)
+      : super(_value, _then);
 
-  @override
-  _GameConfigState get _value => super._value as _GameConfigState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? difficulty = freezed,
-    Object? speed = freezed,
+    Object? difficulty = null,
+    Object? speed = null,
   }) {
-    return _then(_GameConfigState(
-      difficulty: difficulty == freezed
+    return _then(_$_GameConfigState(
+      difficulty: null == difficulty
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
-      speed: speed == freezed
+      speed: null == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
               as int,
@@ -132,27 +119,26 @@ class _$_GameConfigState implements _GameConfigState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GameConfigState &&
-            const DeepCollectionEquality()
-                .equals(other.difficulty, difficulty) &&
-            const DeepCollectionEquality().equals(other.speed, speed));
+            other is _$_GameConfigState &&
+            (identical(other.difficulty, difficulty) ||
+                other.difficulty == difficulty) &&
+            (identical(other.speed, speed) || other.speed == speed));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(difficulty),
-      const DeepCollectionEquality().hash(speed));
+  int get hashCode => Object.hash(runtimeType, difficulty, speed);
 
   @JsonKey(ignore: true)
   @override
-  _$GameConfigStateCopyWith<_GameConfigState> get copyWith =>
-      __$GameConfigStateCopyWithImpl<_GameConfigState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_GameConfigStateCopyWith<_$_GameConfigState> get copyWith =>
+      __$$_GameConfigStateCopyWithImpl<_$_GameConfigState>(this, _$identity);
 }
 
 abstract class _GameConfigState implements GameConfigState {
-  factory _GameConfigState({required int difficulty, required int speed}) =
-      _$_GameConfigState;
+  factory _GameConfigState(
+      {required final int difficulty,
+      required final int speed}) = _$_GameConfigState;
 
   @override
   int get difficulty;
@@ -160,6 +146,6 @@ abstract class _GameConfigState implements GameConfigState {
   int get speed;
   @override
   @JsonKey(ignore: true)
-  _$GameConfigStateCopyWith<_GameConfigState> get copyWith =>
+  _$$_GameConfigStateCopyWith<_$_GameConfigState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -11,16 +11,16 @@ final themeModeProvider =
     orElse: () => ThemeMode.system,
   );
 
-  return ThemeController(ref.read, themeMode);
+  return ThemeController(ref, themeMode);
 });
 
 class ThemeController extends StateNotifier<ThemeMode> {
   ThemeController(this._read, ThemeMode defaultThemeMode)
       : super(defaultThemeMode);
-  final Reader _read;
+  final StateNotifierProviderRef _read;
 
   Future setThemeMode(ThemeMode themeMode) async {
-    await _read(sharedUtilityProvider).setThemeName(themeMode.toString());
+    await _read.read(sharedUtilityProvider).setThemeName(themeMode.toString());
     state = themeMode;
   }
 }
@@ -37,22 +37,22 @@ ThemeData buildTheme({bool isDark = false}) {
   final screenTaskDurationTextStyle =
       TextStyle(fontSize: 16, color: onBackgroundColor);
   final textTheme = TextTheme(
-    headline5: screenHeadingTextStyle,
-    bodyText2: screenTaskNameTextStyle,
-    bodyText1: screenTaskDurationTextStyle,
+    headlineSmall: screenHeadingTextStyle,
+    bodyMedium: screenTaskNameTextStyle,
+    bodyLarge: screenTaskDurationTextStyle,
   );
 
   return ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        primary: primaryColor,
-        onPrimary: onPrimaryColor,
+        backgroundColor: primaryColor,
+        foregroundColor: onPrimaryColor,
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: onBackgroundColor,
-        onSurface: onBackgroundColor,
+        foregroundColor: onBackgroundColor,
+        disabledForegroundColor: onBackgroundColor,
       ),
     ),
     scaffoldBackgroundColor: backgroundColor,
@@ -88,7 +88,6 @@ ThemeData buildTheme({bool isDark = false}) {
       brightness: isDark ? Brightness.dark : Brightness.light,
       surface: backgroundColor,
     ),
-    toggleableActiveColor: primaryColor,
     iconTheme: const IconThemeData(
       color: primaryColor,
     ),

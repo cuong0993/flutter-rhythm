@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'theme_controller.dart';
 
+@RoutePage<dynamic>()
 class ThemePage extends StatelessWidget {
   const ThemePage({Key? key}) : super(key: key);
 
@@ -21,13 +23,13 @@ class ThemePage extends StatelessWidget {
             final themeMode = ref.watch(themeModeProvider);
 
             return Scrollbar(
-              isAlwaysShown: true,
+              thumbVisibility: true,
               child: ListView.builder(
                 itemCount: ThemeMode.values.length,
                 itemBuilder: (context, index) => RadioListTile<ThemeMode>(
                   title: Text(
                     getThemeName(context, ThemeMode.values[index]),
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   value: ThemeMode.values[index],
                   groupValue: themeMode,

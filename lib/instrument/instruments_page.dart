@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -7,6 +8,7 @@ import '../loading_widget.dart';
 import 'instruments_controller.dart';
 import 'instruments_repository_impl.dart';
 
+@RoutePage<dynamic>()
 class InstrumentsPage extends ConsumerWidget {
   const InstrumentsPage({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class InstrumentsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final instruments = ref.watch(instrumentsProvider);
     final selectedInstrumentId =
-        ref.watch(selectedInstrumentIdProvider.state).state;
+        ref.watch(selectedInstrumentIdProvider.notifier).state;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +34,7 @@ class InstrumentsPage extends ConsumerWidget {
             return RadioListTile<String>(
               title: Text(
                 getInstrumentName(context, instrument.id),
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               value: instrument.id,
               groupValue: selectedInstrumentId,
@@ -40,7 +42,7 @@ class InstrumentsPage extends ConsumerWidget {
                 ref
                     .watch(instrumentRepositoryProvider)
                     .changeInstrument(value!);
-                ref.read(selectedInstrumentIdProvider.state).state = value;
+                ref.read(selectedInstrumentIdProvider.notifier).state = value;
               },
             );
           },

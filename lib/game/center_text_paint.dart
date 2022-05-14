@@ -18,14 +18,14 @@ class CenterTextPaint extends TextPaint {
   void render(
     Canvas canvas,
     String text,
-    Vector2 p, {
+    Vector2 position, {
     Anchor anchor = Anchor.topLeft,
   }) {
     final tp = toTextPainter(text);
-    final translatedPosition =
-        anchor.translate(p, Vector2(tp.size.width, tp.size.height))
-          ..x -= tp.size.width / 2
-          ..y -= tp.size.height / 2;
+    final translatedPosition = (position - anchor.toVector2()
+      ..multiply(Vector2(tp.size.width, tp.size.height)))
+      ..x -= tp.size.width / 2
+      ..y -= tp.size.height / 2;
     tp.paint(canvas, translatedPosition.toOffset());
   }
 }

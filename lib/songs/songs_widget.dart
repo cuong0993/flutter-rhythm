@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../router/root_router.dart';
+import '../router/root_router.gr.dart';
 import 'song_widget.dart';
 import 'songs_controller.dart';
 
@@ -25,7 +25,7 @@ class SongsWidget extends ConsumerWidget {
         children: [
           Expanded(
             child: Scrollbar(
-              isAlwaysShown: true,
+              thumbVisibility: true,
               child: NotificationListener<ScrollEndNotification>(
                 onNotification: (notification) {
                   if (notification.metrics.pixels > 0 &&
@@ -55,8 +55,9 @@ class SongsWidget extends ConsumerWidget {
           ),
           Consumer(
             builder: (context, ref, child) {
-              final isLoadingNextPage =
-                  ref.watch(isLoadingNextPageByTagProvider(_tag).state).state;
+              final isLoadingNextPage = ref
+                  .watch(isLoadingNextPageByTagProvider(_tag).notifier)
+                  .state;
 
               return isLoadingNextPage
                   ? const Center(

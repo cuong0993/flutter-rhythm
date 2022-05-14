@@ -1,7 +1,7 @@
 name: hitnotes
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
   auto_route: any
@@ -13,7 +13,7 @@ dependencies:
       url: 'https://github.com/feelfreelinux/dart_midi'
   device_info_plus: any
   firebase_auth: any
-  firebase_core: any
+  firebase_core: ^2.0.0
   firebase_crashlytics: any
   firebase_storage: any
   flame: any

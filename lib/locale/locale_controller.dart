@@ -9,16 +9,16 @@ final localeProvider = StateNotifierProvider<LocaleController, Locale?>((ref) {
       ? Locale.fromSubtags(languageCode: localeName)
       : null;
 
-  return LocaleController(ref.read, locale);
+  return LocaleController(ref, locale);
 });
 
 class LocaleController extends StateNotifier<Locale?> {
   LocaleController(this._read, Locale? defaultLocale) : super(defaultLocale);
 
-  final Reader _read;
+  final StateNotifierProviderRef _read;
 
   Future setLocale(Locale locale) async {
-    await _read(sharedUtilityProvider).setLocaleName(locale.toString());
+    await _read.read(sharedUtilityProvider).setLocaleName(locale.toString());
     state = locale;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -12,6 +13,7 @@ const localeStrings = {
   'zh': '汉语',
 };
 
+@RoutePage<dynamic>()
 class LocalePage extends ConsumerWidget {
   const LocalePage({Key? key}) : super(key: key);
 
@@ -24,13 +26,13 @@ class LocalePage extends ConsumerWidget {
           ),
         ),
         body: Scrollbar(
-          isAlwaysShown: true,
+          thumbVisibility: true,
           child: ListView.builder(
             itemCount: L10n.supportedLocales.length,
             itemBuilder: (context, index) => RadioListTile<Locale>(
               title: Text(
                 localeStrings[L10n.supportedLocales[index].languageCode]!,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               value: L10n.supportedLocales[index],
               groupValue: Localizations.localeOf(context),

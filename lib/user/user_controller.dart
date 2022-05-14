@@ -12,7 +12,7 @@ final userProvider =
     StateNotifierProvider<UserController, AsyncValue<User>>((ref) {
   ref.watch(authenticationProvider);
 
-  return UserController(ref.read);
+  return UserController(ref);
 });
 
 class UserController extends StateNotifier<AsyncValue<User>> {
@@ -21,19 +21,22 @@ class UserController extends StateNotifier<AsyncValue<User>> {
       final firebaseUser = firebase.FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
         _subscription?.cancel();
-        _subscription =
-            _read(userRepositoryProvider).observeCurrentUser().listen((user) {
-          _read(selectedInstrumentIdProvider.state).state = user.instrumentId;
+        _subscription = _read
+            .read(userRepositoryProvider)
+            .observeCurrentUser()
+            .listen((user) {
+          _read.read(selectedInstrumentIdProvider.notifier).state =
+              user.instrumentId;
           state = AsyncValue.data(user);
         });
       } else {
-        state = const AsyncValue.error('Unauthenticated');
+        state = const AsyncValue.error('Unauthenticated', StackTrace.empty);
       }
     }
   }
 
   StreamSubscription? _subscription;
-  final Reader _read;
+  final StateNotifierProviderRef _read;
 
   @override
   void dispose() {

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -11,6 +12,7 @@ import '../loading_widget.dart';
 import 'user.dart';
 import 'user_controller.dart';
 
+@RoutePage<dynamic>()
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);
 
@@ -30,7 +32,7 @@ class UserPage extends StatelessWidget {
               data: (user) => Padding(
                 padding: const EdgeInsets.all(8),
                 child: Scrollbar(
-                  isAlwaysShown: true,
+                  thumbVisibility: true,
                   child: SingleChildScrollView(
                     child: _buildUI(user, context),
                   ),
@@ -83,7 +85,7 @@ class UserPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       user.stars.toString(),
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 8),
                   ],
@@ -108,7 +110,7 @@ class UserPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       user.playedNotes.toString(),
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 8),
                   ],
@@ -133,7 +135,7 @@ class UserPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       user.playedTime.toString().substring(0, 4),
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 8),
                   ],
@@ -167,7 +169,7 @@ class UserPage extends StatelessWidget {
                 children: [
                   Text(
                     user.name,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(height: 8),
                   Row(
@@ -182,7 +184,7 @@ class UserPage extends StatelessWidget {
                           L10n.of(context)!.txt_joined,
                           [DateFormat.yMMMd().format(user.creationTime)],
                         ),
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ],
                   ),

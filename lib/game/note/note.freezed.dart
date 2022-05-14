@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'note.dart';
 
@@ -12,22 +12,7 @@ part of 'note.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$NoteTearOff {
-  const _$NoteTearOff();
-
-  _Note call({required int note, required int startTick}) {
-    return _Note(
-      note: note,
-      startTick: startTick,
-    );
-  }
-}
-
-/// @nodoc
-const $Note = _$NoteTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Note {
@@ -41,64 +26,67 @@ mixin _$Note {
 /// @nodoc
 abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
-      _$NoteCopyWithImpl<$Res>;
+      _$NoteCopyWithImpl<$Res, Note>;
+  @useResult
   $Res call({int note, int startTick});
 }
 
 /// @nodoc
-class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
+class _$NoteCopyWithImpl<$Res, $Val extends Note>
+    implements $NoteCopyWith<$Res> {
   _$NoteCopyWithImpl(this._value, this._then);
 
-  final Note _value;
   // ignore: unused_field
-  final $Res Function(Note) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? note = freezed,
-    Object? startTick = freezed,
+    Object? note = null,
+    Object? startTick = null,
   }) {
     return _then(_value.copyWith(
-      note: note == freezed
+      note: null == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as int,
-      startTick: startTick == freezed
+      startTick: null == startTick
           ? _value.startTick
           : startTick // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
-  factory _$NoteCopyWith(_Note value, $Res Function(_Note) then) =
-      __$NoteCopyWithImpl<$Res>;
+abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
+  factory _$$_NoteCopyWith(_$_Note value, $Res Function(_$_Note) then) =
+      __$$_NoteCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int note, int startTick});
 }
 
 /// @nodoc
-class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
-    implements _$NoteCopyWith<$Res> {
-  __$NoteCopyWithImpl(_Note _value, $Res Function(_Note) _then)
-      : super(_value, (v) => _then(v as _Note));
+class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
+    implements _$$_NoteCopyWith<$Res> {
+  __$$_NoteCopyWithImpl(_$_Note _value, $Res Function(_$_Note) _then)
+      : super(_value, _then);
 
-  @override
-  _Note get _value => super._value as _Note;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? note = freezed,
-    Object? startTick = freezed,
+    Object? note = null,
+    Object? startTick = null,
   }) {
-    return _then(_Note(
-      note: note == freezed
+    return _then(_$_Note(
+      note: null == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as int,
-      startTick: startTick == freezed
+      startTick: null == startTick
           ? _value.startTick
           : startTick // ignore: cast_nullable_to_non_nullable
               as int,
@@ -125,25 +113,25 @@ class _$_Note implements _Note {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Note &&
-            const DeepCollectionEquality().equals(other.note, note) &&
-            const DeepCollectionEquality().equals(other.startTick, startTick));
+            other is _$_Note &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.startTick, startTick) ||
+                other.startTick == startTick));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(note),
-      const DeepCollectionEquality().hash(startTick));
+  int get hashCode => Object.hash(runtimeType, note, startTick);
 
   @JsonKey(ignore: true)
   @override
-  _$NoteCopyWith<_Note> get copyWith =>
-      __$NoteCopyWithImpl<_Note>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_NoteCopyWith<_$_Note> get copyWith =>
+      __$$_NoteCopyWithImpl<_$_Note>(this, _$identity);
 }
 
 abstract class _Note implements Note {
-  factory _Note({required int note, required int startTick}) = _$_Note;
+  factory _Note({required final int note, required final int startTick}) =
+      _$_Note;
 
   @override
   int get note;
@@ -151,5 +139,5 @@ abstract class _Note implements Note {
   int get startTick;
   @override
   @JsonKey(ignore: true)
-  _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;
+  _$$_NoteCopyWith<_$_Note> get copyWith => throw _privateConstructorUsedError;
 }

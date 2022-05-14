@@ -11,10 +11,11 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../locale/locale_page.dart';
-import '../router/root_router.dart';
+import '../router/root_router.gr.dart';
 import '../theme/theme_controller.dart';
 import '../theme/theme_page.dart';
 
+@RoutePage<dynamic>()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -31,18 +32,18 @@ class SettingsPage extends StatelessWidget {
             ListTile(
               title: Text(
                 L10n.of(context)!.txt_language,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               subtitle: Text(
                 localeStrings[Localizations.localeOf(context).languageCode]!,
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               onTap: () => AutoRouter.of(context).push(const LocaleRoute()),
             ),
             ListTile(
               title: Text(
                 L10n.of(context)!.txt_theme,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               subtitle: Consumer(
                 builder: (context, ref, child) {
@@ -50,7 +51,7 @@ class SettingsPage extends StatelessWidget {
 
                   return Text(
                     getThemeName(context, themeMode),
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.titleMedium,
                   );
                 },
               ),
@@ -59,7 +60,7 @@ class SettingsPage extends StatelessWidget {
             ListTile(
               title: Text(
                 L10n.of(context)!.txt_button_feedback,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               onTap: () async {
                 final packageInfo = await PackageInfo.fromPlatform();
@@ -101,7 +102,7 @@ class SettingsPage extends StatelessWidget {
             ListTile(
               title: Text(
                 L10n.of(context)!.txt_about_rate,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               onTap: () async {
                 final _inAppReview = InAppReview.instance;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../loading_widget.dart';
-import '../router/root_router.dart';
+import '../router/root_router.gr.dart';
 import '../songs/song.dart';
 import '../songs/song_widget.dart';
 import '../songs/songs_repository_impl.dart';
@@ -11,7 +11,7 @@ import '../songs/songs_repository_impl.dart';
 class SearchWidget extends SearchDelegate<void> {
   SearchWidget(this._read);
 
-  final Reader _read;
+  final WidgetRef _read;
 
   @override
   List<Widget> buildActions(BuildContext context) => <Widget>[
@@ -44,7 +44,7 @@ class SearchWidget extends SearchDelegate<void> {
   Widget buildResults(BuildContext context) => query.isEmpty
       ? const SizedBox.shrink()
       : FutureBuilder<List<Song>>(
-          future: _read(songRepositoryProvider).searchSongs(query),
+          future: _read.read(songRepositoryProvider).searchSongs(query),
           builder: (context, recentList) {
             if (recentList.connectionState == ConnectionState.done) {
               final songs = recentList.requireData;

@@ -8,7 +8,7 @@ final selectedInstrumentIdProvider = StateProvider<String?>((_) => null);
 
 final selectedInstrumentProvider = Provider<Instrument?>((ref) {
   final selectedInstrumentId =
-      ref.watch(selectedInstrumentIdProvider.state).state;
+      ref.watch(selectedInstrumentIdProvider.notifier).state;
   final instruments = ref.watch(instrumentsProvider);
 
   return instruments.when(
@@ -21,17 +21,18 @@ final selectedInstrumentProvider = Provider<Instrument?>((ref) {
 
 final instrumentsProvider =
     StateNotifierProvider<InstrumentsController, AsyncValue<List<Instrument>>>(
-  (ref) => InstrumentsController(ref.read).._loadInstruments(),
+  (ref) => InstrumentsController(ref).._loadInstruments(),
 );
 
 class InstrumentsController
     extends StateNotifier<AsyncValue<List<Instrument>>> {
   InstrumentsController(this._read) : super(const AsyncValue.loading());
 
-  final Reader _read;
+  final StateNotifierProviderRef _read;
 
   Future<void> _loadInstruments() async {
-    final instruments = await _read(instrumentRepositoryProvider).instruments();
+    final instruments =
+        await _read.read(instrumentRepositoryProvider).instruments();
     state = AsyncValue.data(instruments);
   }
 }
